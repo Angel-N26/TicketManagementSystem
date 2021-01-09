@@ -38,27 +38,44 @@ public class Login extends javax.swing.JFrame {
         tfUser = new javax.swing.JTextField();
         pfPass = new javax.swing.JPasswordField();
         btnIniciar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblUser = new javax.swing.JLabel();
+        lblWarningImg = new javax.swing.JLabel();
+        lblWarningImg.setVisible(false);
+        lblPass = new javax.swing.JLabel();
+        lblRetry = new javax.swing.JLabel();
+        lblRetry.setVisible(false);
+        lblTitulo = new javax.swing.JLabel();
+        lblError = new javax.swing.JLabel();
+        lblError.setVisible(false);
+        jSeparator1 = new javax.swing.JSeparator();
+        errorImgPass = new javax.swing.JLabel();
+        errorImgPass.setVisible(false);
+        errorImgUser = new javax.swing.JLabel();
+        errorImgUser.setVisible(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("TicketManagementSystem");
+        setTitle("TMS");
         setMaximumSize(new java.awt.Dimension(300, 325));
         setMinimumSize(new java.awt.Dimension(300, 325));
+        setName("frame"); // NOI18N
         setResizable(false);
         setSize(new java.awt.Dimension(300, 325));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         panel.setBackground(new java.awt.Color(51, 51, 51));
         panel.setForeground(new java.awt.Color(255, 255, 255));
         panel.setName("panel"); // NOI18N
         panel.setLayout(null);
 
-        logo.setText("logo");
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\logo(1).png")); // NOI18N
         logo.setName("logo"); // NOI18N
         panel.add(logo);
-        logo.setBounds(140, 70, 40, 14);
+        logo.setBounds(10, 10, 40, 40);
 
         tfUser.setBackground(new java.awt.Color(102, 102, 102));
         tfUser.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,35 +128,73 @@ public class Login extends javax.swing.JFrame {
         panel.add(btnIniciar);
         btnIniciar.setBounds(10, 280, 280, 23);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Nombre de usuario");
-        jLabel1.setToolTipText("");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        panel.add(jLabel1);
-        jLabel1.setBounds(10, 145, 130, 10);
+        lblUser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblUser.setForeground(new java.awt.Color(255, 255, 255));
+        lblUser.setText("Nombre de usuario");
+        lblUser.setToolTipText("");
+        lblUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        lblUser.setName("lblUser"); // NOI18N
+        panel.add(lblUser);
+        lblUser.setBounds(10, 145, 130, 10);
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("C");
-        jLabel2.setToolTipText("");
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        panel.add(jLabel2);
-        jLabel2.setBounds(280, 140, 10, 10);
+        lblWarningImg.setForeground(new java.awt.Color(255, 255, 255));
+        lblWarningImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWarningImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\triangulo.png")); // NOI18N
+        lblWarningImg.setToolTipText("");
+        lblWarningImg.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        lblWarningImg.setName("lblWarningImg"); // NOI18N
+        panel.add(lblWarningImg);
+        lblWarningImg.setBounds(15, 90, 30, 40);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Contraseña");
-        jLabel3.setToolTipText("");
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        panel.add(jLabel3);
-        jLabel3.setBounds(10, 205, 70, 10);
+        lblPass.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblPass.setForeground(new java.awt.Color(255, 255, 255));
+        lblPass.setText("Contraseña");
+        lblPass.setToolTipText("");
+        lblPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        lblPass.setName("lblPass"); // NOI18N
+        panel.add(lblPass);
+        lblPass.setBounds(10, 205, 70, 10);
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("C");
-        jLabel4.setToolTipText("");
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        panel.add(jLabel4);
-        jLabel4.setBounds(280, 200, 10, 10);
+        lblRetry.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblRetry.setForeground(new java.awt.Color(255, 255, 255));
+        lblRetry.setText("Inténtalo de nuevo.");
+        lblRetry.setName("lblRetry"); // NOI18N
+        panel.add(lblRetry);
+        lblRetry.setBounds(50, 107, 240, 20);
+
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("TicketManagementSystem");
+        lblTitulo.setName("lblTitulo"); // NOI18N
+        panel.add(lblTitulo);
+        lblTitulo.setBounds(60, 20, 230, 20);
+
+        lblError.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblError.setForeground(new java.awt.Color(255, 255, 255));
+        lblError.setText("El usuario o la contraseña son incorrectos.");
+        lblError.setName("lblError"); // NOI18N
+        panel.add(lblError);
+        lblError.setBounds(50, 90, 240, 20);
+        panel.add(jSeparator1);
+        jSeparator1.setBounds(10, 60, 280, 10);
+
+        errorImgPass.setForeground(new java.awt.Color(255, 255, 255));
+        errorImgPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorImgPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar.png")); // NOI18N
+        errorImgPass.setToolTipText("");
+        errorImgPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        errorImgPass.setName("errorImgPass"); // NOI18N
+        panel.add(errorImgPass);
+        errorImgPass.setBounds(270, 200, 20, 20);
+
+        errorImgUser.setForeground(new java.awt.Color(255, 255, 255));
+        errorImgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorImgUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar.png")); // NOI18N
+        errorImgUser.setToolTipText("");
+        errorImgUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        errorImgUser.setName("errorImgUser"); // NOI18N
+        panel.add(errorImgUser);
+        errorImgUser.setBounds(270, 140, 20, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -174,6 +229,7 @@ public class Login extends javax.swing.JFrame {
     private void pfPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusGained
         pfPass.setBackground(Color.BLACK);
         pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+      
     }//GEN-LAST:event_pfPassFocusGained
 
     private void pfPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusLost
@@ -181,6 +237,23 @@ public class Login extends javax.swing.JFrame {
         pfPass.setBorder(new javax.swing.border.EmptyBorder(0,0,0,0));
         //pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
     }//GEN-LAST:event_pfPassFocusLost
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        if(tfUser.getText().equals("aa") && pfPass.getText().equals("aa")){
+            
+        }else{
+            tfUser.setBackground(Color.BLACK);
+            pfPass.setBackground(Color.BLACK);
+            tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+            pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+            errorImgPass.setVisible(true);
+            errorImgUser.setVisible(true);
+            lblError.setVisible(true);
+            lblRetry.setVisible(true);
+            lblWarningImg.setVisible(true);
+
+        }
+    }//GEN-LAST:event_formMouseClicked
 
     /**
      * @param args the command line arguments
@@ -219,10 +292,15 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel errorImgPass;
+    private javax.swing.JLabel errorImgUser;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblError;
+    private javax.swing.JLabel lblPass;
+    private javax.swing.JLabel lblRetry;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblUser;
+    private javax.swing.JLabel lblWarningImg;
     private javax.swing.JLabel logo;
     private javax.swing.JPanel panel;
     private javax.swing.JPasswordField pfPass;
