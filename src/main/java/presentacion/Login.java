@@ -60,11 +60,6 @@ public class Login extends javax.swing.JFrame {
         setName("frame"); // NOI18N
         setResizable(false);
         setSize(new java.awt.Dimension(300, 325));
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-        });
 
         panel.setBackground(new java.awt.Color(51, 51, 51));
         panel.setForeground(new java.awt.Color(255, 255, 255));
@@ -80,7 +75,7 @@ public class Login extends javax.swing.JFrame {
         tfUser.setBackground(new java.awt.Color(102, 102, 102));
         tfUser.setForeground(new java.awt.Color(255, 255, 255));
         tfUser.setToolTipText("Introduzca su usuario.");
-        tfUser.setBorder(null);
+        tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         tfUser.setCaretColor(new java.awt.Color(255, 255, 255));
         tfUser.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         tfUser.setName("tfUser"); // NOI18N
@@ -93,12 +88,17 @@ public class Login extends javax.swing.JFrame {
                 tfUserFocusLost(evt);
             }
         });
+        tfUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfUserActionPerformed(evt);
+            }
+        });
         panel.add(tfUser);
         tfUser.setBounds(10, 160, 280, 25);
 
         pfPass.setBackground(new java.awt.Color(102, 102, 102));
         pfPass.setForeground(new java.awt.Color(255, 255, 255));
-        pfPass.setBorder(null);
+        pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         pfPass.setCaretColor(new java.awt.Color(255, 255, 255));
         pfPass.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         pfPass.setName("pfPass"); // NOI18N
@@ -114,12 +114,18 @@ public class Login extends javax.swing.JFrame {
         panel.add(pfPass);
         pfPass.setBounds(10, 220, 280, 25);
 
-        btnIniciar.setBackground(new java.awt.Color(102, 102, 102));
+        btnIniciar.setBackground(new java.awt.Color(204, 0, 204));
         btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciar.setText("Iniciar Sesión");
-        btnIniciar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnIniciar.setBorder(null);
+        btnIniciar.setEnabled(false);
         btnIniciar.setName("btnIniciar"); // NOI18N
         btnIniciar.setPreferredSize(new java.awt.Dimension(74, 23));
+        btnIniciar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIniciarMouseClicked(evt);
+            }
+        });
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarActionPerformed(evt);
@@ -218,28 +224,52 @@ public class Login extends javax.swing.JFrame {
     private void tfUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUserFocusGained
         tfUser.setBackground(Color.BLACK);
         tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+        errorImgPass.setVisible(false);
+        errorImgUser.setVisible(false);
+        lblError.setVisible(false);
+        lblRetry.setVisible(false);
+        lblWarningImg.setVisible(false);
+        pfPass.setBackground(Color.GRAY);
+        pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfUserFocusGained
 
     private void tfUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUserFocusLost
         tfUser.setBackground(Color.GRAY);
-        tfUser.setBorder(new javax.swing.border.EmptyBorder(0,0,0,0));
-        //tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        //tfUser.setBorder(new javax.swing.border.EmptyBorder(0,0,0,0));
+        tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        if(!tfUser.getText().equals("") && !pfPass.getText().equals("")){
+            btnIniciar.setEnabled(true);
+        }else{
+            btnIniciar.setEnabled(false);
+        }
+        
     }//GEN-LAST:event_tfUserFocusLost
 
     private void pfPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusGained
         pfPass.setBackground(Color.BLACK);
         pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-      
+        errorImgPass.setVisible(false);
+        errorImgUser.setVisible(false);
+        lblError.setVisible(false);
+        lblRetry.setVisible(false);
+        lblWarningImg.setVisible(false);
+        tfUser.setBackground(Color.GRAY);
+        tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_pfPassFocusGained
 
     private void pfPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusLost
         pfPass.setBackground(Color.GRAY);
-        pfPass.setBorder(new javax.swing.border.EmptyBorder(0,0,0,0));
-        //pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
+        //pfPass.setBorder(new javax.swing.border.EmptyBorder(0,0,0,0));
+        pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        if(!tfUser.getText().equals("") && !pfPass.getText().equals("")){
+            btnIniciar.setEnabled(true);
+        }else{
+            btnIniciar.setEnabled(false);
+        }
     }//GEN-LAST:event_pfPassFocusLost
 
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        if(tfUser.getText().equals("aa") && pfPass.getText().equals("aa")){
+    private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
+                if(tfUser.getText().equals("aa") && pfPass.getText().equals("aa")){
             
         }else{
             tfUser.setBackground(Color.BLACK);
@@ -253,7 +283,14 @@ public class Login extends javax.swing.JFrame {
             lblWarningImg.setVisible(true);
 
         }
-    }//GEN-LAST:event_formMouseClicked
+    }//GEN-LAST:event_btnIniciarMouseClicked
+
+    private void tfUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserActionPerformed
+        if(!tfUser.getText().equals("") && !pfPass.getText().equals("")){
+            btnIniciar.setEnabled(true);
+        }else{
+            btnIniciar.setEnabled(false);
+        }    }//GEN-LAST:event_tfUserActionPerformed
 
     /**
      * @param args the command line arguments
