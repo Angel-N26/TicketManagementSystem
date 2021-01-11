@@ -6,10 +6,6 @@
 package presentacion;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Insets;
-import javax.swing.border.Border;
 
 /**
  *
@@ -85,7 +81,7 @@ public class Login extends javax.swing.JFrame {
         tfUser.setForeground(new java.awt.Color(255, 255, 255));
         tfUser.setToolTipText("Introduzca su usuario.");
         tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        tfUser.setCaretColor(new java.awt.Color(255, 255, 255));
+        tfUser.setCaretColor(new java.awt.Color(204, 0, 204));
         tfUser.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         tfUser.setName("tfUser"); // NOI18N
         tfUser.setNextFocusableComponent(pfPass);
@@ -116,7 +112,7 @@ public class Login extends javax.swing.JFrame {
         pfPass.setBackground(new java.awt.Color(102, 102, 102));
         pfPass.setForeground(new java.awt.Color(255, 255, 255));
         pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        pfPass.setCaretColor(new java.awt.Color(255, 255, 255));
+        pfPass.setCaretColor(new java.awt.Color(204, 0, 204));
         pfPass.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         pfPass.setName("pfPass"); // NOI18N
         pfPass.setNextFocusableComponent(btnIniciar);
