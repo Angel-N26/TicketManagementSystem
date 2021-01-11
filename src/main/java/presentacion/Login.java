@@ -32,6 +32,7 @@ public class Login extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         panel = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
@@ -64,13 +65,21 @@ public class Login extends javax.swing.JFrame {
         panel.setBackground(new java.awt.Color(51, 51, 51));
         panel.setForeground(new java.awt.Color(255, 255, 255));
         panel.setName("panel"); // NOI18N
-        panel.setLayout(null);
+        panel.setLayout(new java.awt.GridBagLayout());
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\logo(1).png")); // NOI18N
         logo.setName("logo"); // NOI18N
-        panel.add(logo);
-        logo.setBounds(10, 10, 40, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 8;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        panel.add(logo, gridBagConstraints);
 
         tfUser.setBackground(new java.awt.Color(102, 102, 102));
         tfUser.setForeground(new java.awt.Color(255, 255, 255));
@@ -93,8 +102,16 @@ public class Login extends javax.swing.JFrame {
                 tfUserActionPerformed(evt);
             }
         });
-        panel.add(tfUser);
-        tfUser.setBounds(10, 160, 280, 25);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 275;
+        gridBagConstraints.ipady = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        panel.add(tfUser, gridBagConstraints);
 
         pfPass.setBackground(new java.awt.Color(102, 102, 102));
         pfPass.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,8 +128,16 @@ public class Login extends javax.swing.JFrame {
                 pfPassFocusLost(evt);
             }
         });
-        panel.add(pfPass);
-        pfPass.setBounds(10, 220, 280, 25);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 275;
+        gridBagConstraints.ipady = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        panel.add(pfPass, gridBagConstraints);
 
         btnIniciar.setBackground(new java.awt.Color(204, 0, 204));
         btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,8 +156,15 @@ public class Login extends javax.swing.JFrame {
                 btnIniciarActionPerformed(evt);
             }
         });
-        panel.add(btnIniciar);
-        btnIniciar.setBounds(10, 280, 280, 23);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.ipadx = 217;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(35, 10, 22, 10);
+        panel.add(btnIniciar, gridBagConstraints);
 
         lblUser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblUser.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,8 +172,15 @@ public class Login extends javax.swing.JFrame {
         lblUser.setToolTipText("");
         lblUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblUser.setName("lblUser"); // NOI18N
-        panel.add(lblUser);
-        lblUser.setBounds(10, 145, 130, 10);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 24;
+        gridBagConstraints.ipady = -4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
+        panel.add(lblUser, gridBagConstraints);
 
         lblWarningImg.setForeground(new java.awt.Color(255, 255, 255));
         lblWarningImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -149,8 +188,15 @@ public class Login extends javax.swing.JFrame {
         lblWarningImg.setToolTipText("");
         lblWarningImg.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblWarningImg.setName("lblWarningImg"); // NOI18N
-        panel.add(lblWarningImg);
-        lblWarningImg.setBounds(15, 90, 30, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 6;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 15, 0, 0);
+        panel.add(lblWarningImg, gridBagConstraints);
 
         lblPass.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPass.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,31 +204,66 @@ public class Login extends javax.swing.JFrame {
         lblPass.setToolTipText("");
         lblPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblPass.setName("lblPass"); // NOI18N
-        panel.add(lblPass);
-        lblPass.setBounds(10, 205, 70, 10);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 5;
+        gridBagConstraints.ipady = -4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 0);
+        panel.add(lblPass, gridBagConstraints);
 
         lblRetry.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblRetry.setForeground(new java.awt.Color(255, 255, 255));
         lblRetry.setText("Inténtalo de nuevo.");
         lblRetry.setName("lblRetry"); // NOI18N
-        panel.add(lblRetry);
-        lblRetry.setBounds(50, 107, 240, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 129;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(37, 0, 0, 10);
+        panel.add(lblRetry, gridBagConstraints);
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setText("TicketManagementSystem");
         lblTitulo.setName("lblTitulo"); // NOI18N
-        panel.add(lblTitulo);
-        lblTitulo.setBounds(60, 20, 230, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 10);
+        panel.add(lblTitulo, gridBagConstraints);
 
         lblError.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblError.setForeground(new java.awt.Color(255, 255, 255));
         lblError.setText("El usuario o la contraseña son incorrectos.");
         lblError.setName("lblError"); // NOI18N
-        panel.add(lblError);
-        lblError.setBounds(50, 90, 240, 20);
-        panel.add(jSeparator1);
-        jSeparator1.setBounds(10, 60, 280, 10);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 3;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 10);
+        panel.add(lblError, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.ipadx = 279;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
+        panel.add(jSeparator1, gridBagConstraints);
 
         errorImgPass.setForeground(new java.awt.Color(255, 255, 255));
         errorImgPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -190,8 +271,15 @@ public class Login extends javax.swing.JFrame {
         errorImgPass.setToolTipText("");
         errorImgPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgPass.setName("errorImgPass"); // NOI18N
-        panel.add(errorImgPass);
-        errorImgPass.setBounds(270, 200, 20, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 4;
+        gridBagConstraints.ipady = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 130, 0, 10);
+        panel.add(errorImgPass, gridBagConstraints);
 
         errorImgUser.setForeground(new java.awt.Color(255, 255, 255));
         errorImgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -199,8 +287,15 @@ public class Login extends javax.swing.JFrame {
         errorImgUser.setToolTipText("");
         errorImgUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgUser.setName("errorImgUser"); // NOI18N
-        panel.add(errorImgUser);
-        errorImgUser.setBounds(270, 140, 20, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 4;
+        gridBagConstraints.ipady = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 130, 0, 10);
+        panel.add(errorImgUser, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -269,8 +364,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_pfPassFocusLost
 
     private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
-                if(tfUser.getText().equals("aa") && pfPass.getText().equals("aa")){
-            
+        if(tfUser.getText().equals("aa") && pfPass.getText().equals("aa")){
+            Inicio inicio = new Inicio();
+            inicio.setExtendedState(MAXIMIZED_BOTH);
+            inicio.setVisible(true);
+            dispose();
         }else{
             tfUser.setBackground(Color.BLACK);
             pfPass.setBackground(Color.BLACK);
