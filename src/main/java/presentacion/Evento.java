@@ -35,6 +35,7 @@ public class Evento extends javax.swing.JFrame {
         setTitle("TicketManagementSystem");
         setPreferredSize(new java.awt.Dimension(800, 550));
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 550));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
@@ -43,8 +44,8 @@ public class Evento extends javax.swing.JFrame {
         jButton1.setText("jButton1");
         jButton1.setPreferredSize(new java.awt.Dimension(170, 35));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
             }
         });
         jPanel2.add(jButton1);
@@ -55,7 +56,9 @@ public class Evento extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,12 +68,12 @@ public class Evento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         Inicio inicio = new Inicio();
         inicio.setExtendedState(MAXIMIZED_BOTH);
         inicio.setVisible(true);       
         dispose();
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_jButton1MousePressed
 
     /**
      * @param args the command line arguments
