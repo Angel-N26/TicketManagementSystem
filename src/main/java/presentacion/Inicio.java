@@ -92,7 +92,6 @@ public class Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TicketManagementSystem");
-        setPreferredSize(new java.awt.Dimension(800, 550));
 
         panelCard.setName("panelCard"); // NOI18N
         panelCard.setPreferredSize(new java.awt.Dimension(800, 550));
@@ -143,6 +142,11 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("JuntaDirectiva");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel3MousePressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -155,6 +159,11 @@ public class Inicio extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Membresia");
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel7MousePressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -508,6 +517,11 @@ public class Inicio extends javax.swing.JFrame {
         jButton9.setText("Generar Entradas");
         jButton9.setBorder(null);
         jButton9.setPreferredSize(new java.awt.Dimension(130, 35));
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton9MousePressed(evt);
+            }
+        });
         jPanel18.add(jButton9);
 
         jPanel15.add(jPanel18);
@@ -522,6 +536,15 @@ public class Inicio extends javax.swing.JFrame {
         menuInicio.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\casa-icono-silueta.png")); // NOI18N
         menuInicio.setText("Inicio");
         menuInicio.setName("menuInicio"); // NOI18N
+        menuInicio.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                menuInicioMenuSelected(evt);
+            }
+        });
         menuInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 menuInicioMousePressed(evt);
@@ -603,7 +626,8 @@ public class Inicio extends javax.swing.JFrame {
 
     private void menuInicioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuInicioMousePressed
         CardLayout cardLayout = (CardLayout) panelCard.getLayout();
-        cardLayout.show(panelCard, "card4");       
+        cardLayout.show(panelCard, "card4");        
+        
     }//GEN-LAST:event_menuInicioMousePressed
     
     private void menuAsociacionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuAsociacionMousePressed
@@ -633,25 +657,47 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_submenuCerrarSesionMousePressed
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
-        Usuario usuario = new Usuario();
+        SocioFrame usuario = new SocioFrame();
         usuario.setExtendedState(MAXIMIZED_BOTH);
         usuario.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MousePressed
-        Usuario usuario = new Usuario();
+        SocioFrame usuario = new SocioFrame();
         usuario.setExtendedState(MAXIMIZED_BOTH);
         usuario.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton6MousePressed
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        Usuario usuario = new Usuario();
+        SocioFrame usuario = new SocioFrame();
         usuario.setExtendedState(MAXIMIZED_BOTH);
         usuario.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+        JuntaDirectiva jd = new JuntaDirectiva();
+        jd.setVisible(true);
+        jd.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jLabel3MousePressed
+
+    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
+        Membresia mem = new Membresia();
+        mem.setVisible(true);
+        mem.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jLabel7MousePressed
+
+    private void jButton9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MousePressed
+        GenerarEntradas ge = new GenerarEntradas();
+        ge.setVisible(true);
+        ge.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton9MousePressed
+
+    private void menuInicioMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_menuInicioMenuSelected
+        
+    }//GEN-LAST:event_menuInicioMenuSelected
  
     /**
      * @param args the command line arguments
