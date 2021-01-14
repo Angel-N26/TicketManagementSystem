@@ -60,39 +60,39 @@ public class Inicio extends javax.swing.JFrame {
         tfNRegAsoc = new javax.swing.JTextField();
         lblObNReg = new javax.swing.JLabel();
         sociosPanel = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jTextField9 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jPanel10 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jPanel11 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        panelNorthSocios = new javax.swing.JPanel();
+        tfBuscarSocios = new javax.swing.JTextField();
+        btnBuscarSocios = new javax.swing.JButton();
+        panelSouthSocios = new javax.swing.JPanel();
+        btnAnadirSocios = new javax.swing.JButton();
+        btnEliminarSocios = new javax.swing.JButton();
+        panelCenterSocios = new javax.swing.JPanel();
+        scrollPanelListSocios = new javax.swing.JScrollPane();
+        listSocios = new javax.swing.JList<>();
         eventosPanel = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
-        jTextField10 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jPanel13 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jPanel14 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList5 = new javax.swing.JList<>();
+        panelNorthEventos = new javax.swing.JPanel();
+        tfBuscarEventos = new javax.swing.JTextField();
+        btnBuscarEventos = new javax.swing.JButton();
+        panelSouthEventos = new javax.swing.JPanel();
+        btnAnadirEventos = new javax.swing.JButton();
+        btnEliminarEventos = new javax.swing.JButton();
+        panelCenterEventos = new javax.swing.JPanel();
+        scrollPanelListEventos = new javax.swing.JScrollPane();
+        listEventos = new javax.swing.JList<>();
         entradasPanel = new javax.swing.JPanel();
-        jPanel26 = new javax.swing.JPanel();
-        jPanel24 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jPanel25 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList<>();
-        jPanel15 = new javax.swing.JPanel();
-        jPanel17 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jPanel18 = new javax.swing.JPanel();
-        jButton9 = new javax.swing.JButton();
+        panelCenterEntradas = new javax.swing.JPanel();
+        panelNumEntradas = new javax.swing.JPanel();
+        lblNumEntradas = new javax.swing.JLabel();
+        lblNum = new javax.swing.JLabel();
+        panelListEntradas = new javax.swing.JPanel();
+        scrollPanelListEntradas = new javax.swing.JScrollPane();
+        listEntradas = new javax.swing.JList<>();
+        panelNorthEntradas = new javax.swing.JPanel();
+        panelSeleccionEvento = new javax.swing.JPanel();
+        lblSeleccionEvento = new javax.swing.JLabel();
+        cbSeleccionEvento = new javax.swing.JComboBox<>();
+        panelGenerarEntradas = new javax.swing.JPanel();
+        btnGenerarEntradas = new javax.swing.JButton();
         menu = new javax.swing.JMenuBar();
         menuInicio = new javax.swing.JMenu();
         menuAsociacion = new javax.swing.JMenu();
@@ -524,244 +524,290 @@ public class Inicio extends javax.swing.JFrame {
         sociosPanel.setPreferredSize(new java.awt.Dimension(800, 550));
         sociosPanel.setLayout(new java.awt.BorderLayout());
 
-        jPanel9.setBackground(new java.awt.Color(51, 51, 51));
+        panelNorthSocios.setBackground(new java.awt.Color(51, 51, 51));
+        panelNorthSocios.setName("panelNorthSocios"); // NOI18N
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING);
         flowLayout1.setAlignOnBaseline(true);
-        jPanel9.setLayout(flowLayout1);
+        panelNorthSocios.setLayout(flowLayout1);
 
-        jTextField9.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField9.setText("Buscar...");
-        jTextField9.setPreferredSize(new java.awt.Dimension(170, 35));
-        jPanel9.add(jTextField9);
-
-        jButton4.setBackground(new java.awt.Color(204, 0, 204));
-        jButton4.setText("Buscar");
-        jButton4.setBorder(null);
-        jButton4.setPreferredSize(new java.awt.Dimension(100, 35));
-        jPanel9.add(jButton4);
-
-        sociosPanel.add(jPanel9, java.awt.BorderLayout.PAGE_START);
-
-        jPanel10.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
-
-        jButton1.setBackground(new java.awt.Color(0, 204, 0));
-        jButton1.setText("Añadir");
-        jButton1.setBorder(null);
-        jButton1.setPreferredSize(new java.awt.Dimension(180, 35));
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton1MousePressed(evt);
+        tfBuscarSocios.setBackground(new java.awt.Color(102, 102, 102));
+        tfBuscarSocios.setForeground(new java.awt.Color(255, 255, 255));
+        tfBuscarSocios.setText("Buscar...");
+        tfBuscarSocios.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfBuscarSocios.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfBuscarSocios.setName("tfBuscarSocios"); // NOI18N
+        tfBuscarSocios.setPreferredSize(new java.awt.Dimension(170, 35));
+        tfBuscarSocios.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfBuscarSocios.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfBuscarSociosFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfBuscarSociosFocusLost(evt);
             }
         });
-        jPanel10.add(jButton1);
+        panelNorthSocios.add(tfBuscarSocios);
 
-        jButton3.setBackground(new java.awt.Color(204, 0, 0));
-        jButton3.setText("Eliminar");
-        jButton3.setBorder(null);
-        jButton3.setPreferredSize(new java.awt.Dimension(180, 35));
-        jPanel10.add(jButton3);
+        btnBuscarSocios.setBackground(new java.awt.Color(204, 0, 204));
+        btnBuscarSocios.setText("Buscar");
+        btnBuscarSocios.setBorder(null);
+        btnBuscarSocios.setName("btnBuscarSocios"); // NOI18N
+        btnBuscarSocios.setPreferredSize(new java.awt.Dimension(100, 35));
+        panelNorthSocios.add(btnBuscarSocios);
 
-        sociosPanel.add(jPanel10, java.awt.BorderLayout.PAGE_END);
+        sociosPanel.add(panelNorthSocios, java.awt.BorderLayout.PAGE_START);
 
-        jPanel11.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouthSocios.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouthSocios.setName("panelSouthSocios"); // NOI18N
+        panelSouthSocios.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
 
-        jScrollPane1.setBackground(new java.awt.Color(102, 102, 102));
+        btnAnadirSocios.setBackground(new java.awt.Color(0, 204, 0));
+        btnAnadirSocios.setText("Añadir");
+        btnAnadirSocios.setBorder(null);
+        btnAnadirSocios.setName("btnAnadirSocios"); // NOI18N
+        btnAnadirSocios.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnAnadirSocios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAnadirSociosMousePressed(evt);
+            }
+        });
+        panelSouthSocios.add(btnAnadirSocios);
 
-        jList1.setBackground(new java.awt.Color(102, 102, 102));
-        jList1.setForeground(new java.awt.Color(255, 255, 255));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        btnEliminarSocios.setBackground(new java.awt.Color(204, 0, 0));
+        btnEliminarSocios.setText("Eliminar");
+        btnEliminarSocios.setBorder(null);
+        btnEliminarSocios.setName("btnEliminarSocios"); // NOI18N
+        btnEliminarSocios.setPreferredSize(new java.awt.Dimension(180, 35));
+        panelSouthSocios.add(btnEliminarSocios);
+
+        sociosPanel.add(panelSouthSocios, java.awt.BorderLayout.PAGE_END);
+
+        panelCenterSocios.setBackground(new java.awt.Color(51, 51, 51));
+        panelCenterSocios.setName("panelCenterSocios"); // NOI18N
+
+        scrollPanelListSocios.setBackground(new java.awt.Color(102, 102, 102));
+
+        listSocios.setBackground(new java.awt.Color(102, 102, 102));
+        listSocios.setForeground(new java.awt.Color(255, 255, 255));
+        listSocios.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Socios 1", "Socios 2", "Socios 3", "Socios 4", "Socios 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        scrollPanelListSocios.setViewportView(listSocios);
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelCenterSociosLayout = new javax.swing.GroupLayout(panelCenterSocios);
+        panelCenterSocios.setLayout(panelCenterSociosLayout);
+        panelCenterSociosLayout.setHorizontalGroup(
+            panelCenterSociosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCenterSociosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
+                .addComponent(scrollPanelListSocios, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+        panelCenterSociosLayout.setVerticalGroup(
+            panelCenterSociosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scrollPanelListSocios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
         );
 
-        sociosPanel.add(jPanel11, java.awt.BorderLayout.CENTER);
+        sociosPanel.add(panelCenterSocios, java.awt.BorderLayout.CENTER);
 
         panelCard.add(sociosPanel, "card6");
 
         eventosPanel.setName("eventosPanel"); // NOI18N
         eventosPanel.setLayout(new java.awt.BorderLayout());
 
-        jPanel12.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
+        panelNorthEventos.setBackground(new java.awt.Color(51, 51, 51));
+        panelNorthEventos.setName("panelNorthEventos"); // NOI18N
+        panelNorthEventos.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
-        jTextField10.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField10.setText("Buscar...");
-        jTextField10.setToolTipText("");
-        jTextField10.setPreferredSize(new java.awt.Dimension(170, 35));
-        jPanel12.add(jTextField10);
-
-        jButton5.setBackground(new java.awt.Color(204, 0, 204));
-        jButton5.setText("Buscar");
-        jButton5.setBorder(null);
-        jButton5.setPreferredSize(new java.awt.Dimension(100, 35));
-        jPanel12.add(jButton5);
-
-        eventosPanel.add(jPanel12, java.awt.BorderLayout.PAGE_START);
-
-        jPanel13.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
-
-        jButton6.setBackground(new java.awt.Color(0, 204, 0));
-        jButton6.setText("Añadir");
-        jButton6.setBorder(null);
-        jButton6.setPreferredSize(new java.awt.Dimension(180, 35));
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton6MouseClicked(evt);
+        tfBuscarEventos.setBackground(new java.awt.Color(102, 102, 102));
+        tfBuscarEventos.setForeground(new java.awt.Color(255, 255, 255));
+        tfBuscarEventos.setText("Buscar...");
+        tfBuscarEventos.setToolTipText("");
+        tfBuscarEventos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfBuscarEventos.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfBuscarEventos.setName("tfBuscarEventos"); // NOI18N
+        tfBuscarEventos.setPreferredSize(new java.awt.Dimension(170, 35));
+        tfBuscarEventos.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfBuscarEventos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfBuscarEventosFocusGained(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton6MousePressed(evt);
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfBuscarEventosFocusLost(evt);
             }
         });
-        jPanel13.add(jButton6);
+        panelNorthEventos.add(tfBuscarEventos);
 
-        jButton7.setBackground(new java.awt.Color(204, 0, 0));
-        jButton7.setText("Eliminar");
-        jButton7.setBorder(null);
-        jButton7.setPreferredSize(new java.awt.Dimension(180, 35));
-        jPanel13.add(jButton7);
+        btnBuscarEventos.setBackground(new java.awt.Color(204, 0, 204));
+        btnBuscarEventos.setText("Buscar");
+        btnBuscarEventos.setBorder(null);
+        btnBuscarEventos.setName("btnBuscarEventos"); // NOI18N
+        btnBuscarEventos.setPreferredSize(new java.awt.Dimension(100, 35));
+        panelNorthEventos.add(btnBuscarEventos);
 
-        eventosPanel.add(jPanel13, java.awt.BorderLayout.PAGE_END);
+        eventosPanel.add(panelNorthEventos, java.awt.BorderLayout.PAGE_START);
 
-        jPanel14.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouthEventos.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouthEventos.setName("panelSouthEventos"); // NOI18N
+        panelSouthEventos.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
 
-        jList5.setBackground(new java.awt.Color(102, 102, 102));
-        jList5.setForeground(new java.awt.Color(255, 255, 255));
-        jList5.setModel(new javax.swing.AbstractListModel<String>() {
+        btnAnadirEventos.setBackground(new java.awt.Color(0, 204, 0));
+        btnAnadirEventos.setText("Añadir");
+        btnAnadirEventos.setBorder(null);
+        btnAnadirEventos.setName("btnAnadirEventos"); // NOI18N
+        btnAnadirEventos.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnAnadirEventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAnadirEventosMousePressed(evt);
+            }
+        });
+        panelSouthEventos.add(btnAnadirEventos);
+
+        btnEliminarEventos.setBackground(new java.awt.Color(204, 0, 0));
+        btnEliminarEventos.setText("Eliminar");
+        btnEliminarEventos.setBorder(null);
+        btnEliminarEventos.setName("btnEliminarEventos"); // NOI18N
+        btnEliminarEventos.setPreferredSize(new java.awt.Dimension(180, 35));
+        panelSouthEventos.add(btnEliminarEventos);
+
+        eventosPanel.add(panelSouthEventos, java.awt.BorderLayout.PAGE_END);
+
+        panelCenterEventos.setBackground(new java.awt.Color(51, 51, 51));
+        panelCenterEventos.setName("panelCenterEventos"); // NOI18N
+
+        listEventos.setBackground(new java.awt.Color(102, 102, 102));
+        listEventos.setForeground(new java.awt.Color(255, 255, 255));
+        listEventos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Evento 1", "Evento 2", "Evento 3", "Evento 4", "Evento 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList5);
+        scrollPanelListEventos.setViewportView(listEventos);
 
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelCenterEventosLayout = new javax.swing.GroupLayout(panelCenterEventos);
+        panelCenterEventos.setLayout(panelCenterEventosLayout);
+        panelCenterEventosLayout.setHorizontalGroup(
+            panelCenterEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCenterEventosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
+                .addComponent(scrollPanelListEventos, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+        panelCenterEventosLayout.setVerticalGroup(
+            panelCenterEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scrollPanelListEventos, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
         );
 
-        eventosPanel.add(jPanel14, java.awt.BorderLayout.CENTER);
+        eventosPanel.add(panelCenterEventos, java.awt.BorderLayout.CENTER);
 
         panelCard.add(eventosPanel, "card7");
 
         entradasPanel.setName("entradasPanel"); // NOI18N
         entradasPanel.setLayout(new java.awt.BorderLayout());
 
-        jPanel26.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel26.setLayout(new java.awt.BorderLayout());
+        panelCenterEntradas.setBackground(new java.awt.Color(51, 51, 51));
+        panelCenterEntradas.setName("panelCenterEntradas"); // NOI18N
+        panelCenterEntradas.setLayout(new java.awt.BorderLayout());
 
-        jPanel24.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel24.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
+        panelNumEntradas.setBackground(new java.awt.Color(51, 51, 51));
+        panelNumEntradas.setName("panelNumEntradas"); // NOI18N
+        panelNumEntradas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel18.setText("Numero de entradas:");
-        jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        jLabel18.setPreferredSize(new java.awt.Dimension(120, 14));
-        jPanel24.add(jLabel18);
+        lblNumEntradas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblNumEntradas.setForeground(new java.awt.Color(255, 255, 255));
+        lblNumEntradas.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNumEntradas.setText("Numero de entradas:");
+        lblNumEntradas.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        lblNumEntradas.setName("lblNumEntradas"); // NOI18N
+        lblNumEntradas.setPreferredSize(new java.awt.Dimension(120, 14));
+        panelNumEntradas.add(lblNumEntradas);
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("10");
-        jPanel24.add(jLabel19);
+        lblNum.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblNum.setForeground(new java.awt.Color(255, 255, 255));
+        lblNum.setText("10");
+        lblNum.setName("lblNum"); // NOI18N
+        panelNumEntradas.add(lblNum);
 
-        jPanel26.add(jPanel24, java.awt.BorderLayout.PAGE_START);
+        panelCenterEntradas.add(panelNumEntradas, java.awt.BorderLayout.PAGE_START);
 
-        jPanel25.setBackground(new java.awt.Color(51, 51, 51));
+        panelListEntradas.setBackground(new java.awt.Color(51, 51, 51));
+        panelListEntradas.setName("panelListEntradas"); // NOI18N
 
-        jList4.setBackground(new java.awt.Color(102, 102, 102));
-        jList4.setModel(new javax.swing.AbstractListModel<String>() {
+        listEntradas.setBackground(new java.awt.Color(102, 102, 102));
+        listEntradas.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane4.setViewportView(jList4);
+        scrollPanelListEntradas.setViewportView(listEntradas);
 
-        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
-        jPanel25.setLayout(jPanel25Layout);
-        jPanel25Layout.setHorizontalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel25Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelListEntradasLayout = new javax.swing.GroupLayout(panelListEntradas);
+        panelListEntradas.setLayout(panelListEntradasLayout);
+        panelListEntradasLayout.setHorizontalGroup(
+            panelListEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelListEntradasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
+                .addComponent(scrollPanelListEntradas, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel25Layout.setVerticalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel25Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+        panelListEntradasLayout.setVerticalGroup(
+            panelListEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelListEntradasLayout.createSequentialGroup()
+                .addComponent(scrollPanelListEntradas, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel26.add(jPanel25, java.awt.BorderLayout.CENTER);
+        panelCenterEntradas.add(panelListEntradas, java.awt.BorderLayout.CENTER);
 
-        entradasPanel.add(jPanel26, java.awt.BorderLayout.CENTER);
+        entradasPanel.add(panelCenterEntradas, java.awt.BorderLayout.CENTER);
 
-        jPanel15.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel15.setLayout(new java.awt.GridLayout(1, 0));
+        panelNorthEntradas.setBackground(new java.awt.Color(51, 51, 51));
+        panelNorthEntradas.setName("panelNorthEntradas"); // NOI18N
+        panelNorthEntradas.setLayout(new java.awt.GridLayout(1, 0));
 
-        jPanel17.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel17.setMinimumSize(new java.awt.Dimension(160, 30));
-        jPanel17.setPreferredSize(new java.awt.Dimension(112, 60));
-        jPanel17.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
+        panelSeleccionEvento.setBackground(new java.awt.Color(51, 51, 51));
+        panelSeleccionEvento.setMinimumSize(new java.awt.Dimension(160, 30));
+        panelSeleccionEvento.setName("panelSeleccionEvento"); // NOI18N
+        panelSeleccionEvento.setPreferredSize(new java.awt.Dimension(112, 60));
+        panelSeleccionEvento.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Selecciona un evento: ");
-        jLabel17.setPreferredSize(new java.awt.Dimension(140, 35));
-        jPanel17.add(jLabel17);
+        lblSeleccionEvento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblSeleccionEvento.setForeground(new java.awt.Color(255, 255, 255));
+        lblSeleccionEvento.setText("Selecciona un evento: ");
+        lblSeleccionEvento.setName("lblSeleccionEvento"); // NOI18N
+        lblSeleccionEvento.setPreferredSize(new java.awt.Dimension(140, 35));
+        panelSeleccionEvento.add(lblSeleccionEvento);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Evento 1", "Evento 2", "Evento 3", "Evento 4" }));
-        jComboBox2.setPreferredSize(new java.awt.Dimension(180, 35));
-        jPanel17.add(jComboBox2);
+        cbSeleccionEvento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Evento 1", "Evento 2", "Evento 3", "Evento 4" }));
+        cbSeleccionEvento.setName("cbSeleccionEvento"); // NOI18N
+        cbSeleccionEvento.setPreferredSize(new java.awt.Dimension(180, 35));
+        panelSeleccionEvento.add(cbSeleccionEvento);
 
-        jPanel15.add(jPanel17);
+        panelNorthEntradas.add(panelSeleccionEvento);
 
-        jPanel18.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel18.setPreferredSize(new java.awt.Dimension(140, 60));
-        jPanel18.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
+        panelGenerarEntradas.setBackground(new java.awt.Color(51, 51, 51));
+        panelGenerarEntradas.setName("panelGenerarEntradas"); // NOI18N
+        panelGenerarEntradas.setPreferredSize(new java.awt.Dimension(140, 60));
+        panelGenerarEntradas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
 
-        jButton9.setBackground(new java.awt.Color(255, 204, 0));
-        jButton9.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\entradas.png")); // NOI18N
-        jButton9.setText("Generar Entradas");
-        jButton9.setBorder(null);
-        jButton9.setPreferredSize(new java.awt.Dimension(180, 35));
-        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnGenerarEntradas.setBackground(new java.awt.Color(255, 204, 0));
+        btnGenerarEntradas.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\entradas.png")); // NOI18N
+        btnGenerarEntradas.setText("Generar Entradas");
+        btnGenerarEntradas.setBorder(null);
+        btnGenerarEntradas.setName("btnGenerarEntradas"); // NOI18N
+        btnGenerarEntradas.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnGenerarEntradas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton9MousePressed(evt);
+                btnGenerarEntradasMousePressed(evt);
             }
         });
-        jPanel18.add(jButton9);
+        panelGenerarEntradas.add(btnGenerarEntradas);
 
-        jPanel15.add(jPanel18);
+        panelNorthEntradas.add(panelGenerarEntradas);
 
-        entradasPanel.add(jPanel15, java.awt.BorderLayout.PAGE_START);
+        entradasPanel.add(panelNorthEntradas, java.awt.BorderLayout.PAGE_START);
 
         panelCard.add(entradasPanel, "card8");
 
@@ -891,26 +937,11 @@ public class Inicio extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_submenuCerrarSesionMousePressed
 
-    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+    private void btnAnadirSociosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirSociosMousePressed
         SocioFrame usuario = new SocioFrame();
-        usuario.setExtendedState(MAXIMIZED_BOTH);
         usuario.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton1MousePressed
-
-    private void jButton6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MousePressed
-        SocioFrame usuario = new SocioFrame();
-        usuario.setExtendedState(MAXIMIZED_BOTH);
-        usuario.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton6MousePressed
-
-    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        SocioFrame usuario = new SocioFrame();
-        usuario.setExtendedState(MAXIMIZED_BOTH);
-        usuario.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton6MouseClicked
+        usuario.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnAnadirSociosMousePressed
 
     private void lblJuntaDirectivaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblJuntaDirectivaMousePressed
         JuntaDirectiva jd = new JuntaDirectiva();
@@ -924,11 +955,11 @@ public class Inicio extends javax.swing.JFrame {
         mem.setLocationRelativeTo(null);
     }//GEN-LAST:event_lblMembresiaMousePressed
 
-    private void jButton9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MousePressed
+    private void btnGenerarEntradasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMousePressed
         GenerarEntradas ge = new GenerarEntradas();
         ge.setVisible(true);
         ge.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jButton9MousePressed
+    }//GEN-LAST:event_btnGenerarEntradasMousePressed
 
     private void menuInicioMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_menuInicioMenuSelected
         
@@ -1013,6 +1044,32 @@ public class Inicio extends javax.swing.JFrame {
         tfNRegAsoc.setBackground(new java.awt.Color(102, 102, 102));
         tfNRegAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfNRegAsocFocusLost
+
+    private void tfBuscarSociosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarSociosFocusGained
+        tfBuscarSocios.setBackground(Color.black);
+        tfBuscarSocios.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfBuscarSociosFocusGained
+
+    private void tfBuscarSociosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarSociosFocusLost
+        tfBuscarSocios.setBackground(new java.awt.Color(102, 102, 102));
+        tfBuscarSocios.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfBuscarSociosFocusLost
+
+    private void tfBuscarEventosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarEventosFocusGained
+        tfBuscarEventos.setBackground(Color.black);
+        tfBuscarEventos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfBuscarEventosFocusGained
+
+    private void tfBuscarEventosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarEventosFocusLost
+        tfBuscarEventos.setBackground(new java.awt.Color(102, 102, 102));
+        tfBuscarEventos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfBuscarEventosFocusLost
+
+    private void btnAnadirEventosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirEventosMousePressed
+        EventoFrame evento = new EventoFrame();
+        evento.setVisible(true);
+        evento.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnAnadirEventosMousePressed
  
     /**
      * @param args the command line arguments
@@ -1052,45 +1109,22 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel asociacionPanel;
+    private javax.swing.JButton btnAnadirEventos;
+    private javax.swing.JButton btnAnadirSocios;
+    private javax.swing.JButton btnBuscarEventos;
+    private javax.swing.JButton btnBuscarSocios;
     private javax.swing.JButton btnEditarAsoc;
+    private javax.swing.JButton btnEliminarEventos;
+    private javax.swing.JButton btnEliminarSocios;
+    private javax.swing.JButton btnGenerarEntradas;
+    private javax.swing.JComboBox<String> cbSeleccionEvento;
     private javax.swing.JPanel entradasPanel;
     private javax.swing.JPanel eventosPanel;
     private javax.swing.JPanel inicioPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList4;
-    private javax.swing.JList<String> jList5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
-    private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lblCIFAsoc;
     private javax.swing.JLabel lblCiuAsoc;
     private javax.swing.JLabel lblCorreoAsoc;
@@ -1100,6 +1134,8 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel lblNRegAsoc;
     private javax.swing.JLabel lblNameAsoc;
     private javax.swing.JLabel lblNameTittle;
+    private javax.swing.JLabel lblNum;
+    private javax.swing.JLabel lblNumEntradas;
     private javax.swing.JLabel lblObCIF;
     private javax.swing.JLabel lblObCiu;
     private javax.swing.JLabel lblObCorreo;
@@ -1109,7 +1145,11 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel lblObPob;
     private javax.swing.JLabel lblObTlf;
     private javax.swing.JLabel lblPobAsoc;
+    private javax.swing.JLabel lblSeleccionEvento;
     private javax.swing.JLabel lblTlfAsoc;
+    private javax.swing.JList<String> listEntradas;
+    private javax.swing.JList<String> listEventos;
+    private javax.swing.JList<String> listSocios;
     private javax.swing.JLabel logoAsoc;
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menuAsociacion;
@@ -1120,10 +1160,27 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenu menuSocios;
     private javax.swing.JPanel panelCard;
     private javax.swing.JPanel panelCenterAsoc;
+    private javax.swing.JPanel panelCenterEntradas;
+    private javax.swing.JPanel panelCenterEventos;
+    private javax.swing.JPanel panelCenterSocios;
     private javax.swing.JPanel panelEastAsoc;
+    private javax.swing.JPanel panelGenerarEntradas;
+    private javax.swing.JPanel panelListEntradas;
+    private javax.swing.JPanel panelNorthEntradas;
+    private javax.swing.JPanel panelNorthEventos;
+    private javax.swing.JPanel panelNorthSocios;
+    private javax.swing.JPanel panelNumEntradas;
+    private javax.swing.JPanel panelSeleccionEvento;
     private javax.swing.JPanel panelSouthAsoc;
+    private javax.swing.JPanel panelSouthEventos;
+    private javax.swing.JPanel panelSouthSocios;
+    private javax.swing.JScrollPane scrollPanelListEntradas;
+    private javax.swing.JScrollPane scrollPanelListEventos;
+    private javax.swing.JScrollPane scrollPanelListSocios;
     private javax.swing.JPanel sociosPanel;
     private javax.swing.JMenuItem submenuCerrarSesion;
+    private javax.swing.JTextField tfBuscarEventos;
+    private javax.swing.JTextField tfBuscarSocios;
     private javax.swing.JTextField tfCIFAsoc;
     private javax.swing.JTextField tfCiuAsoc;
     private javax.swing.JTextField tfCorreoAsoc;
