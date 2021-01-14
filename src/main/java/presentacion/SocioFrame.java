@@ -5,8 +5,6 @@
  */
 package presentacion;
 
-import java.awt.Component;
-
 /**
  *
  * @author angel

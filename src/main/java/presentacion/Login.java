@@ -94,11 +94,6 @@ public class Login extends javax.swing.JFrame {
                 tfUserFocusLost(evt);
             }
         });
-        tfUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfUserActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
@@ -328,12 +323,12 @@ public class Login extends javax.swing.JFrame {
         lblError.setVisible(false);
         lblRetry.setVisible(false);
         lblWarningImg.setVisible(false);
-        pfPass.setBackground(Color.GRAY);
+        pfPass.setBackground(new java.awt.Color(102, 102, 102));
         pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfUserFocusGained
 
     private void tfUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUserFocusLost
-        tfUser.setBackground(Color.GRAY);
+        tfUser.setBackground(new java.awt.Color(102, 102, 102));
         //tfUser.setBorder(new javax.swing.border.EmptyBorder(0,0,0,0));
         tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         if(!tfUser.getText().equals("") && !pfPass.getText().equals("")){
@@ -352,12 +347,12 @@ public class Login extends javax.swing.JFrame {
         lblError.setVisible(false);
         lblRetry.setVisible(false);
         lblWarningImg.setVisible(false);
-        tfUser.setBackground(Color.GRAY);
+        tfUser.setBackground(new java.awt.Color(102, 102, 102));
         tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_pfPassFocusGained
 
     private void pfPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusLost
-        pfPass.setBackground(Color.GRAY);
+        pfPass.setBackground(new java.awt.Color(102, 102, 102));
         //pfPass.setBorder(new javax.swing.border.EmptyBorder(0,0,0,0));
         pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         if(!tfUser.getText().equals("") && !pfPass.getText().equals("")){
@@ -386,13 +381,6 @@ public class Login extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnIniciarMouseClicked
-
-    private void tfUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserActionPerformed
-        if(!tfUser.getText().equals("") && !pfPass.getText().equals("")){
-            btnIniciar.setEnabled(true);
-        }else{
-            btnIniciar.setEnabled(false);
-        }    }//GEN-LAST:event_tfUserActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,6 +1,7 @@
 package presentacion;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 
 /**
  * @author angel
@@ -21,32 +22,43 @@ public class Inicio extends javax.swing.JFrame {
 
         panelCard = new javax.swing.JPanel();
         inicioPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         asociacionPanel = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        panelEastAsoc = new javax.swing.JPanel();
+        logoAsoc = new javax.swing.JLabel();
+        lblNameTittle = new javax.swing.JLabel();
+        lblJuntaDirectiva = new javax.swing.JLabel();
+        lblMembresia = new javax.swing.JLabel();
+        panelSouthAsoc = new javax.swing.JPanel();
+        btnEditarAsoc = new javax.swing.JButton();
+        panelCenterAsoc = new javax.swing.JPanel();
+        lblNameAsoc = new javax.swing.JLabel();
+        tfNombreAsoc = new javax.swing.JTextField();
+        lblObNombre = new javax.swing.JLabel();
+        lblTlfAsoc = new javax.swing.JLabel();
+        tfTlfAsoc = new javax.swing.JTextField();
+        lblObTlf = new javax.swing.JLabel();
+        lblCorreoAsoc = new javax.swing.JLabel();
+        tfCorreoAsoc = new javax.swing.JTextField();
+        lblObCorreo = new javax.swing.JLabel();
+        lblDirAsoc = new javax.swing.JLabel();
+        tfDirAsoc = new javax.swing.JTextField();
+        lblObDir = new javax.swing.JLabel();
+        lblPobAsoc = new javax.swing.JLabel();
+        tfPobAsoc = new javax.swing.JTextField();
+        lblObPob = new javax.swing.JLabel();
+        lblCiuAsoc = new javax.swing.JLabel();
+        tfCiuAsoc = new javax.swing.JTextField();
+        lblObCiu = new javax.swing.JLabel();
+        lblCIFAsoc = new javax.swing.JLabel();
+        tfCIFAsoc = new javax.swing.JTextField();
+        lblObCIF = new javax.swing.JLabel();
+        lblNRegAsoc = new javax.swing.JLabel();
+        tfNRegAsoc = new javax.swing.JTextField();
+        lblObNReg = new javax.swing.JLabel();
         sociosPanel = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jTextField9 = new javax.swing.JTextField();
@@ -100,11 +112,71 @@ public class Inicio extends javax.swing.JFrame {
         inicioPanel.setBackground(new java.awt.Color(51, 51, 51));
         inicioPanel.setName("inicioPanel"); // NOI18N
         inicioPanel.setPreferredSize(new java.awt.Dimension(800, 550));
-        inicioPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        inicioPanel.setLayout(new java.awt.GridLayout(2, 2, 25, 25));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("INICIO");
-        inicioPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 224, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true), "Socios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 382, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 227, Short.MAX_VALUE)
+        );
+
+        inicioPanel.add(jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true), "Eventos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 382, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 227, Short.MAX_VALUE)
+        );
+
+        inicioPanel.add(jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true), "Entradas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 382, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 227, Short.MAX_VALUE)
+        );
+
+        inicioPanel.add(jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true), "Otros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 382, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 227, Short.MAX_VALUE)
+        );
+
+        inicioPanel.add(jPanel4);
 
         panelCard.add(inicioPanel, "card4");
 
@@ -112,39 +184,42 @@ public class Inicio extends javax.swing.JFrame {
         asociacionPanel.setPreferredSize(new java.awt.Dimension(800, 550));
         asociacionPanel.setLayout(new java.awt.BorderLayout());
 
-        jPanel6.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel6.setLayout(new java.awt.GridBagLayout());
+        panelEastAsoc.setBackground(new java.awt.Color(51, 51, 51));
+        panelEastAsoc.setName("panelEastAsoc"); // NOI18N
+        panelEastAsoc.setLayout(new java.awt.GridBagLayout());
 
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("logo");
+        logoAsoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logoAsoc.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\logo(3).png")); // NOI18N
+        logoAsoc.setName("logoAsoc"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 130;
-        gridBagConstraints.ipady = 99;
+        gridBagConstraints.ipadx = 86;
+        gridBagConstraints.ipady = 51;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 0, 0, 0);
-        jPanel6.add(jLabel14, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 0, 0);
+        panelEastAsoc.add(logoAsoc, gridBagConstraints);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("RealJazz");
+        lblNameTittle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblNameTittle.setForeground(new java.awt.Color(255, 255, 255));
+        lblNameTittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNameTittle.setText("RealJazz");
+        lblNameTittle.setName("lblNameTittle"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 92;
+        gridBagConstraints.ipadx = 46;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(13, 0, 0, 0);
-        jPanel6.add(jLabel6, gridBagConstraints);
+        panelEastAsoc.add(lblNameTittle, gridBagConstraints);
 
-        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("JuntaDirectiva");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblJuntaDirectiva.setForeground(new java.awt.Color(51, 102, 255));
+        lblJuntaDirectiva.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblJuntaDirectiva.setText("JuntaDirectiva");
+        lblJuntaDirectiva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblJuntaDirectiva.setName("lblJuntaDirectiva"); // NOI18N
+        lblJuntaDirectiva.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel3MousePressed(evt);
+                lblJuntaDirectivaMousePressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -152,16 +227,17 @@ public class Inicio extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 81;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(62, 0, 0, 0);
-        jPanel6.add(jLabel3, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(61, 0, 0, 0);
+        panelEastAsoc.add(lblJuntaDirectiva, gridBagConstraints);
 
-        jLabel7.setForeground(new java.awt.Color(51, 102, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Membresia");
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblMembresia.setForeground(new java.awt.Color(51, 102, 255));
+        lblMembresia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMembresia.setText("Membresia");
+        lblMembresia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMembresia.setName("lblMembresia"); // NOI18N
+        lblMembresia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel7MousePressed(evt);
+                lblMembresiaMousePressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -169,123 +245,278 @@ public class Inicio extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 99;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 0, 220, 0);
-        jPanel6.add(jLabel7, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(11, 0, 225, 0);
+        panelEastAsoc.add(lblMembresia, gridBagConstraints);
 
-        asociacionPanel.add(jPanel6, java.awt.BorderLayout.WEST);
+        asociacionPanel.add(panelEastAsoc, java.awt.BorderLayout.WEST);
 
-        jPanel7.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
+        panelSouthAsoc.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouthAsoc.setName("panelSouthAsoc"); // NOI18N
+        panelSouthAsoc.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
 
-        jButton2.setBackground(new java.awt.Color(204, 0, 204));
-        jButton2.setText("Editar");
-        jButton2.setBorder(null);
-        jButton2.setMaximumSize(new java.awt.Dimension(170, 35));
-        jButton2.setPreferredSize(new java.awt.Dimension(170, 35));
-        jPanel7.add(jButton2);
+        btnEditarAsoc.setBackground(new java.awt.Color(204, 0, 204));
+        btnEditarAsoc.setText("Editar");
+        btnEditarAsoc.setBorder(null);
+        btnEditarAsoc.setMaximumSize(new java.awt.Dimension(170, 35));
+        btnEditarAsoc.setName("btnEditarAsoc"); // NOI18N
+        btnEditarAsoc.setPreferredSize(new java.awt.Dimension(180, 35));
+        panelSouthAsoc.add(btnEditarAsoc);
 
-        asociacionPanel.add(jPanel7, java.awt.BorderLayout.SOUTH);
+        asociacionPanel.add(panelSouthAsoc, java.awt.BorderLayout.SOUTH);
 
-        jPanel8.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel8.setLayout(new java.awt.GridLayout(8, 2, 10, 30));
+        panelCenterAsoc.setBackground(new java.awt.Color(51, 51, 51));
+        panelCenterAsoc.setName("panelCenterAsoc"); // NOI18N
+        panelCenterAsoc.setLayout(new java.awt.GridLayout(8, 3, 5, 35));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel8.setText("jLabel5");
-        jPanel8.add(jLabel8);
+        lblNameAsoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblNameAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        lblNameAsoc.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNameAsoc.setText("Nombre");
+        lblNameAsoc.setName("lblNameAsoc"); // NOI18N
+        panelCenterAsoc.add(lblNameAsoc);
 
-        jTextField1.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("jTextField1");
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jPanel8.add(jTextField1);
+        tfNombreAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfNombreAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        tfNombreAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfNombreAsoc.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfNombreAsoc.setName("tfNombreAsoc"); // NOI18N
+        tfNombreAsoc.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfNombreAsoc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNombreAsocFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNombreAsocFocusLost(evt);
+            }
+        });
+        panelCenterAsoc.add(tfNombreAsoc);
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel9.setText("jLabel6");
-        jPanel8.add(jLabel9);
+        lblObNombre.setVisible(false);
+        lblObNombre.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblObNombre.setForeground(new java.awt.Color(204, 0, 0));
+        lblObNombre.setText("*");
+        lblObNombre.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblObNombre.setName("lblObNombre"); // NOI18N
+        panelCenterAsoc.add(lblObNombre);
 
-        jTextField2.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setText("jTextField2");
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jPanel8.add(jTextField2);
+        lblTlfAsoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblTlfAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        lblTlfAsoc.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblTlfAsoc.setText("Telefono");
+        lblTlfAsoc.setName("lblTlfAsoc"); // NOI18N
+        panelCenterAsoc.add(lblTlfAsoc);
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel10.setText("jLabel7");
-        jPanel8.add(jLabel10);
+        tfTlfAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfTlfAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        tfTlfAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfTlfAsoc.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfTlfAsoc.setName("tfTlfAsoc"); // NOI18N
+        tfTlfAsoc.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfTlfAsoc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfTlfAsocFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfTlfAsocFocusLost(evt);
+            }
+        });
+        panelCenterAsoc.add(tfTlfAsoc);
 
-        jTextField3.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setText("jTextField3");
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jPanel8.add(jTextField3);
+        lblObTlf.setVisible(false);
+        lblObTlf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblObTlf.setForeground(new java.awt.Color(204, 0, 0));
+        lblObTlf.setText("*");
+        lblObTlf.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblObTlf.setName("lblObTlf"); // NOI18N
+        panelCenterAsoc.add(lblObTlf);
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel11.setText("jLabel8");
-        jPanel8.add(jLabel11);
+        lblCorreoAsoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblCorreoAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        lblCorreoAsoc.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblCorreoAsoc.setText("Correo");
+        lblCorreoAsoc.setName("lblCorreoAsoc"); // NOI18N
+        panelCenterAsoc.add(lblCorreoAsoc);
 
-        jTextField4.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setText("jTextField4");
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jPanel8.add(jTextField4);
+        tfCorreoAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfCorreoAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        tfCorreoAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfCorreoAsoc.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfCorreoAsoc.setName("tfCorreoAsoc"); // NOI18N
+        tfCorreoAsoc.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfCorreoAsoc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfCorreoAsocFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfCorreoAsocFocusLost(evt);
+            }
+        });
+        panelCenterAsoc.add(tfCorreoAsoc);
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel12.setText("jLabel9");
-        jPanel8.add(jLabel12);
+        lblObCorreo.setVisible(false);
+        lblObCorreo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblObCorreo.setForeground(new java.awt.Color(204, 0, 0));
+        lblObCorreo.setText("*");
+        lblObCorreo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblObCorreo.setName("lblObTlf"); // NOI18N
+        panelCenterAsoc.add(lblObCorreo);
 
-        jTextField5.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField5.setText("jTextField5");
-        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jPanel8.add(jTextField5);
+        lblDirAsoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblDirAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        lblDirAsoc.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblDirAsoc.setText("Dirección");
+        lblDirAsoc.setName("lblDirAsoc"); // NOI18N
+        panelCenterAsoc.add(lblDirAsoc);
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel13.setText("jLabel10");
-        jPanel8.add(jLabel13);
+        tfDirAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfDirAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        tfDirAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfDirAsoc.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfDirAsoc.setName("tfDirAsoc"); // NOI18N
+        tfDirAsoc.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfDirAsoc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfDirAsocFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfDirAsocFocusLost(evt);
+            }
+        });
+        panelCenterAsoc.add(tfDirAsoc);
 
-        jTextField6.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField6.setText("jTextField6");
-        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jPanel8.add(jTextField6);
+        lblObDir.setVisible(false);
+        lblObDir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblObDir.setForeground(new java.awt.Color(204, 0, 0));
+        lblObDir.setText("*");
+        lblObDir.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblObDir.setName("lblObDir"); // NOI18N
+        panelCenterAsoc.add(lblObDir);
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel15.setText("jLabel11");
-        jPanel8.add(jLabel15);
+        lblPobAsoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblPobAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        lblPobAsoc.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPobAsoc.setText("Poblacion");
+        lblPobAsoc.setName("lblPobAsoc"); // NOI18N
+        panelCenterAsoc.add(lblPobAsoc);
 
-        jTextField7.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField7.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField7.setText("jTextField7");
-        jTextField7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jPanel8.add(jTextField7);
+        tfPobAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfPobAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        tfPobAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfPobAsoc.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfPobAsoc.setName("tfPobAsoc"); // NOI18N
+        tfPobAsoc.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfPobAsoc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfPobAsocFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfPobAsocFocusLost(evt);
+            }
+        });
+        panelCenterAsoc.add(tfPobAsoc);
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel16.setText("jLabel12");
-        jPanel8.add(jLabel16);
+        lblObPob.setVisible(false);
+        lblObPob.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblObPob.setForeground(new java.awt.Color(204, 0, 0));
+        lblObPob.setText("*");
+        lblObPob.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblObPob.setName("lblObPob"); // NOI18N
+        panelCenterAsoc.add(lblObPob);
 
-        jTextField8.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField8.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField8.setText("jTextField8");
-        jTextField8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jPanel8.add(jTextField8);
+        lblCiuAsoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblCiuAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        lblCiuAsoc.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblCiuAsoc.setText("Ciudad");
+        lblCiuAsoc.setName("lblCiuAsoc"); // NOI18N
+        panelCenterAsoc.add(lblCiuAsoc);
 
-        asociacionPanel.add(jPanel8, java.awt.BorderLayout.CENTER);
+        tfCiuAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfCiuAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        tfCiuAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfCiuAsoc.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfCiuAsoc.setName("tfCiuAsoc"); // NOI18N
+        tfCiuAsoc.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfCiuAsoc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfCiuAsocFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfCiuAsocFocusLost(evt);
+            }
+        });
+        panelCenterAsoc.add(tfCiuAsoc);
+
+        lblObCiu.setVisible(false);
+        lblObCiu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblObCiu.setForeground(new java.awt.Color(204, 0, 0));
+        lblObCiu.setText("*");
+        lblObCiu.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblObCiu.setName("lblObCiu"); // NOI18N
+        panelCenterAsoc.add(lblObCiu);
+
+        lblCIFAsoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblCIFAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        lblCIFAsoc.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblCIFAsoc.setText("C.I.F");
+        lblCIFAsoc.setName("lblCIFAsoc"); // NOI18N
+        panelCenterAsoc.add(lblCIFAsoc);
+
+        tfCIFAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfCIFAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        tfCIFAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfCIFAsoc.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfCIFAsoc.setName("tfCIFAsoc"); // NOI18N
+        tfCIFAsoc.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfCIFAsoc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfCIFAsocFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfCIFAsocFocusLost(evt);
+            }
+        });
+        panelCenterAsoc.add(tfCIFAsoc);
+
+        lblObCIF.setVisible(false);
+        lblObCIF.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblObCIF.setForeground(new java.awt.Color(204, 0, 0));
+        lblObCIF.setText("*");
+        lblObCIF.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblObCIF.setName("lblObCIF"); // NOI18N
+        panelCenterAsoc.add(lblObCIF);
+
+        lblNRegAsoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblNRegAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        lblNRegAsoc.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblNRegAsoc.setText("Nº Registro");
+        lblNRegAsoc.setName("lblNRegAsoc"); // NOI18N
+        panelCenterAsoc.add(lblNRegAsoc);
+
+        tfNRegAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfNRegAsoc.setForeground(new java.awt.Color(255, 255, 255));
+        tfNRegAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfNRegAsoc.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfNRegAsoc.setName("tfNRegAsoc"); // NOI18N
+        tfNRegAsoc.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfNRegAsoc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNRegAsocFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNRegAsocFocusLost(evt);
+            }
+        });
+        panelCenterAsoc.add(tfNRegAsoc);
+
+        lblObNReg.setVisible(false);
+        lblObNReg.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblObNReg.setForeground(new java.awt.Color(204, 0, 0));
+        lblObNReg.setText("*");
+        lblObNReg.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblObNReg.setName("lblObNReg"); // NOI18N
+        panelCenterAsoc.add(lblObNReg);
+
+        asociacionPanel.add(panelCenterAsoc, java.awt.BorderLayout.CENTER);
 
         panelCard.add(asociacionPanel, "card5");
 
@@ -303,9 +534,10 @@ public class Inicio extends javax.swing.JFrame {
         jTextField9.setPreferredSize(new java.awt.Dimension(170, 35));
         jPanel9.add(jTextField9);
 
+        jButton4.setBackground(new java.awt.Color(204, 0, 204));
         jButton4.setText("Buscar");
         jButton4.setBorder(null);
-        jButton4.setPreferredSize(new java.awt.Dimension(65, 35));
+        jButton4.setPreferredSize(new java.awt.Dimension(100, 35));
         jPanel9.add(jButton4);
 
         sociosPanel.add(jPanel9, java.awt.BorderLayout.PAGE_START);
@@ -313,10 +545,10 @@ public class Inicio extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(51, 51, 51));
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
 
-        jButton1.setBackground(new java.awt.Color(204, 0, 204));
+        jButton1.setBackground(new java.awt.Color(0, 204, 0));
         jButton1.setText("Añadir");
         jButton1.setBorder(null);
-        jButton1.setPreferredSize(new java.awt.Dimension(170, 35));
+        jButton1.setPreferredSize(new java.awt.Dimension(180, 35));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton1MousePressed(evt);
@@ -324,10 +556,10 @@ public class Inicio extends javax.swing.JFrame {
         });
         jPanel10.add(jButton1);
 
-        jButton3.setBackground(new java.awt.Color(204, 0, 204));
+        jButton3.setBackground(new java.awt.Color(204, 0, 0));
         jButton3.setText("Eliminar");
         jButton3.setBorder(null);
-        jButton3.setPreferredSize(new java.awt.Dimension(170, 35));
+        jButton3.setPreferredSize(new java.awt.Dimension(180, 35));
         jPanel10.add(jButton3);
 
         sociosPanel.add(jPanel10, java.awt.BorderLayout.PAGE_END);
@@ -337,8 +569,9 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(102, 102, 102));
 
         jList1.setBackground(new java.awt.Color(102, 102, 102));
+        jList1.setForeground(new java.awt.Color(255, 255, 255));
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Socios 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Socios 1", "Socios 2", "Socios 3", "Socios 4", "Socios 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -350,12 +583,12 @@ public class Inicio extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
         );
 
         sociosPanel.add(jPanel11, java.awt.BorderLayout.CENTER);
@@ -374,9 +607,10 @@ public class Inicio extends javax.swing.JFrame {
         jTextField10.setPreferredSize(new java.awt.Dimension(170, 35));
         jPanel12.add(jTextField10);
 
+        jButton5.setBackground(new java.awt.Color(204, 0, 204));
         jButton5.setText("Buscar");
         jButton5.setBorder(null);
-        jButton5.setPreferredSize(new java.awt.Dimension(65, 35));
+        jButton5.setPreferredSize(new java.awt.Dimension(100, 35));
         jPanel12.add(jButton5);
 
         eventosPanel.add(jPanel12, java.awt.BorderLayout.PAGE_START);
@@ -384,10 +618,10 @@ public class Inicio extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(51, 51, 51));
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
 
-        jButton6.setBackground(new java.awt.Color(204, 0, 204));
+        jButton6.setBackground(new java.awt.Color(0, 204, 0));
         jButton6.setText("Añadir");
         jButton6.setBorder(null);
-        jButton6.setPreferredSize(new java.awt.Dimension(170, 35));
+        jButton6.setPreferredSize(new java.awt.Dimension(180, 35));
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton6MouseClicked(evt);
@@ -398,10 +632,10 @@ public class Inicio extends javax.swing.JFrame {
         });
         jPanel13.add(jButton6);
 
-        jButton7.setBackground(new java.awt.Color(204, 0, 204));
+        jButton7.setBackground(new java.awt.Color(204, 0, 0));
         jButton7.setText("Eliminar");
         jButton7.setBorder(null);
-        jButton7.setPreferredSize(new java.awt.Dimension(170, 35));
+        jButton7.setPreferredSize(new java.awt.Dimension(180, 35));
         jPanel13.add(jButton7);
 
         eventosPanel.add(jPanel13, java.awt.BorderLayout.PAGE_END);
@@ -409,8 +643,9 @@ public class Inicio extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(51, 51, 51));
 
         jList5.setBackground(new java.awt.Color(102, 102, 102));
+        jList5.setForeground(new java.awt.Color(255, 255, 255));
         jList5.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Evento 1", "Evento 2", "Evento 3", "Evento 4", "Evento 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -422,12 +657,12 @@ public class Inicio extends javax.swing.JFrame {
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
         );
 
         eventosPanel.add(jPanel14, java.awt.BorderLayout.CENTER);
@@ -474,13 +709,13 @@ public class Inicio extends javax.swing.JFrame {
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel25Layout.setVerticalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel25Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -516,7 +751,7 @@ public class Inicio extends javax.swing.JFrame {
         jButton9.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\entradas.png")); // NOI18N
         jButton9.setText("Generar Entradas");
         jButton9.setBorder(null);
-        jButton9.setPreferredSize(new java.awt.Dimension(130, 35));
+        jButton9.setPreferredSize(new java.awt.Dimension(180, 35));
         jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton9MousePressed(evt);
@@ -618,7 +853,7 @@ public class Inicio extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCard, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+            .addComponent(panelCard, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
         );
 
         pack();
@@ -626,7 +861,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void menuInicioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuInicioMousePressed
         CardLayout cardLayout = (CardLayout) panelCard.getLayout();
-        cardLayout.show(panelCard, "card4");        
+        cardLayout.show(panelCard, "card4");       
         
     }//GEN-LAST:event_menuInicioMousePressed
     
@@ -677,17 +912,17 @@ public class Inicio extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton6MouseClicked
 
-    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+    private void lblJuntaDirectivaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblJuntaDirectivaMousePressed
         JuntaDirectiva jd = new JuntaDirectiva();
         jd.setVisible(true);
         jd.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jLabel3MousePressed
+    }//GEN-LAST:event_lblJuntaDirectivaMousePressed
 
-    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
+    private void lblMembresiaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMembresiaMousePressed
         Membresia mem = new Membresia();
         mem.setVisible(true);
         mem.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jLabel7MousePressed
+    }//GEN-LAST:event_lblMembresiaMousePressed
 
     private void jButton9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MousePressed
         GenerarEntradas ge = new GenerarEntradas();
@@ -698,6 +933,86 @@ public class Inicio extends javax.swing.JFrame {
     private void menuInicioMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_menuInicioMenuSelected
         
     }//GEN-LAST:event_menuInicioMenuSelected
+
+    private void tfNombreAsocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreAsocFocusGained
+        tfNombreAsoc.setBackground(Color.black);
+        tfNombreAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfNombreAsocFocusGained
+
+    private void tfNombreAsocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreAsocFocusLost
+        tfNombreAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfNombreAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfNombreAsocFocusLost
+
+    private void tfTlfAsocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfAsocFocusGained
+        tfTlfAsoc.setBackground(Color.black);
+        tfTlfAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfTlfAsocFocusGained
+
+    private void tfTlfAsocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfAsocFocusLost
+        tfTlfAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfTlfAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfTlfAsocFocusLost
+
+    private void tfCorreoAsocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCorreoAsocFocusGained
+        tfCorreoAsoc.setBackground(Color.black);
+        tfCorreoAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfCorreoAsocFocusGained
+
+    private void tfCorreoAsocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCorreoAsocFocusLost
+        tfCorreoAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfCorreoAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfCorreoAsocFocusLost
+
+    private void tfDirAsocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDirAsocFocusGained
+        tfDirAsoc.setBackground(Color.black);
+        tfDirAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfDirAsocFocusGained
+
+    private void tfDirAsocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDirAsocFocusLost
+        tfDirAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfDirAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfDirAsocFocusLost
+
+    private void tfPobAsocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPobAsocFocusGained
+        tfPobAsoc.setBackground(Color.black);
+        tfPobAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfPobAsocFocusGained
+
+    private void tfPobAsocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPobAsocFocusLost
+        tfPobAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfPobAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfPobAsocFocusLost
+
+    private void tfCiuAsocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCiuAsocFocusGained
+        tfCiuAsoc.setBackground(Color.black);
+        tfCiuAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfCiuAsocFocusGained
+
+    private void tfCiuAsocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCiuAsocFocusLost
+        tfCiuAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfCiuAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfCiuAsocFocusLost
+
+    private void tfCIFAsocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCIFAsocFocusGained
+        tfCIFAsoc.setBackground(Color.black);
+        tfCIFAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfCIFAsocFocusGained
+
+    private void tfCIFAsocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCIFAsocFocusLost
+        tfCIFAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfCIFAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfCIFAsocFocusLost
+
+    private void tfNRegAsocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNRegAsocFocusGained
+        tfNRegAsoc.setBackground(Color.black);
+        tfNRegAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfNRegAsocFocusGained
+
+    private void tfNRegAsocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNRegAsocFocusLost
+        tfNRegAsoc.setBackground(new java.awt.Color(102, 102, 102));
+        tfNRegAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfNRegAsocFocusLost
  
     /**
      * @param args the command line arguments
@@ -737,11 +1052,11 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel asociacionPanel;
+    private javax.swing.JButton btnEditarAsoc;
     private javax.swing.JPanel entradasPanel;
     private javax.swing.JPanel eventosPanel;
     private javax.swing.JPanel inicioPanel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -749,25 +1064,13 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList4;
     private javax.swing.JList<String> jList5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -776,26 +1079,38 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel lblCIFAsoc;
+    private javax.swing.JLabel lblCiuAsoc;
+    private javax.swing.JLabel lblCorreoAsoc;
+    private javax.swing.JLabel lblDirAsoc;
+    private javax.swing.JLabel lblJuntaDirectiva;
+    private javax.swing.JLabel lblMembresia;
+    private javax.swing.JLabel lblNRegAsoc;
+    private javax.swing.JLabel lblNameAsoc;
+    private javax.swing.JLabel lblNameTittle;
+    private javax.swing.JLabel lblObCIF;
+    private javax.swing.JLabel lblObCiu;
+    private javax.swing.JLabel lblObCorreo;
+    private javax.swing.JLabel lblObDir;
+    private javax.swing.JLabel lblObNReg;
+    private javax.swing.JLabel lblObNombre;
+    private javax.swing.JLabel lblObPob;
+    private javax.swing.JLabel lblObTlf;
+    private javax.swing.JLabel lblPobAsoc;
+    private javax.swing.JLabel lblTlfAsoc;
+    private javax.swing.JLabel logoAsoc;
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menuAsociacion;
     private javax.swing.JMenu menuAyuda;
@@ -804,7 +1119,18 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenu menuInicio;
     private javax.swing.JMenu menuSocios;
     private javax.swing.JPanel panelCard;
+    private javax.swing.JPanel panelCenterAsoc;
+    private javax.swing.JPanel panelEastAsoc;
+    private javax.swing.JPanel panelSouthAsoc;
     private javax.swing.JPanel sociosPanel;
     private javax.swing.JMenuItem submenuCerrarSesion;
+    private javax.swing.JTextField tfCIFAsoc;
+    private javax.swing.JTextField tfCiuAsoc;
+    private javax.swing.JTextField tfCorreoAsoc;
+    private javax.swing.JTextField tfDirAsoc;
+    private javax.swing.JTextField tfNRegAsoc;
+    private javax.swing.JTextField tfNombreAsoc;
+    private javax.swing.JTextField tfPobAsoc;
+    private javax.swing.JTextField tfTlfAsoc;
     // End of variables declaration//GEN-END:variables
 }
