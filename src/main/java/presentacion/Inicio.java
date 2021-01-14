@@ -104,6 +104,7 @@ public class Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TicketManagementSystem");
+        setResizable(false);
 
         panelCard.setName("panelCard"); // NOI18N
         panelCard.setPreferredSize(new java.awt.Dimension(800, 550));
@@ -526,7 +527,7 @@ public class Inicio extends javax.swing.JFrame {
 
         panelNorthSocios.setBackground(new java.awt.Color(51, 51, 51));
         panelNorthSocios.setName("panelNorthSocios"); // NOI18N
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 10, 5);
         flowLayout1.setAlignOnBaseline(true);
         panelNorthSocios.setLayout(flowLayout1);
 
@@ -619,7 +620,7 @@ public class Inicio extends javax.swing.JFrame {
 
         panelNorthEventos.setBackground(new java.awt.Color(51, 51, 51));
         panelNorthEventos.setName("panelNorthEventos"); // NOI18N
-        panelNorthEventos.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
+        panelNorthEventos.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 10, 5));
 
         tfBuscarEventos.setBackground(new java.awt.Color(102, 102, 102));
         tfBuscarEventos.setForeground(new java.awt.Color(255, 255, 255));
@@ -817,15 +818,6 @@ public class Inicio extends javax.swing.JFrame {
         menuInicio.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\casa-icono-silueta.png")); // NOI18N
         menuInicio.setText("Inicio");
         menuInicio.setName("menuInicio"); // NOI18N
-        menuInicio.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                menuInicioMenuSelected(evt);
-            }
-        });
         menuInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 menuInicioMousePressed(evt);
@@ -941,6 +933,7 @@ public class Inicio extends javax.swing.JFrame {
         SocioFrame usuario = new SocioFrame();
         usuario.setVisible(true);
         usuario.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_btnAnadirSociosMousePressed
 
     private void lblJuntaDirectivaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblJuntaDirectivaMousePressed
@@ -960,10 +953,6 @@ public class Inicio extends javax.swing.JFrame {
         ge.setVisible(true);
         ge.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnGenerarEntradasMousePressed
-
-    private void menuInicioMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_menuInicioMenuSelected
-        
-    }//GEN-LAST:event_menuInicioMenuSelected
 
     private void tfNombreAsocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreAsocFocusGained
         tfNombreAsoc.setBackground(Color.black);
@@ -1069,6 +1058,7 @@ public class Inicio extends javax.swing.JFrame {
         EventoFrame evento = new EventoFrame();
         evento.setVisible(true);
         evento.setLocationRelativeTo(null);
+        dispose();
     }//GEN-LAST:event_btnAnadirEventosMousePressed
  
     /**

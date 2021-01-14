@@ -86,6 +86,7 @@ public class Login extends javax.swing.JFrame {
         tfUser.setName("tfUser"); // NOI18N
         tfUser.setNextFocusableComponent(pfPass);
         tfUser.setPreferredSize(new java.awt.Dimension(280, 18));
+        tfUser.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfUser.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfUserFocusGained(evt);
@@ -113,6 +114,7 @@ public class Login extends javax.swing.JFrame {
         pfPass.setName("pfPass"); // NOI18N
         pfPass.setNextFocusableComponent(btnIniciar);
         pfPass.setPreferredSize(new java.awt.Dimension(280, 18));
+        pfPass.setSelectionColor(new java.awt.Color(204, 0, 204));
         pfPass.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 pfPassFocusGained(evt);
@@ -142,11 +144,6 @@ public class Login extends javax.swing.JFrame {
         btnIniciar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnIniciarMouseClicked(evt);
-            }
-        });
-        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIniciarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -311,10 +308,6 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIniciarActionPerformed
-
     private void tfUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUserFocusGained
         tfUser.setBackground(Color.BLACK);
         tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
@@ -329,7 +322,6 @@ public class Login extends javax.swing.JFrame {
 
     private void tfUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUserFocusLost
         tfUser.setBackground(new java.awt.Color(102, 102, 102));
-        //tfUser.setBorder(new javax.swing.border.EmptyBorder(0,0,0,0));
         tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         if(!tfUser.getText().equals("") && !pfPass.getText().equals("")){
             btnIniciar.setEnabled(true);
@@ -353,7 +345,6 @@ public class Login extends javax.swing.JFrame {
 
     private void pfPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusLost
         pfPass.setBackground(new java.awt.Color(102, 102, 102));
-        //pfPass.setBorder(new javax.swing.border.EmptyBorder(0,0,0,0));
         pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         if(!tfUser.getText().equals("") && !pfPass.getText().equals("")){
             btnIniciar.setEnabled(true);
@@ -365,8 +356,8 @@ public class Login extends javax.swing.JFrame {
     private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
         if(tfUser.getText().equals("aa") && pfPass.getText().equals("aa")){
             Inicio inicio = new Inicio();
-            inicio.setExtendedState(MAXIMIZED_BOTH);
             inicio.setVisible(true);
+            inicio.setLocationRelativeTo(null);
             dispose();
         }else{
             tfUser.setBackground(Color.BLACK);

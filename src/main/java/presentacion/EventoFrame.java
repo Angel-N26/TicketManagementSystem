@@ -58,7 +58,7 @@ public class EventoFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TicketManagementSystem");
         setResizable(false);
 
@@ -72,7 +72,7 @@ public class EventoFrame extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(51, 51, 51));
         jPanel7.setPreferredSize(new java.awt.Dimension(400, 55));
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 5));
 
         jButton1.setBackground(new java.awt.Color(204, 0, 0));
         jButton1.setText("Eliminar");
@@ -422,6 +422,9 @@ public class EventoFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MousePressed
+        Inicio inicio = new Inicio();
+        inicio.setVisible(true);
+        inicio.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_jButton5MousePressed
 
