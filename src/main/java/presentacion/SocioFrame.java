@@ -5,6 +5,8 @@
  */
 package presentacion;
 
+import dominio.ControlSocio;
+import dominio.Socio;
 import java.awt.Color;
 
 /**
@@ -28,7 +30,6 @@ public class SocioFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -42,22 +43,27 @@ public class SocioFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        tfNombre = new javax.swing.JTextField();
+        tfApellidos = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        tfFechaNacimiento = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        tfEmail = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        tfDireccion = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        tfTlf = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        tfDNI = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TicketManagementSystem");
@@ -102,6 +108,11 @@ public class SocioFrame extends javax.swing.JFrame {
         jButton6.setText("Guardar");
         jButton6.setBorder(null);
         jButton6.setPreferredSize(new java.awt.Dimension(180, 35));
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton6MousePressed(evt);
+            }
+        });
         jPanel6.add(jButton6);
 
         jPanel2.add(jPanel6);
@@ -109,294 +120,201 @@ public class SocioFrame extends javax.swing.JFrame {
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel5.setLayout(new java.awt.GridBagLayout());
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\user(1).png")); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 6;
-        gridBagConstraints.ipadx = -8;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
-        jPanel5.add(jLabel1, gridBagConstraints);
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 140));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Datos Personales");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 23;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 40, 0, 0);
-        jPanel5.add(jLabel2, gridBagConstraints);
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nombre");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 40, 0, 0);
-        jPanel5.add(jLabel3, gridBagConstraints);
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Apellidos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 53;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 27;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 20, 0, 0);
-        jPanel5.add(jLabel4, gridBagConstraints);
+        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jTextField1.setCaretColor(new java.awt.Color(204, 0, 204));
-        jTextField1.setSelectionColor(new java.awt.Color(204, 0, 204));
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfNombre.setBackground(new java.awt.Color(102, 102, 102));
+        tfNombre.setForeground(new java.awt.Color(255, 255, 255));
+        tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfNombre.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfNombre.setName("tfNombre"); // NOI18N
+        tfNombre.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
+                tfNombreFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+                tfNombreFocusLost(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 25;
-        gridBagConstraints.ipadx = 255;
-        gridBagConstraints.ipady = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 40, 0, 0);
-        jPanel5.add(jTextField1, gridBagConstraints);
+        jPanel5.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 260, 25));
 
-        jTextField2.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jTextField2.setCaretColor(new java.awt.Color(204, 0, 204));
-        jTextField2.setSelectionColor(new java.awt.Color(204, 0, 204));
-        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfApellidos.setBackground(new java.awt.Color(102, 102, 102));
+        tfApellidos.setForeground(new java.awt.Color(255, 255, 255));
+        tfApellidos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfApellidos.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfApellidos.setName("tfApellidos"); // NOI18N
+        tfApellidos.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfApellidos.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField2FocusGained(evt);
+                tfApellidosFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField2FocusLost(evt);
+                tfApellidosFocusLost(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 53;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 54;
-        gridBagConstraints.ipadx = 255;
-        gridBagConstraints.ipady = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 20, 0, 0);
-        jPanel5.add(jTextField2, gridBagConstraints);
+        jPanel5.add(tfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 260, 25));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Fecha Nacimiento");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 21;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 40, 0, 0);
-        jPanel5.add(jLabel5, gridBagConstraints);
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
 
-        jTextField3.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jTextField3.setCaretColor(new java.awt.Color(204, 0, 204));
-        jTextField3.setSelectionColor(new java.awt.Color(204, 0, 204));
-        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfFechaNacimiento.setBackground(new java.awt.Color(102, 102, 102));
+        tfFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
+        tfFechaNacimiento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfFechaNacimiento.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfFechaNacimiento.setName("tfFechaNacimiento"); // NOI18N
+        tfFechaNacimiento.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfFechaNacimiento.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField3FocusGained(evt);
+                tfFechaNacimientoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField3FocusLost(evt);
+                tfFechaNacimientoFocusLost(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 22;
-        gridBagConstraints.ipadx = 145;
-        gridBagConstraints.ipady = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 40, 0, 0);
-        jPanel5.add(jTextField3, gridBagConstraints);
+        jPanel5.add(tfFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 150, 25));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Membresia");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 28;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 26;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 45, 0, 0);
-        jPanel5.add(jLabel6, gridBagConstraints);
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Basico", "Premium" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 28;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 53;
-        gridBagConstraints.ipadx = 134;
-        gridBagConstraints.ipady = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 45, 0, 0);
-        jPanel5.add(jComboBox1, gridBagConstraints);
+        jPanel5.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 200, 25));
 
         jCheckBox1.setBackground(new java.awt.Color(51, 51, 51));
         jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setText("Al dia de pagos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 106;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 108;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 20, 0, 69);
-        jPanel5.add(jCheckBox1, gridBagConstraints);
+        jPanel5.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, -1, 25));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Datos de Contacto");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 30, 0, 0);
-        jPanel5.add(jLabel7, gridBagConstraints);
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Email");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 30, 0, 0);
-        jPanel5.add(jLabel8, gridBagConstraints);
+        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
-        jTextField4.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jTextField4.setCaretColor(new java.awt.Color(204, 0, 204));
-        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfEmail.setBackground(new java.awt.Color(102, 102, 102));
+        tfEmail.setForeground(new java.awt.Color(255, 255, 255));
+        tfEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfEmail.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfEmail.setName("tfEmail"); // NOI18N
+        tfEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField4FocusGained(evt);
+                tfEmailFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField4FocusLost(evt);
+                tfEmailFocusLost(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 107;
-        gridBagConstraints.ipadx = 685;
-        gridBagConstraints.ipady = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 30, 0, 0);
-        jPanel5.add(jTextField4, gridBagConstraints);
+        jPanel5.add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 690, 25));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Direccion");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(25, 30, 0, 0);
-        jPanel5.add(jLabel9, gridBagConstraints);
+        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
-        jTextField5.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jTextField5.setCaretColor(new java.awt.Color(204, 0, 204));
-        jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfDireccion.setBackground(new java.awt.Color(102, 102, 102));
+        tfDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        tfDireccion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfDireccion.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfDireccion.setName("tfDireccion"); // NOI18N
+        tfDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField5FocusGained(evt);
+                tfDireccionFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField5FocusLost(evt);
+                tfDireccionFocusLost(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 107;
-        gridBagConstraints.ipadx = 685;
-        gridBagConstraints.ipady = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 30, 0, 0);
-        jPanel5.add(jTextField5, gridBagConstraints);
+        jPanel5.add(tfDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 690, 25));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Teléfono");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(25, 30, 0, 0);
-        jPanel5.add(jLabel10, gridBagConstraints);
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
         jLabel11.setText("Cal");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 27;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 4, 0, 0);
-        jPanel5.add(jLabel11, gridBagConstraints);
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, 25));
 
-        jTextField6.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        jTextField6.setCaretColor(new java.awt.Color(204, 0, 204));
-        jTextField6.setSelectionColor(new java.awt.Color(204, 0, 204));
-        jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfTlf.setBackground(new java.awt.Color(102, 102, 102));
+        tfTlf.setForeground(new java.awt.Color(255, 255, 255));
+        tfTlf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfTlf.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfTlf.setName("tfTlf"); // NOI18N
+        tfTlf.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfTlf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField6FocusGained(evt);
+                tfTlfFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField6FocusLost(evt);
+                tfTlfFocusLost(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.ipadx = 165;
-        gridBagConstraints.ipady = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 30, 70, 0);
-        jPanel5.add(jTextField6, gridBagConstraints);
+        jPanel5.add(tfTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 170, 25));
 
         jLabel12.setText("infor");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 11;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 10, 70, 0);
-        jPanel5.add(jLabel12, gridBagConstraints);
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, -1, 25));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("DNI");
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, -1));
+
+        tfDNI.setBackground(new java.awt.Color(102, 102, 102));
+        tfDNI.setForeground(new java.awt.Color(255, 255, 255));
+        tfDNI.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfDNI.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfDNI.setName("tfDNI"); // NOI18N
+        tfDNI.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfDNI.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfDNIFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfDNIFocusLost(evt);
+            }
+        });
+        jPanel5.add(tfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 190, 25));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel14.setText("*");
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel15.setText("*");
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel16.setText("*");
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
 
         jPanel1.add(jPanel5, java.awt.BorderLayout.CENTER);
 
@@ -421,65 +339,83 @@ public class SocioFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton5MousePressed
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        jTextField1.setBackground(Color.black);
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-    }//GEN-LAST:event_jTextField1FocusGained
+    private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
+        tfNombre.setBackground(Color.black);
+        tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfNombreFocusGained
 
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        jTextField1.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-    }//GEN-LAST:event_jTextField1FocusLost
+    private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
+        tfNombre.setBackground(new java.awt.Color(102, 102, 102));
+        tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfNombreFocusLost
 
-    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
-        jTextField2.setBackground(Color.black);
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-    }//GEN-LAST:event_jTextField2FocusGained
+    private void tfApellidosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfApellidosFocusGained
+        tfApellidos.setBackground(Color.black);
+        tfApellidos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfApellidosFocusGained
 
-    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
-        jTextField2.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-    }//GEN-LAST:event_jTextField2FocusLost
+    private void tfApellidosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfApellidosFocusLost
+        tfApellidos.setBackground(new java.awt.Color(102, 102, 102));
+        tfApellidos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfApellidosFocusLost
 
-    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
-        jTextField3.setBackground(Color.black);
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-    }//GEN-LAST:event_jTextField3FocusGained
+    private void tfFechaNacimientoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfFechaNacimientoFocusGained
+        tfFechaNacimiento.setBackground(Color.black);
+        tfFechaNacimiento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfFechaNacimientoFocusGained
 
-    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
-        jTextField3.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-    }//GEN-LAST:event_jTextField3FocusLost
+    private void tfFechaNacimientoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfFechaNacimientoFocusLost
+        tfFechaNacimiento.setBackground(new java.awt.Color(102, 102, 102));
+        tfFechaNacimiento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfFechaNacimientoFocusLost
 
-    private void jTextField4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusGained
-        jTextField4.setBackground(Color.black);
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-    }//GEN-LAST:event_jTextField4FocusGained
+    private void tfEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusGained
+        tfEmail.setBackground(Color.black);
+        tfEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfEmailFocusGained
 
-    private void jTextField5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusGained
-        jTextField5.setBackground(Color.black);
-        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-    }//GEN-LAST:event_jTextField5FocusGained
+    private void tfDireccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDireccionFocusGained
+        tfDireccion.setBackground(Color.black);
+        tfDireccion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfDireccionFocusGained
 
-    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
-        jTextField4.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-    }//GEN-LAST:event_jTextField4FocusLost
+    private void tfEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusLost
+        tfEmail.setBackground(new java.awt.Color(102, 102, 102));
+        tfEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfEmailFocusLost
 
-    private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
-        jTextField5.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-    }//GEN-LAST:event_jTextField5FocusLost
+    private void tfDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDireccionFocusLost
+        tfDireccion.setBackground(new java.awt.Color(102, 102, 102));
+        tfDireccion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfDireccionFocusLost
 
-    private void jTextField6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusGained
-        jTextField6.setBackground(Color.black);
-        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-    }//GEN-LAST:event_jTextField6FocusGained
+    private void tfTlfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusGained
+        tfTlf.setBackground(Color.black);
+        tfTlf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfTlfFocusGained
 
-    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
-        jTextField6.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-    }//GEN-LAST:event_jTextField6FocusLost
+    private void tfTlfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusLost
+        tfTlf.setBackground(new java.awt.Color(102, 102, 102));
+        tfTlf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfTlfFocusLost
+
+    private void jButton6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MousePressed
+        Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
+                tfEmail.getText(), null/*tfFechaNacimiento.getText()*/,tfDireccion.getText(),
+                Integer.parseInt(tfTlf.getText()), 1);        
+        ControlSocio cs = new ControlSocio();
+        cs.insertarSocio(s);
+    }//GEN-LAST:event_jButton6MousePressed
+
+    private void tfDNIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDNIFocusGained
+        tfDNI.setBackground(Color.black);
+        tfDNI.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfDNIFocusGained
+
+    private void tfDNIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDNIFocusLost
+        tfDNI.setBackground(new java.awt.Color(102, 102, 102));
+        tfDNI.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfDNIFocusLost
 
     /**
      * @param args the command line arguments
@@ -529,6 +465,10 @@ public class SocioFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -542,11 +482,12 @@ public class SocioFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField tfApellidos;
+    private javax.swing.JTextField tfDNI;
+    private javax.swing.JTextField tfDireccion;
+    private javax.swing.JTextField tfEmail;
+    private javax.swing.JTextField tfFechaNacimiento;
+    private javax.swing.JTextField tfNombre;
+    private javax.swing.JTextField tfTlf;
     // End of variables declaration//GEN-END:variables
 }
