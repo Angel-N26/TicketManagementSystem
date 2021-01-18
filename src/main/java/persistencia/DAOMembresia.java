@@ -61,12 +61,11 @@ public class DAOMembresia {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into entradas(identradas, nombre, precio)"
-                    + "values(?,?,?)";
+            String sql = "insert into membresia(nombre, precio)"
+                    + "values(?,?)";
             pst = con.prepareStatement(sql);
-            pst.setInt(1, membresia.getId_membresia());
-            pst.setString(2, membresia.getNombre());
-            pst.setDouble(3, membresia.getPrecio());
+            pst.setString(1, membresia.getNombre());
+            pst.setDouble(2, membresia.getPrecio());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -80,7 +79,7 @@ public class DAOMembresia {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "update entradas set nombre = ?, precio = ? "
+            String sql = "update membresia set nombre = ?, precio = ? "
                     + "where idmembresia = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, membresia.getNombre());
@@ -94,14 +93,14 @@ public class DAOMembresia {
         return realizado;
     }
     
-    public boolean eliminarMembresiaDAO(int id){
+    public boolean eliminarMembresiaDAO(String nombre){
         boolean realizado;
         try{
             realizado = true;
             con.createStatement();
-            String sql = "delete from membresias where idmembresia = ?";
+            String sql = "delete from membresia where nombre = ?";
             pst = con.prepareStatement(sql);
-            pst.setInt(1, id);
+            pst.setString(1, nombre);
             pst.executeUpdate();
         }catch(SQLException e){
             System.err.println(e.getMessage());

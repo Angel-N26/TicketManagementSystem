@@ -943,7 +943,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_lblJuntaDirectivaMousePressed
 
     private void lblMembresiaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMembresiaMousePressed
-        Membresia mem = new Membresia();
+        MembresiaFrame mem = new MembresiaFrame();
         mem.setVisible(true);
         mem.setLocationRelativeTo(null);
     }//GEN-LAST:event_lblMembresiaMousePressed

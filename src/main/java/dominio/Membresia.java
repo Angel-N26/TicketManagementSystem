@@ -1,9 +1,8 @@
 package dominio;
 
 /**
- *
  * @author angel
- */
+ **/
 public class Membresia {
     private int id_membresia;
     private String nombre;
@@ -11,6 +10,11 @@ public class Membresia {
     
     public Membresia(int nId_membresia, String nNombre, double nPrecio){
         this.id_membresia = nId_membresia;
+        this.nombre = nNombre;
+        this.precio = nPrecio;
+    }
+    
+    public Membresia(String nNombre, double nPrecio){     
         this.nombre = nNombre;
         this.precio = nPrecio;
     }

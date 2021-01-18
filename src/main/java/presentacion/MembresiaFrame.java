@@ -5,16 +5,22 @@
  */
 package presentacion;
 
+import dominio.ControlMembresia;
+import dominio.Membresia;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
+
 /**
  *
  * @author angel
  */
-public class Membresia extends javax.swing.JFrame {
+public class MembresiaFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form Membresia
      */
-    public Membresia() {
+    public MembresiaFrame() {
         initComponents();
     }
 
@@ -49,6 +55,11 @@ public class Membresia extends javax.swing.JFrame {
         jButton1.setText("Añadir membresia");
         jButton1.setBorder(null);
         jButton1.setPreferredSize(new java.awt.Dimension(190, 35));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+        });
         jPanel2.add(jButton1);
 
         jButton2.setBackground(new java.awt.Color(204, 0, 0));
@@ -56,6 +67,11 @@ public class Membresia extends javax.swing.JFrame {
         jButton2.setToolTipText("");
         jButton2.setBorder(null);
         jButton2.setPreferredSize(new java.awt.Dimension(190, 35));
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton2MousePressed(evt);
+            }
+        });
         jPanel2.add(jButton2);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
@@ -63,12 +79,10 @@ public class Membresia extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        DefaultListModel modeloLista = new DefaultListModel();
+ jList1.setModel(modeloLista);
+ modeloLista.addAll(0,obtenerMembresia());
         jList1.setBackground(new java.awt.Color(102, 102, 102));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jList1);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 7, 380, 350));
@@ -89,6 +103,27 @@ public class Membresia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        AnadirMembresia am = new AnadirMembresia();
+        am.setVisible(true);
+        am.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton1MousePressed
+
+    private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
+        ControlMembresia cm = new ControlMembresia();
+        cm.eliminarMembresia(jList1.getSelectedValue());
+    }//GEN-LAST:event_jButton2MousePressed
+
+    private ArrayList<String> obtenerMembresia(){
+        ControlMembresia cm = new ControlMembresia();
+        ArrayList<Membresia> mems = cm.obtenerMembresias();
+        ArrayList<String> mem = new ArrayList();
+        for(int i = 0 ; i < mems.size() ; i++){
+            mem.add(mems.get(i).getNombre());
+        }
+        return mem;        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -106,20 +141,22 @@ public class Membresia extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Membresia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MembresiaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Membresia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MembresiaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Membresia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MembresiaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Membresia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MembresiaFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new Membresia().setVisible(true);
+                new MembresiaFrame().setVisible(true);
             }
         });
     }

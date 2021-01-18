@@ -31,7 +31,7 @@ public class ControlMembresia {
         return daoMembresia.modificarMembresiaDAO(membresia);
     }
 
-    public boolean eliminarMembresia(int membresia){
-        return daoMembresia.eliminarMembresiaDAO(membresia);
+    public boolean eliminarMembresia(String nombre){
+        return daoMembresia.eliminarMembresiaDAO(nombre);
     }
 }
