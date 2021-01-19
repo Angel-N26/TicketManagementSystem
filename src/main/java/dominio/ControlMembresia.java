@@ -4,9 +4,8 @@ import persistencia.DAOMembresia;
 import java.util.ArrayList;
 
 /**
- *
  * @author angel
- */
+ **/
 public class ControlMembresia {
 
     private final DAOMembresia daoMembresia;
@@ -19,8 +18,8 @@ public class ControlMembresia {
 	return daoMembresia.obtenerMembresiasDAO();
     }
 
-    public Membresia obtenerMembresia(int id_membresia) {
-        return daoMembresia.obtenerMembresiaDAO(id_membresia);
+    public Membresia obtenerMembresia(String nombre) {
+        return daoMembresia.obtenerMembresiaDAO(nombre);
     }
 
     public boolean insertarMembresia(Membresia membresia) {

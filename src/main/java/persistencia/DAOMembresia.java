@@ -8,9 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
  * @author angel
- */
+ **/
 public class DAOMembresia {
 
     private final Connection con;
@@ -25,11 +24,11 @@ public class DAOMembresia {
         ResultSet rs;
         Membresia membresia;
 	try {
-            String sql = "select idmembresia from membresia";
+            String sql = "select nombre from membresia";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             while(rs.next()) {
-                membresia = obtenerMembresiaDAO(rs.getInt(1));
+                membresia = obtenerMembresiaDAO(rs.getString(1));
                 listaMembresias.add(membresia);
             }
 	} catch (SQLException e) {
@@ -37,14 +36,14 @@ public class DAOMembresia {
 	}
         return listaMembresias;
     }
-    
-    public Membresia obtenerMembresiaDAO(int id){
+        
+    public Membresia obtenerMembresiaDAO(String nombre_membresia){
         ResultSet rs;
         Membresia membresia = null;
         try {
-            String sql = "select * from membresia where idmembresia = ?";
+            String sql = "select * from membresia where nombre = ?";
             pst = con.prepareStatement(sql);
-            pst.setInt(1, id);
+            pst.setString(1, nombre_membresia);
             rs = pst.executeQuery();
             while (rs.next()) {
                 membresia = new Membresia(rs.getInt(1), rs.getString(2),
@@ -93,14 +92,14 @@ public class DAOMembresia {
         return realizado;
     }
     
-    public boolean eliminarMembresiaDAO(String nombre){
+    public boolean eliminarMembresiaDAO(String nombre_membresia){
         boolean realizado;
         try{
             realizado = true;
             con.createStatement();
             String sql = "delete from membresia where nombre = ?";
             pst = con.prepareStatement(sql);
-            pst.setString(1, nombre);
+            pst.setString(1, nombre_membresia);
             pst.executeUpdate();
         }catch(SQLException e){
             System.err.println(e.getMessage());
