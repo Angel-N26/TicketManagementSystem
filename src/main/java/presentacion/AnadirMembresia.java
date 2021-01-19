@@ -2,6 +2,9 @@ package presentacion;
 
 import dominio.ControlMembresia;
 import dominio.Membresia;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * @author angel
@@ -37,12 +40,14 @@ public class AnadirMembresia extends javax.swing.JFrame {
         lblPrecio = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         spnPrecio = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
 
         jTextField4.setText("jTextField4");
         jTextField4.setPreferredSize(new java.awt.Dimension(60, 25));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("TicketManagementSystem");
+        setTitle("Membresias");
+        setBackground(new java.awt.Color(0, 0, 0));
         setResizable(false);
 
         panelBorder.setName("panelBorder"); // NOI18N
@@ -54,24 +59,22 @@ public class AnadirMembresia extends javax.swing.JFrame {
 
         btnEliminar.setBackground(new java.awt.Color(204, 0, 0));
         btnEliminar.setText("Eliminar");
-        btnEliminar.setBorder(null);
         btnEliminar.setName("btnEliminar"); // NOI18N
         btnEliminar.setPreferredSize(new java.awt.Dimension(140, 25));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnEliminarMousePressed(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
             }
         });
         panelSouth.add(btnEliminar);
 
         btnAnadir.setBackground(new java.awt.Color(0, 204, 0));
         btnAnadir.setText("Añadir");
-        btnAnadir.setBorder(null);
         btnAnadir.setName("btnAnadir"); // NOI18N
         btnAnadir.setPreferredSize(new java.awt.Dimension(140, 25));
         btnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAnadirMousePressed(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAnadirMouseClicked(evt);
             }
         });
         panelSouth.add(btnAnadir);
@@ -98,40 +101,61 @@ public class AnadirMembresia extends javax.swing.JFrame {
         lblPrecio.setText("Precio");
         lblPrecio.setName("lblPrecio"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(50, 40, 0, 0);
         panelCenter.add(lblPrecio, gridBagConstraints);
 
         tfNombre.setBackground(new java.awt.Color(102, 102, 102));
+        tfNombre.setForeground(new java.awt.Color(255, 255, 255));
         tfNombre.setToolTipText("");
         tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         tfNombre.setCaretColor(new java.awt.Color(204, 0, 204));
         tfNombre.setName("tfNombre"); // NOI18N
         tfNombre.setPreferredSize(new java.awt.Dimension(60, 25));
         tfNombre.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNombreFocusLost(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 165;
         gridBagConstraints.ipady = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 30, 70, 0);
+        gridBagConstraints.insets = new java.awt.Insets(3, 30, 70, 0);
         panelCenter.add(tfNombre, gridBagConstraints);
 
         spnPrecio.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         spnPrecio.setMinimumSize(new java.awt.Dimension(30, 25));
         spnPrecio.setName("spnPrecio"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 40;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 40, 70, 30);
+        gridBagConstraints.insets = new java.awt.Insets(3, 40, 70, 30);
         panelCenter.add(spnPrecio, gridBagConstraints);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("*");
+        jLabel1.setToolTipText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(50, 1, 0, 0);
+        panelCenter.add(jLabel1, gridBagConstraints);
 
         panelBorder.add(panelCenter, java.awt.BorderLayout.CENTER);
 
@@ -149,78 +173,65 @@ public class AnadirMembresia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMousePressed
-        if(!tfNombre.getText().equals("")){
-            Membresia memb = new Membresia(tfNombre.getText(), Double.parseDouble(spnPrecio.getValue().toString()));
-            if(cm.insertarMembresia(memb)){
-                dispose();                
-                //añadir codigo para actualizar lista
-            }else{
-                //codigo de que no ha podido añadir porque el nombre ya existe
-            }
-        }else{
-            //codigo de no poder añadir porque el nombre esta vacio
-        }
-    }//GEN-LAST:event_btnAnadirMousePressed
+    private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
+        tfNombre.setBackground(new Color(0, 0, 0));
+        tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+        jLabel1.setForeground(new Color(255, 255, 255));
+    }//GEN-LAST:event_tfNombreFocusGained
 
-    private void btnEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMousePressed
-        //poner codigo de confirmacion
-        if(cm.eliminarMembresia(tfNombre.getText())){    
-            dispose();            
-            //añadir codigo para actualizar lista
+    private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
+        tfNombre.setBackground(new Color(102, 102, 102));
+        tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfNombreFocusLost
+
+    private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
+        if(!tfNombre.getText().equals("") && comprobarMembresia(tfNombre.getText())){
+            Membresia memb = new Membresia(tfNombre.getText(), Double.parseDouble(spnPrecio.getValue().toString()));           
+            if(cm.insertarMembresia(memb)){
+                dispose();
+            }            
         }else{
-            //codigo de no se ha podido eliminar
+            tfNombre.setBackground(new Color(0,0,0));
+            tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 0), 2, true));
+            jLabel1.setForeground(new Color(204, 0, 0));
         }
-    }//GEN-LAST:event_btnEliminarMousePressed
+    }//GEN-LAST:event_btnAnadirMouseClicked
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            if(cm.eliminarMembresia(tfNombre.getText())){    
+                dispose();            
+            }
+        }
+    }//GEN-LAST:event_btnEliminarMouseClicked
 
     public void rellenarCampos(){
         tfNombre.setText(mem.getNombre());
         spnPrecio.setValue(mem.getPrecio());
         btnAnadir.setText("Modificar");
     }
-    
-    /**
-     * @param args the command line arguments
-     **/
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+
+    private boolean comprobarMembresia(String nombre){
+        boolean validar = true;
+        ControlMembresia cmem = new ControlMembresia();
+        ArrayList<Membresia> mems = cmem.obtenerMembresias();        
+        for(int i = 0 ; i < mems.size() ; i++){
+            if(mems.get(i).getNombre().equals(nombre)){
+                validar = false;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AnadirMembresia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AnadirMembresia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AnadirMembresia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AnadirMembresia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new AnadirMembresia().setVisible(true);
-            }
-        });
+        return validar;
     }
-
+    
     private final ControlMembresia cm;
     private Membresia mem;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnadir;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrecio;
