@@ -185,16 +185,34 @@ public class AnadirMembresia extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNombreFocusLost
 
     private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
-        if(!tfNombre.getText().equals("") && comprobarMembresia(tfNombre.getText())){
-            Membresia memb = new Membresia(tfNombre.getText(), Double.parseDouble(spnPrecio.getValue().toString()));           
-            if(cm.insertarMembresia(memb)){
-                dispose();
-            }            
-        }else{
-            tfNombre.setBackground(new Color(0,0,0));
-            tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 0), 2, true));
-            jLabel1.setForeground(new Color(204, 0, 0));
-        }
+        if(btnAnadir.getText().equals("Modificar")){
+            Membresia memb = new Membresia(mem.getId_membresia(), tfNombre.getText(), 
+                    Double.parseDouble(spnPrecio.getValue().toString()));
+            if(mem.getNombre().equals(tfNombre.getText())){               
+               if(cm.modificarMembresia(memb)){
+                    dispose();
+                }  
+            }else if(!tfNombre.getText().equals("") && comprobarMembresia(tfNombre.getText())){
+                if(cm.modificarMembresia(memb)){
+                    dispose();                    
+                } 
+            }else{
+                tfNombre.setBackground(new Color(0,0,0));
+                tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 0), 2, true));
+                jLabel1.setForeground(new Color(204, 0, 0));
+            }
+        }else if(btnAnadir.getText().equals("Añadir")){
+            Membresia memb = new Membresia(tfNombre.getText(), Double.parseDouble(spnPrecio.getValue().toString()));
+            if(!tfNombre.getText().equals("") && comprobarMembresia(tfNombre.getText())){           
+                if(cm.insertarMembresia(memb)){
+                    dispose();
+                }            
+            }else{
+                tfNombre.setBackground(new Color(0,0,0));
+                tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 0), 2, true));
+                jLabel1.setForeground(new Color(204, 0, 0));
+            }
+        }   
     }//GEN-LAST:event_btnAnadirMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked

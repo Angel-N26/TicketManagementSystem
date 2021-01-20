@@ -1,9 +1,11 @@
 package dominio;
 
+import java.io.Serializable;
+
 /**
  * @author angel
  **/
-public class Membresia {
+public class Membresia{
     private int id_membresia;
     private String nombre;
     private double precio;
@@ -18,7 +20,7 @@ public class Membresia {
         this.nombre = nNombre;
         this.precio = nPrecio;
     }
-
+    
     public int getId_membresia() {
         return id_membresia;
     }

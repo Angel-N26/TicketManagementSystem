@@ -34,6 +34,13 @@ public class MembresiaFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         panelBorder.setBackground(new java.awt.Color(51, 51, 51));
         panelBorder.setName("panelBorder"); // NOI18N
@@ -50,8 +57,8 @@ public class MembresiaFrame extends javax.swing.JFrame {
         btnEliminar.setName("btnEliminar"); // NOI18N
         btnEliminar.setPreferredSize(new java.awt.Dimension(190, 35));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnEliminarMousePressed(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
             }
         });
         panelSouth.add(btnEliminar);
@@ -62,8 +69,8 @@ public class MembresiaFrame extends javax.swing.JFrame {
         btnAnadir.setName("btnAnadir"); // NOI18N
         btnAnadir.setPreferredSize(new java.awt.Dimension(190, 35));
         btnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAnadirMousePressed(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAnadirMouseClicked(evt);
             }
         });
         panelSouth.add(btnAnadir);
@@ -106,22 +113,6 @@ public class MembresiaFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMousePressed
-        AnadirMembresia am = new AnadirMembresia();
-        am.setVisible(true);
-        am.setLocationRelativeTo(null);        
-    }//GEN-LAST:event_btnAnadirMousePressed
-
-    private void btnEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMousePressed
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            if(cm.eliminarMembresia(listMembresias.getSelectedValue())){            
-                modeloLista.remove(listMembresias.getSelectedIndex());
-            }
-        }
-    }//GEN-LAST:event_btnEliminarMousePressed
-
     private void listMembresiasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMembresiasMouseClicked
         if(evt.getClickCount() == 2){
             Membresia mem = obtenerMembresia(listMembresias.getSelectedValue());
@@ -131,6 +122,26 @@ public class MembresiaFrame extends javax.swing.JFrame {
             am.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_listMembresiasMouseClicked
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        actualizarLista();
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            if(cm.eliminarMembresia(listMembresias.getSelectedValue())){            
+                modeloLista.remove(listMembresias.getSelectedIndex());
+            }
+        }
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
+        AnadirMembresia am = new AnadirMembresia();
+        am.setVisible(true);
+        am.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnAnadirMouseClicked
 
     private Membresia obtenerMembresia(String nombre){
         return cm.obtenerMembresia(nombre);
