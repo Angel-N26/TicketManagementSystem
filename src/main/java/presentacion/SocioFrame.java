@@ -65,7 +65,7 @@ public class SocioFrame extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
         setResizable(false);
 
@@ -333,9 +333,6 @@ public class SocioFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MousePressed
-        Inicio inicio = new Inicio();
-        inicio.setVisible(true);
-        inicio.setLocationRelativeTo(null);
         dispose();
     }//GEN-LAST:event_jButton5MousePressed
 

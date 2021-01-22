@@ -98,6 +98,6 @@ public class Socio {
     
     @Override
     public String toString(){
-        return this.nombre;
+        return this.dni + " " + this.nombre + " " +  this.apellidos;
     }
 }

@@ -82,6 +82,6 @@ public class Evento {
 
     @Override
     public String toString(){
-        return this.nombre;
+        return this.id + " " + this.nombre;
     }
 }
