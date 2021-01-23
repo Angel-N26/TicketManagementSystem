@@ -58,7 +58,7 @@ public class DAOSocio {
         return socio;
     }
 
-    public boolean insertarSocioDAO(Socio socio) {
+    public boolean insertarSocioDAO(Socio socio) {        
         boolean realizado;
         try {
             realizado = true;
@@ -69,7 +69,7 @@ public class DAOSocio {
             pst.setString(2, socio.getNombre());
             pst.setString(3, socio.getApellidos());
             pst.setString(4, socio.getEmail());
-            pst.setObject(5, socio.getFecha_nac());
+            pst.setDate(5, socio.getFecha_nac());
             pst.setString(6, socio.getDomicilio());
             pst.setInt(7, socio.getTelefono());
             pst.setInt(8, socio.getId_membresia());
@@ -81,22 +81,23 @@ public class DAOSocio {
         return realizado;
     }
 
-    public boolean modificarSocioDAO(Socio socio){
+    public boolean modificarSocioDAO(Socio socio, String dni){
         boolean realizado;
         try {
             realizado = true;
             con.createStatement();
-            String sql = "update socios set nombre = ?, apellidos = ?, email = ?,"
-                    + "fechanacimiento = ?, direccion = ?, telefono = ?, cuota = ? where dni = ?";
+            String sql = "update socios set dni = ?, nombre = ?, apellidos = ?, email = ?,"
+                    + "fechanacimiento = ?, direccion = ?, telefono = ?, idMembresia = ? where dni = ?";
             pst = con.prepareStatement(sql);
-            pst.setString(1, socio.getNombre());
-            pst.setString(2, socio.getApellidos());
-            pst.setString(3, socio.getEmail());
-            pst.setObject(4, socio.getFecha_nac());
-            pst.setString(5, socio.getDomicilio());
-            pst.setInt(6, socio.getTelefono());
-            pst.setInt(7, socio.getId_membresia());
-            pst.setString(8, socio.getDni());
+            pst.setString(1, socio.getDni());
+            pst.setString(2, socio.getNombre());
+            pst.setString(3, socio.getApellidos());
+            pst.setString(4, socio.getEmail());
+            pst.setDate(5, socio.getFecha_nac());
+            pst.setString(6, socio.getDomicilio());
+            pst.setInt(7, socio.getTelefono());
+            pst.setInt(8, socio.getId_membresia());
+            pst.setString(9, dni);
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

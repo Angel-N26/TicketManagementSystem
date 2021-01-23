@@ -27,6 +27,7 @@ public class sociosPanel extends javax.swing.JPanel {
         panelNorthSocios = new javax.swing.JPanel();
         tfBuscarSocios = new javax.swing.JTextField();
         btnBuscarSocios = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         panelSouthSocios = new javax.swing.JPanel();
         btnAnadirSocios = new javax.swing.JButton();
         btnEliminarSocios = new javax.swing.JButton();
@@ -44,7 +45,6 @@ public class sociosPanel extends javax.swing.JPanel {
 
         tfBuscarSocios.setBackground(new java.awt.Color(102, 102, 102));
         tfBuscarSocios.setForeground(new java.awt.Color(255, 255, 255));
-        tfBuscarSocios.setText("Buscar...");
         tfBuscarSocios.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         tfBuscarSocios.setCaretColor(new java.awt.Color(204, 0, 204));
         tfBuscarSocios.setName("tfBuscarSocios"); // NOI18N
@@ -64,7 +64,23 @@ public class sociosPanel extends javax.swing.JPanel {
         btnBuscarSocios.setText("Buscar");
         btnBuscarSocios.setName("btnBuscarSocios"); // NOI18N
         btnBuscarSocios.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnBuscarSocios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarSociosMouseClicked(evt);
+            }
+        });
         panelNorthSocios.add(btnBuscarSocios);
+
+        jLabel1.setVisible(false);
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar(1).png")); // NOI18N
+        jLabel1.setEnabled(false);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        panelNorthSocios.add(jLabel1);
 
         add(panelNorthSocios, java.awt.BorderLayout.PAGE_START);
 
@@ -133,7 +149,7 @@ public class sociosPanel extends javax.swing.JPanel {
 
     private void tfBuscarSociosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarSociosFocusGained
         tfBuscarSocios.setBackground(Color.black);
-        tfBuscarSocios.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+        tfBuscarSocios.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));        
     }//GEN-LAST:event_tfBuscarSociosFocusGained
 
     private void tfBuscarSociosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarSociosFocusLost
@@ -175,6 +191,31 @@ public class sociosPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_listSociosMouseClicked
 
+    private void btnBuscarSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarSociosMouseClicked
+        String nombre = tfBuscarSocios.getText();
+        ArrayList<Socio> soc = obtenerSocios();
+        ArrayList<Socio> socBusca = new ArrayList();      
+        for(int i = 0 ; i < soc.size() ; i++){
+            if(nombre.equals(soc.get(i).getNombre())){
+                socBusca.add(soc.get(i));
+            }
+        }
+        
+        if(!socBusca.isEmpty()){
+            modeloListaSocios.removeAllElements();
+            modeloListaSocios.addAll(0, socBusca);
+            
+            jLabel1.setVisible(true);
+            jLabel1.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnBuscarSociosMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        actualizarListaSocios();
+        jLabel1.setVisible(false);
+        jLabel1.setEnabled(false);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     public ArrayList<Socio> obtenerSocios(){
         ControlSocio csoc = new ControlSocio();
         return csoc.obtenerSocios();
@@ -193,6 +234,7 @@ public class sociosPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAnadirSocios;
     private javax.swing.JButton btnBuscarSocios;
     private javax.swing.JButton btnEliminarSocios;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> listSocios;
     private javax.swing.JPanel panelCenterSocios;
     private javax.swing.JPanel panelNorthSocios;

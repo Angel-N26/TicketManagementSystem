@@ -27,8 +27,8 @@ public class ControlSocio {
         return daoSocio.insertarSocioDAO(socio);
     }
 
-    public boolean modificarSocio(Socio socio){
-        return daoSocio.modificarSocioDAO(socio);
+    public boolean modificarSocio(Socio socio, String dni){
+        return daoSocio.modificarSocioDAO(socio, dni);
     }
 
     public boolean eliminarSocio(String dni){

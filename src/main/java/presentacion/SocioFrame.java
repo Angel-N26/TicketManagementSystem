@@ -11,6 +11,9 @@ import dominio.Membresia;
 import dominio.Socio;
 import java.awt.Color;
 import java.util.ArrayList;
+//import java.util.Date;
+import java.sql.Date;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -57,7 +60,6 @@ public class SocioFrame extends javax.swing.JFrame {
         tfNombre = new javax.swing.JTextField();
         tfApellidos = new javax.swing.JTextField();
         lblFechaNacimiento = new javax.swing.JLabel();
-        tfFechaNacimiento = new javax.swing.JTextField();
         lblMembresia = new javax.swing.JLabel();
         cbMembresias = new javax.swing.JComboBox<>();
         cbPagos = new javax.swing.JCheckBox();
@@ -67,13 +69,13 @@ public class SocioFrame extends javax.swing.JFrame {
         lblDireccion = new javax.swing.JLabel();
         tfDireccion = new javax.swing.JTextField();
         lblTlf = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         lblDNI = new javax.swing.JLabel();
         tfDNI = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lblObDNI = new javax.swing.JLabel();
+        lblObNombre = new javax.swing.JLabel();
+        lblObMembresia = new javax.swing.JLabel();
         tfTlf = new javax.swing.JFormattedTextField();
+        tfFechaNacimiento = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
@@ -126,7 +128,7 @@ public class SocioFrame extends javax.swing.JFrame {
         panelSouthRight.add(btnCancelar);
 
         btnAnadir.setBackground(new java.awt.Color(0, 204, 0));
-        btnAnadir.setText("Guardar");
+        btnAnadir.setText("Añadir");
         btnAnadir.setBorder(null);
         btnAnadir.setName("btnAnadir"); // NOI18N
         btnAnadir.setPreferredSize(new java.awt.Dimension(180, 35));
@@ -205,22 +207,6 @@ public class SocioFrame extends javax.swing.JFrame {
         lblFechaNacimiento.setName("lblFechaNacimiento"); // NOI18N
         panelCenter.add(lblFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
 
-        tfFechaNacimiento.setBackground(new java.awt.Color(102, 102, 102));
-        tfFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
-        tfFechaNacimiento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        tfFechaNacimiento.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfFechaNacimiento.setName("tfFechaNacimiento"); // NOI18N
-        tfFechaNacimiento.setSelectionColor(new java.awt.Color(204, 0, 204));
-        tfFechaNacimiento.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfFechaNacimientoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfFechaNacimientoFocusLost(evt);
-            }
-        });
-        panelCenter.add(tfFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 150, 25));
-
         lblMembresia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMembresia.setForeground(new java.awt.Color(255, 255, 255));
         lblMembresia.setText("Membresia");
@@ -292,9 +278,6 @@ public class SocioFrame extends javax.swing.JFrame {
         lblTlf.setName("lblTlf"); // NOI18N
         panelCenter.add(lblTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
-        jLabel11.setText("Cal");
-        panelCenter.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, 25));
-
         lblDNI.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblDNI.setForeground(new java.awt.Color(255, 255, 255));
         lblDNI.setText("DNI");
@@ -317,20 +300,23 @@ public class SocioFrame extends javax.swing.JFrame {
         });
         panelCenter.add(tfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 190, 25));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("*");
-        panelCenter.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 380, -1, -1));
+        lblObDNI.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblObDNI.setForeground(new java.awt.Color(255, 255, 255));
+        lblObDNI.setText("*");
+        lblObDNI.setName("lblObDNI"); // NOI18N
+        panelCenter.add(lblObDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 380, -1, -1));
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("*");
-        panelCenter.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 50, -1, -1));
+        lblObNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblObNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblObNombre.setText("*");
+        lblObNombre.setName("lblObNombre"); // NOI18N
+        panelCenter.add(lblObNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 50, -1, -1));
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("*");
-        panelCenter.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 110, -1, -1));
+        lblObMembresia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblObMembresia.setForeground(new java.awt.Color(255, 255, 255));
+        lblObMembresia.setText("*");
+        lblObMembresia.setName("lblObMembresia"); // NOI18N
+        panelCenter.add(lblObMembresia, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 110, -1, -1));
 
         tfTlf.setBackground(new java.awt.Color(102, 102, 102));
         tfTlf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
@@ -348,6 +334,23 @@ public class SocioFrame extends javax.swing.JFrame {
             }
         });
         panelCenter.add(tfTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 170, 25));
+
+        tfFechaNacimiento.setBackground(new java.awt.Color(102, 102, 102));
+        tfFechaNacimiento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
+        tfFechaNacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy/MM/dd"))));
+        tfFechaNacimiento.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfFechaNacimiento.setName("tfFechaNacimiento"); // NOI18N
+        tfFechaNacimiento.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfFechaNacimiento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfFechaNacimientoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfFechaNacimientoFocusLost(evt);
+            }
+        });
+        panelCenter.add(tfFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 150, 25));
 
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
 
@@ -369,6 +372,7 @@ public class SocioFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCancelarMousePressed
 
+  
     private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
         tfNombre.setBackground(Color.black);
         tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
@@ -388,16 +392,6 @@ public class SocioFrame extends javax.swing.JFrame {
         tfApellidos.setBackground(new java.awt.Color(102, 102, 102));
         tfApellidos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfApellidosFocusLost
-
-    private void tfFechaNacimientoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfFechaNacimientoFocusGained
-        tfFechaNacimiento.setBackground(Color.black);
-        tfFechaNacimiento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-    }//GEN-LAST:event_tfFechaNacimientoFocusGained
-
-    private void tfFechaNacimientoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfFechaNacimientoFocusLost
-        tfFechaNacimiento.setBackground(new java.awt.Color(102, 102, 102));
-        tfFechaNacimiento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-    }//GEN-LAST:event_tfFechaNacimientoFocusLost
 
     private void tfEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusGained
         tfEmail.setBackground(Color.black);
@@ -420,12 +414,18 @@ public class SocioFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tfDireccionFocusLost
 
     private void btnAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMousePressed
-        Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
-                tfEmail.getText(), null/*tfFechaNacimiento.getText()*/,tfDireccion.getText(),
-                Integer.parseInt(tfTlf.getText()), 1);        
+        Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(), 
+                tfEmail.getText(), Date.valueOf(tfFechaNacimiento.getText()),tfDireccion.getText(), Integer.parseInt(tfTlf.getText()), 
+                obtenerIdMembresia(cbMembresias.getSelectedItem()+""));
         
-        if(cs.insertarSocio(s)){
-            dispose();
+        if(btnAnadir.getText().equals("Modificar")){
+            if(cs.modificarSocio(s, socio.getDni())){
+                dispose();
+            }
+        }else if(btnAnadir.getText().equals("Añadir")){
+            if(cs.insertarSocio(s)){
+                dispose();
+            }
         }
     }//GEN-LAST:event_btnAnadirMousePressed
 
@@ -459,6 +459,16 @@ public class SocioFrame extends javax.swing.JFrame {
         tfTlf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfTlfFocusLost
 
+    private void tfFechaNacimientoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfFechaNacimientoFocusGained
+        tfFechaNacimiento.setBackground(Color.black);
+        tfFechaNacimiento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfFechaNacimientoFocusGained
+
+    private void tfFechaNacimientoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfFechaNacimientoFocusLost
+        tfFechaNacimiento.setBackground(new java.awt.Color(102, 102, 102));
+        tfFechaNacimiento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfFechaNacimientoFocusLost
+
     public void rellenarCampos(){
         tfNombre.setText(socio.getNombre());
         tfApellidos.setText(socio.getApellidos());
@@ -470,9 +480,10 @@ public class SocioFrame extends javax.swing.JFrame {
         seleccionarMembresia(socio.getId_membresia());
         //añadir pendiente de pagos
         
-        btnAnadir.setText("Meodificar");
+        btnAnadir.setText("Modificar");
     }
     
+    //Rellena el combo box con los nombres de todas las membresias
     private void rellenarMembresias(){
         ControlMembresia cmem = new ControlMembresia();
         ArrayList<Membresia> mems = cmem.obtenerMembresias();
@@ -482,13 +493,26 @@ public class SocioFrame extends javax.swing.JFrame {
         }        
     }
     
+    //Obtiene el nombre de la membresia dado su id
     private void seleccionarMembresia(int id_mem){
         ControlMembresia cm = new ControlMembresia();
         Membresia mem = cm.obtenerMembresia_ID(id_mem);
         cbMembresias.setSelectedItem(mem.getNombre());        
     }
     
-    private ControlSocio cs;
+    //Obtiene el id de la membresia selecionada en el combo box dado su nombre
+    public int obtenerIdMembresia(String nombre){
+        int id = 0;
+        ControlMembresia cm = new ControlMembresia();
+        ArrayList<Membresia> mem = cm.obtenerMembresias();
+        for(int i = 0 ; i < mem.size() ; i++)
+            if(nombre.equals(mem.get(i).getNombre())){
+                id = mem.get(i).getId_membresia();
+            }                
+        return id;
+    }
+    
+    private final ControlSocio cs;
     private Socio socio;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -499,10 +523,6 @@ public class SocioFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbMembresias;
     private javax.swing.JCheckBox cbPagos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblDNI;
     private javax.swing.JLabel lblDatosContacto;
@@ -512,6 +532,9 @@ public class SocioFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblFechaNacimiento;
     private javax.swing.JLabel lblMembresia;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblObDNI;
+    private javax.swing.JLabel lblObMembresia;
+    private javax.swing.JLabel lblObNombre;
     private javax.swing.JLabel lblTlf;
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelCenter;
@@ -521,7 +544,7 @@ public class SocioFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tfDNI;
     private javax.swing.JTextField tfDireccion;
     private javax.swing.JTextField tfEmail;
-    private javax.swing.JTextField tfFechaNacimiento;
+    private javax.swing.JFormattedTextField tfFechaNacimiento;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JFormattedTextField tfTlf;
     // End of variables declaration//GEN-END:variables
