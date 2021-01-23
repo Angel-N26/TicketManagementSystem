@@ -228,6 +228,7 @@ public class AnadirMembresia extends javax.swing.JFrame {
     public void rellenarCampos(){
         tfNombre.setText(mem.getNombre());
         spnPrecio.setValue(mem.getPrecio());
+        
         btnAnadir.setText("Modificar");
     }
 

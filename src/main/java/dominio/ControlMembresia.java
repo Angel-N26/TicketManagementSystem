@@ -22,6 +22,10 @@ public class ControlMembresia {
         return daoMembresia.obtenerMembresiaDAO(nombre);
     }
 
+    public Membresia obtenerMembresia_ID(int id) {
+        return daoMembresia.obtenerMembresiaDAO_ID(id);
+    }
+    
     public boolean insertarMembresia(Membresia membresia) {
         return daoMembresia.insertarMembresiaDAO(membresia);
     }

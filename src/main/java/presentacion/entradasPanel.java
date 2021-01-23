@@ -90,7 +90,7 @@ public class entradasPanel extends javax.swing.JPanel {
 
         panelNorthEntradas.setBackground(new java.awt.Color(51, 51, 51));
         panelNorthEntradas.setName("panelNorthEntradas"); // NOI18N
-        panelNorthEntradas.setLayout(new java.awt.GridLayout());
+        panelNorthEntradas.setLayout(new java.awt.GridLayout(1, 0));
 
         panelSeleccionEvento.setBackground(new java.awt.Color(51, 51, 51));
         panelSeleccionEvento.setMinimumSize(new java.awt.Dimension(160, 30));

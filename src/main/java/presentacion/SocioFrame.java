@@ -5,9 +5,13 @@
  */
 package presentacion;
 
+import dominio.ControlMembresia;
 import dominio.ControlSocio;
+import dominio.Membresia;
 import dominio.Socio;
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,8 +24,15 @@ public class SocioFrame extends javax.swing.JFrame {
      */
     public SocioFrame() {
         initComponents();
+        this.cs = new ControlSocio();
     }
 
+    public SocioFrame(Socio soc){
+        this.socio = soc;
+        initComponents();
+        this.cs = new ControlSocio();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,115 +42,130 @@ public class SocioFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
+        panel = new javax.swing.JPanel();
+        panelSouth = new javax.swing.JPanel();
+        PanelSouthLeft = new javax.swing.JPanel();
+        btnEliminar = new javax.swing.JButton();
+        panelSouthRight = new javax.swing.JPanel();
+        btnCancelar = new javax.swing.JButton();
+        btnAnadir = new javax.swing.JButton();
+        panelCenter = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblDatosPersonales = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblApellidos = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         tfApellidos = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblFechaNacimiento = new javax.swing.JLabel();
         tfFechaNacimiento = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblMembresia = new javax.swing.JLabel();
+        cbMembresias = new javax.swing.JComboBox<>();
+        cbPagos = new javax.swing.JCheckBox();
+        lblDatosContacto = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         tfEmail = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        lblDireccion = new javax.swing.JLabel();
         tfDireccion = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        lblTlf = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        tfTlf = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lblDNI = new javax.swing.JLabel();
         tfDNI = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        tfTlf = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 550));
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        panel.setBackground(new java.awt.Color(51, 51, 51));
+        panel.setName("panel"); // NOI18N
+        panel.setPreferredSize(new java.awt.Dimension(800, 550));
+        panel.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setPreferredSize(new java.awt.Dimension(215, 55));
-        jPanel2.setLayout(new java.awt.GridLayout(1, 2));
+        panelSouth.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouth.setName("panelSouth"); // NOI18N
+        panelSouth.setPreferredSize(new java.awt.Dimension(215, 55));
+        panelSouth.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel7.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel7.setPreferredSize(new java.awt.Dimension(400, 55));
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 5));
+        PanelSouthLeft.setBackground(new java.awt.Color(51, 51, 51));
+        PanelSouthLeft.setName("PanelSouthLeft"); // NOI18N
+        PanelSouthLeft.setPreferredSize(new java.awt.Dimension(400, 55));
+        PanelSouthLeft.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 5));
 
-        jButton1.setBackground(new java.awt.Color(204, 0, 0));
-        jButton1.setText("Eliminar");
-        jButton1.setBorder(null);
-        jButton1.setPreferredSize(new java.awt.Dimension(180, 35));
-        jPanel7.add(jButton1);
-
-        jPanel2.add(jPanel7);
-
-        jPanel6.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel6.setPreferredSize(new java.awt.Dimension(400, 55));
-        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
-
-        jButton5.setBackground(new java.awt.Color(204, 0, 204));
-        jButton5.setText("Cancelar");
-        jButton5.setBorder(null);
-        jButton5.setPreferredSize(new java.awt.Dimension(180, 35));
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton5MousePressed(evt);
+        btnEliminar.setBackground(new java.awt.Color(204, 0, 0));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(null);
+        btnEliminar.setName("btnEliminar"); // NOI18N
+        btnEliminar.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
             }
         });
-        jPanel6.add(jButton5);
+        PanelSouthLeft.add(btnEliminar);
 
-        jButton6.setBackground(new java.awt.Color(0, 204, 0));
-        jButton6.setText("Guardar");
-        jButton6.setBorder(null);
-        jButton6.setPreferredSize(new java.awt.Dimension(180, 35));
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+        panelSouth.add(PanelSouthLeft);
+
+        panelSouthRight.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouthRight.setName("panelSouthRight"); // NOI18N
+        panelSouthRight.setPreferredSize(new java.awt.Dimension(400, 55));
+        panelSouthRight.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
+
+        btnCancelar.setBackground(new java.awt.Color(204, 0, 204));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(null);
+        btnCancelar.setName("btnCancelar"); // NOI18N
+        btnCancelar.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton6MousePressed(evt);
+                btnCancelarMousePressed(evt);
             }
         });
-        jPanel6.add(jButton6);
+        panelSouthRight.add(btnCancelar);
 
-        jPanel2.add(jPanel6);
+        btnAnadir.setBackground(new java.awt.Color(0, 204, 0));
+        btnAnadir.setText("Guardar");
+        btnAnadir.setBorder(null);
+        btnAnadir.setName("btnAnadir"); // NOI18N
+        btnAnadir.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAnadirMousePressed(evt);
+            }
+        });
+        panelSouthRight.add(btnAnadir);
 
-        jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
+        panelSouth.add(panelSouthRight);
 
-        jPanel5.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panel.add(panelSouth, java.awt.BorderLayout.PAGE_END);
+
+        panelCenter.setBackground(new java.awt.Color(51, 51, 51));
+        panelCenter.setName("panelCenter"); // NOI18N
+        panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\user(1).png")); // NOI18N
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 140));
+        panelCenter.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 140));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Datos Personales");
-        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+        lblDatosPersonales.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblDatosPersonales.setForeground(new java.awt.Color(255, 255, 255));
+        lblDatosPersonales.setText("Datos Personales");
+        lblDatosPersonales.setName("lblDatosPersonales"); // NOI18N
+        panelCenter.add(lblDatosPersonales, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nombre");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
+        lblNombre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombre.setText("Nombre");
+        lblNombre.setName("lblNombre"); // NOI18N
+        panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Apellidos");
-        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, -1));
+        lblApellidos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblApellidos.setForeground(new java.awt.Color(255, 255, 255));
+        lblApellidos.setText("Apellidos");
+        lblApellidos.setName("lblApellidos"); // NOI18N
+        panelCenter.add(lblApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, -1));
 
         tfNombre.setBackground(new java.awt.Color(102, 102, 102));
         tfNombre.setForeground(new java.awt.Color(255, 255, 255));
@@ -155,7 +181,7 @@ public class SocioFrame extends javax.swing.JFrame {
                 tfNombreFocusLost(evt);
             }
         });
-        jPanel5.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 260, 25));
+        panelCenter.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 260, 25));
 
         tfApellidos.setBackground(new java.awt.Color(102, 102, 102));
         tfApellidos.setForeground(new java.awt.Color(255, 255, 255));
@@ -171,12 +197,13 @@ public class SocioFrame extends javax.swing.JFrame {
                 tfApellidosFocusLost(evt);
             }
         });
-        jPanel5.add(tfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 260, 25));
+        panelCenter.add(tfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 260, 25));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Fecha Nacimiento");
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
+        lblFechaNacimiento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
+        lblFechaNacimiento.setText("Fecha Nacimiento");
+        lblFechaNacimiento.setName("lblFechaNacimiento"); // NOI18N
+        panelCenter.add(lblFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
 
         tfFechaNacimiento.setBackground(new java.awt.Color(102, 102, 102));
         tfFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
@@ -192,31 +219,36 @@ public class SocioFrame extends javax.swing.JFrame {
                 tfFechaNacimientoFocusLost(evt);
             }
         });
-        jPanel5.add(tfFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 150, 25));
+        panelCenter.add(tfFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 150, 25));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Membresia");
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
+        lblMembresia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMembresia.setForeground(new java.awt.Color(255, 255, 255));
+        lblMembresia.setText("Membresia");
+        lblMembresia.setName("lblMembresia"); // NOI18N
+        panelCenter.add(lblMembresia, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Basico", "Premium" }));
-        jPanel5.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 200, 25));
+        rellenarMembresias();
+        cbMembresias.setName("cbMembresias"); // NOI18N
+        panelCenter.add(cbMembresias, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 200, 25));
 
-        jCheckBox1.setBackground(new java.awt.Color(51, 51, 51));
-        jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("Al dia de pagos");
-        jPanel5.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, -1, 25));
+        cbPagos.setBackground(new java.awt.Color(51, 51, 51));
+        cbPagos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cbPagos.setForeground(new java.awt.Color(255, 255, 255));
+        cbPagos.setText("Al dia de pagos");
+        cbPagos.setName("cbPagos"); // NOI18N
+        panelCenter.add(cbPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, -1, 25));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Datos de Contacto");
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        lblDatosContacto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblDatosContacto.setForeground(new java.awt.Color(255, 255, 255));
+        lblDatosContacto.setText("Datos de Contacto");
+        lblDatosContacto.setName("lblDatosContacto"); // NOI18N
+        panelCenter.add(lblDatosContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Email");
-        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+        lblEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setText("Email");
+        lblEmail.setName("lblEmail"); // NOI18N
+        panelCenter.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         tfEmail.setBackground(new java.awt.Color(102, 102, 102));
         tfEmail.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,12 +263,13 @@ public class SocioFrame extends javax.swing.JFrame {
                 tfEmailFocusLost(evt);
             }
         });
-        jPanel5.add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 690, 25));
+        panelCenter.add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 690, 25));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Direccion");
-        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        lblDireccion.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        lblDireccion.setText("Direccion");
+        lblDireccion.setName("lblDireccion"); // NOI18N
+        panelCenter.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         tfDireccion.setBackground(new java.awt.Color(102, 102, 102));
         tfDireccion.setForeground(new java.awt.Color(255, 255, 255));
@@ -251,39 +284,22 @@ public class SocioFrame extends javax.swing.JFrame {
                 tfDireccionFocusLost(evt);
             }
         });
-        jPanel5.add(tfDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 690, 25));
+        panelCenter.add(tfDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 690, 25));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Teléfono");
-        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+        lblTlf.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblTlf.setForeground(new java.awt.Color(255, 255, 255));
+        lblTlf.setText("Teléfono");
+        lblTlf.setName("lblTlf"); // NOI18N
+        panelCenter.add(lblTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
         jLabel11.setText("Cal");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, 25));
+        panelCenter.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, 25));
 
-        tfTlf.setBackground(new java.awt.Color(102, 102, 102));
-        tfTlf.setForeground(new java.awt.Color(255, 255, 255));
-        tfTlf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        tfTlf.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfTlf.setName("tfTlf"); // NOI18N
-        tfTlf.setSelectionColor(new java.awt.Color(204, 0, 204));
-        tfTlf.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfTlfFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfTlfFocusLost(evt);
-            }
-        });
-        jPanel5.add(tfTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 170, 25));
-
-        jLabel12.setText("infor");
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, -1, 25));
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("DNI");
-        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, -1));
+        lblDNI.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblDNI.setForeground(new java.awt.Color(255, 255, 255));
+        lblDNI.setText("DNI");
+        lblDNI.setName("lblDNI"); // NOI18N
+        panelCenter.add(lblDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, -1));
 
         tfDNI.setBackground(new java.awt.Color(102, 102, 102));
         tfDNI.setForeground(new java.awt.Color(255, 255, 255));
@@ -299,42 +315,59 @@ public class SocioFrame extends javax.swing.JFrame {
                 tfDNIFocusLost(evt);
             }
         });
-        jPanel5.add(tfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 190, 25));
+        panelCenter.add(tfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 190, 25));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("*");
-        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, -1, -1));
+        panelCenter.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 380, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("*");
-        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
+        panelCenter.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 50, -1, -1));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("*");
-        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
+        panelCenter.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 110, -1, -1));
 
-        jPanel1.add(jPanel5, java.awt.BorderLayout.CENTER);
+        tfTlf.setBackground(new java.awt.Color(102, 102, 102));
+        tfTlf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfTlf.setForeground(new java.awt.Color(255, 255, 255));
+        tfTlf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        tfTlf.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfTlf.setName("tfTlf"); // NOI18N
+        tfTlf.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfTlf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfTlfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfTlfFocusLost(evt);
+            }
+        });
+        panelCenter.add(tfTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 170, 25));
+
+        panel.add(panelCenter, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MousePressed
+    private void btnCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMousePressed
         dispose();
-    }//GEN-LAST:event_jButton5MousePressed
+    }//GEN-LAST:event_btnCancelarMousePressed
 
     private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
         tfNombre.setBackground(Color.black);
@@ -386,23 +419,15 @@ public class SocioFrame extends javax.swing.JFrame {
         tfDireccion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfDireccionFocusLost
 
-    private void tfTlfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusGained
-        tfTlf.setBackground(Color.black);
-        tfTlf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-    }//GEN-LAST:event_tfTlfFocusGained
-
-    private void tfTlfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusLost
-        tfTlf.setBackground(new java.awt.Color(102, 102, 102));
-        tfTlf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-    }//GEN-LAST:event_tfTlfFocusLost
-
-    private void jButton6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MousePressed
+    private void btnAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMousePressed
         Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
                 tfEmail.getText(), null/*tfFechaNacimiento.getText()*/,tfDireccion.getText(),
                 Integer.parseInt(tfTlf.getText()), 1);        
-        ControlSocio cs = new ControlSocio();
-        cs.insertarSocio(s);
-    }//GEN-LAST:event_jButton6MousePressed
+        
+        if(cs.insertarSocio(s)){
+            dispose();
+        }
+    }//GEN-LAST:event_btnAnadirMousePressed
 
     private void tfDNIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDNIFocusGained
         tfDNI.setBackground(Color.black);
@@ -414,39 +439,90 @@ public class SocioFrame extends javax.swing.JFrame {
         tfDNI.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfDNIFocusLost
 
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            if(cs.eliminarSocio(tfDNI.getText())){
+                dispose();
+            }
+        }
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void tfTlfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusGained
+        tfTlf.setBackground(Color.black);
+        tfTlf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfTlfFocusGained
+
+    private void tfTlfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusLost
+        tfTlf.setBackground(new java.awt.Color(102, 102, 102));
+        tfTlf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfTlfFocusLost
+
+    public void rellenarCampos(){
+        tfNombre.setText(socio.getNombre());
+        tfApellidos.setText(socio.getApellidos());
+        tfEmail.setText(socio.getEmail());
+        tfFechaNacimiento.setText(socio.getFecha_nac()+"");
+        tfDireccion.setText(socio.getDomicilio());
+        tfTlf.setText(socio.getTelefono()+"");
+        tfDNI.setText(socio.getDni());
+        seleccionarMembresia(socio.getId_membresia());
+        //añadir pendiente de pagos
+        
+        btnAnadir.setText("Meodificar");
+    }
+    
+    private void rellenarMembresias(){
+        ControlMembresia cmem = new ControlMembresia();
+        ArrayList<Membresia> mems = cmem.obtenerMembresias();
+        
+        for(int i = 0 ; i < mems.size() ; i++){
+            cbMembresias.addItem(mems.get(i).getNombre());
+        }        
+    }
+    
+    private void seleccionarMembresia(int id_mem){
+        ControlMembresia cm = new ControlMembresia();
+        Membresia mem = cm.obtenerMembresia_ID(id_mem);
+        cbMembresias.setSelectedItem(mem.getNombre());        
+    }
+    
+    private ControlSocio cs;
+    private Socio socio;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JPanel PanelSouthLeft;
+    private javax.swing.JButton btnAnadir;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JComboBox<String> cbMembresias;
+    private javax.swing.JCheckBox cbPagos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel lblApellidos;
+    private javax.swing.JLabel lblDNI;
+    private javax.swing.JLabel lblDatosContacto;
+    private javax.swing.JLabel lblDatosPersonales;
+    private javax.swing.JLabel lblDireccion;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblFechaNacimiento;
+    private javax.swing.JLabel lblMembresia;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblTlf;
+    private javax.swing.JPanel panel;
+    private javax.swing.JPanel panelCenter;
+    private javax.swing.JPanel panelSouth;
+    private javax.swing.JPanel panelSouthRight;
     private javax.swing.JTextField tfApellidos;
     private javax.swing.JTextField tfDNI;
     private javax.swing.JTextField tfDireccion;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfFechaNacimiento;
     private javax.swing.JTextField tfNombre;
-    private javax.swing.JTextField tfTlf;
+    private javax.swing.JFormattedTextField tfTlf;
     // End of variables declaration//GEN-END:variables
 }

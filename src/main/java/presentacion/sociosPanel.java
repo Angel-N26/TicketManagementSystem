@@ -5,6 +5,7 @@ import dominio.Socio;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  * @author angel
@@ -105,6 +106,12 @@ public class sociosPanel extends javax.swing.JPanel {
         modeloListaSocios.addAll(0,obtenerSocios());
         listSocios.setBackground(new java.awt.Color(102, 102, 102));
         listSocios.setForeground(new java.awt.Color(255, 255, 255));
+        listSocios.setSelectionBackground(new java.awt.Color(204, 0, 204));
+        listSocios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listSociosMouseClicked(evt);
+            }
+        });
         scrollPanelListSocios.setViewportView(listSocios);
 
         javax.swing.GroupLayout panelCenterSociosLayout = new javax.swing.GroupLayout(panelCenterSocios);
@@ -144,11 +151,29 @@ public class sociosPanel extends javax.swing.JPanel {
         int index = listSocios.getSelectedIndex();
         String socio = modeloListaSocios.getElementAt(index) + "";
         String [] s = socio.split(" ");
-
-        if(cs.eliminarSocio(s[0])){
-            modeloListaSocios.remove(listSocios.getSelectedIndex());
+        
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            if(cs.eliminarSocio(s[0])){
+                modeloListaSocios.remove(listSocios.getSelectedIndex());
+            }
         }
     }//GEN-LAST:event_btnEliminarSociosMouseClicked
+
+    private void listSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listSociosMouseClicked
+        if(evt.getClickCount() == 2){
+            int index = listSocios.getSelectedIndex();
+            String socioLista = modeloListaSocios.getElementAt(index) + "";
+            String [] s = socioLista.split(" ");
+            
+            Socio socio = cs.obtenerSocio(s[0]);
+            SocioFrame sf = new SocioFrame(socio);
+            sf.rellenarCampos();
+            sf.setVisible(true);
+            sf.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_listSociosMouseClicked
 
     public ArrayList<Socio> obtenerSocios(){
         ControlSocio csoc = new ControlSocio();

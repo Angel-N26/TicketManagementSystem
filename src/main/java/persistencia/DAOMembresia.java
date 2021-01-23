@@ -35,7 +35,7 @@ public class DAOMembresia {
             System.err.println(e.getMessage());
 	}
         return listaMembresias;
-    }
+    }    
         
     public Membresia obtenerMembresiaDAO(String nombre_membresia){
         ResultSet rs;
@@ -44,6 +44,24 @@ public class DAOMembresia {
             String sql = "select * from membresia where nombre = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, nombre_membresia);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                membresia = new Membresia(rs.getInt(1), rs.getString(2),
+                        rs.getDouble(3));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return membresia;
+    }
+    
+        public Membresia obtenerMembresiaDAO_ID(int id_membresia){
+        ResultSet rs;
+        Membresia membresia = null;
+        try {
+            String sql = "select * from membresia where idmembresia = ?";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, id_membresia);
             rs = pst.executeQuery();
             while (rs.next()) {
                 membresia = new Membresia(rs.getInt(1), rs.getString(2),

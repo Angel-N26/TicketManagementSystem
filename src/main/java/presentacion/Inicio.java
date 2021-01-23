@@ -36,6 +36,13 @@ public class Inicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TicketManagementSystem");
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         panelCard.setName("panelCard"); // NOI18N
         panelCard.setPreferredSize(new java.awt.Dimension(800, 550));
@@ -161,6 +168,10 @@ public class Inicio extends javax.swing.JFrame {
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_submenuCerrarSesionMousePressed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        sp.actualizarListaSocios();
+    }//GEN-LAST:event_formWindowGainedFocus
     
     private final inicioPaneL ip;
     private final asociacionPaneL ap;
