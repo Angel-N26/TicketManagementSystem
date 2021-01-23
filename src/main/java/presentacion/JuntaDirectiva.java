@@ -5,6 +5,12 @@
  */
 package presentacion;
 
+import dominio.Cargo;
+import dominio.ControlJuntaDirectiva;
+import dominio.ControlSocio;
+import dominio.Socio;
+import java.util.ArrayList;
+
 /**
  *
  * @author angel
@@ -58,6 +64,11 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         jButton1.setText("Guardar");
         jButton1.setBorder(null);
         jButton1.setPreferredSize(new java.awt.Dimension(180, 35));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel2.add(jButton1);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_END);
@@ -71,8 +82,9 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         jLabel1.setText("Presidente:");
         jPanel3.add(jLabel1);
 
+        rellenarComboBox();
+        seleccionarCargo();
         jComboBox1.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.setBorder(null);
         jPanel3.add(jComboBox1);
 
@@ -83,7 +95,6 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         jPanel3.add(jLabel2);
 
         jComboBox2.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.setBorder(null);
         jPanel3.add(jComboBox2);
 
@@ -94,7 +105,6 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         jPanel3.add(jLabel3);
 
         jComboBox3.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox3.setBorder(null);
         jPanel3.add(jComboBox3);
 
@@ -105,7 +115,6 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         jPanel3.add(jLabel4);
 
         jComboBox4.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox4.setBorder(null);
         jPanel3.add(jComboBox4);
 
@@ -116,7 +125,6 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         jPanel3.add(jLabel5);
 
         jComboBox5.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox5.setBorder(null);
         jPanel3.add(jComboBox5);
 
@@ -127,7 +135,6 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         jPanel3.add(jLabel6);
 
         jComboBox6.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox6.setBorder(null);
         jPanel3.add(jComboBox6);
 
@@ -149,6 +156,101 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
+        
+        dispose();
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    //Selecciona el socio correspondiente en cada cargo
+    private void seleccionarCargo(){
+        Socio socio = null;
+        ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
+        ArrayList<Cargo> cargos = cjd.obtenerCargos();
+        System.out.println(cargos);
+        for(int i = 0 ; i < cargos.size() ; i++){
+            switch(cargos.get(i).getNombre()){
+                case "Presidente":
+                    if(!(cargos.get(i).getIdSocio() == null)){
+                        socio = obtenerSocio(cargos.get(i).getIdSocio());
+                        jComboBox1.setSelectedItem(socio.getNombre());
+                    }else{
+                        jComboBox1.setSelectedItem("Ninguno");
+                    }
+                break;
+                case "Vicepresidente":
+                    if(!(cargos.get(i).getIdSocio() == null)){
+                        socio = obtenerSocio(cargos.get(i).getIdSocio());
+                        jComboBox2.setSelectedItem(socio.getNombre());
+                    }else{
+                        System.out.println("Entra en vicepresidente ninguno");
+                        jComboBox2.setSelectedItem("Ninguno");
+                    }
+                break;
+                case "Secretario":
+                    if(!(cargos.get(i).getIdSocio() == null)){
+                        socio = obtenerSocio(cargos.get(i).getIdSocio());
+                        jComboBox3.setSelectedItem(socio.getNombre());
+                    }else{
+                        jComboBox3.setSelectedItem("Ninguno");
+                    }
+                break;
+                case "Tesorero":
+                    if(!(cargos.get(i).getIdSocio() == null)){
+                        socio = obtenerSocio(cargos.get(i).getIdSocio());
+                        jComboBox4.setSelectedItem(socio.getNombre());
+                    }else{
+                        jComboBox4.setSelectedItem("Ninguno");
+                    }
+                break;
+                case "Vocal1":
+                    if(!(cargos.get(i).getIdSocio() == null)){
+                        socio = obtenerSocio(cargos.get(i).getIdSocio());
+                        jComboBox5.setSelectedItem(socio.getNombre());
+                    }else{
+                        jComboBox5.setSelectedItem("Ninguno");
+                    }
+                break;
+                case "Vocal2":
+                    if(!(cargos.get(i).getIdSocio() == null)){
+                        socio = obtenerSocio(cargos.get(i).getIdSocio());
+                        jComboBox6.setSelectedItem(socio.getNombre());
+                    }else{
+                        jComboBox6.setSelectedItem("Ninguno");
+                    }
+                break;
+            }
+            
+        }
+    }
+    
+    //Obtiene un socio dado su dni
+    private Socio obtenerSocio(String dni){
+        ControlSocio cs = new ControlSocio();
+        Socio socio = cs.obtenerSocio(dni);
+        return socio;
+    }       
+    
+    //Rellena el combo box con los nombres de todos los socios
+    private void rellenarComboBox(){
+        ControlSocio cs = new ControlSocio();
+        ArrayList<Socio> soc = cs.obtenerSocios();
+        jComboBox1.addItem("Ninguno");
+        jComboBox2.addItem("Ninguno");
+        jComboBox3.addItem("Ninguno");
+        jComboBox4.addItem("Ninguno");
+        jComboBox5.addItem("Ninguno");
+        jComboBox6.addItem("Ninguno");
+        for(int i = 0 ; i < soc.size() ; i++){
+            jComboBox1.addItem(soc.get(i).getNombre());
+            jComboBox2.addItem(soc.get(i).getNombre());
+            jComboBox3.addItem(soc.get(i).getNombre());
+            jComboBox4.addItem(soc.get(i).getNombre());
+            jComboBox5.addItem(soc.get(i).getNombre());
+            jComboBox6.addItem(soc.get(i).getNombre());
+        }        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
