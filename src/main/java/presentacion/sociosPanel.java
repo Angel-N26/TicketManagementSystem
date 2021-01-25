@@ -214,6 +214,7 @@ public class sociosPanel extends javax.swing.JPanel {
         actualizarListaSocios();
         jLabel1.setVisible(false);
         jLabel1.setEnabled(false);
+        tfBuscarSocios.setText("");
     }//GEN-LAST:event_jLabel1MouseClicked
 
     public ArrayList<Socio> obtenerSocios(){

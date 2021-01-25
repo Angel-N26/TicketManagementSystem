@@ -63,7 +63,7 @@ public class DAOEvento {
             realizado = true;
             con.createStatement();
             String sql = "insert into eventos(nombre, tipo, direccion, fecha,"
-                    + "capacidad, precio) values(?,?,?,?,?)";
+                    + "entradas) values(?,?,?,?,?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, evento.getNombre());
             pst.setString(2, evento.getTipo_evento());

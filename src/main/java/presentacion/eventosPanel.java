@@ -5,6 +5,7 @@ import dominio.Evento;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  * @author angel
@@ -13,6 +14,7 @@ public class eventosPanel extends javax.swing.JPanel {
 
     public eventosPanel() {
         initComponents();
+        ce = new ControlEvento();
     }
 
     /**
@@ -25,6 +27,7 @@ public class eventosPanel extends javax.swing.JPanel {
         panelNorthEventos = new javax.swing.JPanel();
         tfBuscarEventos = new javax.swing.JTextField();
         btnBuscarEventos = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         panelSouthEventos = new javax.swing.JPanel();
         btnAnadirEventos = new javax.swing.JButton();
         btnEliminarEventos = new javax.swing.JButton();
@@ -40,7 +43,6 @@ public class eventosPanel extends javax.swing.JPanel {
 
         tfBuscarEventos.setBackground(new java.awt.Color(102, 102, 102));
         tfBuscarEventos.setForeground(new java.awt.Color(255, 255, 255));
-        tfBuscarEventos.setText("Buscar...");
         tfBuscarEventos.setToolTipText("");
         tfBuscarEventos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         tfBuscarEventos.setCaretColor(new java.awt.Color(204, 0, 204));
@@ -61,7 +63,22 @@ public class eventosPanel extends javax.swing.JPanel {
         btnBuscarEventos.setText("Buscar");
         btnBuscarEventos.setName("btnBuscarEventos"); // NOI18N
         btnBuscarEventos.setPreferredSize(new java.awt.Dimension(100, 35));
+        btnBuscarEventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarEventosMouseClicked(evt);
+            }
+        });
         panelNorthEventos.add(btnBuscarEventos);
+
+        jLabel1.setVisible(false);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar(1).png")); // NOI18N
+        jLabel1.setEnabled(false);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        panelNorthEventos.add(jLabel1);
 
         add(panelNorthEventos, java.awt.BorderLayout.PAGE_START);
 
@@ -74,8 +91,8 @@ public class eventosPanel extends javax.swing.JPanel {
         btnAnadirEventos.setName("btnAnadirEventos"); // NOI18N
         btnAnadirEventos.setPreferredSize(new java.awt.Dimension(180, 35));
         btnAnadirEventos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAnadirEventosMousePressed(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAnadirEventosMouseClicked(evt);
             }
         });
         panelSouthEventos.add(btnAnadirEventos);
@@ -84,6 +101,11 @@ public class eventosPanel extends javax.swing.JPanel {
         btnEliminarEventos.setText("Eliminar");
         btnEliminarEventos.setName("btnEliminarEventos"); // NOI18N
         btnEliminarEventos.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnEliminarEventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarEventosMouseClicked(evt);
+            }
+        });
         panelSouthEventos.add(btnEliminarEventos);
 
         add(panelSouthEventos, java.awt.BorderLayout.PAGE_END);
@@ -96,6 +118,11 @@ public class eventosPanel extends javax.swing.JPanel {
         modeloListaEventos.addAll(0,obtenerEventos());
         listEventos.setBackground(new java.awt.Color(102, 102, 102));
         listEventos.setForeground(new java.awt.Color(255, 255, 255));
+        listEventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listEventosMouseClicked(evt);
+            }
+        });
         scrollPanelListEventos.setViewportView(listEventos);
 
         javax.swing.GroupLayout panelCenterEventosLayout = new javax.swing.GroupLayout(panelCenterEventos);
@@ -125,11 +152,65 @@ public class eventosPanel extends javax.swing.JPanel {
         tfBuscarEventos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfBuscarEventosFocusLost
 
-    private void btnAnadirEventosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirEventosMousePressed
+    private void btnBuscarEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEventosMouseClicked
+        String nombre = tfBuscarEventos.getText();
+        ArrayList<Evento> eve = obtenerEventos();
+        ArrayList<Evento> eveBusca = new ArrayList();      
+        for(int i = 0 ; i < eve.size() ; i++){
+            if(nombre.equals(eve.get(i).getNombre())){
+                eveBusca.add(eve.get(i));
+            }
+        }
+        
+        if(!eveBusca.isEmpty()){
+            modeloListaEventos.removeAllElements();
+            modeloListaEventos.addAll(0, eveBusca);
+            
+            jLabel1.setVisible(true);
+            jLabel1.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnBuscarEventosMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        actualizarListaEventos();
+        jLabel1.setVisible(false);
+        jLabel1.setEnabled(false);
+        tfBuscarEventos.setText("");
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void btnAnadirEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirEventosMouseClicked
         EventoFrame evento = new EventoFrame();
         evento.setVisible(true);
         evento.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnAnadirEventosMousePressed
+    }//GEN-LAST:event_btnAnadirEventosMouseClicked
+
+    private void btnEliminarEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarEventosMouseClicked
+        int index = listEventos.getSelectedIndex();
+        String evento = modeloListaEventos.getElementAt(index) + "";
+        String [] e = evento.split(" ");
+        
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            if(ce.eliminarEvento(Integer.parseInt(e[0]))){
+                modeloListaEventos.remove(listEventos.getSelectedIndex());
+            }
+        }
+    }//GEN-LAST:event_btnEliminarEventosMouseClicked
+
+    private void listEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listEventosMouseClicked
+        if(evt.getClickCount() == 2){
+            int index = listEventos.getSelectedIndex();
+            String eventoLista = modeloListaEventos.getElementAt(index) + "";
+            String [] e = eventoLista.split(" ");
+            
+            Evento evento = ce.obtenerEvento(Integer.parseInt(e[0]));
+            EventoFrame ef = new EventoFrame(evento);
+            ef.rellenarCampos();
+            ef.setVisible(true);
+            ef.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_listEventosMouseClicked
     
     public ArrayList<Evento> obtenerEventos(){
         ControlEvento ceve = new ControlEvento();
@@ -142,11 +223,14 @@ public class eventosPanel extends javax.swing.JPanel {
     } 
     
     private DefaultListModel modeloListaEventos;
+    private ControlEvento ce;
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnadirEventos;
     private javax.swing.JButton btnBuscarEventos;
     private javax.swing.JButton btnEliminarEventos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> listEventos;
     private javax.swing.JPanel panelCenterEventos;
     private javax.swing.JPanel panelNorthEventos;

@@ -5,7 +5,11 @@
  */
 package presentacion;
 
+import dominio.ControlEvento;
+import dominio.Evento;
 import java.awt.Color;
+import java.sql.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +22,13 @@ public class EventoFrame extends javax.swing.JFrame {
      */
     public EventoFrame() {
         initComponents();
+        this.ce = new ControlEvento();
+    }
+    
+    public EventoFrame(Evento e){
+        this.eve = e;
+        initComponents();
+        this.ce = new ControlEvento();
     }
 
     /**
@@ -50,7 +61,6 @@ public class EventoFrame extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -78,6 +88,11 @@ public class EventoFrame extends javax.swing.JFrame {
         jButton1.setText("Eliminar");
         jButton1.setBorder(null);
         jButton1.setPreferredSize(new java.awt.Dimension(180, 35));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel7.add(jButton1);
 
         jPanel2.add(jPanel7);
@@ -91,8 +106,8 @@ public class EventoFrame extends javax.swing.JFrame {
         jButton5.setBorder(null);
         jButton5.setPreferredSize(new java.awt.Dimension(180, 35));
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton5MousePressed(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
             }
         });
         jPanel6.add(jButton5);
@@ -101,6 +116,11 @@ public class EventoFrame extends javax.swing.JFrame {
         jButton6.setText("Guardar");
         jButton6.setBorder(null);
         jButton6.setPreferredSize(new java.awt.Dimension(180, 35));
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
         jPanel6.add(jButton6);
 
         jPanel2.add(jPanel6);
@@ -133,6 +153,7 @@ public class EventoFrame extends javax.swing.JFrame {
         jPanel5.add(jLabel2, gridBagConstraints);
 
         jTextField1.setBackground(new java.awt.Color(102, 102, 102));
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         jTextField1.setCaretColor(new java.awt.Color(204, 0, 204));
         jTextField1.setSelectionColor(new java.awt.Color(204, 0, 204));
@@ -166,6 +187,7 @@ public class EventoFrame extends javax.swing.JFrame {
         jPanel5.add(jLabel3, gridBagConstraints);
 
         jTextField2.setBackground(new java.awt.Color(102, 102, 102));
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         jTextField2.setCaretColor(new java.awt.Color(204, 0, 204));
         jTextField2.setSelectionColor(new java.awt.Color(204, 0, 204));
@@ -200,6 +222,7 @@ public class EventoFrame extends javax.swing.JFrame {
 
         jTextArea1.setBackground(new java.awt.Color(102, 102, 102));
         jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
         jTextArea1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         jTextArea1.setCaretColor(new java.awt.Color(204, 0, 204));
@@ -293,15 +316,6 @@ public class EventoFrame extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 20, 70, 0);
         jPanel5.add(jTextField4, gridBagConstraints);
-
-        jLabel7.setText("cal");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.ipady = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 10, 70, 0);
-        jPanel5.add(jLabel7, gridBagConstraints);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -421,13 +435,6 @@ public class EventoFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MousePressed
-        Inicio inicio = new Inicio();
-        inicio.setVisible(true);
-        inicio.setLocationRelativeTo(null);
-        dispose();
-    }//GEN-LAST:event_jButton5MousePressed
-
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         jTextField1.setBackground(Color.black);
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
@@ -508,6 +515,39 @@ public class EventoFrame extends javax.swing.JFrame {
         jTextField7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_jTextField7FocusLost
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            if(ce.eliminarEvento(eve.getId())){
+                dispose();
+            }
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        dispose();
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        Evento evento = new Evento(jTextField1.getText(), jTextField2.getText(),
+                jTextField3.getText(), Date.valueOf(jTextField4.getText()),
+                Integer.parseInt(jTextField6.getText()));
+        
+        if(ce.insertarEvento(evento)){
+            dispose();
+        }
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    public void rellenarCampos(){
+        jTextField1.setText(eve.getNombre());
+        
+        jButton6.setText("Modificar");
+    }
+    
+    private  Evento eve;
+    private ControlEvento ce;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
@@ -519,7 +559,6 @@ public class EventoFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

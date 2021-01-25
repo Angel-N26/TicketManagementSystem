@@ -171,6 +171,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         sp.actualizarListaSocios();
+        evp.actualizarListaEventos();
     }//GEN-LAST:event_formWindowGainedFocus
     
     private final inicioPaneL ip;

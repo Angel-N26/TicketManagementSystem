@@ -224,7 +224,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="11"/>
-                <Property name="text" type="java.lang.String" value="Vocal 1:"/>
+                <Property name="text" type="java.lang.String" value="Vocal1:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox5">
@@ -252,7 +252,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="11"/>
-                <Property name="text" type="java.lang.String" value="Vocal 2:"/>
+                <Property name="text" type="java.lang.String" value="Vocal2:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox6">

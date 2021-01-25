@@ -1,6 +1,6 @@
 package dominio;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -14,7 +14,7 @@ public class Evento {
     private Date fecha_evento;
     private int entradas;
 
-        public Evento(int nId, String nNombre, String nTipo_evento, String nLugar_evento,
+    public Evento(int nId, String nNombre, String nTipo_evento, String nLugar_evento,
             Date nFecha_evento, int nEntradas){
         this.id = nId;
         this.nombre = nNombre;

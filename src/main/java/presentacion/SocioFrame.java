@@ -11,7 +11,6 @@ import dominio.Membresia;
 import dominio.Socio;
 import java.awt.Color;
 import java.util.ArrayList;
-//import java.util.Date;
 import java.sql.Date;
 
 import javax.swing.JOptionPane;
