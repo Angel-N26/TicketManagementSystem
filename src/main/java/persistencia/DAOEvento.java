@@ -68,7 +68,7 @@ public class DAOEvento {
             pst.setString(1, evento.getNombre());
             pst.setString(2, evento.getTipo_evento());
             pst.setString(3, evento.getLugar_evento());
-            pst.setObject(4, evento.getFecha_evento());
+            pst.setDate(4, evento.getFecha_evento());
             pst.setInt(5, evento.getEntradas());
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -89,7 +89,7 @@ public class DAOEvento {
             pst.setString(1, evento.getNombre());
             pst.setString(2, evento.getTipo_evento());
             pst.setString(3, evento.getLugar_evento());
-            pst.setObject(4, evento.getFecha_evento());
+            pst.setDate(4, evento.getFecha_evento());
             pst.setInt(5, evento.getEntradas());
             pst.setInt(7, evento.getId());
             pst.executeUpdate();
