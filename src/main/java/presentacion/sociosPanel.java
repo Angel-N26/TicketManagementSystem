@@ -227,10 +227,9 @@ public class sociosPanel extends javax.swing.JPanel {
         modeloListaSocios.addAll(0, obtenerSocios());
     }
     
+    private DefaultListModel modeloListaSocios;    
     private final ControlSocio cs;
     
-    private DefaultListModel modeloListaSocios;
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnadirSocios;
     private javax.swing.JButton btnBuscarSocios;

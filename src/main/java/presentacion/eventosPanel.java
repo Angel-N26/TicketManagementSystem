@@ -223,8 +223,7 @@ public class eventosPanel extends javax.swing.JPanel {
     } 
     
     private DefaultListModel modeloListaEventos;
-    private ControlEvento ce;
-    
+    private final ControlEvento ce;    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnadirEventos;
