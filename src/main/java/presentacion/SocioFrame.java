@@ -75,6 +75,19 @@ public class SocioFrame extends javax.swing.JFrame {
         lblObMembresia = new javax.swing.JLabel();
         tfTlf = new javax.swing.JFormattedTextField();
         tfFechaNacimiento = new javax.swing.JFormattedTextField();
+        tfNumero = new javax.swing.JTextField();
+        tfPiso = new javax.swing.JTextField();
+        tfPuerta = new javax.swing.JTextField();
+        tfCodPostal = new javax.swing.JTextField();
+        tfLocalidad = new javax.swing.JTextField();
+        lblCalle = new javax.swing.JLabel();
+        lblNumero = new javax.swing.JLabel();
+        cbProvincia = new javax.swing.JComboBox<>();
+        lblPiso = new javax.swing.JLabel();
+        lblPuerta = new javax.swing.JLabel();
+        lblCodPostal = new javax.swing.JLabel();
+        lblLocalidad = new javax.swing.JLabel();
+        lblProvincia = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
@@ -233,7 +246,7 @@ public class SocioFrame extends javax.swing.JFrame {
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
         lblEmail.setText("Email");
         lblEmail.setName("lblEmail"); // NOI18N
-        panelCenter.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+        panelCenter.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         tfEmail.setBackground(new java.awt.Color(102, 102, 102));
         tfEmail.setForeground(new java.awt.Color(255, 255, 255));
@@ -248,19 +261,20 @@ public class SocioFrame extends javax.swing.JFrame {
                 tfEmailFocusLost(evt);
             }
         });
-        panelCenter.add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 690, 25));
+        panelCenter.add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 690, 25));
 
-        lblDireccion.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblDireccion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblDireccion.setForeground(new java.awt.Color(255, 255, 255));
         lblDireccion.setText("Direccion");
         lblDireccion.setName("lblDireccion"); // NOI18N
-        panelCenter.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        panelCenter.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         tfDireccion.setBackground(new java.awt.Color(102, 102, 102));
         tfDireccion.setForeground(new java.awt.Color(255, 255, 255));
         tfDireccion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         tfDireccion.setCaretColor(new java.awt.Color(204, 0, 204));
         tfDireccion.setName("tfDireccion"); // NOI18N
+        tfDireccion.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfDireccionFocusGained(evt);
@@ -269,19 +283,19 @@ public class SocioFrame extends javax.swing.JFrame {
                 tfDireccionFocusLost(evt);
             }
         });
-        panelCenter.add(tfDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 690, 25));
+        panelCenter.add(tfDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 260, 25));
 
         lblTlf.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblTlf.setForeground(new java.awt.Color(255, 255, 255));
         lblTlf.setText("Teléfono");
         lblTlf.setName("lblTlf"); // NOI18N
-        panelCenter.add(lblTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+        panelCenter.add(lblTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         lblDNI.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblDNI.setForeground(new java.awt.Color(255, 255, 255));
         lblDNI.setText("DNI");
         lblDNI.setName("lblDNI"); // NOI18N
-        panelCenter.add(lblDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, -1));
+        panelCenter.add(lblDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, -1));
 
         tfDNI.setBackground(new java.awt.Color(102, 102, 102));
         tfDNI.setForeground(new java.awt.Color(255, 255, 255));
@@ -297,13 +311,13 @@ public class SocioFrame extends javax.swing.JFrame {
                 tfDNIFocusLost(evt);
             }
         });
-        panelCenter.add(tfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 190, 25));
+        panelCenter.add(tfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 190, 25));
 
         lblObDNI.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblObDNI.setForeground(new java.awt.Color(255, 255, 255));
         lblObDNI.setText("*");
         lblObDNI.setName("lblObDNI"); // NOI18N
-        panelCenter.add(lblObDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 380, -1, -1));
+        panelCenter.add(lblObDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
 
         lblObNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblObNombre.setForeground(new java.awt.Color(255, 255, 255));
@@ -332,12 +346,12 @@ public class SocioFrame extends javax.swing.JFrame {
                 tfTlfFocusLost(evt);
             }
         });
-        panelCenter.add(tfTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 170, 25));
+        panelCenter.add(tfTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 170, 25));
 
         tfFechaNacimiento.setBackground(new java.awt.Color(102, 102, 102));
         tfFechaNacimiento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
         tfFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
-        tfFechaNacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy/MM/dd"))));
+        tfFechaNacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
         tfFechaNacimiento.setCaretColor(new java.awt.Color(204, 0, 204));
         tfFechaNacimiento.setName("tfFechaNacimiento"); // NOI18N
         tfFechaNacimiento.setSelectionColor(new java.awt.Color(204, 0, 204));
@@ -350,6 +364,132 @@ public class SocioFrame extends javax.swing.JFrame {
             }
         });
         panelCenter.add(tfFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 150, 25));
+
+        tfNumero.setBackground(new java.awt.Color(102, 102, 102));
+        tfNumero.setForeground(new java.awt.Color(255, 255, 255));
+        tfNumero.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfNumero.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfNumero.setName("tfNumero"); // NOI18N
+        tfNumero.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfNumero.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNumeroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNumeroFocusLost(evt);
+            }
+        });
+        panelCenter.add(tfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 60, 25));
+
+        tfPiso.setBackground(new java.awt.Color(102, 102, 102));
+        tfPiso.setForeground(new java.awt.Color(255, 255, 255));
+        tfPiso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfPiso.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfPiso.setName("tfPiso"); // NOI18N
+        tfPiso.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfPiso.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfPisoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfPisoFocusLost(evt);
+            }
+        });
+        panelCenter.add(tfPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 60, 25));
+
+        tfPuerta.setBackground(new java.awt.Color(102, 102, 102));
+        tfPuerta.setForeground(new java.awt.Color(255, 255, 255));
+        tfPuerta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfPuerta.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfPuerta.setName("tfPuerta"); // NOI18N
+        tfPuerta.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfPuerta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfPuertaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfPuertaFocusLost(evt);
+            }
+        });
+        panelCenter.add(tfPuerta, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 60, 25));
+
+        tfCodPostal.setBackground(new java.awt.Color(102, 102, 102));
+        tfCodPostal.setForeground(new java.awt.Color(255, 255, 255));
+        tfCodPostal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfCodPostal.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfCodPostal.setName("tfCodPostal"); // NOI18N
+        tfCodPostal.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfCodPostal.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfCodPostalFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfCodPostalFocusLost(evt);
+            }
+        });
+        panelCenter.add(tfCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, 110, 25));
+
+        tfLocalidad.setBackground(new java.awt.Color(102, 102, 102));
+        tfLocalidad.setForeground(new java.awt.Color(255, 255, 255));
+        tfLocalidad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfLocalidad.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfLocalidad.setName("tfLocalidad"); // NOI18N
+        tfLocalidad.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfLocalidad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfLocalidadFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfLocalidadFocusLost(evt);
+            }
+        });
+        panelCenter.add(tfLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 340, 25));
+
+        lblCalle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblCalle.setForeground(new java.awt.Color(255, 255, 255));
+        lblCalle.setText("Calle");
+        lblCalle.setName("lblCalle"); // NOI18N
+        panelCenter.add(lblCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+
+        lblNumero.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblNumero.setForeground(new java.awt.Color(255, 255, 255));
+        lblNumero.setText("Numero");
+        lblNumero.setName("lblNumero"); // NOI18N
+        panelCenter.add(lblNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
+
+        cbProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Álava", "Albacete", "Alicante", "Almeria", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba", "La Coruña", "Cuenca", "Gerona", "Granada", "Guadalajara", "Guipúzcua", "Huelva", "Huesca", "Baleares", "Jaén", "León", "Lérida", "Lugo", "Madrid", "Málaga", "Murcia", "Navarra", "Orense", "Palencia", "Las Palmas", "Pontevedra", "La Rioja", "Salamanca", "Segovia", "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza" }));
+        cbProvincia.setName("cbProvincia"); // NOI18N
+        panelCenter.add(cbProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 210, 25));
+
+        lblPiso.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblPiso.setForeground(new java.awt.Color(255, 255, 255));
+        lblPiso.setText("Piso");
+        lblPiso.setName("lblPiso"); // NOI18N
+        panelCenter.add(lblPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, -1, -1));
+
+        lblPuerta.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblPuerta.setForeground(new java.awt.Color(255, 255, 255));
+        lblPuerta.setText("Puerta");
+        lblPuerta.setName("lblPuerta"); // NOI18N
+        panelCenter.add(lblPuerta, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, -1, -1));
+
+        lblCodPostal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblCodPostal.setForeground(new java.awt.Color(255, 255, 255));
+        lblCodPostal.setText("Codigo Postal");
+        lblCodPostal.setName("lblCodPostal"); // NOI18N
+        panelCenter.add(lblCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 380, -1, -1));
+
+        lblLocalidad.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblLocalidad.setForeground(new java.awt.Color(255, 255, 255));
+        lblLocalidad.setText("Localidad");
+        lblLocalidad.setName("lblLocalidad"); // NOI18N
+        panelCenter.add(lblLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
+
+        lblProvincia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblProvincia.setForeground(new java.awt.Color(255, 255, 255));
+        lblProvincia.setText("Provincia");
+        lblProvincia.setName("lblProvincia"); // NOI18N
+        panelCenter.add(lblProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
 
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
 
@@ -414,7 +554,8 @@ public class SocioFrame extends javax.swing.JFrame {
 
     private void btnAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMousePressed
         Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(), 
-                tfEmail.getText(), Date.valueOf(tfFechaNacimiento.getText()),tfDireccion.getText(), Integer.parseInt(tfTlf.getText()), 
+                tfEmail.getText(), Date.valueOf(tfFechaNacimiento.getText()),
+                direccion(), Integer.parseInt(tfTlf.getText()), 
                 obtenerIdMembresia(cbMembresias.getSelectedItem()+""));
         
         if(btnAnadir.getText().equals("Modificar")){
@@ -468,12 +609,63 @@ public class SocioFrame extends javax.swing.JFrame {
         tfFechaNacimiento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfFechaNacimientoFocusLost
 
+    private void tfNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusGained
+        tfNumero.setBackground(Color.black);
+        tfNumero.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfNumeroFocusGained
+
+    private void tfNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusLost
+        tfNumero.setBackground(new java.awt.Color(102, 102, 102));
+        tfNumero.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfNumeroFocusLost
+
+    private void tfPisoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusGained
+        tfPiso.setBackground(Color.black);
+        tfPiso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfPisoFocusGained
+
+    private void tfPisoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusLost
+        tfPiso.setBackground(new java.awt.Color(102, 102, 102));
+        tfPiso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfPisoFocusLost
+
+    private void tfPuertaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPuertaFocusGained
+        tfPuerta.setBackground(Color.black);
+        tfPuerta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfPuertaFocusGained
+
+    private void tfPuertaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPuertaFocusLost
+        tfPuerta.setBackground(new java.awt.Color(102, 102, 102));
+        tfPuerta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfPuertaFocusLost
+
+    private void tfCodPostalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusGained
+        tfCodPostal.setBackground(Color.black);
+        tfCodPostal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfCodPostalFocusGained
+
+    private void tfCodPostalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusLost
+        tfCodPostal.setBackground(new java.awt.Color(102, 102, 102));
+        tfCodPostal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfCodPostalFocusLost
+
+    private void tfLocalidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLocalidadFocusGained
+        tfLocalidad.setBackground(Color.black);
+        tfLocalidad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfLocalidadFocusGained
+
+    private void tfLocalidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLocalidadFocusLost
+        tfLocalidad.setBackground(new java.awt.Color(102, 102, 102));
+        tfLocalidad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfLocalidadFocusLost
+
     public void rellenarCampos(){
         tfNombre.setText(socio.getNombre());
         tfApellidos.setText(socio.getApellidos());
         tfEmail.setText(socio.getEmail());
         tfFechaNacimiento.setText(socio.getFecha_nac()+"");
-        tfDireccion.setText(socio.getDomicilio());
+        //tfDireccion.setText(socio.getDomicilio());
+        separarDireccion(socio.getDomicilio());
         tfTlf.setText(socio.getTelefono()+"");
         tfDNI.setText(socio.getDni());
         seleccionarMembresia(socio.getId_membresia());
@@ -511,6 +703,42 @@ public class SocioFrame extends javax.swing.JFrame {
         return id;
     }
     
+    public String direccion(){
+        String direccion = null;
+        if(tfPiso.getText().equals("") || tfPuerta.getText().equals("")){
+            direccion =  "C/" + tfDireccion.getText() + ", " + tfNumero.getText()
+                    + ", " + tfCodPostal.getText() + ", " + tfLocalidad.getText()
+                    + ", " + cbProvincia.getSelectedItem();
+            
+        }else{            
+            direccion =  "C/" + tfDireccion.getText() + ", " + tfNumero.getText()
+                    + ", " + tfPiso.getText() + "º" + tfPuerta.getText() + ", " +
+                    tfCodPostal.getText() + ", " + tfLocalidad.getText() + ", " +
+                    cbProvincia.getSelectedItem();
+        }
+        return direccion;
+    }
+    
+    public void separarDireccion(String dir){
+        String [] d = dir.split("/"); //Separar la C/
+        String [] c = d[1].split(","); //Separar cada apartado
+        tfDireccion.setText(c[0]);
+        tfNumero.setText(c[1]);
+        if(c.length == 6){
+            String [] p = c[2].split("º"); //Separar el piso y la puerta      
+            tfPiso.setText(p[0]);
+            tfPuerta.setText(p[1]);
+
+            tfCodPostal.setText(c[3]);
+            tfLocalidad.setText(c[4]);
+            cbProvincia.setSelectedItem(c[5].replaceFirst(" ", ""));
+        }else{
+            tfCodPostal.setText(c[2]);
+            tfLocalidad.setText(c[3]);            
+            cbProvincia.setSelectedItem(c[4].replaceFirst(" ", ""));
+        }        
+    }
+    
     private final ControlSocio cs;
     private Socio socio;
     
@@ -521,30 +749,43 @@ public class SocioFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JComboBox<String> cbMembresias;
     private javax.swing.JCheckBox cbPagos;
+    private javax.swing.JComboBox<String> cbProvincia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblApellidos;
+    private javax.swing.JLabel lblCalle;
+    private javax.swing.JLabel lblCodPostal;
     private javax.swing.JLabel lblDNI;
     private javax.swing.JLabel lblDatosContacto;
     private javax.swing.JLabel lblDatosPersonales;
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFechaNacimiento;
+    private javax.swing.JLabel lblLocalidad;
     private javax.swing.JLabel lblMembresia;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblObDNI;
     private javax.swing.JLabel lblObMembresia;
     private javax.swing.JLabel lblObNombre;
+    private javax.swing.JLabel lblPiso;
+    private javax.swing.JLabel lblProvincia;
+    private javax.swing.JLabel lblPuerta;
     private javax.swing.JLabel lblTlf;
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelSouth;
     private javax.swing.JPanel panelSouthRight;
     private javax.swing.JTextField tfApellidos;
+    private javax.swing.JTextField tfCodPostal;
     private javax.swing.JTextField tfDNI;
     private javax.swing.JTextField tfDireccion;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JFormattedTextField tfFechaNacimiento;
+    private javax.swing.JTextField tfLocalidad;
     private javax.swing.JTextField tfNombre;
+    private javax.swing.JTextField tfNumero;
+    private javax.swing.JTextField tfPiso;
+    private javax.swing.JTextField tfPuerta;
     private javax.swing.JFormattedTextField tfTlf;
     // End of variables declaration//GEN-END:variables
 }
