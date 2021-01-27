@@ -145,7 +145,7 @@ public class entradasPanel extends javax.swing.JPanel {
     private void btnGenerarEntradasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMousePressed
         Evento evento = (Evento) cbSeleccionEvento.getSelectedItem();
         if(evento != null){
-            GenerarEntradas ge = new GenerarEntradas(evento);
+            GenerarEntradas ge = new GenerarEntradas(evento, sacarEntradas(evento.getId()));
             ge.setVisible(true);
             ge.setLocationRelativeTo(null);
         }
@@ -185,7 +185,7 @@ public class entradasPanel extends javax.swing.JPanel {
             }
         }
         return entEven;
-    }
+    }        
     
     private DefaultListModel modeloListaEntradas;
     
