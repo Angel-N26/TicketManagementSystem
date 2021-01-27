@@ -24,11 +24,11 @@ public class DAOMembresia {
         ResultSet rs;
         Membresia membresia;
 	try {
-            String sql = "select nombre from membresia";
+            String sql = "select idmembresia from membresia";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             while(rs.next()) {
-                membresia = obtenerMembresiaDAO(rs.getString(1));
+                membresia = obtenerMembresiaDAO(rs.getInt(1));
                 listaMembresias.add(membresia);
             }
 	} catch (SQLException e) {
@@ -37,25 +37,7 @@ public class DAOMembresia {
         return listaMembresias;
     }    
         
-    public Membresia obtenerMembresiaDAO(String nombre_membresia){
-        ResultSet rs;
-        Membresia membresia = null;
-        try {
-            String sql = "select * from membresia where nombre = ?";
-            pst = con.prepareStatement(sql);
-            pst.setString(1, nombre_membresia);
-            rs = pst.executeQuery();
-            while (rs.next()) {
-                membresia = new Membresia(rs.getInt(1), rs.getString(2),
-                        rs.getDouble(3));
-            }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-        return membresia;
-    }
-    
-        public Membresia obtenerMembresiaDAO_ID(int id_membresia){
+    public Membresia obtenerMembresiaDAO(int id_membresia){
         ResultSet rs;
         Membresia membresia = null;
         try {
@@ -110,14 +92,14 @@ public class DAOMembresia {
         return realizado;
     }
     
-    public boolean eliminarMembresiaDAO(String nombre_membresia){
+    public boolean eliminarMembresiaDAO(int id_membresia){
         boolean realizado;
         try{
             realizado = true;
             con.createStatement();
-            String sql = "delete from membresia where nombre = ?";
+            String sql = "delete from membresia where idmembresia = ?";
             pst = con.prepareStatement(sql);
-            pst.setString(1, nombre_membresia);
+            pst.setInt(1, id_membresia);
             pst.executeUpdate();
         }catch(SQLException e){
             System.err.println(e.getMessage());

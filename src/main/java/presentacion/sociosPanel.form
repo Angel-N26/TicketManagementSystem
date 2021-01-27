@@ -319,7 +319,7 @@
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="modeloListaSocios = new DefaultListModel();&#xd;        listSocios.setModel(modeloListaSocios);&#xd;        modeloListaSocios.addAll(0,obtenerSocios());"/>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Socio&gt;"/>
               </AuxValues>
             </Component>
           </SubComponents>

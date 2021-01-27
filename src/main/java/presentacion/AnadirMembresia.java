@@ -219,7 +219,7 @@ public class AnadirMembresia extends javax.swing.JFrame {
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
-            if(cm.eliminarMembresia(tfNombre.getText())){    
+            if(cm.eliminarMembresia(mem.getId_membresia())){    
                 dispose();            
             }
         }

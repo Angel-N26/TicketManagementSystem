@@ -3,9 +3,8 @@ package dominio;
 import java.sql.Date;
 
 /**
- *
  * @author angel
- */
+ **/
 public class Socio {
 
     private String dni;

@@ -178,12 +178,9 @@ public class sociosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarSociosMouseClicked
 
     private void listSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listSociosMouseClicked
-        if(evt.getClickCount() == 2){
-            int index = listSocios.getSelectedIndex();
-            String socioLista = modeloListaSocios.getElementAt(index) + "";
-            String [] s = socioLista.split(" ");
-            
-            Socio socio = cs.obtenerSocio(s[0]);
+        if(evt.getClickCount() == 2){            
+            Socio socio = listSocios.getSelectedValue();            
+                        
             SocioFrame sf = new SocioFrame(socio);
             sf.rellenarCampos();
             sf.setVisible(true);
@@ -235,7 +232,7 @@ public class sociosPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBuscarSocios;
     private javax.swing.JButton btnEliminarSocios;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> listSocios;
+    private javax.swing.JList<Socio> listSocios;
     private javax.swing.JPanel panelCenterSocios;
     private javax.swing.JPanel panelNorthSocios;
     private javax.swing.JPanel panelSouthSocios;

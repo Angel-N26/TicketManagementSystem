@@ -200,7 +200,7 @@
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="modeloListaEventos = new DefaultListModel();&#xd;        listEventos.setModel(modeloListaEventos);&#xd;        modeloListaEventos.addAll(0,obtenerEventos());"/>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Evento&gt;"/>
               </AuxValues>
             </Component>
           </SubComponents>

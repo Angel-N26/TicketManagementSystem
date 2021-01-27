@@ -115,7 +115,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
 
     private void listMembresiasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMembresiasMouseClicked
         if(evt.getClickCount() == 2){
-            Membresia mem = obtenerMembresia(listMembresias.getSelectedValue());
+            Membresia mem = cm.obtenerMembresia(listMembresias.getSelectedValue().getId_membresia());
             AnadirMembresia am = new AnadirMembresia(mem);
             am.rellenarCampos();
             am.setVisible(true);
@@ -131,7 +131,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
-            if(cm.eliminarMembresia(listMembresias.getSelectedValue())){            
+            if(cm.eliminarMembresia(listMembresias.getSelectedValue().getId_membresia())){            
                 modeloLista.remove(listMembresias.getSelectedIndex());
             }
         }
@@ -143,21 +143,12 @@ public class MembresiaFrame extends javax.swing.JFrame {
         am.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnAnadirMouseClicked
 
-    private Membresia obtenerMembresia(String nombre){
-        return cm.obtenerMembresia(nombre);
-    }
-
-    private ArrayList<String> obtenerMembresias(){
+    private ArrayList<Membresia> obtenerMembresias(){
         ControlMembresia cmem = new ControlMembresia();
-        ArrayList<Membresia> mems = cmem.obtenerMembresias();
-        ArrayList<String> nombreMem = new ArrayList();
-        for(int i = 0 ; i < mems.size() ; i++){
-            nombreMem.add(mems.get(i).getNombre());
-        }
-        return nombreMem;
+        return cmem.obtenerMembresias();
     }      
 
-    public void actualizarLista(){
+    private void actualizarLista(){
         modeloLista.removeAllElements();
         modeloLista.addAll(0, obtenerMembresias());
     }
@@ -168,7 +159,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnadir;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JList<String> listMembresias;
+    private javax.swing.JList<Membresia> listMembresias;
     private javax.swing.JPanel panelBorder;
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelSouth;

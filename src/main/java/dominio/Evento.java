@@ -3,9 +3,8 @@ package dominio;
 import java.sql.Date;
 
 /**
- *
  * @author angel
- */
+ **/
 public class Evento {
     private int id;
     private String nombre;
@@ -82,6 +81,6 @@ public class Evento {
 
     @Override
     public String toString(){
-        return this.id + " " + this.nombre;
+        return this.nombre;
     }
 }

@@ -200,11 +200,8 @@ public class eventosPanel extends javax.swing.JPanel {
 
     private void listEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listEventosMouseClicked
         if(evt.getClickCount() == 2){
-            int index = listEventos.getSelectedIndex();
-            String eventoLista = modeloListaEventos.getElementAt(index) + "";
-            String [] e = eventoLista.split(" ");
+            Evento evento = listEventos.getSelectedValue();
             
-            Evento evento = ce.obtenerEvento(Integer.parseInt(e[0]));
             EventoFrame ef = new EventoFrame(evento);
             ef.rellenarCampos();
             ef.setVisible(true);
@@ -230,7 +227,7 @@ public class eventosPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBuscarEventos;
     private javax.swing.JButton btnEliminarEventos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> listEventos;
+    private javax.swing.JList<Evento> listEventos;
     private javax.swing.JPanel panelCenterEventos;
     private javax.swing.JPanel panelNorthEventos;
     private javax.swing.JPanel panelSouthEventos;

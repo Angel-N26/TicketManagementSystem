@@ -1,10 +1,10 @@
 package dominio;
 
 /**
- *
  * @author angel
- */
+ **/
 public class Entrada {
+    
     private int id_entrada;
     private int id_evento;
     private String id_socio;

@@ -18,12 +18,8 @@ public class ControlMembresia {
 	return daoMembresia.obtenerMembresiasDAO();
     }
 
-    public Membresia obtenerMembresia(String nombre) {
-        return daoMembresia.obtenerMembresiaDAO(nombre);
-    }
-
-    public Membresia obtenerMembresia_ID(int id) {
-        return daoMembresia.obtenerMembresiaDAO_ID(id);
+    public Membresia obtenerMembresia(int id) {
+        return daoMembresia.obtenerMembresiaDAO(id);
     }
     
     public boolean insertarMembresia(Membresia membresia) {
@@ -34,7 +30,7 @@ public class ControlMembresia {
         return daoMembresia.modificarMembresiaDAO(membresia);
     }
 
-    public boolean eliminarMembresia(String nombre){
-        return daoMembresia.eliminarMembresiaDAO(nombre);
+    public boolean eliminarMembresia(int id){
+        return daoMembresia.eliminarMembresiaDAO(id);
     }
 }

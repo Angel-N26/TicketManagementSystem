@@ -8,8 +8,8 @@ import java.awt.CardLayout;
 public class Inicio extends javax.swing.JFrame {
 
     public Inicio() {
-        ip = new inicioPaneL();
-        ap = new asociacionPaneL();
+        ip = new inicioPanel();
+        ap = new asociacionPanel();
         sp = new sociosPanel();
         evp = new eventosPanel();
         enp = new entradasPanel();
@@ -174,8 +174,8 @@ public class Inicio extends javax.swing.JFrame {
         evp.actualizarListaEventos();
     }//GEN-LAST:event_formWindowGainedFocus
     
-    private final inicioPaneL ip;
-    private final asociacionPaneL ap;
+    private final inicioPanel ip;
+    private final asociacionPanel ap;
     private final sociosPanel sp;
     private final eventosPanel evp;
     private final entradasPanel enp;    

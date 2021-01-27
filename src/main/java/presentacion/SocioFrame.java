@@ -99,7 +99,6 @@ public class SocioFrame extends javax.swing.JFrame {
 
         btnEliminar.setBackground(new java.awt.Color(204, 0, 0));
         btnEliminar.setText("Eliminar");
-        btnEliminar.setBorder(null);
         btnEliminar.setName("btnEliminar"); // NOI18N
         btnEliminar.setPreferredSize(new java.awt.Dimension(180, 35));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -118,7 +117,6 @@ public class SocioFrame extends javax.swing.JFrame {
 
         btnCancelar.setBackground(new java.awt.Color(204, 0, 204));
         btnCancelar.setText("Cancelar");
-        btnCancelar.setBorder(null);
         btnCancelar.setName("btnCancelar"); // NOI18N
         btnCancelar.setPreferredSize(new java.awt.Dimension(180, 35));
         btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,7 +128,6 @@ public class SocioFrame extends javax.swing.JFrame {
 
         btnAnadir.setBackground(new java.awt.Color(0, 204, 0));
         btnAnadir.setText("Añadir");
-        btnAnadir.setBorder(null);
         btnAnadir.setName("btnAnadir"); // NOI18N
         btnAnadir.setPreferredSize(new java.awt.Dimension(180, 35));
         btnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -541,10 +538,10 @@ public class SocioFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tfDireccionFocusLost
 
     private void btnAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMousePressed
+        Membresia m = (Membresia) cbMembresias.getSelectedItem();
         Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(), 
                 tfEmail.getText(), Date.valueOf(tfFechaNacimiento.getText()),
-                direccion(), Integer.parseInt(tfTlf.getText()), 
-                obtenerIdMembresia(cbMembresias.getSelectedItem()+""));
+                direccion(), Integer.parseInt(tfTlf.getText()), m.getId_membresia());
         
         if(btnAnadir.getText().equals("Modificar")){
             if(cs.modificarSocio(s, socio.getDni())){
@@ -664,40 +661,31 @@ public class SocioFrame extends javax.swing.JFrame {
     //Rellena el combo box con los nombres de todas las membresias
     private void rellenarMembresias(){
         ControlMembresia cmem = new ControlMembresia();
-        ArrayList<Membresia> mems = cmem.obtenerMembresias();
+        mems = cmem.obtenerMembresias();
         
         for(int i = 0 ; i < mems.size() ; i++){
-            cbMembresias.addItem(mems.get(i).getNombre());
-        }        
+            cbMembresias.addItem(mems.get(i));
+        }
+        cbMembresias.setSelectedItem(null);
     }
     
-    //Obtiene el nombre de la membresia dado su id
+    //Selecciona la membresia correspondiente en el combobox
     private void seleccionarMembresia(int id_mem){
-        ControlMembresia cm = new ControlMembresia();
-        Membresia mem = cm.obtenerMembresia_ID(id_mem);
-        cbMembresias.setSelectedItem(mem.getNombre());        
+        for(int i = 0 ; i < mems.size() ; i++){
+            if(id_mem == mems.get(i).getId_membresia()){
+                cbMembresias.setSelectedIndex(i);
+            }
+        }
     }
     
-    //Obtiene el id de la membresia selecionada en el combo box dado su nombre
-    public int obtenerIdMembresia(String nombre){
-        int id = 0;
-        ControlMembresia cm = new ControlMembresia();
-        ArrayList<Membresia> mem = cm.obtenerMembresias();
-        for(int i = 0 ; i < mem.size() ; i++)
-            if(nombre.equals(mem.get(i).getNombre())){
-                id = mem.get(i).getId_membresia();
-            }                
-        return id;
-    }
-    
-    public String direccion(){
-        String direccion = null;
+    private String direccion(){
+        String direccion;
         if(tfPiso.getText().equals("") || tfPuerta.getText().equals("")){
             direccion =  "C/" + tfDireccion.getText() + ", " + tfNumero.getText()
                     + ", " + tfCodPostal.getText() + ", " + tfLocalidad.getText()
                     + ", " + cbProvincia.getSelectedItem();
             
-        }else{            
+        }else{
             direccion =  "C/" + tfDireccion.getText() + ", " + tfNumero.getText()
                     + ", " + tfPiso.getText() + "º" + tfPuerta.getText() + ", " +
                     tfCodPostal.getText() + ", " + tfLocalidad.getText() + ", " +
@@ -706,13 +694,13 @@ public class SocioFrame extends javax.swing.JFrame {
         return direccion;
     }
     
-    public void separarDireccion(String dir){
+    private void separarDireccion(String dir){
         String [] d = dir.split("/"); //Separar la C/
         String [] c = d[1].split(","); //Separar cada apartado
         tfDireccion.setText(c[0]);
         tfNumero.setText(c[1]);
         if(c.length == 6){
-            String [] p = c[2].split("º"); //Separar el piso y la puerta      
+            String [] p = c[2].split("º"); //Separar el piso y la puerta
             tfPiso.setText(p[0]);
             tfPuerta.setText(p[1]);
 
@@ -721,20 +709,22 @@ public class SocioFrame extends javax.swing.JFrame {
             cbProvincia.setSelectedItem(c[5].replaceFirst(" ", ""));
         }else{
             tfCodPostal.setText(c[2]);
-            tfLocalidad.setText(c[3]);            
+            tfLocalidad.setText(c[3]);
             cbProvincia.setSelectedItem(c[4].replaceFirst(" ", ""));
-        }        
+        }
     }
     
     private final ControlSocio cs;
     private Socio socio;
+    
+    private ArrayList<Membresia> mems;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelSouthLeft;
     private javax.swing.JButton btnAnadir;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JComboBox<String> cbMembresias;
+    private javax.swing.JComboBox<Membresia> cbMembresias;
     private javax.swing.JCheckBox cbPagos;
     private javax.swing.JComboBox<String> cbProvincia;
     private javax.swing.JLabel jLabel1;
