@@ -89,7 +89,7 @@ public class inicioPaneL extends javax.swing.JPanel {
 
         add(jPanel4);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

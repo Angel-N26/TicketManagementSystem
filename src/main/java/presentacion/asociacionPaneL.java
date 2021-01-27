@@ -162,7 +162,7 @@ public class asociacionPaneL extends javax.swing.JPanel {
 
         lblObNombre.setVisible(false);
         lblObNombre.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblObNombre.setForeground(new java.awt.Color(204, 0, 0));
+        lblObNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblObNombre.setText("*");
         lblObNombre.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblObNombre.setName("lblObNombre"); // NOI18N
@@ -193,7 +193,7 @@ public class asociacionPaneL extends javax.swing.JPanel {
 
         lblObTlf.setVisible(false);
         lblObTlf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblObTlf.setForeground(new java.awt.Color(204, 0, 0));
+        lblObTlf.setForeground(new java.awt.Color(255, 255, 255));
         lblObTlf.setText("*");
         lblObTlf.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblObTlf.setName("lblObTlf"); // NOI18N
@@ -224,7 +224,7 @@ public class asociacionPaneL extends javax.swing.JPanel {
 
         lblObCorreo.setVisible(false);
         lblObCorreo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblObCorreo.setForeground(new java.awt.Color(204, 0, 0));
+        lblObCorreo.setForeground(new java.awt.Color(255, 255, 255));
         lblObCorreo.setText("*");
         lblObCorreo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblObCorreo.setName("lblObTlf"); // NOI18N
@@ -255,7 +255,7 @@ public class asociacionPaneL extends javax.swing.JPanel {
 
         lblObDir.setVisible(false);
         lblObDir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblObDir.setForeground(new java.awt.Color(204, 0, 0));
+        lblObDir.setForeground(new java.awt.Color(255, 255, 255));
         lblObDir.setText("*");
         lblObDir.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblObDir.setName("lblObDir"); // NOI18N
@@ -286,7 +286,7 @@ public class asociacionPaneL extends javax.swing.JPanel {
 
         lblObPob.setVisible(false);
         lblObPob.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblObPob.setForeground(new java.awt.Color(204, 0, 0));
+        lblObPob.setForeground(new java.awt.Color(255, 255, 255));
         lblObPob.setText("*");
         lblObPob.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblObPob.setName("lblObPob"); // NOI18N
@@ -317,7 +317,7 @@ public class asociacionPaneL extends javax.swing.JPanel {
 
         lblObCiu.setVisible(false);
         lblObCiu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblObCiu.setForeground(new java.awt.Color(204, 0, 0));
+        lblObCiu.setForeground(new java.awt.Color(255, 255, 255));
         lblObCiu.setText("*");
         lblObCiu.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblObCiu.setName("lblObCiu"); // NOI18N
@@ -348,7 +348,7 @@ public class asociacionPaneL extends javax.swing.JPanel {
 
         lblObCIF.setVisible(false);
         lblObCIF.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblObCIF.setForeground(new java.awt.Color(204, 0, 0));
+        lblObCIF.setForeground(new java.awt.Color(255, 255, 255));
         lblObCIF.setText("*");
         lblObCIF.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblObCIF.setName("lblObCIF"); // NOI18N
@@ -379,7 +379,7 @@ public class asociacionPaneL extends javax.swing.JPanel {
 
         lblObNReg.setVisible(false);
         lblObNReg.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblObNReg.setForeground(new java.awt.Color(204, 0, 0));
+        lblObNReg.setForeground(new java.awt.Color(255, 255, 255));
         lblObNReg.setText("*");
         lblObNReg.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblObNReg.setName("lblObNReg"); // NOI18N
