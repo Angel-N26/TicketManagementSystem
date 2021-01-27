@@ -1,5 +1,12 @@
 package presentacion;
 
+import dominio.ControlEntradas;
+import dominio.ControlEvento;
+import dominio.Entrada;
+import dominio.Evento;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 /**
  * @author angel
  **/
@@ -51,7 +58,6 @@ public class entradasPanel extends javax.swing.JPanel {
 
         lblNum.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblNum.setForeground(new java.awt.Color(255, 255, 255));
-        lblNum.setText("10");
         lblNum.setName("lblNum"); // NOI18N
         panelNumEntradas.add(lblNum);
 
@@ -60,12 +66,9 @@ public class entradasPanel extends javax.swing.JPanel {
         panelListEntradas.setBackground(new java.awt.Color(51, 51, 51));
         panelListEntradas.setName("panelListEntradas"); // NOI18N
 
+        modeloListaEntradas = new DefaultListModel();
+        listEntradas.setModel(modeloListaEntradas);
         listEntradas.setBackground(new java.awt.Color(102, 102, 102));
-        listEntradas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         scrollPanelListEntradas.setViewportView(listEntradas);
 
         javax.swing.GroupLayout panelListEntradasLayout = new javax.swing.GroupLayout(panelListEntradas);
@@ -80,7 +83,7 @@ public class entradasPanel extends javax.swing.JPanel {
         panelListEntradasLayout.setVerticalGroup(
             panelListEntradasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelListEntradasLayout.createSequentialGroup()
-                .addComponent(scrollPanelListEntradas, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                .addComponent(scrollPanelListEntradas, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -105,9 +108,14 @@ public class entradasPanel extends javax.swing.JPanel {
         lblSeleccionEvento.setPreferredSize(new java.awt.Dimension(140, 35));
         panelSeleccionEvento.add(lblSeleccionEvento);
 
-        cbSeleccionEvento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Evento 1", "Evento 2", "Evento 3", "Evento 4" }));
+        rellenarComboBox();
         cbSeleccionEvento.setName("cbSeleccionEvento"); // NOI18N
         cbSeleccionEvento.setPreferredSize(new java.awt.Dimension(180, 35));
+        cbSeleccionEvento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbSeleccionEventoMouseClicked(evt);
+            }
+        });
         panelSeleccionEvento.add(cbSeleccionEvento);
 
         panelNorthEntradas.add(panelSeleccionEvento);
@@ -135,14 +143,55 @@ public class entradasPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGenerarEntradasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMousePressed
-        GenerarEntradas ge = new GenerarEntradas();
-        ge.setVisible(true);
-        ge.setLocationRelativeTo(null);
+        Evento evento = (Evento) cbSeleccionEvento.getSelectedItem();
+        if(evento != null){
+            GenerarEntradas ge = new GenerarEntradas(evento);
+            ge.setVisible(true);
+            ge.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_btnGenerarEntradasMousePressed
 
+    private void cbSeleccionEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSeleccionEventoMouseClicked
+        if(cbSeleccionEvento.getSelectedItem() != null){
+            Evento evento = (Evento)cbSeleccionEvento.getSelectedItem();
+            ArrayList<Entrada> ent = sacarEntradas(evento.getId());
+            lblNum.setText(ent.size()+"");
+            modeloListaEntradas.removeAllElements();
+            modeloListaEntradas.addElement(ent);
+        }else{
+          modeloListaEntradas.removeAllElements();
+          lblNum.setText("");
+        }
+    }//GEN-LAST:event_cbSeleccionEventoMouseClicked
+
+    private void rellenarComboBox(){
+        ControlEvento cev = new ControlEvento();
+        ArrayList<Evento> evs = cev.obtenerEventos();
+        cbSeleccionEvento.addItem(null);
+        
+        for(int i = 0 ; i < evs.size() ; i++){
+            cbSeleccionEvento.addItem(evs.get(i));
+        }
+        cbSeleccionEvento.setSelectedItem(null);
+    }
+    
+    private ArrayList<Entrada> sacarEntradas(int id_evento){
+        ControlEntradas cen = new ControlEntradas();
+        ArrayList<Entrada> entradas = cen.obtenerEntradas();
+        ArrayList<Entrada> entEven = new ArrayList();
+        for(int i = 0 ; i < entradas.size() ; i++){
+            if(id_evento == entradas.get(i).getId_evento()){
+                entEven.add(entradas.get(i));
+            }
+        }
+        return entEven;
+    }
+    
+    private DefaultListModel modeloListaEntradas;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerarEntradas;
-    private javax.swing.JComboBox<String> cbSeleccionEvento;
+    private javax.swing.JComboBox<Evento> cbSeleccionEvento;
     private javax.swing.JLabel lblNum;
     private javax.swing.JLabel lblNumEntradas;
     private javax.swing.JLabel lblSeleccionEvento;
