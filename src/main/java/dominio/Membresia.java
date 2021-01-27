@@ -4,6 +4,7 @@ package dominio;
  * @author angel
  **/
 public class Membresia{
+    
     private int id_membresia;
     private String nombre;
     private double precio;

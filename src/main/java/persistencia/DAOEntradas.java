@@ -8,9 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
  * @author angel
- */
+ **/
 public class DAOEntradas {
 
     private final Connection con;

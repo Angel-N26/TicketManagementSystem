@@ -4,9 +4,8 @@ import persistencia.DAOEntradas;
 import java.util.ArrayList;
 
 /**
- *
  * @author angel
- */
+ **/
 public class ControlEntradas {
 
     private final DAOEntradas daoEntradas;

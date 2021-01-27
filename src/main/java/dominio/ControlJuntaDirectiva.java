@@ -7,6 +7,7 @@ import persistencia.DAOJuntaDirectiva;
  * @author angel
  **/
 public class ControlJuntaDirectiva {
+    
     private final DAOJuntaDirectiva daoJuntaDirectiva;
 
     public ControlJuntaDirectiva(){

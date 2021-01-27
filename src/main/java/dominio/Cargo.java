@@ -4,6 +4,7 @@ package dominio;
  * @author angel
  **/
 public class Cargo {
+    
     private String nombre;
     private String idSocio;
     

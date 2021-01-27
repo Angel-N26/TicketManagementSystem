@@ -4,9 +4,8 @@ import persistencia.DAOSocio;
 import java.util.ArrayList;
 
 /**
- *
  * @author angel
- */
+ **/
 public class ControlSocio {
 
     private final DAOSocio daoSocio;

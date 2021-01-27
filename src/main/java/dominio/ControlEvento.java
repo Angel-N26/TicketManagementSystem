@@ -4,10 +4,10 @@ import persistencia.DAOEvento;
 import java.util.ArrayList;
 
 /**
- *
  * @author angel
- */
+ **/
 public class ControlEvento {
+    
     private final DAOEvento daoEvento;
 
     public ControlEvento() {

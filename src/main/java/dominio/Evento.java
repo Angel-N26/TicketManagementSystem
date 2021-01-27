@@ -6,6 +6,7 @@ import java.sql.Date;
  * @author angel
  **/
 public class Evento {
+    
     private int id;
     private String nombre;
     private String tipo_evento;

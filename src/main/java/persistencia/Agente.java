@@ -5,9 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
  * @author Angel
- */
+ **/
 public class Agente {
 
     public Agente() {
