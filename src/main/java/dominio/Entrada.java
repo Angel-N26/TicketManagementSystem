@@ -14,6 +14,11 @@ public class Entrada {
         this.id_evento = nId_evento;
         this.id_socio = nId_socio;
     }
+    
+    public Entrada(int nId_evento, String nId_socio){        
+        this.id_evento = nId_evento;
+        this.id_socio = nId_socio;
+    }
 
     public int getId_entrada() {
         return id_entrada;

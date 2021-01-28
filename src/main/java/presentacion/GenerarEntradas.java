@@ -1,11 +1,13 @@
 package presentacion;
 
+import dominio.ControlEntradas;
 import dominio.ControlSocio;
 import dominio.Entrada;
 import dominio.Evento;
 import dominio.Socio;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  * @author angel
@@ -16,6 +18,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
         this.evento = evento;
         this.entradas = entradas;
         initComponents();
+        socioConEntrada = new ArrayList();
     }
 
     /**
@@ -147,13 +150,25 @@ public class GenerarEntradas extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         int i = jList1.getSelectedIndex();
         Socio socio = (Socio) modeloListaSociosSin.getElementAt(i);
+        socioConEntrada.add(socio);
         modeloListaSociosSin.remove(i);
-        modeloListaSociosCon.add(0, socio);
-        
+        modeloListaSociosCon.add(0, socio);        
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void btnGenerarEntradasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseClicked
-        // TODO add your handling code here:
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea generar?","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){        
+            ControlEntradas ce = new ControlEntradas();
+            if(!socioConEntrada.isEmpty()){
+                System.out.println(socioConEntrada);
+                for(int i = 0 ; i < socioConEntrada.size() ; i++){
+                    Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni());
+                    ce.insertarEntrada(entrada);
+                }
+            }
+            dispose();
+        }
     }//GEN-LAST:event_btnGenerarEntradasMouseClicked
     
     private void rellenarListas(){
@@ -176,13 +191,15 @@ public class GenerarEntradas extends javax.swing.JFrame {
                 sociosSin.add(soc);
             }
         }      
-        
+                       
         modeloListaSociosCon.addAll(0, sociosCon);
         modeloListaSociosSin.addAll(0, sociosSin);
     }
     
     private final Evento evento;
     private final ArrayList<Entrada> entradas;
+    
+    private ArrayList<Socio> socioConEntrada;
     
     private DefaultListModel modeloListaSociosSin;
     private DefaultListModel modeloListaSociosCon;

@@ -152,6 +152,10 @@ public class entradasPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGenerarEntradasMousePressed
 
     private void cbSeleccionEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSeleccionEventoMouseClicked
+        actualizarListaEntradas();
+    }//GEN-LAST:event_cbSeleccionEventoMouseClicked
+
+    public void actualizarListaEntradas(){
         if(cbSeleccionEvento.getSelectedItem() != null){
             Evento evento = (Evento)cbSeleccionEvento.getSelectedItem();
             ArrayList<Entrada> ent = sacarEntradas(evento.getId());
@@ -162,12 +166,11 @@ public class entradasPanel extends javax.swing.JPanel {
           modeloListaEntradas.removeAllElements();
           lblNum.setText("");
         }
-    }//GEN-LAST:event_cbSeleccionEventoMouseClicked
-
+    }
+    
     private void rellenarComboBox(){
         ControlEvento cev = new ControlEvento();
         ArrayList<Evento> evs = cev.obtenerEventos();
-        cbSeleccionEvento.addItem(null);
         
         for(int i = 0 ; i < evs.size() ; i++){
             cbSeleccionEvento.addItem(evs.get(i));

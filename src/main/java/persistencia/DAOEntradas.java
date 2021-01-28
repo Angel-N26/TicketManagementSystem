@@ -60,12 +60,11 @@ public class DAOEntradas {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into entradas(identradas, idevento, idsocio)"
-                    + "values(?,?,?)";
-            pst = con.prepareStatement(sql);
-            pst.setInt(1, entrada.getId_entrada());
-            pst.setInt(2, entrada.getId_evento());
-            pst.setString(3, entrada.getId_socio());
+            String sql = "insert into entradas(idevento, idsocio)"
+                    + "values(?,?)";
+            pst = con.prepareStatement(sql);           
+            pst.setInt(1, entrada.getId_evento());
+            pst.setString(2, entrada.getId_socio());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
