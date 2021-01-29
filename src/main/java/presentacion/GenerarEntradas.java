@@ -1,11 +1,21 @@
 package presentacion;
 
+import com.google.zxing.WriterException;
 import dominio.ControlEntradas;
 import dominio.ControlSocio;
+import dominio.CrearQR;
 import dominio.Entrada;
 import dominio.Evento;
 import dominio.Socio;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -46,6 +56,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
+        setIconImage(getIconImage());
 
         panel.setBackground(new java.awt.Color(51, 51, 51));
         panel.setName("panel"); // NOI18N
@@ -161,10 +172,22 @@ public class GenerarEntradas extends javax.swing.JFrame {
         if(dialogResult == JOptionPane.YES_OPTION){        
             ControlEntradas ce = new ControlEntradas();
             if(!socioConEntrada.isEmpty()){
-                System.out.println(socioConEntrada);
                 for(int i = 0 ; i < socioConEntrada.size() ; i++){
                     Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni());
                     ce.insertarEntrada(entrada);
+                    
+                    try{
+                        CrearQR qr = new CrearQR();
+                        BufferedImage imagen = qr.crearQR(entrada.getId_entrada()+
+                                ""+entrada.getId_evento()+entrada.getId_socio(), 300, 300);
+                        File outputfile = new File("C:\\Users\\angel\\Escritorio\\qr"+i+".png");
+                        ImageIO.write(imagen, "png", outputfile);
+                    }catch(WriterException e){
+                        System.out.println(e.getMessage());
+                    }catch (IOException ex) {
+                        Logger.getLogger(GenerarEntradas.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
                 }
             }
             dispose();
@@ -195,6 +218,13 @@ public class GenerarEntradas extends javax.swing.JFrame {
         modeloListaSociosCon.addAll(0, sociosCon);
         modeloListaSociosSin.addAll(0, sociosSin);
     }
+    
+   @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(
+                "C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos/logo(2).png");
+        return retValue;
+    }    
     
     private final Evento evento;
     private final ArrayList<Entrada> entradas;

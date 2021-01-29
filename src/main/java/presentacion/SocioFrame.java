@@ -5,6 +5,8 @@ import dominio.ControlSocio;
 import dominio.Membresia;
 import dominio.Socio;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.sql.Date;
 
@@ -80,6 +82,7 @@ public class SocioFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
+        setIconImage(getIconImage());
         setResizable(false);
 
         panel.setBackground(new java.awt.Color(51, 51, 51));
@@ -146,7 +149,7 @@ public class SocioFrame extends javax.swing.JFrame {
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\user(1).png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\user(1).png")); // NOI18N
         panelCenter.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 140));
 
         lblDatosPersonales.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -713,6 +716,13 @@ public class SocioFrame extends javax.swing.JFrame {
             cbProvincia.setSelectedItem(c[4].replaceFirst(" ", ""));
         }
     }
+    
+   @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(
+                "C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos/logo(2).png");
+        return retValue;
+    }    
     
     private final ControlSocio cs;
     private Socio socio;

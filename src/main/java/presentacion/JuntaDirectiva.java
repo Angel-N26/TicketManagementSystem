@@ -4,6 +4,8 @@ import dominio.Cargo;
 import dominio.ControlJuntaDirectiva;
 import dominio.ControlSocio;
 import dominio.Socio;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 
@@ -42,6 +44,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
+        setIconImage(getIconImage());
         setResizable(false);
 
         panel.setBackground(new java.awt.Color(51, 51, 51));
@@ -255,6 +258,13 @@ public class JuntaDirectiva extends javax.swing.JFrame {
             cbVocal2.addItem(soc.get(i));
         }        
     }
+    
+   @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(
+                "C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos/logo(2).png");
+        return retValue;
+    }    
     
     private ArrayList<Socio> soc;
     

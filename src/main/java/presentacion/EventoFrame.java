@@ -3,6 +3,8 @@ package presentacion;
 import dominio.ControlEvento;
 import dominio.Evento;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 
@@ -64,8 +66,9 @@ public class EventoFrame extends javax.swing.JFrame {
         lblLocalidad = new javax.swing.JLabel();
         lblProvincia = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
+        setIconImage(getIconImage());
         setResizable(false);
 
         panel.setBackground(new java.awt.Color(51, 51, 51));
@@ -135,7 +138,7 @@ public class EventoFrame extends javax.swing.JFrame {
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\music.png")); // NOI18N
+        lblImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\music.png")); // NOI18N
         lblImg.setName("lblImg"); // NOI18N
         panelCenter.add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
@@ -582,6 +585,13 @@ public class EventoFrame extends javax.swing.JFrame {
         tfCodPostal.setText(d[3]);
         tfLocalidad.setText(d[4]);
         cbProvincia.setSelectedItem(d[5].replaceFirst(" ", ""));                                   
+    }
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(
+                "C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos/logo(2).png");
+        return retValue;
     }
     
     private final ControlEvento ce;

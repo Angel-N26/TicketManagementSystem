@@ -1,6 +1,8 @@
 package presentacion;
 
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 /**
  * @author angel
@@ -35,6 +37,8 @@ public class Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TicketManagementSystem");
+        setBackground(new java.awt.Color(0, 0, 0));
+        setIconImage(getIconImage());
         setResizable(false);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
@@ -52,7 +56,7 @@ public class Inicio extends javax.swing.JFrame {
         menu.setName("menu"); // NOI18N
 
         panelCard.add(ip, "card4");
-        menuInicio.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\casa-icono-silueta.png")); // NOI18N
+        menuInicio.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\casa-icono-silueta.png")); // NOI18N
         menuInicio.setText("Inicio");
         menuInicio.setName("menuInicio"); // NOI18N
         menuInicio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -63,7 +67,7 @@ public class Inicio extends javax.swing.JFrame {
         menu.add(menuInicio);
 
         panelCard.add(ap, "card5");
-        menuAsociacion.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\apreton-de-manos.png")); // NOI18N
+        menuAsociacion.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\apreton-de-manos.png")); // NOI18N
         menuAsociacion.setText("Asociacion");
         menuAsociacion.setToolTipText("");
         menuAsociacion.setName("menuAsociacion"); // NOI18N
@@ -75,7 +79,7 @@ public class Inicio extends javax.swing.JFrame {
         menu.add(menuAsociacion);
 
         panelCard.add(sp, "card6");
-        menuSocios.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\personas.png")); // NOI18N
+        menuSocios.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\personas.png")); // NOI18N
         menuSocios.setText("Socios");
         menuSocios.setName("menuSocios"); // NOI18N
         menuSocios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -86,7 +90,7 @@ public class Inicio extends javax.swing.JFrame {
         menu.add(menuSocios);
 
         panelCard.add(evp, "card7");
-        menuEventos.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\evento.png")); // NOI18N
+        menuEventos.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\evento.png")); // NOI18N
         menuEventos.setText("Eventos");
         menuEventos.setName("menuEventos"); // NOI18N
         menuEventos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -97,7 +101,7 @@ public class Inicio extends javax.swing.JFrame {
         menu.add(menuEventos);
 
         panelCard.add(enp, "card8");
-        menuEntradas.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\entradas.png")); // NOI18N
+        menuEntradas.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\entradas.png")); // NOI18N
         menuEntradas.setText("Entradas");
         menuEntradas.setName("menuEntradas"); // NOI18N
         menuEntradas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,7 +114,7 @@ public class Inicio extends javax.swing.JFrame {
         menuAyuda.setText("Help me");
         menuAyuda.setName("menuAyuda"); // NOI18N
 
-        submenuCerrarSesion.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\power-button.png")); // NOI18N
+        submenuCerrarSesion.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\power-button.png")); // NOI18N
         submenuCerrarSesion.setText("Cerrar Sesion");
         submenuCerrarSesion.setName("submenuCerrarSesion"); // NOI18N
         submenuCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,6 +178,13 @@ public class Inicio extends javax.swing.JFrame {
         evp.actualizarListaEventos();
         enp.actualizarListaEntradas();
     }//GEN-LAST:event_formWindowGainedFocus
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(
+                "C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos/logo(2).png");
+        return retValue;
+    }
     
     private final inicioPanel ip;
     private final asociacionPanel ap;

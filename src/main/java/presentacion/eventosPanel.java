@@ -71,7 +71,7 @@ public class eventosPanel extends javax.swing.JPanel {
         panelNorthEventos.add(btnBuscarEventos);
 
         jLabel1.setVisible(false);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar(1).png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\cerrar(1).png")); // NOI18N
         jLabel1.setEnabled(false);
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

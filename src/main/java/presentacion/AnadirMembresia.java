@@ -3,6 +3,8 @@ package presentacion;
 import dominio.ControlMembresia;
 import dominio.Membresia;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -48,6 +50,7 @@ public class AnadirMembresia extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Membresias");
         setBackground(new java.awt.Color(0, 0, 0));
+        setIconImage(getIconImage());
         setResizable(false);
 
         panelBorder.setName("panelBorder"); // NOI18N
@@ -242,6 +245,13 @@ public class AnadirMembresia extends javax.swing.JFrame {
             }
         }
         return validar;
+    }
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(
+                "C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos/logo(2).png");
+        return retValue;
     }
     
     private final ControlMembresia cm;

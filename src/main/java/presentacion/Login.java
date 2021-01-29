@@ -1,6 +1,8 @@
 package presentacion;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 /**
  * @author angel
@@ -41,6 +43,9 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TMS");
+        setBackground(new java.awt.Color(0, 0, 0));
+        setForeground(java.awt.Color.white);
+        setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(300, 325));
         setName("frame"); // NOI18N
         setResizable(false);
@@ -53,7 +58,7 @@ public class Login extends javax.swing.JFrame {
         panel.setLayout(new java.awt.GridBagLayout());
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\logo(1).png")); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\logo(1).png")); // NOI18N
         logo.setName("logo"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -163,7 +168,7 @@ public class Login extends javax.swing.JFrame {
 
         lblWarningImg.setForeground(new java.awt.Color(255, 255, 255));
         lblWarningImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWarningImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\triangulo.png")); // NOI18N
+        lblWarningImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\triangulo.png")); // NOI18N
         lblWarningImg.setToolTipText("");
         lblWarningImg.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblWarningImg.setName("lblWarningImg"); // NOI18N
@@ -249,7 +254,7 @@ public class Login extends javax.swing.JFrame {
 
         errorImgPass.setForeground(new java.awt.Color(255, 255, 255));
         errorImgPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar.png")); // NOI18N
+        errorImgPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\cerrar.png")); // NOI18N
         errorImgPass.setToolTipText("");
         errorImgPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgPass.setName("errorImgPass"); // NOI18N
@@ -266,7 +271,7 @@ public class Login extends javax.swing.JFrame {
 
         errorImgUser.setForeground(new java.awt.Color(255, 255, 255));
         errorImgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar.png")); // NOI18N
+        errorImgUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\cerrar.png")); // NOI18N
         errorImgUser.setToolTipText("");
         errorImgUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgUser.setName("errorImgUser"); // NOI18N
@@ -385,6 +390,13 @@ public class Login extends javax.swing.JFrame {
         });
     }
 
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(
+                "C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos/logo(2).png");
+        return retValue;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
     private javax.swing.JLabel errorImgPass;

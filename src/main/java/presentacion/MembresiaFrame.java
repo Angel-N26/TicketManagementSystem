@@ -2,6 +2,8 @@ package presentacion;
 
 import dominio.ControlMembresia;
 import dominio.Membresia;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -33,6 +35,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
+        setIconImage(getIconImage());
         setResizable(false);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
@@ -152,6 +155,13 @@ public class MembresiaFrame extends javax.swing.JFrame {
         modeloLista.removeAllElements();
         modeloLista.addAll(0, obtenerMembresias());
     }
+    
+   @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(
+                "C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos/logo(2).png");
+        return retValue;
+    }    
     
     private final ControlMembresia cm;    
     private DefaultListModel modeloLista;
