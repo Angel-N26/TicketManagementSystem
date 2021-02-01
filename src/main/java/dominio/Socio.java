@@ -15,9 +15,10 @@ public class Socio {
     private String domicilio;
     private int telefono;
     private int id_membresia;
+    private boolean pagado;
     
     public Socio(String nDni, String nNombre, String nApellidos, String nEmail, Date nFecha_nac, 
-           String nDomicilio, int nTelefono, int nId_membresia){                
+           String nDomicilio, int nTelefono, int nId_membresia, boolean nPagado){                
         this.dni = nDni;
         this.nombre = nNombre;
         this.apellidos = nApellidos;
@@ -26,6 +27,7 @@ public class Socio {
         this.domicilio = nDomicilio;
         this.telefono = nTelefono;
         this.id_membresia = nId_membresia;
+        this.pagado = nPagado;
     }
 
     public Socio() {
@@ -93,6 +95,14 @@ public class Socio {
 
     public void setId_membresia(int id_membresia) {
         this.id_membresia = id_membresia;
+    }
+    
+    public boolean getPagado() {
+        return pagado;
+    }
+
+    public void setPagado(boolean pagado) {
+        this.pagado = pagado;
     }
     
     @Override

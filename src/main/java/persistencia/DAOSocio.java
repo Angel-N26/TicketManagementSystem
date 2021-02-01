@@ -49,7 +49,7 @@ public class DAOSocio {
                 socio = new Socio(rs.getString(1), rs.getString(2),
                         rs.getString(3), rs.getString(4),
                         rs.getDate(5), rs.getString(6),
-                        rs.getInt(7), rs.getInt(8));
+                        rs.getInt(7), rs.getInt(8), rs.getBoolean(9));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -62,7 +62,7 @@ public class DAOSocio {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into socios values(?,?,?,?,?,?,?,?)";
+            String sql = "insert into socios values(?,?,?,?,?,?,?,?,?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, socio.getDni());
             pst.setString(2, socio.getNombre());
@@ -72,6 +72,7 @@ public class DAOSocio {
             pst.setString(6, socio.getDomicilio());
             pst.setInt(7, socio.getTelefono());
             pst.setInt(8, socio.getId_membresia());
+            pst.setBoolean(9, socio.getPagado());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -85,8 +86,9 @@ public class DAOSocio {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "update socios set dni = ?, nombre = ?, apellidos = ?, email = ?,"
-                    + "fechanacimiento = ?, direccion = ?, telefono = ?, idMembresia = ? where dni = ?";
+            String sql = "update socios set dni = ?, nombre = ?, apellidos = ?,"
+                    + " email = ?, fechanacimiento = ?, direccion = ?, telefono = ?,"
+                    + " idMembresia = ?, pagado = ? where dni = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, socio.getDni());
             pst.setString(2, socio.getNombre());
@@ -96,7 +98,8 @@ public class DAOSocio {
             pst.setString(6, socio.getDomicilio());
             pst.setInt(7, socio.getTelefono());
             pst.setInt(8, socio.getId_membresia());
-            pst.setString(9, dni);
+            pst.setBoolean(9, socio.getPagado());
+            pst.setString(10, dni);
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

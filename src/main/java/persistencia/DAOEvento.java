@@ -48,7 +48,7 @@ public class DAOEvento {
             while (rs.next()) {
                 evento = new Evento(rs.getInt(1), rs.getString(2),
                         rs.getString(3), rs.getString(4),
-                        rs.getDate(5), rs.getInt(6));
+                        rs.getDate(5), rs.getTime(6), rs.getInt(7), rs.getInt(8));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -61,14 +61,16 @@ public class DAOEvento {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into eventos(nombre, tipo, direccion, fecha,"
-                    + "entradas) values(?,?,?,?,?)";
+            String sql = "insert into eventos(nombre, tipo, direccion, fecha, hora,"
+                    + " entradas, entradasVendidas) values(?,?,?,?,?,?,?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, evento.getNombre());
             pst.setString(2, evento.getTipo_evento());
             pst.setString(3, evento.getLugar_evento());
             pst.setDate(4, evento.getFecha_evento());
-            pst.setInt(5, evento.getEntradas());
+            pst.setTime(5, evento.getHora_evento());
+            pst.setInt(6, evento.getEntradas());
+            pst.setInt(7, evento.getEntradas_vendidas());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -83,14 +85,16 @@ public class DAOEvento {
             realizado = true;
             con.createStatement();
             String sql = "update eventos set nombre = ?, tipo = ?, direccion = ?,"
-                    + "fecha = ?, entradas = ? where ideventos = ?";
+                    + " fecha = ?, hora = ?, entradas = ?, entradasVendidas = ? where ideventos = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, evento.getNombre());
             pst.setString(2, evento.getTipo_evento());
             pst.setString(3, evento.getLugar_evento());
             pst.setDate(4, evento.getFecha_evento());
-            pst.setInt(5, evento.getEntradas());
-            pst.setInt(7, evento.getId());
+            pst.setTime(5, evento.getHora_evento());
+            pst.setInt(6, evento.getEntradas());
+            pst.setInt(7, evento.getEntradas_vendidas());
+            pst.setInt(8, evento.getId());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

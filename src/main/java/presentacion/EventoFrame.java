@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalTime;
 import javax.swing.JOptionPane;
 
 /**
@@ -51,8 +53,8 @@ public class EventoFrame extends javax.swing.JFrame {
         tfHora = new javax.swing.JTextField();
         lblCapacidad = new javax.swing.JLabel();
         tfCapacidad = new javax.swing.JTextField();
-        lblPrecio = new javax.swing.JLabel();
-        tfPrecio = new javax.swing.JTextField();
+        lblEntradasVendidas = new javax.swing.JLabel();
+        tfEntradasVendidas = new javax.swing.JTextField();
         ftfFecha = new javax.swing.JFormattedTextField();
         lblNombreRecinto = new javax.swing.JLabel();
         tfLocalidad = new javax.swing.JTextField();
@@ -258,27 +260,27 @@ public class EventoFrame extends javax.swing.JFrame {
         });
         panelCenter.add(tfCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 150, 25));
 
-        lblPrecio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        lblPrecio.setText("Precio");
-        lblPrecio.setName("lblPrecio"); // NOI18N
-        panelCenter.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, -1, -1));
+        lblEntradasVendidas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblEntradasVendidas.setForeground(new java.awt.Color(255, 255, 255));
+        lblEntradasVendidas.setText("Entradas vendidas");
+        lblEntradasVendidas.setName("lblEntradasVendidas"); // NOI18N
+        panelCenter.add(lblEntradasVendidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, -1, -1));
 
-        tfPrecio.setBackground(new java.awt.Color(102, 102, 102));
-        tfPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        tfPrecio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-        tfPrecio.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfPrecio.setName("tfPrecio"); // NOI18N
-        tfPrecio.setSelectionColor(new java.awt.Color(204, 0, 204));
-        tfPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfEntradasVendidas.setBackground(new java.awt.Color(102, 102, 102));
+        tfEntradasVendidas.setForeground(new java.awt.Color(255, 255, 255));
+        tfEntradasVendidas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfEntradasVendidas.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfEntradasVendidas.setName("tfEntradasVendidas"); // NOI18N
+        tfEntradasVendidas.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfEntradasVendidas.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                tfPrecioFocusGained(evt);
+                tfEntradasVendidasFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                tfPrecioFocusLost(evt);
+                tfEntradasVendidasFocusLost(evt);
             }
         });
-        panelCenter.add(tfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 400, 140, 25));
+        panelCenter.add(tfEntradasVendidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 400, 140, 25));
 
         ftfFecha.setBackground(new java.awt.Color(102, 102, 102));
         ftfFecha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
@@ -469,15 +471,15 @@ public class EventoFrame extends javax.swing.JFrame {
         tfCapacidad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfCapacidadFocusLost
 
-    private void tfPrecioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPrecioFocusGained
-        tfPrecio.setBackground(Color.black);
-        tfPrecio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-    }//GEN-LAST:event_tfPrecioFocusGained
+    private void tfEntradasVendidasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEntradasVendidasFocusGained
+        tfEntradasVendidas.setBackground(Color.black);
+        tfEntradasVendidas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfEntradasVendidasFocusGained
 
-    private void tfPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPrecioFocusLost
-        tfPrecio.setBackground(new java.awt.Color(102, 102, 102));
-        tfPrecio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-    }//GEN-LAST:event_tfPrecioFocusLost
+    private void tfEntradasVendidasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEntradasVendidasFocusLost
+        tfEntradasVendidas.setBackground(new java.awt.Color(102, 102, 102));
+        tfEntradasVendidas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfEntradasVendidasFocusLost
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         int dialogButton = JOptionPane.YES_NO_OPTION;
@@ -494,10 +496,9 @@ public class EventoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarMouseClicked
 
     private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
-        Evento evento = new Evento(tfNombre.getText(), tfTipo.getText(),
-                direccion(), Date.valueOf(ftfFecha.getText()),
-                Integer.parseInt(tfCapacidad.getText()));
-        
+        Evento evento = new Evento(eve.getId(), tfNombre.getText(), tfTipo.getText(),
+                direccion(), Date.valueOf(ftfFecha.getText()), Time.valueOf(tfHora.getText()),
+                Integer.parseInt(tfCapacidad.getText()), Integer.parseInt(tfEntradasVendidas.getText()));
         
         if(btnAnadir.getText().equals("Modificar")){
             if(ce.modificarEvento(evento)){
@@ -565,7 +566,9 @@ public class EventoFrame extends javax.swing.JFrame {
         tfTipo.setText(eve.getTipo_evento());       
         separarDireccion(eve.getLugar_evento());
         ftfFecha.setText(eve.getFecha_evento()+"");
+        tfHora.setText(eve.getHora_evento()+"");
         tfCapacidad.setText(eve.getEntradas()+"");
+        tfEntradasVendidas.setText(eve.getEntradas_vendidas()+"");
                 
         btnAnadir.setText("Modificar");
     }
@@ -607,6 +610,7 @@ public class EventoFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblCapacidad;
     private javax.swing.JLabel lblCodPostal;
     private javax.swing.JLabel lblDireccion;
+    private javax.swing.JLabel lblEntradasVendidas;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblImg;
@@ -614,7 +618,6 @@ public class EventoFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombreRecinto;
     private javax.swing.JLabel lblNumero;
-    private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblProvincia;
     private javax.swing.JLabel lblTipo;
     private javax.swing.JPanel panel;
@@ -625,12 +628,12 @@ public class EventoFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tfCalle;
     private javax.swing.JTextField tfCapacidad;
     private javax.swing.JTextField tfCodPostal;
+    private javax.swing.JTextField tfEntradasVendidas;
     private javax.swing.JTextField tfHora;
     private javax.swing.JTextField tfLocalidad;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfNombreRecinto;
     private javax.swing.JTextField tfNumero;
-    private javax.swing.JTextField tfPrecio;
     private javax.swing.JTextField tfTipo;
     // End of variables declaration//GEN-END:variables
 }

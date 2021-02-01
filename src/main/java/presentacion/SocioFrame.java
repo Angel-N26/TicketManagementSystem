@@ -544,7 +544,7 @@ public class SocioFrame extends javax.swing.JFrame {
         Membresia m = (Membresia) cbMembresias.getSelectedItem();
         Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(), 
                 tfEmail.getText(), Date.valueOf(tfFechaNacimiento.getText()),
-                direccion(), Integer.parseInt(tfTlf.getText()), m.getId_membresia());
+                direccion(), Integer.parseInt(tfTlf.getText()), m.getId_membresia(), cbPagos.isSelected());
         
         if(btnAnadir.getText().equals("Modificar")){
             if(cs.modificarSocio(s, socio.getDni())){
@@ -656,6 +656,7 @@ public class SocioFrame extends javax.swing.JFrame {
         tfTlf.setText(socio.getTelefono()+"");
         tfDNI.setText(socio.getDni());
         seleccionarMembresia(socio.getId_membresia());
+        cbPagos.setSelected(socio.getPagado());
         //añadir pendiente de pagos
         
         btnAnadir.setText("Modificar");
