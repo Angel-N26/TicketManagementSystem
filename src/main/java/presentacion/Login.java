@@ -1,9 +1,5 @@
 package presentacion;
 
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.Toolkit;
-
 /**
  * @author angel
  **/
@@ -22,7 +18,6 @@ public class Login extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         panel = new javax.swing.JPanel();
-        logo = new javax.swing.JLabel();
         tfUser = new javax.swing.JTextField();
         pfPass = new javax.swing.JPasswordField();
         btnIniciar = new javax.swing.JButton();
@@ -32,14 +27,17 @@ public class Login extends javax.swing.JFrame {
         lblPass = new javax.swing.JLabel();
         lblRetry = new javax.swing.JLabel();
         lblRetry.setVisible(false);
-        lblTitulo = new javax.swing.JLabel();
         lblError = new javax.swing.JLabel();
         lblError.setVisible(false);
-        jSeparator1 = new javax.swing.JSeparator();
         errorImgPass = new javax.swing.JLabel();
         errorImgPass.setVisible(false);
         errorImgUser = new javax.swing.JLabel();
         errorImgUser.setVisible(false);
+        jPanel2 = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TMS");
@@ -48,33 +46,22 @@ public class Login extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(300, 325));
         setName("frame"); // NOI18N
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(250, 250));
         setResizable(false);
         setSize(new java.awt.Dimension(300, 325));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel.setBackground(new java.awt.Color(51, 51, 51));
         panel.setForeground(new java.awt.Color(255, 255, 255));
         panel.setName("panel"); // NOI18N
-        panel.setPreferredSize(new java.awt.Dimension(300, 330));
+        panel.setPreferredSize(new java.awt.Dimension(300, 250));
         panel.setLayout(new java.awt.GridBagLayout());
 
-        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\logo(1).png")); // NOI18N
-        logo.setName("logo"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 2;
-        gridBagConstraints.ipady = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 15, 0, 0);
-        panel.add(logo, gridBagConstraints);
-
-        tfUser.setBackground(new java.awt.Color(102, 102, 102));
+        tfUser.setBackground(new java.awt.Color(51, 51, 51));
         tfUser.setForeground(new java.awt.Color(255, 255, 255));
         tfUser.setToolTipText("Introduzca su usuario.");
-        tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfUser.setCaretColor(new java.awt.Color(204, 0, 204));
         tfUser.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         tfUser.setName("tfUser"); // NOI18N
@@ -91,18 +78,18 @@ public class Login extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 15;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 275;
-        gridBagConstraints.ipady = 7;
+        gridBagConstraints.ipadx = 279;
+        gridBagConstraints.ipady = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(2, 10, 0, 16);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         panel.add(tfUser, gridBagConstraints);
 
-        pfPass.setBackground(new java.awt.Color(102, 102, 102));
+        pfPass.setBackground(new java.awt.Color(51, 51, 51));
         pfPass.setForeground(new java.awt.Color(255, 255, 255));
-        pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         pfPass.setCaretColor(new java.awt.Color(204, 0, 204));
         pfPass.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         pfPass.setName("pfPass"); // NOI18N
@@ -119,19 +106,18 @@ public class Login extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 15;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 275;
-        gridBagConstraints.ipady = 7;
+        gridBagConstraints.ipadx = 279;
+        gridBagConstraints.ipady = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(1, 10, 0, 16);
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         panel.add(pfPass, gridBagConstraints);
 
         btnIniciar.setBackground(new java.awt.Color(204, 0, 204));
         btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciar.setText("Iniciar Sesión");
-        btnIniciar.setBorder(null);
         btnIniciar.setName("btnIniciar"); // NOI18N
         btnIniciar.setPreferredSize(new java.awt.Dimension(280, 35));
         btnIniciar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,13 +127,13 @@ public class Login extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 15;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 217;
-        gridBagConstraints.ipady = 16;
+        gridBagConstraints.ipadx = 185;
+        gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(34, 10, 19, 16);
+        gridBagConstraints.insets = new java.awt.Insets(35, 10, 59, 10);
         panel.add(btnIniciar, gridBagConstraints);
 
         lblUser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -158,12 +144,12 @@ public class Login extends javax.swing.JFrame {
         lblUser.setName("lblUser"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 14;
         gridBagConstraints.ipady = -4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(25, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 0);
         panel.add(lblUser, gridBagConstraints);
 
         lblWarningImg.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,12 +160,12 @@ public class Login extends javax.swing.JFrame {
         lblWarningImg.setName("lblWarningImg"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 5;
         gridBagConstraints.ipady = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(13, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         panel.add(lblWarningImg, gridBagConstraints);
 
         lblPass.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -190,12 +176,12 @@ public class Login extends javax.swing.JFrame {
         lblPass.setName("lblPass"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 5;
         gridBagConstraints.ipady = -4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 0, 0);
         panel.add(lblPass, gridBagConstraints);
 
         lblRetry.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -204,27 +190,13 @@ public class Login extends javax.swing.JFrame {
         lblRetry.setName("lblRetry"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.ipadx = 129;
         gridBagConstraints.ipady = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 11, 0, 10);
         panel.add(lblRetry, gridBagConstraints);
-
-        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitulo.setText("TicketManagementSystem");
-        lblTitulo.setName("lblTitulo"); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 14;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 6, 0, 0);
-        panel.add(lblTitulo, gridBagConstraints);
 
         lblError.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblError.setForeground(new java.awt.Color(255, 255, 255));
@@ -232,120 +204,156 @@ public class Login extends javax.swing.JFrame {
         lblError.setName("lblError"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.ipadx = 3;
         gridBagConstraints.ipady = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(13, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 11, 0, 10);
         panel.add(lblError, gridBagConstraints);
-
-        jSeparator1.setPreferredSize(new java.awt.Dimension(280, 2));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 15;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 279;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 10, 0, 16);
-        panel.add(jSeparator1, gridBagConstraints);
 
         errorImgPass.setForeground(new java.awt.Color(255, 255, 255));
         errorImgPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorImgPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\cerrar.png")); // NOI18N
         errorImgPass.setToolTipText("");
+        errorImgPass.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         errorImgPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgPass.setName("errorImgPass"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 4;
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(13, 140, 0, 16);
+        gridBagConstraints.insets = new java.awt.Insets(15, 140, 0, 10);
         panel.add(errorImgPass, gridBagConstraints);
 
         errorImgUser.setForeground(new java.awt.Color(255, 255, 255));
         errorImgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorImgUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\cerrar.png")); // NOI18N
         errorImgUser.setToolTipText("");
+        errorImgUser.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         errorImgUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgUser.setName("errorImgUser"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 4;
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 140, 0, 16);
+        gridBagConstraints.insets = new java.awt.Insets(20, 140, 0, 10);
         panel.add(errorImgUser, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, 300));
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setPreferredSize(new java.awt.Dimension(300, 50));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+        });
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\logo(2).png")); // NOI18N
+        logo.setName("logo"); // NOI18N
+        jPanel2.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 20, 20));
+
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("TicketManagementSystem");
+        lblTitulo.setName("lblTitulo"); // NOI18N
+        jPanel2.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 22, 190, -1));
+
+        jSeparator1.setPreferredSize(new java.awt.Dimension(280, 2));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 280, -1));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\close-button.png")); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 20, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUserFocusGained
-        tfUser.setBackground(Color.BLACK);
-        tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+        tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 204)));        
+        //tfUser.setBackground(Color.BLACK);
+        //tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+        
         errorImgPass.setVisible(false);
         errorImgUser.setVisible(false);
         lblError.setVisible(false);
         lblRetry.setVisible(false);
         lblWarningImg.setVisible(false);
-        pfPass.setBackground(new java.awt.Color(102, 102, 102));
-        pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        
+        pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        //pfPass.setBackground(new java.awt.Color(102, 102, 102));
+        //pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfUserFocusGained
 
     private void tfUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUserFocusLost
-        tfUser.setBackground(new java.awt.Color(102, 102, 102));
-        tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        //tfUser.setBackground(new java.awt.Color(102, 102, 102));
+        //tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfUserFocusLost
 
     private void pfPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusGained
-        pfPass.setBackground(Color.BLACK);
-        pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+        pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 204)));
+        //pfPass.setBackground(Color.BLACK);
+        //pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+        
         errorImgPass.setVisible(false);
         errorImgUser.setVisible(false);
         lblError.setVisible(false);
         lblRetry.setVisible(false);
         lblWarningImg.setVisible(false);
-        tfUser.setBackground(new java.awt.Color(102, 102, 102));
-        tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        
+        tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        //tfUser.setBackground(new java.awt.Color(102, 102, 102));
+        //tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_pfPassFocusGained
 
     private void pfPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusLost
-        pfPass.setBackground(new java.awt.Color(102, 102, 102));
-        pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        //pfPass.setBackground(new java.awt.Color(102, 102, 102));
+        //pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_pfPassFocusLost
 
     private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
         if(tfUser.getText().equals("aa") && pfPass.getText().equals("aa")){
-            Inicio inicio = new Inicio();
+           /* Inicio inicio = new Inicio();
             inicio.setVisible(true);
-            inicio.setLocationRelativeTo(null);
+            inicio.setLocationRelativeTo(null);*/
+            
+            Menu menu = new Menu();
+            menu.setVisible(true);
+            menu.setLocationRelativeTo(null);
+            menu.setExtendedState(NORMAL);
             dispose();
         }else{
-            tfUser.setBackground(Color.BLACK);
-            pfPass.setBackground(Color.BLACK);
-            tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
-            pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+            //tfUser.setBackground(Color.BLACK);
+            //pfPass.setBackground(Color.BLACK);
+            tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));
+            pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));                       
+            //tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+            //pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+            
             errorImgPass.setVisible(true);
             errorImgUser.setVisible(true);
             lblError.setVisible(true);
@@ -353,6 +361,21 @@ public class Login extends javax.swing.JFrame {
             lblWarningImg.setVisible(true);
         }
     }//GEN-LAST:event_btnIniciarMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_jPanel2MousePressed
+
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x-xx, y-xy);
+    }//GEN-LAST:event_jPanel2MouseDragged
 
     /**
      * @param args the command line arguments
@@ -389,18 +412,16 @@ public class Login extends javax.swing.JFrame {
             }
         });
     }
-
-    @Override
-    public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(
-                "C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos/logo(2).png");
-        return retValue;
-    }
+    
+    private int xx;
+    private int xy;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
     private javax.swing.JLabel errorImgPass;
     private javax.swing.JLabel errorImgUser;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblPass;
