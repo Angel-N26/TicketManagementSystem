@@ -1,8 +1,6 @@
 package presentacion;
 
 import java.awt.CardLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
 
 /**
  * @author angel
@@ -178,14 +176,7 @@ public class Inicio extends javax.swing.JFrame {
         evp.actualizarListaEventos();
         enp.actualizarListaEntradas();
     }//GEN-LAST:event_formWindowGainedFocus
-    
-    @Override
-    public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(
-                "C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos/logo(2).png");
-        return retValue;
-    }
-    
+       
     private final inicioPanel ip;
     private final asociacionPanel ap;
     private final sociosPanel sp;

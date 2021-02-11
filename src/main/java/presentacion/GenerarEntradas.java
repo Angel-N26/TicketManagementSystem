@@ -42,8 +42,8 @@ public class GenerarEntradas extends javax.swing.JFrame {
         panel = new javax.swing.JPanel();
         panelNorth = new javax.swing.JPanel();
         lblPregunta = new javax.swing.JLabel();
-        spNumEntradas = new javax.swing.JSpinner();
         lblEvento = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         panelSouth = new javax.swing.JPanel();
         btnGenerarEntradas = new javax.swing.JButton();
         panelCenter = new javax.swing.JPanel();
@@ -57,34 +57,43 @@ public class GenerarEntradas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
         setIconImage(getIconImage());
+        setUndecorated(true);
 
         panel.setBackground(new java.awt.Color(51, 51, 51));
         panel.setName("panel"); // NOI18N
         panel.setLayout(new java.awt.BorderLayout());
 
         panelNorth.setBackground(new java.awt.Color(51, 51, 51));
+        panelNorth.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
         panelNorth.setName("panelNorth"); // NOI18N
-        panelNorth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
+        panelNorth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblPregunta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblPregunta.setForeground(new java.awt.Color(255, 255, 255));
-        lblPregunta.setText("¿Cuantas entradas quieres generar para no socios?");
+        lblPregunta.setText("Generar Entradas");
         lblPregunta.setToolTipText("");
         lblPregunta.setName("lblPregunta"); // NOI18N
-        panelNorth.add(lblPregunta);
-
-        spNumEntradas.setName("spNumEntradas"); // NOI18N
-        spNumEntradas.setPreferredSize(new java.awt.Dimension(50, 25));
-        panelNorth.add(spNumEntradas);
+        panelNorth.add(lblPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, -1, -1));
 
         lblEvento.setText(evento.getNombre());
         lblEvento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblEvento.setForeground(new java.awt.Color(255, 255, 255));
         lblEvento.setName("lblEvento"); // NOI18N
-        panelNorth.add(lblEvento);
+        panelNorth.add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 13, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\close-button.png")); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 1, new java.awt.Color(0, 0, 0)));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        panelNorth.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 0, -1, -1));
 
         panel.add(panelNorth, java.awt.BorderLayout.PAGE_START);
 
         panelSouth.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
         panelSouth.setName("panelSouth"); // NOI18N
 
         btnGenerarEntradas.setBackground(new java.awt.Color(255, 204, 0));
@@ -102,6 +111,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
         panel.add(panelSouth, java.awt.BorderLayout.PAGE_END);
 
         panelCenter.setBackground(new java.awt.Color(51, 51, 51));
+        panelCenter.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(0, 0, 0)));
         panelCenter.setName("panelCenter"); // NOI18N
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -193,6 +203,10 @@ public class GenerarEntradas extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_btnGenerarEntradasMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
     
     private void rellenarListas(){
         ControlSocio cs = new ControlSocio();
@@ -238,6 +252,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
     private javax.swing.JButton btnGenerarEntradas;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -249,6 +264,5 @@ public class GenerarEntradas extends javax.swing.JFrame {
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelNorth;
     private javax.swing.JPanel panelSouth;
-    private javax.swing.JSpinner spNumEntradas;
     // End of variables declaration//GEN-END:variables
 }
