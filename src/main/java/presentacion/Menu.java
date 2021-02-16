@@ -5,6 +5,7 @@ import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import static java.awt.Frame.NORMAL;
 import java.awt.GraphicsEnvironment;
+import javax.swing.JOptionPane;
 import keeptoo.KButton;
 
 /**
@@ -504,10 +505,14 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_kButton9MouseClicked
 
     private void kButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton10MouseClicked
-        Login login = new Login();
-        login.setVisible(true);
-        login.setLocationRelativeTo(null);
-        dispose();
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "¿Quiere cerrar sesion?","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            Login login = new Login();
+            login.setVisible(true);
+            login.setLocationRelativeTo(null);
+            dispose();
+        }        
     }//GEN-LAST:event_kButton10MouseClicked
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
