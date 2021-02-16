@@ -13,13 +13,13 @@ import keeptoo.KButton;
 public class Menu extends javax.swing.JFrame {
 
     public Menu() {
-        ap = new asociacionPanel();
-        sp = new sociosPanel();
-        evp = new eventosPanel();
-        enp = new entradasPanel();
-        ip = new inicioPanel();
-        jd = null;
-        mem = null;
+        ap = new AsociacionPanel();
+        sp = new SociosPanel();
+        evp = new EventosPanel();
+        enp = new EntradasPanel();
+        ip = new InicioPanel();
+        editSP = new EditSocioPanel();
+        
         initComponents();
     }
 
@@ -106,7 +106,7 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel2.add(jPanel4);
 
-        kButton4.setBorder(null);
+        kButton4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         kButton4.setText("            Junta Directiva");
         kButton4.setkBackGroundColor(new java.awt.Color(51, 51, 51));
         kButton4.setkBorderRadius(0);
@@ -142,7 +142,7 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel2.add(jPanel5);
 
-        kButton5.setBorder(null);
+        kButton5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         kButton5.setText("    Membresia");
         kButton5.setkBackGroundColor(new java.awt.Color(51, 51, 51));
         kButton5.setkBorderRadius(0);
@@ -162,7 +162,6 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel2.add(kButton5);
 
-        jPanel7.add(sp, "cardSo");
         kButton6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         kButton6.setText("Socios      ");
         kButton6.setkBackGroundColor(new java.awt.Color(51, 51, 51));
@@ -338,6 +337,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel7.add(evp, "cardEv");
         jPanel7.add(enp, "cardEn");
         jPanel7.add(ip, "cardEs");
+        jPanel7.add(editSP, "cardEditSP");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -381,7 +381,7 @@ public class Menu extends javax.swing.JFrame {
             setExtendedState(MAXIMIZED_BOTH);
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             setMaximizedBounds(env.getMaximumWindowBounds());
-            maximized = true;
+            maximized = true;            
         }else{
             setExtendedState(NORMAL);
             maximized = false;            
@@ -428,7 +428,9 @@ public class Menu extends javax.swing.JFrame {
     private void kButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton4MouseClicked
         kButton3.setSelected(true);
         
-        jd = new JuntaDirectiva();
+        selected(kButton4);
+        
+        JuntaDirectiva jd = new JuntaDirectiva();
         jd.setVisible(true);
         jd.setLocationRelativeTo(null);
     }//GEN-LAST:event_kButton4MouseClicked
@@ -436,7 +438,9 @@ public class Menu extends javax.swing.JFrame {
     private void kButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton5MouseClicked
         kButton3.setSelected(true);
         
-        mem = new MembresiaFrame();
+        selected(kButton5);
+        
+        MembresiaFrame mem = new MembresiaFrame();
         mem.setVisible(true);
         mem.setLocationRelativeTo(null);
     }//GEN-LAST:event_kButton5MouseClicked
@@ -508,22 +512,11 @@ public class Menu extends javax.swing.JFrame {
         sp.actualizarListaSocios();
         evp.actualizarListaEventos();
         enp.actualizarListaEntradas();
-        if(jd == null){            
-            //jd.dispose();
-        }else{
-            if(jd.isVisible())
-                jd.dispose();
-            
-        }
         
-        if(mem == null){
-            //mem.dispose();
-        }else{
-            if(mem.isVisible())
-                mem.dispose();            
-        }
+        no_selected(kButton4);
+        no_selected(kButton5);
     }//GEN-LAST:event_formWindowGainedFocus
-
+   
     private void no_selected(KButton btn){        
         btn.setSelected(false);
         btn.setkForeGround(new Color(153,153,153));
@@ -541,20 +534,19 @@ public class Menu extends javax.swing.JFrame {
         jPanel5.setVisible(false);
         kButton4.setVisible(false);
         kButton5.setVisible(false);
-    }          
-    
-    private JuntaDirectiva jd;
-    private MembresiaFrame mem;
+    }                  
     
     private boolean maximized = false;
     private int xx;
     private int xy;
     
-    private final inicioPanel ip;
-    private final asociacionPanel ap;
-    private final sociosPanel sp;
-    private final eventosPanel evp;
-    private final entradasPanel enp;   
+    private final InicioPanel ip;
+    private final AsociacionPanel ap;
+    private final SociosPanel sp;
+    private final EventosPanel evp;
+    private final EntradasPanel enp;   
+    
+    private final EditSocioPanel editSP;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

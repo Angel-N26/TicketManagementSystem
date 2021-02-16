@@ -3,9 +3,9 @@ package presentacion;
 /**
  * @author angel
  **/
-public class inicioPanel extends javax.swing.JPanel {
+public class InicioPanel extends javax.swing.JPanel {
 
-    public inicioPanel() {
+    public InicioPanel() {
         initComponents();
     }
 

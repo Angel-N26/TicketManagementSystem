@@ -5,9 +5,9 @@ import java.awt.Color;
 /**
  * @author angel
  **/
-public class asociacionPanel extends javax.swing.JPanel {
+public class AsociacionPanel extends javax.swing.JPanel {
 
-    public asociacionPanel() {
+    public AsociacionPanel() {
         initComponents();
     }
 
@@ -59,7 +59,6 @@ public class asociacionPanel extends javax.swing.JPanel {
         panelEastAsoc.setLayout(new java.awt.GridBagLayout());
 
         logoAsoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logoAsoc.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\logo(3).png")); // NOI18N
         logoAsoc.setName("logoAsoc"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;

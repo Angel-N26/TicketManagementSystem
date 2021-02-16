@@ -150,7 +150,11 @@
             <Component class="keeptoo.KButton" name="kButton4">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
+                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                    <MatteColorBorder bottom="0" left="3" right="0" top="0">
+                      <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                    </MatteColorBorder>
+                  </Border>
                 </Property>
                 <Property name="text" type="java.lang.String" value="            Junta Directiva"/>
                 <Property name="kBackGroundColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -215,7 +219,11 @@
             <Component class="keeptoo.KButton" name="kButton5">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
+                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                    <MatteColorBorder bottom="0" left="3" right="0" top="0">
+                      <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                    </MatteColorBorder>
+                  </Border>
                 </Property>
                 <Property name="text" type="java.lang.String" value="    Membresia"/>
                 <Property name="kBackGroundColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -300,7 +308,7 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="kButton6MouseClicked"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jPanel7.add(sp, &quot;cardSo&quot;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="&#xd;&#xa;"/>
               </AuxValues>
             </Component>
             <Component class="keeptoo.KButton" name="kButton7">
@@ -595,7 +603,7 @@
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel7">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jPanel7.add(ap, &quot;cardAs&quot;);&#xd;&#xa;jPanel7.add(sp, &quot;cardSo&quot;);&#xd;&#xa;jPanel7.add(evp, &quot;cardEv&quot;);&#xd;&#xa;jPanel7.add(enp, &quot;cardEn&quot;);&#xd;&#xa;jPanel7.add(ip, &quot;cardEs&quot;);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jPanel7.add(ap, &quot;cardAs&quot;);&#xd;&#xa;jPanel7.add(sp, &quot;cardSo&quot;);&#xd;&#xa;jPanel7.add(evp, &quot;cardEv&quot;);&#xd;&#xa;jPanel7.add(enp, &quot;cardEn&quot;);&#xd;&#xa;jPanel7.add(ip, &quot;cardEs&quot;);&#xd;&#xa;jPanel7.add(editSP, &quot;cardEditSP&quot;);&#xd;&#xa;"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">

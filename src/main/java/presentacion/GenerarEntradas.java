@@ -58,6 +58,13 @@ public class GenerarEntradas extends javax.swing.JFrame {
         setTitle("TicketManagementSystem");
         setIconImage(getIconImage());
         setUndecorated(true);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+                formWindowLostFocus(evt);
+            }
+        });
 
         panel.setBackground(new java.awt.Color(51, 51, 51));
         panel.setName("panel"); // NOI18N
@@ -207,6 +214,10 @@ public class GenerarEntradas extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
+        dispose();
+    }//GEN-LAST:event_formWindowLostFocus
     
     private void rellenarListas(){
         ControlSocio cs = new ControlSocio();
