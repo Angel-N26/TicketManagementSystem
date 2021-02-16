@@ -83,9 +83,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\recursos\cerrar(1).png"/>
-            </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
