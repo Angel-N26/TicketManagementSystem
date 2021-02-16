@@ -2,10 +2,12 @@ package presentacion;
 
 import dominio.ControlSocio;
 import dominio.Socio;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  * @author angel
@@ -158,9 +160,11 @@ public class SociosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tfBuscarSociosFocusLost
 
     private void btnAnadirSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirSociosMouseClicked
-        /*SocioFrame usuario = new SocioFrame();
-        usuario.setVisible(true);
-        usuario.setLocationRelativeTo(null);*/
+        JPanel card = (JPanel) this.getParent();
+        EditSocioPanel editSP = new EditSocioPanel();
+        card.add(editSP, "cardEditSP");
+        CardLayout cardLayout = (CardLayout) card.getLayout();
+        cardLayout.show(card, "cardEditSP");
     }//GEN-LAST:event_btnAnadirSociosMouseClicked
 
     private void btnEliminarSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarSociosMouseClicked
@@ -180,11 +184,13 @@ public class SociosPanel extends javax.swing.JPanel {
     private void listSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listSociosMouseClicked
         if(evt.getClickCount() == 2){            
             Socio socio = listSocios.getSelectedValue();            
-                        
-            /*SocioFrame sf = new SocioFrame(socio);
-            sf.rellenarCampos();
-            sf.setVisible(true);
-            sf.setLocationRelativeTo(null);*/
+            
+            JPanel card = (JPanel) this.getParent();
+            EditSocioPanel editSP = new EditSocioPanel(socio);
+            editSP.rellenarCampos();
+            card.add(editSP, "cardEditSP");
+            CardLayout cardLayout = (CardLayout) card.getLayout();
+            cardLayout.show(card, "cardEditSP");        
         }
     }//GEN-LAST:event_listSociosMouseClicked
 

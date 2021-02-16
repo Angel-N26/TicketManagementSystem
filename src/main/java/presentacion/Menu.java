@@ -19,6 +19,7 @@ public class Menu extends javax.swing.JFrame {
         enp = new EntradasPanel();
         ip = new InicioPanel();
         editSP = new EditSocioPanel();
+        editEP = new EditEventoPanel();
         
         initComponents();
     }
@@ -338,6 +339,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel7.add(enp, "cardEn");
         jPanel7.add(ip, "cardEs");
         jPanel7.add(editSP, "cardEditSP");
+        jPanel7.add(editEP, "cardEditEP");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -516,7 +518,7 @@ public class Menu extends javax.swing.JFrame {
         no_selected(kButton4);
         no_selected(kButton5);
     }//GEN-LAST:event_formWindowGainedFocus
-   
+       
     private void no_selected(KButton btn){        
         btn.setSelected(false);
         btn.setkForeGround(new Color(153,153,153));
@@ -547,6 +549,7 @@ public class Menu extends javax.swing.JFrame {
     private final EntradasPanel enp;   
     
     private final EditSocioPanel editSP;
+    private final EditEventoPanel editEP;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

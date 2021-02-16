@@ -2,10 +2,12 @@ package presentacion;
 
 import dominio.ControlEvento;
 import dominio.Evento;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.sql.Date;
 import java.sql.Time;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  * @author angel
@@ -408,13 +410,13 @@ public class EditEventoPanel extends javax.swing.JPanel {
         int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
             if(ce.eliminarEvento(eve.getId())){
-                //dispose();
+                dispose();
             }
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
-        //dispose();
+        dispose();
     }//GEN-LAST:event_btnCancelarMouseClicked
 
     private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
@@ -424,11 +426,11 @@ public class EditEventoPanel extends javax.swing.JPanel {
 
         if(btnAnadir.getText().equals("Modificar")){
             if(ce.modificarEvento(evento)){
-                //dispose();
+                dispose();
             }
         }else if(btnAnadir.getText().equals("Añadir")){
             if(ce.insertarEvento(evento)){
-                //dispose();
+                dispose();
             }
         }
     }//GEN-LAST:event_btnAnadirMouseClicked
@@ -543,6 +545,17 @@ public class EditEventoPanel extends javax.swing.JPanel {
         tfCodPostal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfCodPostalFocusLost
 
+    public void dispose(){
+        this.show(false);
+        JPanel card = (JPanel) this.getParent();
+        
+        EventosPanel ep = new EventosPanel();
+        card.add(ep, "cardEP");
+        
+        CardLayout cardLayout = (CardLayout) card.getLayout();
+        cardLayout.show(card, "cardEP");
+    }
+    
     public void rellenarCampos(){
         tfNombre.setText(eve.getNombre());
         tfTipo.setText(eve.getTipo_evento());       

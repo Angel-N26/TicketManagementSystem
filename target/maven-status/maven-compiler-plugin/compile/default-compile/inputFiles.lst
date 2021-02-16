@@ -8,8 +8,6 @@ C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\p
 C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\persistencia\DAOSocio.java
 C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\presentacion\Menu.java
 C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\persistencia\DAOEntradas.java
-C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\presentacion\EventoFrame.java
-C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\presentacion\SocioFrame.java
 C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\presentacion\SociosPanel.java
 C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\dominio\Membresia.java
 C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\presentacion\JuntaDirectiva.java
@@ -22,6 +20,7 @@ C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\p
 C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\presentacion\EventosPanel.java
 C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\presentacion\AsociacionPanel.java
 C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\persistencia\DAOJuntaDirectiva.java
+C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\presentacion\EditEventoPanel.java
 C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\persistencia\DAOEvento.java
 C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\dominio\Entrada.java
 C:\Users\angel\Documents\NetBeansProjects\TicketManagementSystem\src\main\java\dominio\Socio.java

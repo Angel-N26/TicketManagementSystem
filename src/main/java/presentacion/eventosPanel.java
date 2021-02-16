@@ -2,10 +2,12 @@ package presentacion;
 
 import dominio.ControlEvento;
 import dominio.Evento;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  * @author angel
@@ -179,9 +181,11 @@ public class EventosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnAnadirEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirEventosMouseClicked
-        /*EventoFrame evento = new EventoFrame();
-        evento.setVisible(true);
-        evento.setLocationRelativeTo(null);*/
+        JPanel card = (JPanel) this.getParent();
+        EditEventoPanel editEP = new EditEventoPanel();
+        card.add(editEP, "cardEditEP");
+        CardLayout cardLayout = (CardLayout) card.getLayout();
+        cardLayout.show(card, "cardEditEP");
     }//GEN-LAST:event_btnAnadirEventosMouseClicked
 
     private void btnEliminarEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarEventosMouseClicked
@@ -202,10 +206,12 @@ public class EventosPanel extends javax.swing.JPanel {
         if(evt.getClickCount() == 2){
             Evento evento = listEventos.getSelectedValue();
             
-            /*EventoFrame ef = new EventoFrame(evento);
-            ef.rellenarCampos();
-            ef.setVisible(true);
-            ef.setLocationRelativeTo(null);*/
+            JPanel card = (JPanel) this.getParent();
+            EditEventoPanel editEP = new EditEventoPanel(evento);
+            editEP.rellenarCampos();
+            card.add(editEP, "cardEditEP");
+            CardLayout cardLayout = (CardLayout) card.getLayout();
+            cardLayout.show(card, "cardEditEP");
         }
     }//GEN-LAST:event_listEventosMouseClicked
     
