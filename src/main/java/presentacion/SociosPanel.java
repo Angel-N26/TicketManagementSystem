@@ -169,13 +169,12 @@ public class SociosPanel extends javax.swing.JPanel {
 
     private void btnEliminarSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarSociosMouseClicked
         int index = listSocios.getSelectedIndex();
-        String socio = modeloListaSocios.getElementAt(index) + "";
-        String [] s = socio.split(" ");
-        
+        Socio socio =(Socio) modeloListaSocios.getElementAt(index);
+                        
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
-            if(cs.eliminarSocio(s[0])){
+            if(cs.eliminarSocio(socio.getDni())){
                 modeloListaSocios.remove(listSocios.getSelectedIndex());
             }
         }

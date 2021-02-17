@@ -1,9 +1,12 @@
 package presentacion;
 
+import dominio.Colores;
+import javax.swing.JTextField;
+
 /**
  * @author angel
  **/
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame implements Colores {
 
     public Login() {
         initComponents();
@@ -154,7 +157,6 @@ public class Login extends javax.swing.JFrame {
 
         lblWarningImg.setForeground(new java.awt.Color(255, 255, 255));
         lblWarningImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWarningImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\triangulo.png")); // NOI18N
         lblWarningImg.setToolTipText("");
         lblWarningImg.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblWarningImg.setName("lblWarningImg"); // NOI18N
@@ -214,7 +216,6 @@ public class Login extends javax.swing.JFrame {
 
         errorImgPass.setForeground(new java.awt.Color(255, 255, 255));
         errorImgPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\cerrar.png")); // NOI18N
         errorImgPass.setToolTipText("");
         errorImgPass.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         errorImgPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -231,7 +232,6 @@ public class Login extends javax.swing.JFrame {
 
         errorImgUser.setForeground(new java.awt.Color(255, 255, 255));
         errorImgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\cerrar.png")); // NOI18N
         errorImgUser.setToolTipText("");
         errorImgUser.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         errorImgUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -263,7 +263,6 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\logo(2).png")); // NOI18N
         logo.setName("logo"); // NOI18N
         jPanel2.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 20, 20));
 
@@ -292,67 +291,31 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUserFocusGained
-        tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 204)));        
-        //tfUser.setBackground(Color.BLACK);
-        //tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-        
-        errorImgPass.setVisible(false);
-        errorImgUser.setVisible(false);
-        lblError.setVisible(false);
-        lblRetry.setVisible(false);
-        lblWarningImg.setVisible(false);
-        
-        pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        //pfPass.setBackground(new java.awt.Color(102, 102, 102));
-        //pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        focus(tfUser, pfPass);        
     }//GEN-LAST:event_tfUserFocusGained
 
     private void tfUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfUserFocusLost
         tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        //tfUser.setBackground(new java.awt.Color(102, 102, 102));
-        //tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfUserFocusLost
 
     private void pfPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusGained
-        pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 204)));
-        //pfPass.setBackground(Color.BLACK);
-        //pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-        
-        errorImgPass.setVisible(false);
-        errorImgUser.setVisible(false);
-        lblError.setVisible(false);
-        lblRetry.setVisible(false);
-        lblWarningImg.setVisible(false);
-        
-        tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        //tfUser.setBackground(new java.awt.Color(102, 102, 102));
-        //tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+        focus(pfPass, tfUser);
     }//GEN-LAST:event_pfPassFocusGained
 
     private void pfPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusLost
         pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        //pfPass.setBackground(new java.awt.Color(102, 102, 102));
-        //pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_pfPassFocusLost
 
     private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
-        if(tfUser.getText().equals("aa") && pfPass.getText().equals("aa")){
-           /* Inicio inicio = new Inicio();
-            inicio.setVisible(true);
-            inicio.setLocationRelativeTo(null);*/
-            
+        if(tfUser.getText().equals("aa") && pfPass.getText().equals("aa")){            
             Menu menu = new Menu();
             menu.setVisible(true);
             menu.setLocationRelativeTo(null);
             menu.setExtendedState(NORMAL);
             dispose();
         }else{
-            //tfUser.setBackground(Color.BLACK);
-            //pfPass.setBackground(Color.BLACK);
-            tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));
-            pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 0, 0)));                       
-            //tfUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
-            //pfPass.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+            tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             
             errorImgPass.setVisible(true);
             errorImgUser.setVisible(true);
@@ -377,6 +340,18 @@ public class Login extends javax.swing.JFrame {
         this.setLocation(x-xx, y-xy);
     }//GEN-LAST:event_jPanel2MouseDragged
 
+    private void focus(JTextField tfgained, JTextField tflost){
+        tfgained.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+        
+        errorImgPass.setVisible(false);
+        errorImgUser.setVisible(false);
+        lblError.setVisible(false);
+        lblRetry.setVisible(false);
+        lblWarningImg.setVisible(false);
+        
+        tflost.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
+    }
+    
     /**
      * @param args the command line arguments
      **/

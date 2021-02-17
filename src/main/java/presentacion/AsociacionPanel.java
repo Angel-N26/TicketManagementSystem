@@ -22,8 +22,6 @@ public class AsociacionPanel extends javax.swing.JPanel {
         panelEastAsoc = new javax.swing.JPanel();
         logoAsoc = new javax.swing.JLabel();
         lblNameTittle = new javax.swing.JLabel();
-        lblJuntaDirectiva = new javax.swing.JLabel();
-        lblMembresia = new javax.swing.JLabel();
         panelSouthAsoc = new javax.swing.JPanel();
         btnEditarAsoc = new javax.swing.JButton();
         panelCenterAsoc = new javax.swing.JPanel();
@@ -80,42 +78,6 @@ public class AsociacionPanel extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 46;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         panelEastAsoc.add(lblNameTittle, gridBagConstraints);
-
-        lblJuntaDirectiva.setForeground(new java.awt.Color(51, 102, 255));
-        lblJuntaDirectiva.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblJuntaDirectiva.setText("JuntaDirectiva");
-        lblJuntaDirectiva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblJuntaDirectiva.setName("lblJuntaDirectiva"); // NOI18N
-        lblJuntaDirectiva.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblJuntaDirectivaMouseClicked(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 81;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(61, 0, 0, 0);
-        panelEastAsoc.add(lblJuntaDirectiva, gridBagConstraints);
-
-        lblMembresia.setForeground(new java.awt.Color(51, 102, 255));
-        lblMembresia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMembresia.setText("Membresia");
-        lblMembresia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblMembresia.setName("lblMembresia"); // NOI18N
-        lblMembresia.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMembresiaMouseClicked(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 99;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 0, 225, 0);
-        panelEastAsoc.add(lblMembresia, gridBagConstraints);
 
         add(panelEastAsoc, java.awt.BorderLayout.WEST);
 
@@ -467,26 +429,12 @@ public class AsociacionPanel extends javax.swing.JPanel {
         tfNRegAsoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
     }//GEN-LAST:event_tfNRegAsocFocusLost
 
-    private void lblJuntaDirectivaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblJuntaDirectivaMouseClicked
-        JuntaDirectiva jd = new JuntaDirectiva();
-        jd.setVisible(true);
-        jd.setLocationRelativeTo(null);
-    }//GEN-LAST:event_lblJuntaDirectivaMouseClicked
-
-    private void lblMembresiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMembresiaMouseClicked
-        MembresiaFrame mem = new MembresiaFrame();
-        mem.setVisible(true);
-        mem.setLocationRelativeTo(null);
-    }//GEN-LAST:event_lblMembresiaMouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditarAsoc;
     private javax.swing.JLabel lblCIFAsoc;
     private javax.swing.JLabel lblCiuAsoc;
     private javax.swing.JLabel lblCorreoAsoc;
     private javax.swing.JLabel lblDirAsoc;
-    private javax.swing.JLabel lblJuntaDirectiva;
-    private javax.swing.JLabel lblMembresia;
     private javax.swing.JLabel lblNRegAsoc;
     private javax.swing.JLabel lblNameAsoc;
     private javax.swing.JLabel lblNameTittle;

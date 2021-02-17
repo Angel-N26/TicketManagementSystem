@@ -16,6 +16,7 @@ public class Socio {
     private int telefono;
     private int id_membresia;
     private boolean pagado;
+    private boolean inactivo;
     
     public Socio(String nDni, String nNombre, String nApellidos, String nEmail, Date nFecha_nac, 
            String nDomicilio, int nTelefono, int nId_membresia, boolean nPagado){                
@@ -28,6 +29,7 @@ public class Socio {
         this.telefono = nTelefono;
         this.id_membresia = nId_membresia;
         this.pagado = nPagado;
+        this.inactivo = false;
     }
 
     public Socio() {

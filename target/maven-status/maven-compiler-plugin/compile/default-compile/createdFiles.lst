@@ -41,6 +41,7 @@ presentacion\AsociacionPanel$1.class
 presentacion\EventosPanel$5.class
 presentacion\Login$1.class
 presentacion\MembresiaFrame$7.class
+dominio\Colores.class
 presentacion\EditEventoPanel$3.class
 dominio\Membresia.class
 presentacion\EditEventoPanel$9.class
@@ -53,7 +54,6 @@ presentacion\EntradasPanel$1.class
 presentacion\EditSocioPanel$11.class
 presentacion\EditEventoPanel$2.class
 presentacion\MembresiaFrame$6.class
-presentacion\AsociacionPanel$9.class
 presentacion\EditSocioPanel$3.class
 presentacion\Menu$4.class
 presentacion\JuntaDirectiva.class
@@ -102,7 +102,6 @@ persistencia\DAOSocio.class
 dominio\Evento.class
 presentacion\GenerarEntradas$2.class
 presentacion\AsociacionPanel$5.class
-presentacion\AsociacionPanel$10.class
 presentacion\SociosPanel$6.class
 presentacion\Menu$13.class
 presentacion\EditEventoPanel$5.class

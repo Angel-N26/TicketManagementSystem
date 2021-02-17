@@ -26,10 +26,6 @@ public class ControlEntradas {
         return daoEntradas.insertarEntradaDAO(entrada);
     }
 
-    public boolean modificarEntrada(Entrada entrada){
-        return daoEntradas.modificarEntradaDAO(entrada);
-    }
-
     public boolean eliminarEntrada(int id_entrada){
         return daoEntradas.eliminarEntradaDAO(id_entrada);
     }

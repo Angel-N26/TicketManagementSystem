@@ -46,8 +46,8 @@ public class DAOEntradas {
             pst.setInt(1, id);
             rs = pst.executeQuery();
             while (rs.next()) {
-                entrada = new Entrada(rs.getInt(1), rs.getInt(2),
-                        rs.getString(3));
+                entrada = new Entrada(rs.getInt(1),
+                        rs.getString(2));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -71,26 +71,7 @@ public class DAOEntradas {
             realizado = false;
         }
         return realizado;
-    }
-    
-    public boolean modificarEntradaDAO(Entrada entrada){
-        boolean realizado;
-        try {
-            realizado = true;
-            con.createStatement();
-            String sql = "update entradas set idevento = ?, idsocio = ? "
-                    + "where identradas = ?";
-            pst = con.prepareStatement(sql);
-            pst.setInt(1, entrada.getId_evento());
-            pst.setString(2, entrada.getId_socio());
-            pst.setInt(3, entrada.getId_entrada());
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-            realizado = false;
-        }
-        return realizado;
-    }
+    }    
     
     public boolean eliminarEntradaDAO(int id){
         boolean realizado;

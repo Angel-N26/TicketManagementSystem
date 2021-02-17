@@ -75,6 +75,7 @@ public class Menu extends javax.swing.JFrame {
 
         kButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(204, 0, 204)));
         kButton3.setText("Asociacion  ");
+        kButton3.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         kButton3.setkBackGroundColor(new java.awt.Color(51, 51, 51));
         kButton3.setkBorderRadius(0);
         kButton3.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -110,6 +111,7 @@ public class Menu extends javax.swing.JFrame {
 
         kButton4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         kButton4.setText("            Junta Directiva");
+        kButton4.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         kButton4.setkBackGroundColor(new java.awt.Color(51, 51, 51));
         kButton4.setkBorderRadius(0);
         kButton4.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -146,6 +148,7 @@ public class Menu extends javax.swing.JFrame {
 
         kButton5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         kButton5.setText("    Membresia");
+        kButton5.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         kButton5.setkBackGroundColor(new java.awt.Color(51, 51, 51));
         kButton5.setkBorderRadius(0);
         kButton5.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -166,6 +169,7 @@ public class Menu extends javax.swing.JFrame {
 
         kButton6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         kButton6.setText("Socios      ");
+        kButton6.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         kButton6.setkBackGroundColor(new java.awt.Color(51, 51, 51));
         kButton6.setkBorderRadius(0);
         kButton6.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -186,6 +190,7 @@ public class Menu extends javax.swing.JFrame {
 
         kButton7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         kButton7.setText("Eventos     ");
+        kButton7.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         kButton7.setkBackGroundColor(new java.awt.Color(51, 51, 51));
         kButton7.setkBorderRadius(0);
         kButton7.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -206,6 +211,7 @@ public class Menu extends javax.swing.JFrame {
 
         kButton8.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         kButton8.setText("Entradas    ");
+        kButton8.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         kButton8.setkBackGroundColor(new java.awt.Color(51, 51, 51));
         kButton8.setkBorderRadius(0);
         kButton8.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -226,6 +232,7 @@ public class Menu extends javax.swing.JFrame {
 
         kButton9.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         kButton9.setText("Estadisticas");
+        kButton9.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         kButton9.setkBackGroundColor(new java.awt.Color(51, 51, 51));
         kButton9.setkBorderRadius(0);
         kButton9.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -246,6 +253,7 @@ public class Menu extends javax.swing.JFrame {
 
         kButton10.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         kButton10.setText("CerrarSesion");
+        kButton10.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         kButton10.setkBackGroundColor(new java.awt.Color(51, 51, 51));
         kButton10.setkBorderRadius(0);
         kButton10.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -293,8 +301,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(975, 0, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\logo(1).png")); // NOI18N
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N

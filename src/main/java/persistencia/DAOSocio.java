@@ -24,7 +24,7 @@ public class DAOSocio {
         ResultSet rs;
         Socio socio;
 	try {
-            String sql = "select dni from socios";
+            String sql = "select dni from socios where inactivo = 0";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             while(rs.next()) {
@@ -41,9 +41,10 @@ public class DAOSocio {
         ResultSet rs;
         Socio socio = new Socio();
         try {
-            String sql = "select * from socios where dni = ?";
+            String sql = "select * from socios where dni = ? AND inactivo = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, dni);
+            pst.setBoolean(2, false);
             rs = pst.executeQuery();
             while (rs.next()) {
                 socio = new Socio(rs.getString(1), rs.getString(2),
@@ -62,7 +63,7 @@ public class DAOSocio {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into socios values(?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into socios values(?,?,?,?,?,?,?,?,?,?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, socio.getDni());
             pst.setString(2, socio.getNombre());
@@ -73,6 +74,7 @@ public class DAOSocio {
             pst.setInt(7, socio.getTelefono());
             pst.setInt(8, socio.getId_membresia());
             pst.setBoolean(9, socio.getPagado());
+            pst.setBoolean(10, false);
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -109,6 +111,20 @@ public class DAOSocio {
     }
 
     public boolean eliminarSocioDAO(String dni){
+        /*boolean realizado;
+        try {
+            realizado = true;
+            con.createStatement();
+            String sql = "update socios set inactivo = ? where dni = ?";
+            pst = con.prepareStatement(sql);
+            pst.setBoolean(1, true);
+            pst.setString(2, dni);
+            pst.executeUpdate();            
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            realizado = false;
+        }
+        return realizado;*/
         boolean realizado;
         try{
             realizado = true;

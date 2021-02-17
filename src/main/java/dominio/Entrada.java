@@ -4,29 +4,15 @@ package dominio;
  * @author angel
  **/
 public class Entrada {
-    
-    private int id_entrada;
+        
     private int id_evento;
     private String id_socio;
+    private int num_entrada;
     
-    public Entrada(int nId_entrada, int nId_evento, String nId_socio){
-        this.id_entrada = nId_entrada;
-        this.id_evento = nId_evento;
-        this.id_socio = nId_socio;
-    }
-    
-    public Entrada(int nId_evento, String nId_socio){        
-        this.id_evento = nId_evento;
-        this.id_socio = nId_socio;
-    }
-
-    public int getId_entrada() {
-        return id_entrada;
-    }
-    
-    public void setId_entrada(int id_entrada) {
-        this.id_entrada = id_entrada;
-    }
+    public Entrada(int id_evento, String id_socio){      
+        this.id_evento = id_evento;
+        this.id_socio = id_socio;
+    }    
 
     public int getId_evento() {
         return id_evento;
@@ -44,8 +30,12 @@ public class Entrada {
         this.id_socio = id_socio;
     }
     
+    public int getNum_entrada() {
+        return num_entrada;
+    }
+    
     @Override
     public String toString(){
-        return this.id_entrada + "";
+        return this.num_entrada + "";
     }
 }
