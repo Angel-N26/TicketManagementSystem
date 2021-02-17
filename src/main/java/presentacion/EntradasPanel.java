@@ -162,8 +162,8 @@ public class EntradasPanel extends javax.swing.JPanel {
             modeloListaEntradas.removeAllElements();
             modeloListaEntradas.addElement(ent);
         }else{
-          modeloListaEntradas.removeAllElements();
-          lblNum.setText("");
+            modeloListaEntradas.removeAllElements();
+            lblNum.setText("");
         }
     }
     
@@ -179,14 +179,9 @@ public class EntradasPanel extends javax.swing.JPanel {
     
     private ArrayList<Entrada> sacarEntradas(int id_evento){
         ControlEntradas cen = new ControlEntradas();
-        ArrayList<Entrada> entradas = cen.obtenerEntradas();
-        ArrayList<Entrada> entEven = new ArrayList();
-        for(int i = 0 ; i < entradas.size() ; i++){
-            if(id_evento == entradas.get(i).getId_evento()){
-                entEven.add(entradas.get(i));
-            }
-        }
-        return entEven;
+        ArrayList<Entrada> entradas = cen.obtenerEntradasEvento(id_evento);
+        
+        return entradas;
     }        
     
     private DefaultListModel modeloListaEntradas;

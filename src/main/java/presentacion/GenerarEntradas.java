@@ -192,12 +192,12 @@ public class GenerarEntradas extends javax.swing.JFrame {
                 for(int i = 0 ; i < socioConEntrada.size() ; i++){
                     Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni());
                     ce.insertarEntrada(entrada);
-                    
+                    entrada = ce.obtenerEntrada(entrada.getId_evento(), entrada.getId_socio());
                     try{
                         CrearQR qr = new CrearQR();
                         BufferedImage imagen = qr.crearQR(entrada.getId_evento()
-                                +entrada.getId_socio()+entrada.getNum_entrada(), 300, 300);
-                        File outputfile = new File("C:\\Users\\angel\\Escritorio\\qr"+i+".png");
+                                +"-"+entrada.getId_socio()+"-"+entrada.getNum_entrada(), 300, 300);
+                        File outputfile = new File("C:\\Users\\angel\\Escritorio\\qr"+entrada.getNum_entrada()+".png");
                         ImageIO.write(imagen, "png", outputfile);
                     }catch(WriterException e){
                         System.out.println(e.getMessage());

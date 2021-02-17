@@ -73,7 +73,7 @@ public class EventosPanel extends javax.swing.JPanel {
         panelNorthEventos.add(btnBuscarEventos);
 
         jLabel1.setVisible(false);
-        jLabel1.setEnabled(false);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar(1).png")); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -168,14 +168,19 @@ public class EventosPanel extends javax.swing.JPanel {
             modeloListaEventos.addAll(0, eveBusca);
             
             jLabel1.setVisible(true);
-            jLabel1.setEnabled(true);
+            jLabel1.setText("");
+        }else{
+            modeloListaEventos.removeAllElements();
+            modeloListaEventos.addAll(0, eveBusca);
+            
+            jLabel1.setVisible(true);
+            jLabel1.setText("No se ha encontrado ninguna coincidencia");
         }
     }//GEN-LAST:event_btnBuscarEventosMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         actualizarListaEventos();
         jLabel1.setVisible(false);
-        jLabel1.setEnabled(false);
         tfBuscarEventos.setText("");
     }//GEN-LAST:event_jLabel1MouseClicked
 

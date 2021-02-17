@@ -75,8 +75,7 @@ public class SociosPanel extends javax.swing.JPanel {
 
         jLabel1.setVisible(false);
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos\\cerrar(1).png")); // NOI18N
-        jLabel1.setEnabled(false);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar(1).png")); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -208,14 +207,19 @@ public class SociosPanel extends javax.swing.JPanel {
             modeloListaSocios.addAll(0, socBusca);
             
             jLabel1.setVisible(true);
-            jLabel1.setEnabled(true);
+            jLabel1.setText("");
+        }else{
+            modeloListaSocios.removeAllElements();
+            modeloListaSocios.addAll(0, socBusca);
+            
+            jLabel1.setVisible(true);
+            jLabel1.setText("No se ha encontrado ninguna coincidencia");
         }
     }//GEN-LAST:event_btnBuscarSociosMouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         actualizarListaSocios();
         jLabel1.setVisible(false);
-        jLabel1.setEnabled(false);
         tfBuscarSocios.setText("");
     }//GEN-LAST:event_jLabel1MouseClicked
 

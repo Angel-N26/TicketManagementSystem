@@ -22,38 +22,56 @@ public class DAOEntradas {
     public ArrayList<Entrada> obtenerEntradasDAO(){
        ArrayList listaEntradas = new ArrayList<Entrada>();
         ResultSet rs;
-        Entrada entrada;
 	try {
-            String sql = "select identradas from entradas";
+            String sql = "select * from entradas";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             while(rs.next()) {
-                entrada = obtenerEntradaDAO(rs.getInt(1));
+                Entrada entrada = new Entrada(rs.getInt(1), rs.getString(2), rs.getInt(3));
                 listaEntradas.add(entrada);
             }
 	} catch (SQLException e) {
             System.err.println(e.getMessage());
 	}
         return listaEntradas;
-    }
+    }        
     
-    public Entrada obtenerEntradaDAO(int id){
+    public ArrayList<Entrada> obtenerEntradasEventoDAO(int idevento){
+        ArrayList<Entrada> listaEntradas = new ArrayList();
+        ResultSet rs;
+	try {
+            String sql = "select * from entradas where idevento = ?";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, idevento);
+            rs = pst.executeQuery();
+            while(rs.next()) {
+                Entrada entrada = new Entrada(rs.getInt(1), rs.getString(2), rs.getInt(3));
+                listaEntradas.add(entrada);
+            }
+	} catch (SQLException e) {
+            System.err.println(e.getMessage());
+	}
+        return listaEntradas;
+    }       
+    
+    public Entrada obtenerEntradaDAO(int idevento, String idsocio){
         ResultSet rs;
         Entrada entrada = null;
         try {
-            String sql = "select * from entradas where identradas = ?";
+            String sql = "select * from entradas where idevento = ? AND idsocio = ?";
             pst = con.prepareStatement(sql);
-            pst.setInt(1, id);
+            pst.setInt(1, idevento);
+            pst.setString(2, idsocio);
             rs = pst.executeQuery();
             while (rs.next()) {
                 entrada = new Entrada(rs.getInt(1),
-                        rs.getString(2));
+                        rs.getString(2), rs.getInt(3));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
         return entrada;
-    }
+    }    
     
     public boolean insertarEntradaDAO(Entrada entrada){
         boolean realizado;

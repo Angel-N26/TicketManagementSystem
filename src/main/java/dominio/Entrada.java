@@ -12,6 +12,12 @@ public class Entrada {
     public Entrada(int id_evento, String id_socio){      
         this.id_evento = id_evento;
         this.id_socio = id_socio;
+    }
+    
+    public Entrada(int id_evento, String id_socio, int num_entrada){      
+        this.id_evento = id_evento;
+        this.id_socio = id_socio;
+        this.num_entrada = num_entrada;
     }    
 
     public int getId_evento() {
@@ -36,6 +42,6 @@ public class Entrada {
     
     @Override
     public String toString(){
-        return this.num_entrada + "";
+        return this.id_evento + " - " + this.id_socio;
     }
 }

@@ -5,6 +5,7 @@ import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import static java.awt.Frame.NORMAL;
 import java.awt.GraphicsEnvironment;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import keeptoo.KButton;
 
@@ -301,6 +302,8 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(975, 0, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\logo(1).png")); // NOI18N
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -398,11 +401,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\maximize-window-purple.png"));
+        jLabel4.setIcon(new ImageIcon("/recursos/maximize-window-purple.png"));
     }//GEN-LAST:event_jLabel4MouseEntered
 
     private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\maximize-window.png"));
+        jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\maximize-window.png"));
     }//GEN-LAST:event_jLabel4MouseExited
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -410,11 +413,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\minimizar-purple.png"));
+        jLabel5.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\minimizar-purple.png"));
     }//GEN-LAST:event_jLabel5MouseEntered
 
     private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\minimizar.png"));
+        jLabel5.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\minimizar.png"));
     }//GEN-LAST:event_jLabel5MouseExited
 
     private void kButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton3MouseClicked

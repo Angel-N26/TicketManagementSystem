@@ -17,9 +17,13 @@ public class ControlEntradas {
     public ArrayList<Entrada> obtenerEntradas() {
 	return daoEntradas.obtenerEntradasDAO();
     }
+    
+    public ArrayList<Entrada> obtenerEntradasEvento(int idevento) {
+	return daoEntradas.obtenerEntradasEventoDAO(idevento);
+    }
 
-    public Entrada obtenerEntrada(int id_entrada) {
-        return daoEntradas.obtenerEntradaDAO(id_entrada);
+    public Entrada obtenerEntrada(int identrada, String idsocio) {
+        return daoEntradas.obtenerEntradaDAO(identrada, idsocio);
     }
 
     public boolean insertarEntrada(Entrada entrada) {
