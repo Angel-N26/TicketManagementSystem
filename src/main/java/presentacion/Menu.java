@@ -423,6 +423,7 @@ public class Menu extends javax.swing.JFrame {
     private void kButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton3MouseClicked
         CardLayout cardLayout = (CardLayout) jPanel7.getLayout();
         cardLayout.show(jPanel7, "cardAs");
+        ap.rellenarCampos();
         
         no_selected(kButton6);
         no_selected(kButton7);
@@ -445,6 +446,7 @@ public class Menu extends javax.swing.JFrame {
         JuntaDirectiva jd = new JuntaDirectiva();
         jd.setVisible(true);
         jd.setLocationRelativeTo(null);
+        jd.createPopUp();
     }//GEN-LAST:event_kButton4MouseClicked
 
     private void kButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton5MouseClicked

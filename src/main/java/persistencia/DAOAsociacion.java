@@ -69,7 +69,7 @@ public class DAOAsociacion {
             con.createStatement();
             String sql = "update asociacion set nombre = ?, tipo = ?, fecha = ?,"
                     + "telefono = ?, email = ?, direccion = ?, cif = ?,"
-                    + "nRegistro = ?, rutaLogo = ? where nombre = ?";
+                    + "nRegistro = ?, rutaLogo = ? where cif = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, asociacion.getNombre());
             pst.setString(2, asociacion.getTipo());

@@ -9,12 +9,14 @@ dominio\ControlSocio.class
 persistencia\Agente.class
 presentacion\EditEventoPanel$4.class
 presentacion\EditSocioPanel$10.class
+presentacion\AsociacionPanel$16.class
 presentacion\SociosPanel$1.class
 presentacion\Login$6.class
 presentacion\EventosPanel$6.class
 presentacion\Menu$5.class
 presentacion\MembresiaFrame$2.class
 presentacion\EditEventoPanel$1.class
+presentacion\AsociacionPanel$13.class
 presentacion\EditSocioPanel$13.class
 presentacion\MembresiaFrame$5.class
 dominio\ControlEntradas.class
@@ -29,12 +31,14 @@ presentacion\EditSocioPanel$15.class
 presentacion\Menu$11.class
 presentacion\EditSocioPanel$5.class
 dominio\ControlMembresia.class
+presentacion\JuntaDirectiva$5.class
 presentacion\EditEventoPanel$10.class
 presentacion\Menu.class
 presentacion\GenerarEntradas$3.class
 presentacion\EditEventoPanel$13.class
 presentacion\AsociacionPanel$4.class
 presentacion\AsociacionPanel$8.class
+presentacion\AsociacionPanel$14.class
 presentacion\EditSocioPanel$12.class
 presentacion\Menu$3.class
 presentacion\AsociacionPanel$1.class
@@ -69,6 +73,7 @@ dominio\Entrada.class
 presentacion\EditSocioPanel$9.class
 persistencia\DAOJuntaDirectiva.class
 presentacion\EditEventoPanel$11.class
+presentacion\AsociacionPanel$12.class
 dominio\ControlAsociacion.class
 presentacion\EditEventoPanel$8.class
 presentacion\AsociacionPanel$6.class
@@ -77,6 +82,7 @@ persistencia\DAOAsociacion.class
 presentacion\Menu$10.class
 presentacion\EditEventoPanel$14.class
 presentacion\MembresiaFrame$4.class
+presentacion\AsociacionPanel$15.class
 presentacion\EventosPanel$4.class
 presentacion\SociosPanel$3.class
 presentacion\Login$4.class
@@ -104,8 +110,10 @@ presentacion\Login$5.class
 persistencia\DAOSocio.class
 dominio\Evento.class
 presentacion\GenerarEntradas$2.class
+presentacion\JuntaDirectiva$4.class
 presentacion\AsociacionPanel$5.class
 dominio\Asociacion.class
+presentacion\AsociacionPanel$10.class
 presentacion\SociosPanel$6.class
 presentacion\Menu$13.class
 presentacion\EditEventoPanel$5.class
@@ -114,6 +122,8 @@ presentacion\EventosPanel$2.class
 presentacion\Menu$7.class
 presentacion\EditSocioPanel$6.class
 presentacion\JuntaDirectiva$3.class
+presentacion\AsociacionPanel$11.class
+presentacion\AsociacionPanel$17.class
 presentacion\EditSocioPanel$14.class
 dominio\ControlJuntaDirectiva.class
 presentacion\Menu$1.class

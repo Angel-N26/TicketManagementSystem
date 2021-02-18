@@ -4,10 +4,18 @@ import dominio.Cargo;
 import dominio.ControlJuntaDirectiva;
 import dominio.ControlSocio;
 import dominio.Socio;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  * @author angel
@@ -16,6 +24,9 @@ public class JuntaDirectiva extends javax.swing.JFrame {
 
     public JuntaDirectiva() {
         initComponents();
+        
+        UIManager.put("ComboBox.selectionBackground", new ColorUIResource(Color.magenta));
+        
     }
 
     /**
@@ -27,7 +38,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
 
         panel = new javax.swing.JPanel();
         panelSouth = new javax.swing.JPanel();
-        btnGuardar = new javax.swing.JButton();
+        kButton1 = new keeptoo.KButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -44,6 +55,8 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         cbVocal1 = new javax.swing.JComboBox<>();
         lblVocal2 = new javax.swing.JLabel();
         cbVocal2 = new javax.swing.JComboBox<>();
+        tfPresidente = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
@@ -67,17 +80,17 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
         panelSouth.setName("panelSouth"); // NOI18N
 
-        btnGuardar.setBackground(new java.awt.Color(0, 204, 0));
-        btnGuardar.setText("Guardar");
-        btnGuardar.setBorder(null);
-        btnGuardar.setName("btnGuardar"); // NOI18N
-        btnGuardar.setPreferredSize(new java.awt.Dimension(180, 35));
-        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+        kButton1.setText("kButton1");
+        kButton1.setkBorderRadius(20);
+        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
+        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
+        kButton1.setPreferredSize(new java.awt.Dimension(185, 35));
+        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnGuardarMouseClicked(evt);
+                kButton1MouseClicked(evt);
             }
         });
-        panelSouth.add(btnGuardar);
+        panelSouth.add(kButton1);
 
         panel.add(panelSouth, java.awt.BorderLayout.PAGE_END);
 
@@ -105,81 +118,96 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelCenter.setBackground(new java.awt.Color(51, 51, 51));
         panelCenter.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(0, 0, 0)));
         panelCenter.setName("panelCenter"); // NOI18N
-        panelCenter.setLayout(new java.awt.GridLayout(6, 2, 5, 25));
+        panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPresidente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPresidente.setForeground(new java.awt.Color(255, 255, 255));
         lblPresidente.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPresidente.setText("Presidente");
         lblPresidente.setName("lblPresidente"); // NOI18N
-        panelCenter.add(lblPresidente);
+        panelCenter.add(lblPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 80, 33));
 
         rellenarComboBox();
         seleccionarCargo();
-        cbPresidente.setBackground(new java.awt.Color(102, 102, 102));
-        cbPresidente.setBorder(null);
+        cbPresidente.setBackground(new java.awt.Color(51, 51, 51));
+        cbPresidente.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         cbPresidente.setName("cbPresidente"); // NOI18N
-        panelCenter.add(cbPresidente);
+        panelCenter.add(cbPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 204, 33));
 
         lblVicepresidente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblVicepresidente.setForeground(new java.awt.Color(255, 255, 255));
         lblVicepresidente.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblVicepresidente.setText("Vicepresidente");
         lblVicepresidente.setName("lblVicepresidente"); // NOI18N
-        panelCenter.add(lblVicepresidente);
+        panelCenter.add(lblVicepresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 90, 33));
 
-        cbVicepresidente.setBackground(new java.awt.Color(102, 102, 102));
+        cbVicepresidente.setBackground(new java.awt.Color(51, 51, 51));
         cbVicepresidente.setBorder(null);
         cbVicepresidente.setName("cbVicepresidente"); // NOI18N
-        panelCenter.add(cbVicepresidente);
+        panelCenter.add(cbVicepresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 204, 33));
 
         lblSecretario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblSecretario.setForeground(new java.awt.Color(255, 255, 255));
         lblSecretario.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblSecretario.setText("Secretario");
         lblSecretario.setName("lblSecretario"); // NOI18N
-        panelCenter.add(lblSecretario);
+        panelCenter.add(lblSecretario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 70, 33));
 
-        cbSecretario.setBackground(new java.awt.Color(102, 102, 102));
+        cbSecretario.setBackground(new java.awt.Color(51, 51, 51));
         cbSecretario.setBorder(null);
         cbSecretario.setName("cbSecretario"); // NOI18N
-        panelCenter.add(cbSecretario);
+        panelCenter.add(cbSecretario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 204, 33));
 
         lblTesorero.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblTesorero.setForeground(new java.awt.Color(255, 255, 255));
         lblTesorero.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblTesorero.setText("Tesorero");
         lblTesorero.setName("lblTesorero"); // NOI18N
-        panelCenter.add(lblTesorero);
+        panelCenter.add(lblTesorero, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 60, 33));
 
-        cbTesorero.setBackground(new java.awt.Color(102, 102, 102));
+        cbTesorero.setBackground(new java.awt.Color(51, 51, 51));
         cbTesorero.setBorder(null);
         cbTesorero.setName("cbTesorero"); // NOI18N
-        panelCenter.add(cbTesorero);
+        panelCenter.add(cbTesorero, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 204, 33));
 
         lblVocal1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblVocal1.setForeground(new java.awt.Color(255, 255, 255));
         lblVocal1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblVocal1.setText("Vocal1");
         lblVocal1.setName("lblVocal1"); // NOI18N
-        panelCenter.add(lblVocal1);
+        panelCenter.add(lblVocal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 50, 33));
 
-        cbVocal1.setBackground(new java.awt.Color(102, 102, 102));
+        cbVocal1.setBackground(new java.awt.Color(51, 51, 51));
         cbVocal1.setBorder(null);
         cbVocal1.setName("cbVocal1"); // NOI18N
-        panelCenter.add(cbVocal1);
+        panelCenter.add(cbVocal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 204, 33));
 
         lblVocal2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblVocal2.setForeground(new java.awt.Color(255, 255, 255));
         lblVocal2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblVocal2.setText("Vocal2");
         lblVocal2.setName("lblVocal2"); // NOI18N
-        panelCenter.add(lblVocal2);
+        panelCenter.add(lblVocal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 290, 60, 33));
 
-        cbVocal2.setBackground(new java.awt.Color(102, 102, 102));
+        cbVocal2.setBackground(new java.awt.Color(51, 51, 51));
         cbVocal2.setBorder(null);
         cbVocal2.setName("cbVocal2"); // NOI18N
-        panelCenter.add(cbVocal2);
+        panelCenter.add(cbVocal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 204, 33));
+
+        tfPresidente.setEditable(false);
+        tfPresidente.setBackground(new java.awt.Color(51, 51, 51));
+        tfPresidente.setForeground(new java.awt.Color(255, 255, 255));
+        tfPresidente.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        panelCenter.add(tfPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 200, 25));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\down-chevron.png")); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        panelCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, -1, -1));
 
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
 
@@ -199,15 +227,6 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
-        modificarCargo(lblPresidente.getText(), cbPresidente);
-        modificarCargo(lblVicepresidente.getText(), cbVicepresidente);
-        modificarCargo(lblSecretario.getText(), cbSecretario);
-        modificarCargo(lblTesorero.getText(), cbTesorero);
-        modificarCargo(lblVocal1.getText(), cbVocal1);
-        modificarCargo(lblVocal2.getText(), cbVocal2);
-    }//GEN-LAST:event_btnGuardarMouseClicked
-
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
@@ -216,6 +235,39 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_formWindowLostFocus
 
+    private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
+        modificarCargo(lblPresidente.getText(), cbPresidente);
+        modificarCargo(lblVicepresidente.getText(), cbVicepresidente);
+        modificarCargo(lblSecretario.getText(), cbSecretario);
+        modificarCargo(lblTesorero.getText(), cbTesorero);
+        modificarCargo(lblVocal1.getText(), cbVocal1);
+        modificarCargo(lblVocal2.getText(), cbVocal2);
+    }//GEN-LAST:event_kButton1MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        popup.show(tfPresidente, tfPresidente.getX(), tfPresidente.getY());
+        popup.addMouseListener(new MouseAdapter(){ 
+            @Override
+            public void mousePressed(MouseEvent e){
+                System.out.println("asd");
+                tfPresidente.setText("as");
+            }
+        });
+        cbPresidente.getEditor().getEditorComponent().setBackground(Color.red);
+        /*cbPresidente.getEditor().getEditorComponent().setBackground(Color.YELLOW);
+        ((JTextField) cbPresidente.getEditor().getEditorComponent()).setBackground(Color.YELLOW);*/
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    public void createPopUp(){
+        ControlSocio cs = new ControlSocio();
+        soc = cs.obtenerSocios();
+        popup.add(new JMenuItem(" "));
+        
+        for(int i = 0 ; i < soc.size() ; i++){
+            popup.add(new JMenuItem(soc.get(i)+""));
+        }
+    }
+    
     private void modificarCargo(String nombre, JComboBox cb){
         ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
         Cargo cargo;        
@@ -300,18 +352,12 @@ public class JuntaDirectiva extends javax.swing.JFrame {
             cbVocal2.addItem(soc.get(i));
         }        
     }
-    
-   @Override
-    public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(
-                "C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos/logo(2).png");
-        return retValue;
-    }    
+        
+    private JPopupMenu popup = new JPopupMenu();
     
     private ArrayList<Socio> soc;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<Socio> cbPresidente;
     private javax.swing.JComboBox<Socio> cbSecretario;
     private javax.swing.JComboBox<Socio> cbTesorero;
@@ -320,7 +366,9 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     private javax.swing.JComboBox<Socio> cbVocal2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private keeptoo.KButton kButton1;
     private javax.swing.JLabel lblPresidente;
     private javax.swing.JLabel lblSecretario;
     private javax.swing.JLabel lblTesorero;
@@ -330,5 +378,6 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelSouth;
+    private javax.swing.JTextField tfPresidente;
     // End of variables declaration//GEN-END:variables
 }
