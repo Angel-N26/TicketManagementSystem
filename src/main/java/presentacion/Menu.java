@@ -401,7 +401,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
-        jLabel4.setIcon(new ImageIcon("/recursos/maximize-window-purple.png"));
+        jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\maximize-window-purple.png"));
     }//GEN-LAST:event_jLabel4MouseEntered
 
     private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited

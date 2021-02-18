@@ -54,6 +54,7 @@ presentacion\EntradasPanel$1.class
 presentacion\EditSocioPanel$11.class
 presentacion\EditEventoPanel$2.class
 presentacion\MembresiaFrame$6.class
+presentacion\AsociacionPanel$9.class
 presentacion\EditSocioPanel$3.class
 presentacion\Menu$4.class
 presentacion\JuntaDirectiva.class
@@ -68,9 +69,11 @@ dominio\Entrada.class
 presentacion\EditSocioPanel$9.class
 persistencia\DAOJuntaDirectiva.class
 presentacion\EditEventoPanel$11.class
+dominio\ControlAsociacion.class
 presentacion\EditEventoPanel$8.class
 presentacion\AsociacionPanel$6.class
 presentacion\GenerarEntradas$1.class
+persistencia\DAOAsociacion.class
 presentacion\Menu$10.class
 presentacion\EditEventoPanel$14.class
 presentacion\MembresiaFrame$4.class
@@ -102,6 +105,7 @@ persistencia\DAOSocio.class
 dominio\Evento.class
 presentacion\GenerarEntradas$2.class
 presentacion\AsociacionPanel$5.class
+dominio\Asociacion.class
 presentacion\SociosPanel$6.class
 presentacion\Menu$13.class
 presentacion\EditEventoPanel$5.class

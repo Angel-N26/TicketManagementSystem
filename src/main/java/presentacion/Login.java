@@ -92,6 +92,7 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         pfPass.setBackground(new java.awt.Color(51, 51, 51));
         pfPass.setForeground(new java.awt.Color(255, 255, 255));
+        pfPass.setToolTipText("Introduzca su contraseña");
         pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         pfPass.setCaretColor(new java.awt.Color(204, 0, 204));
         pfPass.setDisabledTextColor(new java.awt.Color(255, 255, 255));
@@ -142,7 +143,6 @@ public class Login extends javax.swing.JFrame implements Colores {
         lblUser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblUser.setForeground(new java.awt.Color(255, 255, 255));
         lblUser.setText("Nombre de usuario");
-        lblUser.setToolTipText("");
         lblUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblUser.setName("lblUser"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -158,7 +158,6 @@ public class Login extends javax.swing.JFrame implements Colores {
         lblWarningImg.setForeground(new java.awt.Color(255, 255, 255));
         lblWarningImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\triangulo.png")); // NOI18N
-        lblWarningImg.setToolTipText("");
         lblWarningImg.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblWarningImg.setName("lblWarningImg"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -174,7 +173,6 @@ public class Login extends javax.swing.JFrame implements Colores {
         lblPass.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPass.setForeground(new java.awt.Color(255, 255, 255));
         lblPass.setText("Contraseña");
-        lblPass.setToolTipText("");
         lblPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblPass.setName("lblPass"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -218,7 +216,6 @@ public class Login extends javax.swing.JFrame implements Colores {
         errorImgPass.setForeground(new java.awt.Color(255, 255, 255));
         errorImgPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorImgPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar.png")); // NOI18N
-        errorImgPass.setToolTipText("");
         errorImgPass.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         errorImgPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgPass.setName("errorImgPass"); // NOI18N
@@ -235,7 +232,6 @@ public class Login extends javax.swing.JFrame implements Colores {
         errorImgUser.setForeground(new java.awt.Color(255, 255, 255));
         errorImgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorImgUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar.png")); // NOI18N
-        errorImgUser.setToolTipText("");
         errorImgUser.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         errorImgUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgUser.setName("errorImgUser"); // NOI18N
