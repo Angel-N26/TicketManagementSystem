@@ -8,6 +8,7 @@ import java.sql.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 import com.toedter.calendar.JCalendar;
+import java.util.regex.Pattern;
 
 /**
  * @author angel
@@ -354,7 +355,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
                 jButton1MouseClicked(evt);
             }
         });
-        panelCenterAsoc.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 40, 30));
+        panelCenterAsoc.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 105, 40, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -622,6 +623,10 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
             if(ca.modificarAsociacion(asoc)){
                 editable(false, WORDS_GRAY);
                 kButton1.setText("Editar");
+                jLabel2.setText(tfNombreAsoc.getText());
+            }else{
+                //mensaje de error
+                
             }
         }
     }//GEN-LAST:event_kButton1MouseClicked
@@ -654,50 +659,43 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
     public void editable(boolean b, Color c){
         tfNombreAsoc.setEditable(b);
         tfNombreAsoc.setForeground(c);
-        //tfNombreAsoc.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         jTextField2.setEditable(b);
         jTextField2.setForeground(c);
-        //jTextField2.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         jTextField1.setEditable(b);
         jTextField1.setForeground(c);
-        //jTextField1.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         tfTlfAsoc.setEditable(b);
         tfTlfAsoc.setForeground(c);
-        //tfTlfAsoc.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         tfCorreoAsoc.setEditable(b);
         tfCorreoAsoc.setForeground(c);        
-        //tfCorreoAsoc.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         tfDirAsoc.setEditable(b);
         tfDirAsoc.setForeground(c);
-        //tfDirAsoc.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         jTextField3.setEditable(b);
         jTextField3.setForeground(c);
-        //jTextField3.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         jTextField4.setEditable(b);
         jTextField4.setForeground(c);
-        //jTextField4.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         jTextField5.setEditable(b);
         jTextField5.setForeground(c);
-        //jTextField5.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         jTextField6.setEditable(b);
         jTextField6.setForeground(c);
-        //jTextField6.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         tfPobAsoc.setEditable(b);
         tfPobAsoc.setForeground(c);
-        //tfPobAsoc.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         tfCiuAsoc.setEditable(b);
         tfCiuAsoc.setForeground(c);
-        //tfCiuAsoc.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         tfCIFAsoc.setEditable(b);
         tfCIFAsoc.setForeground(c);
-        //tfCIFAsoc.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));        
         tfNRegAsoc.setEditable(b);
         tfNRegAsoc.setForeground(c);
-        //tfNRegAsoc.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, c2));
         
         jLabel1.setVisible(b);
         jButton1.setEnabled(b);
     }
+    
+    Pattern email = Pattern.compile("[a-zA-Z0-9]*@[a-z]*.(com|es)");
+    Pattern tlf = Pattern.compile("[0-9]{9}");
+    Pattern dni = Pattern.compile("[0-9]{8}[A-Z]");
+    Pattern number = Pattern.compile("[0-9]+");
+    Pattern cif = Pattern.compile("[A-Z][0-9]{8}");
+    Pattern ccpp = Pattern.compile("[0-9]{5}");
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

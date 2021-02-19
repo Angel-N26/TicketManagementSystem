@@ -27,8 +27,8 @@ public class MembresiaFrame extends javax.swing.JFrame {
 
         panelBorder = new javax.swing.JPanel();
         panelSouth = new javax.swing.JPanel();
-        btnEliminar = new javax.swing.JButton();
-        btnAnadir = new javax.swing.JButton();
+        kButton2 = new keeptoo.KButton();
+        kButton1 = new keeptoo.KButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -63,30 +63,29 @@ public class MembresiaFrame extends javax.swing.JFrame {
         panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
         panelSouth.setName("panelSouth"); // NOI18N
 
-        btnEliminar.setBackground(new java.awt.Color(204, 0, 0));
-        btnEliminar.setText("Eliminar membresia");
-        btnEliminar.setToolTipText("");
-        btnEliminar.setBorder(null);
-        btnEliminar.setName("btnEliminar"); // NOI18N
-        btnEliminar.setPreferredSize(new java.awt.Dimension(190, 35));
-        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+        kButton2.setText("Eliminar");
+        kButton2.setkBorderRadius(20);
+        kButton2.setkEndColor(new java.awt.Color(204, 0, 204));
+        kButton2.setkStartColor(new java.awt.Color(255, 0, 0));
+        kButton2.setPreferredSize(new java.awt.Dimension(185, 35));
+        kButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarMouseClicked(evt);
+                kButton2MouseClicked(evt);
             }
         });
-        panelSouth.add(btnEliminar);
+        panelSouth.add(kButton2);
 
-        btnAnadir.setBackground(new java.awt.Color(0, 204, 0));
-        btnAnadir.setText("Añadir membresia");
-        btnAnadir.setBorder(null);
-        btnAnadir.setName("btnAnadir"); // NOI18N
-        btnAnadir.setPreferredSize(new java.awt.Dimension(190, 35));
-        btnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
+        kButton1.setText("Añadir");
+        kButton1.setkBorderRadius(20);
+        kButton1.setkEndColor(new java.awt.Color(204, 0, 204));
+        kButton1.setkStartColor(new java.awt.Color(0, 255, 0));
+        kButton1.setPreferredSize(new java.awt.Dimension(185, 35));
+        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAnadirMouseClicked(evt);
+                kButton1MouseClicked(evt);
             }
         });
-        panelSouth.add(btnAnadir);
+        panelSouth.add(kButton1);
 
         panelBorder.add(panelSouth, java.awt.BorderLayout.PAGE_END);
 
@@ -149,25 +148,25 @@ public class MembresiaFrame extends javax.swing.JFrame {
                 tfNombreFocusLost(evt);
             }
         });
-        panelCenter.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 150, -1));
+        panelCenter.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 150, -1));
 
         lblPrecio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPrecio.setForeground(new java.awt.Color(255, 255, 255));
         lblPrecio.setText("Precio");
         lblPrecio.setName("lblPrecio"); // NOI18N
-        panelCenter.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
+        panelCenter.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("*");
         jLabel3.setToolTipText("");
-        panelCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 10, -1));
+        panelCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 10, -1));
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombre");
         lblNombre.setName("lblNombre"); // NOI18N
-        panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
+        panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
 
         tfPrecio.setBackground(new java.awt.Color(51, 51, 51));
         tfPrecio.setForeground(new java.awt.Color(255, 255, 255));
@@ -186,7 +185,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
                 tfPrecioFocusLost(evt);
             }
         });
-        panelCenter.add(tfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 110, -1));
+        panelCenter.add(tfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 110, -1));
 
         panelBorder.add(panelCenter, java.awt.BorderLayout.CENTER);
 
@@ -211,19 +210,32 @@ public class MembresiaFrame extends javax.swing.JFrame {
         tfPrecio.setText(mem.getPrecio()+"");                
     }//GEN-LAST:event_listMembresiasMouseClicked
 
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            if(cm.eliminarMembresia(listMembresias.getSelectedValue().getId_membresia())){            
-                modeloLista.remove(listMembresias.getSelectedIndex());
-                tfNombre.setText("");
-                tfPrecio.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnEliminarMouseClicked
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        dispose();
+    }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
+    private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
+        tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 204)));
+        jLabel3.setForeground(new Color(255, 255, 255));
+    }//GEN-LAST:event_tfNombreFocusGained
+
+    private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
+        tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+    }//GEN-LAST:event_tfNombreFocusLost
+
+    private void tfPrecioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPrecioFocusGained
+        tfPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 204)));
+    }//GEN-LAST:event_tfPrecioFocusGained
+
+    private void tfPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPrecioFocusLost
+        tfPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+    }//GEN-LAST:event_tfPrecioFocusLost
+
+    private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
+        dispose();
+    }//GEN-LAST:event_formWindowLostFocus
+
+    private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
         if(!tfNombre.getText().equals("")){
             Membresia memb = new Membresia(tfNombre.getText(),
                 Double.parseDouble(tfPrecio.getText()));
@@ -233,41 +245,20 @@ public class MembresiaFrame extends javax.swing.JFrame {
         }else{            
             tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 0)));
             jLabel3.setForeground(new Color(204, 0, 0));
-        }                        
-    }//GEN-LAST:event_btnAnadirMouseClicked
+        } 
+    }//GEN-LAST:event_kButton1MouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        dispose();
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
-        tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 204)));
-        //tfNombre.setBackground(new Color(0, 0, 0));
-        //tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-        jLabel3.setForeground(new Color(255, 255, 255));
-    }//GEN-LAST:event_tfNombreFocusGained
-
-    private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
-        tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        //tfNombre.setBackground(new Color(102, 102, 102));
-        //tfNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-    }//GEN-LAST:event_tfNombreFocusLost
-
-    private void tfPrecioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPrecioFocusGained
-        tfPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 204)));
-        //tfPrecio.setBackground(new Color(0, 0, 0));
-        //tfPrecio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-    }//GEN-LAST:event_tfPrecioFocusGained
-
-    private void tfPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPrecioFocusLost
-        tfPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        //tfPrecio.setBackground(new Color(102, 102, 102));
-        //tfPrecio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-    }//GEN-LAST:event_tfPrecioFocusLost
-
-    private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
-        dispose();
-    }//GEN-LAST:event_formWindowLostFocus
+    private void kButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton2MouseClicked
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            if(cm.eliminarMembresia(listMembresias.getSelectedValue().getId_membresia())){            
+                modeloLista.remove(listMembresias.getSelectedIndex());
+                tfNombre.setText("");
+                tfPrecio.setText("");
+            }
+        }
+    }//GEN-LAST:event_kButton2MouseClicked
 
     private ArrayList<Membresia> obtenerMembresias(){
         ControlMembresia cmem = new ControlMembresia();
@@ -297,12 +288,12 @@ public class MembresiaFrame extends javax.swing.JFrame {
     private DefaultListModel modeloLista;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnadir;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private keeptoo.KButton kButton1;
+    private keeptoo.KButton kButton2;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JList<Membresia> listMembresias;

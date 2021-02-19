@@ -445,8 +445,7 @@ public class Menu extends javax.swing.JFrame {
         
         JuntaDirectiva jd = new JuntaDirectiva();
         jd.setVisible(true);
-        jd.setLocationRelativeTo(null);
-        jd.createPopUp();
+        jd.setLocationRelativeTo(null);       
     }//GEN-LAST:event_kButton4MouseClicked
 
     private void kButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton5MouseClicked

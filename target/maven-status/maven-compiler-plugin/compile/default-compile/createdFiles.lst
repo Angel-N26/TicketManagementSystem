@@ -31,7 +31,6 @@ presentacion\EditSocioPanel$15.class
 presentacion\Menu$11.class
 presentacion\EditSocioPanel$5.class
 dominio\ControlMembresia.class
-presentacion\JuntaDirectiva$5.class
 presentacion\EditEventoPanel$10.class
 presentacion\Menu.class
 presentacion\GenerarEntradas$3.class
@@ -110,7 +109,6 @@ presentacion\Login$5.class
 persistencia\DAOSocio.class
 dominio\Evento.class
 presentacion\GenerarEntradas$2.class
-presentacion\JuntaDirectiva$4.class
 presentacion\AsociacionPanel$5.class
 dominio\Asociacion.class
 presentacion\AsociacionPanel$10.class
