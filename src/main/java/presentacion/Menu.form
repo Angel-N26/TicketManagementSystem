@@ -626,6 +626,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel7">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[800, 550]"/>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jPanel7.add(ap, &quot;cardAs&quot;);&#xd;&#xa;jPanel7.add(sp, &quot;cardSo&quot;);&#xd;&#xa;jPanel7.add(evp, &quot;cardEv&quot;);&#xd;&#xa;jPanel7.add(enp, &quot;cardEn&quot;);&#xd;&#xa;jPanel7.add(ip, &quot;cardEs&quot;);&#xd;&#xa;jPanel7.add(editSP, &quot;cardEditSP&quot;);&#xd;&#xa;jPanel7.add(editEP, &quot;cardEditEP&quot;);&#xd;&#xa;"/>
           </AuxValues>

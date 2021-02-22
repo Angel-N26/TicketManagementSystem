@@ -73,7 +73,6 @@ public class EventosPanel extends javax.swing.JPanel {
         panelNorthEventos.add(btnBuscarEventos);
 
         jLabel1.setVisible(false);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar(1).png")); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -137,52 +136,11 @@ public class EventosPanel extends javax.swing.JPanel {
         );
         panelCenterEventosLayout.setVerticalGroup(
             panelCenterEventosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollPanelListEventos, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+            .addComponent(scrollPanelListEventos, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
         );
 
         add(panelCenterEventos, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tfBuscarEventosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarEventosFocusGained
-        tfBuscarEventos.setBackground(Color.black);
-        tfBuscarEventos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
-    }//GEN-LAST:event_tfBuscarEventosFocusGained
-
-    private void tfBuscarEventosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarEventosFocusLost
-        tfBuscarEventos.setBackground(new java.awt.Color(102, 102, 102));
-        tfBuscarEventos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
-    }//GEN-LAST:event_tfBuscarEventosFocusLost
-
-    private void btnBuscarEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEventosMouseClicked
-        String nombre = tfBuscarEventos.getText();
-        ArrayList<Evento> eve = obtenerEventos();
-        ArrayList<Evento> eveBusca = new ArrayList();      
-        for(int i = 0 ; i < eve.size() ; i++){
-            if(nombre.equals(eve.get(i).getNombre())){
-                eveBusca.add(eve.get(i));
-            }
-        }
-        
-        if(!eveBusca.isEmpty()){
-            modeloListaEventos.removeAllElements();
-            modeloListaEventos.addAll(0, eveBusca);
-            
-            jLabel1.setVisible(true);
-            jLabel1.setText("");
-        }else{
-            modeloListaEventos.removeAllElements();
-            modeloListaEventos.addAll(0, eveBusca);
-            
-            jLabel1.setVisible(true);
-            jLabel1.setText("No se ha encontrado ninguna coincidencia");
-        }
-    }//GEN-LAST:event_btnBuscarEventosMouseClicked
-
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        actualizarListaEventos();
-        jLabel1.setVisible(false);
-        tfBuscarEventos.setText("");
-    }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnAnadirEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirEventosMouseClicked
         JPanel card = (JPanel) this.getParent();
@@ -218,6 +176,47 @@ public class EventosPanel extends javax.swing.JPanel {
             cardLayout.show(card, "cardEditEP");
         }
     }//GEN-LAST:event_listEventosMouseClicked
+
+    private void tfBuscarEventosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarEventosFocusLost
+        tfBuscarEventos.setBackground(new java.awt.Color(102, 102, 102));
+        tfBuscarEventos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 2, true));
+    }//GEN-LAST:event_tfBuscarEventosFocusLost
+
+    private void tfBuscarEventosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarEventosFocusGained
+        tfBuscarEventos.setBackground(Color.black);
+        tfBuscarEventos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 204), 2, true));
+    }//GEN-LAST:event_tfBuscarEventosFocusGained
+
+    private void btnBuscarEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEventosMouseClicked
+        String nombre = tfBuscarEventos.getText();
+        ArrayList<Evento> eve = obtenerEventos();
+        ArrayList<Evento> eveBusca = new ArrayList();
+        for(int i = 0 ; i < eve.size() ; i++){
+            if(nombre.equals(eve.get(i).getNombre())){
+                eveBusca.add(eve.get(i));
+            }
+        }
+
+        if(!eveBusca.isEmpty()){
+            modeloListaEventos.removeAllElements();
+            modeloListaEventos.addAll(0, eveBusca);
+
+            jLabel1.setVisible(true);
+            jLabel1.setText("");
+        }else{
+            modeloListaEventos.removeAllElements();
+            modeloListaEventos.addAll(0, eveBusca);
+
+            jLabel1.setVisible(true);
+            jLabel1.setText("No se ha encontrado ninguna coincidencia");
+        }
+    }//GEN-LAST:event_btnBuscarEventosMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        actualizarListaEventos();
+        jLabel1.setVisible(false);
+        tfBuscarEventos.setText("");
+    }//GEN-LAST:event_jLabel1MouseClicked
     
     public ArrayList<Evento> obtenerEventos(){
         ControlEvento ceve = new ControlEvento();

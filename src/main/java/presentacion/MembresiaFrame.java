@@ -63,6 +63,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
         panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
         panelSouth.setName("panelSouth"); // NOI18N
 
+        kButton2.setBorder(null);
         kButton2.setText("Eliminar");
         kButton2.setkBorderRadius(20);
         kButton2.setkEndColor(new java.awt.Color(204, 0, 204));
@@ -75,6 +76,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
         });
         panelSouth.add(kButton2);
 
+        kButton1.setBorder(null);
         kButton1.setText("Añadir");
         kButton1.setkBorderRadius(20);
         kButton1.setkEndColor(new java.awt.Color(204, 0, 204));

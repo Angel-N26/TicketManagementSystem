@@ -77,6 +77,9 @@
           <SubComponents>
             <Component class="keeptoo.KButton" name="kButton2">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
                 <Property name="kBorderRadius" type="int" value="20"/>
                 <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -95,6 +98,9 @@
             </Component>
             <Component class="keeptoo.KButton" name="kButton1">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
                 <Property name="kBorderRadius" type="int" value="20"/>
                 <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

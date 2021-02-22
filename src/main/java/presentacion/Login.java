@@ -1,7 +1,14 @@
 package presentacion;
 
 import dominio.Colores;
+import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  * @author angel
@@ -83,7 +90,6 @@ public class Login extends javax.swing.JFrame implements Colores {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 279;
         gridBagConstraints.ipady = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -112,7 +118,6 @@ public class Login extends javax.swing.JFrame implements Colores {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 279;
         gridBagConstraints.ipady = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -122,6 +127,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         btnIniciar.setBackground(new java.awt.Color(204, 0, 204));
         btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciar.setText("Iniciar Sesión");
+        btnIniciar.setBorder(null);
         btnIniciar.setName("btnIniciar"); // NOI18N
         btnIniciar.setPreferredSize(new java.awt.Dimension(280, 35));
         btnIniciar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -383,6 +389,25 @@ public class Login extends javax.swing.JFrame implements Colores {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                try{
+                    UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+                    UIManager.put("ComboBox.selectionBackground", new ColorUIResource(204,0,204));
+                    UIManager.put("ComboBox.selectionForeground", new ColorUIResource(255,255,255));
+                    UIManager.put("ComboBox.disabledBackground", new ColorUIResource(51,51,51));
+                    UIManager.put("ComboBox.disabledForeground", new ColorUIResource(153,153,153));
+                    UIManager.put("ComboBox.buttonBackground", new ColorUIResource(102,102,102));
+                    UIManager.put("ComboBox.buttonDarkShadow", new ColorUIResource(255,255,255));
+                    UIManager.put("ComboBox.buttonHighlight", new ColorUIResource(153,0,0));
+                    UIManager.put("ComboBox.buttonShadow", new ColorUIResource(153,0,0));
+                    UIManager.put("TableHeader.background", new ColorUIResource(51,51,51));
+                    UIManager.put("TableHeader.foreground", new ColorUIResource(255,255,255));
+                    
+                    UIManager.put("ComboBox.border", BorderFactory.createLineBorder(new java.awt.Color(255, 0, 255)));
+                }catch(ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e){
+                    e.printStackTrace();
+                }
+                       
+                    
                 new Login().setVisible(true);
             }
         });

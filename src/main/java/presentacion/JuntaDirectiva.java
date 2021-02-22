@@ -24,9 +24,6 @@ public class JuntaDirectiva extends javax.swing.JFrame {
 
     public JuntaDirectiva() {
         initComponents();
-        
-        UIManager.put("ComboBox.selectionBackground", new ColorUIResource(Color.magenta));
-        
     }
 
     /**
@@ -79,6 +76,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelSouth.setName("panelSouth"); // NOI18N
         panelSouth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
+        kButton1.setBorder(null);
         kButton1.setText("Editar");
         kButton1.setkBorderRadius(20);
         kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
@@ -132,6 +130,8 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         rellenarComboBox();
         seleccionarCargo();
         cbPresidente.setBackground(new java.awt.Color(51, 51, 51));
+        cbPresidente.setForeground(new java.awt.Color(255, 255, 255));
+        cbPresidente.setBorder(null);
         cbPresidente.setEnabled(false);
         cbPresidente.setName("cbPresidente"); // NOI18N
         panelCenter.add(cbPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 204, 30));
@@ -144,6 +144,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelCenter.add(lblVicepresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 90, 14));
 
         cbVicepresidente.setBackground(new java.awt.Color(51, 51, 51));
+        cbVicepresidente.setForeground(new java.awt.Color(255, 255, 255));
         cbVicepresidente.setBorder(null);
         cbVicepresidente.setEnabled(false);
         cbVicepresidente.setName("cbVicepresidente"); // NOI18N
@@ -157,6 +158,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelCenter.add(lblSecretario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 70, 14));
 
         cbSecretario.setBackground(new java.awt.Color(51, 51, 51));
+        cbSecretario.setForeground(new java.awt.Color(255, 255, 255));
         cbSecretario.setBorder(null);
         cbSecretario.setEnabled(false);
         cbSecretario.setName("cbSecretario"); // NOI18N
@@ -170,6 +172,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelCenter.add(lblTesorero, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 60, 14));
 
         cbTesorero.setBackground(new java.awt.Color(51, 51, 51));
+        cbTesorero.setForeground(new java.awt.Color(255, 255, 255));
         cbTesorero.setBorder(null);
         cbTesorero.setEnabled(false);
         cbTesorero.setName("cbTesorero"); // NOI18N
@@ -183,6 +186,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelCenter.add(lblVocal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 50, 14));
 
         cbVocal1.setBackground(new java.awt.Color(51, 51, 51));
+        cbVocal1.setForeground(new java.awt.Color(255, 255, 255));
         cbVocal1.setBorder(null);
         cbVocal1.setEnabled(false);
         cbVocal1.setName("cbVocal1"); // NOI18N
@@ -196,6 +200,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelCenter.add(lblVocal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 60, 14));
 
         cbVocal2.setBackground(new java.awt.Color(51, 51, 51));
+        cbVocal2.setForeground(new java.awt.Color(255, 255, 255));
         cbVocal2.setBorder(null);
         cbVocal2.setEnabled(false);
         cbVocal2.setName("cbVocal2"); // NOI18N

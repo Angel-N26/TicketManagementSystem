@@ -341,6 +341,7 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
+        jPanel7.setPreferredSize(new java.awt.Dimension(800, 550));
         jPanel7.setLayout(new java.awt.CardLayout());
         jPanel1.add(jPanel7, java.awt.BorderLayout.CENTER);
         jPanel7.add(ap, "cardAs");

@@ -454,6 +454,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         jLabel9.setText("Datos Juridicos");
         panelCenterAsoc.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
 
+        kButton1.setBorder(null);
         kButton1.setText("Editar");
         kButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         kButton1.setkBorderRadius(20);

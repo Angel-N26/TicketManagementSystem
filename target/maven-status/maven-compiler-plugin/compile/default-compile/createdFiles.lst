@@ -31,6 +31,7 @@ presentacion\EditSocioPanel$15.class
 presentacion\Menu$11.class
 presentacion\EditSocioPanel$5.class
 dominio\ControlMembresia.class
+presentacion\SociosPanel$7.class
 presentacion\EditEventoPanel$10.class
 presentacion\Menu.class
 presentacion\GenerarEntradas$3.class
