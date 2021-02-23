@@ -8,6 +8,7 @@ import java.sql.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JTextFieldDateEditor;
 import java.util.regex.Pattern;
 
 /**
@@ -39,7 +40,6 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         lblPobAsoc = new javax.swing.JLabel();
         tfPobAsoc = new javax.swing.JTextField();
         lblCiuAsoc = new javax.swing.JLabel();
-        tfCiuAsoc = new javax.swing.JTextField();
         lblCIFAsoc = new javax.swing.JLabel();
         tfCIFAsoc = new javax.swing.JTextField();
         lblNRegAsoc = new javax.swing.JLabel();
@@ -49,10 +49,8 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -64,6 +62,8 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         jLabel9 = new javax.swing.JLabel();
         kButton1 = new keeptoo.KButton();
         jLabel10 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        cbProvincia = new javax.swing.JComboBox<>();
 
         panelCenterAsoc.setBackground(new java.awt.Color(51, 51, 51));
         panelCenterAsoc.setName("panelCenterAsoc"); // NOI18N
@@ -183,6 +183,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         tfPobAsoc.setCaretColor(new java.awt.Color(204, 0, 204));
         tfPobAsoc.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         tfPobAsoc.setName("tfPobAsoc"); // NOI18N
+        tfPobAsoc.setNextFocusableComponent(cbProvincia);
         tfPobAsoc.setOpaque(false);
         tfPobAsoc.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfPobAsoc.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -200,26 +201,6 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         lblCiuAsoc.setText("Provincia");
         lblCiuAsoc.setName("lblCiuAsoc"); // NOI18N
         panelCenterAsoc.add(lblCiuAsoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 230, -1));
-
-        tfCiuAsoc.setEditable(false);
-        tfCiuAsoc.setBackground(new java.awt.Color(51, 51, 51));
-        tfCiuAsoc.setForeground(new java.awt.Color(153, 153, 153));
-        tfCiuAsoc.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        tfCiuAsoc.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfCiuAsoc.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        tfCiuAsoc.setName("tfCiuAsoc"); // NOI18N
-        tfCiuAsoc.setNextFocusableComponent(tfCIFAsoc);
-        tfCiuAsoc.setOpaque(false);
-        tfCiuAsoc.setSelectionColor(new java.awt.Color(204, 0, 204));
-        tfCiuAsoc.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfCiuAsocFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfCiuAsocFocusLost(evt);
-            }
-        });
-        panelCenterAsoc.add(tfCiuAsoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 230, 25));
 
         lblCIFAsoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblCIFAsoc.setForeground(new java.awt.Color(255, 255, 255));
@@ -282,7 +263,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
 
         jLabel1.setVisible(false);
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\editar.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\editar.png")); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -302,24 +283,6 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Fecha Creacion Asociacion");
         panelCenterAsoc.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 210, -1));
-
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        jTextField1.setCaretColor(new java.awt.Color(204, 0, 204));
-        jTextField1.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jTextField1.setOpaque(false);
-        jTextField1.setSelectionColor(new java.awt.Color(204, 0, 204));
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
-            }
-        });
-        panelCenterAsoc.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 210, 25));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -343,19 +306,6 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
             }
         });
         panelCenterAsoc.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 240, 25));
-
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\calendar.png")); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setEnabled(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        panelCenterAsoc.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 105, 40, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -473,6 +423,25 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         jLabel10.setText("Dirección");
         panelCenterAsoc.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
+        JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());
+        dateChooserEditor1.setBackground(new Color(51, 51, 51));
+        dateChooserEditor1.setForeground(new Color(255, 255, 255));
+        dateChooserEditor1.setEditable(false);
+        dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        jDateChooser1.getCalendarButton().setSize(25, 25);
+        jDateChooser1.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png"));
+        jDateChooser1.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        jDateChooser1.getCalendarButton().setBackground(new Color(51,51,51));
+        jDateChooser1.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jDateChooser1.getCalendarButton().setEnabled(false);
+        panelCenterAsoc.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 260, 25));
+
+        cbProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Álava", "Albacete", "Alicante", "Almeria", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba", "La Coruña", "Cuenca", "Gerona", "Granada", "Guadalajara", "Guipúzcua", "Huelva", "Huesca", "Baleares", "Jaén", "León", "Lérida", "Lugo", "Madrid", "Málaga", "Murcia", "Navarra", "Orense", "Palencia", "Las Palmas", "Pontevedra", "La Rioja", "Salamanca", "Segovia", "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza" }));
+        cbProvincia.setEnabled(false);
+        cbProvincia.setName("cbProvincia"); // NOI18N
+        cbProvincia.setNextFocusableComponent(tfCIFAsoc);
+        panelCenterAsoc.add(cbProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 230, 25));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -530,15 +499,6 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         tfPobAsoc.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
     }//GEN-LAST:event_tfPobAsocFocusLost
 
-    private void tfCiuAsocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCiuAsocFocusGained
-        if(tfCiuAsoc.isEditable())
-            tfCiuAsoc.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-    }//GEN-LAST:event_tfCiuAsocFocusGained
-
-    private void tfCiuAsocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCiuAsocFocusLost
-        tfCiuAsoc.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
-    }//GEN-LAST:event_tfCiuAsocFocusLost
-
     private void tfCIFAsocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCIFAsocFocusGained
         if(tfCIFAsoc.isEditable())
             tfCIFAsoc.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
@@ -565,15 +525,6 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
     private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
         jTextField2.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
     }//GEN-LAST:event_jTextField2FocusLost
-
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        if(jTextField1.isEditable())
-            jTextField1.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-    }//GEN-LAST:event_jTextField1FocusGained
-
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        jTextField1.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
-    }//GEN-LAST:event_jTextField1FocusLost
 
     private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
         if(jTextField3.isEditable())
@@ -618,7 +569,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         }else{
             ControlAsociacion ca = new ControlAsociacion();
             Asociacion asoc = new Asociacion(tfNombreAsoc.getText(),jTextField2.getText(),
-                Date.valueOf(jTextField1.getText()), Integer.parseInt(tfTlfAsoc.getText()),
+                Date.valueOf(jDateChooser1.getDateFormatString()), Integer.parseInt(tfTlfAsoc.getText()),
                 tfCorreoAsoc.getText(), tfDirAsoc.getText(), tfCIFAsoc.getText(),
                 Integer.parseInt(tfNRegAsoc.getText()), null);
             if(ca.modificarAsociacion(asoc)){
@@ -637,19 +588,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         int seleccion = fc.showOpenDialog(this);
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        JCalendar c = new JCalendar();
-        c.setVisible(true);
-        
-    }//GEN-LAST:event_jButton1MouseClicked
-
     public void rellenarCampos(){
         ControlAsociacion ca = new ControlAsociacion();
         Asociacion asoc = ca.obtenerAsociacion("21");
         tfNombreAsoc.setText(asoc.getNombre());
         jLabel2.setText(asoc.getNombre());
         jTextField2.setText(asoc.getTipo());
-        jTextField1.setText(asoc.getFecha()+"");
+        jDateChooser1.setDate(asoc.getFecha());
         tfTlfAsoc.setText(asoc.getTelefono()+"");
         tfCorreoAsoc.setText(asoc.getEmail());
         tfDirAsoc.setText(asoc.getDireccion());        
@@ -662,8 +607,8 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         tfNombreAsoc.setForeground(c);
         jTextField2.setEditable(b);
         jTextField2.setForeground(c);
-        jTextField1.setEditable(b);
-        jTextField1.setForeground(c);
+        jDateChooser1.getCalendarButton().setEnabled(b);
+        jDateChooser1.setForeground(c);
         tfTlfAsoc.setEditable(b);
         tfTlfAsoc.setForeground(c);
         tfCorreoAsoc.setEditable(b);
@@ -680,15 +625,14 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         jTextField6.setForeground(c);
         tfPobAsoc.setEditable(b);
         tfPobAsoc.setForeground(c);
-        tfCiuAsoc.setEditable(b);
-        tfCiuAsoc.setForeground(c);
+        cbProvincia.setEnabled(b);
+        //tfCiuAsoc.setForeground(c);
         tfCIFAsoc.setEditable(b);
         tfCIFAsoc.setForeground(c);
         tfNRegAsoc.setEditable(b);
         tfNRegAsoc.setForeground(c);
         
         jLabel1.setVisible(b);
-        jButton1.setEnabled(b);
     }
     
     Pattern email = Pattern.compile("[a-zA-Z0-9]*@[a-z]*.(com|es)");
@@ -699,7 +643,8 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
     Pattern ccpp = Pattern.compile("[0-9]{5}");
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> cbProvincia;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -710,7 +655,6 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -729,7 +673,6 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
     private javax.swing.JPanel panelCenterAsoc;
     private javax.swing.JPanel panelEastAsoc;
     private javax.swing.JTextField tfCIFAsoc;
-    private javax.swing.JTextField tfCiuAsoc;
     private javax.swing.JTextField tfCorreoAsoc;
     private javax.swing.JTextField tfDirAsoc;
     private javax.swing.JTextField tfNRegAsoc;

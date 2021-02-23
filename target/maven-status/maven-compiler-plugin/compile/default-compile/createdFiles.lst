@@ -9,7 +9,6 @@ dominio\ControlSocio.class
 persistencia\Agente.class
 presentacion\EditEventoPanel$4.class
 presentacion\EditSocioPanel$10.class
-presentacion\AsociacionPanel$16.class
 presentacion\SociosPanel$1.class
 presentacion\Login$6.class
 presentacion\EventosPanel$6.class
@@ -44,16 +43,17 @@ presentacion\Menu$3.class
 presentacion\AsociacionPanel$1.class
 presentacion\EventosPanel$5.class
 presentacion\Login$1.class
-presentacion\MembresiaFrame$7.class
 dominio\Colores.class
 presentacion\EditEventoPanel$3.class
 dominio\Membresia.class
+presentacion\EditSocioPanel$16.class
 presentacion\EditEventoPanel$9.class
 presentacion\EditSocioPanel$4.class
 presentacion\AsociacionPanel.class
 presentacion\JuntaDirectiva$1.class
 presentacion\AsociacionPanel$2.class
 presentacion\EditEventoPanel$12.class
+presentacion\GenerarEntradas$5.class
 presentacion\EntradasPanel$1.class
 presentacion\EditSocioPanel$11.class
 presentacion\EditEventoPanel$2.class
@@ -82,7 +82,6 @@ persistencia\DAOAsociacion.class
 presentacion\Menu$10.class
 presentacion\EditEventoPanel$14.class
 presentacion\MembresiaFrame$4.class
-presentacion\AsociacionPanel$15.class
 presentacion\EventosPanel$4.class
 presentacion\SociosPanel$3.class
 presentacion\Login$4.class
@@ -120,9 +119,7 @@ presentacion\SociosPanel$5.class
 presentacion\EventosPanel$2.class
 presentacion\Menu$7.class
 presentacion\EditSocioPanel$6.class
-presentacion\JuntaDirectiva$3.class
 presentacion\AsociacionPanel$11.class
-presentacion\AsociacionPanel$17.class
 presentacion\EditSocioPanel$14.class
 dominio\ControlJuntaDirectiva.class
 presentacion\Menu$1.class

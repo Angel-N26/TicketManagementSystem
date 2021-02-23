@@ -46,13 +46,6 @@ public class MembresiaFrame extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setUndecorated(true);
         setResizable(false);
-        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
-            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
-            }
-            public void windowLostFocus(java.awt.event.WindowEvent evt) {
-                formWindowLostFocus(evt);
-            }
-        });
 
         panelBorder.setBackground(new java.awt.Color(51, 51, 51));
         panelBorder.setName("panelBorder"); // NOI18N
@@ -62,13 +55,14 @@ public class MembresiaFrame extends javax.swing.JFrame {
         panelSouth.setBackground(new java.awt.Color(51, 51, 51));
         panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
         panelSouth.setName("panelSouth"); // NOI18N
+        panelSouth.setPreferredSize(new java.awt.Dimension(387, 75));
+        panelSouth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 20));
 
         kButton2.setBorder(null);
         kButton2.setText("Eliminar");
-        kButton2.setkBorderRadius(20);
-        kButton2.setkEndColor(new java.awt.Color(204, 0, 204));
-        kButton2.setkStartColor(new java.awt.Color(255, 0, 0));
-        kButton2.setPreferredSize(new java.awt.Dimension(185, 35));
+        kButton2.setkEndColor(new java.awt.Color(51, 0, 51));
+        kButton2.setkStartColor(new java.awt.Color(204, 0, 204));
+        kButton2.setPreferredSize(new java.awt.Dimension(180, 35));
         kButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 kButton2MouseClicked(evt);
@@ -78,10 +72,9 @@ public class MembresiaFrame extends javax.swing.JFrame {
 
         kButton1.setBorder(null);
         kButton1.setText("Añadir");
-        kButton1.setkBorderRadius(20);
-        kButton1.setkEndColor(new java.awt.Color(204, 0, 204));
-        kButton1.setkStartColor(new java.awt.Color(0, 255, 0));
-        kButton1.setPreferredSize(new java.awt.Dimension(185, 35));
+        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
+        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
+        kButton1.setPreferredSize(new java.awt.Dimension(180, 35));
         kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 kButton1MouseClicked(evt);
@@ -115,8 +108,10 @@ public class MembresiaFrame extends javax.swing.JFrame {
         panelCenter.setBackground(new java.awt.Color(51, 51, 51));
         panelCenter.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(0, 0, 0)));
         panelCenter.setName("panelCenter"); // NOI18N
+        panelCenter.setPreferredSize(new java.awt.Dimension(400, 285));
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane.setName("scrollPane"); // NOI18N
 
         modeloLista = new DefaultListModel();
@@ -131,7 +126,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
         });
         scrollPane.setViewportView(listMembresias);
 
-        panelCenter.add(scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, 290));
+        panelCenter.add(scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 230, 265));
 
         tfNombre.setBackground(new java.awt.Color(51, 51, 51));
         tfNombre.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,25 +145,25 @@ public class MembresiaFrame extends javax.swing.JFrame {
                 tfNombreFocusLost(evt);
             }
         });
-        panelCenter.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 150, -1));
+        panelCenter.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 95, 130, -1));
 
         lblPrecio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPrecio.setForeground(new java.awt.Color(255, 255, 255));
         lblPrecio.setText("Precio");
         lblPrecio.setName("lblPrecio"); // NOI18N
-        panelCenter.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
+        panelCenter.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("*");
         jLabel3.setToolTipText("");
-        panelCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 10, -1));
+        panelCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 75, 10, -1));
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombre");
         lblNombre.setName("lblNombre"); // NOI18N
-        panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
+        panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 75, -1, -1));
 
         tfPrecio.setBackground(new java.awt.Color(51, 51, 51));
         tfPrecio.setForeground(new java.awt.Color(255, 255, 255));
@@ -187,7 +182,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
                 tfPrecioFocusLost(evt);
             }
         });
-        panelCenter.add(tfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 110, -1));
+        panelCenter.add(tfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 130, -1));
 
         panelBorder.add(panelCenter, java.awt.BorderLayout.CENTER);
 
@@ -232,10 +227,6 @@ public class MembresiaFrame extends javax.swing.JFrame {
     private void tfPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPrecioFocusLost
         tfPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
     }//GEN-LAST:event_tfPrecioFocusLost
-
-    private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
-        dispose();
-    }//GEN-LAST:event_formWindowLostFocus
 
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
         if(!tfNombre.getText().equals("")){

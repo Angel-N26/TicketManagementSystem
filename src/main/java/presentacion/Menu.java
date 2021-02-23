@@ -1,5 +1,6 @@
 package presentacion;
 
+import dominio.Membresia;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
@@ -444,7 +445,7 @@ public class Menu extends javax.swing.JFrame {
         
         selected(kButton4);
         
-        JuntaDirectiva jd = new JuntaDirectiva();
+        jd = new JuntaDirectiva();
         jd.setVisible(true);
         jd.setLocationRelativeTo(null);       
     }//GEN-LAST:event_kButton4MouseClicked
@@ -454,7 +455,7 @@ public class Menu extends javax.swing.JFrame {
         
         selected(kButton5);
         
-        MembresiaFrame mem = new MembresiaFrame();
+        mem = new MembresiaFrame();
         mem.setVisible(true);
         mem.setLocationRelativeTo(null);
     }//GEN-LAST:event_kButton5MouseClicked
@@ -533,6 +534,13 @@ public class Menu extends javax.swing.JFrame {
         
         no_selected(kButton4);
         no_selected(kButton5);
+        
+        if(mem != null){
+            mem.dispose();
+        }
+        if(jd != null){
+            jd.dispose();
+        }
     }//GEN-LAST:event_formWindowGainedFocus
        
     private void no_selected(KButton btn){        
@@ -566,6 +574,9 @@ public class Menu extends javax.swing.JFrame {
     
     private final EditSocioPanel editSP;
     private final EditEventoPanel editEP;
+    
+    private MembresiaFrame mem;
+    private JuntaDirectiva jd;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

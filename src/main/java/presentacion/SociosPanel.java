@@ -48,7 +48,7 @@ public class SociosPanel extends javax.swing.JPanel {
         panelNorthSocios.setBackground(new java.awt.Color(51, 51, 51));
         panelNorthSocios.setFocusable(false);
         panelNorthSocios.setName("panelNorthSocios"); // NOI18N
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 10, 5);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 5);
         flowLayout1.setAlignOnBaseline(true);
         panelNorthSocios.setLayout(flowLayout1);
 
@@ -76,7 +76,7 @@ public class SociosPanel extends javax.swing.JPanel {
         });
         jPanel1.add(tfBuscarSocios);
 
-        jLabel2.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel2.setBackground(new java.awt.Color(31, 31, 31));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-gray.png")); // NOI18N
         jLabel2.setToolTipText("Buscar");
@@ -119,7 +119,8 @@ public class SociosPanel extends javax.swing.JPanel {
         panelSouthSocios.setBackground(new java.awt.Color(51, 51, 51));
         panelSouthSocios.setFocusable(false);
         panelSouthSocios.setName("panelSouthSocios"); // NOI18N
-        panelSouthSocios.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
+        panelSouthSocios.setPreferredSize(new java.awt.Dimension(648, 75));
+        panelSouthSocios.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 20));
 
         scrollPanelListSocios.setBackground(new java.awt.Color(102, 102, 102));
         scrollPanelListSocios.setFocusable(false);
@@ -130,6 +131,7 @@ public class SociosPanel extends javax.swing.JPanel {
         modeloListaSocios.addAll(0,obtenerSocios());
         listSocios.setBackground(new java.awt.Color(102, 102, 102));
         listSocios.setForeground(new java.awt.Color(255, 255, 255));
+        listSocios.setPreferredSize(new java.awt.Dimension(0, 35));
         listSocios.setSelectionBackground(new java.awt.Color(204, 0, 204));
         listSocios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -142,8 +144,10 @@ public class SociosPanel extends javax.swing.JPanel {
 
         kButton2.setBorder(null);
         kButton2.setText("Añadir");
+        kButton2.setkEndColor(new java.awt.Color(51, 0, 51));
+        kButton2.setkStartColor(new java.awt.Color(204, 0, 204));
         kButton2.setNextFocusableComponent(kButton1);
-        kButton2.setPreferredSize(new java.awt.Dimension(185, 35));
+        kButton2.setPreferredSize(new java.awt.Dimension(180, 35));
         kButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 kButton2MouseClicked(evt);
@@ -153,8 +157,10 @@ public class SociosPanel extends javax.swing.JPanel {
 
         kButton1.setBorder(null);
         kButton1.setText("Eliminar");
+        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
+        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
         kButton1.setNextFocusableComponent(tfBuscarSocios);
-        kButton1.setPreferredSize(new java.awt.Dimension(185, 35));
+        kButton1.setPreferredSize(new java.awt.Dimension(180, 35));
         kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 kButton1MouseClicked(evt);
@@ -167,8 +173,11 @@ public class SociosPanel extends javax.swing.JPanel {
         panelCenterSocios.setBackground(new java.awt.Color(51, 51, 51));
         panelCenterSocios.setFocusable(false);
         panelCenterSocios.setName("panelCenterSocios"); // NOI18N
+        panelCenterSocios.setPreferredSize(new java.awt.Dimension(800, 430));
+        panelCenterSocios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));
+        jScrollPane1.setBorder(null);
 
         jTable1.setBackground(new java.awt.Color(51, 51, 51));
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
@@ -197,29 +206,14 @@ public class SociosPanel extends javax.swing.JPanel {
             }
         });
         jTable1.setRowHeight(50);
-        jTable1.setSelectionBackground(new java.awt.Color(204, 0, 204));
+        jTable1.setSelectionBackground(new java.awt.Color(31, 31, 31));
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable1.setShowGrid(true);
         jTable1.setShowVerticalLines(false);
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout panelCenterSociosLayout = new javax.swing.GroupLayout(panelCenterSocios);
-        panelCenterSocios.setLayout(panelCenterSociosLayout);
-        panelCenterSociosLayout.setHorizontalGroup(
-            panelCenterSociosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCenterSociosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelCenterSociosLayout.setVerticalGroup(
-            panelCenterSociosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCenterSociosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        panelCenterSocios.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 760, 390));
 
         add(panelCenterSocios, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -252,7 +246,7 @@ public class SociosPanel extends javax.swing.JPanel {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         actualizarListaSocios();
         jLabel1.setVisible(false);
-        jLabel3.setVisible(false);
+        jLabel3.setText("");
                
         tfBuscarSocios.setText("Buscar...");
         tfBuscarSocios.setForeground(new Color(153,153,153));
@@ -306,13 +300,11 @@ public class SociosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
-        if(buscar)
-            jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-white.png"));
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-white.png"));
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
-        if(buscar)
-            jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-gray.png"));
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-gray.png"));
     }//GEN-LAST:event_jLabel2MouseExited
 
     public ArrayList<Socio> obtenerSocios(){
@@ -329,9 +321,7 @@ public class SociosPanel extends javax.swing.JPanel {
     public void actualizarListaSocios(){
         modeloListaSocios.removeAllElements();
         modeloListaSocios.addAll(0, obtenerSocios());
-    }
-    
-    private boolean buscar = true;
+    }    
     
     private DefaultListModel modeloListaSocios;    
     private final ControlSocio cs;
