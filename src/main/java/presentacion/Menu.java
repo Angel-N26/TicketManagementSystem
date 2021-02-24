@@ -425,7 +425,7 @@ public class Menu extends javax.swing.JFrame {
     private void kButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton3MouseClicked
         CardLayout cardLayout = (CardLayout) jPanel7.getLayout();
         cardLayout.show(jPanel7, "cardAs");
-        ap.rellenarCampos();
+        //ap.rellenarCampos();
         
         no_selected(kButton6);
         no_selected(kButton7);

@@ -20,7 +20,7 @@ public class ControlAsociacion {
         return daoAsociacion.insertarAsociacionDAO(asociacion);
     }*/
 
-    public boolean modificarAsociacion(Asociacion asociacion){
-        return daoAsociacion.modificarAsociacionDAO(asociacion);
+    public boolean modificarAsociacion(Asociacion asociacion, String CIF){
+        return daoAsociacion.modificarAsociacionDAO(asociacion, CIF);
     }
 }

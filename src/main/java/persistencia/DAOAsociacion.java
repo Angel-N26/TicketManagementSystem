@@ -62,7 +62,7 @@ public class DAOAsociacion {
         return realizado;
     }*/
     
-    public boolean modificarAsociacionDAO(Asociacion asociacion){
+    public boolean modificarAsociacionDAO(Asociacion asociacion, String CIF){
         boolean realizado;
         try {
             realizado = true;
@@ -80,7 +80,7 @@ public class DAOAsociacion {
             pst.setString(7, asociacion.getCIF());
             pst.setInt(8, asociacion.getnRegistro());
             pst.setString(9, asociacion.getRutaLogo());
-            pst.setString(10, asociacion.getCIF());
+            pst.setString(10, CIF);
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

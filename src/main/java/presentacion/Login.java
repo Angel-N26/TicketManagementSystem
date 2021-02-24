@@ -158,7 +158,7 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         lblWarningImg.setForeground(new java.awt.Color(255, 255, 255));
         lblWarningImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWarningImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\triangulo.png")); // NOI18N
+        lblWarningImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\warning.png")); // NOI18N
         lblWarningImg.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblWarningImg.setName("lblWarningImg"); // NOI18N
         panel.add(lblWarningImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 29, 40));
@@ -178,7 +178,7 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         errorImgPass.setForeground(new java.awt.Color(255, 255, 255));
         errorImgPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar.png")); // NOI18N
+        errorImgPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
         errorImgPass.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         errorImgPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgPass.setName("errorImgPass"); // NOI18N
@@ -186,7 +186,7 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         errorImgUser.setForeground(new java.awt.Color(255, 255, 255));
         errorImgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\cerrar.png")); // NOI18N
+        errorImgUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
         errorImgUser.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         errorImgUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgUser.setName("errorImgUser"); // NOI18N

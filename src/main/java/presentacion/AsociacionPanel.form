@@ -864,6 +864,9 @@
           </Constraints>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="yyy-MM-dd"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());&#xd;&#xa;dateChooserEditor1.setBackground(new Color(51, 51, 51));&#xd;&#xa;dateChooserEditor1.setForeground(new Color(255, 255, 255));&#xd;&#xa;dateChooserEditor1.setEditable(false);&#xd;&#xa;dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;jDateChooser1.getCalendarButton().setSize(25, 25);&#xd;&#xa;jDateChooser1.getCalendarButton().setIcon(new javax.swing.ImageIcon(&quot;C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png&quot;));&#xd;&#xa;jDateChooser1.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;jDateChooser1.getCalendarButton().setBackground(new Color(51,51,51));&#xd;&#xa;jDateChooser1.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));&#xd;&#xa;jDateChooser1.getCalendarButton().setEnabled(false);&#xd;&#xa;"/>
           </AuxValues>

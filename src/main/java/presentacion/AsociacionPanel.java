@@ -7,9 +7,11 @@ import java.awt.Color;
 import java.sql.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
-import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JTextFieldDateEditor;
+import java.io.File;
 import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * @author angel
@@ -434,6 +436,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         jDateChooser1.getCalendarButton().setBackground(new Color(51,51,51));
         jDateChooser1.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jDateChooser1.getCalendarButton().setEnabled(false);
+        jDateChooser1.setDateFormatString("yyy-MM-dd");
         panelCenterAsoc.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 260, 25));
 
         cbProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Álava", "Albacete", "Alicante", "Almeria", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba", "La Coruña", "Cuenca", "Gerona", "Granada", "Guadalajara", "Guipúzcua", "Huelva", "Huesca", "Baleares", "Jaén", "León", "Lérida", "Lugo", "Madrid", "Málaga", "Murcia", "Navarra", "Orense", "Palencia", "Las Palmas", "Pontevedra", "La Rioja", "Salamanca", "Segovia", "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza" }));
@@ -563,16 +566,18 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
     }//GEN-LAST:event_jTextField6FocusLost
 
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
+        JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());        
         if(kButton1.getText().equals("Editar")){
             editable(true, WORDS_WHITE);
             kButton1.setText("Guardar");
+            antiguoCIF = tfCIFAsoc.getText();
         }else{
             ControlAsociacion ca = new ControlAsociacion();
             Asociacion asoc = new Asociacion(tfNombreAsoc.getText(),jTextField2.getText(),
-                Date.valueOf(jDateChooser1.getDateFormatString()), Integer.parseInt(tfTlfAsoc.getText()),
+                Date.valueOf(dateChooserEditor2.getText()), Integer.parseInt(tfTlfAsoc.getText()),
                 tfCorreoAsoc.getText(), tfDirAsoc.getText(), tfCIFAsoc.getText(),
-                Integer.parseInt(tfNRegAsoc.getText()), null);
-            if(ca.modificarAsociacion(asoc)){
+                Integer.parseInt(tfNRegAsoc.getText()), logoAsoc.getIcon().toString());
+            if(ca.modificarAsociacion(asoc,antiguoCIF)){
                 editable(false, WORDS_GRAY);
                 kButton1.setText("Editar");
                 jLabel2.setText(tfNombreAsoc.getText());
@@ -585,12 +590,20 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG % PNG Images","jpg","png");
+        fc.setFileFilter(filter);
+        
         int seleccion = fc.showOpenDialog(this);
+        if(seleccion == JFileChooser.APPROVE_OPTION){
+            File file = fc.getSelectedFile();
+            logoAsoc.setIcon(new ImageIcon(file.getAbsolutePath()));
+        }
     }//GEN-LAST:event_jLabel1MouseClicked
 
     public void rellenarCampos(){
         ControlAsociacion ca = new ControlAsociacion();
-        Asociacion asoc = ca.obtenerAsociacion("21");
+        Asociacion asoc = ca.obtenerAsociacion("21123");
         tfNombreAsoc.setText(asoc.getNombre());
         jLabel2.setText(asoc.getNombre());
         jTextField2.setText(asoc.getTipo());
@@ -599,7 +612,8 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         tfCorreoAsoc.setText(asoc.getEmail());
         tfDirAsoc.setText(asoc.getDireccion());        
         tfCIFAsoc.setText(asoc.getCIF());
-        tfNRegAsoc.setText(asoc.getnRegistro()+"");        
+        tfNRegAsoc.setText(asoc.getnRegistro()+"");
+        logoAsoc.setIcon(new ImageIcon(asoc.getRutaLogo()));
     }
     
     public void editable(boolean b, Color c){
@@ -639,8 +653,10 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
     Pattern tlf = Pattern.compile("[0-9]{9}");
     Pattern dni = Pattern.compile("[0-9]{8}[A-Z]");
     Pattern number = Pattern.compile("[0-9]+");
-    Pattern cif = Pattern.compile("[A-Z][0-9]{8}");
-    Pattern ccpp = Pattern.compile("[0-9]{5}");
+    Pattern cif = Pattern.compile("G[0-9]{8}");
+    Pattern ccpp = Pattern.compile("[0-9]{5}");        
+    
+    private String antiguoCIF;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbProvincia;
