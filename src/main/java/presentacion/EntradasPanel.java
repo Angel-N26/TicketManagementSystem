@@ -4,6 +4,7 @@ import dominio.ControlEntradas;
 import dominio.ControlEvento;
 import dominio.Entrada;
 import dominio.Evento;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
@@ -74,7 +75,10 @@ public class EntradasPanel extends javax.swing.JPanel {
 
         modeloListaEntradas = new DefaultListModel();
         listEntradas.setModel(modeloListaEntradas);
+        listEntradas.setSelectionForeground(new Color(255,255,255));
         listEntradas.setBackground(new java.awt.Color(102, 102, 102));
+        listEntradas.setForeground(new java.awt.Color(255, 255, 255));
+        listEntradas.setSelectionBackground(new java.awt.Color(31, 31, 31));
         scrollPanelListEntradas.setViewportView(listEntradas);
 
         panelListEntradas.add(scrollPanelListEntradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 760, 440));

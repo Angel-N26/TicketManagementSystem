@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @author angel
@@ -34,12 +35,30 @@ public class EventosPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         panelSouthEventos = new javax.swing.JPanel();
-        scrollPanelListEventos = new javax.swing.JScrollPane();
-        listEventos = new javax.swing.JList<>();
-        kButton2 = new keeptoo.KButton();
         kButton1 = new keeptoo.KButton();
+        kButton2 = new keeptoo.KButton();
         panelCenterEventos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
+        String[] titulos = {"ID", "Evento", "Tipo", "Sala", "Fecha","Entradas"};
+        Object[][] datos = {};
+        dtm = new DefaultTableModel(datos, titulos) {
+            Class[] types = new Class [] {
+                Integer.class, String.class, String.class, String.class, Object.class, String.class
+            };
+
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        };
+        actualizarTabla();
         jTable1 = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
@@ -112,22 +131,17 @@ public class EventosPanel extends javax.swing.JPanel {
         panelSouthEventos.setPreferredSize(new java.awt.Dimension(648, 75));
         panelSouthEventos.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 20));
 
-        scrollPanelListEventos.setPreferredSize(new java.awt.Dimension(258, 35));
-
-        modeloListaEventos = new DefaultListModel();
-        listEventos.setModel(modeloListaEventos);
-        modeloListaEventos.addAll(0,obtenerEventos());
-        listEventos.setBackground(new java.awt.Color(102, 102, 102));
-        listEventos.setForeground(new java.awt.Color(255, 255, 255));
-        listEventos.setPreferredSize(new java.awt.Dimension(0, 35));
-        listEventos.addMouseListener(new java.awt.event.MouseAdapter() {
+        kButton1.setBorder(null);
+        kButton1.setText("Eliminar");
+        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
+        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
+        kButton1.setPreferredSize(new java.awt.Dimension(180, 35));
+        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listEventosMouseClicked(evt);
+                kButton1MouseClicked(evt);
             }
         });
-        scrollPanelListEventos.setViewportView(listEventos);
-
-        panelSouthEventos.add(scrollPanelListEventos);
+        panelSouthEventos.add(kButton1);
 
         kButton2.setBorder(null);
         kButton2.setText("Añadir");
@@ -141,18 +155,6 @@ public class EventosPanel extends javax.swing.JPanel {
         });
         panelSouthEventos.add(kButton2);
 
-        kButton1.setBorder(null);
-        kButton1.setText("Eliminar");
-        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
-        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
-        kButton1.setPreferredSize(new java.awt.Dimension(180, 35));
-        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton1MouseClicked(evt);
-            }
-        });
-        panelSouthEventos.add(kButton1);
-
         add(panelSouthEventos, java.awt.BorderLayout.PAGE_END);
 
         panelCenterEventos.setBackground(new java.awt.Color(51, 51, 51));
@@ -160,41 +162,28 @@ public class EventosPanel extends javax.swing.JPanel {
         panelCenterEventos.setPreferredSize(new java.awt.Dimension(800, 430));
         panelCenterEventos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane1.setBorder(null);
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jTable1.setSelectionForeground(new Color(255,255,255));
+        jTable1.setSelectionBackground(new Color(31,31,31));
         jTable1.setBackground(new java.awt.Color(51, 51, 51));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Evento", "Tipo", "Sala", "Fecha", "Entradas"
-            }
-        ));
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setModel(dtm);
         jTable1.setRowHeight(50);
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable1.setShowVerticalLines(false);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         panelCenterEventos.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 760, 390));
 
         add(panelCenterEventos, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void listEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listEventosMouseClicked
-        if(evt.getClickCount() == 2){
-            Evento evento = listEventos.getSelectedValue();
-            
-            JPanel card = (JPanel) this.getParent();
-            EditEventoPanel editEP = new EditEventoPanel(evento);
-            editEP.rellenarCampos();
-            card.add(editEP, "cardEditEP");
-            CardLayout cardLayout = (CardLayout) card.getLayout();
-            cardLayout.show(card, "cardEditEP");
-        }
-    }//GEN-LAST:event_listEventosMouseClicked
 
     private void tfBuscarEventosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarEventosFocusLost
         tfBuscarEventos.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
@@ -209,7 +198,7 @@ public class EventosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tfBuscarEventosFocusGained
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        actualizarListaEventos();
+        actualizarTabla();
         jLabel1.setVisible(false);
         jLabel3.setText("");
         
@@ -229,30 +218,24 @@ public class EventosPanel extends javax.swing.JPanel {
         }
 
         if(!eveBusca.isEmpty()){
-            modeloListaEventos.removeAllElements();
-            modeloListaEventos.addAll(0, eveBusca);
+            removeTabla();
+            addTabla(eveBusca);
 
             jLabel1.setVisible(true);
             jLabel3.setText("");
-        }else{
-            modeloListaEventos.removeAllElements();
-            modeloListaEventos.addAll(0, eveBusca);
-
-            jLabel1.setVisible(true);
+        }else{            
             jLabel3.setText("No se ha encontrado ninguna coincidencia");
         }
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
-        int index = listEventos.getSelectedIndex();
-        String evento = modeloListaEventos.getElementAt(index) + "";
-        String [] e = evento.split(" ");
+        int index = jTable1.getSelectedRow();
         
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
-            if(ce.eliminarEvento(Integer.parseInt(e[0]))){
-                modeloListaEventos.remove(listEventos.getSelectedIndex());
+            if(ce.eliminarEvento((Integer)dtm.getValueAt(index, 0))){
+                dtm.removeRow(index);
             }
         }
     }//GEN-LAST:event_kButton1MouseClicked
@@ -272,18 +255,49 @@ public class EventosPanel extends javax.swing.JPanel {
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-gray.png"));
     }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if(evt.getClickCount() == 2){
+            int index = jTable1.getSelectedRow();
+            Evento evento = ce.obtenerEvento((Integer)dtm.getValueAt(index, 0));
+            
+            JPanel card = (JPanel) this.getParent();
+            EditEventoPanel editEP = new EditEventoPanel(evento);
+            editEP.rellenarCampos();
+            card.add(editEP, "cardEditEP");
+            CardLayout cardLayout = (CardLayout) card.getLayout();
+            cardLayout.show(card, "cardEditEP");
+        }
+        
+    }//GEN-LAST:event_jTable1MouseClicked
     
     public ArrayList<Evento> obtenerEventos(){
         ControlEvento ceve = new ControlEvento();
         return ceve.obtenerEventos();
     }
     
-    public void actualizarListaEventos(){
-        modeloListaEventos.removeAllElements();
-        modeloListaEventos.addAll(0, obtenerEventos());
-    } 
+    public void actualizarTabla(){
+        removeTabla();
+        ArrayList<Evento> evs = obtenerEventos();
+        addTabla(evs);
+    }
     
-    private DefaultListModel modeloListaEventos;
+    private void removeTabla(){
+        while(dtm.getRowCount() > 0){
+           dtm.removeRow(0);
+       }
+    }
+    
+    private void addTabla(ArrayList<Evento> eventos){
+        for(int i = 0 ; i < eventos.size() ; i++){
+            Object[] newSocio = {eventos.get(i).getId(), eventos.get(i).getNombre(),
+                eventos.get(i).getTipo(), eventos.get(i).getSala(), eventos.get(i).getFecha(),
+                eventos.get(i).getEntradasVendidas()+"/"+eventos.get(i).getEntradas()};
+            dtm.addRow(newSocio);
+        }
+    }    
+    
+    private DefaultTableModel dtm;
     private final ControlEvento ce;    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -295,11 +309,9 @@ public class EventosPanel extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     private keeptoo.KButton kButton1;
     private keeptoo.KButton kButton2;
-    private javax.swing.JList<Evento> listEventos;
     private javax.swing.JPanel panelCenterEventos;
     private javax.swing.JPanel panelNorthEventos;
     private javax.swing.JPanel panelSouthEventos;
-    private javax.swing.JScrollPane scrollPanelListEventos;
     private javax.swing.JTextField tfBuscarEventos;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,8 +7,7 @@ import dominio.CrearQR;
 import dominio.Entrada;
 import dominio.Evento;
 import dominio.Socio;
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -140,7 +139,10 @@ public class GenerarEntradas extends javax.swing.JFrame {
 
         modeloListaSociosSin = new DefaultListModel();
         jList1.setModel(modeloListaSociosSin);
+        jList1.setSelectionForeground(new Color(255,255,255));
         jList1.setBackground(new java.awt.Color(102, 102, 102));
+        jList1.setForeground(new java.awt.Color(255, 255, 255));
+        jList1.setSelectionBackground(new java.awt.Color(31, 31, 31));
         jScrollPane1.setViewportView(jList1);
 
         panelCenter.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 245));
@@ -150,9 +152,11 @@ public class GenerarEntradas extends javax.swing.JFrame {
 
         modeloListaSociosCon = new DefaultListModel();
         jList2.setModel(modeloListaSociosCon);
-        
+        jList2.setSelectionForeground(new Color(255,255,255));
         rellenarListas();
         jList2.setBackground(new java.awt.Color(102, 102, 102));
+        jList2.setForeground(new java.awt.Color(255, 255, 255));
+        jList2.setSelectionBackground(new java.awt.Color(31, 31, 31));
         jScrollPane2.setViewportView(jList2);
 
         panelCenter.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, 245));
@@ -217,11 +221,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        int i = jList1.getSelectedIndex();
-        Socio socio = (Socio) modeloListaSociosSin.getElementAt(i);
-        socioConEntrada.add(socio);
-        modeloListaSociosSin.remove(i);
-        modeloListaSociosCon.add(0, socio);        
+                
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -261,7 +261,11 @@ public class GenerarEntradas extends javax.swing.JFrame {
     }//GEN-LAST:event_kButton1MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here:
+        int i = jList1.getSelectedIndex();
+        Socio socio = (Socio) modeloListaSociosSin.getElementAt(i);
+        socioConEntrada.add(socio);
+        modeloListaSociosSin.remove(i);
+        modeloListaSociosCon.add(0, socio);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
@@ -303,14 +307,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
                        
         modeloListaSociosCon.addAll(0, sociosCon);
         modeloListaSociosSin.addAll(0, sociosSin);
-    }
-    
-   @Override
-    public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(
-                "C:\\Users\\angel\\Documents\\NetBeansProjects\\TicketManagementSystem\\src\\main\\java\\recursos/logo(2).png");
-        return retValue;
-    }    
+    }     
     
     private final Evento evento;
     private final ArrayList<Entrada> entradas;

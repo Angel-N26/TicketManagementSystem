@@ -10,34 +10,41 @@ public class Evento {
     
     private int id;
     private String nombre;
-    private String tipo_evento;
-    private String lugar_evento;
-    private Date fecha_evento;
-    private Time hora_evento;
+    private String tipo;
+    private String sala;
+    private String direccion;
+    private Date fecha;
+    private Time hora;
     private int entradas;
-    private int entradas_vendidas;
+    private int entradasVendidas;
+    private String rutaImg;
 
-    public Evento(int nId, String nNombre, String nTipo_evento, String nLugar_evento,
-            Date nFecha_evento, Time nHora_evento, int nEntradas, int nEntradas_vendidas){
+    public Evento(int nId, String nNombre, String nTipo, String nSala,
+            String nDireccion, Date nFecha, Time nHora, int nEntradas,
+            int nEntradasVendidas, String nRutaImg){
         this.id = nId;
         this.nombre = nNombre;
-        this.tipo_evento = nTipo_evento;
-        this.lugar_evento = nLugar_evento;
-        this.fecha_evento = nFecha_evento;
-        this.hora_evento = nHora_evento;
+        this.tipo = nTipo;
+        this.sala = nSala;
+        this.direccion = nDireccion;
+        this.fecha = nFecha;
+        this.hora = nHora;
         this.entradas = nEntradas;
-        this.entradas_vendidas = nEntradas_vendidas;
+        this.entradasVendidas = nEntradasVendidas;
+        this.rutaImg = nRutaImg;
     }
     
-    public Evento(String nNombre, String nTipo_evento, String nLugar_evento,
-            Date nFecha_evento, Time nHora_evento, int nEntradas, int nEntradas_vendidas){
+    public Evento(String nNombre, String nTipo, String nSala, String nDireccion,
+            Date nFecha, Time nHora, int nEntradas, int nEntradasVendidas, String nRutaImg){
         this.nombre = nNombre;
-        this.tipo_evento = nTipo_evento;
-        this.lugar_evento = nLugar_evento;
-        this.fecha_evento = nFecha_evento;
-        this.hora_evento = nHora_evento;
+        this.tipo = nTipo;
+        this.sala = nSala;
+        this.direccion = nDireccion;
+        this.fecha = nFecha;
+        this.hora = nHora;
         this.entradas = nEntradas;
-        this.entradas_vendidas = nEntradas_vendidas;
+        this.entradasVendidas = nEntradasVendidas;
+        this.rutaImg = nRutaImg;
     }
 
     public Evento() {
@@ -55,36 +62,44 @@ public class Evento {
         this.nombre = nombre;
     }
 
-    public String getTipo_evento() {
-        return tipo_evento;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipo_evento(String tipo_evento) {
-        this.tipo_evento = tipo_evento;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public String getLugar_evento() {
-        return lugar_evento;
+    public String getSala() {
+        return sala;
     }
 
-    public void setLugar_evento(String lugar_evento) {
-        this.lugar_evento = lugar_evento;
+    public void setSala(String sala) {
+        this.sala = sala;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
     
-    public Date getFecha_evento() {
-        return fecha_evento;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setFecha_evento(Date fecha_evento) {
-        this.fecha_evento = fecha_evento;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    public Time getHora_evento() {
-        return hora_evento;
+    public Time getHora() {
+        return hora;
     }
 
-    public void setHora_evento(Time hora_evento) {
-        this.hora_evento = hora_evento;
+    public void setHora(Time hora) {
+        this.hora = hora;
     }
     
     public int getEntradas() {
@@ -95,12 +110,20 @@ public class Evento {
         this.entradas = entradas;
     }
     
-    public int getEntradas_vendidas() {
-        return entradas_vendidas;
+    public int getEntradasVendidas() {
+        return entradasVendidas;
     }
 
-    public void setEntradas_vendidas(int entradas_vendidas) {
-        this.entradas_vendidas = entradas_vendidas;
+    public void setEntradasVendidas(int entradasVendidas) {
+        this.entradasVendidas = entradasVendidas;
+    }
+
+    public String getRutaImg() {
+        return rutaImg;
+    }
+
+    public void setRutaImg(String rutaImg) {
+        this.rutaImg = rutaImg;
     }
 
     @Override

@@ -47,10 +47,9 @@ public class DAOSocio {
             pst.setBoolean(2, false);
             rs = pst.executeQuery();
             while (rs.next()) {
-                socio = new Socio(rs.getString(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4),
-                        rs.getDate(5), rs.getString(6),
-                        rs.getInt(7), rs.getInt(8), rs.getBoolean(9));
+                socio = new Socio(rs.getString(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getDate(5), rs.getString(6), rs.getInt(7),
+                        rs.getDate(8), rs.getInt(9), rs.getBoolean(10), rs.getString(11));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -63,7 +62,7 @@ public class DAOSocio {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into socios values(?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into socios values(?,?,?,?,?,?,?,?,?,?,?,?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, socio.getDni());
             pst.setString(2, socio.getNombre());
@@ -72,9 +71,11 @@ public class DAOSocio {
             pst.setDate(5, socio.getFecha_nac());
             pst.setString(6, socio.getDomicilio());
             pst.setInt(7, socio.getTelefono());
-            pst.setInt(8, socio.getId_membresia());
-            pst.setBoolean(9, socio.getPagado());
-            pst.setBoolean(10, false);
+            pst.setDate(8, socio.getFecha_ingreso());
+            pst.setInt(9, socio.getId_membresia());
+            pst.setBoolean(10, socio.isPagado());
+            pst.setString(11, socio.getRutaImg());
+            pst.setBoolean(12, false);
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -90,7 +91,7 @@ public class DAOSocio {
             con.createStatement();
             String sql = "update socios set dni = ?, nombre = ?, apellidos = ?,"
                     + " email = ?, fechanacimiento = ?, direccion = ?, telefono = ?,"
-                    + " idMembresia = ?, pagado = ? where dni = ?";
+                    + "fechaingreso = ?, idMembresia = ?, pagado = ?, rutaImg = ? where dni = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, socio.getDni());
             pst.setString(2, socio.getNombre());
@@ -99,9 +100,11 @@ public class DAOSocio {
             pst.setDate(5, socio.getFecha_nac());
             pst.setString(6, socio.getDomicilio());
             pst.setInt(7, socio.getTelefono());
-            pst.setInt(8, socio.getId_membresia());
-            pst.setBoolean(9, socio.getPagado());
-            pst.setString(10, dni);
+            pst.setDate(8, socio.getFecha_ingreso());
+            pst.setInt(9, socio.getId_membresia());
+            pst.setBoolean(10, socio.isPagado());
+            pst.setString(11, socio.getRutaImg());
+            pst.setString(12, dni);
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

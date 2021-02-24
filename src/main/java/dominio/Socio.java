@@ -14,12 +14,15 @@ public class Socio {
     private Date fecha_nac;
     private String domicilio;
     private int telefono;
+    private Date fecha_ingreso;
     private int id_membresia;
     private boolean pagado;
+    private String rutaImg;
     private boolean inactivo;
     
-    public Socio(String nDni, String nNombre, String nApellidos, String nEmail, Date nFecha_nac, 
-           String nDomicilio, int nTelefono, int nId_membresia, boolean nPagado){                
+    public Socio(String nDni, String nNombre, String nApellidos, String nEmail,
+            Date nFecha_nac, String nDomicilio, int nTelefono, Date nFecha_ingreso,
+            int nId_membresia, boolean nPagado, String nRutaImg) {
         this.dni = nDni;
         this.nombre = nNombre;
         this.apellidos = nApellidos;
@@ -27,8 +30,10 @@ public class Socio {
         this.fecha_nac = nFecha_nac;        
         this.domicilio = nDomicilio;
         this.telefono = nTelefono;
+        this.fecha_ingreso = nFecha_ingreso;
         this.id_membresia = nId_membresia;
         this.pagado = nPagado;
+        this.rutaImg = nRutaImg;
         this.inactivo = false;
     }
 
@@ -91,6 +96,14 @@ public class Socio {
         this.telefono = telefono;
     }
 
+    public Date getFecha_ingreso() {
+        return fecha_ingreso;
+    }
+
+    public void setFecha_ingreso(Date fecha_ingreso) {
+        this.fecha_ingreso = fecha_ingreso;
+    }
+
     public int getId_membresia() {
         return id_membresia;
     }
@@ -98,13 +111,21 @@ public class Socio {
     public void setId_membresia(int id_membresia) {
         this.id_membresia = id_membresia;
     }
-    
-    public boolean getPagado() {
+
+    public boolean isPagado() {
         return pagado;
-    }
+    }    
 
     public void setPagado(boolean pagado) {
         this.pagado = pagado;
+    }
+
+    public String getRutaImg() {
+        return rutaImg;
+    }
+
+    public void setRutaImg(String rutaImg) {
+        this.rutaImg = rutaImg;
     }
     
     @Override

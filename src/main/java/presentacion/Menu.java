@@ -1,13 +1,15 @@
 package presentacion;
 
-import dominio.Membresia;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import static java.awt.Frame.NORMAL;
 import java.awt.GraphicsEnvironment;
+import java.io.File;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import keeptoo.KButton;
 
 /**
@@ -42,6 +44,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         kButton5 = new keeptoo.KButton();
         kButton6 = new keeptoo.KButton();
+        jPanel6 = new javax.swing.JPanel();
+        kButton11 = new keeptoo.KButton();
         kButton7 = new keeptoo.KButton();
         kButton8 = new keeptoo.KButton();
         kButton9 = new keeptoo.KButton();
@@ -189,6 +193,45 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel2.add(kButton6);
+
+        jPanel6.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel6.setPreferredSize(new java.awt.Dimension(30, 40));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel6);
+
+        jPanel6.setVisible(false);
+        kButton11.setVisible(false);
+        kButton11.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
+        kButton11.setText("Cargar Socios");
+        kButton11.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        kButton11.setkBackGroundColor(new java.awt.Color(51, 51, 51));
+        kButton11.setkBorderRadius(0);
+        kButton11.setkEndColor(new java.awt.Color(51, 51, 51));
+        kButton11.setkForeGround(new java.awt.Color(153, 153, 153));
+        kButton11.setkHoverEndColor(new java.awt.Color(31, 31, 31));
+        kButton11.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton11.setkHoverStartColor(new java.awt.Color(31, 31, 31));
+        kButton11.setkPressedColor(new java.awt.Color(102, 0, 102));
+        kButton11.setkSelectedColor(new java.awt.Color(51, 51, 51));
+        kButton11.setkStartColor(new java.awt.Color(51, 51, 51));
+        kButton11.setPreferredSize(new java.awt.Dimension(150, 40));
+        kButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kButton11MouseClicked(evt);
+            }
+        });
+        jPanel2.add(kButton11);
 
         kButton7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         kButton7.setText("Eventos     ");
@@ -425,7 +468,6 @@ public class Menu extends javax.swing.JFrame {
     private void kButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton3MouseClicked
         CardLayout cardLayout = (CardLayout) jPanel7.getLayout();
         cardLayout.show(jPanel7, "cardAs");
-        //ap.rellenarCampos();
         
         no_selected(kButton6);
         no_selected(kButton7);
@@ -436,6 +478,9 @@ public class Menu extends javax.swing.JFrame {
         jPanel5.setVisible(true);
         kButton4.setVisible(true);
         kButton5.setVisible(true);
+        
+        jPanel6.setVisible(false);
+        kButton11.setVisible(false);
         
         selected(kButton3);
     }//GEN-LAST:event_kButton3MouseClicked
@@ -469,7 +514,10 @@ public class Menu extends javax.swing.JFrame {
         no_selected(kButton8);
         no_selected(kButton9);
         
-        invisible();
+        invisible();        
+        
+        jPanel6.setVisible(true);
+        kButton11.setVisible(true);
         
         selected(kButton6);
     }//GEN-LAST:event_kButton6MouseClicked
@@ -484,6 +532,8 @@ public class Menu extends javax.swing.JFrame {
         no_selected(kButton9);
         
         invisible();
+        jPanel6.setVisible(false);
+        kButton11.setVisible(false);
         
         selected(kButton7);
     }//GEN-LAST:event_kButton7MouseClicked
@@ -498,6 +548,8 @@ public class Menu extends javax.swing.JFrame {
         no_selected(kButton9);
         
         invisible();
+        jPanel6.setVisible(false);
+        kButton11.setVisible(false);
         
         selected(kButton8);
     }//GEN-LAST:event_kButton8MouseClicked
@@ -512,6 +564,8 @@ public class Menu extends javax.swing.JFrame {
         no_selected(kButton8);
         
         invisible();
+        jPanel6.setVisible(false);
+        kButton11.setVisible(false);
         
         selected(kButton9);
     }//GEN-LAST:event_kButton9MouseClicked
@@ -528,12 +582,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_kButton10MouseClicked
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        sp.actualizarListaSocios();
-        evp.actualizarListaEventos();
         enp.actualizarListaEntradas();
         
         no_selected(kButton4);
         no_selected(kButton5);
+        no_selected(kButton11);
         
         if(mem != null){
             mem.dispose();
@@ -542,6 +595,22 @@ public class Menu extends javax.swing.JFrame {
             jd.dispose();
         }
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void kButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton11MouseClicked
+        kButton6.setSelected(true);
+        
+        selected(kButton11);
+        
+        JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV Files","csv");
+        fc.setFileFilter(filter);
+        
+        int seleccion = fc.showOpenDialog(this);
+        if(seleccion == JFileChooser.APPROVE_OPTION){
+            File file = fc.getSelectedFile();
+        }
+    }//GEN-LAST:event_kButton11MouseClicked
        
     private void no_selected(KButton btn){        
         btn.setSelected(false);
@@ -589,8 +658,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private keeptoo.KButton kButton10;
+    private keeptoo.KButton kButton11;
     private keeptoo.KButton kButton3;
     private keeptoo.KButton kButton4;
     private keeptoo.KButton kButton5;

@@ -40,6 +40,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         tfPrecio = new javax.swing.JTextField();
+        kButton3 = new keeptoo.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
@@ -117,8 +118,11 @@ public class MembresiaFrame extends javax.swing.JFrame {
         modeloLista = new DefaultListModel();
         listMembresias.setModel(modeloLista);
         modeloLista.addAll(0,obtenerMembresias());
+        listMembresias.setSelectionForeground(new Color(255,255,255));
         listMembresias.setBackground(new java.awt.Color(102, 102, 102));
+        listMembresias.setForeground(new java.awt.Color(255, 255, 255));
         listMembresias.setName("listMembresias"); // NOI18N
+        listMembresias.setSelectionBackground(new java.awt.Color(51, 51, 51));
         listMembresias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listMembresiasMouseClicked(evt);
@@ -184,6 +188,17 @@ public class MembresiaFrame extends javax.swing.JFrame {
         });
         panelCenter.add(tfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 130, -1));
 
+        kButton3.setBorder(null);
+        kButton3.setText("Modificar");
+        kButton3.setkEndColor(new java.awt.Color(51, 0, 51));
+        kButton3.setkStartColor(new java.awt.Color(204, 0, 204));
+        kButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kButton3MouseClicked(evt);
+            }
+        });
+        panelCenter.add(kButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 90, 20));
+
         panelBorder.add(panelCenter, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -204,7 +219,8 @@ public class MembresiaFrame extends javax.swing.JFrame {
         mem = cm.obtenerMembresia(listMembresias.getSelectedValue().getId_membresia());
                
         tfNombre.setText(mem.getNombre());
-        tfPrecio.setText(mem.getPrecio()+"");                
+        tfPrecio.setText(mem.getPrecio()+""); 
+        kButton3.setEnabled(true);
     }//GEN-LAST:event_listMembresiasMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -253,6 +269,20 @@ public class MembresiaFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_kButton2MouseClicked
 
+    private void kButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton3MouseClicked
+        Membresia m = listMembresias.getSelectedValue();
+        if(!tfNombre.getText().equals("")){
+            Membresia memb = new Membresia(m.getId_membresia(), tfNombre.getText(),
+                Double.parseDouble(tfPrecio.getText()));
+            if(cm.modificarMembresia(memb)){
+                actualizarListaMembresias();                   
+            } 
+        }else{            
+            tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 0)));
+            jLabel3.setForeground(new Color(204, 0, 0));
+        }
+    }//GEN-LAST:event_kButton3MouseClicked
+
     private ArrayList<Membresia> obtenerMembresias(){
         ControlMembresia cmem = new ControlMembresia();
         return cmem.obtenerMembresias();
@@ -287,6 +317,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private keeptoo.KButton kButton1;
     private keeptoo.KButton kButton2;
+    private keeptoo.KButton kButton3;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JList<Membresia> listMembresias;

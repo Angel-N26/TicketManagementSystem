@@ -6,9 +6,9 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @author angel
@@ -34,12 +34,30 @@ public class SociosPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         panelSouthSocios = new javax.swing.JPanel();
-        scrollPanelListSocios = new javax.swing.JScrollPane();
-        listSocios = new javax.swing.JList<>();
-        kButton2 = new keeptoo.KButton();
         kButton1 = new keeptoo.KButton();
+        kButton2 = new keeptoo.KButton();
         panelCenterSocios = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
+        String[] titulos = {"DNI", "Nombre", "Apellidos", "Fecha", "Membresia","Pagado"};
+        Object[][] datos = {};
+        dtm = new DefaultTableModel(datos, titulos) {
+            Class[] types = new Class [] {
+                String.class, String.class, String.class, Object.class, Integer.class, Boolean.class
+            };
+
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        };
+        actualizarTabla();
         jTable1 = new javax.swing.JTable();
 
         setFocusable(false);
@@ -122,25 +140,18 @@ public class SociosPanel extends javax.swing.JPanel {
         panelSouthSocios.setPreferredSize(new java.awt.Dimension(648, 75));
         panelSouthSocios.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 20));
 
-        scrollPanelListSocios.setBackground(new java.awt.Color(102, 102, 102));
-        scrollPanelListSocios.setFocusable(false);
-        scrollPanelListSocios.setPreferredSize(new java.awt.Dimension(258, 35));
-
-        modeloListaSocios = new DefaultListModel();
-        listSocios.setModel(modeloListaSocios);
-        modeloListaSocios.addAll(0,obtenerSocios());
-        listSocios.setBackground(new java.awt.Color(102, 102, 102));
-        listSocios.setForeground(new java.awt.Color(255, 255, 255));
-        listSocios.setPreferredSize(new java.awt.Dimension(0, 35));
-        listSocios.setSelectionBackground(new java.awt.Color(204, 0, 204));
-        listSocios.addMouseListener(new java.awt.event.MouseAdapter() {
+        kButton1.setBorder(null);
+        kButton1.setText("Eliminar");
+        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
+        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
+        kButton1.setNextFocusableComponent(tfBuscarSocios);
+        kButton1.setPreferredSize(new java.awt.Dimension(180, 35));
+        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listSociosMouseClicked(evt);
+                kButton1MouseClicked(evt);
             }
         });
-        scrollPanelListSocios.setViewportView(listSocios);
-
-        panelSouthSocios.add(scrollPanelListSocios);
+        panelSouthSocios.add(kButton1);
 
         kButton2.setBorder(null);
         kButton2.setText("Añadir");
@@ -155,19 +166,6 @@ public class SociosPanel extends javax.swing.JPanel {
         });
         panelSouthSocios.add(kButton2);
 
-        kButton1.setBorder(null);
-        kButton1.setText("Eliminar");
-        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
-        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
-        kButton1.setNextFocusableComponent(tfBuscarSocios);
-        kButton1.setPreferredSize(new java.awt.Dimension(180, 35));
-        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton1MouseClicked(evt);
-            }
-        });
-        panelSouthSocios.add(kButton1);
-
         add(panelSouthSocios, java.awt.BorderLayout.PAGE_END);
 
         panelCenterSocios.setBackground(new java.awt.Color(51, 51, 51));
@@ -177,40 +175,23 @@ public class SociosPanel extends javax.swing.JPanel {
         panelCenterSocios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));
-        jScrollPane1.setBorder(null);
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jTable1.setSelectionForeground(new Color(255,255,255));
+        jTable1.setSelectionBackground(new Color(31,31,31));
         jTable1.setBackground(new java.awt.Color(51, 51, 51));
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"asd", "asd", "das", "asd",  new Boolean(true)},
-                {"asdasda", "asda", "asdasd", "asdasd",  new Boolean(false)}
-            },
-            new String [] {
-                "Nombre", "Apellidos", "Fecha ", "Membresia", "Pagado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTable1.setModel(dtm);
         jTable1.setRowHeight(50);
-        jTable1.setSelectionBackground(new java.awt.Color(31, 31, 31));
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable1.setShowGrid(true);
         jTable1.setShowVerticalLines(false);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         panelCenterSocios.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 760, 390));
@@ -227,24 +208,11 @@ public class SociosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tfBuscarSociosFocusGained
 
     private void tfBuscarSociosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarSociosFocusLost
-        tfBuscarSocios.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
+        tfBuscarSocios.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));        
     }//GEN-LAST:event_tfBuscarSociosFocusLost
 
-    private void listSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listSociosMouseClicked
-        if(evt.getClickCount() == 2){            
-            Socio socio = listSocios.getSelectedValue();            
-            
-            JPanel card = (JPanel) this.getParent();
-            EditSocioPanel editSP = new EditSocioPanel(socio);
-            editSP.rellenarCampos();
-            card.add(editSP, "cardEditSP");
-            CardLayout cardLayout = (CardLayout) card.getLayout();
-            cardLayout.show(card, "cardEditSP");        
-        }
-    }//GEN-LAST:event_listSociosMouseClicked
-
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        actualizarListaSocios();
+        actualizarTabla();
         jLabel1.setVisible(false);
         jLabel3.setText("");
                
@@ -253,14 +221,15 @@ public class SociosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
-        int index = listSocios.getSelectedIndex();
-        Socio socio =(Socio) modeloListaSocios.getElementAt(index);
+        int index = jTable1.getSelectedRow();
+
+        Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0));
                         
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
             if(cs.eliminarSocio(socio.getDni())){
-                modeloListaSocios.remove(listSocios.getSelectedIndex());
+                dtm.removeRow(index);
             }
         }
     }//GEN-LAST:event_kButton1MouseClicked
@@ -285,16 +254,12 @@ public class SociosPanel extends javax.swing.JPanel {
         }
         
         if(!socBusca.isEmpty()){
-            modeloListaSocios.removeAllElements();
-            modeloListaSocios.addAll(0, socBusca);
+            removeTabla();
+            addTabla(socBusca);
             
             jLabel1.setVisible(true);
             jLabel3.setText("");
         }else{
-            modeloListaSocios.removeAllElements();
-            modeloListaSocios.addAll(0, socBusca);
-            
-            jLabel1.setVisible(true);
             jLabel3.setText("No se ha encontrado ninguna coincidencia");
         }         
     }//GEN-LAST:event_jLabel2MouseClicked
@@ -307,24 +272,48 @@ public class SociosPanel extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-gray.png"));
     }//GEN-LAST:event_jLabel2MouseExited
 
-    public ArrayList<Socio> obtenerSocios(){
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if(evt.getClickCount() == 2){            
+            int index = jTable1.getSelectedRow();
+            Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0));
+            
+            JPanel card = (JPanel) this.getParent();
+            EditSocioPanel editSP = new EditSocioPanel(socio);
+            editSP.rellenarCampos();
+            card.add(editSP, "cardEditSP");
+            CardLayout cardLayout = (CardLayout) card.getLayout();
+            cardLayout.show(card, "cardEditSP");        
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private ArrayList<Socio> obtenerSocios(){
         ControlSocio csoc = new ControlSocio();
         return csoc.obtenerSocios();
     }
     
     public void actualizarTabla(){
+        removeTabla();
         ArrayList<Socio> socios = obtenerSocios();
-        //jTable1.
-        
+        addTabla(socios);
     }
     
-    public void actualizarListaSocios(){
-        modeloListaSocios.removeAllElements();
-        modeloListaSocios.addAll(0, obtenerSocios());
-    }    
+    private void removeTabla(){
+       while(dtm.getRowCount() > 0){
+           dtm.removeRow(0);
+       }
+    }
     
-    private DefaultListModel modeloListaSocios;    
-    private final ControlSocio cs;
+    private void addTabla(ArrayList<Socio> socios){
+        for(int i = 0 ; i < socios.size() ; i++){
+            Object[] newSocio = {socios.get(i).getDni(), socios.get(i).getNombre(),
+                socios.get(i).getApellidos(), socios.get(i).getFecha_ingreso(),
+                socios.get(i).getId_membresia(), socios.get(i).isPagado()};
+            dtm.addRow(newSocio);
+        }
+    }
+    
+    private DefaultTableModel dtm;   
+    private final ControlSocio cs;        
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -335,11 +324,9 @@ public class SociosPanel extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     private keeptoo.KButton kButton1;
     private keeptoo.KButton kButton2;
-    private javax.swing.JList<Socio> listSocios;
     private javax.swing.JPanel panelCenterSocios;
     private javax.swing.JPanel panelNorthSocios;
     private javax.swing.JPanel panelSouthSocios;
-    private javax.swing.JScrollPane scrollPanelListSocios;
     private javax.swing.JTextField tfBuscarSocios;
     // End of variables declaration//GEN-END:variables
 }

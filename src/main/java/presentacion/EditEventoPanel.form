@@ -826,13 +826,6 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel1">
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="3" y="3" width="184" height="184"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -851,11 +844,24 @@
                     </Constraint>
                   </Constraints>
                 </Component>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="3" y="3" width="184" height="184"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
               </SubComponents>
             </Container>
             <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+              <Properties>
+                <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+              </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());&#xd;&#xa;dateChooserEditor1.setBackground(new Color(51, 51, 51));&#xd;&#xa;dateChooserEditor1.setForeground(new Color(255, 255, 255));&#xd;&#xa;dateChooserEditor1.setEditable(false);&#xd;&#xa;dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;jDateChooser1.getCalendarButton().setSize(25, 25);&#xd;&#xa;jDateChooser1.getCalendarButton().setIcon(new javax.swing.ImageIcon(&quot;C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png&quot;));&#xd;&#xa;jDateChooser1.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 0)));&#xd;&#xa;jDateChooser1.getCalendarButton().setBackground(new Color(51,51,51));&#xd;&#xa;jDateChooser1.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());&#xd;&#xa;dateChooserEditor1.setBackground(new Color(51, 51, 51));&#xd;&#xa;dateChooserEditor1.setForeground(new Color(255, 255, 255));&#xd;&#xa;dateChooserEditor1.setEditable(false);&#xd;&#xa;dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;jDateChooser1.getCalendarButton().setSize(25, 25);&#xd;&#xa;jDateChooser1.getCalendarButton().setIcon(new javax.swing.ImageIcon(&quot;C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png&quot;));&#xd;&#xa;jDateChooser1.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;jDateChooser1.getCalendarButton().setBackground(new Color(51,51,51));&#xd;&#xa;jDateChooser1.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

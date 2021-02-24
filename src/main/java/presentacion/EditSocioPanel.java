@@ -8,12 +8,15 @@ import dominio.Membresia;
 import dominio.Socio;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * @author angel
@@ -28,7 +31,8 @@ public class EditSocioPanel extends javax.swing.JPanel {
     public EditSocioPanel(Socio soc){
         this.socio = soc;
         initComponents();
-        this.cs = new ControlSocio();        
+        this.cs = new ControlSocio();
+        kButton3.setVisible(false);
     }
     
     /**
@@ -80,8 +84,8 @@ public class EditSocioPanel extends javax.swing.JPanel {
         lblLocalidad = new javax.swing.JLabel();
         lblProvincia = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
@@ -495,17 +499,16 @@ public class EditSocioPanel extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 184, 184));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\editar.png")); // NOI18N
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\editar.png")); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                jLabel4MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 184, 184));
 
         panelCenter.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, 190));
 
@@ -522,7 +525,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         jDateChooser1.getCalendarButton().setSize(25, 25);
         jDateChooser1.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png"));
-        jDateChooser1.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 0)));
+        jDateChooser1.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         jDateChooser1.getCalendarButton().setBackground(new Color(51,51,51));
         jDateChooser1.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jDateChooser1.setBackground(new java.awt.Color(51, 51, 51));
@@ -537,10 +540,12 @@ public class EditSocioPanel extends javax.swing.JPanel {
 
         JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)jDateChooser2.getDateEditor());
         dateChooserEditor2.setBackground(new Color(51, 51, 51));
-        dateChooserEditor2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         dateChooserEditor2.setForeground(new Color(255, 255, 255));
-        jDateChooser2.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-black.png"));
-        jDateChooser2.getCalendarButton().setBorder(null);
+        dateChooserEditor2.setEditable(false);
+        dateChooserEditor2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        jDateChooser2.getCalendarButton().setSize(25, 25);
+        jDateChooser2.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png"));
+        jDateChooser2.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         jDateChooser2.getCalendarButton().setBackground(new Color(51,51,51));
         jDateChooser2.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jDateChooser2.setDateFormatString("yyyy-MM-dd");
@@ -649,10 +654,14 @@ public class EditSocioPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tfLocalidadFocusLost
 
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
+        JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());
+        JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)jDateChooser2.getDateEditor());
+        System.out.println(dateChooserEditor2.getText());
         Membresia m = (Membresia) cbMembresias.getSelectedItem();
         Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
-            tfEmail.getText(), Date.valueOf(jDateChooser1.getDateFormatString()),
-            direccion(), Integer.parseInt(tfTlf.getText()), m.getId_membresia(), cbPagos.isSelected());
+            tfEmail.getText(), Date.valueOf(dateChooserEditor1.getText()),
+            direccion(), Integer.parseInt(tfTlf.getText()), Date.valueOf(dateChooserEditor2.getText()),
+            m.getId_membresia(), cbPagos.isSelected(), jLabel1.getIcon().toString());
 
         if(kButton1.getText().equals("Modificar")){
             if(cs.modificarSocio(s, socio.getDni())){
@@ -679,14 +688,22 @@ public class EditSocioPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_kButton3MouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        JFileChooser fc = new JFileChooser();
-        int seleccion = fc.showOpenDialog(this);
-    }//GEN-LAST:event_jLabel3MouseClicked
-
     private void jDateChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseClicked
         tfNombre.setText(jDateChooser1.getDateFormatString());
     }//GEN-LAST:event_jDateChooser1MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG % PNG Images","jpg","png");
+        fc.setFileFilter(filter);
+        
+        int seleccion = fc.showOpenDialog(this);
+        if(seleccion == JFileChooser.APPROVE_OPTION){
+            File file = fc.getSelectedFile();
+            jLabel1.setIcon(new ImageIcon(file.getAbsolutePath()));
+        }
+    }//GEN-LAST:event_jLabel4MouseClicked
     
     public void dispose(){
         this.show(false);
@@ -707,9 +724,10 @@ public class EditSocioPanel extends javax.swing.JPanel {
         separarDireccion(socio.getDomicilio());
         tfTlf.setText(socio.getTelefono()+"");
         tfDNI.setText(socio.getDni());
+        jDateChooser2.setDate(socio.getFecha_ingreso());
         seleccionarMembresia(socio.getId_membresia());
-        cbPagos.setSelected(socio.getPagado());
-        //añadir pendiente de pagos
+        cbPagos.setSelected(socio.isPagado());
+        jLabel1.setIcon(new ImageIcon(socio.getRutaImg()));
         
         kButton1.setText("Modificar");
     }
@@ -753,23 +771,23 @@ public class EditSocioPanel extends javax.swing.JPanel {
     private void separarDireccion(String dir){
         String [] d = dir.split("/"); //Separar la C/
         String [] c = d[1].split(","); //Separar cada apartado
-        tfDireccion.setText(c[0]);
-        tfNumero.setText(c[1]);
+        tfDireccion.setText(c[0].replaceFirst(" ", ""));
+        tfNumero.setText(c[1].replaceFirst(" ", ""));
         if(c.length == 6){
             String [] p = c[2].split("º"); //Separar el piso y la puerta
-            tfPiso.setText(p[0]);
+            tfPiso.setText(p[0].replaceFirst(" ", ""));
             tfPuerta.setText(p[1]);
 
-            tfCodPostal.setText(c[3]);
-            tfLocalidad.setText(c[4]);
+            tfCodPostal.setText(c[3].replaceFirst(" ", ""));
+            tfLocalidad.setText(c[4].replaceFirst(" ", ""));
             cbProvincia.setSelectedItem(c[5].replaceFirst(" ", ""));
         }else{
-            tfCodPostal.setText(c[2]);
-            tfLocalidad.setText(c[3]);
+            tfCodPostal.setText(c[2].replaceFirst(" ", ""));
+            tfLocalidad.setText(c[3].replaceFirst(" ", ""));
             cbProvincia.setSelectedItem(c[4].replaceFirst(" ", ""));
         }
     }        
-   
+    
     private final ControlSocio cs;
     private Socio socio;
     
@@ -784,7 +802,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private keeptoo.KButton kButton1;

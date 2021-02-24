@@ -5,11 +5,15 @@ import dominio.ControlEvento;
 import dominio.Evento;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.io.File;
 import java.sql.Date;
 import java.sql.Time;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * @author angel
@@ -25,6 +29,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
         this.eve = e;
         initComponents();
         this.ce = new ControlEvento();
+        kButton3.setVisible(false);
     }
 
     /**
@@ -68,8 +73,8 @@ public class EditEventoPanel extends javax.swing.JPanel {
         lblLocalidad = new javax.swing.JLabel();
         lblProvincia = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         lblDireccion1 = new javax.swing.JLabel();
 
@@ -387,7 +392,6 @@ public class EditEventoPanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 184, 184));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\editar.png")); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -398,6 +402,9 @@ public class EditEventoPanel extends javax.swing.JPanel {
         });
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 184, 184));
+
         panelCenter.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, 190));
 
         JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());
@@ -407,9 +414,10 @@ public class EditEventoPanel extends javax.swing.JPanel {
         dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         jDateChooser1.getCalendarButton().setSize(25, 25);
         jDateChooser1.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png"));
-        jDateChooser1.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 0)));
+        jDateChooser1.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         jDateChooser1.getCalendarButton().setBackground(new Color(51,51,51));
         jDateChooser1.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jDateChooser1.setDateFormatString("yyyy-MM-dd");
         panelCenter.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 180, 25));
 
         lblDireccion1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -513,13 +521,24 @@ public class EditEventoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tfCodPostalFocusLost
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
+        JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG % PNG Images","jpg","png");
+        fc.setFileFilter(filter);
+        
+        int seleccion = fc.showOpenDialog(this);
+        if(seleccion == JFileChooser.APPROVE_OPTION){
+            File file = fc.getSelectedFile();
+            jLabel1.setIcon(new ImageIcon(file.getAbsolutePath()));
+        }
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
+        JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());
         Evento evento = new Evento(eve.getId(), tfNombre.getText(), tfTipo.getText(),
-            direccion(), Date.valueOf(jDateChooser1.getDateFormatString()), Time.valueOf(tfHora.getText()),
-            Integer.parseInt(tfCapacidad.getText()), Integer.parseInt(tfEntradasVendidas.getText()));
+            tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
+            Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
+            Integer.parseInt(tfEntradasVendidas.getText()), jLabel1.getIcon().toString());
 
         if(kButton1.getText().equals("Modificar")){
             if(ce.modificarEvento(evento)){
@@ -559,31 +578,32 @@ public class EditEventoPanel extends javax.swing.JPanel {
     
     public void rellenarCampos(){
         tfNombre.setText(eve.getNombre());
-        tfTipo.setText(eve.getTipo_evento());       
-        separarDireccion(eve.getLugar_evento());
-        jDateChooser1.setDate(eve.getFecha_evento());
-        tfHora.setText(eve.getHora_evento()+"");
+        tfTipo.setText(eve.getTipo());
+        tfNombreRecinto.setText(eve.getSala());
+        separarDireccion(eve.getDireccion());
+        jDateChooser1.setDate(eve.getFecha());
+        tfHora.setText(eve.getHora()+"");
         tfCapacidad.setText(eve.getEntradas()+"");
-        tfEntradasVendidas.setText(eve.getEntradas_vendidas()+"");
+        tfEntradasVendidas.setText(eve.getEntradasVendidas()+"");
+        jLabel1.setIcon(new ImageIcon(eve.getRutaImg()));
                 
         kButton1.setText("Modificar");
     }
     
     public String direccion(){
-        return tfNombreRecinto.getText() + ", C/" + tfCalle.getText() + ", " 
-                + tfNumero.getText() + ", " + tfCodPostal.getText() + ", " 
-                + tfLocalidad.getText() + ", " + cbProvincia.getSelectedItem();
+        return ", C/" + tfCalle.getText() + ", " + tfNumero.getText() + ", "
+                + tfCodPostal.getText() + ", " + tfLocalidad.getText() + ", "
+                + cbProvincia.getSelectedItem();
     }
     
     public void separarDireccion(String dir){
-        String [] d = dir.split(","); //Separar los componentes por las ,        
-        tfNombreRecinto.setText(d[0]);
-        String [] c = d[1].split("/"); //Separar la C/ 
-        tfCalle.setText(c[1]);
-        tfNumero.setText(d[2]);                                
-        tfCodPostal.setText(d[3]);
-        tfLocalidad.setText(d[4]);
-        cbProvincia.setSelectedItem(d[5].replaceFirst(" ", ""));                                   
+        String [] d = dir.split("/"); //Separar la C/
+        String [] c = d[1].split(","); //Separar cada apartado        
+        tfCalle.setText(c[0].replaceFirst(" ", ""));
+        tfNumero.setText(c[1].replaceFirst(" ", ""));
+        tfCodPostal.setText(c[2].replaceFirst(" ", ""));
+        tfLocalidad.setText(c[3].replaceFirst(" ", ""));
+        cbProvincia.setSelectedItem(c[4].replaceFirst(" ", ""));                                   
     }    
     
     private final ControlEvento ce;

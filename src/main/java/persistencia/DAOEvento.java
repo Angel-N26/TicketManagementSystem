@@ -46,9 +46,9 @@ public class DAOEvento {
             pst.setInt(1, id);
             rs = pst.executeQuery();
             while (rs.next()) {
-                evento = new Evento(rs.getInt(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4),
-                        rs.getDate(5), rs.getTime(6), rs.getInt(7), rs.getInt(8));
+                evento = new Evento(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getDate(6),
+                        rs.getTime(7), rs.getInt(8), rs.getInt(9), rs.getString(10));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -61,16 +61,17 @@ public class DAOEvento {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into eventos(nombre, tipo, direccion, fecha, hora,"
-                    + " entradas, entradasVendidas) values(?,?,?,?,?,?,?)";
+            String sql = "insert into eventos values(?,?,?,?,?,?,?,?,?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, evento.getNombre());
-            pst.setString(2, evento.getTipo_evento());
-            pst.setString(3, evento.getLugar_evento());
-            pst.setDate(4, evento.getFecha_evento());
-            pst.setTime(5, evento.getHora_evento());
-            pst.setInt(6, evento.getEntradas());
-            pst.setInt(7, evento.getEntradas_vendidas());
+            pst.setString(2, evento.getTipo());
+            pst.setString(3, evento.getSala());
+            pst.setString(4, evento.getDireccion());
+            pst.setDate(5, evento.getFecha());
+            pst.setTime(6, evento.getHora());
+            pst.setInt(7, evento.getEntradas());
+            pst.setInt(8, evento.getEntradasVendidas());
+            pst.setString(9, evento.getRutaImg());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -84,17 +85,20 @@ public class DAOEvento {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "update eventos set nombre = ?, tipo = ?, direccion = ?,"
-                    + " fecha = ?, hora = ?, entradas = ?, entradasVendidas = ? where ideventos = ?";
+            String sql = "update eventos set nombre = ?, tipo = ?, sala = ?,"
+                    + "direccion = ?, fecha = ?, hora = ?, entradas = ?,"
+                    + "entradasVendidas = ?, rutaImg = ? where ideventos = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, evento.getNombre());
-            pst.setString(2, evento.getTipo_evento());
-            pst.setString(3, evento.getLugar_evento());
-            pst.setDate(4, evento.getFecha_evento());
-            pst.setTime(5, evento.getHora_evento());
-            pst.setInt(6, evento.getEntradas());
-            pst.setInt(7, evento.getEntradas_vendidas());
-            pst.setInt(8, evento.getId());
+            pst.setString(2, evento.getTipo());
+            pst.setString(3, evento.getSala());
+            pst.setString(4, evento.getDireccion());
+            pst.setDate(5, evento.getFecha());
+            pst.setTime(6, evento.getHora());
+            pst.setInt(7, evento.getEntradas());
+            pst.setInt(8, evento.getEntradasVendidas());
+            pst.setString(9, evento.getRutaImg());
+            pst.setInt(10, evento.getId());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

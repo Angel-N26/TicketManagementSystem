@@ -66,6 +66,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         jLabel10 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         cbProvincia = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
 
         panelCenterAsoc.setBackground(new java.awt.Color(51, 51, 51));
         panelCenterAsoc.setName("panelCenterAsoc"); // NOI18N
@@ -76,7 +77,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         lblNameAsoc.setForeground(new java.awt.Color(255, 255, 255));
         lblNameAsoc.setText("Nombre");
         lblNameAsoc.setName("lblNameAsoc"); // NOI18N
-        panelCenterAsoc.add(lblNameAsoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 260, -1));
+        panelCenterAsoc.add(lblNameAsoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 50, -1));
 
         tfNombreAsoc.setEditable(false);
         tfNombreAsoc.setBackground(new java.awt.Color(51, 51, 51));
@@ -445,6 +446,11 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         cbProvincia.setNextFocusableComponent(tfCIFAsoc);
         panelCenterAsoc.add(cbProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 230, 25));
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("*");
+        panelCenterAsoc.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -575,7 +581,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
             ControlAsociacion ca = new ControlAsociacion();
             Asociacion asoc = new Asociacion(tfNombreAsoc.getText(),jTextField2.getText(),
                 Date.valueOf(dateChooserEditor2.getText()), Integer.parseInt(tfTlfAsoc.getText()),
-                tfCorreoAsoc.getText(), tfDirAsoc.getText(), tfCIFAsoc.getText(),
+                tfCorreoAsoc.getText(), direccion(), tfCIFAsoc.getText(),
                 Integer.parseInt(tfNRegAsoc.getText()), logoAsoc.getIcon().toString());
             if(ca.modificarAsociacion(asoc,antiguoCIF)){
                 editable(false, WORDS_GRAY);
@@ -610,7 +616,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         jDateChooser1.setDate(asoc.getFecha());
         tfTlfAsoc.setText(asoc.getTelefono()+"");
         tfCorreoAsoc.setText(asoc.getEmail());
-        tfDirAsoc.setText(asoc.getDireccion());        
+        separarDireccion(asoc.getDireccion());
         tfCIFAsoc.setText(asoc.getCIF());
         tfNRegAsoc.setText(asoc.getnRegistro()+"");
         logoAsoc.setIcon(new ImageIcon(asoc.getRutaLogo()));
@@ -649,6 +655,42 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         jLabel1.setVisible(b);
     }
     
+    private String direccion(){
+        String direccion;
+        if(jTextField4.getText().equals("") || jTextField5.getText().equals("")){
+            direccion =  "C/" + tfDirAsoc.getText() + ", " + jTextField3.getText()
+                    + ", " + jTextField6.getText() + ", " + tfPobAsoc.getText()
+                    + ", " + cbProvincia.getSelectedItem();
+            
+        }else{
+            direccion =  "C/" + tfDirAsoc.getText() + ", " + jTextField3.getText()
+                    + ", " + jTextField4.getText() + "º" + jTextField5.getText() + ", " +
+                    jTextField6.getText() + ", " + tfPobAsoc.getText() + ", " +
+                    cbProvincia.getSelectedItem();
+        }
+        return direccion;
+    }
+    
+    private void separarDireccion(String dir){
+        String [] d = dir.split("/"); //Separar la C/
+        String [] c = d[1].split(","); //Separar cada apartado
+        tfDirAsoc.setText(c[0].replaceFirst(" ", ""));
+        jTextField3.setText(c[1].replaceFirst(" ", ""));
+        if(c.length == 6){
+            String [] p = c[2].split("º"); //Separar el piso y la puerta
+            jTextField4.setText(p[0].replaceFirst(" ", ""));
+            jTextField5.setText(p[1]);
+
+            jTextField6.setText(c[3].replaceFirst(" ", ""));
+            tfPobAsoc.setText(c[4].replaceFirst(" ", ""));
+            cbProvincia.setSelectedItem(c[5].replaceFirst(" ", ""));
+        }else{
+            jTextField6.setText(c[2].replaceFirst(" ", ""));
+            tfPobAsoc.setText(c[3].replaceFirst(" ", ""));
+            cbProvincia.setSelectedItem(c[4].replaceFirst(" ", ""));
+        }
+    }
+    
     Pattern email = Pattern.compile("[a-zA-Z0-9]*@[a-z]*.(com|es)");
     Pattern tlf = Pattern.compile("[0-9]{9}");
     Pattern dni = Pattern.compile("[0-9]{8}[A-Z]");
@@ -663,6 +705,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
