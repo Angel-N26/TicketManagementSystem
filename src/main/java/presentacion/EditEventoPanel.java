@@ -23,13 +23,13 @@ public class EditEventoPanel extends javax.swing.JPanel {
     public EditEventoPanel() {
         initComponents();
         this.ce = new ControlEvento();
+        kButton3.setVisible(false);
     }
     
     public EditEventoPanel(Evento e){
         this.eve = e;
         initComponents();
         this.ce = new ControlEvento();
-        kButton3.setVisible(false);
     }
 
     /**
@@ -534,17 +534,21 @@ public class EditEventoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
-        JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());
-        Evento evento = new Evento(eve.getId(), tfNombre.getText(), tfTipo.getText(),
-            tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
-            Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
-            Integer.parseInt(tfEntradasVendidas.getText()), jLabel1.getIcon().toString());
+        JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());        
 
         if(kButton1.getText().equals("Modificar")){
+            Evento evento = new Evento(eve.getId(), tfNombre.getText(), tfTipo.getText(),
+                tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
+                Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
+                Integer.parseInt(tfEntradasVendidas.getText()), jLabel1.getIcon().toString());
             if(ce.modificarEvento(evento)){
                 dispose();
             }
         }else if(kButton1.getText().equals("Añadir")){
+            Evento evento = new Evento(tfNombre.getText(), tfTipo.getText(),
+                tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
+                Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
+                Integer.parseInt(tfEntradasVendidas.getText()), /*jLabel1.getIcon().toString()*/null);
             if(ce.insertarEvento(evento)){
                 dispose();
             }

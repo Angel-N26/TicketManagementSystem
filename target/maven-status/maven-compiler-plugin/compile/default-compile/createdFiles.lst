@@ -37,6 +37,7 @@ presentacion\AsociacionPanel$14.class
 presentacion\EditSocioPanel$12.class
 presentacion\Menu$3.class
 presentacion\AsociacionPanel$1.class
+presentacion\Login$8.class
 presentacion\EventosPanel$5.class
 presentacion\Login$1.class
 presentacion\MembresiaFrame$7.class
@@ -48,6 +49,7 @@ presentacion\EditEventoPanel$9.class
 presentacion\EditSocioPanel$4.class
 presentacion\AsociacionPanel.class
 presentacion\JuntaDirectiva$1.class
+presentacion\Login$9.class
 presentacion\AsociacionPanel$2.class
 presentacion\EditEventoPanel$12.class
 presentacion\GenerarEntradas$5.class

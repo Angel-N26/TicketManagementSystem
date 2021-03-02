@@ -18,13 +18,13 @@ public class DAOAsociacion {
         con = Agente.getConexion();
     }
 
-    public Asociacion obtenerAsociacionDAO(String cif){
+    public Asociacion obtenerAsociacionDAO(String nombre){
         ResultSet rs;
         Asociacion asociacion = new Asociacion();
         try {
-            String sql = "select * from asociacion where cif = ?";
+            String sql = "select * from asociacion where nombre = ?";
             pst = con.prepareStatement(sql);
-            pst.setString(1, cif);
+            pst.setString(1, nombre);
             rs = pst.executeQuery();
             while (rs.next()) {
                 asociacion = new Asociacion(rs.getString(1), rs.getString(2),
@@ -62,14 +62,14 @@ public class DAOAsociacion {
         return realizado;
     }*/
     
-    public boolean modificarAsociacionDAO(Asociacion asociacion, String CIF){
+    public boolean modificarAsociacionDAO(Asociacion asociacion, String nombre){
         boolean realizado;
         try {
             realizado = true;
             con.createStatement();
             String sql = "update asociacion set nombre = ?, tipo = ?, fecha = ?,"
                     + "telefono = ?, email = ?, direccion = ?, cif = ?,"
-                    + "nRegistro = ?, rutaLogo = ? where cif = ?";
+                    + "nRegistro = ?, rutaLogo = ? where nombre = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, asociacion.getNombre());
             pst.setString(2, asociacion.getTipo());
@@ -80,7 +80,7 @@ public class DAOAsociacion {
             pst.setString(7, asociacion.getCIF());
             pst.setInt(8, asociacion.getnRegistro());
             pst.setString(9, asociacion.getRutaLogo());
-            pst.setString(10, CIF);
+            pst.setString(10, nombre);
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

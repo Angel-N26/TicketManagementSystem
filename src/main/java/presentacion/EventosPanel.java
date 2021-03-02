@@ -74,7 +74,6 @@ public class EventosPanel extends javax.swing.JPanel {
         tfBuscarEventos.setBackground(new java.awt.Color(31, 31, 31));
         tfBuscarEventos.setForeground(new java.awt.Color(153, 153, 153));
         tfBuscarEventos.setText("Buscar...");
-        tfBuscarEventos.setToolTipText("");
         tfBuscarEventos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         tfBuscarEventos.setCaretColor(new java.awt.Color(204, 0, 204));
         tfBuscarEventos.setName("tfBuscarEventos"); // NOI18N
@@ -169,6 +168,7 @@ public class EventosPanel extends javax.swing.JPanel {
         jTable1.setBackground(new java.awt.Color(51, 51, 51));
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(dtm);
+        jTable1.setToolTipText("Doble Click para editar");
         jTable1.setRowHeight(50);
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);

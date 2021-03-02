@@ -576,14 +576,14 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         if(kButton1.getText().equals("Editar")){
             editable(true, WORDS_WHITE);
             kButton1.setText("Guardar");
-            antiguoCIF = tfCIFAsoc.getText();
+            antiguoNombre = tfNombreAsoc.getText();
         }else{
             ControlAsociacion ca = new ControlAsociacion();
             Asociacion asoc = new Asociacion(tfNombreAsoc.getText(),jTextField2.getText(),
                 Date.valueOf(dateChooserEditor2.getText()), Integer.parseInt(tfTlfAsoc.getText()),
                 tfCorreoAsoc.getText(), direccion(), tfCIFAsoc.getText(),
                 Integer.parseInt(tfNRegAsoc.getText()), logoAsoc.getIcon().toString());
-            if(ca.modificarAsociacion(asoc,antiguoCIF)){
+            if(ca.modificarAsociacion(asoc,antiguoNombre)){
                 editable(false, WORDS_GRAY);
                 kButton1.setText("Editar");
                 jLabel2.setText(tfNombreAsoc.getText());
@@ -609,7 +609,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
 
     public void rellenarCampos(){
         ControlAsociacion ca = new ControlAsociacion();
-        Asociacion asoc = ca.obtenerAsociacion("21123");
+        Asociacion asoc = ca.obtenerAsociacion("RealJazz");
         tfNombreAsoc.setText(asoc.getNombre());
         jLabel2.setText(asoc.getNombre());
         jTextField2.setText(asoc.getTipo());
@@ -672,6 +672,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
     }
     
     private void separarDireccion(String dir){
+        if(dir!=null){
         String [] d = dir.split("/"); //Separar la C/
         String [] c = d[1].split(","); //Separar cada apartado
         tfDirAsoc.setText(c[0].replaceFirst(" ", ""));
@@ -689,6 +690,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
             tfPobAsoc.setText(c[3].replaceFirst(" ", ""));
             cbProvincia.setSelectedItem(c[4].replaceFirst(" ", ""));
         }
+        }
     }
     
     Pattern email = Pattern.compile("[a-zA-Z0-9]*@[a-z]*.(com|es)");
@@ -698,7 +700,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
     Pattern cif = Pattern.compile("G[0-9]{8}");
     Pattern ccpp = Pattern.compile("[0-9]{5}");        
     
-    private String antiguoCIF;
+    private String antiguoNombre;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbProvincia;

@@ -26,13 +26,13 @@ public class EditSocioPanel extends javax.swing.JPanel {
     public EditSocioPanel() {
         initComponents();
         this.cs = new ControlSocio();
+        kButton3.setVisible(false);
     }
 
     public EditSocioPanel(Socio soc){
         this.socio = soc;
         initComponents();
-        this.cs = new ControlSocio();
-        kButton3.setVisible(false);
+        this.cs = new ControlSocio();        
     }
     
     /**
@@ -500,6 +500,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\editar.png")); // NOI18N
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -655,13 +656,12 @@ public class EditSocioPanel extends javax.swing.JPanel {
 
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
         JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());
-        JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)jDateChooser2.getDateEditor());
-        System.out.println(dateChooserEditor2.getText());
+        JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)jDateChooser2.getDateEditor());        
         Membresia m = (Membresia) cbMembresias.getSelectedItem();
         Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
             tfEmail.getText(), Date.valueOf(dateChooserEditor1.getText()),
             direccion(), Integer.parseInt(tfTlf.getText()), Date.valueOf(dateChooserEditor2.getText()),
-            m.getId_membresia(), cbPagos.isSelected(), jLabel1.getIcon().toString());
+            m.getId_membresia(), cbPagos.isSelected(), /*jLabel1.getIcon().toString()*/null);
 
         if(kButton1.getText().equals("Modificar")){
             if(cs.modificarSocio(s, socio.getDni())){

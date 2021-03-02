@@ -24,7 +24,7 @@ public class DAOSocio {
         ResultSet rs;
         Socio socio;
 	try {
-            String sql = "select dni from socios where inactivo = 0";
+            String sql = "select dni from socios";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             while(rs.next()) {
@@ -41,10 +41,9 @@ public class DAOSocio {
         ResultSet rs;
         Socio socio = new Socio();
         try {
-            String sql = "select * from socios where dni = ? AND inactivo = ?";
+            String sql = "select * from socios where dni = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, dni);
-            pst.setBoolean(2, false);
             rs = pst.executeQuery();
             while (rs.next()) {
                 socio = new Socio(rs.getString(1), rs.getString(2), rs.getString(3),

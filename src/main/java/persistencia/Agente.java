@@ -19,7 +19,7 @@ public class Agente {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String user = "root";
             String pass = "1234";
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/tmsdb?user="+user+"&password="+pass+"&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tms?user="+user+"&password="+pass+"&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());
         }
