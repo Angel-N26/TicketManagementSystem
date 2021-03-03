@@ -25,11 +25,11 @@ public class Menu extends javax.swing.JFrame {
         
         ap = new AsociacionPanel(this.asociacion);
         sp = new SociosPanel(this.asociacion);
-        evp = new EventosPanel();
-        enp = new EntradasPanel();
+        evp = new EventosPanel(this.asociacion);
+        enp = new EntradasPanel(this.asociacion);
         ip = new InicioPanel();
         editSP = new EditSocioPanel(this.asociacion);
-        editEP = new EditEventoPanel();
+        editEP = new EditEventoPanel(this.asociacion);
         
         
         
@@ -495,7 +495,7 @@ public class Menu extends javax.swing.JFrame {
         
         selected(kButton4);
         
-        jd = new JuntaDirectiva();
+        jd = new JuntaDirectiva(asociacion);
         jd.setVisible(true);
         jd.setLocationRelativeTo(null);       
     }//GEN-LAST:event_kButton4MouseClicked
@@ -525,6 +525,8 @@ public class Menu extends javax.swing.JFrame {
         kButton11.setVisible(true);
         
         selected(kButton6);
+        
+        sp.actualizarTabla();
     }//GEN-LAST:event_kButton6MouseClicked
 
     private void kButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton7MouseClicked
@@ -541,6 +543,8 @@ public class Menu extends javax.swing.JFrame {
         kButton11.setVisible(false);
         
         selected(kButton7);
+        
+        evp.actualizarTabla();
     }//GEN-LAST:event_kButton7MouseClicked
 
     private void kButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton8MouseClicked

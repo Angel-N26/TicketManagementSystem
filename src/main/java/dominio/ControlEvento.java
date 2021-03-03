@@ -14,12 +14,12 @@ public class ControlEvento {
         this.daoEvento = new DAOEvento();
     }
 
-    public ArrayList<Evento> obtenerEventos() {
-	return daoEvento.obtenerEventosDAO();
+    public ArrayList<Evento> obtenerEventos(String nombreAsoc) {
+	return daoEvento.obtenerEventosDAO(nombreAsoc);
     }
 
-    public Evento obtenerEvento(int id) {
-        return daoEvento.obtenerEventoDAO(id);
+    public Evento obtenerEvento(int id, String nombreAsoc) {
+        return daoEvento.obtenerEventoDAO(id, nombreAsoc);
     }
 
     public boolean insertarEvento(Evento evento) {

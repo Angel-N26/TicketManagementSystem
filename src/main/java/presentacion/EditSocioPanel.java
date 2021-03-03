@@ -664,10 +664,10 @@ public class EditSocioPanel extends javax.swing.JPanel {
         Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
             tfEmail.getText(), Date.valueOf(dateChooserEditor1.getText()),
             direccion(), Integer.parseInt(tfTlf.getText()), Date.valueOf(dateChooserEditor2.getText()),
-            m.getId_membresia(), cbPagos.isSelected(), /*jLabel1.getIcon().toString()*/null);
+            m.getId_membresia(), cbPagos.isSelected(), /*jLabel1.getIcon().toString()*/null, asociacion.getNombre());
 
         if(kButton1.getText().equals("Modificar")){
-            if(cs.modificarSocio(s, socio.getDni())){
+            if(cs.modificarSocio(s, socio.getDni(), asociacion.getNombre())){
                 dispose();
             }
         }else if(kButton1.getText().equals("Añadir")){
@@ -723,12 +723,12 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfNombre.setText(socio.getNombre());
         tfApellidos.setText(socio.getApellidos());
         tfEmail.setText(socio.getEmail());
-        jDateChooser1.setDate(socio.getFecha_nac());
+        jDateChooser1.setDate(socio.getFechaNac());
         separarDireccion(socio.getDomicilio());
         tfTlf.setText(socio.getTelefono()+"");
         tfDNI.setText(socio.getDni());
-        jDateChooser2.setDate(socio.getFecha_ingreso());
-        seleccionarMembresia(socio.getId_membresia());
+        jDateChooser2.setDate(socio.getFechaIngreso());
+        seleccionarMembresia(socio.getIdMembresia());
         cbPagos.setSelected(socio.isPagado());
         jLabel1.setIcon(new ImageIcon(socio.getRutaImg()));
         

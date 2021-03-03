@@ -1,5 +1,6 @@
 package presentacion;
 
+import dominio.Asociacion;
 import dominio.Cargo;
 import dominio.ControlJuntaDirectiva;
 import dominio.ControlSocio;
@@ -12,7 +13,9 @@ import javax.swing.JComboBox;
  **/
 public class JuntaDirectiva extends javax.swing.JFrame {
 
-    public JuntaDirectiva() {
+    public JuntaDirectiva(Asociacion asociacion) {
+        this.asociacion = asociacion;
+        
         initComponents();
     }
 
@@ -268,13 +271,13 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     //Obtiene un socio dado su dni
     private Socio obtenerSocio(String dni){
         ControlSocio cs = new ControlSocio();
-        return cs.obtenerSocio(dni);
+        return cs.obtenerSocio(dni, asociacion.getNombre());
     }       
     
     //Rellena el combo box con los nombres de todos los socios
     private void rellenarComboBox(){
         ControlSocio cs = new ControlSocio();
-        soc = cs.obtenerSocios();
+        soc = cs.obtenerSocios(asociacion.getNombre());
         cbPresidente.addItem(null);
         cbVicepresidente.addItem(null);
         cbSecretario.addItem(null);
@@ -290,6 +293,8 @@ public class JuntaDirectiva extends javax.swing.JFrame {
             cbVocal2.addItem(soc.get(i));
         }        
     }           
+    
+    private Asociacion asociacion;
     
     private ArrayList<Socio> soc;
     

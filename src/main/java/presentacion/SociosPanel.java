@@ -226,7 +226,7 @@ public class SociosPanel extends javax.swing.JPanel {
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
         int index = jTable1.getSelectedRow();
 
-        Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0));
+        Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0), asociacion.getNombre());
                         
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
@@ -278,7 +278,7 @@ public class SociosPanel extends javax.swing.JPanel {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         if(evt.getClickCount() == 2){            
             int index = jTable1.getSelectedRow();
-            Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0));
+            Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0), asociacion.getNombre());
             
             JPanel card = (JPanel) this.getParent();
             EditSocioPanel editSP = new EditSocioPanel(socio);
@@ -291,7 +291,7 @@ public class SociosPanel extends javax.swing.JPanel {
 
     private ArrayList<Socio> obtenerSocios(){
         ControlSocio csoc = new ControlSocio();
-        return csoc.obtenerSocios();
+        return csoc.obtenerSocios(asociacion.getNombre());
     }
     
     public void actualizarTabla(){
@@ -309,8 +309,8 @@ public class SociosPanel extends javax.swing.JPanel {
     private void addTabla(ArrayList<Socio> socios){
         for(int i = 0 ; i < socios.size() ; i++){
             Object[] newSocio = {socios.get(i).getDni(), socios.get(i).getNombre(),
-                socios.get(i).getApellidos(), socios.get(i).getFecha_ingreso(),
-                socios.get(i).getId_membresia(), socios.get(i).isPagado()};
+                socios.get(i).getApellidos(), socios.get(i).getFechaIngreso(),
+                socios.get(i).getIdMembresia(), socios.get(i).isPagado()};
             dtm.addRow(newSocio);
         }
     }

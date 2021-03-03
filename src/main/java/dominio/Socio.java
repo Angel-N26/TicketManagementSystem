@@ -11,29 +11,31 @@ public class Socio {
     private String nombre;
     private String apellidos;
     private String email;
-    private Date fecha_nac;
+    private Date fechaNac;
     private String domicilio;
     private int telefono;
-    private Date fecha_ingreso;
-    private int id_membresia;
+    private Date fechaIngreso;
+    private int idMembresia;
     private boolean pagado;
     private String rutaImg;
+    private String nombreAsoc;
     private boolean inactivo;
     
-    public Socio(String nDni, String nNombre, String nApellidos, String nEmail,
-            Date nFecha_nac, String nDomicilio, int nTelefono, Date nFecha_ingreso,
-            int nId_membresia, boolean nPagado, String nRutaImg) {
-        this.dni = nDni;
-        this.nombre = nNombre;
-        this.apellidos = nApellidos;
-        this.email = nEmail;
-        this.fecha_nac = nFecha_nac;        
-        this.domicilio = nDomicilio;
-        this.telefono = nTelefono;
-        this.fecha_ingreso = nFecha_ingreso;
-        this.id_membresia = nId_membresia;
-        this.pagado = nPagado;
-        this.rutaImg = nRutaImg;
+    public Socio(String dni, String nombre, String apellidos, String email,
+            Date fechaNac, String domicilio, int telefono, Date fechaIngreso,
+            int idMembresia, boolean pagado, String rutaImg, String nombreAsoc) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.fechaNac = fechaNac;        
+        this.domicilio = domicilio;
+        this.telefono = telefono;
+        this.fechaIngreso = fechaIngreso;
+        this.idMembresia = idMembresia;
+        this.pagado = pagado;
+        this.rutaImg = rutaImg;
+        this.nombreAsoc = nombreAsoc;
         this.inactivo = false;
     }
 
@@ -72,12 +74,12 @@ public class Socio {
         this.email = email;
     }
     
-    public Date getFecha_nac() {
-        return fecha_nac;
+    public Date getFechaNac() {
+        return fechaNac;
     }
 
-    public void setFecha_nac(Date fecha_nac) {
-        this.fecha_nac = fecha_nac;
+    public void setFechaNac(Date fechaNac) {
+        this.fechaNac = fechaNac;
     }
     
     public String getDomicilio() {
@@ -96,20 +98,20 @@ public class Socio {
         this.telefono = telefono;
     }
 
-    public Date getFecha_ingreso() {
-        return fecha_ingreso;
+    public Date getFechaIngreso() {
+        return fechaIngreso;
     }
 
-    public void setFecha_ingreso(Date fecha_ingreso) {
-        this.fecha_ingreso = fecha_ingreso;
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
     }
 
-    public int getId_membresia() {
-        return id_membresia;
+    public int getIdMembresia() {
+        return idMembresia;
     }
 
-    public void setId_membresia(int id_membresia) {
-        this.id_membresia = id_membresia;
+    public void setIdMembresia(int idMembresia) {
+        this.idMembresia = idMembresia;
     }
 
     public boolean isPagado() {
@@ -126,6 +128,14 @@ public class Socio {
 
     public void setRutaImg(String rutaImg) {
         this.rutaImg = rutaImg;
+    }
+
+    public String getNombreAsoc() {
+        return nombreAsoc;
+    }
+
+    public void setNombreAsoc(String nombreAsoc) {
+        this.nombreAsoc = nombreAsoc;
     }
     
     @Override

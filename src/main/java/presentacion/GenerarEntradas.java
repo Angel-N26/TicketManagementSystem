@@ -1,6 +1,7 @@
 package presentacion;
 
 import com.google.zxing.WriterException;
+import dominio.Asociacion;
 import dominio.ControlEntradas;
 import dominio.ControlSocio;
 import dominio.CrearQR;
@@ -23,9 +24,11 @@ import javax.swing.JOptionPane;
  **/
 public class GenerarEntradas extends javax.swing.JFrame {
 
-    public GenerarEntradas(Evento evento, ArrayList<Entrada> entradas) {
+    public GenerarEntradas(Evento evento, ArrayList<Entrada> entradas, Asociacion asociacion) {
         this.evento = evento;
         this.entradas = entradas;
+        this.asociacion = asociacion;
+        
         initComponents();
         socioConEntrada = new ArrayList();
     }
@@ -286,7 +289,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
     
     private void rellenarListas(){
         ControlSocio cs = new ControlSocio();
-        ArrayList<Socio> socios = cs.obtenerSocios();
+        ArrayList<Socio> socios = cs.obtenerSocios(asociacion.getNombre());
         
         ArrayList<Socio> sociosSin = new ArrayList();
         ArrayList<Socio> sociosCon = new ArrayList();
@@ -308,6 +311,8 @@ public class GenerarEntradas extends javax.swing.JFrame {
         modeloListaSociosCon.addAll(0, sociosCon);
         modeloListaSociosSin.addAll(0, sociosSin);
     }     
+    
+    private Asociacion asociacion;
     
     private final Evento evento;
     private final ArrayList<Entrada> entradas;

@@ -1,12 +1,12 @@
 package presentacion;
 
+import dominio.Asociacion;
 import dominio.ControlEvento;
 import dominio.Evento;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +16,8 @@ import javax.swing.table.DefaultTableModel;
  **/
 public class EventosPanel extends javax.swing.JPanel {
 
-    public EventosPanel() {
+    public EventosPanel(Asociacion asociacion) {
+        this.asociacion = asociacion;
         initComponents();
         ce = new ControlEvento();
     }
@@ -242,7 +243,7 @@ public class EventosPanel extends javax.swing.JPanel {
 
     private void kButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton2MouseClicked
         JPanel card = (JPanel) this.getParent();
-        EditEventoPanel editEP = new EditEventoPanel();
+        EditEventoPanel editEP = new EditEventoPanel(asociacion);
         card.add(editEP, "cardEditEP");
         CardLayout cardLayout = (CardLayout) card.getLayout();
         cardLayout.show(card, "cardEditEP");
@@ -259,7 +260,7 @@ public class EventosPanel extends javax.swing.JPanel {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         if(evt.getClickCount() == 2){
             int index = jTable1.getSelectedRow();
-            Evento evento = ce.obtenerEvento((Integer)dtm.getValueAt(index, 0));
+            Evento evento = ce.obtenerEvento((Integer)dtm.getValueAt(index, 0), asociacion.getNombre());
             
             JPanel card = (JPanel) this.getParent();
             EditEventoPanel editEP = new EditEventoPanel(evento);
@@ -273,7 +274,7 @@ public class EventosPanel extends javax.swing.JPanel {
     
     public ArrayList<Evento> obtenerEventos(){
         ControlEvento ceve = new ControlEvento();
-        return ceve.obtenerEventos();
+        return ceve.obtenerEventos(asociacion.getNombre());
     }
     
     public void actualizarTabla(){
@@ -296,6 +297,8 @@ public class EventosPanel extends javax.swing.JPanel {
             dtm.addRow(newSocio);
         }
     }    
+    
+    private final Asociacion asociacion;
     
     private DefaultTableModel dtm;
     private final ControlEvento ce;    

@@ -1,6 +1,7 @@
 package presentacion;
 
 import com.toedter.calendar.JTextFieldDateEditor;
+import dominio.Asociacion;
 import dominio.ControlEvento;
 import dominio.Evento;
 import java.awt.CardLayout;
@@ -20,7 +21,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  **/
 public class EditEventoPanel extends javax.swing.JPanel {
 
-    public EditEventoPanel() {
+    public EditEventoPanel(Asociacion asociacion) {
+        this.asociacion = asociacion;
         initComponents();
         this.ce = new ControlEvento();
         kButton3.setVisible(false);
@@ -540,7 +542,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
             Evento evento = new Evento(eve.getId(), tfNombre.getText(), tfTipo.getText(),
                 tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
                 Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
-                Integer.parseInt(tfEntradasVendidas.getText()), jLabel1.getIcon().toString());
+                Integer.parseInt(tfEntradasVendidas.getText()), jLabel1.getIcon().toString(), asociacion.getNombre());
             if(ce.modificarEvento(evento)){
                 dispose();
             }
@@ -548,7 +550,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
             Evento evento = new Evento(tfNombre.getText(), tfTipo.getText(),
                 tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
                 Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
-                Integer.parseInt(tfEntradasVendidas.getText()), /*jLabel1.getIcon().toString()*/null);
+                Integer.parseInt(tfEntradasVendidas.getText()), /*jLabel1.getIcon().toString()*/null, asociacion.getNombre());
             if(ce.insertarEvento(evento)){
                 dispose();
             }
@@ -573,7 +575,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
         this.show(false);
         JPanel card = (JPanel) this.getParent();
         
-        EventosPanel ep = new EventosPanel();
+        EventosPanel ep = new EventosPanel(asociacion);
         card.add(ep, "cardEP");
         
         CardLayout cardLayout = (CardLayout) card.getLayout();
@@ -609,6 +611,8 @@ public class EditEventoPanel extends javax.swing.JPanel {
         tfLocalidad.setText(c[3].replaceFirst(" ", ""));
         cbProvincia.setSelectedItem(c[4].replaceFirst(" ", ""));                                   
     }    
+    
+    private Asociacion asociacion;
     
     private final ControlEvento ce;
     private  Evento eve;

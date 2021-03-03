@@ -19,16 +19,17 @@ public class DAOSocio {
         con = Agente.getConexion();
     }
 
-    public ArrayList<Socio> obtenerSociosDAO(){
+    public ArrayList<Socio> obtenerSociosDAO(String nombreAsoc){
         ArrayList listaSocios = new ArrayList<Socio>();
         ResultSet rs;
         Socio socio;
 	try {
-            String sql = "select dni from socios";
+            String sql = "select dni from socios where nombreAsoc = ?";
             pst = con.prepareStatement(sql);
+            pst.setString(1, nombreAsoc);
             rs = pst.executeQuery();
             while(rs.next()) {
-                socio = obtenerSocioDAO(rs.getString(1));
+                socio = obtenerSocioDAO(rs.getString(1), nombreAsoc);
                 listaSocios.add(socio);
             }
 	} catch (SQLException e) {
@@ -37,18 +38,19 @@ public class DAOSocio {
 	return listaSocios;
     }
 
-    public Socio obtenerSocioDAO(String dni) {
+    public Socio obtenerSocioDAO(String dni, String nombreAsoc) {
         ResultSet rs;
         Socio socio = new Socio();
         try {
-            String sql = "select * from socios where dni = ?";
+            String sql = "select * from socios where dni = ? AND nombreAsoc = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, dni);
+            pst.setString(2, nombreAsoc);
             rs = pst.executeQuery();
             while (rs.next()) {
                 socio = new Socio(rs.getString(1), rs.getString(2), rs.getString(3),
                         rs.getString(4), rs.getDate(5), rs.getString(6), rs.getInt(7),
-                        rs.getDate(8), rs.getInt(9), rs.getBoolean(10), rs.getString(11));
+                        rs.getDate(8), rs.getInt(9), rs.getBoolean(10), rs.getString(11), rs.getString(12));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -61,20 +63,21 @@ public class DAOSocio {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into socios values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into socios values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, socio.getDni());
             pst.setString(2, socio.getNombre());
             pst.setString(3, socio.getApellidos());
             pst.setString(4, socio.getEmail());
-            pst.setDate(5, socio.getFecha_nac());
+            pst.setDate(5, socio.getFechaNac());
             pst.setString(6, socio.getDomicilio());
             pst.setInt(7, socio.getTelefono());
-            pst.setDate(8, socio.getFecha_ingreso());
-            pst.setInt(9, socio.getId_membresia());
+            pst.setDate(8, socio.getFechaIngreso());
+            pst.setInt(9, socio.getIdMembresia());
             pst.setBoolean(10, socio.isPagado());
             pst.setString(11, socio.getRutaImg());
             pst.setBoolean(12, false);
+            pst.setString(13, socio.getNombreAsoc());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -83,27 +86,28 @@ public class DAOSocio {
         return realizado;
     }
 
-    public boolean modificarSocioDAO(Socio socio, String dni){
+    public boolean modificarSocioDAO(Socio socio, String dni, String nombreAsoc){
         boolean realizado;
         try {
             realizado = true;
             con.createStatement();
             String sql = "update socios set dni = ?, nombre = ?, apellidos = ?,"
                     + " email = ?, fechanacimiento = ?, direccion = ?, telefono = ?,"
-                    + "fechaingreso = ?, idMembresia = ?, pagado = ?, rutaImg = ? where dni = ?";
+                    + "fechaingreso = ?, idMembresia = ?, pagado = ?, rutaImg = ? where dni = ? AND nombreAsoc = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, socio.getDni());
             pst.setString(2, socio.getNombre());
             pst.setString(3, socio.getApellidos());
             pst.setString(4, socio.getEmail());
-            pst.setDate(5, socio.getFecha_nac());
+            pst.setDate(5, socio.getFechaNac());
             pst.setString(6, socio.getDomicilio());
             pst.setInt(7, socio.getTelefono());
-            pst.setDate(8, socio.getFecha_ingreso());
-            pst.setInt(9, socio.getId_membresia());
+            pst.setDate(8, socio.getFechaIngreso());
+            pst.setInt(9, socio.getIdMembresia());
             pst.setBoolean(10, socio.isPagado());
             pst.setString(11, socio.getRutaImg());
             pst.setString(12, dni);
+            pst.setString(13, nombreAsoc);
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

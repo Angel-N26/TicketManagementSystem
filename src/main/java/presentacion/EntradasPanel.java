@@ -1,5 +1,6 @@
 package presentacion;
 
+import dominio.Asociacion;
 import dominio.ControlEntradas;
 import dominio.ControlEvento;
 import dominio.Entrada;
@@ -13,7 +14,9 @@ import javax.swing.DefaultListModel;
  **/
 public class EntradasPanel extends javax.swing.JPanel {
 
-    public EntradasPanel() {
+    public EntradasPanel(Asociacion asociacion) {
+        this.asociacion = asociacion;
+        
         initComponents();
     }
 
@@ -145,7 +148,7 @@ public class EntradasPanel extends javax.swing.JPanel {
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
         Evento evento = (Evento) cbSeleccionEvento.getSelectedItem();
         if(evento != null){
-            GenerarEntradas ge = new GenerarEntradas(evento, sacarEntradas(evento.getId()));
+            GenerarEntradas ge = new GenerarEntradas(evento, sacarEntradas(evento.getId()), asociacion);
             ge.setVisible(true);
             ge.setLocationRelativeTo(null);
         }
@@ -166,7 +169,7 @@ public class EntradasPanel extends javax.swing.JPanel {
     
     private void rellenarComboBox(){
         ControlEvento cev = new ControlEvento();
-        ArrayList<Evento> evs = cev.obtenerEventos();
+        ArrayList<Evento> evs = cev.obtenerEventos(asociacion.getNombre());
         
         for(int i = 0 ; i < evs.size() ; i++){
             cbSeleccionEvento.addItem(evs.get(i));
@@ -180,6 +183,8 @@ public class EntradasPanel extends javax.swing.JPanel {
         
         return entradas;
     }        
+    
+    private final Asociacion asociacion;
     
     private DefaultListModel modeloListaEntradas;
     

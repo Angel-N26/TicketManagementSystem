@@ -14,20 +14,20 @@ public class ControlSocio {
         this.daoSocio = new DAOSocio();
     }
 
-    public ArrayList<Socio> obtenerSocios() {
-	return daoSocio.obtenerSociosDAO();
+    public ArrayList<Socio> obtenerSocios(String nombreAsoc) {
+	return daoSocio.obtenerSociosDAO(nombreAsoc);
     }
 
-    public Socio obtenerSocio(String dni) {
-        return daoSocio.obtenerSocioDAO(dni);
+    public Socio obtenerSocio(String dni, String nombreAsoc) {
+        return daoSocio.obtenerSocioDAO(dni, nombreAsoc);
     }
 
     public boolean insertarSocio(Socio socio) {
         return daoSocio.insertarSocioDAO(socio);
     }
 
-    public boolean modificarSocio(Socio socio, String dni){
-        return daoSocio.modificarSocioDAO(socio, dni);
+    public boolean modificarSocio(Socio socio, String dni, String nombreAsoc){
+        return daoSocio.modificarSocioDAO(socio, dni, nombreAsoc);
     }
 
     public boolean eliminarSocio(String dni){
