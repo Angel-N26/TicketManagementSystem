@@ -1,5 +1,6 @@
 package presentacion;
 
+import dominio.Asociacion;
 import dominio.ControlSocio;
 import dominio.Socio;
 import java.awt.CardLayout;
@@ -15,7 +16,9 @@ import javax.swing.table.DefaultTableModel;
  **/
 public class SociosPanel extends javax.swing.JPanel {
 
-    public SociosPanel() {
+    public SociosPanel(Asociacion asociacion) {
+        this.asociacion = asociacion;
+        
         initComponents();
         cs = new ControlSocio();
     }
@@ -236,7 +239,7 @@ public class SociosPanel extends javax.swing.JPanel {
 
     private void kButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton2MouseClicked
         JPanel card = (JPanel) this.getParent();
-        EditSocioPanel editSP = new EditSocioPanel();
+        EditSocioPanel editSP = new EditSocioPanel(asociacion);
         card.add(editSP, "cardEditSP");
         CardLayout cardLayout = (CardLayout) card.getLayout();
         cardLayout.show(card, "cardEditSP");
@@ -311,6 +314,8 @@ public class SociosPanel extends javax.swing.JPanel {
             dtm.addRow(newSocio);
         }
     }
+    
+    private Asociacion asociacion;
     
     private DefaultTableModel dtm;   
     private final ControlSocio cs;        

@@ -37,30 +37,21 @@ public class DAOAsociacion {
         return asociacion;
     }
     
-    /*public boolean insertarAsociacionDAO(Asociacion asociacion){
+    public boolean insertarAsociacionDAO(String nombre){
         boolean realizado;
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into asociacion(nombre, tipo, fecha, telefono,"
-                    + "email, direccion, cif, nRegistro, rutaLogo) values(?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into asociacion(nombre) values(?)";
             pst = con.prepareStatement(sql);
-            pst.setString(1, asociacion.getNombre());
-            pst.setString(2, asociacion.getTipo());
-            pst.setDate(3, asociacion.getFecha());
-            pst.setInt(4, asociacion.getTelefono());
-            pst.setString(5, asociacion.getEmail());
-            pst.setString(6, asociacion.getDireccion());
-            pst.setString(7, asociacion.getCIF());
-            pst.setInt(8, asociacion.getnRegistro());
-            pst.setString(9, asociacion.getRutaLogo());
+            pst.setString(1, nombre);            
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
             realizado = false;
         }
         return realizado;
-    }*/
+    }
     
     public boolean modificarAsociacionDAO(Asociacion asociacion, String nombre){
         boolean realizado;

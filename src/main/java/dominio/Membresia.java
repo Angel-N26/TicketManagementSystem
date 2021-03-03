@@ -8,16 +8,19 @@ public class Membresia{
     private int id_membresia;
     private String nombre;
     private double precio;
+    private String nombreAsoc;
     
-    public Membresia(int nId_membresia, String nNombre, double nPrecio){
-        this.id_membresia = nId_membresia;
-        this.nombre = nNombre;
-        this.precio = nPrecio;
+    public Membresia(int id_membresia, String nombre, double precio, String nombreAsoc){
+        this.id_membresia = id_membresia;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.nombreAsoc = nombreAsoc;
     }
     
-    public Membresia(String nNombre, double nPrecio){     
+    public Membresia(String nNombre, double nPrecio, String nombreAsoc){     
         this.nombre = nNombre;
         this.precio = nPrecio;
+        this.nombreAsoc = nombreAsoc;
     }
     
     public int getId_membresia() {
@@ -26,6 +29,10 @@ public class Membresia{
 
     public String getNombre() {
         return nombre;
+    }
+
+    public String getNombreAsoc() {
+        return nombreAsoc;
     }
     
     public void setNombre(String nombre) {

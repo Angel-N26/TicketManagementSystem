@@ -19,16 +19,17 @@ public class DAOMembresia {
         con = Agente.getConexion();
     }
 
-    public ArrayList<Membresia> obtenerMembresiasDAO(){
+    public ArrayList<Membresia> obtenerMembresiasDAO(String nombreAsociacion){
        ArrayList listaMembresias = new ArrayList<Membresia>();
         ResultSet rs;
         Membresia membresia;
 	try {
-            String sql = "select idmembresia from membresia";
+            String sql = "select idmembresia from membresia where nombreAsoc = ?";
             pst = con.prepareStatement(sql);
+            pst.setString(1, nombreAsociacion);
             rs = pst.executeQuery();
             while(rs.next()) {
-                membresia = obtenerMembresiaDAO(rs.getInt(1));
+                membresia = obtenerMembresiaDAO(rs.getInt(1), nombreAsociacion);
                 listaMembresias.add(membresia);
             }
 	} catch (SQLException e) {
@@ -37,17 +38,18 @@ public class DAOMembresia {
         return listaMembresias;
     }    
         
-    public Membresia obtenerMembresiaDAO(int id_membresia){
+    public Membresia obtenerMembresiaDAO(int idMembresia, String nombreAsociacion){
         ResultSet rs;
         Membresia membresia = null;
         try {
-            String sql = "select * from membresia where idmembresia = ?";
+            String sql = "select * from membresia where idmembresia = ? AND nombreAsoc = ?";
             pst = con.prepareStatement(sql);
-            pst.setInt(1, id_membresia);
+            pst.setInt(1, idMembresia);
+            pst.setString(2, nombreAsociacion);
             rs = pst.executeQuery();
             while (rs.next()) {
                 membresia = new Membresia(rs.getInt(1), rs.getString(2),
-                        rs.getDouble(3));
+                        rs.getDouble(3), rs.getString(4));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -60,11 +62,12 @@ public class DAOMembresia {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into membresia(nombre, precio)"
-                    + "values(?,?)";
+            String sql = "insert into membresia(nombre, precio, nombreAsoc)"
+                    + "values(?,?,?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, membresia.getNombre());
             pst.setDouble(2, membresia.getPrecio());
+            pst.setString(3, membresia.getNombreAsoc());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

@@ -18,7 +18,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  **/
 public class AsociacionPanel extends javax.swing.JPanel implements Colores {
 
-    public AsociacionPanel() {
+    public AsociacionPanel(Asociacion asociacion) {
+        this.asociacion = asociacion;
+        
         initComponents();
         rellenarCampos();
     }
@@ -609,17 +611,17 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
 
     public void rellenarCampos(){
         ControlAsociacion ca = new ControlAsociacion();
-        Asociacion asoc = ca.obtenerAsociacion("RealJazz");
-        tfNombreAsoc.setText(asoc.getNombre());
-        jLabel2.setText(asoc.getNombre());
-        jTextField2.setText(asoc.getTipo());
-        jDateChooser1.setDate(asoc.getFecha());
-        tfTlfAsoc.setText(asoc.getTelefono()+"");
-        tfCorreoAsoc.setText(asoc.getEmail());
-        separarDireccion(asoc.getDireccion());
-        tfCIFAsoc.setText(asoc.getCIF());
-        tfNRegAsoc.setText(asoc.getnRegistro()+"");
-        logoAsoc.setIcon(new ImageIcon(asoc.getRutaLogo()));
+        
+        tfNombreAsoc.setText(asociacion.getNombre());
+        jLabel2.setText(asociacion.getNombre());
+        jTextField2.setText(asociacion.getTipo());
+        jDateChooser1.setDate(asociacion.getFecha());
+        tfTlfAsoc.setText(asociacion.getTelefono()+"");
+        tfCorreoAsoc.setText(asociacion.getEmail());
+        separarDireccion(asociacion.getDireccion());
+        tfCIFAsoc.setText(asociacion.getCIF());
+        tfNRegAsoc.setText(asociacion.getnRegistro()+"");
+        logoAsoc.setIcon(new ImageIcon(asociacion.getRutaLogo()));
     }
     
     public void editable(boolean b, Color c){
@@ -699,6 +701,8 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
     Pattern number = Pattern.compile("[0-9]+");
     Pattern cif = Pattern.compile("G[0-9]{8}");
     Pattern ccpp = Pattern.compile("[0-9]{5}");        
+    
+    private Asociacion asociacion;
     
     private String antiguoNombre;
     

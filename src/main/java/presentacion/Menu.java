@@ -1,5 +1,7 @@
 package presentacion;
 
+import dominio.Asociacion;
+import dominio.ControlAsociacion;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
@@ -17,14 +19,19 @@ import keeptoo.KButton;
  **/
 public class Menu extends javax.swing.JFrame {
 
-    public Menu() {
-        ap = new AsociacionPanel();
-        sp = new SociosPanel();
+    public Menu(String nombreAsociacion) {
+        this.ca = new ControlAsociacion();
+        this.asociacion = ca.obtenerAsociacion(nombreAsociacion);
+        
+        ap = new AsociacionPanel(this.asociacion);
+        sp = new SociosPanel(this.asociacion);
         evp = new EventosPanel();
         enp = new EntradasPanel();
         ip = new InicioPanel();
-        editSP = new EditSocioPanel();
+        editSP = new EditSocioPanel(this.asociacion);
         editEP = new EditEventoPanel();
+        
+        
         
         initComponents();
     }
@@ -333,7 +340,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\close-button.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -346,8 +353,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(975, 0, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\logo(1).png")); // NOI18N
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -355,7 +360,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel3.setText("TicketManagementSystem");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 9, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\maximize-window.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\maximize-window.png")); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -369,7 +374,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 0, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\minimizar.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\minimizar.png")); // NOI18N
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -500,7 +505,7 @@ public class Menu extends javax.swing.JFrame {
         
         selected(kButton5);
         
-        mem = new MembresiaFrame();
+        mem = new MembresiaFrame(asociacion);
         mem.setVisible(true);
         mem.setLocationRelativeTo(null);
     }//GEN-LAST:event_kButton5MouseClicked
@@ -630,6 +635,9 @@ public class Menu extends javax.swing.JFrame {
         kButton4.setVisible(false);
         kButton5.setVisible(false);
     }                  
+    
+    private final Asociacion asociacion;
+    private ControlAsociacion ca;
     
     private boolean maximized = false;
     private int xx;

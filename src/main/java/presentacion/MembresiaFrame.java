@@ -1,5 +1,6 @@
 package presentacion;
 
+import dominio.Asociacion;
 import dominio.ControlMembresia;
 import dominio.Membresia;
 import java.awt.Color;
@@ -12,7 +13,9 @@ import javax.swing.JOptionPane;
  **/
 public class MembresiaFrame extends javax.swing.JFrame {
 
-    public MembresiaFrame() {
+    public MembresiaFrame(Asociacion asociacion) {
+        this.asociacion = asociacion;
+        
         initComponents();
         cm = new ControlMembresia();
         mem = null;
@@ -216,7 +219,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void listMembresiasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMembresiasMouseClicked
-        mem = cm.obtenerMembresia(listMembresias.getSelectedValue().getId_membresia());
+        mem = cm.obtenerMembresia(listMembresias.getSelectedValue().getId_membresia(), asociacion.getNombre());
                
         tfNombre.setText(mem.getNombre());
         tfPrecio.setText(mem.getPrecio()+""); 
@@ -247,7 +250,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
         if(!tfNombre.getText().equals("")){
             Membresia memb = new Membresia(tfNombre.getText(),
-                Double.parseDouble(tfPrecio.getText()));
+                Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
             if(cm.insertarMembresia(memb)){
                 actualizarListaMembresias();                   
             } 
@@ -273,7 +276,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
         Membresia m = listMembresias.getSelectedValue();
         if(!tfNombre.getText().equals("")){
             Membresia memb = new Membresia(m.getId_membresia(), tfNombre.getText(),
-                Double.parseDouble(tfPrecio.getText()));
+                Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
             if(cm.modificarMembresia(memb)){
                 actualizarListaMembresias();                   
             } 
@@ -285,7 +288,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
 
     private ArrayList<Membresia> obtenerMembresias(){
         ControlMembresia cmem = new ControlMembresia();
-        return cmem.obtenerMembresias();
+        return cmem.obtenerMembresias(asociacion.getNombre());
     }
 
     private void actualizarListaMembresias(){
@@ -296,7 +299,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
     private boolean comprobarMembresia(String nombre){
         boolean validar = true;
         ControlMembresia cmem = new ControlMembresia();
-        ArrayList<Membresia> mems = cmem.obtenerMembresias();        
+        ArrayList<Membresia> mems = obtenerMembresias();        
         for(int i = 0 ; i < mems.size() ; i++){
             if(mems.get(i).getNombre().equals(nombre)){
                 validar = false;
@@ -305,6 +308,9 @@ public class MembresiaFrame extends javax.swing.JFrame {
         return validar;
     }    
 
+    
+    private final Asociacion asociacion;
+    
     private final ControlMembresia cm;
     private Membresia mem;
     

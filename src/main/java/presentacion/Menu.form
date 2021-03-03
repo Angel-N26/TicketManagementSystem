@@ -622,7 +622,7 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\angel\Downloads\close-button.png"/>
+                  <Image iconType="2" name="C:\Users\angel\Downloads\recursos\close-button.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -637,11 +637,6 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\angel\Downloads\logo(1).png"/>
-                </Property>
-              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="5" width="-1" height="-1"/>
@@ -667,7 +662,7 @@
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\angel\Downloads\maximize-window.png"/>
+                  <Image iconType="2" name="C:\Users\angel\Downloads\recursos\maximize-window.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -684,7 +679,7 @@
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\angel\Downloads\minimizar.png"/>
+                  <Image iconType="2" name="C:\Users\angel\Downloads\recursos\minimizar.png"/>
                 </Property>
               </Properties>
               <Events>

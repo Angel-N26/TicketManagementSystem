@@ -1,8 +1,12 @@
 package presentacion;
 
 import dominio.Colores;
+import dominio.ControlAsociacion;
+import dominio.ControlUsuarios;
+import dominio.Usuario;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -58,6 +62,10 @@ public class Login extends javax.swing.JFrame implements Colores {
         jPasswordField2 = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         kButton1 = new keeptoo.KButton();
 
@@ -108,6 +116,7 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -116,8 +125,9 @@ public class Login extends javax.swing.JFrame implements Colores {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(277, 3, 20, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(204, 0, 204));
         jLabel2.setText("Iniciar Sesion");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -128,6 +138,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Registrarse");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -170,7 +181,7 @@ public class Login extends javax.swing.JFrame implements Colores {
                 tfUserFocusLost(evt);
             }
         });
-        jPanel3.add(tfUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 25));
+        jPanel3.add(tfUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 25));
 
         pfPass.setBackground(new java.awt.Color(51, 51, 51));
         pfPass.setForeground(new java.awt.Color(255, 255, 255));
@@ -189,34 +200,34 @@ public class Login extends javax.swing.JFrame implements Colores {
                 pfPassFocusLost(evt);
             }
         });
-        jPanel3.add(pfPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 25));
+        jPanel3.add(pfPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 25));
 
         lblUser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblUser.setForeground(new java.awt.Color(255, 255, 255));
         lblUser.setText("Nombre de usuario");
         lblUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblUser.setName("lblUser"); // NOI18N
-        jPanel3.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 120, 10));
+        jPanel3.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 120, 10));
 
         lblWarningImg.setForeground(new java.awt.Color(255, 255, 255));
         lblWarningImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\warning.png")); // NOI18N
         lblWarningImg.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblWarningImg.setName("lblWarningImg"); // NOI18N
-        jPanel3.add(lblWarningImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 29, 40));
+        jPanel3.add(lblWarningImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 29, 40));
 
         lblPass.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPass.setForeground(new java.awt.Color(255, 255, 255));
         lblPass.setText("Contraseña");
         lblPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblPass.setName("lblPass"); // NOI18N
-        jPanel3.add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 70, 10));
+        jPanel3.add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 70, 10));
 
         lblError.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblError.setForeground(new java.awt.Color(255, 255, 255));
         lblError.setText("Usuario y/o contraseña incorrecotos.");
         lblError.setName("lblError"); // NOI18N
-        jPanel3.add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 240, 20));
+        jPanel3.add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 240, 20));
 
         errorImgPass.setForeground(new java.awt.Color(255, 255, 255));
         errorImgPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -224,7 +235,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         errorImgPass.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         errorImgPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgPass.setName("errorImgPass"); // NOI18N
-        jPanel3.add(errorImgPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 20, 20));
+        jPanel3.add(errorImgPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 20, 20));
 
         errorImgUser.setForeground(new java.awt.Color(255, 255, 255));
         errorImgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -232,13 +243,13 @@ public class Login extends javax.swing.JFrame implements Colores {
         errorImgUser.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         errorImgUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgUser.setName("errorImgUser"); // NOI18N
-        jPanel3.add(errorImgUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 20, 20));
+        jPanel3.add(errorImgUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 20, 20));
 
         jCheckBox1.setBackground(new java.awt.Color(51, 51, 51));
         jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setText("Recuerdame");
-        jPanel3.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 165, -1, -1));
+        jPanel3.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, -1));
 
         panel.add(jPanel3, "iniciarsesion");
 
@@ -252,42 +263,70 @@ public class Login extends javax.swing.JFrame implements Colores {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Usuario");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         jTextField1.setBackground(new java.awt.Color(51, 51, 51));
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 280, -1));
+        jTextField1.setCaretColor(new java.awt.Color(204, 0, 204));
+        jTextField1.setSelectionColor(new java.awt.Color(204, 0, 204));
+        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 280, 25));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Contraseña");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         jPasswordField1.setBackground(new java.awt.Color(51, 51, 51));
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        jPanel4.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, -1));
+        jPasswordField1.setCaretColor(new java.awt.Color(204, 0, 204));
+        jPasswordField1.setSelectionColor(new java.awt.Color(204, 0, 204));
+        jPanel4.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 280, 25));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Repita la contraseña");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        jLabel6.setText("Confirmar contraseña");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         jPasswordField2.setBackground(new java.awt.Color(51, 51, 51));
         jPasswordField2.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        jPanel4.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 280, -1));
+        jPasswordField2.setCaretColor(new java.awt.Color(204, 0, 204));
+        jPasswordField2.setSelectionColor(new java.awt.Color(204, 0, 204));
+        jPanel4.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 280, 25));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Nombre Asociacion");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         jTextField2.setBackground(new java.awt.Color(51, 51, 51));
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 280, -1));
+        jTextField2.setCaretColor(new java.awt.Color(204, 0, 204));
+        jTextField2.setSelectionColor(new java.awt.Color(204, 0, 204));
+        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 280, 25));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("*");
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("*");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("*");
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("*");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
 
         panel.add(jPanel4, "registrarse");
 
@@ -351,33 +390,74 @@ public class Login extends javax.swing.JFrame implements Colores {
     }//GEN-LAST:event_jPanel2MouseDragged
 
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
-        if(tfUser.getText().equals("aa") && pfPass.getText().equals("aa")){            
-            Menu menu = new Menu();
-            menu.setVisible(true);
-            menu.setLocationRelativeTo(null);
-            menu.setExtendedState(NORMAL);
-            dispose();
+        if(kButton1.getText().equals("Iniciar Sesión")){
+            if(comprobarUsuario(tfUser.getText(), pfPass.getText())){
+                ControlUsuarios cu = new ControlUsuarios();
+                Usuario usuario = cu.obtenerUsuario(tfUser.getText());
+                Menu menu = new Menu(usuario.getNombreAsociacion());
+                menu.setVisible(true);
+                menu.setLocationRelativeTo(null);
+                menu.setExtendedState(NORMAL);
+                dispose();
+            }else{
+                tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+                pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+
+                errorImgPass.setVisible(true);
+                errorImgUser.setVisible(true);
+                lblError.setVisible(true);
+                lblWarningImg.setVisible(true);
+            }
         }else{
-            tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            ControlUsuarios cu = new ControlUsuarios();
+            ControlAsociacion ca = new ControlAsociacion();
             
-            errorImgPass.setVisible(true);
-            errorImgUser.setVisible(true);
-            lblError.setVisible(true);
-            lblWarningImg.setVisible(true);
+            if(ca.insertarAsociacion(jTextField2.getText())){
+                Usuario user = new Usuario(jTextField1.getText(), jPasswordField1.getText(), jTextField2.getText());
+                if(cu.insertarUsuario(user)){
+                    Menu menu = new Menu(jTextField2.getText());
+                    menu.setVisible(true);
+                    menu.setLocationRelativeTo(null);
+                    menu.setExtendedState(NORMAL);
+                    dispose();
+                }
+            }
+            
         }
     }//GEN-LAST:event_kButton1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         CardLayout cardLayout = (CardLayout) panel.getLayout();
         cardLayout.show(panel, "iniciarsesion");
+        
+        jLabel2.setForeground(new Color(204,0,204));
+        jLabel3.setForeground(new Color(255,255,255));
+        
+        kButton1.setText("Iniciar Sesión");
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         CardLayout cardLayout = (CardLayout) panel.getLayout();
         cardLayout.show(panel, "registrarse");
+        
+        jLabel3.setForeground(new Color(204,0,204));
+        jLabel2.setForeground(new Color(255,255,255));
+        
+        kButton1.setText("Registrarse");
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    private boolean comprobarUsuario(String nombre, String pass){
+        boolean existe = false;
+        ControlUsuarios cu = new ControlUsuarios();
+        ArrayList<Usuario> usuarios= cu.obtenerUsuarios();
+        for(int i = 0 ; i < usuarios.size() ; i++){
+            if(nombre.equals(usuarios.get(i).getUsuario()) && pass.equals(usuarios.get(i).getContraseña())){
+                existe = true;
+            }
+        }
+        return existe;
+    }   
+    
     private void focus(JTextField tfgained, JTextField tflost){
         tfgained.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
         
@@ -457,12 +537,16 @@ public class Login extends javax.swing.JFrame implements Colores {
     private javax.swing.JLabel errorImgUser;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

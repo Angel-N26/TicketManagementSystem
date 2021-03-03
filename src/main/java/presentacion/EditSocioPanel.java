@@ -2,6 +2,7 @@ package presentacion;
 
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JTextFieldDateEditor;
+import dominio.Asociacion;
 import dominio.ControlMembresia;
 import dominio.ControlSocio;
 import dominio.Membresia;
@@ -23,7 +24,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  **/
 public class EditSocioPanel extends javax.swing.JPanel {
 
-    public EditSocioPanel() {
+    public EditSocioPanel(Asociacion asociacion) {
+        this.asociacion = asociacion;
+        
         initComponents();
         this.cs = new ControlSocio();
         kButton3.setVisible(false);
@@ -709,7 +712,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         this.show(false);
         JPanel card = (JPanel) this.getParent();
         
-        SociosPanel sp = new SociosPanel();
+        SociosPanel sp = new SociosPanel(asociacion);
         card.add(sp, "cardSP");
         
         CardLayout cardLayout = (CardLayout) card.getLayout();
@@ -735,7 +738,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
     //Rellena el combo box con los nombres de todas las membresias
     private void rellenarMembresias(){
         ControlMembresia cmem = new ControlMembresia();
-        mems = cmem.obtenerMembresias();
+        mems = cmem.obtenerMembresias(asociacion.getNombre());
         
         for(int i = 0 ; i < mems.size() ; i++){
             cbMembresias.addItem(mems.get(i));
@@ -787,6 +790,8 @@ public class EditSocioPanel extends javax.swing.JPanel {
             cbProvincia.setSelectedItem(c[4].replaceFirst(" ", ""));
         }
     }        
+    
+    private Asociacion asociacion;
     
     private final ControlSocio cs;
     private Socio socio;
