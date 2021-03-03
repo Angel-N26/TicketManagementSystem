@@ -29,7 +29,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         
         initComponents();
         this.cs = new ControlSocio();
-        kButton3.setVisible(false);
+        btnEliminar.setVisible(false);
     }
 
     public EditSocioPanel(Socio soc){
@@ -45,122 +45,80 @@ public class EditSocioPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        panelSouth = new javax.swing.JPanel();
-        PanelSouthLeft = new javax.swing.JPanel();
-        kButton3 = new keeptoo.KButton();
-        panelSouthRight = new javax.swing.JPanel();
-        kButton2 = new keeptoo.KButton();
-        kButton1 = new keeptoo.KButton();
+        panel = new javax.swing.JPanel();
         panelCenter = new javax.swing.JPanel();
+        panelImg = new javax.swing.JPanel();
+        edit = new javax.swing.JLabel();
+        fotoSocio = new javax.swing.JLabel();
         lblDatosPersonales = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        lblApellidos = new javax.swing.JLabel();
+        lblObNombre = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
+        lblApellidos = new javax.swing.JLabel();
         tfApellidos = new javax.swing.JTextField();
         lblFechaNacimiento = new javax.swing.JLabel();
+        dcFechaNacimiento = new com.toedter.calendar.JDateChooser();
+        lblDNI = new javax.swing.JLabel();
+        lblObDNI = new javax.swing.JLabel();
+        tfDNI = new javax.swing.JTextField();
+        lblDatosContacto = new javax.swing.JLabel();
+        lblTlf = new javax.swing.JLabel();
+        tfTlf = new javax.swing.JFormattedTextField();
+        lblEmail = new javax.swing.JLabel();
+        tfEmail = new javax.swing.JTextField();
+        lblCalle = new javax.swing.JLabel();
+        tfCalle = new javax.swing.JTextField();
+        lblNumero = new javax.swing.JLabel();
+        tfNumero = new javax.swing.JTextField();
+        lblPiso = new javax.swing.JLabel();
+        tfPiso = new javax.swing.JTextField();
+        lblPuerta = new javax.swing.JLabel();
+        tfPuerta = new javax.swing.JTextField();
+        lblCodPostal = new javax.swing.JLabel();
+        tfCodPostal = new javax.swing.JTextField();
+        lblLocalidad = new javax.swing.JLabel();
+        tfLocalidad = new javax.swing.JTextField();
+        lblProvincia = new javax.swing.JLabel();
+        cbProvincia = new javax.swing.JComboBox<>();
+        lblDireccion = new javax.swing.JLabel();
+        lblFechaIngreso = new javax.swing.JLabel();
+        dcFechaIngreso = new com.toedter.calendar.JDateChooser();
         lblMembresia = new javax.swing.JLabel();
         cbMembresias = new javax.swing.JComboBox<>();
         cbPagos = new javax.swing.JCheckBox();
-        lblDatosContacto = new javax.swing.JLabel();
-        lblEmail = new javax.swing.JLabel();
-        tfEmail = new javax.swing.JTextField();
-        lblDireccion = new javax.swing.JLabel();
-        tfDireccion = new javax.swing.JTextField();
-        lblTlf = new javax.swing.JLabel();
-        lblDNI = new javax.swing.JLabel();
-        tfDNI = new javax.swing.JTextField();
-        lblObDNI = new javax.swing.JLabel();
-        lblObNombre = new javax.swing.JLabel();
-        tfTlf = new javax.swing.JFormattedTextField();
-        tfNumero = new javax.swing.JTextField();
-        tfPiso = new javax.swing.JTextField();
-        tfPuerta = new javax.swing.JTextField();
-        tfCodPostal = new javax.swing.JTextField();
-        tfLocalidad = new javax.swing.JTextField();
-        lblCalle = new javax.swing.JLabel();
-        lblNumero = new javax.swing.JLabel();
-        cbProvincia = new javax.swing.JComboBox<>();
-        lblPiso = new javax.swing.JLabel();
-        lblPuerta = new javax.swing.JLabel();
-        lblCodPostal = new javax.swing.JLabel();
-        lblLocalidad = new javax.swing.JLabel();
-        lblProvincia = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        panelSouth = new javax.swing.JPanel();
+        panelSouthLeft = new javax.swing.JPanel();
+        btnEliminar = new keeptoo.KButton();
+        panelSouthRight = new javax.swing.JPanel();
+        btnCancelar = new keeptoo.KButton();
+        btnAnadir = new keeptoo.KButton();
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
-        panelSouth.setBackground(new java.awt.Color(51, 51, 51));
-        panelSouth.setName("panelSouth"); // NOI18N
-        panelSouth.setPreferredSize(new java.awt.Dimension(215, 75));
-        panelSouth.setLayout(new java.awt.GridLayout(1, 2));
-
-        PanelSouthLeft.setBackground(new java.awt.Color(51, 51, 51));
-        PanelSouthLeft.setName("PanelSouthLeft"); // NOI18N
-        PanelSouthLeft.setPreferredSize(new java.awt.Dimension(400, 55));
-        PanelSouthLeft.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 20));
-
-        kButton3.setBorder(null);
-        kButton3.setText("Eliminar");
-        kButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        kButton3.setkEndColor(new java.awt.Color(51, 0, 51));
-        kButton3.setkStartColor(new java.awt.Color(204, 0, 204));
-        kButton3.setNextFocusableComponent(kButton2);
-        kButton3.setPreferredSize(new java.awt.Dimension(180, 35));
-        kButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton3MouseClicked(evt);
-            }
-        });
-        PanelSouthLeft.add(kButton3);
-
-        panelSouth.add(PanelSouthLeft);
-
-        panelSouthRight.setBackground(new java.awt.Color(51, 51, 51));
-        panelSouthRight.setName("panelSouthRight"); // NOI18N
-        panelSouthRight.setPreferredSize(new java.awt.Dimension(400, 55));
-        panelSouthRight.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 20));
-
-        kButton2.setBorder(null);
-        kButton2.setText("Cancelar");
-        kButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        kButton2.setkEndColor(new java.awt.Color(51, 0, 51));
-        kButton2.setkStartColor(new java.awt.Color(204, 0, 204));
-        kButton2.setNextFocusableComponent(kButton1);
-        kButton2.setPreferredSize(new java.awt.Dimension(180, 35));
-        kButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton2MouseClicked(evt);
-            }
-        });
-        panelSouthRight.add(kButton2);
-
-        kButton1.setBorder(null);
-        kButton1.setText("Añadir");
-        kButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
-        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
-        kButton1.setNextFocusableComponent(tfNombre);
-        kButton1.setPreferredSize(new java.awt.Dimension(180, 35));
-        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton1MouseClicked(evt);
-            }
-        });
-        panelSouthRight.add(kButton1);
-
-        panelSouth.add(panelSouthRight);
-
-        jPanel1.add(panelSouth, java.awt.BorderLayout.PAGE_END);
+        panel.setName("panel"); // NOI18N
+        panel.setLayout(new java.awt.BorderLayout());
 
         panelCenter.setBackground(new java.awt.Color(51, 51, 51));
         panelCenter.setName("panelCenter"); // NOI18N
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelImg.setBackground(new java.awt.Color(51, 51, 51));
+        panelImg.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        panelImg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        edit.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\editar.png")); // NOI18N
+        edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        edit.setName("edit"); // NOI18N
+        edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editMouseClicked(evt);
+            }
+        });
+        panelImg.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
+
+        fotoSocio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fotoSocio.setName("fotoSocio"); // NOI18N
+        panelImg.add(fotoSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 184, 184));
+
+        panelCenter.add(panelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, 190));
 
         lblDatosPersonales.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblDatosPersonales.setForeground(new java.awt.Color(255, 255, 255));
@@ -176,12 +134,12 @@ public class EditSocioPanel extends javax.swing.JPanel {
         lblNombre.setName("lblNombre"); // NOI18N
         panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
 
-        lblApellidos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblApellidos.setForeground(new java.awt.Color(255, 255, 255));
-        lblApellidos.setText("Apellidos");
-        lblApellidos.setFocusable(false);
-        lblApellidos.setName("lblApellidos"); // NOI18N
-        panelCenter.add(lblApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, -1, -1));
+        lblObNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblObNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblObNombre.setText("*");
+        lblObNombre.setFocusable(false);
+        lblObNombre.setName("lblObNombre"); // NOI18N
+        panelCenter.add(lblObNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, -1));
 
         tfNombre.setBackground(new java.awt.Color(51, 51, 51));
         tfNombre.setForeground(new java.awt.Color(255, 255, 255));
@@ -199,6 +157,13 @@ public class EditSocioPanel extends javax.swing.JPanel {
             }
         });
         panelCenter.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 260, 25));
+
+        lblApellidos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblApellidos.setForeground(new java.awt.Color(255, 255, 255));
+        lblApellidos.setText("Apellidos");
+        lblApellidos.setFocusable(false);
+        lblApellidos.setName("lblApellidos"); // NOI18N
+        panelCenter.add(lblApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, -1, -1));
 
         tfApellidos.setBackground(new java.awt.Color(51, 51, 51));
         tfApellidos.setForeground(new java.awt.Color(255, 255, 255));
@@ -223,86 +188,25 @@ public class EditSocioPanel extends javax.swing.JPanel {
         lblFechaNacimiento.setName("lblFechaNacimiento"); // NOI18N
         panelCenter.add(lblFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
 
-        lblMembresia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblMembresia.setForeground(new java.awt.Color(255, 255, 255));
-        lblMembresia.setText("Membresia");
-        lblMembresia.setFocusable(false);
-        lblMembresia.setName("lblMembresia"); // NOI18N
-        panelCenter.add(lblMembresia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, -1, -1));
-
-        rellenarMembresias();
-        cbMembresias.setName("cbMembresias"); // NOI18N
-        cbMembresias.setNextFocusableComponent(cbPagos);
-        panelCenter.add(cbMembresias, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 200, 25));
-
-        cbPagos.setBackground(new java.awt.Color(51, 51, 51));
-        cbPagos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        cbPagos.setForeground(new java.awt.Color(255, 255, 255));
-        cbPagos.setText("Al dia de pagos");
-        cbPagos.setName("cbPagos"); // NOI18N
-        cbPagos.setNextFocusableComponent(kButton3);
-        panelCenter.add(cbPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, -1, 25));
-
-        lblDatosContacto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblDatosContacto.setForeground(new java.awt.Color(255, 255, 255));
-        lblDatosContacto.setText("Datos de Contacto");
-        lblDatosContacto.setFocusable(false);
-        lblDatosContacto.setName("lblDatosContacto"); // NOI18N
-        panelCenter.add(lblDatosContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
-
-        lblEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
-        lblEmail.setText("Email");
-        lblEmail.setFocusable(false);
-        lblEmail.setName("lblEmail"); // NOI18N
-        panelCenter.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
-
-        tfEmail.setBackground(new java.awt.Color(51, 51, 51));
-        tfEmail.setForeground(new java.awt.Color(255, 255, 255));
-        tfEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        tfEmail.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfEmail.setName("tfEmail"); // NOI18N
-        tfEmail.setNextFocusableComponent(tfDireccion);
-        tfEmail.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfEmailFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfEmailFocusLost(evt);
+        JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFechaNacimiento.getDateEditor());
+        dateChooserEditor1.setBackground(new Color(51, 51, 51));
+        dateChooserEditor1.setForeground(new Color(255, 255, 255));
+        dateChooserEditor1.setEditable(false);
+        dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        dcFechaNacimiento.getCalendarButton().setSize(25, 25);
+        dcFechaNacimiento.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png"));
+        dcFechaNacimiento.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        dcFechaNacimiento.getCalendarButton().setBackground(new Color(51,51,51));
+        dcFechaNacimiento.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dcFechaNacimiento.setBackground(new java.awt.Color(51, 51, 51));
+        dcFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
+        dcFechaNacimiento.setDateFormatString("yyyy-MM-dd");
+        dcFechaNacimiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dcFechaNacimientoMouseClicked(evt);
             }
         });
-        panelCenter.add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 520, 25));
-
-        lblDireccion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblDireccion.setForeground(new java.awt.Color(255, 255, 255));
-        lblDireccion.setText("Datos Asociacion");
-        lblDireccion.setFocusable(false);
-        lblDireccion.setName("lblDireccion"); // NOI18N
-        panelCenter.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
-
-        tfDireccion.setBackground(new java.awt.Color(51, 51, 51));
-        tfDireccion.setForeground(new java.awt.Color(255, 255, 255));
-        tfDireccion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        tfDireccion.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfDireccion.setName("tfDireccion"); // NOI18N
-        tfDireccion.setNextFocusableComponent(tfNumero);
-        tfDireccion.setSelectionColor(new java.awt.Color(204, 0, 204));
-        tfDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfDireccionFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfDireccionFocusLost(evt);
-            }
-        });
-        panelCenter.add(tfDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 220, 25));
-
-        lblTlf.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblTlf.setForeground(new java.awt.Color(255, 255, 255));
-        lblTlf.setText("Teléfono");
-        lblTlf.setFocusable(false);
-        lblTlf.setName("lblTlf"); // NOI18N
-        panelCenter.add(lblTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        panelCenter.add(dcFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 260, 25));
 
         lblDNI.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblDNI.setForeground(new java.awt.Color(255, 255, 255));
@@ -310,6 +214,13 @@ public class EditSocioPanel extends javax.swing.JPanel {
         lblDNI.setFocusable(false);
         lblDNI.setName("lblDNI"); // NOI18N
         panelCenter.add(lblDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, -1, -1));
+
+        lblObDNI.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblObDNI.setForeground(new java.awt.Color(255, 255, 255));
+        lblObDNI.setText("*");
+        lblObDNI.setFocusable(false);
+        lblObDNI.setName("lblObDNI"); // NOI18N
+        panelCenter.add(lblObDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, -1, -1));
 
         tfDNI.setBackground(new java.awt.Color(51, 51, 51));
         tfDNI.setForeground(new java.awt.Color(255, 255, 255));
@@ -328,19 +239,19 @@ public class EditSocioPanel extends javax.swing.JPanel {
         });
         panelCenter.add(tfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 260, 25));
 
-        lblObDNI.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblObDNI.setForeground(new java.awt.Color(255, 255, 255));
-        lblObDNI.setText("*");
-        lblObDNI.setFocusable(false);
-        lblObDNI.setName("lblObDNI"); // NOI18N
-        panelCenter.add(lblObDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, -1, -1));
+        lblDatosContacto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblDatosContacto.setForeground(new java.awt.Color(255, 255, 255));
+        lblDatosContacto.setText("Datos de Contacto");
+        lblDatosContacto.setFocusable(false);
+        lblDatosContacto.setName("lblDatosContacto"); // NOI18N
+        panelCenter.add(lblDatosContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
-        lblObNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblObNombre.setForeground(new java.awt.Color(255, 255, 255));
-        lblObNombre.setText("*");
-        lblObNombre.setFocusable(false);
-        lblObNombre.setName("lblObNombre"); // NOI18N
-        panelCenter.add(lblObNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, -1));
+        lblTlf.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblTlf.setForeground(new java.awt.Color(255, 255, 255));
+        lblTlf.setText("Teléfono");
+        lblTlf.setFocusable(false);
+        lblTlf.setName("lblTlf"); // NOI18N
+        panelCenter.add(lblTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         tfTlf.setBackground(new java.awt.Color(51, 51, 51));
         tfTlf.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
@@ -360,6 +271,60 @@ public class EditSocioPanel extends javax.swing.JPanel {
         });
         panelCenter.add(tfTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 220, 25));
 
+        lblEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setText("Email");
+        lblEmail.setFocusable(false);
+        lblEmail.setName("lblEmail"); // NOI18N
+        panelCenter.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
+
+        tfEmail.setBackground(new java.awt.Color(51, 51, 51));
+        tfEmail.setForeground(new java.awt.Color(255, 255, 255));
+        tfEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        tfEmail.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfEmail.setName("tfEmail"); // NOI18N
+        tfEmail.setNextFocusableComponent(tfCalle);
+        tfEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfEmailFocusLost(evt);
+            }
+        });
+        panelCenter.add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 520, 25));
+
+        lblCalle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblCalle.setForeground(new java.awt.Color(255, 255, 255));
+        lblCalle.setText("Calle");
+        lblCalle.setFocusable(false);
+        lblCalle.setName("lblCalle"); // NOI18N
+        panelCenter.add(lblCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+
+        tfCalle.setBackground(new java.awt.Color(51, 51, 51));
+        tfCalle.setForeground(new java.awt.Color(255, 255, 255));
+        tfCalle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        tfCalle.setCaretColor(new java.awt.Color(204, 0, 204));
+        tfCalle.setName("tfCalle"); // NOI18N
+        tfCalle.setNextFocusableComponent(tfNumero);
+        tfCalle.setSelectionColor(new java.awt.Color(204, 0, 204));
+        tfCalle.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfCalleFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfCalleFocusLost(evt);
+            }
+        });
+        panelCenter.add(tfCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 220, 25));
+
+        lblNumero.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblNumero.setForeground(new java.awt.Color(255, 255, 255));
+        lblNumero.setText("Numero");
+        lblNumero.setFocusable(false);
+        lblNumero.setName("lblNumero"); // NOI18N
+        panelCenter.add(lblNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
+
         tfNumero.setBackground(new java.awt.Color(51, 51, 51));
         tfNumero.setForeground(new java.awt.Color(255, 255, 255));
         tfNumero.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
@@ -376,6 +341,13 @@ public class EditSocioPanel extends javax.swing.JPanel {
             }
         });
         panelCenter.add(tfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 44, 25));
+
+        lblPiso.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblPiso.setForeground(new java.awt.Color(255, 255, 255));
+        lblPiso.setText("Piso");
+        lblPiso.setFocusable(false);
+        lblPiso.setName("lblPiso"); // NOI18N
+        panelCenter.add(lblPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
 
         tfPiso.setBackground(new java.awt.Color(51, 51, 51));
         tfPiso.setForeground(new java.awt.Color(255, 255, 255));
@@ -394,6 +366,13 @@ public class EditSocioPanel extends javax.swing.JPanel {
         });
         panelCenter.add(tfPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 23, 25));
 
+        lblPuerta.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblPuerta.setForeground(new java.awt.Color(255, 255, 255));
+        lblPuerta.setText("Puerta");
+        lblPuerta.setFocusable(false);
+        lblPuerta.setName("lblPuerta"); // NOI18N
+        panelCenter.add(lblPuerta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, -1, -1));
+
         tfPuerta.setBackground(new java.awt.Color(51, 51, 51));
         tfPuerta.setForeground(new java.awt.Color(255, 255, 255));
         tfPuerta.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
@@ -410,6 +389,13 @@ public class EditSocioPanel extends javax.swing.JPanel {
             }
         });
         panelCenter.add(tfPuerta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 38, 25));
+
+        lblCodPostal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblCodPostal.setForeground(new java.awt.Color(255, 255, 255));
+        lblCodPostal.setText("Codigo Postal");
+        lblCodPostal.setFocusable(false);
+        lblCodPostal.setName("lblCodPostal"); // NOI18N
+        panelCenter.add(lblCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, -1, -1));
 
         tfCodPostal.setBackground(new java.awt.Color(51, 51, 51));
         tfCodPostal.setForeground(new java.awt.Color(255, 255, 255));
@@ -428,6 +414,13 @@ public class EditSocioPanel extends javax.swing.JPanel {
         });
         panelCenter.add(tfCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 76, 25));
 
+        lblLocalidad.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblLocalidad.setForeground(new java.awt.Color(255, 255, 255));
+        lblLocalidad.setText("Localidad");
+        lblLocalidad.setFocusable(false);
+        lblLocalidad.setName("lblLocalidad"); // NOI18N
+        panelCenter.add(lblLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
+
         tfLocalidad.setBackground(new java.awt.Color(51, 51, 51));
         tfLocalidad.setForeground(new java.awt.Color(255, 255, 255));
         tfLocalidad.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
@@ -445,52 +438,6 @@ public class EditSocioPanel extends javax.swing.JPanel {
         });
         panelCenter.add(tfLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 160, 25));
 
-        lblCalle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblCalle.setForeground(new java.awt.Color(255, 255, 255));
-        lblCalle.setText("Calle");
-        lblCalle.setFocusable(false);
-        lblCalle.setName("lblCalle"); // NOI18N
-        panelCenter.add(lblCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
-
-        lblNumero.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblNumero.setForeground(new java.awt.Color(255, 255, 255));
-        lblNumero.setText("Numero");
-        lblNumero.setFocusable(false);
-        lblNumero.setName("lblNumero"); // NOI18N
-        panelCenter.add(lblNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
-
-        cbProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Álava", "Albacete", "Alicante", "Almeria", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba", "La Coruña", "Cuenca", "Gerona", "Granada", "Guadalajara", "Guipúzcua", "Huelva", "Huesca", "Baleares", "Jaén", "León", "Lérida", "Lugo", "Madrid", "Málaga", "Murcia", "Navarra", "Orense", "Palencia", "Las Palmas", "Pontevedra", "La Rioja", "Salamanca", "Segovia", "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza" }));
-        cbProvincia.setName("cbProvincia"); // NOI18N
-        panelCenter.add(cbProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 120, 25));
-
-        lblPiso.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblPiso.setForeground(new java.awt.Color(255, 255, 255));
-        lblPiso.setText("Piso");
-        lblPiso.setFocusable(false);
-        lblPiso.setName("lblPiso"); // NOI18N
-        panelCenter.add(lblPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
-
-        lblPuerta.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblPuerta.setForeground(new java.awt.Color(255, 255, 255));
-        lblPuerta.setText("Puerta");
-        lblPuerta.setFocusable(false);
-        lblPuerta.setName("lblPuerta"); // NOI18N
-        panelCenter.add(lblPuerta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, -1, -1));
-
-        lblCodPostal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblCodPostal.setForeground(new java.awt.Color(255, 255, 255));
-        lblCodPostal.setText("Codigo Postal");
-        lblCodPostal.setFocusable(false);
-        lblCodPostal.setName("lblCodPostal"); // NOI18N
-        panelCenter.add(lblCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, -1, -1));
-
-        lblLocalidad.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblLocalidad.setForeground(new java.awt.Color(255, 255, 255));
-        lblLocalidad.setText("Localidad");
-        lblLocalidad.setFocusable(false);
-        lblLocalidad.setName("lblLocalidad"); // NOI18N
-        panelCenter.add(lblLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
-
         lblProvincia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblProvincia.setForeground(new java.awt.Color(255, 255, 255));
         lblProvincia.setText("Provincia");
@@ -498,74 +445,135 @@ public class EditSocioPanel extends javax.swing.JPanel {
         lblProvincia.setName("lblProvincia"); // NOI18N
         panelCenter.add(lblProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 320, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        cbProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Álava", "Albacete", "Alicante", "Almeria", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba", "La Coruña", "Cuenca", "Gerona", "Granada", "Guadalajara", "Guipúzcua", "Huelva", "Huesca", "Baleares", "Jaén", "León", "Lérida", "Lugo", "Madrid", "Málaga", "Murcia", "Navarra", "Orense", "Palencia", "Las Palmas", "Pontevedra", "La Rioja", "Salamanca", "Segovia", "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza" }));
+        cbProvincia.setName("cbProvincia"); // NOI18N
+        panelCenter.add(cbProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 120, 25));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\editar.png")); // NOI18N
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
+        lblDireccion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        lblDireccion.setText("Datos Asociacion");
+        lblDireccion.setFocusable(false);
+        lblDireccion.setName("lblDireccion"); // NOI18N
+        panelCenter.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 184, 184));
+        lblFechaIngreso.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblFechaIngreso.setForeground(new java.awt.Color(255, 255, 255));
+        lblFechaIngreso.setText("Fecha de Ingreso");
+        lblFechaIngreso.setFocusable(false);
+        lblFechaIngreso.setName("lblFechaIngreso"); // NOI18N
+        panelCenter.add(lblFechaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
 
-        panelCenter.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, 190));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Fecha de Ingreso");
-        jLabel2.setFocusable(false);
-        panelCenter.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
-
-        JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());
-        dateChooserEditor1.setBackground(new Color(51, 51, 51));
-        dateChooserEditor1.setForeground(new Color(255, 255, 255));
-        dateChooserEditor1.setEditable(false);
-        dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        jDateChooser1.getCalendarButton().setSize(25, 25);
-        jDateChooser1.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png"));
-        jDateChooser1.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        jDateChooser1.getCalendarButton().setBackground(new Color(51,51,51));
-        jDateChooser1.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jDateChooser1.setBackground(new java.awt.Color(51, 51, 51));
-        jDateChooser1.setForeground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setDateFormatString("yyyy-MM-dd");
-        jDateChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jDateChooser1MouseClicked(evt);
-            }
-        });
-        panelCenter.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 260, 25));
-
-        JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)jDateChooser2.getDateEditor());
+        JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)dcFechaIngreso.getDateEditor());
         dateChooserEditor2.setBackground(new Color(51, 51, 51));
         dateChooserEditor2.setForeground(new Color(255, 255, 255));
         dateChooserEditor2.setEditable(false);
         dateChooserEditor2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        jDateChooser2.getCalendarButton().setSize(25, 25);
-        jDateChooser2.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png"));
-        jDateChooser2.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        jDateChooser2.getCalendarButton().setBackground(new Color(51,51,51));
-        jDateChooser2.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jDateChooser2.setDateFormatString("yyyy-MM-dd");
-        panelCenter.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 260, 25));
+        dcFechaIngreso.getCalendarButton().setSize(25, 25);
+        dcFechaIngreso.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png"));
+        dcFechaIngreso.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        dcFechaIngreso.getCalendarButton().setBackground(new Color(51,51,51));
+        dcFechaIngreso.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dcFechaIngreso.setDateFormatString("yyyy-MM-dd");
+        dcFechaIngreso.setName("dcFechaIngreso"); // NOI18N
+        panelCenter.add(dcFechaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 260, 25));
 
-        jPanel1.add(panelCenter, java.awt.BorderLayout.CENTER);
+        lblMembresia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblMembresia.setForeground(new java.awt.Color(255, 255, 255));
+        lblMembresia.setText("Membresia");
+        lblMembresia.setFocusable(false);
+        lblMembresia.setName("lblMembresia"); // NOI18N
+        panelCenter.add(lblMembresia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, -1, -1));
+
+        rellenarMembresias();
+        cbMembresias.setName("cbMembresias"); // NOI18N
+        cbMembresias.setNextFocusableComponent(cbPagos);
+        panelCenter.add(cbMembresias, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 200, 25));
+
+        cbPagos.setBackground(new java.awt.Color(51, 51, 51));
+        cbPagos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cbPagos.setForeground(new java.awt.Color(255, 255, 255));
+        cbPagos.setText("Al dia de pagos");
+        cbPagos.setName("cbPagos"); // NOI18N
+        cbPagos.setNextFocusableComponent(btnEliminar);
+        panelCenter.add(cbPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, -1, 25));
+
+        panel.add(panelCenter, java.awt.BorderLayout.CENTER);
+
+        panelSouth.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouth.setName("panelSouth"); // NOI18N
+        panelSouth.setPreferredSize(new java.awt.Dimension(215, 75));
+        panelSouth.setLayout(new java.awt.GridLayout(1, 2));
+
+        panelSouthLeft.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouthLeft.setName("panelSouthLeft"); // NOI18N
+        panelSouthLeft.setPreferredSize(new java.awt.Dimension(400, 55));
+        panelSouthLeft.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 20));
+
+        btnEliminar.setBorder(null);
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnEliminar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnEliminar.setkStartColor(new java.awt.Color(204, 0, 204));
+        btnEliminar.setName("btnEliminar"); // NOI18N
+        btnEliminar.setNextFocusableComponent(btnCancelar);
+        btnEliminar.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
+        panelSouthLeft.add(btnEliminar);
+
+        panelSouth.add(panelSouthLeft);
+
+        panelSouthRight.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouthRight.setName("panelSouthRight"); // NOI18N
+        panelSouthRight.setPreferredSize(new java.awt.Dimension(400, 55));
+        panelSouthRight.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 20));
+
+        btnCancelar.setBorder(null);
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCancelar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnCancelar.setkStartColor(new java.awt.Color(204, 0, 204));
+        btnCancelar.setName("btnCancelar"); // NOI18N
+        btnCancelar.setNextFocusableComponent(btnAnadir);
+        btnCancelar.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseClicked(evt);
+            }
+        });
+        panelSouthRight.add(btnCancelar);
+
+        btnAnadir.setBorder(null);
+        btnAnadir.setText("Añadir");
+        btnAnadir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAnadir.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnAnadir.setkStartColor(new java.awt.Color(204, 0, 204));
+        btnAnadir.setName("btnAnadir"); // NOI18N
+        btnAnadir.setNextFocusableComponent(tfNombre);
+        btnAnadir.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAnadirMouseClicked(evt);
+            }
+        });
+        panelSouthRight.add(btnAnadir);
+
+        panelSouth.add(panelSouthRight);
+
+        panel.add(panelSouth, java.awt.BorderLayout.PAGE_END);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -593,13 +601,13 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
     }//GEN-LAST:event_tfEmailFocusLost
 
-    private void tfDireccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDireccionFocusGained
-        tfDireccion.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
-    }//GEN-LAST:event_tfDireccionFocusGained
+    private void tfCalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCalleFocusGained
+        tfCalle.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+    }//GEN-LAST:event_tfCalleFocusGained
 
-    private void tfDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDireccionFocusLost
-        tfDireccion.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
-    }//GEN-LAST:event_tfDireccionFocusLost
+    private void tfCalleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCalleFocusLost
+        tfCalle.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+    }//GEN-LAST:event_tfCalleFocusLost
 
     private void tfDNIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDNIFocusGained
         tfDNI.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
@@ -657,31 +665,31 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfLocalidad.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
     }//GEN-LAST:event_tfLocalidadFocusLost
 
-    private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
-        JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());
-        JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)jDateChooser2.getDateEditor());        
+    private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
+        JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFechaNacimiento.getDateEditor());
+        JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)dcFechaIngreso.getDateEditor());        
         Membresia m = (Membresia) cbMembresias.getSelectedItem();
         Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
             tfEmail.getText(), Date.valueOf(dateChooserEditor1.getText()),
             direccion(), Integer.parseInt(tfTlf.getText()), Date.valueOf(dateChooserEditor2.getText()),
             m.getId_membresia(), cbPagos.isSelected(), /*jLabel1.getIcon().toString()*/null, asociacion.getNombre());
 
-        if(kButton1.getText().equals("Modificar")){
+        if(btnAnadir.getText().equals("Modificar")){
             if(cs.modificarSocio(s, socio.getDni(), asociacion.getNombre())){
                 dispose();
             }
-        }else if(kButton1.getText().equals("Añadir")){
+        }else if(btnAnadir.getText().equals("Añadir")){
             if(cs.insertarSocio(s)){
                 dispose();
             }
         }
-    }//GEN-LAST:event_kButton1MouseClicked
+    }//GEN-LAST:event_btnAnadirMouseClicked
 
-    private void kButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton2MouseClicked
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
         dispose();
-    }//GEN-LAST:event_kButton2MouseClicked
+    }//GEN-LAST:event_btnCancelarMouseClicked
 
-    private void kButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton3MouseClicked
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
@@ -689,13 +697,13 @@ public class EditSocioPanel extends javax.swing.JPanel {
                 dispose();
             }
         }
-    }//GEN-LAST:event_kButton3MouseClicked
+    }//GEN-LAST:event_btnEliminarMouseClicked
 
-    private void jDateChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseClicked
-        tfNombre.setText(jDateChooser1.getDateFormatString());
-    }//GEN-LAST:event_jDateChooser1MouseClicked
+    private void dcFechaNacimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dcFechaNacimientoMouseClicked
+        tfNombre.setText(dcFechaNacimiento.getDateFormatString());
+    }//GEN-LAST:event_dcFechaNacimientoMouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG % PNG Images","jpg","png");
@@ -704,9 +712,9 @@ public class EditSocioPanel extends javax.swing.JPanel {
         int seleccion = fc.showOpenDialog(this);
         if(seleccion == JFileChooser.APPROVE_OPTION){
             File file = fc.getSelectedFile();
-            jLabel1.setIcon(new ImageIcon(file.getAbsolutePath()));
+            fotoSocio.setIcon(new ImageIcon(file.getAbsolutePath()));
         }
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_editMouseClicked
     
     public void dispose(){
         this.show(false);
@@ -723,16 +731,16 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfNombre.setText(socio.getNombre());
         tfApellidos.setText(socio.getApellidos());
         tfEmail.setText(socio.getEmail());
-        jDateChooser1.setDate(socio.getFechaNac());
+        dcFechaNacimiento.setDate(socio.getFechaNac());
         separarDireccion(socio.getDomicilio());
         tfTlf.setText(socio.getTelefono()+"");
         tfDNI.setText(socio.getDni());
-        jDateChooser2.setDate(socio.getFechaIngreso());
+        dcFechaIngreso.setDate(socio.getFechaIngreso());
         seleccionarMembresia(socio.getIdMembresia());
         cbPagos.setSelected(socio.isPagado());
-        jLabel1.setIcon(new ImageIcon(socio.getRutaImg()));
+        fotoSocio.setIcon(new ImageIcon(socio.getRutaImg()));
         
-        kButton1.setText("Modificar");
+        btnAnadir.setText("Modificar");
     }
     
     //Rellena el combo box con los nombres de todas las membresias
@@ -758,12 +766,12 @@ public class EditSocioPanel extends javax.swing.JPanel {
     private String direccion(){
         String direccion;
         if(tfPiso.getText().equals("") || tfPuerta.getText().equals("")){
-            direccion =  "C/" + tfDireccion.getText() + ", " + tfNumero.getText()
+            direccion =  "C/" + tfCalle.getText() + ", " + tfNumero.getText()
                     + ", " + tfCodPostal.getText() + ", " + tfLocalidad.getText()
                     + ", " + cbProvincia.getSelectedItem();
             
         }else{
-            direccion =  "C/" + tfDireccion.getText() + ", " + tfNumero.getText()
+            direccion =  "C/" + tfCalle.getText() + ", " + tfNumero.getText()
                     + ", " + tfPiso.getText() + "º" + tfPuerta.getText() + ", " +
                     tfCodPostal.getText() + ", " + tfLocalidad.getText() + ", " +
                     cbProvincia.getSelectedItem();
@@ -774,7 +782,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
     private void separarDireccion(String dir){
         String [] d = dir.split("/"); //Separar la C/
         String [] c = d[1].split(","); //Separar cada apartado
-        tfDireccion.setText(c[0].replaceFirst(" ", ""));
+        tfCalle.setText(c[0].replaceFirst(" ", ""));
         tfNumero.setText(c[1].replaceFirst(" ", ""));
         if(c.length == 6){
             String [] p = c[2].split("º"); //Separar el piso y la puerta
@@ -799,20 +807,16 @@ public class EditSocioPanel extends javax.swing.JPanel {
     private ArrayList<Membresia> mems;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelSouthLeft;
+    private keeptoo.KButton btnAnadir;
+    private keeptoo.KButton btnCancelar;
+    private keeptoo.KButton btnEliminar;
     private javax.swing.JComboBox<Membresia> cbMembresias;
     private javax.swing.JCheckBox cbPagos;
     private javax.swing.JComboBox<String> cbProvincia;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private keeptoo.KButton kButton1;
-    private keeptoo.KButton kButton2;
-    private keeptoo.KButton kButton3;
+    private com.toedter.calendar.JDateChooser dcFechaIngreso;
+    private com.toedter.calendar.JDateChooser dcFechaNacimiento;
+    private javax.swing.JLabel edit;
+    private javax.swing.JLabel fotoSocio;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblCalle;
     private javax.swing.JLabel lblCodPostal;
@@ -821,6 +825,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDatosPersonales;
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblFechaIngreso;
     private javax.swing.JLabel lblFechaNacimiento;
     private javax.swing.JLabel lblLocalidad;
     private javax.swing.JLabel lblMembresia;
@@ -832,13 +837,16 @@ public class EditSocioPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblProvincia;
     private javax.swing.JLabel lblPuerta;
     private javax.swing.JLabel lblTlf;
+    private javax.swing.JPanel panel;
     private javax.swing.JPanel panelCenter;
+    private javax.swing.JPanel panelImg;
     private javax.swing.JPanel panelSouth;
+    private javax.swing.JPanel panelSouthLeft;
     private javax.swing.JPanel panelSouthRight;
     private javax.swing.JTextField tfApellidos;
+    private javax.swing.JTextField tfCalle;
     private javax.swing.JTextField tfCodPostal;
     private javax.swing.JTextField tfDNI;
-    private javax.swing.JTextField tfDireccion;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfLocalidad;
     private javax.swing.JTextField tfNombre;
