@@ -27,11 +27,9 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     private void initComponents() {
 
         panel = new javax.swing.JPanel();
-        panelSouth = new javax.swing.JPanel();
-        kButton1 = new keeptoo.KButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        panelNorth = new javax.swing.JPanel();
+        close = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         panelCenter = new javax.swing.JPanel();
         lblPresidente = new javax.swing.JLabel();
         cbPresidente = new javax.swing.JComboBox<>();
@@ -45,6 +43,8 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         cbVocal1 = new javax.swing.JComboBox<>();
         lblVocal2 = new javax.swing.JLabel();
         cbVocal2 = new javax.swing.JComboBox<>();
+        panelSouth = new javax.swing.JPanel();
+        btnEditar = new keeptoo.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
@@ -57,49 +57,29 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panel.setPreferredSize(new java.awt.Dimension(400, 400));
         panel.setLayout(new java.awt.BorderLayout());
 
-        panelSouth.setBackground(new java.awt.Color(51, 51, 51));
-        panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
-        panelSouth.setName("panelSouth"); // NOI18N
-        panelSouth.setPreferredSize(new java.awt.Dimension(197, 75));
-        panelSouth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
+        panelNorth.setBackground(new java.awt.Color(51, 51, 51));
+        panelNorth.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        panelNorth.setName("panelNorth"); // NOI18N
+        panelNorth.setPreferredSize(new java.awt.Dimension(400, 40));
+        panelNorth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        kButton1.setBorder(null);
-        kButton1.setText("Editar");
-        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
-        kButton1.setkHoverEndColor(new java.awt.Color(0, 0, 0));
-        kButton1.setkHoverStartColor(new java.awt.Color(51, 0, 51));
-        kButton1.setkPressedColor(new java.awt.Color(255, 102, 255));
-        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
-        kButton1.setPreferredSize(new java.awt.Dimension(185, 35));
-        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
+        close.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 1, new java.awt.Color(0, 0, 0)));
+        close.setName("close"); // NOI18N
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton1MouseClicked(evt);
+                closeMouseClicked(evt);
             }
         });
-        panelSouth.add(kButton1);
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, -1, -1));
 
-        panel.add(panelSouth, java.awt.BorderLayout.PAGE_END);
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Junta Directiva");
+        lblTitulo.setName("lblTitulo"); // NOI18N
+        panelNorth.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
-        jPanel1.setPreferredSize(new java.awt.Dimension(400, 40));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\close-button.png")); // NOI18N
-        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 1, new java.awt.Color(0, 0, 0)));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Junta Directiva");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        panel.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        panel.add(panelNorth, java.awt.BorderLayout.NORTH);
 
         panelCenter.setBackground(new java.awt.Color(51, 51, 51));
         panelCenter.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(0, 0, 0)));
@@ -177,6 +157,30 @@ public class JuntaDirectiva extends javax.swing.JFrame {
 
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
 
+        panelSouth.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
+        panelSouth.setName("panelSouth"); // NOI18N
+        panelSouth.setPreferredSize(new java.awt.Dimension(197, 75));
+        panelSouth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
+
+        btnEditar.setBorder(null);
+        btnEditar.setText("Editar");
+        btnEditar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnEditar.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnEditar.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnEditar.setkPressedColor(new java.awt.Color(255, 102, 255));
+        btnEditar.setkStartColor(new java.awt.Color(204, 0, 204));
+        btnEditar.setName("btnEditar"); // NOI18N
+        btnEditar.setPreferredSize(new java.awt.Dimension(185, 35));
+        btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditarMouseClicked(evt);
+            }
+        });
+        panelSouth.add(btnEditar);
+
+        panel.add(panelSouth, java.awt.BorderLayout.SOUTH);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,11 +197,11 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         dispose();
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_closeMouseClicked
 
-    private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
+    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
         if(modificarCargo(lblPresidente.getText(), cbPresidente) &&
         modificarCargo(lblVicepresidente.getText(), cbVicepresidente) &&
         modificarCargo(lblSecretario.getText(), cbSecretario) &&
@@ -208,7 +212,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         }else{
             //aviso de no se ha podido modificar
         }
-    }//GEN-LAST:event_kButton1MouseClicked
+    }//GEN-LAST:event_btnEditarMouseClicked
 
     
     private boolean modificarCargo(String nombre, JComboBox cb){
@@ -217,10 +221,10 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         Cargo cargo;        
         if(cb.getSelectedItem() != null){
             Socio socio = (Socio) cb.getSelectedItem();
-            cargo = new Cargo(nombre, socio.getDni());
+            cargo = new Cargo(nombre, socio.getDni(), asociacion.getNombre());
             modificado = cjd.modificarCargo(cargo);
         }else{
-            cargo = new Cargo(nombre, null);
+            cargo = new Cargo(nombre, null, asociacion.getNombre());
             modificado = cjd.modificarCargo(cargo);
         }
         return modificado;
@@ -229,7 +233,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     //Selecciona el socio correspondiente en cada cargo
     private void seleccionarCargo(){        
         ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
-        ArrayList<Cargo> cargos = cjd.obtenerCargos();
+        ArrayList<Cargo> cargos = cjd.obtenerCargos(asociacion.getNombre());
         
         for(int i = 0 ; i < cargos.size() ; i++){
             switch(cargos.get(i).getNombre()){
@@ -299,24 +303,24 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     private ArrayList<Socio> soc;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private keeptoo.KButton btnEditar;
     private javax.swing.JComboBox<Socio> cbPresidente;
     private javax.swing.JComboBox<Socio> cbSecretario;
     private javax.swing.JComboBox<Socio> cbTesorero;
     private javax.swing.JComboBox<Socio> cbVicepresidente;
     private javax.swing.JComboBox<Socio> cbVocal1;
     private javax.swing.JComboBox<Socio> cbVocal2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private keeptoo.KButton kButton1;
+    private javax.swing.JLabel close;
     private javax.swing.JLabel lblPresidente;
     private javax.swing.JLabel lblSecretario;
     private javax.swing.JLabel lblTesorero;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblVicepresidente;
     private javax.swing.JLabel lblVocal1;
     private javax.swing.JLabel lblVocal2;
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelCenter;
+    private javax.swing.JPanel panelNorth;
     private javax.swing.JPanel panelSouth;
     // End of variables declaration//GEN-END:variables
 }

@@ -102,7 +102,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
 
         lblTlfAsoc.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblTlfAsoc.setForeground(new java.awt.Color(255, 255, 255));
-        lblTlfAsoc.setText("Telefono");
+        lblTlfAsoc.setText("Teléfono");
         lblTlfAsoc.setName("lblTlfAsoc"); // NOI18N
         panelCenterAsoc.add(lblTlfAsoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 240, -1));
 
@@ -269,7 +269,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
         jLabel1.setVisible(false);
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\editar.png")); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -286,7 +286,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Fecha Creacion Asociacion");
+        jLabel3.setText("Fecha Creación Asociación");
         panelCenterAsoc.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 210, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -314,12 +314,12 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Numero");
+        jLabel5.setText("Número");
         panelCenterAsoc.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 60, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Codigo Postal");
+        jLabel6.setText("Código Postal");
         panelCenterAsoc.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, 130, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -406,7 +406,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Datos Juridicos");
+        jLabel9.setText("Datos Jurídicos");
         panelCenterAsoc.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
 
         kButton1.setBorder(null);

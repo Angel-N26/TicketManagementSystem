@@ -29,21 +29,21 @@ public class MembresiaFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         panelBorder = new javax.swing.JPanel();
-        panelSouth = new javax.swing.JPanel();
-        kButton2 = new keeptoo.KButton();
-        kButton1 = new keeptoo.KButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        panelNorth = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        close = new javax.swing.JLabel();
         panelCenter = new javax.swing.JPanel();
         scrollPane = new javax.swing.JScrollPane();
         listMembresias = new javax.swing.JList<>();
+        lblNombre = new javax.swing.JLabel();
+        lblObliNombre = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         lblPrecio = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lblNombre = new javax.swing.JLabel();
         tfPrecio = new javax.swing.JTextField();
-        kButton3 = new keeptoo.KButton();
+        btnModificar = new keeptoo.KButton();
+        panelSouth = new javax.swing.JPanel();
+        btnEliminar = new keeptoo.KButton();
+        btnAnadir = new keeptoo.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
@@ -56,58 +56,28 @@ public class MembresiaFrame extends javax.swing.JFrame {
         panelBorder.setPreferredSize(new java.awt.Dimension(400, 400));
         panelBorder.setLayout(new java.awt.BorderLayout());
 
-        panelSouth.setBackground(new java.awt.Color(51, 51, 51));
-        panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
-        panelSouth.setName("panelSouth"); // NOI18N
-        panelSouth.setPreferredSize(new java.awt.Dimension(387, 75));
-        panelSouth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 20));
+        panelNorth.setBackground(new java.awt.Color(51, 51, 51));
+        panelNorth.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        panelNorth.setPreferredSize(new java.awt.Dimension(400, 40));
+        panelNorth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        kButton2.setBorder(null);
-        kButton2.setText("Eliminar");
-        kButton2.setkEndColor(new java.awt.Color(51, 0, 51));
-        kButton2.setkStartColor(new java.awt.Color(204, 0, 204));
-        kButton2.setPreferredSize(new java.awt.Dimension(180, 35));
-        kButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Membresias");
+        lblTitulo.setName("lblTitulo"); // NOI18N
+        panelNorth.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
+        close.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 1, new java.awt.Color(0, 0, 0)));
+        close.setName("close"); // NOI18N
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton2MouseClicked(evt);
+                closeMouseClicked(evt);
             }
         });
-        panelSouth.add(kButton2);
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 0, -1, -1));
 
-        kButton1.setBorder(null);
-        kButton1.setText("Añadir");
-        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
-        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
-        kButton1.setPreferredSize(new java.awt.Dimension(180, 35));
-        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton1MouseClicked(evt);
-            }
-        });
-        panelSouth.add(kButton1);
-
-        panelBorder.add(panelSouth, java.awt.BorderLayout.PAGE_END);
-
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
-        jPanel1.setPreferredSize(new java.awt.Dimension(400, 40));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Membresias");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\close-button.png")); // NOI18N
-        jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 1, new java.awt.Color(0, 0, 0)));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 0, -1, -1));
-
-        panelBorder.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        panelBorder.add(panelNorth, java.awt.BorderLayout.NORTH);
 
         panelCenter.setBackground(new java.awt.Color(51, 51, 51));
         panelCenter.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(0, 0, 0)));
@@ -135,9 +105,20 @@ public class MembresiaFrame extends javax.swing.JFrame {
 
         panelCenter.add(scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 230, 265));
 
+        lblNombre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombre.setText("Nombre");
+        lblNombre.setName("lblNombre"); // NOI18N
+        panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 75, -1, -1));
+
+        lblObliNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblObliNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblObliNombre.setText("*");
+        lblObliNombre.setName("lblObliNombre"); // NOI18N
+        panelCenter.add(lblObliNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 75, 10, -1));
+
         tfNombre.setBackground(new java.awt.Color(51, 51, 51));
         tfNombre.setForeground(new java.awt.Color(255, 255, 255));
-        tfNombre.setToolTipText("");
         tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfNombre.setCaretColor(new java.awt.Color(204, 0, 204));
         tfNombre.setName("tfNombre"); // NOI18N
@@ -160,21 +141,8 @@ public class MembresiaFrame extends javax.swing.JFrame {
         lblPrecio.setName("lblPrecio"); // NOI18N
         panelCenter.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("*");
-        jLabel3.setToolTipText("");
-        panelCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 75, 10, -1));
-
-        lblNombre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombre.setText("Nombre");
-        lblNombre.setName("lblNombre"); // NOI18N
-        panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 75, -1, -1));
-
         tfPrecio.setBackground(new java.awt.Color(51, 51, 51));
         tfPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        tfPrecio.setToolTipText("");
         tfPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfPrecio.setCaretColor(new java.awt.Color(204, 0, 204));
         tfPrecio.setName("tfPrecio"); // NOI18N
@@ -191,18 +159,53 @@ public class MembresiaFrame extends javax.swing.JFrame {
         });
         panelCenter.add(tfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 130, -1));
 
-        kButton3.setBorder(null);
-        kButton3.setText("Modificar");
-        kButton3.setkEndColor(new java.awt.Color(51, 0, 51));
-        kButton3.setkStartColor(new java.awt.Color(204, 0, 204));
-        kButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnModificar.setBorder(null);
+        btnModificar.setText("Modificar");
+        btnModificar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnModificar.setkStartColor(new java.awt.Color(204, 0, 204));
+        btnModificar.setName("btnModificar"); // NOI18N
+        btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton3MouseClicked(evt);
+                btnModificarMouseClicked(evt);
             }
         });
-        panelCenter.add(kButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 90, 20));
+        panelCenter.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 90, 20));
 
         panelBorder.add(panelCenter, java.awt.BorderLayout.CENTER);
+
+        panelSouth.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
+        panelSouth.setName("panelSouth"); // NOI18N
+        panelSouth.setPreferredSize(new java.awt.Dimension(387, 75));
+        panelSouth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 20));
+
+        btnEliminar.setBorder(null);
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnEliminar.setkStartColor(new java.awt.Color(204, 0, 204));
+        btnEliminar.setName("btnEliminar"); // NOI18N
+        btnEliminar.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
+        panelSouth.add(btnEliminar);
+
+        btnAnadir.setBorder(null);
+        btnAnadir.setText("Añadir");
+        btnAnadir.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnAnadir.setkStartColor(new java.awt.Color(204, 0, 204));
+        btnAnadir.setName("btnAnadir"); // NOI18N
+        btnAnadir.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAnadirMouseClicked(evt);
+            }
+        });
+        panelSouth.add(btnAnadir);
+
+        panelBorder.add(panelSouth, java.awt.BorderLayout.SOUTH);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,16 +226,16 @@ public class MembresiaFrame extends javax.swing.JFrame {
                
         tfNombre.setText(mem.getNombre());
         tfPrecio.setText(mem.getPrecio()+""); 
-        kButton3.setEnabled(true);
+        btnModificar.setEnabled(true);
     }//GEN-LAST:event_listMembresiasMouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         dispose();
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_closeMouseClicked
 
     private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
         tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 204)));
-        jLabel3.setForeground(new Color(255, 255, 255));
+        lblObliNombre.setForeground(new Color(255, 255, 255));
     }//GEN-LAST:event_tfNombreFocusGained
 
     private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
@@ -247,7 +250,7 @@ public class MembresiaFrame extends javax.swing.JFrame {
         tfPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
     }//GEN-LAST:event_tfPrecioFocusLost
 
-    private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
+    private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
         if(!tfNombre.getText().equals("")){
             Membresia memb = new Membresia(tfNombre.getText(),
                 Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
@@ -256,11 +259,11 @@ public class MembresiaFrame extends javax.swing.JFrame {
             } 
         }else{            
             tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 0)));
-            jLabel3.setForeground(new Color(204, 0, 0));
+            lblObliNombre.setForeground(new Color(204, 0, 0));
         } 
-    }//GEN-LAST:event_kButton1MouseClicked
+    }//GEN-LAST:event_btnAnadirMouseClicked
 
-    private void kButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton2MouseClicked
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
@@ -270,9 +273,9 @@ public class MembresiaFrame extends javax.swing.JFrame {
                 tfPrecio.setText("");
             }
         }
-    }//GEN-LAST:event_kButton2MouseClicked
+    }//GEN-LAST:event_btnEliminarMouseClicked
 
-    private void kButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton3MouseClicked
+    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
         Membresia m = listMembresias.getSelectedValue();
         if(!tfNombre.getText().equals("")){
             Membresia memb = new Membresia(m.getId_membresia(), tfNombre.getText(),
@@ -282,9 +285,9 @@ public class MembresiaFrame extends javax.swing.JFrame {
             } 
         }else{            
             tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 0)));
-            jLabel3.setForeground(new Color(204, 0, 0));
+            lblObliNombre.setForeground(new Color(204, 0, 0));
         }
-    }//GEN-LAST:event_kButton3MouseClicked
+    }//GEN-LAST:event_btnModificarMouseClicked
 
     private ArrayList<Membresia> obtenerMembresias(){
         ControlMembresia cmem = new ControlMembresia();
@@ -317,18 +320,18 @@ public class MembresiaFrame extends javax.swing.JFrame {
     private DefaultListModel modeloLista;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private keeptoo.KButton kButton1;
-    private keeptoo.KButton kButton2;
-    private keeptoo.KButton kButton3;
+    private keeptoo.KButton btnAnadir;
+    private keeptoo.KButton btnEliminar;
+    private keeptoo.KButton btnModificar;
+    private javax.swing.JLabel close;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblObliNombre;
     private javax.swing.JLabel lblPrecio;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JList<Membresia> listMembresias;
     private javax.swing.JPanel panelBorder;
     private javax.swing.JPanel panelCenter;
+    private javax.swing.JPanel panelNorth;
     private javax.swing.JPanel panelSouth;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTextField tfNombre;

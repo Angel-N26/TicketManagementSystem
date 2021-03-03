@@ -7,10 +7,12 @@ public class Cargo {
     
     private String nombre;
     private String idSocio;
+    private String nombreAsoc;
     
-    public Cargo(String nNombre, String nIdSocio){
-        this.nombre = nNombre;
-        this.idSocio = nIdSocio;
+    public Cargo(String nombre, String idSocio, String nombreAsoc){
+        this.nombre = nombre;
+        this.idSocio = idSocio;
+        this.nombreAsoc = nombreAsoc;
     }
 
     public Cargo() {
@@ -26,6 +28,14 @@ public class Cargo {
     
     public void setIdSocio(String idSocio) {
         this.idSocio = idSocio;
+    }
+
+    public String getNombreAsoc() {
+        return nombreAsoc;
+    }
+
+    public void setNombreAsoc(String nombreAsoc) {
+        this.nombreAsoc = nombreAsoc;
     }
      
     @Override

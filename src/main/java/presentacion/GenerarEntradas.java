@@ -43,20 +43,18 @@ public class GenerarEntradas extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         panel = new javax.swing.JPanel();
         panelNorth = new javax.swing.JPanel();
-        lblPregunta = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         lblEvento = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        panelSouth = new javax.swing.JPanel();
-        kButton1 = new keeptoo.KButton();
+        close = new javax.swing.JLabel();
         panelCenter = new javax.swing.JPanel();
-        lblSocios = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jButton2 = new javax.swing.JButton();
-        lblSocios1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        lblSociosSin = new javax.swing.JLabel();
+        scrollPaneSin = new javax.swing.JScrollPane();
+        listSociosSin = new javax.swing.JList<>();
+        lblSociosCon = new javax.swing.JLabel();
+        scrollPaneCon = new javax.swing.JScrollPane();
+        listSociosCon = new javax.swing.JList<>();
+        panelSouth = new javax.swing.JPanel();
+        btnGenerarEntradas = new keeptoo.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
@@ -80,12 +78,11 @@ public class GenerarEntradas extends javax.swing.JFrame {
         panelNorth.setPreferredSize(new java.awt.Dimension(511, 40));
         panelNorth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblPregunta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblPregunta.setForeground(new java.awt.Color(255, 255, 255));
-        lblPregunta.setText("Generar Entradas");
-        lblPregunta.setToolTipText("");
-        lblPregunta.setName("lblPregunta"); // NOI18N
-        panelNorth.add(lblPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Generar Entradas");
+        lblTitulo.setName("lblTitulo"); // NOI18N
+        panelNorth.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         lblEvento.setText(evento.getNombre());
         lblEvento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -93,36 +90,17 @@ public class GenerarEntradas extends javax.swing.JFrame {
         lblEvento.setName("lblEvento"); // NOI18N
         panelNorth.add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 17));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\close-button.png")); // NOI18N
-        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 1, new java.awt.Color(0, 0, 0)));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
+        close.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 1, new java.awt.Color(0, 0, 0)));
+        close.setName("close"); // NOI18N
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                closeMouseClicked(evt);
             }
         });
-        panelNorth.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 0, -1, -1));
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 0, -1, -1));
 
-        panel.add(panelNorth, java.awt.BorderLayout.PAGE_START);
-
-        panelSouth.setBackground(new java.awt.Color(51, 51, 51));
-        panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
-        panelSouth.setName("panelSouth"); // NOI18N
-        panelSouth.setPreferredSize(new java.awt.Dimension(192, 75));
-        panelSouth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
-
-        kButton1.setBorder(null);
-        kButton1.setText("Generar Entradas");
-        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
-        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
-        kButton1.setPreferredSize(new java.awt.Dimension(180, 35));
-        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton1MouseClicked(evt);
-            }
-        });
-        panelSouth.add(kButton1);
-
-        panel.add(panelSouth, java.awt.BorderLayout.PAGE_END);
+        panel.add(panelNorth, java.awt.BorderLayout.NORTH);
 
         panelCenter.setBackground(new java.awt.Color(51, 51, 51));
         panelCenter.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(0, 0, 0)));
@@ -130,84 +108,73 @@ public class GenerarEntradas extends javax.swing.JFrame {
         panelCenter.setPreferredSize(new java.awt.Dimension(490, 300));
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSocios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblSocios.setForeground(new java.awt.Color(255, 255, 255));
-        lblSocios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSocios.setText("SOCIOS CON ENTRADA");
-        lblSocios.setName("lblSocios"); // NOI18N
-        panelCenter.add(lblSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 200, -1));
+        lblSociosSin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblSociosSin.setForeground(new java.awt.Color(255, 255, 255));
+        lblSociosSin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSociosSin.setText("SOCIOS SIN ENTRADA");
+        lblSociosSin.setName("lblSociosSin"); // NOI18N
+        panelCenter.add(lblSociosSin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, -1));
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(200, 270));
+        scrollPaneSin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPaneSin.setName("scrollPaneSin"); // NOI18N
+        scrollPaneSin.setPreferredSize(new java.awt.Dimension(200, 270));
 
         modeloListaSociosSin = new DefaultListModel();
-        jList1.setModel(modeloListaSociosSin);
-        jList1.setSelectionForeground(new Color(255,255,255));
-        jList1.setBackground(new java.awt.Color(102, 102, 102));
-        jList1.setForeground(new java.awt.Color(255, 255, 255));
-        jList1.setSelectionBackground(new java.awt.Color(31, 31, 31));
-        jScrollPane1.setViewportView(jList1);
+        listSociosSin.setModel(modeloListaSociosSin);
+        listSociosSin.setSelectionForeground(new Color(255,255,255));
+        listSociosSin.setBackground(new java.awt.Color(102, 102, 102));
+        listSociosSin.setForeground(new java.awt.Color(255, 255, 255));
+        listSociosSin.setName("listSociosSin"); // NOI18N
+        listSociosSin.setSelectionBackground(new java.awt.Color(31, 31, 31));
+        scrollPaneSin.setViewportView(listSociosSin);
 
-        panelCenter.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 245));
+        panelCenter.add(scrollPaneSin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 220, 245));
 
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(200, 270));
+        lblSociosCon.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblSociosCon.setForeground(new java.awt.Color(255, 255, 255));
+        lblSociosCon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSociosCon.setText("SOCIOS CON ENTRADA");
+        lblSociosCon.setName("lblSociosCon"); // NOI18N
+        panelCenter.add(lblSociosCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 220, -1));
+
+        scrollPaneCon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPaneCon.setName("scrollPaneCon"); // NOI18N
+        scrollPaneCon.setPreferredSize(new java.awt.Dimension(200, 270));
 
         modeloListaSociosCon = new DefaultListModel();
-        jList2.setModel(modeloListaSociosCon);
-        jList2.setSelectionForeground(new Color(255,255,255));
+        listSociosCon.setModel(modeloListaSociosCon);
+        listSociosCon.setSelectionForeground(new Color(255,255,255));
         rellenarListas();
-        jList2.setBackground(new java.awt.Color(102, 102, 102));
-        jList2.setForeground(new java.awt.Color(255, 255, 255));
-        jList2.setSelectionBackground(new java.awt.Color(31, 31, 31));
-        jScrollPane2.setViewportView(jList2);
+        listSociosCon.setBackground(new java.awt.Color(102, 102, 102));
+        listSociosCon.setForeground(new java.awt.Color(255, 255, 255));
+        listSociosCon.setName("listSociosCon"); // NOI18N
+        listSociosCon.setSelectionBackground(new java.awt.Color(31, 31, 31));
+        scrollPaneCon.setViewportView(listSociosCon);
 
-        panelCenter.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, 245));
-
-        jButton2.setBackground(new java.awt.Color(31, 31, 31));
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\flechas-izq-gray.png")); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setPreferredSize(new java.awt.Dimension(30, 40));
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton2MouseExited(evt);
-            }
-        });
-        panelCenter.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 50, -1));
-
-        lblSocios1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblSocios1.setForeground(new java.awt.Color(255, 255, 255));
-        lblSocios1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSocios1.setText("SOCIOS SIN ENTRADA");
-        lblSocios1.setName("lblSocios"); // NOI18N
-        panelCenter.add(lblSocios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, -1));
-
-        jButton3.setBackground(new java.awt.Color(31, 31, 31));
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\flechas-dch-gray.png")); // NOI18N
-        jButton3.setBorder(null);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setPreferredSize(new java.awt.Dimension(30, 40));
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton3MouseExited(evt);
-            }
-        });
-        panelCenter.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 105, 50, -1));
+        panelCenter.add(scrollPaneCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 220, 245));
 
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
+
+        panelSouth.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
+        panelSouth.setName("panelSouth"); // NOI18N
+        panelSouth.setPreferredSize(new java.awt.Dimension(192, 75));
+        panelSouth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
+
+        btnGenerarEntradas.setBorder(null);
+        btnGenerarEntradas.setText("Generar Entradas");
+        btnGenerarEntradas.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnGenerarEntradas.setkStartColor(new java.awt.Color(204, 0, 204));
+        btnGenerarEntradas.setName("btnGenerarEntradas"); // NOI18N
+        btnGenerarEntradas.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnGenerarEntradas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGenerarEntradasMouseClicked(evt);
+            }
+        });
+        panelSouth.add(btnGenerarEntradas);
+
+        panel.add(panelSouth, java.awt.BorderLayout.SOUTH);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,19 +190,15 @@ public class GenerarEntradas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-                
-    }//GEN-LAST:event_jButton2MouseClicked
-
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         dispose();
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_closeMouseClicked
 
     private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
         dispose();
     }//GEN-LAST:event_formWindowLostFocus
 
-    private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
+    private void btnGenerarEntradasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseClicked
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea generar?","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){        
@@ -261,31 +224,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
             }
             dispose();
         }
-    }//GEN-LAST:event_kButton1MouseClicked
-
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        int i = jList1.getSelectedIndex();
-        Socio socio = (Socio) modeloListaSociosSin.getElementAt(i);
-        socioConEntrada.add(socio);
-        modeloListaSociosSin.remove(i);
-        modeloListaSociosCon.add(0, socio);
-    }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\flechas-dch-white.png"));
-    }//GEN-LAST:event_jButton3MouseEntered
-
-    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\flechas-dch-gray.png"));
-    }//GEN-LAST:event_jButton3MouseExited
-
-    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\flechas-izq-white.png"));
-    }//GEN-LAST:event_jButton2MouseEntered
-
-    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\flechas-izq-gray.png"));
-    }//GEN-LAST:event_jButton2MouseExited
+    }//GEN-LAST:event_btnGenerarEntradasMouseClicked
     
     private void rellenarListas(){
         ControlSocio cs = new ControlSocio();
@@ -323,22 +262,20 @@ public class GenerarEntradas extends javax.swing.JFrame {
     private DefaultListModel modeloListaSociosCon;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private keeptoo.KButton btnGenerarEntradas;
+    private javax.swing.JLabel close;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private keeptoo.KButton kButton1;
     private javax.swing.JLabel lblEvento;
-    private javax.swing.JLabel lblPregunta;
-    private javax.swing.JLabel lblSocios;
-    private javax.swing.JLabel lblSocios1;
+    private javax.swing.JLabel lblSociosCon;
+    private javax.swing.JLabel lblSociosSin;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JList<String> listSociosCon;
+    private javax.swing.JList<String> listSociosSin;
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelNorth;
     private javax.swing.JPanel panelSouth;
+    private javax.swing.JScrollPane scrollPaneCon;
+    private javax.swing.JScrollPane scrollPaneSin;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,27 +26,79 @@ public class EntradasPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        panelCenterEntradas = new javax.swing.JPanel();
+        panelNorth = new javax.swing.JPanel();
+        panelSeleccionEvento = new javax.swing.JPanel();
+        lblEvento = new javax.swing.JLabel();
+        cbEvento = new javax.swing.JComboBox<>();
+        panelGenerarEntradas = new javax.swing.JPanel();
+        btnGenerarEntradas = new keeptoo.KButton();
+        panelCenter = new javax.swing.JPanel();
         panelNumEntradas = new javax.swing.JPanel();
         lblNumEntradas = new javax.swing.JLabel();
         lblNum = new javax.swing.JLabel();
         panelListEntradas = new javax.swing.JPanel();
-        scrollPanelListEntradas = new javax.swing.JScrollPane();
+        scrollPane = new javax.swing.JScrollPane();
         listEntradas = new javax.swing.JList<>();
-        panelNorthEntradas = new javax.swing.JPanel();
-        panelSeleccionEvento = new javax.swing.JPanel();
-        lblSeleccionEvento = new javax.swing.JLabel();
-        cbSeleccionEvento = new javax.swing.JComboBox<>();
-        panelGenerarEntradas = new javax.swing.JPanel();
-        kButton1 = new keeptoo.KButton();
 
         setLayout(new java.awt.BorderLayout());
 
-        panelCenterEntradas.setBackground(new java.awt.Color(51, 51, 51));
-        panelCenterEntradas.setName("panelCenterEntradas"); // NOI18N
-        panelCenterEntradas.setPreferredSize(new java.awt.Dimension(800, 490));
-        panelCenterEntradas.setLayout(new java.awt.BorderLayout());
+        panelNorth.setBackground(new java.awt.Color(51, 51, 51));
+        panelNorth.setName("panelNorth"); // NOI18N
+        panelNorth.setLayout(new java.awt.GridLayout());
+
+        panelSeleccionEvento.setBackground(new java.awt.Color(51, 51, 51));
+        panelSeleccionEvento.setMinimumSize(new java.awt.Dimension(160, 30));
+        panelSeleccionEvento.setName("panelSeleccionEvento"); // NOI18N
+        panelSeleccionEvento.setPreferredSize(new java.awt.Dimension(112, 60));
+        panelSeleccionEvento.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 10));
+
+        lblEvento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblEvento.setForeground(new java.awt.Color(255, 255, 255));
+        lblEvento.setText("Evento");
+        lblEvento.setName("lblEvento"); // NOI18N
+        lblEvento.setPreferredSize(new java.awt.Dimension(45, 35));
+        panelSeleccionEvento.add(lblEvento);
+
+        rellenarComboBox();
+        cbEvento.setName("cbEvento"); // NOI18N
+        cbEvento.setPreferredSize(new java.awt.Dimension(180, 35));
+        cbEvento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbEventoMouseClicked(evt);
+            }
+        });
+        panelSeleccionEvento.add(cbEvento);
+
+        panelNorth.add(panelSeleccionEvento);
+
+        panelGenerarEntradas.setBackground(new java.awt.Color(51, 51, 51));
+        panelGenerarEntradas.setName("panelGenerarEntradas"); // NOI18N
+        panelGenerarEntradas.setPreferredSize(new java.awt.Dimension(140, 60));
+        panelGenerarEntradas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 10));
+
+        btnGenerarEntradas.setBorder(null);
+        btnGenerarEntradas.setText("Generar Entradas");
+        btnGenerarEntradas.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnGenerarEntradas.setkStartColor(new java.awt.Color(204, 0, 204));
+        btnGenerarEntradas.setName("btnGenerarEntradas"); // NOI18N
+        btnGenerarEntradas.setPreferredSize(new java.awt.Dimension(180, 35));
+        btnGenerarEntradas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGenerarEntradasMouseClicked(evt);
+            }
+        });
+        panelGenerarEntradas.add(btnGenerarEntradas);
+
+        panelNorth.add(panelGenerarEntradas);
+
+        add(panelNorth, java.awt.BorderLayout.NORTH);
+
+        panelCenter.setBackground(new java.awt.Color(51, 51, 51));
+        panelCenter.setName("panelCenter"); // NOI18N
+        panelCenter.setPreferredSize(new java.awt.Dimension(800, 490));
+        panelCenter.setLayout(new java.awt.BorderLayout());
 
         panelNumEntradas.setBackground(new java.awt.Color(51, 51, 51));
         panelNumEntradas.setName("panelNumEntradas"); // NOI18N
@@ -67,96 +119,58 @@ public class EntradasPanel extends javax.swing.JPanel {
         lblNum.setName("lblNum"); // NOI18N
         panelNumEntradas.add(lblNum);
 
-        panelCenterEntradas.add(panelNumEntradas, java.awt.BorderLayout.PAGE_START);
+        panelCenter.add(panelNumEntradas, java.awt.BorderLayout.PAGE_START);
 
         panelListEntradas.setBackground(new java.awt.Color(51, 51, 51));
         panelListEntradas.setName("panelListEntradas"); // NOI18N
         panelListEntradas.setPreferredSize(new java.awt.Dimension(800, 460));
-        panelListEntradas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelListEntradas.setLayout(new java.awt.GridBagLayout());
 
-        scrollPanelListEntradas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane.setName("scrollPane"); // NOI18N
 
         modeloListaEntradas = new DefaultListModel();
         listEntradas.setModel(modeloListaEntradas);
         listEntradas.setSelectionForeground(new Color(255,255,255));
         listEntradas.setBackground(new java.awt.Color(102, 102, 102));
         listEntradas.setForeground(new java.awt.Color(255, 255, 255));
+        listEntradas.setName("listEntradas"); // NOI18N
         listEntradas.setSelectionBackground(new java.awt.Color(31, 31, 31));
-        scrollPanelListEntradas.setViewportView(listEntradas);
+        scrollPane.setViewportView(listEntradas);
 
-        panelListEntradas.add(scrollPanelListEntradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 760, 440));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 737;
+        gridBagConstraints.ipady = 417;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 20, 20, 20);
+        panelListEntradas.add(scrollPane, gridBagConstraints);
 
-        panelCenterEntradas.add(panelListEntradas, java.awt.BorderLayout.CENTER);
+        panelCenter.add(panelListEntradas, java.awt.BorderLayout.CENTER);
 
-        add(panelCenterEntradas, java.awt.BorderLayout.CENTER);
-
-        panelNorthEntradas.setBackground(new java.awt.Color(51, 51, 51));
-        panelNorthEntradas.setName("panelNorthEntradas"); // NOI18N
-        panelNorthEntradas.setLayout(new java.awt.GridLayout(1, 0));
-
-        panelSeleccionEvento.setBackground(new java.awt.Color(51, 51, 51));
-        panelSeleccionEvento.setMinimumSize(new java.awt.Dimension(160, 30));
-        panelSeleccionEvento.setName("panelSeleccionEvento"); // NOI18N
-        panelSeleccionEvento.setPreferredSize(new java.awt.Dimension(112, 60));
-        panelSeleccionEvento.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 10));
-
-        lblSeleccionEvento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblSeleccionEvento.setForeground(new java.awt.Color(255, 255, 255));
-        lblSeleccionEvento.setText("Selecciona un evento");
-        lblSeleccionEvento.setName("lblSeleccionEvento"); // NOI18N
-        lblSeleccionEvento.setPreferredSize(new java.awt.Dimension(140, 35));
-        panelSeleccionEvento.add(lblSeleccionEvento);
-
-        rellenarComboBox();
-        cbSeleccionEvento.setName("cbSeleccionEvento"); // NOI18N
-        cbSeleccionEvento.setPreferredSize(new java.awt.Dimension(180, 35));
-        cbSeleccionEvento.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cbSeleccionEventoMouseClicked(evt);
-            }
-        });
-        panelSeleccionEvento.add(cbSeleccionEvento);
-
-        panelNorthEntradas.add(panelSeleccionEvento);
-
-        panelGenerarEntradas.setBackground(new java.awt.Color(51, 51, 51));
-        panelGenerarEntradas.setName("panelGenerarEntradas"); // NOI18N
-        panelGenerarEntradas.setPreferredSize(new java.awt.Dimension(140, 60));
-        panelGenerarEntradas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 10));
-
-        kButton1.setBorder(null);
-        kButton1.setText("Generar Entradas");
-        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
-        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
-        kButton1.setPreferredSize(new java.awt.Dimension(180, 35));
-        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton1MouseClicked(evt);
-            }
-        });
-        panelGenerarEntradas.add(kButton1);
-
-        panelNorthEntradas.add(panelGenerarEntradas);
-
-        add(panelNorthEntradas, java.awt.BorderLayout.PAGE_START);
+        add(panelCenter, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbSeleccionEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSeleccionEventoMouseClicked
+    private void cbEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbEventoMouseClicked
         actualizarListaEntradas();
-    }//GEN-LAST:event_cbSeleccionEventoMouseClicked
+    }//GEN-LAST:event_cbEventoMouseClicked
 
-    private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
-        Evento evento = (Evento) cbSeleccionEvento.getSelectedItem();
+    private void btnGenerarEntradasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseClicked
+        Evento evento = (Evento) cbEvento.getSelectedItem();
         if(evento != null){
             GenerarEntradas ge = new GenerarEntradas(evento, sacarEntradas(evento.getId()), asociacion);
             ge.setVisible(true);
             ge.setLocationRelativeTo(null);
         }
-    }//GEN-LAST:event_kButton1MouseClicked
+    }//GEN-LAST:event_btnGenerarEntradasMouseClicked
 
     public void actualizarListaEntradas(){
-        if(cbSeleccionEvento.getSelectedItem() != null){
-            Evento evento = (Evento)cbSeleccionEvento.getSelectedItem();
+        if(cbEvento.getSelectedItem() != null){
+            Evento evento = (Evento)cbEvento.getSelectedItem();
             ArrayList<Entrada> ent = sacarEntradas(evento.getId());
             lblNum.setText(ent.size()+"");
             modeloListaEntradas.removeAllElements();
@@ -172,9 +186,9 @@ public class EntradasPanel extends javax.swing.JPanel {
         ArrayList<Evento> evs = cev.obtenerEventos(asociacion.getNombre());
         
         for(int i = 0 ; i < evs.size() ; i++){
-            cbSeleccionEvento.addItem(evs.get(i));
+            cbEvento.addItem(evs.get(i));
         }
-        cbSeleccionEvento.setSelectedItem(null);
+        cbEvento.setSelectedItem(null);
     }
     
     private ArrayList<Entrada> sacarEntradas(int id_evento){
@@ -189,18 +203,18 @@ public class EntradasPanel extends javax.swing.JPanel {
     private DefaultListModel modeloListaEntradas;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Evento> cbSeleccionEvento;
-    private keeptoo.KButton kButton1;
+    private keeptoo.KButton btnGenerarEntradas;
+    private javax.swing.JComboBox<Evento> cbEvento;
+    private javax.swing.JLabel lblEvento;
     private javax.swing.JLabel lblNum;
     private javax.swing.JLabel lblNumEntradas;
-    private javax.swing.JLabel lblSeleccionEvento;
     private javax.swing.JList<String> listEntradas;
-    private javax.swing.JPanel panelCenterEntradas;
+    private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelGenerarEntradas;
     private javax.swing.JPanel panelListEntradas;
-    private javax.swing.JPanel panelNorthEntradas;
+    private javax.swing.JPanel panelNorth;
     private javax.swing.JPanel panelNumEntradas;
     private javax.swing.JPanel panelSeleccionEvento;
-    private javax.swing.JScrollPane scrollPanelListEntradas;
+    private javax.swing.JScrollPane scrollPane;
     // End of variables declaration//GEN-END:variables
 }

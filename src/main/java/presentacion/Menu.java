@@ -27,7 +27,7 @@ public class Menu extends javax.swing.JFrame {
         sp = new SociosPanel(this.asociacion);
         evp = new EventosPanel(this.asociacion);
         enp = new EntradasPanel(this.asociacion);
-        ip = new InicioPanel();
+        ip = new EstadisticasPanel();
         editSP = new EditSocioPanel(this.asociacion);
         editEP = new EditEventoPanel(this.asociacion);
         
@@ -43,27 +43,27 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        kButton3 = new keeptoo.KButton();
-        jPanel4 = new javax.swing.JPanel();
-        kButton4 = new keeptoo.KButton();
-        jPanel5 = new javax.swing.JPanel();
-        kButton5 = new keeptoo.KButton();
-        kButton6 = new keeptoo.KButton();
-        jPanel6 = new javax.swing.JPanel();
-        kButton11 = new keeptoo.KButton();
-        kButton7 = new keeptoo.KButton();
-        kButton8 = new keeptoo.KButton();
-        kButton9 = new keeptoo.KButton();
-        kButton10 = new keeptoo.KButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        panel = new javax.swing.JPanel();
+        panelWest = new javax.swing.JPanel();
+        btnAsociacion = new keeptoo.KButton();
+        panelSep1 = new javax.swing.JPanel();
+        btnJuntaDirectiva = new keeptoo.KButton();
+        panelSep2 = new javax.swing.JPanel();
+        btnMembresia = new keeptoo.KButton();
+        btnSocios = new keeptoo.KButton();
+        panelSep3 = new javax.swing.JPanel();
+        btnCargarSocios = new keeptoo.KButton();
+        btnEventos = new keeptoo.KButton();
+        btnEntradas = new keeptoo.KButton();
+        btnEstadisticas = new keeptoo.KButton();
+        btnCerrarSesion = new keeptoo.KButton();
+        panelNorth = new javax.swing.JPanel();
+        close = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        maximize = new javax.swing.JLabel();
+        minimize = new javax.swing.JLabel();
+        panelCenter = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 550));
@@ -76,369 +76,390 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setMinimumSize(new java.awt.Dimension(1000, 550));
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        panel.setMinimumSize(new java.awt.Dimension(1000, 550));
+        panel.setName("panel"); // NOI18N
+        panel.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(255, 255, 255)));
-        jPanel2.setMaximumSize(new java.awt.Dimension(200, 32767));
-        jPanel2.setMinimumSize(new java.awt.Dimension(200, 520));
-        jPanel2.setPreferredSize(new java.awt.Dimension(200, 520));
-        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
+        panelWest.setBackground(new java.awt.Color(51, 51, 51));
+        panelWest.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(255, 255, 255)));
+        panelWest.setMaximumSize(new java.awt.Dimension(200, 32767));
+        panelWest.setMinimumSize(new java.awt.Dimension(200, 520));
+        panelWest.setName("panelWest"); // NOI18N
+        panelWest.setPreferredSize(new java.awt.Dimension(200, 520));
+        panelWest.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
-        kButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(204, 0, 204)));
-        kButton3.setText("Asociacion  ");
-        kButton3.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        kButton3.setkBackGroundColor(new java.awt.Color(51, 51, 51));
-        kButton3.setkBorderRadius(0);
-        kButton3.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton3.setkHoverEndColor(new java.awt.Color(31, 31, 31));
-        kButton3.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton3.setkHoverStartColor(new java.awt.Color(31, 31, 31));
-        kButton3.setkPressedColor(new java.awt.Color(102, 0, 102));
-        kButton3.setkSelectedColor(new java.awt.Color(51, 51, 51));
-        kButton3.setkStartColor(new java.awt.Color(51, 51, 51));
-        kButton3.setPreferredSize(new java.awt.Dimension(190, 40));
-        kButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAsociacion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(204, 0, 204)));
+        btnAsociacion.setText("Asociación   ");
+        btnAsociacion.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnAsociacion.setkBackGroundColor(new java.awt.Color(51, 51, 51));
+        btnAsociacion.setkBorderRadius(0);
+        btnAsociacion.setkEndColor(new java.awt.Color(51, 51, 51));
+        btnAsociacion.setkHoverEndColor(new java.awt.Color(31, 31, 31));
+        btnAsociacion.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnAsociacion.setkHoverStartColor(new java.awt.Color(31, 31, 31));
+        btnAsociacion.setkPressedColor(new java.awt.Color(102, 0, 102));
+        btnAsociacion.setkSelectedColor(new java.awt.Color(31, 31, 31));
+        btnAsociacion.setkStartColor(new java.awt.Color(51, 51, 51));
+        btnAsociacion.setName("btnAsociacion"); // NOI18N
+        btnAsociacion.setPreferredSize(new java.awt.Dimension(190, 40));
+        btnAsociacion.setSelected(true);
+        btnAsociacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton3MouseClicked(evt);
+                btnAsociacionMouseClicked(evt);
             }
         });
-        jPanel2.add(kButton3);
+        panelWest.add(btnAsociacion);
 
-        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel4.setPreferredSize(new java.awt.Dimension(30, 40));
+        panelSep1.setBackground(new java.awt.Color(51, 51, 51));
+        panelSep1.setPreferredSize(new java.awt.Dimension(30, 40));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelSep1Layout = new javax.swing.GroupLayout(panelSep1);
+        panelSep1.setLayout(panelSep1Layout);
+        panelSep1Layout.setHorizontalGroup(
+            panelSep1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelSep1Layout.setVerticalGroup(
+            panelSep1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel4);
+        panelWest.add(panelSep1);
 
-        kButton4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
-        kButton4.setText("            Junta Directiva");
-        kButton4.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        kButton4.setkBackGroundColor(new java.awt.Color(51, 51, 51));
-        kButton4.setkBorderRadius(0);
-        kButton4.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton4.setkForeGround(new java.awt.Color(153, 153, 153));
-        kButton4.setkHoverEndColor(new java.awt.Color(31, 31, 31));
-        kButton4.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton4.setkHoverStartColor(new java.awt.Color(31, 31, 31));
-        kButton4.setkPressedColor(new java.awt.Color(102, 0, 102));
-        kButton4.setkSelectedColor(new java.awt.Color(51, 51, 51));
-        kButton4.setkStartColor(new java.awt.Color(51, 51, 51));
-        kButton4.setPreferredSize(new java.awt.Dimension(150, 40));
-        kButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnJuntaDirectiva.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
+        btnJuntaDirectiva.setText("            Junta Directiva");
+        btnJuntaDirectiva.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnJuntaDirectiva.setkBackGroundColor(new java.awt.Color(51, 51, 51));
+        btnJuntaDirectiva.setkBorderRadius(0);
+        btnJuntaDirectiva.setkEndColor(new java.awt.Color(51, 51, 51));
+        btnJuntaDirectiva.setkForeGround(new java.awt.Color(153, 153, 153));
+        btnJuntaDirectiva.setkHoverEndColor(new java.awt.Color(31, 31, 31));
+        btnJuntaDirectiva.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnJuntaDirectiva.setkHoverStartColor(new java.awt.Color(31, 31, 31));
+        btnJuntaDirectiva.setkPressedColor(new java.awt.Color(102, 0, 102));
+        btnJuntaDirectiva.setkSelectedColor(new java.awt.Color(31, 31, 31));
+        btnJuntaDirectiva.setkStartColor(new java.awt.Color(51, 51, 51));
+        btnJuntaDirectiva.setName("btnJuntaDirectiva"); // NOI18N
+        btnJuntaDirectiva.setPreferredSize(new java.awt.Dimension(150, 40));
+        btnJuntaDirectiva.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton4MouseClicked(evt);
+                btnJuntaDirectivaMouseClicked(evt);
             }
         });
-        jPanel2.add(kButton4);
+        panelWest.add(btnJuntaDirectiva);
 
-        jPanel5.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel5.setPreferredSize(new java.awt.Dimension(30, 40));
+        panelSep2.setBackground(new java.awt.Color(51, 51, 51));
+        panelSep2.setPreferredSize(new java.awt.Dimension(30, 40));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelSep2Layout = new javax.swing.GroupLayout(panelSep2);
+        panelSep2.setLayout(panelSep2Layout);
+        panelSep2Layout.setHorizontalGroup(
+            panelSep2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelSep2Layout.setVerticalGroup(
+            panelSep2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel5);
+        panelWest.add(panelSep2);
 
-        kButton5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
-        kButton5.setText("    Membresia");
-        kButton5.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        kButton5.setkBackGroundColor(new java.awt.Color(51, 51, 51));
-        kButton5.setkBorderRadius(0);
-        kButton5.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton5.setkForeGround(new java.awt.Color(153, 153, 153));
-        kButton5.setkHoverEndColor(new java.awt.Color(31, 31, 31));
-        kButton5.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton5.setkHoverStartColor(new java.awt.Color(31, 31, 31));
-        kButton5.setkPressedColor(new java.awt.Color(102, 0, 102));
-        kButton5.setkSelectedColor(new java.awt.Color(51, 51, 51));
-        kButton5.setkStartColor(new java.awt.Color(51, 51, 51));
-        kButton5.setPreferredSize(new java.awt.Dimension(150, 40));
-        kButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnMembresia.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
+        btnMembresia.setText("    Membresia");
+        btnMembresia.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnMembresia.setkBackGroundColor(new java.awt.Color(51, 51, 51));
+        btnMembresia.setkBorderRadius(0);
+        btnMembresia.setkEndColor(new java.awt.Color(51, 51, 51));
+        btnMembresia.setkForeGround(new java.awt.Color(153, 153, 153));
+        btnMembresia.setkHoverEndColor(new java.awt.Color(31, 31, 31));
+        btnMembresia.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnMembresia.setkHoverStartColor(new java.awt.Color(31, 31, 31));
+        btnMembresia.setkPressedColor(new java.awt.Color(102, 0, 102));
+        btnMembresia.setkSelectedColor(new java.awt.Color(31, 31, 31));
+        btnMembresia.setkStartColor(new java.awt.Color(51, 51, 51));
+        btnMembresia.setName("btnMembresia"); // NOI18N
+        btnMembresia.setPreferredSize(new java.awt.Dimension(150, 40));
+        btnMembresia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton5MouseClicked(evt);
+                btnMembresiaMouseClicked(evt);
             }
         });
-        jPanel2.add(kButton5);
+        panelWest.add(btnMembresia);
 
-        kButton6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
-        kButton6.setText("Socios      ");
-        kButton6.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        kButton6.setkBackGroundColor(new java.awt.Color(51, 51, 51));
-        kButton6.setkBorderRadius(0);
-        kButton6.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton6.setkForeGround(new java.awt.Color(153, 153, 153));
-        kButton6.setkHoverEndColor(new java.awt.Color(31, 31, 31));
-        kButton6.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton6.setkHoverStartColor(new java.awt.Color(31, 31, 31));
-        kButton6.setkPressedColor(new java.awt.Color(102, 0, 102));
-        kButton6.setkSelectedColor(new java.awt.Color(51, 51, 51));
-        kButton6.setkStartColor(new java.awt.Color(51, 51, 51));
-        kButton6.setPreferredSize(new java.awt.Dimension(190, 40));
-        kButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSocios.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
+        btnSocios.setText("Socios       ");
+        btnSocios.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnSocios.setkBackGroundColor(new java.awt.Color(51, 51, 51));
+        btnSocios.setkBorderRadius(0);
+        btnSocios.setkEndColor(new java.awt.Color(51, 51, 51));
+        btnSocios.setkForeGround(new java.awt.Color(153, 153, 153));
+        btnSocios.setkHoverEndColor(new java.awt.Color(31, 31, 31));
+        btnSocios.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnSocios.setkHoverStartColor(new java.awt.Color(31, 31, 31));
+        btnSocios.setkPressedColor(new java.awt.Color(102, 0, 102));
+        btnSocios.setkSelectedColor(new java.awt.Color(31, 31, 31));
+        btnSocios.setkStartColor(new java.awt.Color(51, 51, 51));
+        btnSocios.setName("btnSocios"); // NOI18N
+        btnSocios.setPreferredSize(new java.awt.Dimension(190, 40));
+        btnSocios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton6MouseClicked(evt);
+                btnSociosMouseClicked(evt);
             }
         });
-        jPanel2.add(kButton6);
+        panelWest.add(btnSocios);
 
-        jPanel6.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel6.setPreferredSize(new java.awt.Dimension(30, 40));
+        panelSep3.setBackground(new java.awt.Color(51, 51, 51));
+        panelSep3.setPreferredSize(new java.awt.Dimension(30, 40));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelSep3Layout = new javax.swing.GroupLayout(panelSep3);
+        panelSep3.setLayout(panelSep3Layout);
+        panelSep3Layout.setHorizontalGroup(
+            panelSep3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelSep3Layout.setVerticalGroup(
+            panelSep3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel6);
+        panelWest.add(panelSep3);
 
-        jPanel6.setVisible(false);
-        kButton11.setVisible(false);
-        kButton11.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
-        kButton11.setText("Cargar Socios");
-        kButton11.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        kButton11.setkBackGroundColor(new java.awt.Color(51, 51, 51));
-        kButton11.setkBorderRadius(0);
-        kButton11.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton11.setkForeGround(new java.awt.Color(153, 153, 153));
-        kButton11.setkHoverEndColor(new java.awt.Color(31, 31, 31));
-        kButton11.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton11.setkHoverStartColor(new java.awt.Color(31, 31, 31));
-        kButton11.setkPressedColor(new java.awt.Color(102, 0, 102));
-        kButton11.setkSelectedColor(new java.awt.Color(51, 51, 51));
-        kButton11.setkStartColor(new java.awt.Color(51, 51, 51));
-        kButton11.setPreferredSize(new java.awt.Dimension(150, 40));
-        kButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+        panelSep3.setVisible(false);
+        btnCargarSocios.setVisible(false);
+        btnCargarSocios.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
+        btnCargarSocios.setText("Cargar Socios");
+        btnCargarSocios.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnCargarSocios.setkBackGroundColor(new java.awt.Color(51, 51, 51));
+        btnCargarSocios.setkBorderRadius(0);
+        btnCargarSocios.setkEndColor(new java.awt.Color(51, 51, 51));
+        btnCargarSocios.setkForeGround(new java.awt.Color(153, 153, 153));
+        btnCargarSocios.setkHoverEndColor(new java.awt.Color(31, 31, 31));
+        btnCargarSocios.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnCargarSocios.setkHoverStartColor(new java.awt.Color(31, 31, 31));
+        btnCargarSocios.setkPressedColor(new java.awt.Color(102, 0, 102));
+        btnCargarSocios.setkSelectedColor(new java.awt.Color(31, 31, 31));
+        btnCargarSocios.setkStartColor(new java.awt.Color(51, 51, 51));
+        btnCargarSocios.setName("btnCargarSocios"); // NOI18N
+        btnCargarSocios.setPreferredSize(new java.awt.Dimension(150, 40));
+        btnCargarSocios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton11MouseClicked(evt);
+                btnCargarSociosMouseClicked(evt);
             }
         });
-        jPanel2.add(kButton11);
+        panelWest.add(btnCargarSocios);
 
-        kButton7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
-        kButton7.setText("Eventos     ");
-        kButton7.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        kButton7.setkBackGroundColor(new java.awt.Color(51, 51, 51));
-        kButton7.setkBorderRadius(0);
-        kButton7.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton7.setkForeGround(new java.awt.Color(153, 153, 153));
-        kButton7.setkHoverEndColor(new java.awt.Color(31, 31, 31));
-        kButton7.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton7.setkHoverStartColor(new java.awt.Color(31, 31, 31));
-        kButton7.setkPressedColor(new java.awt.Color(102, 0, 102));
-        kButton7.setkSelectedColor(new java.awt.Color(51, 51, 51));
-        kButton7.setkStartColor(new java.awt.Color(51, 51, 51));
-        kButton7.setPreferredSize(new java.awt.Dimension(190, 40));
-        kButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEventos.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
+        btnEventos.setText("Eventos      ");
+        btnEventos.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnEventos.setkBackGroundColor(new java.awt.Color(51, 51, 51));
+        btnEventos.setkBorderRadius(0);
+        btnEventos.setkEndColor(new java.awt.Color(51, 51, 51));
+        btnEventos.setkForeGround(new java.awt.Color(153, 153, 153));
+        btnEventos.setkHoverEndColor(new java.awt.Color(31, 31, 31));
+        btnEventos.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnEventos.setkHoverStartColor(new java.awt.Color(31, 31, 31));
+        btnEventos.setkPressedColor(new java.awt.Color(102, 0, 102));
+        btnEventos.setkSelectedColor(new java.awt.Color(31, 31, 31));
+        btnEventos.setkStartColor(new java.awt.Color(51, 51, 51));
+        btnEventos.setName("btnEventos"); // NOI18N
+        btnEventos.setPreferredSize(new java.awt.Dimension(190, 40));
+        btnEventos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton7MouseClicked(evt);
+                btnEventosMouseClicked(evt);
             }
         });
-        jPanel2.add(kButton7);
+        panelWest.add(btnEventos);
 
-        kButton8.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
-        kButton8.setText("Entradas    ");
-        kButton8.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        kButton8.setkBackGroundColor(new java.awt.Color(51, 51, 51));
-        kButton8.setkBorderRadius(0);
-        kButton8.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton8.setkForeGround(new java.awt.Color(153, 153, 153));
-        kButton8.setkHoverEndColor(new java.awt.Color(31, 31, 31));
-        kButton8.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton8.setkHoverStartColor(new java.awt.Color(31, 31, 31));
-        kButton8.setkPressedColor(new java.awt.Color(102, 0, 102));
-        kButton8.setkSelectedColor(new java.awt.Color(51, 51, 51));
-        kButton8.setkStartColor(new java.awt.Color(51, 51, 51));
-        kButton8.setPreferredSize(new java.awt.Dimension(190, 40));
-        kButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEntradas.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
+        btnEntradas.setText("Entradas     ");
+        btnEntradas.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnEntradas.setkBackGroundColor(new java.awt.Color(51, 51, 51));
+        btnEntradas.setkBorderRadius(0);
+        btnEntradas.setkEndColor(new java.awt.Color(51, 51, 51));
+        btnEntradas.setkForeGround(new java.awt.Color(153, 153, 153));
+        btnEntradas.setkHoverEndColor(new java.awt.Color(31, 31, 31));
+        btnEntradas.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnEntradas.setkHoverStartColor(new java.awt.Color(31, 31, 31));
+        btnEntradas.setkPressedColor(new java.awt.Color(102, 0, 102));
+        btnEntradas.setkSelectedColor(new java.awt.Color(31, 31, 31));
+        btnEntradas.setkStartColor(new java.awt.Color(51, 51, 51));
+        btnEntradas.setName("btnEntradas"); // NOI18N
+        btnEntradas.setPreferredSize(new java.awt.Dimension(190, 40));
+        btnEntradas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton8MouseClicked(evt);
+                btnEntradasMouseClicked(evt);
             }
         });
-        jPanel2.add(kButton8);
+        panelWest.add(btnEntradas);
 
-        kButton9.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
-        kButton9.setText("Estadisticas");
-        kButton9.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        kButton9.setkBackGroundColor(new java.awt.Color(51, 51, 51));
-        kButton9.setkBorderRadius(0);
-        kButton9.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton9.setkForeGround(new java.awt.Color(153, 153, 153));
-        kButton9.setkHoverEndColor(new java.awt.Color(31, 31, 31));
-        kButton9.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton9.setkHoverStartColor(new java.awt.Color(31, 31, 31));
-        kButton9.setkPressedColor(new java.awt.Color(102, 0, 102));
-        kButton9.setkSelectedColor(new java.awt.Color(51, 51, 51));
-        kButton9.setkStartColor(new java.awt.Color(51, 51, 51));
-        kButton9.setPreferredSize(new java.awt.Dimension(190, 40));
-        kButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEstadisticas.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
+        btnEstadisticas.setText("Estadísticas ");
+        btnEstadisticas.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnEstadisticas.setkBackGroundColor(new java.awt.Color(51, 51, 51));
+        btnEstadisticas.setkBorderRadius(0);
+        btnEstadisticas.setkEndColor(new java.awt.Color(51, 51, 51));
+        btnEstadisticas.setkForeGround(new java.awt.Color(153, 153, 153));
+        btnEstadisticas.setkHoverEndColor(new java.awt.Color(31, 31, 31));
+        btnEstadisticas.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnEstadisticas.setkHoverStartColor(new java.awt.Color(31, 31, 31));
+        btnEstadisticas.setkPressedColor(new java.awt.Color(102, 0, 102));
+        btnEstadisticas.setkSelectedColor(new java.awt.Color(31, 31, 31));
+        btnEstadisticas.setkStartColor(new java.awt.Color(51, 51, 51));
+        btnEstadisticas.setName("btnEstadisticas"); // NOI18N
+        btnEstadisticas.setPreferredSize(new java.awt.Dimension(190, 40));
+        btnEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton9MouseClicked(evt);
+                btnEstadisticasMouseClicked(evt);
             }
         });
-        jPanel2.add(kButton9);
+        panelWest.add(btnEstadisticas);
 
-        kButton10.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
-        kButton10.setText("CerrarSesion");
-        kButton10.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        kButton10.setkBackGroundColor(new java.awt.Color(51, 51, 51));
-        kButton10.setkBorderRadius(0);
-        kButton10.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton10.setkForeGround(new java.awt.Color(153, 153, 153));
-        kButton10.setkHoverEndColor(new java.awt.Color(31, 31, 31));
-        kButton10.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton10.setkHoverStartColor(new java.awt.Color(31, 31, 31));
-        kButton10.setkPressedColor(new java.awt.Color(102, 0, 102));
-        kButton10.setkSelectedColor(new java.awt.Color(51, 51, 51));
-        kButton10.setkStartColor(new java.awt.Color(51, 51, 51));
-        kButton10.setPreferredSize(new java.awt.Dimension(190, 40));
-        kButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCerrarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
+        btnCerrarSesion.setText("Cerrar Sesión");
+        btnCerrarSesion.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnCerrarSesion.setkBackGroundColor(new java.awt.Color(51, 51, 51));
+        btnCerrarSesion.setkBorderRadius(0);
+        btnCerrarSesion.setkEndColor(new java.awt.Color(51, 51, 51));
+        btnCerrarSesion.setkForeGround(new java.awt.Color(153, 153, 153));
+        btnCerrarSesion.setkHoverEndColor(new java.awt.Color(31, 31, 31));
+        btnCerrarSesion.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnCerrarSesion.setkHoverStartColor(new java.awt.Color(31, 31, 31));
+        btnCerrarSesion.setkPressedColor(new java.awt.Color(102, 0, 102));
+        btnCerrarSesion.setkSelectedColor(new java.awt.Color(31, 31, 31));
+        btnCerrarSesion.setkStartColor(new java.awt.Color(51, 51, 51));
+        btnCerrarSesion.setName("btnCerrarSesion"); // NOI18N
+        btnCerrarSesion.setPreferredSize(new java.awt.Dimension(190, 40));
+        btnCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kButton10MouseClicked(evt);
+                btnCerrarSesionMouseClicked(evt);
             }
         });
-        jPanel2.add(kButton10);
+        panelWest.add(btnCerrarSesion);
 
-        jPanel1.add(jPanel2, java.awt.BorderLayout.WEST);
+        panel.add(panelWest, java.awt.BorderLayout.WEST);
 
-        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel3.setPreferredSize(new java.awt.Dimension(1000, 40));
-        jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        panelNorth.setBackground(new java.awt.Color(51, 51, 51));
+        panelNorth.setName("panelNorth"); // NOI18N
+        panelNorth.setPreferredSize(new java.awt.Dimension(1000, 40));
+        panelNorth.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jPanel3MouseDragged(evt);
+                panelNorthMouseDragged(evt);
             }
         });
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        panelNorth.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel3MousePressed(evt);
+                panelNorthMousePressed(evt);
             }
         });
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelNorth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
+        close.setName("close"); // NOI18N
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                closeMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel1MouseEntered(evt);
+                closeMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel1MouseExited(evt);
+                closeMouseExited(evt);
             }
         });
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(975, 0, -1, -1));
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, -1));
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(975, 0, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("TicketManagementSystem");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 9, -1, -1));
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\logo(1).png")); // NOI18N
+        logo.setName("logo"); // NOI18N
+        panelNorth.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\maximize-window.png")); // NOI18N
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("TicketManagementSystem");
+        lblTitulo.setName("lblTitulo"); // NOI18N
+        panelNorth.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 9, -1, -1));
+
+        maximize.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\maximize-window.png")); // NOI18N
+        maximize.setName("maximize"); // NOI18N
+        maximize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                maximizeMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel4MouseEntered(evt);
+                maximizeMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel4MouseExited(evt);
+                maximizeMouseExited(evt);
             }
         });
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 0, -1, -1));
+        panelNorth.add(maximize, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 0, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\minimizar.png")); // NOI18N
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        minimize.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\minimizar.png")); // NOI18N
+        minimize.setName("minimize"); // NOI18N
+        minimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                minimizeMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel5MouseEntered(evt);
+                minimizeMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel5MouseExited(evt);
+                minimizeMouseExited(evt);
             }
         });
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 0, -1, -1));
+        panelNorth.add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 0, -1, -1));
 
-        jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_START);
+        panel.add(panelNorth, java.awt.BorderLayout.NORTH);
 
-        jPanel7.setPreferredSize(new java.awt.Dimension(800, 550));
-        jPanel7.setLayout(new java.awt.CardLayout());
-        jPanel1.add(jPanel7, java.awt.BorderLayout.CENTER);
-        jPanel7.add(ap, "cardAs");
-        jPanel7.add(sp, "cardSo");
-        jPanel7.add(evp, "cardEv");
-        jPanel7.add(enp, "cardEn");
-        jPanel7.add(ip, "cardEs");
-        jPanel7.add(editSP, "cardEditSP");
-        jPanel7.add(editEP, "cardEditEP");
+        panelCenter.setName("panelCenter"); // NOI18N
+        panelCenter.setPreferredSize(new java.awt.Dimension(800, 550));
+        panelCenter.setLayout(new java.awt.CardLayout());
+        panel.add(panelCenter, java.awt.BorderLayout.CENTER);
+        panelCenter.add(ap, "cardAs");
+        panelCenter.add(sp, "cardSo");
+        panelCenter.add(evp, "cardEv");
+        panelCenter.add(enp, "cardEn");
+        panelCenter.add(ip, "cardEs");
+        panelCenter.add(editSP, "cardEditSP");
+        panelCenter.add(editEP, "cardEditEP");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
+    private void panelNorthMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelNorthMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x-xx, y-xy);
-    }//GEN-LAST:event_jPanel3MouseDragged
+    }//GEN-LAST:event_panelNorthMouseDragged
 
-    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
+    private void panelNorthMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelNorthMousePressed
         xx = evt.getX();
         xy = evt.getY();
-    }//GEN-LAST:event_jPanel3MousePressed
+    }//GEN-LAST:event_panelNorthMousePressed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         System.exit(0);
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_closeMouseClicked
 
-    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\close-button-red.png"));
-    }//GEN-LAST:event_jLabel1MouseEntered
+    private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
+        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button-red.png"));
+    }//GEN-LAST:event_closeMouseEntered
 
-    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\close-button.png"));
-    }//GEN-LAST:event_jLabel1MouseExited
+    private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
+        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png"));
+    }//GEN-LAST:event_closeMouseExited
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void maximizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseClicked
         if(!maximized){
             setExtendedState(MAXIMIZED_BOTH);
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -448,138 +469,138 @@ public class Menu extends javax.swing.JFrame {
             setExtendedState(NORMAL);
             maximized = false;            
         }
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_maximizeMouseClicked
 
-    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
-        jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\maximize-window-purple.png"));
-    }//GEN-LAST:event_jLabel4MouseEntered
+    private void maximizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseEntered
+        maximize.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\maximize-window-purple.png"));
+    }//GEN-LAST:event_maximizeMouseEntered
 
-    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
-        jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\maximize-window.png"));
-    }//GEN-LAST:event_jLabel4MouseExited
+    private void maximizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseExited
+        maximize.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\maximize-window.png"));
+    }//GEN-LAST:event_maximizeMouseExited
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
         setExtendedState(ICONIFIED);
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_minimizeMouseClicked
 
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-        jLabel5.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\minimizar-purple.png"));
-    }//GEN-LAST:event_jLabel5MouseEntered
+    private void minimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseEntered
+        minimize.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\minimizar-purple.png"));
+    }//GEN-LAST:event_minimizeMouseEntered
 
-    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
-        jLabel5.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\minimizar.png"));
-    }//GEN-LAST:event_jLabel5MouseExited
+    private void minimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseExited
+        minimize.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\minimizar.png"));
+    }//GEN-LAST:event_minimizeMouseExited
 
-    private void kButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton3MouseClicked
-        CardLayout cardLayout = (CardLayout) jPanel7.getLayout();
-        cardLayout.show(jPanel7, "cardAs");
+    private void btnAsociacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsociacionMouseClicked
+        CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
+        cardLayout.show(panelCenter, "cardAs");
         
-        no_selected(kButton6);
-        no_selected(kButton7);
-        no_selected(kButton8);
-        no_selected(kButton9);
+        no_selected(btnSocios);
+        no_selected(btnEventos);
+        no_selected(btnEntradas);
+        no_selected(btnEstadisticas);
         
-        jPanel4.setVisible(true);
-        jPanel5.setVisible(true);
-        kButton4.setVisible(true);
-        kButton5.setVisible(true);
+        panelSep1.setVisible(true);
+        panelSep2.setVisible(true);
+        btnJuntaDirectiva.setVisible(true);
+        btnMembresia.setVisible(true);
         
-        jPanel6.setVisible(false);
-        kButton11.setVisible(false);
+        panelSep3.setVisible(false);
+        btnCargarSocios.setVisible(false);
         
-        selected(kButton3);
-    }//GEN-LAST:event_kButton3MouseClicked
+        selected(btnAsociacion);
+    }//GEN-LAST:event_btnAsociacionMouseClicked
 
-    private void kButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton4MouseClicked
-        kButton3.setSelected(true);
+    private void btnJuntaDirectivaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJuntaDirectivaMouseClicked
+        btnAsociacion.setSelected(true);
         
-        selected(kButton4);
+        selected(btnJuntaDirectiva);
         
         jd = new JuntaDirectiva(asociacion);
         jd.setVisible(true);
         jd.setLocationRelativeTo(null);       
-    }//GEN-LAST:event_kButton4MouseClicked
+    }//GEN-LAST:event_btnJuntaDirectivaMouseClicked
 
-    private void kButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton5MouseClicked
-        kButton3.setSelected(true);
+    private void btnMembresiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMembresiaMouseClicked
+        btnAsociacion.setSelected(true);
         
-        selected(kButton5);
+        selected(btnMembresia);
         
         mem = new MembresiaFrame(asociacion);
         mem.setVisible(true);
         mem.setLocationRelativeTo(null);
-    }//GEN-LAST:event_kButton5MouseClicked
+    }//GEN-LAST:event_btnMembresiaMouseClicked
 
-    private void kButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton6MouseClicked
-        CardLayout cardLayout = (CardLayout) jPanel7.getLayout();
-        cardLayout.show(jPanel7, "cardSo");
+    private void btnSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSociosMouseClicked
+        CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
+        cardLayout.show(panelCenter, "cardSo");
         
-        no_selected(kButton3);
-        no_selected(kButton7);
-        no_selected(kButton8);
-        no_selected(kButton9);
+        no_selected(btnAsociacion);
+        no_selected(btnEventos);
+        no_selected(btnEntradas);
+        no_selected(btnEstadisticas);
         
         invisible();        
         
-        jPanel6.setVisible(true);
-        kButton11.setVisible(true);
+        panelSep3.setVisible(true);
+        btnCargarSocios.setVisible(true);
         
-        selected(kButton6);
+        selected(btnSocios);
         
         sp.actualizarTabla();
-    }//GEN-LAST:event_kButton6MouseClicked
+    }//GEN-LAST:event_btnSociosMouseClicked
 
-    private void kButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton7MouseClicked
-        CardLayout cardLayout = (CardLayout) jPanel7.getLayout();
-        cardLayout.show(jPanel7, "cardEv");
+    private void btnEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEventosMouseClicked
+        CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
+        cardLayout.show(panelCenter, "cardEv");
         
-        no_selected(kButton3);
-        no_selected(kButton6);
-        no_selected(kButton8);
-        no_selected(kButton9);
+        no_selected(btnAsociacion);
+        no_selected(btnSocios);
+        no_selected(btnEntradas);
+        no_selected(btnEstadisticas);
         
         invisible();
-        jPanel6.setVisible(false);
-        kButton11.setVisible(false);
+        panelSep3.setVisible(false);
+        btnCargarSocios.setVisible(false);
         
-        selected(kButton7);
+        selected(btnEventos);
         
         evp.actualizarTabla();
-    }//GEN-LAST:event_kButton7MouseClicked
+    }//GEN-LAST:event_btnEventosMouseClicked
 
-    private void kButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton8MouseClicked
-        CardLayout cardLayout = (CardLayout) jPanel7.getLayout();
-        cardLayout.show(jPanel7, "cardEn");
+    private void btnEntradasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntradasMouseClicked
+        CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
+        cardLayout.show(panelCenter, "cardEn");
         
-        no_selected(kButton3);
-        no_selected(kButton6);
-        no_selected(kButton7);
-        no_selected(kButton9);
+        no_selected(btnAsociacion);
+        no_selected(btnSocios);
+        no_selected(btnEventos);
+        no_selected(btnEstadisticas);
         
         invisible();
-        jPanel6.setVisible(false);
-        kButton11.setVisible(false);
+        panelSep3.setVisible(false);
+        btnCargarSocios.setVisible(false);
         
-        selected(kButton8);
-    }//GEN-LAST:event_kButton8MouseClicked
+        selected(btnEntradas);
+    }//GEN-LAST:event_btnEntradasMouseClicked
 
-    private void kButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton9MouseClicked
-        CardLayout cardLayout = (CardLayout) jPanel7.getLayout();
-        cardLayout.show(jPanel7, "cardEs");
+    private void btnEstadisticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstadisticasMouseClicked
+        CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
+        cardLayout.show(panelCenter, "cardEs");
                 
-        no_selected(kButton3);
-        no_selected(kButton6);
-        no_selected(kButton7);
-        no_selected(kButton8);
+        no_selected(btnAsociacion);
+        no_selected(btnSocios);
+        no_selected(btnEventos);
+        no_selected(btnEntradas);
         
         invisible();
-        jPanel6.setVisible(false);
-        kButton11.setVisible(false);
+        panelSep3.setVisible(false);
+        btnCargarSocios.setVisible(false);
         
-        selected(kButton9);
-    }//GEN-LAST:event_kButton9MouseClicked
+        selected(btnEstadisticas);
+    }//GEN-LAST:event_btnEstadisticasMouseClicked
 
-    private void kButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton10MouseClicked
+    private void btnCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseClicked
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "¿Quiere cerrar sesion?","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
@@ -588,14 +609,14 @@ public class Menu extends javax.swing.JFrame {
             login.setLocationRelativeTo(null);
             dispose();
         }        
-    }//GEN-LAST:event_kButton10MouseClicked
+    }//GEN-LAST:event_btnCerrarSesionMouseClicked
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         enp.actualizarListaEntradas();
         
-        no_selected(kButton4);
-        no_selected(kButton5);
-        no_selected(kButton11);
+        no_selected(btnJuntaDirectiva);
+        no_selected(btnMembresia);
+        no_selected(btnCargarSocios);
         
         if(mem != null){
             mem.dispose();
@@ -605,10 +626,10 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowGainedFocus
 
-    private void kButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton11MouseClicked
-        kButton6.setSelected(true);
+    private void btnCargarSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarSociosMouseClicked
+        btnSocios.setSelected(true);
         
-        selected(kButton11);
+        selected(btnCargarSocios);
         
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -619,7 +640,7 @@ public class Menu extends javax.swing.JFrame {
         if(seleccion == JFileChooser.APPROVE_OPTION){
             File file = fc.getSelectedFile();
         }
-    }//GEN-LAST:event_kButton11MouseClicked
+    }//GEN-LAST:event_btnCargarSociosMouseClicked
        
     private void no_selected(KButton btn){        
         btn.setSelected(false);
@@ -634,10 +655,10 @@ public class Menu extends javax.swing.JFrame {
     }
     
     private void invisible(){
-        jPanel4.setVisible(false);
-        jPanel5.setVisible(false);
-        kButton4.setVisible(false);
-        kButton5.setVisible(false);
+        panelSep1.setVisible(false);
+        panelSep2.setVisible(false);
+        btnJuntaDirectiva.setVisible(false);
+        btnMembresia.setVisible(false);
     }                  
     
     private final Asociacion asociacion;
@@ -647,7 +668,7 @@ public class Menu extends javax.swing.JFrame {
     private int xx;
     private int xy;
     
-    private final InicioPanel ip;
+    private final EstadisticasPanel ip;
     private final AsociacionPanel ap;
     private final SociosPanel sp;
     private final EventosPanel evp;
@@ -660,26 +681,26 @@ public class Menu extends javax.swing.JFrame {
     private JuntaDirectiva jd;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private keeptoo.KButton kButton10;
-    private keeptoo.KButton kButton11;
-    private keeptoo.KButton kButton3;
-    private keeptoo.KButton kButton4;
-    private keeptoo.KButton kButton5;
-    private keeptoo.KButton kButton6;
-    private keeptoo.KButton kButton7;
-    private keeptoo.KButton kButton8;
-    private keeptoo.KButton kButton9;
+    private keeptoo.KButton btnAsociacion;
+    private keeptoo.KButton btnCargarSocios;
+    private keeptoo.KButton btnCerrarSesion;
+    private keeptoo.KButton btnEntradas;
+    private keeptoo.KButton btnEstadisticas;
+    private keeptoo.KButton btnEventos;
+    private keeptoo.KButton btnJuntaDirectiva;
+    private keeptoo.KButton btnMembresia;
+    private keeptoo.KButton btnSocios;
+    private javax.swing.JLabel close;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel logo;
+    private javax.swing.JLabel maximize;
+    private javax.swing.JLabel minimize;
+    private javax.swing.JPanel panel;
+    private javax.swing.JPanel panelCenter;
+    private javax.swing.JPanel panelNorth;
+    private javax.swing.JPanel panelSep1;
+    private javax.swing.JPanel panelSep2;
+    private javax.swing.JPanel panelSep3;
+    private javax.swing.JPanel panelWest;
     // End of variables declaration//GEN-END:variables
 }
