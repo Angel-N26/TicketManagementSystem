@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * @author angel
@@ -18,6 +19,25 @@ public class DAOAsociacion {
         con = Agente.getConexion();
     }
 
+     public ArrayList<Asociacion> obtenerAsociacionesDAO(){
+       ArrayList<Asociacion> listaEntradas = new ArrayList();
+        ResultSet rs;
+	try {
+            String sql = "select * from asociacion";
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while(rs.next()) {
+                Asociacion asociacion = new Asociacion(rs.getString(1), rs.getString(2),
+                        rs.getDate(3), rs.getInt(4), rs.getString(5), rs.getString(6),
+                        rs.getString(7),rs.getInt(8), rs.getString(9));
+                listaEntradas.add(asociacion);
+            }
+	} catch (SQLException e) {
+            System.err.println(e.getMessage());
+	}
+        return listaEntradas;
+    }      
+    
     public Asociacion obtenerAsociacionDAO(String nombre){
         ResultSet rs;
         Asociacion asociacion = new Asociacion();

@@ -1,5 +1,6 @@
 package dominio;
 
+import java.util.ArrayList;
 import persistencia.DAOAsociacion;
 
 /**
@@ -13,6 +14,10 @@ public class ControlAsociacion {
         this.daoAsociacion = new DAOAsociacion();
     }    
 
+    public ArrayList<Asociacion> obtenerAsociaciones() {
+        return daoAsociacion.obtenerAsociacionesDAO();
+    }
+    
     public Asociacion obtenerAsociacion(String cif) {
         return daoAsociacion.obtenerAsociacionDAO(cif);
     }

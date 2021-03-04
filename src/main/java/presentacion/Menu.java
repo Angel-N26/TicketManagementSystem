@@ -44,6 +44,14 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         panel = new javax.swing.JPanel();
+        panelNorth = new javax.swing.JPanel();
+        panelNorthLeft = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        panelNorthRight = new javax.swing.JPanel();
+        minimize = new javax.swing.JLabel();
+        maximize = new javax.swing.JLabel();
+        close = new javax.swing.JLabel();
         panelWest = new javax.swing.JPanel();
         btnAsociacion = new keeptoo.KButton();
         panelSep1 = new javax.swing.JPanel();
@@ -57,12 +65,6 @@ public class Menu extends javax.swing.JFrame {
         btnEntradas = new keeptoo.KButton();
         btnEstadisticas = new keeptoo.KButton();
         btnCerrarSesion = new keeptoo.KButton();
-        panelNorth = new javax.swing.JPanel();
-        close = new javax.swing.JLabel();
-        logo = new javax.swing.JLabel();
-        lblTitulo = new javax.swing.JLabel();
-        maximize = new javax.swing.JLabel();
-        minimize = new javax.swing.JLabel();
         panelCenter = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,9 +78,98 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panel.setMinimumSize(new java.awt.Dimension(1000, 550));
         panel.setName("panel"); // NOI18N
         panel.setLayout(new java.awt.BorderLayout());
+
+        panelNorth.setBackground(new java.awt.Color(255, 255, 255));
+        panelNorth.setName("panelNorth"); // NOI18N
+        panelNorth.setPreferredSize(new java.awt.Dimension(998, 40));
+        panelNorth.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                panelNorthMouseDragged(evt);
+            }
+        });
+        panelNorth.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panelNorthMousePressed(evt);
+            }
+        });
+        panelNorth.setLayout(new javax.swing.BoxLayout(panelNorth, javax.swing.BoxLayout.LINE_AXIS));
+
+        panelNorthLeft.setBackground(new java.awt.Color(51, 51, 51));
+        panelNorthLeft.setMinimumSize(new java.awt.Dimension(499, 40));
+        panelNorthLeft.setName("panelNorthLeft"); // NOI18N
+        panelNorthLeft.setPreferredSize(new java.awt.Dimension(499, 40));
+        panelNorthLeft.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
+
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\logo(1).png")); // NOI18N
+        logo.setName("logo"); // NOI18N
+        panelNorthLeft.add(logo);
+
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("TicketManagementSystem");
+        lblTitulo.setName("lblTitulo"); // NOI18N
+        panelNorthLeft.add(lblTitulo);
+
+        panelNorth.add(panelNorthLeft);
+
+        panelNorthRight.setBackground(new java.awt.Color(51, 51, 51));
+        panelNorthRight.setMinimumSize(new java.awt.Dimension(499, 40));
+        panelNorthRight.setName("panelNorthRight"); // NOI18N
+        panelNorthRight.setPreferredSize(new java.awt.Dimension(499, 40));
+        panelNorthRight.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 0, 0));
+
+        minimize.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\minimizar.png")); // NOI18N
+        minimize.setName("minimize"); // NOI18N
+        minimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minimizeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                minimizeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                minimizeMouseExited(evt);
+            }
+        });
+        panelNorthRight.add(minimize);
+
+        maximize.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\maximize-window.png")); // NOI18N
+        maximize.setName("maximize"); // NOI18N
+        maximize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                maximizeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                maximizeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                maximizeMouseExited(evt);
+            }
+        });
+        panelNorthRight.add(maximize);
+
+        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
+        close.setName("close"); // NOI18N
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                closeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                closeMouseExited(evt);
+            }
+        });
+        panelNorthRight.add(close);
+
+        panelNorth.add(panelNorthRight);
+
+        panel.add(panelNorth, java.awt.BorderLayout.NORTH);
 
         panelWest.setBackground(new java.awt.Color(51, 51, 51));
         panelWest.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(255, 255, 255)));
@@ -338,78 +429,6 @@ public class Menu extends javax.swing.JFrame {
 
         panel.add(panelWest, java.awt.BorderLayout.WEST);
 
-        panelNorth.setBackground(new java.awt.Color(51, 51, 51));
-        panelNorth.setName("panelNorth"); // NOI18N
-        panelNorth.setPreferredSize(new java.awt.Dimension(1000, 40));
-        panelNorth.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                panelNorthMouseDragged(evt);
-            }
-        });
-        panelNorth.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                panelNorthMousePressed(evt);
-            }
-        });
-        panelNorth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
-        close.setName("close"); // NOI18N
-        close.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                closeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                closeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                closeMouseExited(evt);
-            }
-        });
-        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(975, 0, -1, -1));
-
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\logo(1).png")); // NOI18N
-        logo.setName("logo"); // NOI18N
-        panelNorth.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, -1));
-
-        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitulo.setText("TicketManagementSystem");
-        lblTitulo.setName("lblTitulo"); // NOI18N
-        panelNorth.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 9, -1, -1));
-
-        maximize.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\maximize-window.png")); // NOI18N
-        maximize.setName("maximize"); // NOI18N
-        maximize.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                maximizeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                maximizeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                maximizeMouseExited(evt);
-            }
-        });
-        panelNorth.add(maximize, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 0, -1, -1));
-
-        minimize.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\minimizar.png")); // NOI18N
-        minimize.setName("minimize"); // NOI18N
-        minimize.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                minimizeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                minimizeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                minimizeMouseExited(evt);
-            }
-        });
-        panelNorth.add(minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 0, -1, -1));
-
-        panel.add(panelNorth, java.awt.BorderLayout.NORTH);
-
         panelCenter.setName("panelCenter"); // NOI18N
         panelCenter.setPreferredSize(new java.awt.Dimension(800, 550));
         panelCenter.setLayout(new java.awt.CardLayout());
@@ -426,7 +445,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -698,6 +717,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelNorth;
+    private javax.swing.JPanel panelNorthLeft;
+    private javax.swing.JPanel panelNorthRight;
     private javax.swing.JPanel panelSep1;
     private javax.swing.JPanel panelSep2;
     private javax.swing.JPanel panelSep3;
