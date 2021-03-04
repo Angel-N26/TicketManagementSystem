@@ -743,6 +743,12 @@ public class Login extends javax.swing.JFrame implements Colores {
             public void run() {
                 try{
                     UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+                    UIManager.put("OptionPane.background", new ColorUIResource(51,51,51));
+                    UIManager.put("OptionPane.foreground", new ColorUIResource(255,255,255));
+                    UIManager.put("Panel.background", new ColorUIResource(51,51,51));
+                    UIManager.put("Panel.foreground", new ColorUIResource(255,255,255));
+
+
                     /*UIManager.put("ComboBox.selectionBackground", new ColorUIResource(204,0,204));
                     UIManager.put("ComboBox.selectionForeground", new ColorUIResource(255,255,255));
                     UIManager.put("ComboBox.disabledBackground", new ColorUIResource(51,51,51));

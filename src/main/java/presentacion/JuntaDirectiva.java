@@ -7,6 +7,7 @@ import dominio.ControlSocio;
 import dominio.Socio;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  * @author angel
@@ -95,8 +96,9 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelCenter.add(lblPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 15, 80, 30));
 
         rellenarComboBox();
-        seleccionarCargo();
+        seleccionarCargos();
         cbPresidente.setBorder(null);
+        cbPresidente.setEnabled(false);
         cbPresidente.setName("cbPresidente"); // NOI18N
         panelCenter.add(cbPresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 15, 204, 30));
 
@@ -108,6 +110,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelCenter.add(lblVicepresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 90, 30));
 
         cbVicepresidente.setBorder(null);
+        cbVicepresidente.setEnabled(false);
         cbVicepresidente.setName("cbVicepresidente"); // NOI18N
         panelCenter.add(cbVicepresidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 204, 30));
 
@@ -119,6 +122,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelCenter.add(lblSecretario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 105, 70, 30));
 
         cbSecretario.setBorder(null);
+        cbSecretario.setEnabled(false);
         cbSecretario.setName("cbSecretario"); // NOI18N
         panelCenter.add(cbSecretario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 105, 204, 30));
 
@@ -130,6 +134,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelCenter.add(lblTesorero, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 60, 30));
 
         cbTesorero.setBorder(null);
+        cbTesorero.setEnabled(false);
         cbTesorero.setName("cbTesorero"); // NOI18N
         panelCenter.add(cbTesorero, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 204, 30));
 
@@ -141,6 +146,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelCenter.add(lblVocal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 195, 50, 30));
 
         cbVocal1.setBorder(null);
+        cbVocal1.setEnabled(false);
         cbVocal1.setName("cbVocal1"); // NOI18N
         panelCenter.add(cbVocal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 195, 204, 30));
 
@@ -152,6 +158,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelCenter.add(lblVocal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 60, 30));
 
         cbVocal2.setBorder(null);
+        cbVocal2.setEnabled(false);
         cbVocal2.setName("cbVocal2"); // NOI18N
         panelCenter.add(cbVocal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 204, 30));
 
@@ -202,16 +209,42 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     }//GEN-LAST:event_closeMouseClicked
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
-        if(modificarCargo(lblPresidente.getText(), cbPresidente) &&
-        modificarCargo(lblVicepresidente.getText(), cbVicepresidente) &&
-        modificarCargo(lblSecretario.getText(), cbSecretario) &&
-        modificarCargo(lblTesorero.getText(), cbTesorero) &&
-        modificarCargo(lblVocal1.getText(), cbVocal1) &&
-        modificarCargo(lblVocal2.getText(), cbVocal2)){
-            dispose();
-        }else{
-            //aviso de no se ha podido modificar
+        if(btnEditar.getText().equals("Editar")){
+            cbPresidente.setEnabled(true);
+            cbVicepresidente.setEnabled(true);
+            cbSecretario.setEnabled(true);
+            cbTesorero.setEnabled(true);
+            cbVocal1.setEnabled(true);
+            cbVocal2.setEnabled(true);
+            
+            btnEditar.setText("Guardar");
+        }else if(btnEditar.getText().equals("Guardar")){
+            if(modificarCargo(lblPresidente.getText(), cbPresidente) && 
+                    modificarCargo(lblVicepresidente.getText(), cbVicepresidente) &&
+                    modificarCargo(lblSecretario.getText(), cbSecretario) &&
+                    modificarCargo(lblTesorero.getText(), cbTesorero) &&
+                    modificarCargo(lblVocal1.getText(), cbVocal1) &&
+                    modificarCargo(lblVocal2.getText(), cbVocal2)){
+                
+                cbPresidente.setEnabled(false);
+                cbVicepresidente.setEnabled(false);
+                cbSecretario.setEnabled(false);
+                cbTesorero.setEnabled(false);
+                cbVocal1.setEnabled(false);
+                cbVocal2.setEnabled(false);
+                
+                JOptionPane.showMessageDialog(this, "Valido",
+                        "Junta Directiva actualizada", JOptionPane.PLAIN_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(this, "Error", 
+                        "No se ha podido actualizar los miembros de la JuntaDirectiva",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            
+            btnEditar.setText("Editar");
         }
+        
+        
     }//GEN-LAST:event_btnEditarMouseClicked
 
     
@@ -231,7 +264,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     }
     
     //Selecciona el socio correspondiente en cada cargo
-    private void seleccionarCargo(){        
+    private void seleccionarCargos(){        
         ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
         ArrayList<Cargo> cargos = cjd.obtenerCargos(asociacion.getNombre());
         
@@ -298,7 +331,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         }        
     }           
     
-    private Asociacion asociacion;
+    private final Asociacion asociacion;
     
     private ArrayList<Socio> soc;
     
