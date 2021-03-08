@@ -10,8 +10,6 @@ import dominio.Usuario;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -648,7 +646,7 @@ public class Login extends javax.swing.JFrame implements Colores {
     
     private boolean camposVacios(){
         boolean registro = true;
-        if(tfUserReg.getText().equals("")){
+        if(tfUserReg.getText().replace(" ","").equals("")){
             registro = false;
             tfUserReg.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             lblUserRegError.setText("Campo vacio");
@@ -666,7 +664,7 @@ public class Login extends javax.swing.JFrame implements Colores {
             lblRepPassError.setText("Campo vacio");
             errorImgRepPass.setVisible(true);
         }
-        if(tfNombreAsoc.getText().equals("")){
+        if(tfNombreAsoc.getText().replace(" ","").equals("")){
             registro = false;
             tfNombreAsoc.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             lblNombreAsocError.setText("Campo vacio");
@@ -743,13 +741,22 @@ public class Login extends javax.swing.JFrame implements Colores {
             public void run() {
                 try{
                     UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+                    
+                    /*Option Pane*/
                     UIManager.put("OptionPane.background", new ColorUIResource(51,51,51));
-                    UIManager.put("OptionPane.foreground", new ColorUIResource(255,255,255));
                     UIManager.put("Panel.background", new ColorUIResource(51,51,51));
-                    UIManager.put("Panel.foreground", new ColorUIResource(255,255,255));
-
-
-                    /*UIManager.put("ComboBox.selectionBackground", new ColorUIResource(204,0,204));
+                    UIManager.put("OptionPane.messageForeground", new ColorUIResource(255,255,255));                                        
+                    
+                    //UIManager.put("OptionPane.questionDialog.titlePane.foreground", new ColorUIResource(255,255,255));
+                    //UIManager.put("OptionPane.questionDialog.titlePane.background", new ColorUIResource(51,51,51));
+                    
+                    /*ToolTip*/
+                    UIManager.put("ToolTip.background", new ColorUIResource(31,31,31));
+                    UIManager.put("ToolTip.border", BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
+                    UIManager.put("ToolTip.foreground", new ColorUIResource(255,255,255));
+                                                           
+                    /*
+                    UIManager.put("ComboBox.selectionBackground", new ColorUIResource(204,0,204));
                     UIManager.put("ComboBox.selectionForeground", new ColorUIResource(255,255,255));
                     UIManager.put("ComboBox.disabledBackground", new ColorUIResource(51,51,51));
                     UIManager.put("ComboBox.disabledForeground", new ColorUIResource(153,153,153));
@@ -757,6 +764,7 @@ public class Login extends javax.swing.JFrame implements Colores {
                     UIManager.put("ComboBox.buttonDarkShadow", new ColorUIResource(255,255,255));
                     UIManager.put("ComboBox.buttonHighlight", new ColorUIResource(153,0,0));
                     UIManager.put("ComboBox.buttonShadow", new ColorUIResource(153,0,0));
+                    UIManager.put("ComboBox.border", BorderFactory.createLineBorder(new java.awt.Color(255, 0, 255)));
                     
                     UIManager.put("TableHeader.background", new ColorUIResource(51,51,51));
                     UIManager.put("TableHeader.foreground", new ColorUIResource(255,255,255));
@@ -764,8 +772,7 @@ public class Login extends javax.swing.JFrame implements Colores {
                     
                     UIManager.put("Table.dropLineColor", new ColorUIResource(255,0,0));
                     UIManager.put("Table.dropLineShortColor", new ColorUIResource(0,255,0));
-
-                    UIManager.put("ComboBox.border", BorderFactory.createLineBorder(new java.awt.Color(255, 0, 255)));*/
+                    */
                 }catch(ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e){
                     e.printStackTrace();
                 }

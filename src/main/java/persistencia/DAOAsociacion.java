@@ -28,8 +28,8 @@ public class DAOAsociacion {
             rs = pst.executeQuery();
             while(rs.next()) {
                 Asociacion asociacion = new Asociacion(rs.getString(1), rs.getString(2),
-                        rs.getDate(3), rs.getInt(4), rs.getString(5), rs.getString(6),
-                        rs.getString(7),rs.getInt(8), rs.getString(9));
+                    rs.getDate(3), rs.getInt(4), rs.getString(5), rs.getString(6),
+                    rs.getString(7),rs.getInt(8), rs.getString(9));
                 listaEntradas.add(asociacion);
             }
 	} catch (SQLException e) {
@@ -48,8 +48,8 @@ public class DAOAsociacion {
             rs = pst.executeQuery();
             while (rs.next()) {
                 asociacion = new Asociacion(rs.getString(1), rs.getString(2),
-                        rs.getDate(3), rs.getInt(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9));
+                    rs.getDate(3), rs.getInt(4), rs.getString(5),
+                    rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -60,12 +60,12 @@ public class DAOAsociacion {
     public boolean insertarAsociacionDAO(String nombre){
         boolean realizado;
         try {
-            realizado = true;
             con.createStatement();
             String sql = "insert into asociacion(nombre) values(?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, nombre);            
             pst.executeUpdate();
+            realizado = true;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
             realizado = false;
@@ -76,11 +76,10 @@ public class DAOAsociacion {
     public boolean modificarAsociacionDAO(Asociacion asociacion, String nombre){
         boolean realizado;
         try {
-            realizado = true;
             con.createStatement();
             String sql = "update asociacion set nombre = ?, tipo = ?, fecha = ?,"
-                    + "telefono = ?, email = ?, direccion = ?, cif = ?,"
-                    + "nRegistro = ?, rutaLogo = ? where nombre = ?";
+                + "telefono = ?, email = ?, direccion = ?, cif = ?,"
+                + "nRegistro = ?, rutaLogo = ? where nombre = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, asociacion.getNombre());
             pst.setString(2, asociacion.getTipo());
@@ -93,6 +92,7 @@ public class DAOAsociacion {
             pst.setString(9, asociacion.getRutaLogo());
             pst.setString(10, nombre);
             pst.executeUpdate();
+            realizado = true;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
             realizado = false;

@@ -30,9 +30,7 @@ public class Menu extends javax.swing.JFrame {
         ip = new EstadisticasPanel();
         editSP = new EditSocioPanel(this.asociacion);
         editEP = new EditEventoPanel(this.asociacion);
-        
-        
-        
+
         initComponents();
     }
 
@@ -440,6 +438,7 @@ public class Menu extends javax.swing.JFrame {
         panelCenter.add(ip, "cardEs");
         panelCenter.add(editSP, "cardEditSP");
         panelCenter.add(editEP, "cardEditEP");
+        ap.rellenarCampos();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -513,6 +512,8 @@ public class Menu extends javax.swing.JFrame {
     private void btnAsociacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsociacionMouseClicked
         CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
         cardLayout.show(panelCenter, "cardAs");
+        
+        ap.rellenarCampos();
         
         no_selected(btnSocios);
         no_selected(btnEventos);

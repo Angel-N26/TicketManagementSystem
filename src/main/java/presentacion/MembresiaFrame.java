@@ -1,17 +1,21 @@
 package presentacion;
 
 import dominio.Asociacion;
+import dominio.Colores;
 import dominio.ControlMembresia;
 import dominio.Membresia;
+import dominio.RegularExpresions;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
  * @author angel
  **/
-public class MembresiaFrame extends javax.swing.JFrame {
+public class MembresiaFrame extends javax.swing.JFrame implements Colores, RegularExpresions {
 
     public MembresiaFrame(Asociacion asociacion) {
         this.asociacion = asociacion;
@@ -19,6 +23,8 @@ public class MembresiaFrame extends javax.swing.JFrame {
         initComponents();
         cm = new ControlMembresia();
         mem = null;
+        
+        guardar = true;
     }
 
     /**
@@ -33,12 +39,14 @@ public class MembresiaFrame extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         panelCenter = new javax.swing.JPanel();
+        clean = new javax.swing.JLabel();
         scrollPane = new javax.swing.JScrollPane();
         listMembresias = new javax.swing.JList<>();
         lblNombre = new javax.swing.JLabel();
-        lblObliNombre = new javax.swing.JLabel();
+        errorImgNombre = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         lblPrecio = new javax.swing.JLabel();
+        errorImgPrecio = new javax.swing.JLabel();
         tfPrecio = new javax.swing.JTextField();
         btnModificar = new keeptoo.KButton();
         panelSouth = new javax.swing.JPanel();
@@ -85,6 +93,15 @@ public class MembresiaFrame extends javax.swing.JFrame {
         panelCenter.setPreferredSize(new java.awt.Dimension(400, 285));
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        clean.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\clean.png")); // NOI18N
+        clean.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        clean.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cleanMouseClicked(evt);
+            }
+        });
+        panelCenter.add(clean, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
+
         scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane.setName("scrollPane"); // NOI18N
 
@@ -107,15 +124,14 @@ public class MembresiaFrame extends javax.swing.JFrame {
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombre.setText("Nombre");
+        lblNombre.setText("Nombre*");
         lblNombre.setName("lblNombre"); // NOI18N
         panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 75, -1, -1));
 
-        lblObliNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblObliNombre.setForeground(new java.awt.Color(255, 255, 255));
-        lblObliNombre.setText("*");
-        lblObliNombre.setName("lblObliNombre"); // NOI18N
-        panelCenter.add(lblObliNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 75, 10, -1));
+        errorImgNombre.setVisible(false);
+        errorImgNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorImgNombre.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        panelCenter.add(errorImgNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 95, -1, -1));
 
         tfNombre.setBackground(new java.awt.Color(51, 51, 51));
         tfNombre.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,6 +156,11 @@ public class MembresiaFrame extends javax.swing.JFrame {
         lblPrecio.setText("Precio");
         lblPrecio.setName("lblPrecio"); // NOI18N
         panelCenter.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
+
+        errorImgPrecio.setVisible(false);
+        errorImgPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorImgPrecio.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        panelCenter.add(errorImgPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
 
         tfPrecio.setBackground(new java.awt.Color(51, 51, 51));
         tfPrecio.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,60 +255,100 @@ public class MembresiaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_closeMouseClicked
 
     private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
-        tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 204)));
-        lblObliNombre.setForeground(new Color(255, 255, 255));
+        tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        errorImgNombre.setVisible(false);
     }//GEN-LAST:event_tfNombreFocusGained
 
     private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
-        tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));                
     }//GEN-LAST:event_tfNombreFocusLost
 
     private void tfPrecioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPrecioFocusGained
-        tfPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 204)));
+        tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        errorImgPrecio.setVisible(false);
+        guardar = true;
     }//GEN-LAST:event_tfPrecioFocusGained
 
     private void tfPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPrecioFocusLost
-        tfPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = DOUBLE.matcher(tfPrecio.getText());
+        Matcher matcherNum = NUMERO.matcher(tfPrecio.getText());
+        if(!tfPrecio.getText().equals(""))
+            if(!(matcher.matches() || matcherNum.matches())){
+                tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+                errorImgPrecio.setVisible(true);
+                guardar = false;
+            }
     }//GEN-LAST:event_tfPrecioFocusLost
 
     private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
-        if(!tfNombre.getText().equals("")){
+        if(guardar)
+        if(!tfNombre.getText().replace(" ","").equals("")){
             Membresia memb = new Membresia(tfNombre.getText(),
                 Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
             if(cm.insertarMembresia(memb)){
                 actualizarListaMembresias();                   
-            } 
-        }else{            
-            tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 0)));
-            lblObliNombre.setForeground(new Color(204, 0, 0));
-        } 
+            }else{
+                JOptionPane.showMessageDialog(this, 
+                    "No se ha podido añadir la membresia", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));        
+            errorImgNombre.setVisible(true);
+        }      
     }//GEN-LAST:event_btnAnadirMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            if(cm.eliminarMembresia(listMembresias.getSelectedValue().getId_membresia())){            
-                modeloLista.remove(listMembresias.getSelectedIndex());
-                tfNombre.setText("");
-                tfPrecio.setText("");
+        if(listMembresias.isSelectionEmpty()){
+            JOptionPane.showMessageDialog(this, "Selecciona una membresia", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            int dialogResult = JOptionPane.showConfirmDialog (this, "Estas seguro que desea elimnar?",
+                "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                if(cm.eliminarMembresia(listMembresias.getSelectedValue().getId_membresia())){            
+                    modeloLista.remove(listMembresias.getSelectedIndex());
+                    tfNombre.setText("");
+                    tfPrecio.setText("");
+                }
             }
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
-        Membresia m = listMembresias.getSelectedValue();
-        if(!tfNombre.getText().equals("")){
-            Membresia memb = new Membresia(m.getId_membresia(), tfNombre.getText(),
-                Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
-            if(cm.modificarMembresia(memb)){
-                actualizarListaMembresias();                   
-            } 
-        }else{            
-            tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 0, 0)));
-            lblObliNombre.setForeground(new Color(204, 0, 0));
+        if(listMembresias.isSelectionEmpty()){
+            JOptionPane.showMessageDialog(this, "Selecciona una membresia", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{    
+            Membresia m = listMembresias.getSelectedValue();
+            if(guardar)
+            if(!tfNombre.getText().replace(" ","").equals("")){
+                Membresia memb = new Membresia(m.getId_membresia(), tfNombre.getText(),
+                    Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
+                if(cm.modificarMembresia(memb)){
+                    actualizarListaMembresias();                   
+                }else{
+                    JOptionPane.showMessageDialog(this,
+                        "No se ha podido actualizar la membresia", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+                tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));        
+                errorImgNombre.setVisible(true); 
+            }
         }
     }//GEN-LAST:event_btnModificarMouseClicked
+
+    private void cleanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cleanMouseClicked
+        listMembresias.setSelectedValue(null, false);        
+        tfNombre.setText("");
+        tfPrecio.setText("");
+        
+        tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        errorImgNombre.setVisible(false);
+        
+        tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        errorImgPrecio.setVisible(false);
+    }//GEN-LAST:event_cleanMouseClicked
 
     private ArrayList<Membresia> obtenerMembresias(){
         ControlMembresia cmem = new ControlMembresia();
@@ -297,21 +358,8 @@ public class MembresiaFrame extends javax.swing.JFrame {
     private void actualizarListaMembresias(){
         modeloLista.removeAllElements();
         modeloLista.addAll(0, obtenerMembresias());
-    }
-    
-    private boolean comprobarMembresia(String nombre){
-        boolean validar = true;
-        ControlMembresia cmem = new ControlMembresia();
-        ArrayList<Membresia> mems = obtenerMembresias();        
-        for(int i = 0 ; i < mems.size() ; i++){
-            if(mems.get(i).getNombre().equals(nombre)){
-                validar = false;
-            }
-        }
-        return validar;
-    }    
+    }   
 
-    
     private final Asociacion asociacion;
     
     private final ControlMembresia cm;
@@ -319,13 +367,17 @@ public class MembresiaFrame extends javax.swing.JFrame {
     
     private DefaultListModel modeloLista;
     
+    private boolean guardar;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnAnadir;
     private keeptoo.KButton btnEliminar;
     private keeptoo.KButton btnModificar;
+    private javax.swing.JLabel clean;
     private javax.swing.JLabel close;
+    private javax.swing.JLabel errorImgNombre;
+    private javax.swing.JLabel errorImgPrecio;
     private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblObliNombre;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JList<Membresia> listMembresias;
