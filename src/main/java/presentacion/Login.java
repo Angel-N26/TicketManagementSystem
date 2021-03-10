@@ -752,8 +752,9 @@ public class Login extends javax.swing.JFrame implements Colores {
                     
                     /*ToolTip*/
                     UIManager.put("ToolTip.background", new ColorUIResource(31,31,31));
-                    UIManager.put("ToolTip.border", BorderFactory.createLineBorder(new java.awt.Color(255,255,255)));
+                    UIManager.put("ToolTip.border", BorderFactory.createLineBorder(new java.awt.Color(204,0,204)));
                     UIManager.put("ToolTip.foreground", new ColorUIResource(255,255,255));
+                    UIManager.put("ToolTip.font", new java.awt.Font("Console", 1, 12));
                                                            
                     /*
                     UIManager.put("ComboBox.selectionBackground", new ColorUIResource(204,0,204));

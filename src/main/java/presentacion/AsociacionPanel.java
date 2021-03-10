@@ -10,6 +10,7 @@ import javax.swing.JFileChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 import dominio.RegularExpresions;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -39,24 +40,30 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         logo = new javax.swing.JLabel();
         lblNombreLogo = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        lblObliNombre = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         lblTipo = new javax.swing.JLabel();
         tfTipo = new javax.swing.JTextField();
         lblFechaCreacion = new javax.swing.JLabel();
         dcFechaCreacion = new com.toedter.calendar.JDateChooser();
         lblTlf = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         tfTlf = new javax.swing.JTextField();
         lblCorreo = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         tfCorreo = new javax.swing.JTextField();
         lblDireccion = new javax.swing.JLabel();
         lblCalle = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         tfCalle = new javax.swing.JTextField();
         lblNumero = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         tfNumero = new javax.swing.JTextField();
         lblPiso = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         tfPiso = new javax.swing.JTextField();
         lblCodPostal = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         tfCodPostal = new javax.swing.JTextField();
         lblLocalidad = new javax.swing.JLabel();
         tfLocalidad = new javax.swing.JTextField();
@@ -64,8 +71,10 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         cbProvincia = new javax.swing.JComboBox<>();
         lblDatosJuridicos = new javax.swing.JLabel();
         lblCIF = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         tfCIF = new javax.swing.JTextField();
         lblNReg = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         tfNReg = new javax.swing.JTextField();
         btnEditar = new keeptoo.KButton();
 
@@ -105,15 +114,14 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombre.setText("Nombre");
+        lblNombre.setText("Nombre*");
         lblNombre.setName("lblNombre"); // NOI18N
-        panel.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 50, -1));
+        panel.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 60, -1));
 
-        lblObliNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblObliNombre.setForeground(new java.awt.Color(255, 255, 255));
-        lblObliNombre.setText("*");
-        lblObliNombre.setName("lblObliNombre"); // NOI18N
-        panel.add(lblObliNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
+        jLabel1.setVisible(false);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, -1));
 
         tfNombre.setEditable(false);
         tfNombre.setBackground(new java.awt.Color(51, 51, 51));
@@ -186,6 +194,11 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         lblTlf.setName("lblTlf"); // NOI18N
         panel.add(lblTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 240, -1));
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png")); // NOI18N
+        jLabel2.setToolTipText("ej: 666666666");
+        panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 110, -1, -1));
+
         tfTlf.setEditable(false);
         tfTlf.setBackground(new java.awt.Color(51, 51, 51));
         tfTlf.setForeground(new java.awt.Color(153, 153, 153));
@@ -210,6 +223,11 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         lblCorreo.setText("Correo");
         lblCorreo.setName("lblCorreo"); // NOI18N
         panel.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 530, -1));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png")); // NOI18N
+        jLabel3.setToolTipText("ej: alguien@example.com/es");
+        panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 180, -1, -1));
 
         tfCorreo.setEditable(false);
         tfCorreo.setBackground(new java.awt.Color(51, 51, 51));
@@ -242,6 +260,11 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         lblCalle.setName("lblCalle"); // NOI18N
         panel.add(lblCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 310, -1));
 
+        jLabel10.setVisible(false);
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        panel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
+
         tfCalle.setEditable(false);
         tfCalle.setBackground(new java.awt.Color(51, 51, 51));
         tfCalle.setForeground(new java.awt.Color(153, 153, 153));
@@ -266,6 +289,11 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         lblNumero.setText("Número");
         lblNumero.setName("lblNumero"); // NOI18N
         panel.add(lblNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 300, 50, -1));
+
+        jLabel9.setVisible(false);
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        panel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 320, -1, -1));
 
         tfNumero.setEditable(false);
         tfNumero.setBackground(new java.awt.Color(51, 51, 51));
@@ -292,6 +320,11 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         lblPiso.setName("lblPiso"); // NOI18N
         panel.add(lblPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 80, -1));
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png")); // NOI18N
+        jLabel4.setToolTipText("ej: 6E");
+        panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, -1, -1));
+
         tfPiso.setEditable(false);
         tfPiso.setBackground(new java.awt.Color(51, 51, 51));
         tfPiso.setForeground(new java.awt.Color(153, 153, 153));
@@ -316,6 +349,12 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         lblCodPostal.setText("Código Postal");
         lblCodPostal.setName("lblCodPostal"); // NOI18N
         panel.add(lblCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 130, -1));
+
+        jLabel6.setVisible(false);
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel6.setToolTipText("");
+        panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, -1, -1));
 
         tfCodPostal.setEditable(false);
         tfCodPostal.setBackground(new java.awt.Color(51, 51, 51));
@@ -366,13 +405,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         lblProvincia.setForeground(new java.awt.Color(255, 255, 255));
         lblProvincia.setText("Provincia");
         lblProvincia.setName("lblProvincia"); // NOI18N
-        panel.add(lblProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 230, -1));
+        panel.add(lblProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 360, 215, -1));
 
         cbProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Álava", "Albacete", "Alicante", "Almeria", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba", "La Coruña", "Cuenca", "Gerona", "Granada", "Guadalajara", "Guipúzcua", "Huelva", "Huesca", "Baleares", "Jaén", "León", "Lérida", "Lugo", "Madrid", "Málaga", "Murcia", "Navarra", "Orense", "Palencia", "Las Palmas", "Pontevedra", "La Rioja", "Salamanca", "Segovia", "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza" }));
         cbProvincia.setEnabled(false);
         cbProvincia.setName("cbProvincia"); // NOI18N
         cbProvincia.setNextFocusableComponent(tfCIF);
-        panel.add(cbProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 230, 25));
+        panel.add(cbProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 380, 215, 25));
 
         lblDatosJuridicos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblDatosJuridicos.setForeground(new java.awt.Color(255, 255, 255));
@@ -385,6 +424,11 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         lblCIF.setText("C.I.F");
         lblCIF.setName("lblCIF"); // NOI18N
         panel.add(lblCIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 210, -1));
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png")); // NOI18N
+        jLabel7.setToolTipText("ej: G66666666");
+        panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, -1, -1));
 
         tfCIF.setEditable(false);
         tfCIF.setBackground(new java.awt.Color(51, 51, 51));
@@ -410,6 +454,11 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         lblNReg.setText("Nº Registro");
         lblNReg.setName("lblNReg"); // NOI18N
         panel.add(lblNReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 210, -1));
+
+        jLabel8.setVisible(false);
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        panel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 490, -1, -1));
 
         tfNReg.setEditable(false);
         tfNReg.setBackground(new java.awt.Color(51, 51, 51));
@@ -458,47 +507,105 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
-        if(tfNombre.isEditable())
+        if(tfNombre.isEditable()){
             tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+            jLabel1.setVisible(false);
+            nombreVal = true;
+        }
     }//GEN-LAST:event_tfNombreFocusGained
 
     private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
         tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
-        if(tfNombre.getText().replace(" ","").equals("")){
+        if(tfNombre.getText().replace(" ","").equals("") || !comprobarNombre(tfNombre.getText())){
             tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            guardar = false;
+            jLabel1.setVisible(true);
+            nombreVal = false;
         }
     }//GEN-LAST:event_tfNombreFocusLost
 
+    private boolean comprobarNombre(String nombre){
+        boolean comprobar = true;
+        ArrayList<Asociacion> asocs = obtenerAsociaciones();
+        
+        for(int i = 0 ; i < asocs.size() ; i++){
+            if(!asociacion.getNombre().equals(asocs.get(i).getNombre()))
+                if(nombre.equals(asocs.get(i).getNombre())){
+                    comprobar = false;
+                }            
+        }        
+        
+        return comprobar;
+    }
+    
     private void tfTlfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusGained
         if(tfTlf.isEditable())
             tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+            jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+            tlfVal = true;
     }//GEN-LAST:event_tfTlfFocusGained
 
     private void tfTlfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusLost
         tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
         Matcher matcher = TLF.matcher(tfTlf.getText());
-        if(!matcher.matches()){
+        if(!matcher.matches() || !comprobarTlf(Integer.parseInt(tfTlf.getText()))){
             tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            tlfVal = false;
         }
     }//GEN-LAST:event_tfTlfFocusLost
 
+    private boolean comprobarTlf(int tlf){
+        boolean comprobar = true;
+        ArrayList<Asociacion> asocs = obtenerAsociaciones();
+
+        for(int i = 0 ; i < asocs.size() ; i++){
+            if(!asociacion.getNombre().equals(asocs.get(i).getNombre()))
+                if(tlf == asocs.get(i).getTelefono()){
+                    comprobar = false;
+                }            
+        }
+        
+        return comprobar;
+    }
+    
     private void tfCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCorreoFocusGained
-        if(tfCorreo.isEditable())
+        if(tfCorreo.isEditable()){
             tfCorreo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+            jLabel3.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+            emailVal = true;
+        }
     }//GEN-LAST:event_tfCorreoFocusGained
 
     private void tfCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCorreoFocusLost
         tfCorreo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
         Matcher matcher = EMAIL.matcher(tfCorreo.getText());
-        if(!matcher.matches()){
+        if(!matcher.matches() || !comprobarEmail(tfCorreo.getText())){
             tfCorreo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel3.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            emailVal = false;
         }
     }//GEN-LAST:event_tfCorreoFocusLost
 
+    private boolean comprobarEmail(String email){
+        boolean comprobar = true;
+        ArrayList<Asociacion> asocs = obtenerAsociaciones();
+        
+        for(int i = 0 ; i < asocs.size() ; i++){
+            if(!asociacion.getNombre().equals(asocs.get(i).getNombre()))
+            if(email.equals(asocs.get(i).getEmail())){
+                comprobar = false;
+            }
+        }
+        
+        return comprobar;
+    }
+    
     private void tfCalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCalleFocusGained
-        if(tfCalle.isEditable())
-            tfCalle.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+        if(tfCalle.isEditable()){
+            tfCalle.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));            
+            jLabel10.setVisible(false);
+            calleVal = true;
+        }
     }//GEN-LAST:event_tfCalleFocusGained
 
     private void tfCalleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCalleFocusLost
@@ -515,27 +622,69 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }//GEN-LAST:event_tfLocalidadFocusLost
 
     private void tfCIFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCIFFocusGained
-        if(tfCIF.isEditable())
+        if(tfCIF.isEditable()){
             tfCIF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+            jLabel7.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+            cifVal = true;
+        }        
     }//GEN-LAST:event_tfCIFFocusGained
 
     private void tfCIFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCIFFocusLost
         tfCIF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
         Matcher matcher = CIF.matcher(tfCIF.getText());
-        if(!matcher.matches()){
+        if(!matcher.matches() || !comprobarCIF(tfCIF.getText())){
             tfCIF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel7.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            cifVal = false;
         }
     }//GEN-LAST:event_tfCIFFocusLost
 
+    private boolean comprobarCIF(String cif){
+        boolean comprobar = true;
+        ArrayList<Asociacion> asocs = obtenerAsociaciones();
+        
+        for(int i = 0 ; i < asocs.size() ; i++){
+            if(!asociacion.getNombre().equals(asocs.get(i).getNombre()))
+            if(cif.equals(asocs.get(i).getCIF())){
+                comprobar = false;
+            }
+        }        
+        
+        return comprobar;
+    }
+    
     private void tfNRegFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNRegFocusGained
-        if(tfNReg.isEditable())
+        if(tfNReg.isEditable()){
             tfNReg.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+            jLabel8.setVisible(false);
+            nRegVal = true;
+        }
     }//GEN-LAST:event_tfNRegFocusGained
 
     private void tfNRegFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNRegFocusLost
         tfNReg.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
+        Matcher matcher = NUMERO.matcher(tfNReg.getText());
+        if(!matcher.matches() || !comprobarNReg(Integer.parseInt(tfNReg.getText()))){
+            tfNReg.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel8.setVisible(true);
+            nRegVal = false;
+        }
     }//GEN-LAST:event_tfNRegFocusLost
 
+    private boolean comprobarNReg(int nReg){
+        boolean comprobar = true;
+        ArrayList<Asociacion> asocs = obtenerAsociaciones();
+        
+        for(int i = 0 ; i < asocs.size() ; i++){
+            if(!asociacion.getNombre().equals(asocs.get(i).getNombre()))
+                if(nReg == asocs.get(i).getnRegistro()){
+                    comprobar = false;
+                }
+        }
+        
+        return comprobar;
+    }
+    
     private void tfTipoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTipoFocusGained
         if(tfTipo.isEditable())
             tfTipo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
@@ -546,33 +695,56 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }//GEN-LAST:event_tfTipoFocusLost
 
     private void tfNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusGained
-        if(tfNumero.isEditable())
-            tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+        if(tfNumero.isEditable()){
+            tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));            
+            jLabel9.setVisible(false);
+            numVal = true;
+        }         
     }//GEN-LAST:event_tfNumeroFocusGained
 
     private void tfNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusLost
         tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
+        Matcher matcher = NUMERO.matcher(tfNumero.getText());
+        if(!matcher.matches() && !tfNumero.getText().equals("")){
+            tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));            
+            jLabel9.setVisible(true);
+            numVal = false;
+        }
     }//GEN-LAST:event_tfNumeroFocusLost
 
     private void tfPisoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusGained
-        if(tfPiso.isEditable())
+        if(tfPiso.isEditable()){
             tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+            jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+            pisoVal = true;
+        }            
     }//GEN-LAST:event_tfPisoFocusGained
 
     private void tfPisoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusLost
         tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
+        Matcher matcher = PISO.matcher(tfPiso.getText());
+        if(!matcher.matches() && !tfPiso.getText().equals("")){
+            tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            pisoVal = false;
+        }
     }//GEN-LAST:event_tfPisoFocusLost
 
     private void tfCodPostalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusGained
-        if(tfCodPostal.isEditable())
+        if(tfCodPostal.isEditable()){
             tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+            codPosVal = true;
+            jLabel6.setVisible(false);
+        }
     }//GEN-LAST:event_tfCodPostalFocusGained
 
     private void tfCodPostalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusLost
         tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
         Matcher matcher = CCPP.matcher(tfCodPostal.getText());
-        if(!matcher.matches()){
+        if(!matcher.matches() && !tfCodPostal.getText().equals("")){
             tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            codPosVal = false;
+            jLabel6.setVisible(true);
         }
     }//GEN-LAST:event_tfCodPostalFocusLost
 
@@ -582,20 +754,22 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
             editable(true, WORDS_WHITE);
             btnEditar.setText("Guardar");
         }else{
-            ControlAsociacion ca = new ControlAsociacion();
-            Asociacion asoc = new Asociacion(tfNombre.getText(),tfTipo.getText(),
-                Date.valueOf(dateChooserEditor2.getText()), Integer.parseInt(tfTlf.getText()),
-                tfCorreo.getText(), direccion(), tfCIF.getText(),
-                Integer.parseInt(tfNReg.getText()), logo.getIcon().toString());
-            if(ca.modificarAsociacion(asoc, asociacion.getNombre())){
-                editable(false, WORDS_GRAY);
-                btnEditar.setText("Editar");
-                lblNombreLogo.setText(tfNombre.getText());
-                asociacion = asoc;
-            }else{
-                JOptionPane.showMessageDialog(this, 
-                    "No se ha podido actualizar la asoicación", "Error",
-                    JOptionPane.ERROR_MESSAGE);
+            if(valido()){
+                ControlAsociacion ca = new ControlAsociacion();
+                Asociacion asoc = new Asociacion(tfNombre.getText(),tfTipo.getText(),
+                    Date.valueOf(dateChooserEditor2.getText()), Integer.parseInt(tfTlf.getText()),
+                    tfCorreo.getText(), direccion(), tfCIF.getText(),
+                    Integer.parseInt(tfNReg.getText()), logo.getIcon().toString());
+                if(ca.modificarAsociacion(asoc, asociacion.getNombre())){
+                    editable(false, WORDS_GRAY);
+                    btnEditar.setText("Editar");
+                    lblNombreLogo.setText(tfNombre.getText());
+                    asociacion = asoc;
+                }else{
+                    JOptionPane.showMessageDialog(this, 
+                        "No se ha podido actualizar la asoicación", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     }//GEN-LAST:event_btnEditarMouseClicked
@@ -603,7 +777,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG % PNG Images","jpg","png");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG Images","jpg","png");
         fc.setFileFilter(filter);
         
         int seleccion = fc.showOpenDialog(this);
@@ -690,15 +864,62 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         }
     }
     
+    private ArrayList<Asociacion> obtenerAsociaciones(){
+        ControlAsociacion ca = new ControlAsociacion();
+        return ca.obtenerAsociaciones();
+    }       
+    
+    private boolean comprobarDireccion(){
+        boolean comprobar = true;
+        
+        if((!tfNumero.getText().equals("") || !tfCodPostal.getText().equals("") || !tfPiso.getText().equals("")) 
+                && tfCalle.getText().replace(" ","").equals("")){
+            tfCalle.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel10.setVisible(true);
+            calleVal = false;
+            comprobar = false;
+        }
+        
+        return comprobar;
+    }
+    
+    private boolean valido(){
+        boolean valido = false;
+        
+        if(nombreVal && tlfVal && emailVal && cifVal && nRegVal && calleVal && numVal &&
+                pisoVal && codPosVal && comprobarDireccion()){
+            valido = true;
+        }
+        
+        return valido;
+    }
+    
     private Asociacion asociacion;
     
-    private boolean guardar = true;
+    private boolean nombreVal = true;
+    private boolean tlfVal = true;
+    private boolean emailVal = true;
+    private boolean cifVal = true;
+    private boolean nRegVal = true;
+    private boolean calleVal = true;
+    private boolean numVal = true;
+    private boolean pisoVal = true;
+    private boolean codPosVal = true;
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnEditar;
     private javax.swing.JComboBox<String> cbProvincia;
     private com.toedter.calendar.JDateChooser dcFechaCreacion;
     private javax.swing.JLabel edit;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblCIF;
     private javax.swing.JLabel lblCalle;
     private javax.swing.JLabel lblCodPostal;
@@ -711,7 +932,6 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombreLogo;
     private javax.swing.JLabel lblNumero;
-    private javax.swing.JLabel lblObliNombre;
     private javax.swing.JLabel lblPiso;
     private javax.swing.JLabel lblProvincia;
     private javax.swing.JLabel lblTipo;

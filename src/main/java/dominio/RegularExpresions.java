@@ -19,4 +19,6 @@ public interface RegularExpresions {
     Pattern CCPP = Pattern.compile("[0-9]{5}");
     
     Pattern DOUBLE = Pattern.compile("[0-9]+.[0-9]+");
+    
+    Pattern PISO = Pattern.compile("[0-9]+[A-Z]");
 }

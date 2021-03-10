@@ -153,7 +153,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
 
         lblPrecio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        lblPrecio.setText("Precio");
+        lblPrecio.setText("Precio*");
         lblPrecio.setName("lblPrecio"); // NOI18N
         panelCenter.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
 
@@ -272,29 +272,35 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
     private void tfPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPrecioFocusLost
         tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = DOUBLE.matcher(tfPrecio.getText());
-        Matcher matcherNum = NUMERO.matcher(tfPrecio.getText());
-        if(!tfPrecio.getText().equals(""))
+        Matcher matcherNum = NUMERO.matcher(tfPrecio.getText());        
+        if(!tfPrecio.getText().replace(" ","").equals("")){    
             if(!(matcher.matches() || matcherNum.matches())){
                 tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
                 errorImgPrecio.setVisible(true);
-                guardar = false;
+                guardar = false;  
             }
+        }
     }//GEN-LAST:event_tfPrecioFocusLost
 
     private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
         if(guardar)
         if(!tfNombre.getText().replace(" ","").equals("")){
-            Membresia memb = new Membresia(tfNombre.getText(),
-                Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
-            if(cm.insertarMembresia(memb)){
-                actualizarListaMembresias();                   
+            if(!tfPrecio.getText().replace(" ","").equals("")){                
+                Membresia memb = new Membresia(tfNombre.getText(),
+                    Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
+                if(cm.insertarMembresia(memb)){
+                    actualizarListaMembresias();                   
+                }else{
+                    JOptionPane.showMessageDialog(this, 
+                        "No se ha podido añadir la membresia", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                }
             }else{
-                JOptionPane.showMessageDialog(this, 
-                    "No se ha podido añadir la membresia", "Error",
-                    JOptionPane.ERROR_MESSAGE);
+                tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+                errorImgPrecio.setVisible(true);
             }
         }else{
-            tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));        
+            tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             errorImgNombre.setVisible(true);
         }      
     }//GEN-LAST:event_btnAnadirMouseClicked
@@ -322,14 +328,19 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
             Membresia m = listMembresias.getSelectedValue();
             if(guardar)
             if(!tfNombre.getText().replace(" ","").equals("")){
-                Membresia memb = new Membresia(m.getId_membresia(), tfNombre.getText(),
-                    Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
-                if(cm.modificarMembresia(memb)){
-                    actualizarListaMembresias();                   
+                if(!tfPrecio.getText().replace(" ","").equals("")){
+                    Membresia memb = new Membresia(m.getId_membresia(), tfNombre.getText(),
+                        Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
+                    if(cm.modificarMembresia(memb)){
+                        actualizarListaMembresias();                   
+                    }else{
+                        JOptionPane.showMessageDialog(this,
+                            "No se ha podido actualizar la membresia", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    }
                 }else{
-                    JOptionPane.showMessageDialog(this,
-                        "No se ha podido actualizar la membresia", "Error",
-                        JOptionPane.ERROR_MESSAGE);
+                    tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+                    errorImgPrecio.setVisible(true); 
                 }
             }else{
                 tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));        
