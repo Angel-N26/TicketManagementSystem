@@ -385,12 +385,22 @@ public class EditEventoPanel extends javax.swing.JPanel {
         btnEliminar.setBorder(null);
         btnEliminar.setText("Eliminar");
         btnEliminar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnEliminar.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnEliminar.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnEliminar.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnEliminar.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnEliminar.setkStartColor(new java.awt.Color(204, 0, 204));
         btnEliminar.setName("btnEliminar"); // NOI18N
         btnEliminar.setPreferredSize(new java.awt.Dimension(180, 35));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEliminarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseReleased(evt);
             }
         });
         panelSouthLeft.add(btnEliminar);
@@ -405,12 +415,22 @@ public class EditEventoPanel extends javax.swing.JPanel {
         btnCancelar.setBorder(null);
         btnCancelar.setText("Cancelar");
         btnCancelar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnCancelar.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnCancelar.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnCancelar.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnCancelar.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnCancelar.setkStartColor(new java.awt.Color(204, 0, 204));
         btnCancelar.setName("btnCancelar"); // NOI18N
         btnCancelar.setPreferredSize(new java.awt.Dimension(180, 35));
         btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCancelarMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCancelarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseReleased(evt);
             }
         });
         panelSouthRigth.add(btnCancelar);
@@ -418,12 +438,22 @@ public class EditEventoPanel extends javax.swing.JPanel {
         btnAnadir.setBorder(null);
         btnAnadir.setText("Añadir");
         btnAnadir.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnAnadir.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnAnadir.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnAnadir.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnAnadir.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnAnadir.setkStartColor(new java.awt.Color(204, 0, 204));
         btnAnadir.setName("btnAnadir"); // NOI18N
         btnAnadir.setPreferredSize(new java.awt.Dimension(180, 35));
         btnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAnadirMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAnadirMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAnadirMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAnadirMouseReleased(evt);
             }
         });
         panelSouthRigth.add(btnAnadir);
@@ -537,41 +567,71 @@ public class EditEventoPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_editMouseClicked
 
-    private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
-        JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFecha.getDateEditor());        
+    private void btnAnadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseExited
+        activarAnadir = false;
+    }//GEN-LAST:event_btnAnadirMouseExited
 
-        if(btnAnadir.getText().equals("Modificar")){
-            Evento evento = new Evento(eve.getId(), tfNombre.getText(), tfTipo.getText(),
-                tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
-                Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
-                Integer.parseInt(tfEntradasVendidas.getText()), fotoEvento.getIcon().toString(), asociacion.getNombre());
-            if(ce.modificarEvento(evento)){
-                dispose();
-            }
-        }else if(btnAnadir.getText().equals("Añadir")){
-            Evento evento = new Evento(tfNombre.getText(), tfTipo.getText(),
-                tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
-                Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
-                Integer.parseInt(tfEntradasVendidas.getText()), /*jLabel1.getIcon().toString()*/null, asociacion.getNombre());
-            if(ce.insertarEvento(evento)){
-                dispose();
-            }
-        }
-    }//GEN-LAST:event_btnAnadirMouseClicked
+    private void btnAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMousePressed
+        activarAnadir = true;
+    }//GEN-LAST:event_btnAnadirMousePressed
 
-    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
-        dispose();
-    }//GEN-LAST:event_btnCancelarMouseClicked
+    private void btnAnadirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseReleased
+        if(activarAnadir){
+            JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFecha.getDateEditor());        
 
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            if(ce.eliminarEvento(eve.getId())){
-                dispose();
+            if(btnAnadir.getText().equals("Modificar")){
+                Evento evento = new Evento(eve.getId(), tfNombre.getText(), tfTipo.getText(),
+                    tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
+                    Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
+                    Integer.parseInt(tfEntradasVendidas.getText()), fotoEvento.getIcon().toString(), asociacion.getNombre());
+                if(ce.modificarEvento(evento)){
+                    dispose();
+                }
+            }else if(btnAnadir.getText().equals("Añadir")){
+                Evento evento = new Evento(tfNombre.getText(), tfTipo.getText(),
+                    tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
+                    Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
+                    Integer.parseInt(tfEntradasVendidas.getText()), /*jLabel1.getIcon().toString()*/null, asociacion.getNombre());
+                if(ce.insertarEvento(evento)){
+                    dispose();
+                }
             }
         }
-    }//GEN-LAST:event_btnEliminarMouseClicked
+    }//GEN-LAST:event_btnAnadirMouseReleased
+
+    private void btnCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseExited
+        activarCancelar = false;
+    }//GEN-LAST:event_btnCancelarMouseExited
+
+    private void btnCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMousePressed
+        activarCancelar = true;
+    }//GEN-LAST:event_btnCancelarMousePressed
+
+    private void btnCancelarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseReleased
+        if(activarCancelar){
+            dispose();
+        }
+    }//GEN-LAST:event_btnCancelarMouseReleased
+
+    private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
+        activarEliminar = false;
+    }//GEN-LAST:event_btnEliminarMouseExited
+
+    private void btnEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMousePressed
+        activarEliminar = true;
+    }//GEN-LAST:event_btnEliminarMousePressed
+
+    private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
+        if(activarEliminar){
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                if(ce.eliminarEvento(eve.getId())){
+                    dispose();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnEliminarMouseReleased
 
     public void dispose(){
         this.show(false);
@@ -613,6 +673,10 @@ public class EditEventoPanel extends javax.swing.JPanel {
         tfLocalidad.setText(c[3].replaceFirst(" ", ""));
         cbProvincia.setSelectedItem(c[4].replaceFirst(" ", ""));                                   
     }    
+    
+    private boolean activarCancelar;
+    private boolean activarAnadir;
+    private boolean activarEliminar;
     
     private Asociacion asociacion;
     

@@ -457,12 +457,22 @@ public class Login extends javax.swing.JFrame implements Colores {
         btnInicioSesion.setText("Iniciar Sesión");
         btnInicioSesion.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnInicioSesion.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnInicioSesion.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnInicioSesion.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnInicioSesion.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnInicioSesion.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnInicioSesion.setkStartColor(new java.awt.Color(204, 0, 204));
         btnInicioSesion.setName("btnInicioSesion"); // NOI18N
         btnInicioSesion.setPreferredSize(new java.awt.Dimension(280, 30));
         btnInicioSesion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnInicioSesionMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnInicioSesionMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnInicioSesionMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnInicioSesionMouseReleased(evt);
             }
         });
         panelSouth.add(btnInicioSesion);
@@ -503,45 +513,6 @@ public class Login extends javax.swing.JFrame implements Colores {
         int y = evt.getYOnScreen();
         this.setLocation(x-xx, y-xy);
     }//GEN-LAST:event_panelNorthMouseDragged
-
-    private void btnInicioSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioSesionMouseClicked
-        if(btnInicioSesion.getText().equals("Iniciar Sesión")){
-            if(comprobarUsuario(tfUser.getText(), pfPass.getText())){
-                ControlUsuarios cu = new ControlUsuarios();
-                Usuario usuario = cu.obtenerUsuario(tfUser.getText());
-                Menu menu = new Menu(usuario.getNombreAsociacion());
-                menu.setVisible(true);
-                menu.setLocationRelativeTo(null);
-                menu.setExtendedState(NORMAL);
-                dispose();
-            }else{
-                tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-                pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-
-                errorImgPass.setVisible(true);
-                errorImgUser.setVisible(true);
-                lblError.setVisible(true);
-                lblWarningImg.setVisible(true);
-            }
-        }else{
-            ControlUsuarios cu = new ControlUsuarios();
-            ControlAsociacion ca = new ControlAsociacion();
-            
-            if(camposVacios() && comprobarCampos()){
-                if(ca.insertarAsociacion(tfNombreAsoc.getText())){
-                    crearCargos(tfNombreAsoc.getText());
-                    Usuario user = new Usuario(tfUserReg.getText(), pfPassReg.getText(), tfNombreAsoc.getText());
-                    if(cu.insertarUsuario(user)){
-                        Menu menu = new Menu(tfNombreAsoc.getText());
-                        menu.setVisible(true);
-                        menu.setLocationRelativeTo(null);
-                        menu.setExtendedState(NORMAL);
-                        dispose();
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_btnInicioSesionMouseClicked
 
     private void lblInicioSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioSesionMouseClicked
         CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
@@ -602,6 +573,55 @@ public class Login extends javax.swing.JFrame implements Colores {
     private void tfNombreAsocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreAsocFocusLost
         tfNombreAsoc.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
     }//GEN-LAST:event_tfNombreAsocFocusLost
+
+    private void btnInicioSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioSesionMouseExited
+        activar = false;
+    }//GEN-LAST:event_btnInicioSesionMouseExited
+
+    private void btnInicioSesionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioSesionMouseReleased
+        if(activar){
+            if(btnInicioSesion.getText().equals("Iniciar Sesión")){
+                if(comprobarUsuario(tfUser.getText(), pfPass.getText())){
+                    ControlUsuarios cu = new ControlUsuarios();
+                    Usuario usuario = cu.obtenerUsuario(tfUser.getText());
+                    Menu menu = new Menu(usuario.getNombreAsociacion());
+                    menu.setVisible(true);
+                    menu.setLocationRelativeTo(null);
+                    menu.setExtendedState(NORMAL);
+                    dispose();
+                }else{
+                    tfUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+                    pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+
+                    errorImgPass.setVisible(true);
+                    errorImgUser.setVisible(true);
+                    lblError.setVisible(true);
+                    lblWarningImg.setVisible(true);
+                }
+            }else{
+                ControlUsuarios cu = new ControlUsuarios();
+                ControlAsociacion ca = new ControlAsociacion();
+
+                if(camposVacios() && comprobarCampos()){
+                    if(ca.insertarAsociacion(tfNombreAsoc.getText())){
+                        crearCargos(tfNombreAsoc.getText());
+                        Usuario user = new Usuario(tfUserReg.getText(), pfPassReg.getText(), tfNombreAsoc.getText());
+                        if(cu.insertarUsuario(user)){
+                            Menu menu = new Menu(tfNombreAsoc.getText());
+                            menu.setVisible(true);
+                            menu.setLocationRelativeTo(null);
+                            menu.setExtendedState(NORMAL);
+                            dispose();
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_btnInicioSesionMouseReleased
+
+    private void btnInicioSesionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioSesionMousePressed
+        activar = true;
+    }//GEN-LAST:event_btnInicioSesionMousePressed
 
     private boolean comprobarUsuario(String nombre, String pass){
         boolean existe = false;
@@ -747,15 +767,13 @@ public class Login extends javax.swing.JFrame implements Colores {
                     UIManager.put("Panel.background", new ColorUIResource(51,51,51));
                     UIManager.put("OptionPane.messageForeground", new ColorUIResource(255,255,255));                                        
                     
-                    //UIManager.put("OptionPane.questionDialog.titlePane.foreground", new ColorUIResource(255,255,255));
-                    //UIManager.put("OptionPane.questionDialog.titlePane.background", new ColorUIResource(51,51,51));
-                    
                     /*ToolTip*/
                     UIManager.put("ToolTip.background", new ColorUIResource(31,31,31));
                     UIManager.put("ToolTip.border", BorderFactory.createLineBorder(new java.awt.Color(204,0,204)));
                     UIManager.put("ToolTip.foreground", new ColorUIResource(255,255,255));
                     UIManager.put("ToolTip.font", new java.awt.Font("Console", 1, 12));
-                                                           
+                         
+                    
                     /*
                     UIManager.put("ComboBox.selectionBackground", new ColorUIResource(204,0,204));
                     UIManager.put("ComboBox.selectionForeground", new ColorUIResource(255,255,255));
@@ -766,14 +784,14 @@ public class Login extends javax.swing.JFrame implements Colores {
                     UIManager.put("ComboBox.buttonHighlight", new ColorUIResource(153,0,0));
                     UIManager.put("ComboBox.buttonShadow", new ColorUIResource(153,0,0));
                     UIManager.put("ComboBox.border", BorderFactory.createLineBorder(new java.awt.Color(255, 0, 255)));
-                    
+                    */
                     UIManager.put("TableHeader.background", new ColorUIResource(51,51,51));
                     UIManager.put("TableHeader.foreground", new ColorUIResource(255,255,255));
-                    UIManager.put("TableHeader.cellBorder", BorderFactory.createLineBorder(new java.awt.Color(255, 0, 255)));
+                    //UIManager.put("TableHeader.cellBorder", BorderFactory.createLineBorder(new java.awt.Color(255, 0, 255)));
                     
-                    UIManager.put("Table.dropLineColor", new ColorUIResource(255,0,0));
-                    UIManager.put("Table.dropLineShortColor", new ColorUIResource(0,255,0));
-                    */
+                    //UIManager.put("Table.dropLineColor", new ColorUIResource(255,0,0));
+                    //UIManager.put("Table.dropLineShortColor", new ColorUIResource(0,255,0));
+                    
                 }catch(ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e){
                     e.printStackTrace();
                 }
@@ -783,6 +801,8 @@ public class Login extends javax.swing.JFrame implements Colores {
             }
         });
     }
+    
+    private boolean activar;
     
     private int xx;
     private int xy;

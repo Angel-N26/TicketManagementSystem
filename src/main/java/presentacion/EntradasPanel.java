@@ -46,7 +46,7 @@ public class EntradasPanel extends javax.swing.JPanel {
 
         panelNorth.setBackground(new java.awt.Color(51, 51, 51));
         panelNorth.setName("panelNorth"); // NOI18N
-        panelNorth.setLayout(new java.awt.GridLayout());
+        panelNorth.setLayout(new java.awt.GridLayout(1, 0));
 
         panelSeleccionEvento.setBackground(new java.awt.Color(51, 51, 51));
         panelSeleccionEvento.setMinimumSize(new java.awt.Dimension(160, 30));
@@ -81,12 +81,22 @@ public class EntradasPanel extends javax.swing.JPanel {
         btnGenerarEntradas.setBorder(null);
         btnGenerarEntradas.setText("Generar Entradas");
         btnGenerarEntradas.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnGenerarEntradas.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnGenerarEntradas.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnGenerarEntradas.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnGenerarEntradas.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnGenerarEntradas.setkStartColor(new java.awt.Color(204, 0, 204));
         btnGenerarEntradas.setName("btnGenerarEntradas"); // NOI18N
         btnGenerarEntradas.setPreferredSize(new java.awt.Dimension(180, 35));
         btnGenerarEntradas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnGenerarEntradasMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGenerarEntradasMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnGenerarEntradasMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnGenerarEntradasMouseReleased(evt);
             }
         });
         panelGenerarEntradas.add(btnGenerarEntradas);
@@ -159,14 +169,24 @@ public class EntradasPanel extends javax.swing.JPanel {
         actualizarListaEntradas();
     }//GEN-LAST:event_cbEventoMouseClicked
 
-    private void btnGenerarEntradasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseClicked
-        Evento evento = (Evento) cbEvento.getSelectedItem();
-        if(evento != null){
-            GenerarEntradas ge = new GenerarEntradas(evento, sacarEntradas(evento.getId()), asociacion);
-            ge.setVisible(true);
-            ge.setLocationRelativeTo(null);
+    private void btnGenerarEntradasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMousePressed
+        activar = true;
+    }//GEN-LAST:event_btnGenerarEntradasMousePressed
+
+    private void btnGenerarEntradasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseReleased
+        if(activar){
+            Evento evento = (Evento) cbEvento.getSelectedItem();
+            if(evento != null){
+                GenerarEntradas ge = new GenerarEntradas(evento, sacarEntradas(evento.getId()), asociacion);
+                ge.setVisible(true);
+                ge.setLocationRelativeTo(null);
+            }
         }
-    }//GEN-LAST:event_btnGenerarEntradasMouseClicked
+    }//GEN-LAST:event_btnGenerarEntradasMouseReleased
+
+    private void btnGenerarEntradasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseExited
+        activar = false;
+    }//GEN-LAST:event_btnGenerarEntradasMouseExited
 
     public void actualizarListaEntradas(){
         if(cbEvento.getSelectedItem() != null){
@@ -197,6 +217,8 @@ public class EntradasPanel extends javax.swing.JPanel {
         
         return entradas;
     }        
+    
+    private boolean activar;
     
     private final Asociacion asociacion;
     

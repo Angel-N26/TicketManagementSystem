@@ -96,8 +96,8 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         clean.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\clean.png")); // NOI18N
         clean.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         clean.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cleanMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cleanMousePressed(evt);
             }
         });
         panelCenter.add(clean, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
@@ -183,11 +183,21 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         btnModificar.setBorder(null);
         btnModificar.setText("Modificar");
         btnModificar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnModificar.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnModificar.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnModificar.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnModificar.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnModificar.setkStartColor(new java.awt.Color(204, 0, 204));
         btnModificar.setName("btnModificar"); // NOI18N
         btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnModificarMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnModificarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnModificarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnModificarMouseReleased(evt);
             }
         });
         panelCenter.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 90, 20));
@@ -203,12 +213,22 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         btnEliminar.setBorder(null);
         btnEliminar.setText("Eliminar");
         btnEliminar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnEliminar.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnEliminar.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnEliminar.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnEliminar.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnEliminar.setkStartColor(new java.awt.Color(204, 0, 204));
         btnEliminar.setName("btnEliminar"); // NOI18N
         btnEliminar.setPreferredSize(new java.awt.Dimension(180, 35));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEliminarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseReleased(evt);
             }
         });
         panelSouth.add(btnEliminar);
@@ -216,12 +236,22 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         btnAnadir.setBorder(null);
         btnAnadir.setText("Añadir");
         btnAnadir.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnAnadir.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnAnadir.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnAnadir.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnAnadir.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnAnadir.setkStartColor(new java.awt.Color(204, 0, 204));
         btnAnadir.setName("btnAnadir"); // NOI18N
         btnAnadir.setPreferredSize(new java.awt.Dimension(180, 35));
         btnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAnadirMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAnadirMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAnadirMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAnadirMouseReleased(evt);
             }
         });
         panelSouth.add(btnAnadir);
@@ -282,74 +312,92 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         }
     }//GEN-LAST:event_tfPrecioFocusLost
 
-    private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
-        if(guardar)
-        if(!tfNombre.getText().replace(" ","").equals("")){
-            if(!tfPrecio.getText().replace(" ","").equals("")){                
-                Membresia memb = new Membresia(tfNombre.getText(),
-                    Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
-                if(cm.insertarMembresia(memb)){
-                    actualizarListaMembresias();                   
+    private void btnModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseExited
+       activarMod = false;
+    }//GEN-LAST:event_btnModificarMouseExited
+
+    private void btnModificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseReleased
+        if(activarMod){
+            if(listMembresias.isSelectionEmpty()){
+                JOptionPane.showMessageDialog(this, "Selecciona una membresia", "Error", JOptionPane.ERROR_MESSAGE);
+            }else{    
+                Membresia m = listMembresias.getSelectedValue();
+                if(guardar)
+                if(!tfNombre.getText().replace(" ","").equals("")){
+                    if(!tfPrecio.getText().replace(" ","").equals("")){
+                        Membresia memb = new Membresia(m.getId_membresia(), tfNombre.getText(),
+                            Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
+                        if(cm.modificarMembresia(memb)){
+                            actualizarListaMembresias();                   
+                        }else{
+                            JOptionPane.showMessageDialog(this,
+                                "No se ha podido actualizar la membresia", "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                        }
+                    }else{
+                        tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+                        errorImgPrecio.setVisible(true); 
+                    }
                 }else{
-                    JOptionPane.showMessageDialog(this, 
-                        "No se ha podido añadir la membresia", "Error",
-                        JOptionPane.ERROR_MESSAGE);
+                    tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));        
+                    errorImgNombre.setVisible(true); 
                 }
-            }else{
-                tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-                errorImgPrecio.setVisible(true);
-            }
-        }else{
-            tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            errorImgNombre.setVisible(true);
-        }      
-    }//GEN-LAST:event_btnAnadirMouseClicked
-
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        if(listMembresias.isSelectionEmpty()){
-            JOptionPane.showMessageDialog(this, "Selecciona una membresia", "Error", JOptionPane.ERROR_MESSAGE);
-        }else{
-            int dialogResult = JOptionPane.showConfirmDialog (this, "Estas seguro que desea elimnar?",
-                "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-            if(dialogResult == JOptionPane.YES_OPTION){
-                if(cm.eliminarMembresia(listMembresias.getSelectedValue().getId_membresia())){            
-                    modeloLista.remove(listMembresias.getSelectedIndex());
-                    tfNombre.setText("");
-                    tfPrecio.setText("");
-                }
-            }
+            }            
         }
-    }//GEN-LAST:event_btnEliminarMouseClicked
+    }//GEN-LAST:event_btnModificarMouseReleased
 
-    private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
-        if(listMembresias.isSelectionEmpty()){
-            JOptionPane.showMessageDialog(this, "Selecciona una membresia", "Error", JOptionPane.ERROR_MESSAGE);
-        }else{    
-            Membresia m = listMembresias.getSelectedValue();
+    private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
+        activarEliminar = false;
+    }//GEN-LAST:event_btnEliminarMouseExited
+
+    private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
+        if(activarEliminar){
+            if(listMembresias.isSelectionEmpty()){
+                JOptionPane.showMessageDialog(this, "Selecciona una membresia", "Error", JOptionPane.ERROR_MESSAGE);
+            }else{
+                int dialogResult = JOptionPane.showConfirmDialog (this, "Estas seguro que desea elimnar?",
+                    "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                if(dialogResult == JOptionPane.YES_OPTION){
+                    if(cm.eliminarMembresia(listMembresias.getSelectedValue().getId_membresia())){            
+                        modeloLista.remove(listMembresias.getSelectedIndex());
+                        tfNombre.setText("");
+                        tfPrecio.setText("");
+                    }
+                }
+            }            
+        }
+    }//GEN-LAST:event_btnEliminarMouseReleased
+
+    private void btnAnadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseExited
+        activarAnadir = false;
+    }//GEN-LAST:event_btnAnadirMouseExited
+
+    private void btnAnadirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseReleased
+        if(activarAnadir){
             if(guardar)
             if(!tfNombre.getText().replace(" ","").equals("")){
-                if(!tfPrecio.getText().replace(" ","").equals("")){
-                    Membresia memb = new Membresia(m.getId_membresia(), tfNombre.getText(),
+                if(!tfPrecio.getText().replace(" ","").equals("")){                
+                    Membresia memb = new Membresia(tfNombre.getText(),
                         Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
-                    if(cm.modificarMembresia(memb)){
+                    if(cm.insertarMembresia(memb)){
                         actualizarListaMembresias();                   
                     }else{
-                        JOptionPane.showMessageDialog(this,
-                            "No se ha podido actualizar la membresia", "Error",
+                        JOptionPane.showMessageDialog(this, 
+                            "No se ha podido añadir la membresia", "Error",
                             JOptionPane.ERROR_MESSAGE);
                     }
                 }else{
                     tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-                    errorImgPrecio.setVisible(true); 
+                    errorImgPrecio.setVisible(true);
                 }
             }else{
-                tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));        
-                errorImgNombre.setVisible(true); 
-            }
+                tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+                errorImgNombre.setVisible(true);
+            } 
         }
-    }//GEN-LAST:event_btnModificarMouseClicked
+    }//GEN-LAST:event_btnAnadirMouseReleased
 
-    private void cleanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cleanMouseClicked
+    private void cleanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cleanMousePressed
         listMembresias.setSelectedValue(null, false);        
         tfNombre.setText("");
         tfPrecio.setText("");
@@ -359,7 +407,19 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         
         tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         errorImgPrecio.setVisible(false);
-    }//GEN-LAST:event_cleanMouseClicked
+    }//GEN-LAST:event_cleanMousePressed
+
+    private void btnModificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMousePressed
+        activarMod = true;
+    }//GEN-LAST:event_btnModificarMousePressed
+
+    private void btnEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMousePressed
+        activarEliminar = true;
+    }//GEN-LAST:event_btnEliminarMousePressed
+
+    private void btnAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMousePressed
+        activarAnadir = true;
+    }//GEN-LAST:event_btnAnadirMousePressed
 
     private ArrayList<Membresia> obtenerMembresias(){
         ControlMembresia cmem = new ControlMembresia();
@@ -371,6 +431,10 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         modeloLista.addAll(0, obtenerMembresias());
     }   
 
+    private boolean activarMod;
+    private boolean activarEliminar;
+    private boolean activarAnadir;
+    
     private final Asociacion asociacion;
     
     private final ControlMembresia cm;

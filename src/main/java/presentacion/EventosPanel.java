@@ -183,12 +183,22 @@ public class EventosPanel extends javax.swing.JPanel {
         btnEliminar.setBorder(null);
         btnEliminar.setText("Eliminar");
         btnEliminar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnEliminar.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnEliminar.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnEliminar.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnEliminar.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnEliminar.setkStartColor(new java.awt.Color(204, 0, 204));
         btnEliminar.setName("btnEliminar"); // NOI18N
         btnEliminar.setPreferredSize(new java.awt.Dimension(180, 35));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEliminarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseReleased(evt);
             }
         });
         panelSouth.add(btnEliminar);
@@ -196,12 +206,22 @@ public class EventosPanel extends javax.swing.JPanel {
         btnAnadir.setBorder(null);
         btnAnadir.setText("Añadir");
         btnAnadir.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnAnadir.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnAnadir.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnAnadir.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnAnadir.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnAnadir.setkStartColor(new java.awt.Color(204, 0, 204));
         btnAnadir.setName("btnAnadir"); // NOI18N
         btnAnadir.setPreferredSize(new java.awt.Dimension(180, 35));
         btnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAnadirMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAnadirMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAnadirMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAnadirMouseReleased(evt);
             }
         });
         panelSouth.add(btnAnadir);
@@ -252,26 +272,6 @@ public class EventosPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_buscarMouseClicked
 
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        int index = table.getSelectedRow();
-        
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            if(ce.eliminarEvento((Integer)dtm.getValueAt(index, 0))){
-                dtm.removeRow(index);
-            }
-        }
-    }//GEN-LAST:event_btnEliminarMouseClicked
-
-    private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
-        JPanel card = (JPanel) this.getParent();
-        EditEventoPanel editEP = new EditEventoPanel(asociacion);
-        card.add(editEP, "cardEditEP");
-        CardLayout cardLayout = (CardLayout) card.getLayout();
-        cardLayout.show(card, "cardEditEP");
-    }//GEN-LAST:event_btnAnadirMouseClicked
-
     private void buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarMouseEntered
         buscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-white.png"));
     }//GEN-LAST:event_buscarMouseEntered
@@ -294,6 +294,46 @@ public class EventosPanel extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_tableMouseClicked
+
+    private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
+        activarEliminar = false;
+    }//GEN-LAST:event_btnEliminarMouseExited
+
+    private void btnEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMousePressed
+        activarEliminar = true;
+    }//GEN-LAST:event_btnEliminarMousePressed
+
+    private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
+        if(activarEliminar){
+            int index = table.getSelectedRow();
+        
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                if(ce.eliminarEvento((Integer)dtm.getValueAt(index, 0))){
+                    dtm.removeRow(index);
+                }
+            }
+        }
+    }//GEN-LAST:event_btnEliminarMouseReleased
+
+    private void btnAnadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseExited
+        activarAnadir = false;
+    }//GEN-LAST:event_btnAnadirMouseExited
+
+    private void btnAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMousePressed
+        activarAnadir = true;
+    }//GEN-LAST:event_btnAnadirMousePressed
+
+    private void btnAnadirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseReleased
+        if(activarAnadir){
+            JPanel card = (JPanel) this.getParent();
+            EditEventoPanel editEP = new EditEventoPanel(asociacion);
+            card.add(editEP, "cardEditEP");
+            CardLayout cardLayout = (CardLayout) card.getLayout();
+            cardLayout.show(card, "cardEditEP");
+        }
+    }//GEN-LAST:event_btnAnadirMouseReleased
     
     public ArrayList<Evento> obtenerEventos(){
         ControlEvento ceve = new ControlEvento();
@@ -320,6 +360,9 @@ public class EventosPanel extends javax.swing.JPanel {
             dtm.addRow(newSocio);
         }
     }    
+    
+    private boolean activarEliminar;
+    private boolean activarAnadir;
     
     private final Asociacion asociacion;
     

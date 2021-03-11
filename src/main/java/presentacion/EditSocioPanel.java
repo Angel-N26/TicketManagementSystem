@@ -513,13 +513,23 @@ public class EditSocioPanel extends javax.swing.JPanel {
         btnEliminar.setText("Eliminar");
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnEliminar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnEliminar.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnEliminar.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnEliminar.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnEliminar.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnEliminar.setkStartColor(new java.awt.Color(204, 0, 204));
         btnEliminar.setName("btnEliminar"); // NOI18N
         btnEliminar.setNextFocusableComponent(btnCancelar);
         btnEliminar.setPreferredSize(new java.awt.Dimension(180, 35));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEliminarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseReleased(evt);
             }
         });
         panelSouthLeft.add(btnEliminar);
@@ -535,13 +545,23 @@ public class EditSocioPanel extends javax.swing.JPanel {
         btnCancelar.setText("Cancelar");
         btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCancelar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnCancelar.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnCancelar.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnCancelar.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnCancelar.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnCancelar.setkStartColor(new java.awt.Color(204, 0, 204));
         btnCancelar.setName("btnCancelar"); // NOI18N
         btnCancelar.setNextFocusableComponent(btnAnadir);
         btnCancelar.setPreferredSize(new java.awt.Dimension(180, 35));
         btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCancelarMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCancelarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseReleased(evt);
             }
         });
         panelSouthRight.add(btnCancelar);
@@ -550,13 +570,23 @@ public class EditSocioPanel extends javax.swing.JPanel {
         btnAnadir.setText("Añadir");
         btnAnadir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnAnadir.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnAnadir.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnAnadir.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnAnadir.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnAnadir.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnAnadir.setkStartColor(new java.awt.Color(204, 0, 204));
         btnAnadir.setName("btnAnadir"); // NOI18N
         btnAnadir.setNextFocusableComponent(tfNombre);
         btnAnadir.setPreferredSize(new java.awt.Dimension(180, 35));
         btnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAnadirMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAnadirMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAnadirMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAnadirMouseReleased(evt);
             }
         });
         panelSouthRight.add(btnAnadir);
@@ -665,40 +695,6 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfLocalidad.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
     }//GEN-LAST:event_tfLocalidadFocusLost
 
-    private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseClicked
-        JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFechaNacimiento.getDateEditor());
-        JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)dcFechaIngreso.getDateEditor());        
-        Membresia m = (Membresia) cbMembresias.getSelectedItem();
-        Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
-            tfEmail.getText(), Date.valueOf(dateChooserEditor1.getText()),
-            direccion(), Integer.parseInt(tfTlf.getText()), Date.valueOf(dateChooserEditor2.getText()),
-            m.getId_membresia(), cbPagos.isSelected(), /*jLabel1.getIcon().toString()*/null, asociacion.getNombre());
-
-        if(btnAnadir.getText().equals("Modificar")){
-            if(cs.modificarSocio(s, socio.getDni(), asociacion.getNombre())){
-                dispose();
-            }
-        }else if(btnAnadir.getText().equals("Añadir")){
-            if(cs.insertarSocio(s)){
-                dispose();
-            }
-        }
-    }//GEN-LAST:event_btnAnadirMouseClicked
-
-    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
-        dispose();
-    }//GEN-LAST:event_btnCancelarMouseClicked
-
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            if(cs.eliminarSocio(tfDNI.getText())){
-                dispose();
-            }
-        }
-    }//GEN-LAST:event_btnEliminarMouseClicked
-
     private void dcFechaNacimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dcFechaNacimientoMouseClicked
         tfNombre.setText(dcFechaNacimiento.getDateFormatString());
     }//GEN-LAST:event_dcFechaNacimientoMouseClicked
@@ -715,6 +711,70 @@ public class EditSocioPanel extends javax.swing.JPanel {
             fotoSocio.setIcon(new ImageIcon(file.getAbsolutePath()));
         }
     }//GEN-LAST:event_editMouseClicked
+
+    private void btnAnadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseExited
+        activarAnadir = false;
+    }//GEN-LAST:event_btnAnadirMouseExited
+
+    private void btnAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMousePressed
+        activarAnadir = true;
+    }//GEN-LAST:event_btnAnadirMousePressed
+
+    private void btnAnadirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseReleased
+        if(activarAnadir){
+            JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFechaNacimiento.getDateEditor());
+            JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)dcFechaIngreso.getDateEditor());        
+            Membresia m = (Membresia) cbMembresias.getSelectedItem();
+            Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
+                tfEmail.getText(), Date.valueOf(dateChooserEditor1.getText()),
+                direccion(), Integer.parseInt(tfTlf.getText()), Date.valueOf(dateChooserEditor2.getText()),
+                m.getId_membresia(), cbPagos.isSelected(), /*jLabel1.getIcon().toString()*/null, asociacion.getNombre());
+
+            if(btnAnadir.getText().equals("Modificar")){
+                if(cs.modificarSocio(s, socio.getDni(), asociacion.getNombre())){
+                    dispose();
+                }
+            }else if(btnAnadir.getText().equals("Añadir")){
+                if(cs.insertarSocio(s)){
+                    dispose();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnAnadirMouseReleased
+
+    private void btnCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseExited
+        activarCancelar = false;
+    }//GEN-LAST:event_btnCancelarMouseExited
+
+    private void btnCancelarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMousePressed
+        activarCancelar = true;
+    }//GEN-LAST:event_btnCancelarMousePressed
+
+    private void btnCancelarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseReleased
+        if(activarCancelar){
+            dispose();
+        }
+    }//GEN-LAST:event_btnCancelarMouseReleased
+
+    private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
+        activarEliminar = false;
+    }//GEN-LAST:event_btnEliminarMouseExited
+
+    private void btnEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMousePressed
+        activarEliminar = true;
+    }//GEN-LAST:event_btnEliminarMousePressed
+
+    private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
+        if(activarEliminar){
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                if(cs.eliminarSocio(tfDNI.getText())){
+                    dispose();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnEliminarMouseReleased
     
     public void dispose(){
         this.show(false);
@@ -798,6 +858,10 @@ public class EditSocioPanel extends javax.swing.JPanel {
             cbProvincia.setSelectedItem(c[4].replaceFirst(" ", ""));
         }
     }        
+    
+    private boolean activarCancelar;
+    private boolean activarEliminar;
+    private boolean activarAnadir;
     
     private Asociacion asociacion;
     

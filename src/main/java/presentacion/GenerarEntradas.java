@@ -164,12 +164,25 @@ public class GenerarEntradas extends javax.swing.JFrame {
         btnGenerarEntradas.setBorder(null);
         btnGenerarEntradas.setText("Generar Entradas");
         btnGenerarEntradas.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnGenerarEntradas.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnGenerarEntradas.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnGenerarEntradas.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnGenerarEntradas.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnGenerarEntradas.setkStartColor(new java.awt.Color(204, 0, 204));
         btnGenerarEntradas.setName("btnGenerarEntradas"); // NOI18N
         btnGenerarEntradas.setPreferredSize(new java.awt.Dimension(180, 35));
         btnGenerarEntradas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGenerarEntradasMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGenerarEntradasMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnGenerarEntradasMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnGenerarEntradasMouseReleased(evt);
             }
         });
         panelSouth.add(btnGenerarEntradas);
@@ -225,6 +238,44 @@ public class GenerarEntradas extends javax.swing.JFrame {
             dispose();
         }
     }//GEN-LAST:event_btnGenerarEntradasMouseClicked
+
+    private void btnGenerarEntradasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseExited
+        activar = false;
+    }//GEN-LAST:event_btnGenerarEntradasMouseExited
+
+    private void btnGenerarEntradasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMousePressed
+        activar = true;
+    }//GEN-LAST:event_btnGenerarEntradasMousePressed
+
+    private void btnGenerarEntradasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseReleased
+        if(activar){
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea generar?","Warning",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION){        
+                ControlEntradas ce = new ControlEntradas();
+                if(!socioConEntrada.isEmpty()){
+                    for(int i = 0 ; i < socioConEntrada.size() ; i++){
+                        Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni());
+                        ce.insertarEntrada(entrada);
+                        entrada = ce.obtenerEntrada(entrada.getId_evento(), entrada.getId_socio());
+                        try{
+                            CrearQR qr = new CrearQR();
+                            BufferedImage imagen = qr.crearQR(entrada.getId_evento()
+                                    +"-"+entrada.getId_socio()+"-"+entrada.getNum_entrada(), 300, 300);
+                            File outputfile = new File("C:\\Users\\angel\\Escritorio\\qr"+entrada.getNum_entrada()+".png");
+                            ImageIO.write(imagen, "png", outputfile);
+                        }catch(WriterException e){
+                            System.out.println(e.getMessage());
+                        }catch (IOException ex) {
+                            Logger.getLogger(GenerarEntradas.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                    }
+                }
+                dispose();
+            }
+        }
+    }//GEN-LAST:event_btnGenerarEntradasMouseReleased
     
     private void rellenarListas(){
         ControlSocio cs = new ControlSocio();
@@ -250,6 +301,8 @@ public class GenerarEntradas extends javax.swing.JFrame {
         modeloListaSociosCon.addAll(0, sociosCon);
         modeloListaSociosSin.addAll(0, sociosSin);
     }     
+    
+    private boolean activar;
     
     private Asociacion asociacion;
     

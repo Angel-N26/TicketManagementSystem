@@ -174,14 +174,24 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         btnEditar.setText("Editar");
         btnEditar.setkEndColor(new java.awt.Color(51, 0, 51));
         btnEditar.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnEditar.setkHoverForeGround(new java.awt.Color(255, 255, 255));
         btnEditar.setkHoverStartColor(new java.awt.Color(51, 0, 51));
-        btnEditar.setkPressedColor(new java.awt.Color(255, 102, 255));
+        btnEditar.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnEditar.setkStartColor(new java.awt.Color(204, 0, 204));
         btnEditar.setName("btnEditar"); // NOI18N
         btnEditar.setPreferredSize(new java.awt.Dimension(185, 35));
         btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEditarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditarMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEditarMouseReleased(evt);
             }
         });
         panelSouth.add(btnEditar);
@@ -244,6 +254,53 @@ public class JuntaDirectiva extends javax.swing.JFrame {
             btnEditar.setText("Editar");
         }        
     }//GEN-LAST:event_btnEditarMouseClicked
+
+    private void btnEditarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseExited
+        activar = false;
+    }//GEN-LAST:event_btnEditarMouseExited
+
+    private void btnEditarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseReleased
+        if(activar){
+            if(btnEditar.getText().equals("Editar")){
+                cbPresidente.setEnabled(true);
+                cbVicepresidente.setEnabled(true);
+                cbSecretario.setEnabled(true);
+                cbTesorero.setEnabled(true);
+                cbVocal1.setEnabled(true);
+                cbVocal2.setEnabled(true);
+
+                btnEditar.setText("Guardar");
+            }else if(btnEditar.getText().equals("Guardar")){
+                if(modificarCargo(lblPresidente.getText(), cbPresidente) && 
+                        modificarCargo(lblVicepresidente.getText(), cbVicepresidente) &&
+                        modificarCargo(lblSecretario.getText(), cbSecretario) &&
+                        modificarCargo(lblTesorero.getText(), cbTesorero) &&
+                        modificarCargo(lblVocal1.getText(), cbVocal1) &&
+                        modificarCargo(lblVocal2.getText(), cbVocal2)){
+
+                    cbPresidente.setEnabled(false);
+                    cbVicepresidente.setEnabled(false);
+                    cbSecretario.setEnabled(false);
+                    cbTesorero.setEnabled(false);
+                    cbVocal1.setEnabled(false);
+                    cbVocal2.setEnabled(false);
+
+                    JOptionPane.showMessageDialog(this, "Junta Directiva actualizada",
+                        "Valido", JOptionPane.PLAIN_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(this,  
+                        "No se ha podido actualizar los miembros de la JuntaDirectiva",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                btnEditar.setText("Editar");
+            } 
+        }        
+    }//GEN-LAST:event_btnEditarMouseReleased
+
+    private void btnEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseEntered
+        activar = true;
+    }//GEN-LAST:event_btnEditarMouseEntered
     
     private boolean modificarCargo(String nombre, JComboBox cb){
         boolean modificado;
@@ -327,6 +384,8 @@ public class JuntaDirectiva extends javax.swing.JFrame {
             cbVocal2.addItem(soc.get(i));
         }        
     }           
+    
+    private boolean activar;
     
     private final Asociacion asociacion;
     

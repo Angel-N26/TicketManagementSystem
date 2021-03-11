@@ -24,7 +24,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     public AsociacionPanel(Asociacion asociacion) {
         this.asociacion = asociacion;
         
-        initComponents();        
+        initComponents();
     }
 
     /**
@@ -123,14 +123,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
         panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, -1));
 
-        tfNombre.setEditable(false);
         tfNombre.setBackground(new java.awt.Color(51, 51, 51));
-        tfNombre.setForeground(new java.awt.Color(153, 153, 153));
+        tfNombre.setForeground(new java.awt.Color(255, 255, 255));
         tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfNombre.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfNombre.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        tfNombre.setDisabledTextColor(new java.awt.Color(80, 80, 80));
+        tfNombre.setEnabled(false);
         tfNombre.setName("tfNombre"); // NOI18N
-        tfNombre.setOpaque(false);
         tfNombre.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -148,14 +147,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         lblTipo.setName("lblTipo"); // NOI18N
         panel.add(lblTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 240, -1));
 
-        tfTipo.setEditable(false);
         tfTipo.setBackground(new java.awt.Color(51, 51, 51));
-        tfTipo.setForeground(new java.awt.Color(153, 153, 153));
+        tfTipo.setForeground(new java.awt.Color(255, 255, 255));
         tfTipo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfTipo.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfTipo.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        tfTipo.setDisabledTextColor(new java.awt.Color(80, 80, 80));
+        tfTipo.setEnabled(false);
         tfTipo.setName("tfTipo"); // NOI18N
-        tfTipo.setOpaque(false);
         tfTipo.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfTipo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -184,6 +182,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         dcFechaCreacion.getCalendarButton().setBackground(new Color(51,51,51));
         dcFechaCreacion.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dcFechaCreacion.getCalendarButton().setEnabled(false);
+        dcFechaCreacion.setForeground(new java.awt.Color(255, 255, 255));
         dcFechaCreacion.setDateFormatString("yyy-MM-dd");
         dcFechaCreacion.setName("dcFechaCreacion"); // NOI18N
         panel.add(dcFechaCreacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 260, 25));
@@ -199,14 +198,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         jLabel2.setToolTipText("ej: 666666666");
         panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 110, -1, -1));
 
-        tfTlf.setEditable(false);
         tfTlf.setBackground(new java.awt.Color(51, 51, 51));
-        tfTlf.setForeground(new java.awt.Color(153, 153, 153));
+        tfTlf.setForeground(new java.awt.Color(255, 255, 255));
         tfTlf.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfTlf.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfTlf.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        tfTlf.setDisabledTextColor(new java.awt.Color(80, 80, 80));
+        tfTlf.setEnabled(false);
         tfTlf.setName("tfTlf"); // NOI18N
-        tfTlf.setOpaque(false);
         tfTlf.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfTlf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -229,14 +227,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         jLabel3.setToolTipText("ej: alguien@example.com/es");
         panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 180, -1, -1));
 
-        tfCorreo.setEditable(false);
         tfCorreo.setBackground(new java.awt.Color(51, 51, 51));
-        tfCorreo.setForeground(new java.awt.Color(153, 153, 153));
+        tfCorreo.setForeground(new java.awt.Color(255, 255, 255));
         tfCorreo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfCorreo.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfCorreo.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        tfCorreo.setDisabledTextColor(new java.awt.Color(80, 80, 80));
+        tfCorreo.setEnabled(false);
         tfCorreo.setName("tfCorreo"); // NOI18N
-        tfCorreo.setOpaque(false);
         tfCorreo.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -265,14 +262,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
         panel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
 
-        tfCalle.setEditable(false);
         tfCalle.setBackground(new java.awt.Color(51, 51, 51));
-        tfCalle.setForeground(new java.awt.Color(153, 153, 153));
+        tfCalle.setForeground(new java.awt.Color(255, 255, 255));
         tfCalle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfCalle.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfCalle.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        tfCalle.setDisabledTextColor(new java.awt.Color(80, 80, 80));
+        tfCalle.setEnabled(false);
         tfCalle.setName("tfCalle"); // NOI18N
-        tfCalle.setOpaque(false);
         tfCalle.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfCalle.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -295,14 +291,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
         panel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 320, -1, -1));
 
-        tfNumero.setEditable(false);
         tfNumero.setBackground(new java.awt.Color(51, 51, 51));
-        tfNumero.setForeground(new java.awt.Color(153, 153, 153));
+        tfNumero.setForeground(new java.awt.Color(255, 255, 255));
         tfNumero.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfNumero.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfNumero.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        tfNumero.setDisabledTextColor(new java.awt.Color(80, 80, 80));
+        tfNumero.setEnabled(false);
         tfNumero.setName("tfNumero"); // NOI18N
-        tfNumero.setOpaque(false);
         tfNumero.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfNumero.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -325,14 +320,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         jLabel4.setToolTipText("ej: 6E");
         panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, -1, -1));
 
-        tfPiso.setEditable(false);
         tfPiso.setBackground(new java.awt.Color(51, 51, 51));
-        tfPiso.setForeground(new java.awt.Color(153, 153, 153));
+        tfPiso.setForeground(new java.awt.Color(255, 255, 255));
         tfPiso.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfPiso.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfPiso.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        tfPiso.setDisabledTextColor(new java.awt.Color(80, 80, 80));
+        tfPiso.setEnabled(false);
         tfPiso.setName("tfPiso"); // NOI18N
-        tfPiso.setOpaque(false);
         tfPiso.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfPiso.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -356,14 +350,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         jLabel6.setToolTipText("");
         panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, -1, -1));
 
-        tfCodPostal.setEditable(false);
         tfCodPostal.setBackground(new java.awt.Color(51, 51, 51));
-        tfCodPostal.setForeground(new java.awt.Color(153, 153, 153));
+        tfCodPostal.setForeground(new java.awt.Color(255, 255, 255));
         tfCodPostal.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfCodPostal.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfCodPostal.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        tfCodPostal.setDisabledTextColor(new java.awt.Color(80, 80, 80));
+        tfCodPostal.setEnabled(false);
         tfCodPostal.setName("tfCodPostal"); // NOI18N
-        tfCodPostal.setOpaque(false);
         tfCodPostal.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfCodPostal.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -381,15 +374,14 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         lblLocalidad.setName("lblLocalidad"); // NOI18N
         panel.add(lblLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 310, -1));
 
-        tfLocalidad.setEditable(false);
         tfLocalidad.setBackground(new java.awt.Color(51, 51, 51));
-        tfLocalidad.setForeground(new java.awt.Color(153, 153, 153));
+        tfLocalidad.setForeground(new java.awt.Color(255, 255, 255));
         tfLocalidad.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfLocalidad.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfLocalidad.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        tfLocalidad.setDisabledTextColor(new java.awt.Color(80, 80, 80));
+        tfLocalidad.setEnabled(false);
         tfLocalidad.setName("tfLocalidad"); // NOI18N
         tfLocalidad.setNextFocusableComponent(cbProvincia);
-        tfLocalidad.setOpaque(false);
         tfLocalidad.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfLocalidad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -430,14 +422,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         jLabel7.setToolTipText("ej: G66666666");
         panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, -1, -1));
 
-        tfCIF.setEditable(false);
         tfCIF.setBackground(new java.awt.Color(51, 51, 51));
-        tfCIF.setForeground(new java.awt.Color(153, 153, 153));
+        tfCIF.setForeground(new java.awt.Color(255, 255, 255));
         tfCIF.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfCIF.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfCIF.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        tfCIF.setDisabledTextColor(new java.awt.Color(80, 80, 80));
+        tfCIF.setEnabled(false);
         tfCIF.setName("tfCIF"); // NOI18N
-        tfCIF.setOpaque(false);
         tfCIF.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfCIF.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -460,14 +451,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
         panel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 490, -1, -1));
 
-        tfNReg.setEditable(false);
         tfNReg.setBackground(new java.awt.Color(51, 51, 51));
-        tfNReg.setForeground(new java.awt.Color(153, 153, 153));
+        tfNReg.setForeground(new java.awt.Color(255, 255, 255));
         tfNReg.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfNReg.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfNReg.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        tfNReg.setDisabledTextColor(new java.awt.Color(80, 80, 80));
+        tfNReg.setEnabled(false);
         tfNReg.setName("tfNReg"); // NOI18N
-        tfNReg.setOpaque(false);
         tfNReg.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfNReg.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -484,12 +474,22 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         btnEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnEditar.setkBorderRadius(20);
         btnEditar.setkEndColor(new java.awt.Color(51, 0, 51));
+        btnEditar.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        btnEditar.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnEditar.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        btnEditar.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnEditar.setkStartColor(new java.awt.Color(204, 0, 204));
         btnEditar.setName("btnEditar"); // NOI18N
         btnEditar.setNextFocusableComponent(tfNombre);
         btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEditarMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEditarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEditarMouseReleased(evt);
             }
         });
         panel.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 470, -1, -1));
@@ -538,10 +538,11 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }
     
     private void tfTlfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusGained
-        if(tfTlf.isEditable())
+        if(tfTlf.isEditable()){
             tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
             jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
             tlfVal = true;
+        }
     }//GEN-LAST:event_tfTlfFocusGained
 
     private void tfTlfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusLost
@@ -748,32 +749,6 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         }
     }//GEN-LAST:event_tfCodPostalFocusLost
 
-    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
-        JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)dcFechaCreacion.getDateEditor());        
-        if(btnEditar.getText().equals("Editar")){
-            editable(true, WORDS_WHITE);
-            btnEditar.setText("Guardar");
-        }else{
-            if(valido()){
-                ControlAsociacion ca = new ControlAsociacion();
-                Asociacion asoc = new Asociacion(tfNombre.getText(),tfTipo.getText(),
-                    Date.valueOf(dateChooserEditor2.getText()), Integer.parseInt(tfTlf.getText()),
-                    tfCorreo.getText(), direccion(), tfCIF.getText(),
-                    Integer.parseInt(tfNReg.getText()), logo.getIcon().toString());
-                if(ca.modificarAsociacion(asoc, asociacion.getNombre())){
-                    editable(false, WORDS_GRAY);
-                    btnEditar.setText("Editar");
-                    lblNombreLogo.setText(tfNombre.getText());
-                    asociacion = asoc;
-                }else{
-                    JOptionPane.showMessageDialog(this, 
-                        "No se ha podido actualizar la asoicación", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        }
-    }//GEN-LAST:event_btnEditarMouseClicked
-
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
@@ -787,6 +762,48 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         }
     }//GEN-LAST:event_editMouseClicked
 
+    private void btnEditarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseReleased
+        if(activar){
+            JTextFieldDateEditor dcEditor2 = ((JTextFieldDateEditor)dcFechaCreacion.getDateEditor());               
+            Date fechaCreacion = null;
+            if(!dcEditor2.getText().equals(""))
+                fechaCreacion = Date.valueOf(dcEditor2.getText());
+
+            int tlf = Integer.parseInt(tfTlf.getText());
+            int nReg = Integer.parseInt(tfNReg.getText());
+
+            if(btnEditar.getText().equals("Editar")){
+                editable(true);
+                btnEditar.setText("Guardar");
+            }else{
+                if(valido()){
+                    ControlAsociacion ca = new ControlAsociacion();
+                    Asociacion asoc = new Asociacion(tfNombre.getText(),tfTipo.getText(),
+                        fechaCreacion, tlf, tfCorreo.getText(), direccion(),
+                        tfCIF.getText(), nReg, logo.getIcon().toString());
+                    if(ca.modificarAsociacion(asoc, asociacion.getNombre())){
+                        editable(false);
+                        btnEditar.setText("Editar");
+                        lblNombreLogo.setText(tfNombre.getText());
+                        asociacion = asoc;
+                    }else{
+                        JOptionPane.showMessageDialog(this, 
+                            "No se ha podido actualizar la asoicación", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_btnEditarMouseReleased
+
+    private void btnEditarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseExited
+        activar = false;
+    }//GEN-LAST:event_btnEditarMouseExited
+
+    private void btnEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMousePressed
+        activar = true;
+    }//GEN-LAST:event_btnEditarMousePressed
+    
     public void rellenarCampos(){
         tfNombre.setText(asociacion.getNombre());
         lblNombreLogo.setText(asociacion.getNombre());
@@ -800,32 +817,21 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         logo.setIcon(new ImageIcon(asociacion.getRutaLogo()));
     }
     
-    public void editable(boolean b, Color c){
-        tfNombre.setEditable(b);
-        tfNombre.setForeground(c);
-        tfTipo.setEditable(b);
-        tfTipo.setForeground(c);
+    public void editable(boolean b){
+        tfNombre.setEnabled(b);        
+        tfTipo.setEnabled(b);        
         dcFechaCreacion.getCalendarButton().setEnabled(b);
-        dcFechaCreacion.setForeground(c);
-        tfTlf.setEditable(b);
-        tfTlf.setForeground(c);
-        tfCorreo.setEditable(b);
-        tfCorreo.setForeground(c);        
-        tfCalle.setEditable(b);
-        tfCalle.setForeground(c);
-        tfNumero.setEditable(b);
-        tfNumero.setForeground(c);
-        tfPiso.setEditable(b);
-        tfPiso.setForeground(c);        
-        tfCodPostal.setEditable(b);
-        tfCodPostal.setForeground(c);
-        tfLocalidad.setEditable(b);
-        tfLocalidad.setForeground(c);
+        dcFechaCreacion.setForeground(new Color(255,255,255));
+        tfTlf.setEnabled(b);        
+        tfCorreo.setEnabled(b);                
+        tfCalle.setEnabled(b);        
+        tfNumero.setEnabled(b);        
+        tfPiso.setEnabled(b);          
+        tfCodPostal.setEnabled(b);        
+        tfLocalidad.setEnabled(b);        
         cbProvincia.setEnabled(b);        
-        tfCIF.setEditable(b);
-        tfCIF.setForeground(c);
-        tfNReg.setEditable(b);
-        tfNReg.setForeground(c);
+        tfCIF.setEnabled(b);        
+        tfNReg.setEnabled(b);        
         
         edit.setVisible(b);
     }
@@ -893,8 +899,8 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         
         return valido;
     }
-    
-    private Asociacion asociacion;
+
+    private Asociacion asociacion;   
     
     private boolean nombreVal = true;
     private boolean tlfVal = true;
@@ -905,6 +911,8 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     private boolean numVal = true;
     private boolean pisoVal = true;
     private boolean codPosVal = true;
+    
+    private boolean activar;
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnEditar;
