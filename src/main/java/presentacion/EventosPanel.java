@@ -286,7 +286,7 @@ public class EventosPanel extends javax.swing.JPanel {
             Evento evento = ce.obtenerEvento((Integer)dtm.getValueAt(index, 0), asociacion.getNombre());
             
             JPanel card = (JPanel) this.getParent();
-            EditEventoPanel editEP = new EditEventoPanel(evento);
+            EditEventoPanel editEP = new EditEventoPanel(evento, asociacion);
             editEP.rellenarCampos();
             card.add(editEP, "cardEditEP");
             CardLayout cardLayout = (CardLayout) card.getLayout();

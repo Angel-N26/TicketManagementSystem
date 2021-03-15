@@ -5,43 +5,54 @@ package dominio;
  **/
 public class Entrada {
         
-    private int id_evento;
-    private String id_socio;
-    private int num_entrada;
+    private int idEvento;
+    private String idSocio;
+    private int numEntrada;
+    private String nombreAsoc;
     
-    public Entrada(int id_evento, String id_socio){      
-        this.id_evento = id_evento;
-        this.id_socio = id_socio;
+    public Entrada(int idEvento, String idSocio, String nombreAsoc){      
+        this.idEvento = idEvento;
+        this.idSocio = idSocio;
+        this.nombreAsoc = nombreAsoc;
     }
     
-    public Entrada(int id_evento, String id_socio, int num_entrada){      
-        this.id_evento = id_evento;
-        this.id_socio = id_socio;
-        this.num_entrada = num_entrada;
+    public Entrada(int idEvento, String idSocio, int numEntrada, String nombreAsoc){      
+        this.idEvento = idEvento;
+        this.idSocio = idSocio;
+        this.numEntrada = numEntrada;
+        this.nombreAsoc = nombreAsoc;
     }    
 
-    public int getId_evento() {
-        return id_evento;
+    public int getIdEvento() {
+        return idEvento;
     }    
     
-    public void setId_evento(int id_evento) {
-        this.id_evento = id_evento;
+    public void setIdEvento(int idEvento) {
+        this.idEvento = idEvento;
     }
 
-    public String getId_socio() {
-        return id_socio;
+    public String getIdSocio() {
+        return idSocio;
     }    
     
-    public void setId_socio(String id_socio) {
-        this.id_socio = id_socio;
+    public void setIdSocio(String idSocio) {
+        this.idSocio = idSocio;
     }
     
-    public int getNum_entrada() {
-        return num_entrada;
+    public int getNumEntrada() {
+        return numEntrada;
+    }
+
+    public String getNombreAsoc() {
+        return nombreAsoc;
+    }
+
+    public void setNombreAsoc(String nombreAsoc) {
+        this.nombreAsoc = nombreAsoc;
     }
     
     @Override
     public String toString(){
-        return this.id_evento + " - " + this.id_socio;
+        return this.idEvento + " - " + this.idSocio;
     }
 }

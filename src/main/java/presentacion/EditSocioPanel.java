@@ -496,7 +496,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         cbPagos.setText("Al dia de pagos");
         cbPagos.setName("cbPagos"); // NOI18N
         cbPagos.setNextFocusableComponent(btnEliminar);
-        panelCenter.add(cbPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, -1, 25));
+        panelCenter.add(cbPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, -1, 25));
 
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
 
@@ -542,7 +542,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         panelSouthRight.setMinimumSize(new java.awt.Dimension(400, 55));
         panelSouthRight.setName("panelSouthRight"); // NOI18N
         panelSouthRight.setPreferredSize(new java.awt.Dimension(400, 55));
-        panelSouthRight.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20));
+        panelSouthRight.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 20));
 
         btnCancelar.setBorder(null);
         btnCancelar.setText("Cancelar");

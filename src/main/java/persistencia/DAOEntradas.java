@@ -19,15 +19,16 @@ public class DAOEntradas {
         con = Agente.getConexion();
     }
 
-    public ArrayList<Entrada> obtenerEntradasDAO(){
+    public ArrayList<Entrada> obtenerEntradasDAO(String nombreAsoc){
        ArrayList listaEntradas = new ArrayList<Entrada>();
         ResultSet rs;
 	try {
-            String sql = "select * from entradas";
+            String sql = "select * from entradas where nombreAsoc = ?";
             pst = con.prepareStatement(sql);
+            pst.setString(1, nombreAsoc);
             rs = pst.executeQuery();
             while(rs.next()) {
-                Entrada entrada = new Entrada(rs.getInt(1), rs.getString(2), rs.getInt(3));
+                Entrada entrada = new Entrada(rs.getInt(1), rs.getString(2), rs.getInt(3), nombreAsoc);
                 listaEntradas.add(entrada);
             }
 	} catch (SQLException e) {
@@ -36,16 +37,17 @@ public class DAOEntradas {
         return listaEntradas;
     }        
     
-    public ArrayList<Entrada> obtenerEntradasEventoDAO(int idevento){
+    public ArrayList<Entrada> obtenerEntradasEventoDAO(int idevento, String nombreAsoc){
         ArrayList<Entrada> listaEntradas = new ArrayList();
         ResultSet rs;
 	try {
-            String sql = "select * from entradas where idevento = ?";
+            String sql = "select * from entradas where idevento = ? AND nombreAsoc = ?";
             pst = con.prepareStatement(sql);
             pst.setInt(1, idevento);
+            pst.setString(2, nombreAsoc);
             rs = pst.executeQuery();
             while(rs.next()) {
-                Entrada entrada = new Entrada(rs.getInt(1), rs.getString(2), rs.getInt(3));
+                Entrada entrada = new Entrada(rs.getInt(1), rs.getString(2), rs.getInt(3), nombreAsoc);
                 listaEntradas.add(entrada);
             }
 	} catch (SQLException e) {
@@ -54,18 +56,19 @@ public class DAOEntradas {
         return listaEntradas;
     }       
     
-    public Entrada obtenerEntradaDAO(int idevento, String idsocio){
+    public Entrada obtenerEntradaDAO(int idevento, String idsocio, String nombreAsoc){
         ResultSet rs;
         Entrada entrada = null;
         try {
-            String sql = "select * from entradas where idevento = ? AND idsocio = ?";
+            String sql = "select * from entradas where idevento = ? AND idsocio = ? AND nombreAsoc = ?";
             pst = con.prepareStatement(sql);
             pst.setInt(1, idevento);
             pst.setString(2, idsocio);
+            pst.setString(3, nombreAsoc);
             rs = pst.executeQuery();
             while (rs.next()) {
                 entrada = new Entrada(rs.getInt(1),
-                        rs.getString(2), rs.getInt(3));
+                        rs.getString(2), rs.getInt(3), nombreAsoc);
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -78,11 +81,12 @@ public class DAOEntradas {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into entradas(idevento, idsocio)"
-                    + "values(?,?)";
+            String sql = "insert into entradas(idevento, idsocio, nombreAsoc)"
+                    + "values(?,?,?)";
             pst = con.prepareStatement(sql);           
-            pst.setInt(1, entrada.getId_evento());
-            pst.setString(2, entrada.getId_socio());
+            pst.setInt(1, entrada.getIdEvento());
+            pst.setString(2, entrada.getIdSocio());
+            pst.setString(3, entrada.getNombreAsoc());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -91,14 +95,15 @@ public class DAOEntradas {
         return realizado;
     }    
     
-    public boolean eliminarEntradaDAO(int id){
+    public boolean eliminarEntradaDAO(int id, String nombreAsoc){
         boolean realizado;
         try{
             realizado = true;
             con.createStatement();
-            String sql = "delete from entradas where identradas = ?";
+            String sql = "delete from entradas where identradas = ? AND nombreAsoc = ?";
             pst = con.prepareStatement(sql);
             pst.setInt(1, id);
+            pst.setString(2, nombreAsoc);
             pst.executeUpdate();
         }catch(SQLException e){
             System.err.println(e.getMessage());

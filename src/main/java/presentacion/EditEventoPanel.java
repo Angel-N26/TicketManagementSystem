@@ -28,7 +28,8 @@ public class EditEventoPanel extends javax.swing.JPanel {
         btnEliminar.setVisible(false);
     }
     
-    public EditEventoPanel(Evento e){
+    public EditEventoPanel(Evento e, Asociacion asociacion){
+        this.asociacion = asociacion;
         this.eve = e;
         initComponents();
         this.ce = new ControlEvento();
@@ -413,7 +414,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
         panelSouthRigth.setMinimumSize(new java.awt.Dimension(400, 75));
         panelSouthRigth.setName("panelSouthRigth"); // NOI18N
         panelSouthRigth.setPreferredSize(new java.awt.Dimension(400, 75));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 20);
         flowLayout1.setAlignOnBaseline(true);
         panelSouthRigth.setLayout(flowLayout1);
 
@@ -683,7 +684,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
     private boolean activarAnadir;
     private boolean activarEliminar;
     
-    private Asociacion asociacion;
+    private final Asociacion asociacion;
     
     private final ControlEvento ce;
     private  Evento eve;

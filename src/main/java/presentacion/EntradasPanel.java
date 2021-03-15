@@ -8,6 +8,8 @@ import dominio.Evento;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  * @author angel
@@ -64,9 +66,9 @@ public class EntradasPanel extends javax.swing.JPanel {
         rellenarComboBox();
         cbEvento.setName("cbEvento"); // NOI18N
         cbEvento.setPreferredSize(new java.awt.Dimension(180, 35));
-        cbEvento.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cbEventoMouseClicked(evt);
+        cbEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbEventoActionPerformed(evt);
             }
         });
         panelSeleccionEvento.add(cbEvento);
@@ -165,21 +167,21 @@ public class EntradasPanel extends javax.swing.JPanel {
         add(panelCenter, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbEventoMouseClicked
-        actualizarListaEntradas();
-    }//GEN-LAST:event_cbEventoMouseClicked
-
     private void btnGenerarEntradasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMousePressed
         activar = true;
     }//GEN-LAST:event_btnGenerarEntradasMousePressed
 
     private void btnGenerarEntradasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseReleased
         if(activar){
-            Evento evento = (Evento) cbEvento.getSelectedItem();
-            if(evento != null){
-                GenerarEntradas ge = new GenerarEntradas(evento, sacarEntradas(evento.getId()), asociacion);
-                ge.setVisible(true);
-                ge.setLocationRelativeTo(null);
+            if(cbEvento.getSelectedItem() != null){
+                Evento evento = (Evento) cbEvento.getSelectedItem();
+                if(evento != null){
+                    GenerarEntradas ge = new GenerarEntradas(evento, sacarEntradas(evento.getId()), asociacion);
+                    ge.setVisible(true);
+                    ge.setLocationRelativeTo(null);
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Selecciona un evento.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnGenerarEntradasMouseReleased
@@ -188,7 +190,7 @@ public class EntradasPanel extends javax.swing.JPanel {
         activar = false;
     }//GEN-LAST:event_btnGenerarEntradasMouseExited
 
-    public void actualizarListaEntradas(){
+    private void cbEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEventoActionPerformed
         if(cbEvento.getSelectedItem() != null){
             Evento evento = (Evento)cbEvento.getSelectedItem();
             ArrayList<Entrada> ent = sacarEntradas(evento.getId());
@@ -199,11 +201,24 @@ public class EntradasPanel extends javax.swing.JPanel {
             modeloListaEntradas.removeAllElements();
             lblNum.setText("");
         }
+    }//GEN-LAST:event_cbEventoActionPerformed
+
+    public void actualizarListaEntradas(){
+        if(cbEvento.getSelectedItem() != null){
+            Evento evento = (Evento)cbEvento.getSelectedItem();
+            ArrayList<Entrada> ent = sacarEntradas(evento.getId());
+            lblNum.setText(ent.size()+"");
+            modeloListaEntradas.removeAllElements();
+            modeloListaEntradas.addAll(0, ent);
+        }
+        
     }
     
     private void rellenarComboBox(){
         ControlEvento cev = new ControlEvento();
         ArrayList<Evento> evs = cev.obtenerEventos(asociacion.getNombre());
+        
+        cbEvento.addItem(null);
         
         for(int i = 0 ; i < evs.size() ; i++){
             cbEvento.addItem(evs.get(i));
@@ -213,7 +228,7 @@ public class EntradasPanel extends javax.swing.JPanel {
     
     private ArrayList<Entrada> sacarEntradas(int id_evento){
         ControlEntradas cen = new ControlEntradas();
-        ArrayList<Entrada> entradas = cen.obtenerEntradasEvento(id_evento);
+        ArrayList<Entrada> entradas = cen.obtenerEntradasEvento(id_evento, asociacion.getNombre());
         
         return entradas;
     }        

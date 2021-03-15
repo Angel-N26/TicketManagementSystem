@@ -147,6 +147,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
         rellenarListas();
         listSociosCon.setBackground(new java.awt.Color(102, 102, 102));
         listSociosCon.setForeground(new java.awt.Color(255, 255, 255));
+        listSociosCon.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listSociosCon.setName("listSociosCon"); // NOI18N
         listSociosCon.setSelectionBackground(new java.awt.Color(31, 31, 31));
         scrollPaneCon.setViewportView(listSociosCon);
@@ -205,7 +206,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
     }//GEN-LAST:event_closeMouseClicked
 
     private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
-        dispose();
+        //dispose();
     }//GEN-LAST:event_formWindowLostFocus
 
     private void btnGenerarEntradasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseExited
@@ -218,21 +219,21 @@ public class GenerarEntradas extends javax.swing.JFrame {
 
     private void btnGenerarEntradasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseReleased
         if(activar){            
-            //int dialogResult = JOptionPane.showConfirmDialog (this,
-                //"Estas seguro que desea generar?", "Warning", JOptionPane.YES_NO_OPTION);
-            //if(dialogResult == JOptionPane.YES_OPTION){        
-                ControlEntradas ce = new ControlEntradas();
-                List<Socio> socioConEntrada = listSociosSin.getSelectedValuesList();
-                if(!listSociosSin.isSelectionEmpty()){
+            ControlEntradas ce = new ControlEntradas();
+            List<Socio> socioConEntrada = listSociosSin.getSelectedValuesList();
+            if(!listSociosSin.isSelectionEmpty()){        
+                int dialogResult = JOptionPane.showConfirmDialog (this,
+                    "Estas seguro que desea generar?", "Warning", JOptionPane.YES_NO_OPTION);
+                if(dialogResult == JOptionPane.YES_OPTION){
                     for(int i = 0 ; i < socioConEntrada.size() ; i++){
-                        Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni());
+                        Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni(), asociacion.getNombre());
                         ce.insertarEntrada(entrada);
-                        entrada = ce.obtenerEntrada(entrada.getId_evento(), entrada.getId_socio());
+                        entrada = ce.obtenerEntrada(entrada.getIdEvento(), entrada.getIdSocio(), asociacion.getNombre());
                         try{
                             CrearQR qr = new CrearQR();
-                            BufferedImage imagen = qr.crearQR(entrada.getId_evento()
-                                    +"-"+entrada.getId_socio()+"-"+entrada.getNum_entrada(), 300, 300);
-                            File outputfile = new File("C:\\Users\\angel\\Desktop\\qr"+entrada.getNum_entrada()+".png");
+                            BufferedImage imagen = qr.crearQR(entrada.getIdEvento()
+                                    +"-"+entrada.getIdSocio()+"-"+entrada.getNumEntrada(), 300, 300);
+                            File outputfile = new File("C:\\Users\\angel\\Desktop\\qr"+entrada.getNumEntrada()+".png");
                             ImageIO.write(imagen, "png", outputfile);
                             modeloListaSociosCon.add(modeloListaSociosCon.size(), socioConEntrada.get(i));
                             modeloListaSociosSin.removeElement(socioConEntrada.get(i));
@@ -243,10 +244,11 @@ public class GenerarEntradas extends javax.swing.JFrame {
                         }
 
                     }
-                }else{
-                    //Mensaje selecciona socio
                 }                
-            //}
+            }else{
+                JOptionPane.showMessageDialog(this, "Selecciona por lo menos un socio que no tenga entrada.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnGenerarEntradasMouseReleased
         
@@ -263,7 +265,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
         
         for(Entrada e : entradas){
             for(Socio s : socios){
-                if(s.getDni().equals(e.getId_socio())){
+                if(s.getDni().equals(e.getIdSocio())){
                     sociosCon.add(s);
                 }
             }
