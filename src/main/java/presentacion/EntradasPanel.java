@@ -194,7 +194,7 @@ public class EntradasPanel extends javax.swing.JPanel {
             ArrayList<Entrada> ent = sacarEntradas(evento.getId());
             lblNum.setText(ent.size()+"");
             modeloListaEntradas.removeAllElements();
-            modeloListaEntradas.addElement(ent);
+            modeloListaEntradas.addAll(0, ent);
         }else{
             modeloListaEntradas.removeAllElements();
             lblNum.setText("");

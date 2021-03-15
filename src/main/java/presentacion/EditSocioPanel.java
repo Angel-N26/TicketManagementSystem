@@ -32,7 +32,8 @@ public class EditSocioPanel extends javax.swing.JPanel {
         btnEliminar.setVisible(false);
     }
 
-    public EditSocioPanel(Socio soc){
+    public EditSocioPanel(Socio soc, Asociacion asociacion){
+        this.asociacion = asociacion;
         this.socio = soc;
         initComponents();
         this.cs = new ControlSocio();        
@@ -179,7 +180,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
                 tfApellidosFocusLost(evt);
             }
         });
-        panelCenter.add(tfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 260, 25));
+        panelCenter.add(tfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 270, 25));
 
         lblFechaNacimiento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblFechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
@@ -237,7 +238,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
                 tfDNIFocusLost(evt);
             }
         });
-        panelCenter.add(tfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 260, 25));
+        panelCenter.add(tfDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 270, 25));
 
         lblDatosContacto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblDatosContacto.setForeground(new java.awt.Color(255, 255, 255));
@@ -292,7 +293,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
                 tfEmailFocusLost(evt);
             }
         });
-        panelCenter.add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 520, 25));
+        panelCenter.add(tfEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 530, 25));
 
         lblCalle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblCalle.setForeground(new java.awt.Color(255, 255, 255));
@@ -447,7 +448,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
 
         cbProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Álava", "Albacete", "Alicante", "Almeria", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba", "La Coruña", "Cuenca", "Gerona", "Granada", "Guadalajara", "Guipúzcua", "Huelva", "Huesca", "Baleares", "Jaén", "León", "Lérida", "Lugo", "Madrid", "Málaga", "Murcia", "Navarra", "Orense", "Palencia", "Las Palmas", "Pontevedra", "La Rioja", "Salamanca", "Segovia", "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza" }));
         cbProvincia.setName("cbProvincia"); // NOI18N
-        panelCenter.add(cbProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 120, 25));
+        panelCenter.add(cbProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 130, 25));
 
         lblDireccion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblDireccion.setForeground(new java.awt.Color(255, 255, 255));
@@ -495,13 +496,14 @@ public class EditSocioPanel extends javax.swing.JPanel {
         cbPagos.setText("Al dia de pagos");
         cbPagos.setName("cbPagos"); // NOI18N
         cbPagos.setNextFocusableComponent(btnEliminar);
-        panelCenter.add(cbPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, -1, 25));
+        panelCenter.add(cbPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, -1, 25));
 
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
 
         panelSouth.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouth.setMinimumSize(new java.awt.Dimension(800, 75));
         panelSouth.setName("panelSouth"); // NOI18N
-        panelSouth.setPreferredSize(new java.awt.Dimension(215, 75));
+        panelSouth.setPreferredSize(new java.awt.Dimension(800, 75));
         panelSouth.setLayout(new java.awt.GridLayout(1, 2));
 
         panelSouthLeft.setBackground(new java.awt.Color(51, 51, 51));
@@ -537,9 +539,10 @@ public class EditSocioPanel extends javax.swing.JPanel {
         panelSouth.add(panelSouthLeft);
 
         panelSouthRight.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouthRight.setMinimumSize(new java.awt.Dimension(400, 55));
         panelSouthRight.setName("panelSouthRight"); // NOI18N
         panelSouthRight.setPreferredSize(new java.awt.Dimension(400, 55));
-        panelSouthRight.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 20));
+        panelSouthRight.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20));
 
         btnCancelar.setBorder(null);
         btnCancelar.setText("Cancelar");
@@ -599,7 +602,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -728,7 +731,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
             Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
                 tfEmail.getText(), Date.valueOf(dateChooserEditor1.getText()),
                 direccion(), Integer.parseInt(tfTlf.getText()), Date.valueOf(dateChooserEditor2.getText()),
-                m.getId_membresia(), cbPagos.isSelected(), /*jLabel1.getIcon().toString()*/null, asociacion.getNombre());
+                m.getId_membresia(), cbPagos.isSelected(), fotoSocio.getIcon().toString(), asociacion.getNombre());
 
             if(btnAnadir.getText().equals("Modificar")){
                 if(cs.modificarSocio(s, socio.getDni(), asociacion.getNombre())){

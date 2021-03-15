@@ -17,8 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class SociosPanel extends javax.swing.JPanel {
 
     public SociosPanel(Asociacion asociacion) {
-        this.asociacion = asociacion;
-        
+        this.asociacion = asociacion;        
         initComponents();
         cs = new ControlSocio();
     }
@@ -301,7 +300,7 @@ public class SociosPanel extends javax.swing.JPanel {
             Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0), asociacion.getNombre());
             
             JPanel card = (JPanel) this.getParent();
-            EditSocioPanel editSP = new EditSocioPanel(socio);
+            EditSocioPanel editSP = new EditSocioPanel(socio, asociacion);
             editSP.rellenarCampos();
             card.add(editSP, "cardEditSP");
             CardLayout cardLayout = (CardLayout) card.getLayout();

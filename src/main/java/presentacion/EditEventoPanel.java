@@ -157,7 +157,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
                 tfTipoFocusLost(evt);
             }
         });
-        panelCenter.add(tfTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 250, 25));
+        panelCenter.add(tfTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 260, 25));
 
         lblCapacidad.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblCapacidad.setForeground(new java.awt.Color(255, 255, 255));
@@ -295,7 +295,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
                 tfCodPostalFocusLost(evt);
             }
         });
-        panelCenter.add(tfCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, 80, 25));
+        panelCenter.add(tfCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, 90, 25));
 
         lblLocalidad.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblLocalidad.setForeground(new java.awt.Color(255, 255, 255));
@@ -373,11 +373,13 @@ public class EditEventoPanel extends javax.swing.JPanel {
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
 
         panelSouth.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouth.setMinimumSize(new java.awt.Dimension(800, 75));
         panelSouth.setName("panelSouth"); // NOI18N
-        panelSouth.setPreferredSize(new java.awt.Dimension(215, 75));
+        panelSouth.setPreferredSize(new java.awt.Dimension(800, 75));
         panelSouth.setLayout(new java.awt.GridLayout(1, 2));
 
         panelSouthLeft.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouthLeft.setMinimumSize(new java.awt.Dimension(400, 75));
         panelSouthLeft.setName("panelSouthLeft"); // NOI18N
         panelSouthLeft.setPreferredSize(new java.awt.Dimension(400, 75));
         panelSouthLeft.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 20));
@@ -408,9 +410,12 @@ public class EditEventoPanel extends javax.swing.JPanel {
         panelSouth.add(panelSouthLeft);
 
         panelSouthRigth.setBackground(new java.awt.Color(51, 51, 51));
+        panelSouthRigth.setMinimumSize(new java.awt.Dimension(400, 75));
         panelSouthRigth.setName("panelSouthRigth"); // NOI18N
         panelSouthRigth.setPreferredSize(new java.awt.Dimension(400, 75));
-        panelSouthRigth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 20));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20);
+        flowLayout1.setAlignOnBaseline(true);
+        panelSouthRigth.setLayout(flowLayout1);
 
         btnCancelar.setBorder(null);
         btnCancelar.setText("Cancelar");

@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -29,8 +30,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
         this.entradas = entradas;
         this.asociacion = asociacion;
         
-        initComponents();
-        socioConEntrada = new ArrayList();
+        initComponents();       
     }
 
     /**
@@ -172,9 +172,6 @@ public class GenerarEntradas extends javax.swing.JFrame {
         btnGenerarEntradas.setName("btnGenerarEntradas"); // NOI18N
         btnGenerarEntradas.setPreferredSize(new java.awt.Dimension(180, 35));
         btnGenerarEntradas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnGenerarEntradasMouseClicked(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnGenerarEntradasMouseExited(evt);
             }
@@ -211,34 +208,6 @@ public class GenerarEntradas extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_formWindowLostFocus
 
-    private void btnGenerarEntradasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseClicked
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea generar?","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){        
-            ControlEntradas ce = new ControlEntradas();
-            if(!socioConEntrada.isEmpty()){
-                for(int i = 0 ; i < socioConEntrada.size() ; i++){
-                    Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni());
-                    ce.insertarEntrada(entrada);
-                    entrada = ce.obtenerEntrada(entrada.getId_evento(), entrada.getId_socio());
-                    try{
-                        CrearQR qr = new CrearQR();
-                        BufferedImage imagen = qr.crearQR(entrada.getId_evento()
-                                +"-"+entrada.getId_socio()+"-"+entrada.getNum_entrada(), 300, 300);
-                        File outputfile = new File("C:\\Users\\angel\\Escritorio\\qr"+entrada.getNum_entrada()+".png");
-                        ImageIO.write(imagen, "png", outputfile);
-                    }catch(WriterException e){
-                        System.out.println(e.getMessage());
-                    }catch (IOException ex) {
-                        Logger.getLogger(GenerarEntradas.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                }
-            }
-            dispose();
-        }
-    }//GEN-LAST:event_btnGenerarEntradasMouseClicked
-
     private void btnGenerarEntradasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseExited
         activar = false;
     }//GEN-LAST:event_btnGenerarEntradasMouseExited
@@ -248,12 +217,13 @@ public class GenerarEntradas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGenerarEntradasMousePressed
 
     private void btnGenerarEntradasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseReleased
-        if(activar){
-            int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea generar?","Warning",dialogButton);
-            if(dialogResult == JOptionPane.YES_OPTION){        
+        if(activar){            
+            //int dialogResult = JOptionPane.showConfirmDialog (this,
+                //"Estas seguro que desea generar?", "Warning", JOptionPane.YES_NO_OPTION);
+            //if(dialogResult == JOptionPane.YES_OPTION){        
                 ControlEntradas ce = new ControlEntradas();
-                if(!socioConEntrada.isEmpty()){
+                List<Socio> socioConEntrada = listSociosSin.getSelectedValuesList();
+                if(!listSociosSin.isSelectionEmpty()){
                     for(int i = 0 ; i < socioConEntrada.size() ; i++){
                         Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni());
                         ce.insertarEntrada(entrada);
@@ -262,8 +232,10 @@ public class GenerarEntradas extends javax.swing.JFrame {
                             CrearQR qr = new CrearQR();
                             BufferedImage imagen = qr.crearQR(entrada.getId_evento()
                                     +"-"+entrada.getId_socio()+"-"+entrada.getNum_entrada(), 300, 300);
-                            File outputfile = new File("C:\\Users\\angel\\Escritorio\\qr"+entrada.getNum_entrada()+".png");
+                            File outputfile = new File("C:\\Users\\angel\\Desktop\\qr"+entrada.getNum_entrada()+".png");
                             ImageIO.write(imagen, "png", outputfile);
+                            modeloListaSociosCon.add(modeloListaSociosCon.size(), socioConEntrada.get(i));
+                            modeloListaSociosSin.removeElement(socioConEntrada.get(i));
                         }catch(WriterException e){
                             System.out.println(e.getMessage());
                         }catch (IOException ex) {
@@ -271,13 +243,18 @@ public class GenerarEntradas extends javax.swing.JFrame {
                         }
 
                     }
-                }
-                dispose();
-            }
+                }else{
+                    //Mensaje selecciona socio
+                }                
+            //}
         }
     }//GEN-LAST:event_btnGenerarEntradasMouseReleased
+        
     
     private void rellenarListas(){
+        modeloListaSociosCon.removeAllElements();
+        modeloListaSociosSin.removeAllElements();
+        
         ControlSocio cs = new ControlSocio();
         ArrayList<Socio> socios = cs.obtenerSocios(asociacion.getNombre());
         
@@ -304,12 +281,10 @@ public class GenerarEntradas extends javax.swing.JFrame {
     
     private boolean activar;
     
-    private Asociacion asociacion;
+    private final Asociacion asociacion;
     
     private final Evento evento;
     private final ArrayList<Entrada> entradas;
-    
-    private ArrayList<Socio> socioConEntrada;
     
     private DefaultListModel modeloListaSociosSin;
     private DefaultListModel modeloListaSociosCon;
@@ -323,7 +298,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
     private javax.swing.JLabel lblSociosSin;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JList<String> listSociosCon;
-    private javax.swing.JList<String> listSociosSin;
+    private javax.swing.JList<Socio> listSociosSin;
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPanel panelNorth;
