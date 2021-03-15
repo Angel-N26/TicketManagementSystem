@@ -765,7 +765,7 @@ public class Login extends javax.swing.JFrame implements Colores {
                     /*Option Pane*/
                     UIManager.put("OptionPane.background", new ColorUIResource(51,51,51));
                     UIManager.put("Panel.background", new ColorUIResource(51,51,51));
-                    UIManager.put("OptionPane.messageForeground", new ColorUIResource(255,255,255));                                        
+                    UIManager.put("OptionPane.messageForeground", new ColorUIResource(255,255,255));                    
                     
                     /*ToolTip*/
                     UIManager.put("ToolTip.background", new ColorUIResource(31,31,31));

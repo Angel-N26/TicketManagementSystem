@@ -2,17 +2,30 @@ package presentacion;
 
 import dominio.Asociacion;
 import dominio.ControlAsociacion;
+import dominio.ControlSocio;
+import dominio.Socio;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import static java.awt.Frame.NORMAL;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import keeptoo.KButton;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 
 /**
  * @author angel
@@ -659,7 +672,8 @@ public class Menu extends javax.swing.JFrame {
         int seleccion = fc.showOpenDialog(this);
         if(seleccion == JFileChooser.APPROVE_OPTION){
             File file = fc.getSelectedFile();
-        }
+            leerCSV(file.getAbsolutePath());
+        }        
     }//GEN-LAST:event_btnCargarSociosMouseClicked
        
     private void no_selected(KButton btn){        
@@ -681,8 +695,47 @@ public class Menu extends javax.swing.JFrame {
         btnMembresia.setVisible(false);
     }                  
     
+    private void leerCSV(String path){
+        /*try {
+            Reader reader = Files.newBufferedReader(Paths.get(path));
+            CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
+            
+            for (CSVRecord csvRecord : csvParser) {
+                // Accediendo a los valores por el indice de la columna
+                String name = csvRecord
+                //String email = csvRecord.get(1);
+                //String phone = csvRecord.get(2);
+                //String country = csvRecord.get(3);
+                System.out.println("Record No - " + csvRecord.getRecordNumber());
+                System.out.println("---------------");
+                System.out.println("Name : " + name);
+                //System.out.println("Email : " + email);
+                //System.out.println("Phone : " + phone);
+                //System.out.println("Country : " + country);
+                System.out.println("---------------\n\n");
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        
+        ControlSocio cs = new ControlSocio();
+        try{
+            Reader in = new FileReader(path);
+            Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
+            
+            for (CSVRecord record : records) {
+                String socio = record.get(0); 
+                String a [] = socio.split(";");
+                //Socio s = new Socio(a[0],a[1],a[2],a[3], Date.valeuOf(a[4]), a[5],a[6],a[7],a[8],a[9],a[10],a[11],a[12]);
+                //cs.insertarSocio(s);
+            }
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }               
+    }
+    
     private final Asociacion asociacion;
-    private ControlAsociacion ca;
+    private final ControlAsociacion ca;
     
     private boolean maximized = false;
     private int xx;
