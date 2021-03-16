@@ -8,7 +8,6 @@ import dominio.Evento;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -175,10 +174,14 @@ public class EntradasPanel extends javax.swing.JPanel {
         if(activar){
             if(cbEvento.getSelectedItem() != null){
                 Evento evento = (Evento) cbEvento.getSelectedItem();
-                if(evento != null){
-                    GenerarEntradas ge = new GenerarEntradas(evento, sacarEntradas(evento.getId()), asociacion);
-                    ge.setVisible(true);
-                    ge.setLocationRelativeTo(null);
+                if(evento != null){                    
+                    ge = new GenerarEntradas(evento, sacarEntradas(evento.getId()), asociacion);
+                    System.out.println(ge.toString());
+                    System.out.println(ge.isVisible());
+                    if(!ge.isVisible()){                        
+                        ge.setVisible(true);
+                        ge.setLocationRelativeTo(null);
+                    }    
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "Selecciona un evento.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -236,6 +239,8 @@ public class EntradasPanel extends javax.swing.JPanel {
     private boolean activar;
     
     private final Asociacion asociacion;
+    
+    private GenerarEntradas ge;
     
     private DefaultListModel modeloListaEntradas;
     

@@ -13,11 +13,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -696,38 +692,30 @@ public class Menu extends javax.swing.JFrame {
     }                  
     
     private void leerCSV(String path){
-        /*try {
-            Reader reader = Files.newBufferedReader(Paths.get(path));
-            CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
-            
-            for (CSVRecord csvRecord : csvParser) {
-                // Accediendo a los valores por el indice de la columna
-                String name = csvRecord
-                //String email = csvRecord.get(1);
-                //String phone = csvRecord.get(2);
-                //String country = csvRecord.get(3);
-                System.out.println("Record No - " + csvRecord.getRecordNumber());
-                System.out.println("---------------");
-                System.out.println("Name : " + name);
-                //System.out.println("Email : " + email);
-                //System.out.println("Phone : " + phone);
-                //System.out.println("Country : " + country);
-                System.out.println("---------------\n\n");
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        
         ControlSocio cs = new ControlSocio();
         try{
             Reader in = new FileReader(path);
-            Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
-            
-            for (CSVRecord record : records) {
-                String socio = record.get(0); 
-                String a [] = socio.split(";");
-                //Socio s = new Socio(a[0],a[1],a[2],a[3], Date.valeuOf(a[4]), a[5],a[6],a[7],a[8],a[9],a[10],a[11],a[12]);
-                //cs.insertarSocio(s);
+            CSVParser parser = new CSVParser(in, CSVFormat.EXCEL.withDelimiter(';'));
+            for (CSVRecord record : parser) {
+                if(!record.get(0).equals("DNI")){
+                    String dni = record.get(0);
+                    String nombre = record.get(1);
+                    String apellidos = record.get(2);
+                    String email = record.get(3);
+                    Date fechaNac = Date.valueOf(record.get(4));
+                    String direccion = record.get(5);
+                    int tlf = Integer.parseInt(record.get(6));
+                    Date fechaIng = Date.valueOf(record.get(7));
+                    int idMem = Integer.parseInt(record.get(8));
+                    boolean pago = Boolean.parseBoolean(record.get(9));
+
+                    Socio s = new Socio(dni, nombre, apellidos, email, fechaNac,
+                            direccion, tlf, fechaIng, idMem, pago, null,
+                            asociacion.getNombre());
+                    if(cs.insertarSocio(s)){
+                        sp.actualizarTabla();
+                    }
+                }
             }
         }catch(IOException e){
             System.out.println(e.getMessage());

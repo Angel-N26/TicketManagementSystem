@@ -336,16 +336,22 @@ public class SociosPanel extends javax.swing.JPanel {
 
     private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
         if(activarEliminar){
-            int index = table.getSelectedRow();
+            if(table.getSelectedRow() != -1){
+                int index = table.getSelectedRow();
 
-            Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0), asociacion.getNombre());
+                Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0), asociacion.getNombre());
 
-            int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
-            if(dialogResult == JOptionPane.YES_OPTION){
-                if(cs.eliminarSocio(socio.getDni())){
-                    dtm.removeRow(index);
+                int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog (null, 
+                    "Estas seguro que desea elimnar?","Warning",dialogButton);
+                if(dialogResult == JOptionPane.YES_OPTION){
+                    if(cs.eliminarSocio(socio.getDni())){
+                        dtm.removeRow(index);
+                    }
                 }
+            }else{
+                JOptionPane.showMessageDialog(this, "Selecciona un socio.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnEliminarMouseReleased

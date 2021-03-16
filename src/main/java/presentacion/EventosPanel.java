@@ -305,14 +305,19 @@ public class EventosPanel extends javax.swing.JPanel {
 
     private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
         if(activarEliminar){
-            int index = table.getSelectedRow();
-        
-            int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
-            if(dialogResult == JOptionPane.YES_OPTION){
-                if(ce.eliminarEvento((Integer)dtm.getValueAt(index, 0))){
-                    dtm.removeRow(index);
+            if(table.getSelectedRow() != -1){
+                int index = table.getSelectedRow();
+
+                int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+                if(dialogResult == JOptionPane.YES_OPTION){
+                    if(ce.eliminarEvento((Integer)dtm.getValueAt(index, 0))){
+                        dtm.removeRow(index);
+                    }
                 }
+            }else{
+                JOptionPane.showMessageDialog(this, "Selecciona un evento.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnEliminarMouseReleased
