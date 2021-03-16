@@ -731,10 +731,10 @@ public class EditSocioPanel extends javax.swing.JPanel {
             Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
                 tfEmail.getText(), Date.valueOf(dateChooserEditor1.getText()),
                 direccion(), Integer.parseInt(tfTlf.getText()), Date.valueOf(dateChooserEditor2.getText()),
-                m.getId_membresia(), cbPagos.isSelected(), fotoSocio.getIcon().toString(), asociacion.getNombre());
+                m.getId_membresia(), cbPagos.isSelected(), fotoSocio.getIcon().toString(), asociacion.getId());
 
             if(btnAnadir.getText().equals("Modificar")){
-                if(cs.modificarSocio(s, socio.getDni(), asociacion.getNombre())){
+                if(cs.modificarSocio(s, socio.getDni())){
                     dispose();
                 }
             }else if(btnAnadir.getText().equals("Añadir")){
@@ -772,7 +772,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
             int dialogButton = JOptionPane.YES_NO_OPTION;
             int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
             if(dialogResult == JOptionPane.YES_OPTION){
-                if(cs.eliminarSocio(tfDNI.getText())){
+                if(cs.eliminarSocio(tfDNI.getText(), asociacion.getId())){
                     dispose();
                 }
             }
@@ -809,7 +809,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
     //Rellena el combo box con los nombres de todas las membresias
     private void rellenarMembresias(){
         ControlMembresia cmem = new ControlMembresia();
-        mems = cmem.obtenerMembresias(asociacion.getNombre());
+        mems = cmem.obtenerMembresias(asociacion.getId());
         
         for(int i = 0 ; i < mems.size() ; i++){
             cbMembresias.addItem(mems.get(i));

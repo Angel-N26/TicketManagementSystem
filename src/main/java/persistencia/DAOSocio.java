@@ -19,17 +19,17 @@ public class DAOSocio {
         con = Agente.getConexion();
     }
 
-    public ArrayList<Socio> obtenerSociosDAO(String nombreAsoc){
+    public ArrayList<Socio> obtenerSociosDAO(int idAsoc){
         ArrayList listaSocios = new ArrayList<Socio>();
         ResultSet rs;
         Socio socio;
 	try {
-            String sql = "select dni from socios where nombreAsoc = ?";
+            String sql = "select dni from socios where idAsoc = ?";
             pst = con.prepareStatement(sql);
-            pst.setString(1, nombreAsoc);
+            pst.setInt(1, idAsoc);
             rs = pst.executeQuery();
             while(rs.next()) {
-                socio = obtenerSocioDAO(rs.getString(1), nombreAsoc);
+                socio = obtenerSocioDAO(rs.getString(1), idAsoc);
                 listaSocios.add(socio);
             }
 	} catch (SQLException e) {
@@ -38,19 +38,19 @@ public class DAOSocio {
 	return listaSocios;
     }
 
-    public Socio obtenerSocioDAO(String dni, String nombreAsoc) {
+    public Socio obtenerSocioDAO(String dni, int idAsoc) {
         ResultSet rs;
         Socio socio = new Socio();
         try {
-            String sql = "select * from socios where dni = ? AND nombreAsoc = ?";
+            String sql = "select * from socios where dni = ? AND idAsoc = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, dni);
-            pst.setString(2, nombreAsoc);
+            pst.setInt(2, idAsoc);
             rs = pst.executeQuery();
             while (rs.next()) {
                 socio = new Socio(rs.getString(1), rs.getString(2), rs.getString(3),
                         rs.getString(4), rs.getDate(5), rs.getString(6), rs.getInt(7),
-                        rs.getDate(8), rs.getInt(9), rs.getBoolean(10), rs.getString(11), rs.getString(12));
+                        rs.getDate(8), rs.getInt(9), rs.getBoolean(10), rs.getString(11), rs.getInt(12));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -77,7 +77,7 @@ public class DAOSocio {
             pst.setBoolean(10, socio.isPagado());
             pst.setString(11, socio.getRutaImg());
             pst.setBoolean(12, false);
-            pst.setString(13, socio.getNombreAsoc());
+            pst.setInt(13, socio.getIdAsoc());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -86,14 +86,14 @@ public class DAOSocio {
         return realizado;
     }
 
-    public boolean modificarSocioDAO(Socio socio, String dni, String nombreAsoc){
+    public boolean modificarSocioDAO(Socio socio, String dni){
         boolean realizado;
         try {
             realizado = true;
             con.createStatement();
             String sql = "update socios set dni = ?, nombre = ?, apellidos = ?,"
                     + " email = ?, fechanacimiento = ?, direccion = ?, telefono = ?,"
-                    + "fechaingreso = ?, idMembresia = ?, pagado = ?, rutaImg = ? where dni = ? AND nombreAsoc = ?";
+                    + "fechaingreso = ?, idMembresia = ?, pagado = ?, rutaImg = ? where dni = ? AND idAsoc = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, socio.getDni());
             pst.setString(2, socio.getNombre());
@@ -107,7 +107,7 @@ public class DAOSocio {
             pst.setBoolean(10, socio.isPagado());
             pst.setString(11, socio.getRutaImg());
             pst.setString(12, dni);
-            pst.setString(13, nombreAsoc);
+            pst.setInt(13, socio.getIdAsoc());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -116,7 +116,7 @@ public class DAOSocio {
         return realizado;
     }
 
-    public boolean eliminarSocioDAO(String dni){
+    public boolean eliminarSocioDAO(String dni, int idAsoc){
         /*boolean realizado;
         try {
             realizado = true;
@@ -135,9 +135,10 @@ public class DAOSocio {
         try{
             realizado = true;
             con.createStatement();
-            String sql = "delete from socios where dni = ?";
+            String sql = "delete from socios where dni = ? AND idAsoc = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, dni);
+            pst.setInt(2, idAsoc);
             pst.executeUpdate();
         }catch(SQLException e){
             System.err.println(e.getMessage());

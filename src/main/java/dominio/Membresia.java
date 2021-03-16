@@ -8,19 +8,19 @@ public class Membresia{
     private int id_membresia;
     private String nombre;
     private double precio;
-    private String nombreAsoc;
+    private int idAsoc;
     
-    public Membresia(int id_membresia, String nombre, double precio, String nombreAsoc){
+    public Membresia(int id_membresia, String nombre, double precio, int idAsoc){
         this.id_membresia = id_membresia;
         this.nombre = nombre;
         this.precio = precio;
-        this.nombreAsoc = nombreAsoc;
+        this.idAsoc = idAsoc;
     }
     
-    public Membresia(String nNombre, double nPrecio, String nombreAsoc){     
+    public Membresia(String nNombre, double nPrecio, int idAsoc){
         this.nombre = nNombre;
         this.precio = nPrecio;
-        this.nombreAsoc = nombreAsoc;
+        this.idAsoc = idAsoc;
     }
     
     public int getId_membresia() {
@@ -29,10 +29,6 @@ public class Membresia{
 
     public String getNombre() {
         return nombre;
-    }
-
-    public String getNombreAsoc() {
-        return nombreAsoc;
     }
     
     public void setNombre(String nombre) {
@@ -45,6 +41,10 @@ public class Membresia{
     
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+    
+    public int getIdAsoc() {
+        return idAsoc;
     }
     
     @Override

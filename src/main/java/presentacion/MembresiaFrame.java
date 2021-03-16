@@ -56,10 +56,14 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
         setIconImage(getIconImage());
+        setMaximumSize(new java.awt.Dimension(400, 400));
+        setMinimumSize(new java.awt.Dimension(400, 400));
         setUndecorated(true);
         setResizable(false);
 
         panelBorder.setBackground(new java.awt.Color(51, 51, 51));
+        panelBorder.setMaximumSize(new java.awt.Dimension(400, 400));
+        panelBorder.setMinimumSize(new java.awt.Dimension(400, 400));
         panelBorder.setName("panelBorder"); // NOI18N
         panelBorder.setPreferredSize(new java.awt.Dimension(400, 400));
         panelBorder.setLayout(new java.awt.BorderLayout());
@@ -75,15 +79,15 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         lblTitulo.setName("lblTitulo"); // NOI18N
         panelNorth.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
-        close.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 1, new java.awt.Color(0, 0, 0)));
+        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\cerrar.png")); // NOI18N
+        close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         close.setName("close"); // NOI18N
         close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeMouseClicked(evt);
             }
         });
-        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 0, -1, -1));
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 2, -1, -1));
 
         panelBorder.add(panelNorth, java.awt.BorderLayout.NORTH);
 
@@ -94,6 +98,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         clean.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\clean.png")); // NOI18N
+        clean.setToolTipText("Limpiar campos");
         clean.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         clean.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -273,7 +278,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
     }// </editor-fold>//GEN-END:initComponents
 
     private void listMembresiasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMembresiasMouseClicked
-        mem = cm.obtenerMembresia(listMembresias.getSelectedValue().getId_membresia(), asociacion.getNombre());
+        mem = cm.obtenerMembresia(listMembresias.getSelectedValue().getId_membresia(), asociacion.getId());
                
         tfNombre.setText(mem.getNombre());
         tfPrecio.setText(mem.getPrecio()+""); 
@@ -326,7 +331,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
                 if(!tfNombre.getText().replace(" ","").equals("")){
                     if(!tfPrecio.getText().replace(" ","").equals("")){
                         Membresia memb = new Membresia(m.getId_membresia(), tfNombre.getText(),
-                            Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
+                            Double.parseDouble(tfPrecio.getText()), asociacion.getId());
                         if(cm.modificarMembresia(memb)){
                             actualizarListaMembresias();                   
                         }else{
@@ -358,7 +363,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
                 int dialogResult = JOptionPane.showConfirmDialog (this, "Estas seguro que desea elimnar?",
                     "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                 if(dialogResult == JOptionPane.YES_OPTION){
-                    if(cm.eliminarMembresia(listMembresias.getSelectedValue().getId_membresia())){            
+                    if(cm.eliminarMembresia(listMembresias.getSelectedValue().getId_membresia(), asociacion.getId())){            
                         modeloLista.remove(listMembresias.getSelectedIndex());
                         tfNombre.setText("");
                         tfPrecio.setText("");
@@ -378,7 +383,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
             if(!tfNombre.getText().replace(" ","").equals("")){
                 if(!tfPrecio.getText().replace(" ","").equals("")){                
                     Membresia memb = new Membresia(tfNombre.getText(),
-                        Double.parseDouble(tfPrecio.getText()), asociacion.getNombre());
+                        Double.parseDouble(tfPrecio.getText()), asociacion.getId());
                     if(cm.insertarMembresia(memb)){
                         actualizarListaMembresias();                   
                     }else{
@@ -423,7 +428,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
 
     private ArrayList<Membresia> obtenerMembresias(){
         ControlMembresia cmem = new ControlMembresia();
-        return cmem.obtenerMembresias(asociacion.getNombre());
+        return cmem.obtenerMembresias(asociacion.getId());
     }
 
     private void actualizarListaMembresias(){

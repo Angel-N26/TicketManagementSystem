@@ -6,13 +6,13 @@ package dominio;
 public class Usuario {
     
     private String usuario;
-    private String contraseña;
-    private String nombreAsociacion;
+    private String contrasena;
+    private int idAsociacion;
     
-    public Usuario(String usuario, String contraseña, String nombreAsociacion){
+    public Usuario(String usuario, String contrasena, int idAsociacion){
         this.usuario = usuario;
-        this.contraseña = contraseña;
-        this.nombreAsociacion = nombreAsociacion;
+        this.contrasena = contrasena;
+        this.idAsociacion = idAsociacion;
     }
     
     public Usuario(){
@@ -27,24 +27,24 @@ public class Usuario {
         this.usuario = usuario;
     }
     
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
     
-    public String getNombreAsociacion() {
-        return nombreAsociacion;
+    public int getIdAsociacion() {
+        return idAsociacion;
     }
 
-    public void setNombreAsociacion(String nombreAsociacion) {
-        this.nombreAsociacion = nombreAsociacion;
+    public void setIdAsociacion(int idAsociacion) {
+        this.idAsociacion = idAsociacion;
     }
 
     @Override
     public String toString() {
-        return "Usuarios{" + "usuario=" + usuario + ", nombreAsociacion=" + nombreAsociacion + '}';
+        return "Usuarios{" + "usuario=" + usuario + ", nombreAsociacion=" + idAsociacion + '}';
     }      
 }

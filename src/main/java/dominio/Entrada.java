@@ -8,19 +8,19 @@ public class Entrada {
     private int idEvento;
     private String idSocio;
     private int numEntrada;
-    private String nombreAsoc;
+    private int idAsoc;
     
-    public Entrada(int idEvento, String idSocio, String nombreAsoc){      
+    public Entrada(int idEvento, String idSocio, int idAsoc){      
         this.idEvento = idEvento;
         this.idSocio = idSocio;
-        this.nombreAsoc = nombreAsoc;
+        this.idAsoc = idAsoc;
     }
     
-    public Entrada(int idEvento, String idSocio, int numEntrada, String nombreAsoc){      
+    public Entrada(int idEvento, String idSocio, int numEntrada, int idAsoc){
         this.idEvento = idEvento;
         this.idSocio = idSocio;
         this.numEntrada = numEntrada;
-        this.nombreAsoc = nombreAsoc;
+        this.idAsoc = idAsoc;
     }    
 
     public int getIdEvento() {
@@ -43,12 +43,12 @@ public class Entrada {
         return numEntrada;
     }
 
-    public String getNombreAsoc() {
-        return nombreAsoc;
+    public int getIdAsoc() {
+        return idAsoc;
     }
 
-    public void setNombreAsoc(String nombreAsoc) {
-        this.nombreAsoc = nombreAsoc;
+    public void setIdAsoc(int idAsoc) {
+        this.idAsoc = idAsoc;
     }
     
     @Override

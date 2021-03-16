@@ -7,12 +7,12 @@ public class Cargo {
     
     private String nombre;
     private String idSocio;
-    private String nombreAsoc;
+    private int idAsoc;
     
-    public Cargo(String nombre, String idSocio, String nombreAsoc){
+    public Cargo(String nombre, String idSocio, int idAsoc){
         this.nombre = nombre;
         this.idSocio = idSocio;
-        this.nombreAsoc = nombreAsoc;
+        this.idAsoc = idAsoc;
     }
 
     public Cargo() {
@@ -30,12 +30,12 @@ public class Cargo {
         this.idSocio = idSocio;
     }
 
-    public String getNombreAsoc() {
-        return nombreAsoc;
+    public int getIdAsoc() {
+        return idAsoc;
     }
 
-    public void setNombreAsoc(String nombreAsoc) {
-        this.nombreAsoc = nombreAsoc;
+    public void setIdAsoc(int idAsoc) {
+        this.idAsoc = idAsoc;
     }
      
     @Override

@@ -781,7 +781,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
                     Asociacion asoc = new Asociacion(tfNombre.getText(),tfTipo.getText(),
                         fechaCreacion, tlf, tfCorreo.getText(), direccion(),
                         tfCIF.getText(), nReg, logo.getIcon().toString());
-                    if(ca.modificarAsociacion(asoc, asociacion.getNombre())){
+                    if(ca.modificarAsociacion(asoc, asociacion.getId())){
                         editable(false);
                         btnEditar.setText("Editar");
                         lblNombreLogo.setText(tfNombre.getText());

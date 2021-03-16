@@ -6,6 +6,7 @@ import java.sql.Date;
  * @author angel
  **/
 public class Asociacion {
+    private int id;
     private String nombre;
     private String tipo;
     private Date fecha;
@@ -21,7 +22,7 @@ public class Asociacion {
     }
     
     public Asociacion(String nombre, String tipo, Date fecha, int telefono,
-            String email, String direccion, String cif, int nRegistro, String rutaLogo){
+            String email, String direccion, String cif, int nRegistro, String rutaLogo){        
         this.nombre = nombre;
         this.tipo = tipo;
         this.fecha = fecha;
@@ -31,6 +32,10 @@ public class Asociacion {
         this.cif = cif;
         this.nRegistro = nRegistro;
         this.rutaLogo = rutaLogo;
+    }
+
+    public int getId() {
+        return id;
     }
     
     public String getNombre() {

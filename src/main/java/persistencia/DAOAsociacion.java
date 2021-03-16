@@ -27,9 +27,9 @@ public class DAOAsociacion {
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             while(rs.next()) {
-                Asociacion asociacion = new Asociacion(rs.getString(1), rs.getString(2),
-                    rs.getDate(3), rs.getInt(4), rs.getString(5), rs.getString(6),
-                    rs.getString(7),rs.getInt(8), rs.getString(9));
+                Asociacion asociacion = new Asociacion(rs.getString(1),
+                    rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getString(5),
+                    rs.getString(6), rs.getString(7),rs.getInt(8), rs.getString(9));
                 listaEntradas.add(asociacion);
             }
 	} catch (SQLException e) {
@@ -38,7 +38,26 @@ public class DAOAsociacion {
         return listaEntradas;
     }      
     
-    public Asociacion obtenerAsociacionDAO(String nombre){
+    public Asociacion obtenerAsociacionDAO(int idasoc){
+        ResultSet rs;
+        Asociacion asociacion = new Asociacion();
+        try {
+            String sql = "select * from asociacion where idasociacion = ?";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, idasoc);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                asociacion = new Asociacion(rs.getString(1), rs.getString(2),
+                    rs.getDate(3), rs.getInt(4), rs.getString(5), rs.getString(6),
+                    rs.getString(7), rs.getInt(8), rs.getString(9));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return asociacion;
+    }
+    
+    public Asociacion obtenerAsociacionNombreDAO(String nombre){
         ResultSet rs;
         Asociacion asociacion = new Asociacion();
         try {
@@ -48,8 +67,8 @@ public class DAOAsociacion {
             rs = pst.executeQuery();
             while (rs.next()) {
                 asociacion = new Asociacion(rs.getString(1), rs.getString(2),
-                    rs.getDate(3), rs.getInt(4), rs.getString(5),
-                    rs.getString(6), rs.getString(7), rs.getInt(8), rs.getString(9));
+                    rs.getDate(3), rs.getInt(4), rs.getString(5), rs.getString(6),
+                    rs.getString(7), rs.getInt(8), rs.getString(9));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -73,13 +92,13 @@ public class DAOAsociacion {
         return realizado;
     }
     
-    public boolean modificarAsociacionDAO(Asociacion asociacion, String nombre){
+    public boolean modificarAsociacionDAO(Asociacion asociacion, int idAsoc){
         boolean realizado;
         try {
             con.createStatement();
             String sql = "update asociacion set nombre = ?, tipo = ?, fecha = ?,"
                 + "telefono = ?, email = ?, direccion = ?, cif = ?,"
-                + "nRegistro = ?, rutaLogo = ? where nombre = ?";
+                + "nRegistro = ?, rutaLogo = ? where idasociacion = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, asociacion.getNombre());
             pst.setString(2, asociacion.getTipo());
@@ -90,7 +109,7 @@ public class DAOAsociacion {
             pst.setString(7, asociacion.getCIF());
             pst.setInt(8, asociacion.getnRegistro());
             pst.setString(9, asociacion.getRutaLogo());
-            pst.setString(10, nombre);
+            pst.setInt(10, idAsoc);
             pst.executeUpdate();
             realizado = true;
         } catch (SQLException e) {

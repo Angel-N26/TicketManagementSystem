@@ -297,7 +297,7 @@ public class SociosPanel extends javax.swing.JPanel {
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         if(evt.getClickCount() == 2){            
             int index = table.getSelectedRow();
-            Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0), asociacion.getNombre());
+            Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0), asociacion.getId());
             
             JPanel card = (JPanel) this.getParent();
             EditSocioPanel editSP = new EditSocioPanel(socio, asociacion);
@@ -339,13 +339,13 @@ public class SociosPanel extends javax.swing.JPanel {
             if(table.getSelectedRow() != -1){
                 int index = table.getSelectedRow();
 
-                Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0), asociacion.getNombre());
+                Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0), asociacion.getId());
 
                 int dialogButton = JOptionPane.YES_NO_OPTION;
                 int dialogResult = JOptionPane.showConfirmDialog (null, 
                     "Estas seguro que desea elimnar?","Warning",dialogButton);
                 if(dialogResult == JOptionPane.YES_OPTION){
-                    if(cs.eliminarSocio(socio.getDni())){
+                    if(cs.eliminarSocio(socio.getDni(), asociacion.getId())){
                         dtm.removeRow(index);
                     }
                 }
@@ -358,7 +358,7 @@ public class SociosPanel extends javax.swing.JPanel {
 
     private ArrayList<Socio> obtenerSocios(){
         ControlSocio csoc = new ControlSocio();
-        return csoc.obtenerSocios(asociacion.getNombre());
+        return csoc.obtenerSocios(asociacion.getId());
     }
     
     public void actualizarTabla(){

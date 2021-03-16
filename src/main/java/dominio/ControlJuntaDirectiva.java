@@ -14,12 +14,12 @@ public class ControlJuntaDirectiva {
         this.daoJuntaDirectiva = new DAOJuntaDirectiva();
     }
 
-    public ArrayList<Cargo> obtenerCargos(String nombreAsoc) {
-	return daoJuntaDirectiva.obtenerCargosDAO(nombreAsoc);
+    public ArrayList<Cargo> obtenerCargos(int idAsoc) {
+	return daoJuntaDirectiva.obtenerCargosDAO(idAsoc);
     }
 
-    public Cargo obtenerCargo(String nombre, String nombreAsoc) {
-        return daoJuntaDirectiva.obtenerCargoDAO(nombre, nombreAsoc);
+    public Cargo obtenerCargo(String nombre, int idAsoc) {
+        return daoJuntaDirectiva.obtenerCargoDAO(nombre, idAsoc);
     }
     
     public boolean insertarCargo(Cargo cargo){

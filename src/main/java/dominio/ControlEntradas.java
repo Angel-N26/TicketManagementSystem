@@ -14,23 +14,23 @@ public class ControlEntradas {
         this.daoEntradas = new DAOEntradas();
     }
 
-    public ArrayList<Entrada> obtenerEntradas(String nombreAsoc) {
-	return daoEntradas.obtenerEntradasDAO(nombreAsoc);
+    public ArrayList<Entrada> obtenerEntradas(int idAsoc) {
+	return daoEntradas.obtenerEntradasDAO(idAsoc);
     }
     
-    public ArrayList<Entrada> obtenerEntradasEvento(int idevento, String nombreAsoc) {
-	return daoEntradas.obtenerEntradasEventoDAO(idevento, nombreAsoc);
+    public ArrayList<Entrada> obtenerEntradasEvento(int idevento, int idAsoc) {
+	return daoEntradas.obtenerEntradasEventoDAO(idevento, idAsoc);
     }
 
-    public Entrada obtenerEntrada(int identrada, String idsocio, String nombreAsoc) {
-        return daoEntradas.obtenerEntradaDAO(identrada, idsocio, nombreAsoc);
+    public Entrada obtenerEntrada(int identrada, String idsocio, int idAsoc) {
+        return daoEntradas.obtenerEntradaDAO(identrada, idsocio, idAsoc);
     }
 
     public boolean insertarEntrada(Entrada entrada) {
         return daoEntradas.insertarEntradaDAO(entrada);
     }
 
-    public boolean eliminarEntrada(int id_entrada, String nombreAsoc){
-        return daoEntradas.eliminarEntradaDAO(id_entrada, nombreAsoc);
+    public boolean eliminarEntrada(int id_entrada, int idAsoc){
+        return daoEntradas.eliminarEntradaDAO(id_entrada, idAsoc);
     }
 }

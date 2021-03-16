@@ -283,7 +283,7 @@ public class EventosPanel extends javax.swing.JPanel {
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         if(evt.getClickCount() == 2){
             int index = table.getSelectedRow();
-            Evento evento = ce.obtenerEvento((Integer)dtm.getValueAt(index, 0), asociacion.getNombre());
+            Evento evento = ce.obtenerEvento((Integer)dtm.getValueAt(index, 0), asociacion.getId());
             
             JPanel card = (JPanel) this.getParent();
             EditEventoPanel editEP = new EditEventoPanel(evento, asociacion);
@@ -311,7 +311,7 @@ public class EventosPanel extends javax.swing.JPanel {
                 int dialogButton = JOptionPane.YES_NO_OPTION;
                 int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
                 if(dialogResult == JOptionPane.YES_OPTION){
-                    if(ce.eliminarEvento((Integer)dtm.getValueAt(index, 0))){
+                    if(ce.eliminarEvento((Integer)dtm.getValueAt(index, 0), asociacion.getId())){
                         dtm.removeRow(index);
                     }
                 }
@@ -342,7 +342,7 @@ public class EventosPanel extends javax.swing.JPanel {
     
     public ArrayList<Evento> obtenerEventos(){
         ControlEvento ceve = new ControlEvento();
-        return ceve.obtenerEventos(asociacion.getNombre());
+        return ceve.obtenerEventos(asociacion.getId());
     }
     
     public void actualizarTabla(){

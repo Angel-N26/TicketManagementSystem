@@ -50,10 +50,14 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
         setIconImage(getIconImage());
+        setMaximumSize(new java.awt.Dimension(400, 400));
+        setMinimumSize(new java.awt.Dimension(400, 400));
         setUndecorated(true);
         setResizable(false);
 
         panel.setBackground(new java.awt.Color(51, 51, 51));
+        panel.setMaximumSize(new java.awt.Dimension(400, 400));
+        panel.setMinimumSize(new java.awt.Dimension(400, 400));
         panel.setName("panel"); // NOI18N
         panel.setPreferredSize(new java.awt.Dimension(400, 400));
         panel.setLayout(new java.awt.BorderLayout());
@@ -64,15 +68,15 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelNorth.setPreferredSize(new java.awt.Dimension(400, 40));
         panelNorth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
-        close.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 1, new java.awt.Color(0, 0, 0)));
+        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\cerrar.png")); // NOI18N
+        close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         close.setName("close"); // NOI18N
         close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeMouseClicked(evt);
             }
         });
-        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, -1, -1));
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 2, -1, -1));
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -268,10 +272,10 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         Cargo cargo;        
         if(cb.getSelectedItem() != null){
             Socio socio = (Socio) cb.getSelectedItem();
-            cargo = new Cargo(nombre, socio.getDni(), asociacion.getNombre());
+            cargo = new Cargo(nombre, socio.getDni(), asociacion.getId());
             modificado = cjd.modificarCargo(cargo);
         }else{
-            cargo = new Cargo(nombre, null, asociacion.getNombre());
+            cargo = new Cargo(nombre, null, asociacion.getId());
             modificado = cjd.modificarCargo(cargo);
         }
         return modificado;
@@ -280,7 +284,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     //Selecciona el socio correspondiente en cada cargo
     private void seleccionarCargos(){        
         ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
-        ArrayList<Cargo> cargos = cjd.obtenerCargos(asociacion.getNombre());
+        ArrayList<Cargo> cargos = cjd.obtenerCargos(asociacion.getId());
         
         for(int i = 0 ; i < cargos.size() ; i++){
             switch(cargos.get(i).getNombre()){
@@ -322,13 +326,13 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     //Obtiene un socio dado su dni
     private Socio obtenerSocio(String dni){
         ControlSocio cs = new ControlSocio();
-        return cs.obtenerSocio(dni, asociacion.getNombre());
+        return cs.obtenerSocio(dni, asociacion.getId());
     }       
     
     //Rellena el combo box con los nombres de todos los socios
     private void rellenarComboBox(){
         ControlSocio cs = new ControlSocio();
-        soc = cs.obtenerSocios(asociacion.getNombre());
+        soc = cs.obtenerSocios(asociacion.getId());
         cbPresidente.addItem(null);
         cbVicepresidente.addItem(null);
         cbSecretario.addItem(null);

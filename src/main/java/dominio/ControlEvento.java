@@ -14,12 +14,12 @@ public class ControlEvento {
         this.daoEvento = new DAOEvento();
     }
 
-    public ArrayList<Evento> obtenerEventos(String nombreAsoc) {
-	return daoEvento.obtenerEventosDAO(nombreAsoc);
+    public ArrayList<Evento> obtenerEventos(int idAsoc) {
+	return daoEvento.obtenerEventosDAO(idAsoc);
     }
 
-    public Evento obtenerEvento(int id, String nombreAsoc) {
-        return daoEvento.obtenerEventoDAO(id, nombreAsoc);
+    public Evento obtenerEvento(int id, int idAsoc) {
+        return daoEvento.obtenerEventoDAO(id, idAsoc);
     }
 
     public boolean insertarEvento(Evento evento) {
@@ -30,7 +30,7 @@ public class ControlEvento {
         return daoEvento.modificarEventoDAO(evento);
     }
 
-    public boolean eliminarEvento(int id){
-        return daoEvento.eliminarEventoDAO(id);
+    public boolean eliminarEvento(int id, int idAsoc){
+        return daoEvento.eliminarEventoDAO(id, idAsoc);
     }
 }

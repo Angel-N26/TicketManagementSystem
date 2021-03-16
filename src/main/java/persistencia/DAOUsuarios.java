@@ -1,7 +1,5 @@
 package persistencia;
 
-import dominio.Asociacion;
-import dominio.Socio;
 import dominio.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,7 +46,7 @@ public class DAOUsuarios {
             pst.setString(1, nombre);
             rs = pst.executeQuery();
             while (rs.next()) {
-                usuario = new Usuario(rs.getString(1), rs.getString(2), rs.getString(3));
+                usuario = new Usuario(rs.getString(1), rs.getString(2), rs.getInt(3));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -61,11 +59,11 @@ public class DAOUsuarios {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into usuarios(user, pass, nombreAsoc) values(?,?,?)";
+            String sql = "insert into usuarios(user, pass, idAsoc) values(?,?,?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, usuario.getUsuario());
-            pst.setString(2, usuario.getContraseña());
-            pst.setString(3, usuario.getNombreAsociacion());
+            pst.setString(2, usuario.getContrasena());
+            pst.setInt(3, usuario.getIdAsociacion());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -80,11 +78,11 @@ public class DAOUsuarios {
             realizado = true;
             con.createStatement();
             String sql = "update usuarios set user = ?, pass = ?,"
-                    + "nombreAsoc = ? where user = ?";
+                    + "idAsoc = ? where user = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, usuario.getUsuario());
-            pst.setString(2, usuario.getContraseña());
-            pst.setString(3, usuario.getNombreAsociacion());
+            pst.setString(2, usuario.getContrasena());
+            pst.setInt(3, usuario.getIdAsociacion());
             pst.setString(4, user);            
             pst.executeUpdate();
         } catch (SQLException e) {

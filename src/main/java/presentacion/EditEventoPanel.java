@@ -589,7 +589,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
                 Evento evento = new Evento(eve.getId(), tfNombre.getText(), tfTipo.getText(),
                     tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
                     Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
-                    Integer.parseInt(tfEntradasVendidas.getText()), fotoEvento.getIcon().toString(), asociacion.getNombre());
+                    Integer.parseInt(tfEntradasVendidas.getText()), fotoEvento.getIcon().toString(), asociacion.getId());
                 if(ce.modificarEvento(evento)){
                     dispose();
                 }
@@ -597,7 +597,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
                 Evento evento = new Evento(tfNombre.getText(), tfTipo.getText(),
                     tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
                     Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
-                    Integer.parseInt(tfEntradasVendidas.getText()), /*jLabel1.getIcon().toString()*/null, asociacion.getNombre());
+                    Integer.parseInt(tfEntradasVendidas.getText()), /*jLabel1.getIcon().toString()*/null, asociacion.getId());
                 if(ce.insertarEvento(evento)){
                     dispose();
                 }
@@ -632,7 +632,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
             int dialogButton = JOptionPane.YES_NO_OPTION;
             int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
             if(dialogResult == JOptionPane.YES_OPTION){
-                if(ce.eliminarEvento(eve.getId())){
+                if(ce.eliminarEvento(eve.getId(), asociacion.getId())){
                     dispose();
                 }
             }

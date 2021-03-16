@@ -130,7 +130,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         panelNorth.add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, -1));
 
         close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
+        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\cerrar.png")); // NOI18N
         close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         close.setName("close"); // NOI18N
         close.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -138,7 +138,7 @@ public class Login extends javax.swing.JFrame implements Colores {
                 closeMouseClicked(evt);
             }
         });
-        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(277, 3, 20, -1));
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(282, 2, -1, -1));
 
         lblInicioSesion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblInicioSesion.setForeground(new java.awt.Color(204, 0, 204));
@@ -584,7 +584,7 @@ public class Login extends javax.swing.JFrame implements Colores {
                 if(comprobarUsuario(tfUser.getText(), pfPass.getText())){
                     ControlUsuarios cu = new ControlUsuarios();
                     Usuario usuario = cu.obtenerUsuario(tfUser.getText());
-                    Menu menu = new Menu(usuario.getNombreAsociacion());
+                    Menu menu = new Menu(usuario.getIdAsociacion());
                     menu.setVisible(true);
                     menu.setLocationRelativeTo(null);
                     menu.setExtendedState(NORMAL);
@@ -604,10 +604,11 @@ public class Login extends javax.swing.JFrame implements Colores {
 
                 if(camposVacios() && comprobarCampos()){
                     if(ca.insertarAsociacion(tfNombreAsoc.getText())){
-                        crearCargos(tfNombreAsoc.getText());
-                        Usuario user = new Usuario(tfUserReg.getText(), pfPassReg.getText(), tfNombreAsoc.getText());
+                        Asociacion asoc = ca.obtenerAsociacionNombre(tfNombreAsoc.getText());
+                        crearCargos(asoc.getId());
+                        Usuario user = new Usuario(tfUserReg.getText(), pfPassReg.getText(), asoc.getId());
                         if(cu.insertarUsuario(user)){
-                            Menu menu = new Menu(tfNombreAsoc.getText());
+                            Menu menu = new Menu(asoc.getId());
                             menu.setVisible(true);
                             menu.setLocationRelativeTo(null);
                             menu.setExtendedState(NORMAL);
@@ -628,7 +629,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         ControlUsuarios cu = new ControlUsuarios();
         ArrayList<Usuario> usuarios= cu.obtenerUsuarios();
         for(int i = 0 ; i < usuarios.size() ; i++){
-            if(nombre.equals(usuarios.get(i).getUsuario()) && pass.equals(usuarios.get(i).getContraseña())){
+            if(nombre.equals(usuarios.get(i).getUsuario()) && pass.equals(usuarios.get(i).getContrasena())){
                 existe = true;
             }
         }
@@ -646,20 +647,20 @@ public class Login extends javax.swing.JFrame implements Colores {
         tflost.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
     }
     
-    private void crearCargos(String nombreAsoc){
+    private void crearCargos(int idAsoc){
         ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
         Cargo cargo;
-        cargo = new Cargo("Presidente", null, nombreAsoc);
+        cargo = new Cargo("Presidente", null, idAsoc);
         cjd.insertarCargo(cargo);
-        cargo = new Cargo("Vicepresidente", null, nombreAsoc);
+        cargo = new Cargo("Vicepresidente", null, idAsoc);
         cjd.insertarCargo(cargo);
-        cargo = new Cargo("Tesorero", null, nombreAsoc);
+        cargo = new Cargo("Tesorero", null, idAsoc);
         cjd.insertarCargo(cargo);
-        cargo = new Cargo("Secretario", null, nombreAsoc);
+        cargo = new Cargo("Secretario", null, idAsoc);
         cjd.insertarCargo(cargo);
-        cargo = new Cargo("Vocal1", null, nombreAsoc);
+        cargo = new Cargo("Vocal1", null, idAsoc);
         cjd.insertarCargo(cargo);
-        cargo = new Cargo("Vocal2", null, nombreAsoc);
+        cargo = new Cargo("Vocal2", null, idAsoc);
         cjd.insertarCargo(cargo);
         
     }

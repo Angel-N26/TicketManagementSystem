@@ -17,7 +17,7 @@ public class EntradasPanel extends javax.swing.JPanel {
 
     public EntradasPanel(Asociacion asociacion) {
         this.asociacion = asociacion;
-        
+        this.ge = new GenerarEntradas(this.asociacion);
         initComponents();
     }
 
@@ -175,13 +175,14 @@ public class EntradasPanel extends javax.swing.JPanel {
             if(cbEvento.getSelectedItem() != null){
                 Evento evento = (Evento) cbEvento.getSelectedItem();
                 if(evento != null){                    
-                    ge = new GenerarEntradas(evento, sacarEntradas(evento.getId()), asociacion);
-                    System.out.println(ge.toString());
-                    System.out.println(ge.isVisible());
-                    if(!ge.isVisible()){                        
+                    if(!ge.isVisible()){
+                        ge.setEvento(evento);
+                        ge.setEntradas(sacarEntradas(evento.getId()));
+                        ge.rellenarListas();
+
                         ge.setVisible(true);
-                        ge.setLocationRelativeTo(null);
-                    }    
+                        ge.setLocationRelativeTo(null);                      
+                    }
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "Selecciona un evento.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -219,7 +220,7 @@ public class EntradasPanel extends javax.swing.JPanel {
     
     private void rellenarComboBox(){
         ControlEvento cev = new ControlEvento();
-        ArrayList<Evento> evs = cev.obtenerEventos(asociacion.getNombre());
+        ArrayList<Evento> evs = cev.obtenerEventos(asociacion.getId());
         
         cbEvento.addItem(null);
         
@@ -231,7 +232,7 @@ public class EntradasPanel extends javax.swing.JPanel {
     
     private ArrayList<Entrada> sacarEntradas(int id_evento){
         ControlEntradas cen = new ControlEntradas();
-        ArrayList<Entrada> entradas = cen.obtenerEntradasEvento(id_evento, asociacion.getNombre());
+        ArrayList<Entrada> entradas = cen.obtenerEntradasEvento(id_evento, asociacion.getId());
         
         return entradas;
     }        

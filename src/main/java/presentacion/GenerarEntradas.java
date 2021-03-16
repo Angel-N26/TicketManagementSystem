@@ -25,14 +25,11 @@ import javax.swing.JOptionPane;
  **/
 public class GenerarEntradas extends javax.swing.JFrame {
 
-    public GenerarEntradas(Evento evento, ArrayList<Entrada> entradas, Asociacion asociacion) {
-        this.evento = evento;
-        this.entradas = entradas;
-        this.asociacion = asociacion;
-        
-        initComponents();       
+    public GenerarEntradas(Asociacion asociacion) {
+        this.asociacion = asociacion;        
+        initComponents();     
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      **/
@@ -59,17 +56,15 @@ public class GenerarEntradas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("TicketManagementSystem");
         setIconImage(getIconImage());
+        setMaximumSize(new java.awt.Dimension(500, 400));
+        setMinimumSize(new java.awt.Dimension(500, 400));
         setUndecorated(true);
-        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
-            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
-            }
-            public void windowLostFocus(java.awt.event.WindowEvent evt) {
-                formWindowLostFocus(evt);
-            }
-        });
 
         panel.setBackground(new java.awt.Color(51, 51, 51));
+        panel.setMaximumSize(new java.awt.Dimension(500, 400));
+        panel.setMinimumSize(new java.awt.Dimension(500, 400));
         panel.setName("panel"); // NOI18N
+        panel.setPreferredSize(new java.awt.Dimension(500, 400));
         panel.setLayout(new java.awt.BorderLayout());
 
         panelNorth.setBackground(new java.awt.Color(51, 51, 51));
@@ -84,21 +79,20 @@ public class GenerarEntradas extends javax.swing.JFrame {
         lblTitulo.setName("lblTitulo"); // NOI18N
         panelNorth.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lblEvento.setText(evento.getNombre());
         lblEvento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblEvento.setForeground(new java.awt.Color(255, 255, 255));
         lblEvento.setName("lblEvento"); // NOI18N
         panelNorth.add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 17));
 
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
-        close.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 1, new java.awt.Color(0, 0, 0)));
+        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\cerrar.png")); // NOI18N
+        close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         close.setName("close"); // NOI18N
         close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeMouseClicked(evt);
             }
         });
-        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 0, -1, -1));
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 2, -1, -1));
 
         panel.add(panelNorth, java.awt.BorderLayout.NORTH);
 
@@ -135,7 +129,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
         lblSociosCon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSociosCon.setText("SOCIOS CON ENTRADA");
         lblSociosCon.setName("lblSociosCon"); // NOI18N
-        panelCenter.add(lblSociosCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 220, -1));
+        panelCenter.add(lblSociosCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 220, -1));
 
         scrollPaneCon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPaneCon.setName("scrollPaneCon"); // NOI18N
@@ -144,7 +138,6 @@ public class GenerarEntradas extends javax.swing.JFrame {
         modeloListaSociosCon = new DefaultListModel();
         listSociosCon.setModel(modeloListaSociosCon);
         listSociosCon.setSelectionForeground(new Color(255,255,255));
-        rellenarListas();
         listSociosCon.setBackground(new java.awt.Color(102, 102, 102));
         listSociosCon.setForeground(new java.awt.Color(255, 255, 255));
         listSociosCon.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -152,7 +145,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
         listSociosCon.setSelectionBackground(new java.awt.Color(31, 31, 31));
         scrollPaneCon.setViewportView(listSociosCon);
 
-        panelCenter.add(scrollPaneCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 220, 245));
+        panelCenter.add(scrollPaneCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 220, 245));
 
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
 
@@ -205,10 +198,6 @@ public class GenerarEntradas extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_closeMouseClicked
 
-    private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
-        //dispose();
-    }//GEN-LAST:event_formWindowLostFocus
-
     private void btnGenerarEntradasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseExited
         activar = false;
     }//GEN-LAST:event_btnGenerarEntradasMouseExited
@@ -226,9 +215,9 @@ public class GenerarEntradas extends javax.swing.JFrame {
                     "Estas seguro que desea generar?", "Warning", JOptionPane.YES_NO_OPTION);
                 if(dialogResult == JOptionPane.YES_OPTION){
                     for(int i = 0 ; i < socioConEntrada.size() ; i++){
-                        Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni(), asociacion.getNombre());
+                        Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni(), asociacion.getId());
                         ce.insertarEntrada(entrada);
-                        entrada = ce.obtenerEntrada(entrada.getIdEvento(), entrada.getIdSocio(), asociacion.getNombre());
+                        entrada = ce.obtenerEntrada(entrada.getIdEvento(), entrada.getIdSocio(), asociacion.getId());
                         try{
                             CrearQR qr = new CrearQR();
                             BufferedImage imagen = qr.crearQR(entrada.getIdEvento()
@@ -253,15 +242,15 @@ public class GenerarEntradas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGenerarEntradasMouseReleased
         
     
-    private void rellenarListas(){
+    public void rellenarListas(){
         modeloListaSociosCon.removeAllElements();
         modeloListaSociosSin.removeAllElements();
         
         ControlSocio cs = new ControlSocio();
-        ArrayList<Socio> socios = cs.obtenerSocios(asociacion.getNombre());
+        ArrayList<Socio> socios = cs.obtenerSocios(asociacion.getId());
         
         ArrayList<Socio> sociosSin = new ArrayList();
-        ArrayList<Socio> sociosCon = new ArrayList();
+        ArrayList<Socio> sociosCon = new ArrayList();        
         
         for(Entrada e : entradas){
             for(Socio s : socios){
@@ -281,12 +270,22 @@ public class GenerarEntradas extends javax.swing.JFrame {
         modeloListaSociosSin.addAll(0, sociosSin);
     }     
     
+    
+    public void setEvento(Evento evento){
+        this.evento = evento;
+        lblEvento.setText(evento.getNombre());
+    }
+    
+    public void setEntradas(ArrayList<Entrada> entradas){
+        this.entradas = entradas;        
+    }
+    
     private boolean activar;
     
     private final Asociacion asociacion;
     
-    private final Evento evento;
-    private final ArrayList<Entrada> entradas;
+    private Evento evento;
+    private ArrayList<Entrada> entradas;
     
     private DefaultListModel modeloListaSociosSin;
     private DefaultListModel modeloListaSociosCon;

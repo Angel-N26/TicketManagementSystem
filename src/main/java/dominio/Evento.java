@@ -18,11 +18,11 @@ public class Evento {
     private int entradas;
     private int entradasVendidas;
     private String rutaImg;
-    private String nombreAsoc;
+    private int idAsoc;
 
     public Evento(int id, String nombre, String tipo, String sala,
             String direccion, Date fecha, Time hora, int entradas,
-            int entradasVendidas, String rutaImg, String nombreAsoc){
+            int entradasVendidas, String rutaImg, int idAsoc){
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -33,12 +33,12 @@ public class Evento {
         this.entradas = entradas;
         this.entradasVendidas = entradasVendidas;
         this.rutaImg = rutaImg;
-        this.nombreAsoc = nombreAsoc;
+        this.idAsoc = idAsoc;
     }
     
     public Evento(String nombre, String tipo, String sala, String direccion,
             Date fecha, Time hora, int entradas, int entradasVendidas,
-            String rutaImg, String nombreAsoc){        
+            String rutaImg, int idAsoc){        
         this.nombre = nombre;
         this.tipo = tipo;
         this.sala = sala;
@@ -48,7 +48,7 @@ public class Evento {
         this.entradas = entradas;
         this.entradasVendidas = entradasVendidas;
         this.rutaImg = rutaImg;
-        this.nombreAsoc = nombreAsoc;
+        this.idAsoc = idAsoc;
     }
 
     public Evento() {
@@ -130,12 +130,12 @@ public class Evento {
         this.rutaImg = rutaImg;
     }
 
-    public String getNombreAsoc() {
-        return nombreAsoc;
+    public int getIdAsoc() {
+        return idAsoc;
     }
 
-    public void setNombreAsoc(String nombreAsoc) {
-        this.nombreAsoc = nombreAsoc;
+    public void setIdAsoc(int idAsoc) {
+        this.idAsoc = idAsoc;
     }
 
     @Override

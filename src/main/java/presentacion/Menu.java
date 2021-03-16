@@ -28,9 +28,9 @@ import org.apache.commons.csv.CSVRecord;
  **/
 public class Menu extends javax.swing.JFrame {
 
-    public Menu(String nombreAsociacion) {
+    public Menu(int idAsociacion) {
         this.ca = new ControlAsociacion();
-        this.asociacion = ca.obtenerAsociacion(nombreAsociacion);
+        this.asociacion = ca.obtenerAsociacion(idAsociacion);
         
         ap = new AsociacionPanel(this.asociacion);
         sp = new SociosPanel(this.asociacion);
@@ -711,7 +711,7 @@ public class Menu extends javax.swing.JFrame {
 
                     Socio s = new Socio(dni, nombre, apellidos, email, fechaNac,
                             direccion, tlf, fechaIng, idMem, pago, null,
-                            asociacion.getNombre());
+                            asociacion.getId());
                     if(cs.insertarSocio(s)){
                         sp.actualizarTabla();
                     }

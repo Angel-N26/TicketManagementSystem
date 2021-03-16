@@ -18,12 +18,12 @@ public class Socio {
     private int idMembresia;
     private boolean pagado;
     private String rutaImg;
-    private String nombreAsoc;
+    private int idAsoc;
     private boolean inactivo;
     
     public Socio(String dni, String nombre, String apellidos, String email,
             Date fechaNac, String domicilio, int telefono, Date fechaIngreso,
-            int idMembresia, boolean pagado, String rutaImg, String nombreAsoc) {
+            int idMembresia, boolean pagado, String rutaImg, int idAsoc) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -35,7 +35,7 @@ public class Socio {
         this.idMembresia = idMembresia;
         this.pagado = pagado;
         this.rutaImg = rutaImg;
-        this.nombreAsoc = nombreAsoc;
+        this.idAsoc = idAsoc;
         this.inactivo = false;
     }
 
@@ -130,12 +130,12 @@ public class Socio {
         this.rutaImg = rutaImg;
     }
 
-    public String getNombreAsoc() {
-        return nombreAsoc;
+    public int getIdAsoc() {
+        return idAsoc;
     }
 
-    public void setNombreAsoc(String nombreAsoc) {
-        this.nombreAsoc = nombreAsoc;
+    public void setIdAsoc(int idAsoc) {
+        this.idAsoc = idAsoc;
     }
     
     @Override

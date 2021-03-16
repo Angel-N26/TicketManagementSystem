@@ -19,17 +19,17 @@ public class DAOJuntaDirectiva {
         con = Agente.getConexion();
     }
 
-    public ArrayList<Cargo> obtenerCargosDAO(String nombreAsoc) {
+    public ArrayList<Cargo> obtenerCargosDAO(int idAsoc) {
         ArrayList listaEventos = new ArrayList();
         ResultSet rs;
         Cargo cargo;
         try {
-            String sql = "select cargo from juntadirectiva where nombreAsoc = ?";
+            String sql = "select cargo from juntadirectiva where idAsoc = ?";
             pst = con.prepareStatement(sql);
-            pst.setString(1, nombreAsoc);
+            pst.setInt(1, idAsoc);
             rs = pst.executeQuery();
             while (rs.next()) {
-                cargo = obtenerCargoDAO(rs.getString(1), nombreAsoc);
+                cargo = obtenerCargoDAO(rs.getString(1), idAsoc);
                 listaEventos.add(cargo);
             }
         } catch (SQLException e) {
@@ -38,17 +38,17 @@ public class DAOJuntaDirectiva {
         return listaEventos;
     }
 
-    public Cargo obtenerCargoDAO(String nombre, String nombreAsoc) {
+    public Cargo obtenerCargoDAO(String nombre, int idAsoc) {
         ResultSet rs;
         Cargo cargo = new Cargo();
         try {
-            String sql = "select * from juntadirectiva where cargo = ? AND nombreAsoc = ?";
+            String sql = "select * from juntadirectiva where cargo = ? AND idAsoc = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, nombre);
-            pst.setString(2, nombreAsoc);
+            pst.setInt(2, idAsoc);
             rs = pst.executeQuery();
             while (rs.next()) {
-                cargo = new Cargo(rs.getString(1), rs.getString(2), nombreAsoc);
+                cargo = new Cargo(rs.getString(1), rs.getString(2), idAsoc);
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -61,12 +61,12 @@ public class DAOJuntaDirectiva {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into juntadirectiva(cargo, idSocio, nombreAsoc)"
+            String sql = "insert into juntadirectiva(cargo, idSocio, idAsoc)"
                     + "values(?,?,?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, cargo.getNombre());
             pst.setString(2, cargo.getIdSocio());
-            pst.setString(3, cargo.getNombreAsoc());
+            pst.setInt(3, cargo.getIdAsoc());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -80,11 +80,11 @@ public class DAOJuntaDirectiva {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "update juntadirectiva set idSocio = ? where cargo = ? AND nombreAsoc = ?";
+            String sql = "update juntadirectiva set idSocio = ? where cargo = ? AND idAsoc = ?";
             pst = con.prepareStatement(sql);
             pst.setString(1, cargo.getIdSocio());
             pst.setString(2, cargo.getNombre());
-            pst.setString(3, cargo.getNombreAsoc());
+            pst.setInt(3, cargo.getIdAsoc());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

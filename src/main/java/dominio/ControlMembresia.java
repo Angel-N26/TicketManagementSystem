@@ -14,12 +14,12 @@ public class ControlMembresia {
         this.daoMembresia = new DAOMembresia();
     }
 
-    public ArrayList<Membresia> obtenerMembresias(String nombreAsoc) {
-	return daoMembresia.obtenerMembresiasDAO(nombreAsoc);
+    public ArrayList<Membresia> obtenerMembresias(int idAsoc) {
+	return daoMembresia.obtenerMembresiasDAO(idAsoc);
     }
 
-    public Membresia obtenerMembresia(int id, String nombreAsoc) {
-        return daoMembresia.obtenerMembresiaDAO(id, nombreAsoc);
+    public Membresia obtenerMembresia(int id, int idAsoc) {
+        return daoMembresia.obtenerMembresiaDAO(id, idAsoc);
     }
     
     public boolean insertarMembresia(Membresia membresia) {
@@ -30,7 +30,7 @@ public class ControlMembresia {
         return daoMembresia.modificarMembresiaDAO(membresia);
     }
 
-    public boolean eliminarMembresia(int id){
-        return daoMembresia.eliminarMembresiaDAO(id);
+    public boolean eliminarMembresia(int id, int idAsoc){
+        return daoMembresia.eliminarMembresiaDAO(id, idAsoc);
     }
 }
