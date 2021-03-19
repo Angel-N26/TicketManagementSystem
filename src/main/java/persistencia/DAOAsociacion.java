@@ -23,13 +23,11 @@ public class DAOAsociacion {
        ArrayList<Asociacion> listaEntradas = new ArrayList();
         ResultSet rs;
 	try {
-            String sql = "select * from asociacion";
+            String sql = "select idasociacion from asociacion";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             while(rs.next()) {
-                Asociacion asociacion = new Asociacion(rs.getString(1),
-                    rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getString(5),
-                    rs.getString(6), rs.getString(7),rs.getInt(8), rs.getString(9));
+                Asociacion asociacion = obtenerAsociacionDAO(rs.getInt(1));
                 listaEntradas.add(asociacion);
             }
 	} catch (SQLException e) {
@@ -47,9 +45,9 @@ public class DAOAsociacion {
             pst.setInt(1, idasoc);
             rs = pst.executeQuery();
             while (rs.next()) {
-                asociacion = new Asociacion(rs.getString(1), rs.getString(2),
-                    rs.getDate(3), rs.getInt(4), rs.getString(5), rs.getString(6),
-                    rs.getString(7), rs.getInt(8), rs.getString(9));
+                asociacion = new Asociacion(rs.getInt(1), rs.getString(2), rs.getString(3),
+                    rs.getDate(4), rs.getInt(5), rs.getString(6), rs.getString(7),
+                    rs.getString(8), rs.getInt(9), rs.getString(10));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -66,9 +64,7 @@ public class DAOAsociacion {
             pst.setString(1, nombre);
             rs = pst.executeQuery();
             while (rs.next()) {
-                asociacion = new Asociacion(rs.getString(1), rs.getString(2),
-                    rs.getDate(3), rs.getInt(4), rs.getString(5), rs.getString(6),
-                    rs.getString(7), rs.getInt(8), rs.getString(9));
+                asociacion = new Asociacion(rs.getInt(1), rs.getString(2));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());

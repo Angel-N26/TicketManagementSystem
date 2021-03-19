@@ -1,7 +1,6 @@
 package presentacion;
 
 import dominio.Asociacion;
-import dominio.ControlAsociacion;
 import dominio.ControlSocio;
 import dominio.Socio;
 import java.awt.CardLayout;
@@ -28,17 +27,15 @@ import org.apache.commons.csv.CSVRecord;
  **/
 public class Menu extends javax.swing.JFrame {
 
-    public Menu(int idAsociacion) {
-        this.ca = new ControlAsociacion();
-        this.asociacion = ca.obtenerAsociacion(idAsociacion);
-        
-        ap = new AsociacionPanel(this.asociacion);
-        sp = new SociosPanel(this.asociacion);
-        evp = new EventosPanel(this.asociacion);
-        enp = new EntradasPanel(this.asociacion);
+    public Menu(Asociacion asociacion) {
+        this.asociacion = asociacion;
+        ap = new AsociacionPanel(asociacion);
+        sp = new SociosPanel(asociacion);
+        evp = new EventosPanel(asociacion);
+        enp = new EntradasPanel(asociacion);
         ip = new EstadisticasPanel();
-        editSP = new EditSocioPanel(this.asociacion);
-        editEP = new EditEventoPanel(this.asociacion);
+        editSP = new EditSocioPanel(asociacion);
+        editEP = new EditEventoPanel(asociacion);
 
         initComponents();
     }
@@ -60,6 +57,7 @@ public class Menu extends javax.swing.JFrame {
         maximize = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         panelWest = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         btnAsociacion = new keeptoo.KButton();
         panelSep1 = new javax.swing.JPanel();
         btnJuntaDirectiva = new keeptoo.KButton();
@@ -71,6 +69,7 @@ public class Menu extends javax.swing.JFrame {
         btnEventos = new keeptoo.KButton();
         btnEntradas = new keeptoo.KButton();
         btnEstadisticas = new keeptoo.KButton();
+        jPanel1 = new javax.swing.JPanel();
         btnCerrarSesion = new keeptoo.KButton();
         panelCenter = new javax.swing.JPanel();
 
@@ -184,7 +183,11 @@ public class Menu extends javax.swing.JFrame {
         panelWest.setMinimumSize(new java.awt.Dimension(200, 520));
         panelWest.setName("panelWest"); // NOI18N
         panelWest.setPreferredSize(new java.awt.Dimension(200, 520));
-        panelWest.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
+        panelWest.setLayout(new javax.swing.BoxLayout(panelWest, javax.swing.BoxLayout.Y_AXIS));
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setPreferredSize(new java.awt.Dimension(190, 460));
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
 
         btnAsociacion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(204, 0, 204)));
         btnAsociacion.setText("Asociación   ");
@@ -202,11 +205,17 @@ public class Menu extends javax.swing.JFrame {
         btnAsociacion.setPreferredSize(new java.awt.Dimension(190, 40));
         btnAsociacion.setSelected(true);
         btnAsociacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAsociacionMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAsociacionMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAsociacionMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAsociacionMouseReleased(evt);
             }
         });
-        panelWest.add(btnAsociacion);
+        jPanel2.add(btnAsociacion);
 
         panelSep1.setBackground(new java.awt.Color(51, 51, 51));
         panelSep1.setPreferredSize(new java.awt.Dimension(30, 40));
@@ -222,7 +231,7 @@ public class Menu extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        panelWest.add(panelSep1);
+        jPanel2.add(panelSep1);
 
         btnJuntaDirectiva.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         btnJuntaDirectiva.setText("            Junta Directiva");
@@ -240,11 +249,17 @@ public class Menu extends javax.swing.JFrame {
         btnJuntaDirectiva.setName("btnJuntaDirectiva"); // NOI18N
         btnJuntaDirectiva.setPreferredSize(new java.awt.Dimension(150, 40));
         btnJuntaDirectiva.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnJuntaDirectivaMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnJuntaDirectivaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnJuntaDirectivaMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnJuntaDirectivaMouseReleased(evt);
             }
         });
-        panelWest.add(btnJuntaDirectiva);
+        jPanel2.add(btnJuntaDirectiva);
 
         panelSep2.setBackground(new java.awt.Color(51, 51, 51));
         panelSep2.setPreferredSize(new java.awt.Dimension(30, 40));
@@ -260,7 +275,7 @@ public class Menu extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        panelWest.add(panelSep2);
+        jPanel2.add(panelSep2);
 
         btnMembresia.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         btnMembresia.setText("    Membresia");
@@ -278,11 +293,17 @@ public class Menu extends javax.swing.JFrame {
         btnMembresia.setName("btnMembresia"); // NOI18N
         btnMembresia.setPreferredSize(new java.awt.Dimension(150, 40));
         btnMembresia.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMembresiaMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMembresiaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnMembresiaMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnMembresiaMouseReleased(evt);
             }
         });
-        panelWest.add(btnMembresia);
+        jPanel2.add(btnMembresia);
 
         btnSocios.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         btnSocios.setText("Socios       ");
@@ -300,11 +321,17 @@ public class Menu extends javax.swing.JFrame {
         btnSocios.setName("btnSocios"); // NOI18N
         btnSocios.setPreferredSize(new java.awt.Dimension(190, 40));
         btnSocios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSociosMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSociosMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnSociosMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnSociosMouseReleased(evt);
             }
         });
-        panelWest.add(btnSocios);
+        jPanel2.add(btnSocios);
 
         panelSep3.setBackground(new java.awt.Color(51, 51, 51));
         panelSep3.setPreferredSize(new java.awt.Dimension(30, 40));
@@ -320,7 +347,7 @@ public class Menu extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        panelWest.add(panelSep3);
+        jPanel2.add(panelSep3);
 
         panelSep3.setVisible(false);
         btnCargarSocios.setVisible(false);
@@ -340,11 +367,17 @@ public class Menu extends javax.swing.JFrame {
         btnCargarSocios.setName("btnCargarSocios"); // NOI18N
         btnCargarSocios.setPreferredSize(new java.awt.Dimension(150, 40));
         btnCargarSocios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCargarSociosMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCargarSociosMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCargarSociosMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCargarSociosMouseReleased(evt);
             }
         });
-        panelWest.add(btnCargarSocios);
+        jPanel2.add(btnCargarSocios);
 
         btnEventos.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         btnEventos.setText("Eventos      ");
@@ -362,11 +395,17 @@ public class Menu extends javax.swing.JFrame {
         btnEventos.setName("btnEventos"); // NOI18N
         btnEventos.setPreferredSize(new java.awt.Dimension(190, 40));
         btnEventos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEventosMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEventosMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEventosMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEventosMouseReleased(evt);
             }
         });
-        panelWest.add(btnEventos);
+        jPanel2.add(btnEventos);
 
         btnEntradas.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         btnEntradas.setText("Entradas     ");
@@ -384,11 +423,17 @@ public class Menu extends javax.swing.JFrame {
         btnEntradas.setName("btnEntradas"); // NOI18N
         btnEntradas.setPreferredSize(new java.awt.Dimension(190, 40));
         btnEntradas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEntradasMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEntradasMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEntradasMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEntradasMouseReleased(evt);
             }
         });
-        panelWest.add(btnEntradas);
+        jPanel2.add(btnEntradas);
 
         btnEstadisticas.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         btnEstadisticas.setText("Estadísticas ");
@@ -406,11 +451,25 @@ public class Menu extends javax.swing.JFrame {
         btnEstadisticas.setName("btnEstadisticas"); // NOI18N
         btnEstadisticas.setPreferredSize(new java.awt.Dimension(190, 40));
         btnEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEstadisticasMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEstadisticasMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEstadisticasMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEstadisticasMouseReleased(evt);
             }
         });
-        panelWest.add(btnEstadisticas);
+        jPanel2.add(btnEstadisticas);
+
+        panelWest.add(jPanel2);
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setMaximumSize(new java.awt.Dimension(190, 50));
+        jPanel1.setMinimumSize(new java.awt.Dimension(190, 50));
+        jPanel1.setPreferredSize(new java.awt.Dimension(190, 50));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
 
         btnCerrarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         btnCerrarSesion.setText("Cerrar Sesión");
@@ -428,16 +487,25 @@ public class Menu extends javax.swing.JFrame {
         btnCerrarSesion.setName("btnCerrarSesion"); // NOI18N
         btnCerrarSesion.setPreferredSize(new java.awt.Dimension(190, 40));
         btnCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCerrarSesionMouseClicked(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCerrarSesionMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCerrarSesionMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCerrarSesionMouseReleased(evt);
             }
         });
-        panelWest.add(btnCerrarSesion);
+        jPanel1.add(btnCerrarSesion);
+
+        panelWest.add(jPanel1);
 
         panel.add(panelWest, java.awt.BorderLayout.WEST);
 
+        panelCenter.setMinimumSize(new java.awt.Dimension(800, 520));
         panelCenter.setName("panelCenter"); // NOI18N
-        panelCenter.setPreferredSize(new java.awt.Dimension(800, 550));
+        panelCenter.setPreferredSize(new java.awt.Dimension(800, 520));
         panelCenter.setLayout(new java.awt.CardLayout());
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
         panelCenter.add(ap, "cardAs");
@@ -457,7 +525,7 @@ public class Menu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
@@ -518,128 +586,6 @@ public class Menu extends javax.swing.JFrame {
         minimize.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\minimizar.png"));
     }//GEN-LAST:event_minimizeMouseExited
 
-    private void btnAsociacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsociacionMouseClicked
-        CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
-        cardLayout.show(panelCenter, "cardAs");
-        
-        ap.rellenarCampos();
-        
-        no_selected(btnSocios);
-        no_selected(btnEventos);
-        no_selected(btnEntradas);
-        no_selected(btnEstadisticas);
-        
-        panelSep1.setVisible(true);
-        panelSep2.setVisible(true);
-        btnJuntaDirectiva.setVisible(true);
-        btnMembresia.setVisible(true);
-        
-        panelSep3.setVisible(false);
-        btnCargarSocios.setVisible(false);
-        
-        selected(btnAsociacion);
-    }//GEN-LAST:event_btnAsociacionMouseClicked
-
-    private void btnJuntaDirectivaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJuntaDirectivaMouseClicked
-        btnAsociacion.setSelected(true);
-        
-        selected(btnJuntaDirectiva);
-        
-        jd = new JuntaDirectiva(asociacion);
-        jd.setVisible(true);
-        jd.setLocationRelativeTo(null);       
-    }//GEN-LAST:event_btnJuntaDirectivaMouseClicked
-
-    private void btnMembresiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMembresiaMouseClicked
-        btnAsociacion.setSelected(true);
-        
-        selected(btnMembresia);
-        
-        mem = new MembresiaFrame(asociacion);
-        mem.setVisible(true);
-        mem.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnMembresiaMouseClicked
-
-    private void btnSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSociosMouseClicked
-        CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
-        cardLayout.show(panelCenter, "cardSo");
-        
-        no_selected(btnAsociacion);
-        no_selected(btnEventos);
-        no_selected(btnEntradas);
-        no_selected(btnEstadisticas);
-        
-        invisible();        
-        
-        panelSep3.setVisible(true);
-        btnCargarSocios.setVisible(true);
-        
-        selected(btnSocios);
-        
-        sp.actualizarTabla();
-    }//GEN-LAST:event_btnSociosMouseClicked
-
-    private void btnEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEventosMouseClicked
-        CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
-        cardLayout.show(panelCenter, "cardEv");
-        
-        no_selected(btnAsociacion);
-        no_selected(btnSocios);
-        no_selected(btnEntradas);
-        no_selected(btnEstadisticas);
-        
-        invisible();
-        panelSep3.setVisible(false);
-        btnCargarSocios.setVisible(false);
-        
-        selected(btnEventos);
-        
-        evp.actualizarTabla();
-    }//GEN-LAST:event_btnEventosMouseClicked
-
-    private void btnEntradasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntradasMouseClicked
-        CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
-        cardLayout.show(panelCenter, "cardEn");
-        
-        no_selected(btnAsociacion);
-        no_selected(btnSocios);
-        no_selected(btnEventos);
-        no_selected(btnEstadisticas);
-        
-        invisible();
-        panelSep3.setVisible(false);
-        btnCargarSocios.setVisible(false);
-        
-        selected(btnEntradas);
-    }//GEN-LAST:event_btnEntradasMouseClicked
-
-    private void btnEstadisticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstadisticasMouseClicked
-        CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
-        cardLayout.show(panelCenter, "cardEs");
-                
-        no_selected(btnAsociacion);
-        no_selected(btnSocios);
-        no_selected(btnEventos);
-        no_selected(btnEntradas);
-        
-        invisible();
-        panelSep3.setVisible(false);
-        btnCargarSocios.setVisible(false);
-        
-        selected(btnEstadisticas);
-    }//GEN-LAST:event_btnEstadisticasMouseClicked
-
-    private void btnCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseClicked
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "¿Quiere cerrar sesion?","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            Login login = new Login();
-            login.setVisible(true);
-            login.setLocationRelativeTo(null);
-            dispose();
-        }        
-    }//GEN-LAST:event_btnCerrarSesionMouseClicked
-
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         enp.actualizarListaEntradas();
         
@@ -655,22 +601,235 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowGainedFocus
 
-    private void btnCargarSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarSociosMouseClicked
-        btnSocios.setSelected(true);
+    private void btnAsociacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsociacionMouseExited
+        activarAsoc = false;
+    }//GEN-LAST:event_btnAsociacionMouseExited
+
+    private void btnAsociacionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsociacionMousePressed
+        activarAsoc = true;
+    }//GEN-LAST:event_btnAsociacionMousePressed
+
+    private void btnAsociacionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAsociacionMouseReleased
+        if(activarAsoc){
+            CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
+            cardLayout.show(panelCenter, "cardAs");
+
+            ap.rellenarCampos();
+
+            no_selected(btnSocios);
+            no_selected(btnEventos);
+            no_selected(btnEntradas);
+            no_selected(btnEstadisticas);
+
+            panelSep1.setVisible(true);
+            panelSep2.setVisible(true);
+            btnJuntaDirectiva.setVisible(true);
+            btnMembresia.setVisible(true);
+
+            panelSep3.setVisible(false);
+            btnCargarSocios.setVisible(false);
+
+            selected(btnAsociacion);
+        }
+            
+    }//GEN-LAST:event_btnAsociacionMouseReleased
+
+    private void btnJuntaDirectivaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJuntaDirectivaMouseExited
+        activarJDir = false;
+    }//GEN-LAST:event_btnJuntaDirectivaMouseExited
+
+    private void btnJuntaDirectivaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJuntaDirectivaMousePressed
+        activarJDir = true;
+    }//GEN-LAST:event_btnJuntaDirectivaMousePressed
+
+    private void btnJuntaDirectivaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJuntaDirectivaMouseReleased
+        if(activarJDir){
+            btnAsociacion.setSelected(true);
         
-        selected(btnCargarSocios);
+            selected(btnJuntaDirectiva);
+
+            jd = new JuntaDirectiva(asociacion);
+            jd.setVisible(true);
+            jd.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_btnJuntaDirectivaMouseReleased
+
+    private void btnMembresiaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMembresiaMouseExited
+        activarMem = false;
+    }//GEN-LAST:event_btnMembresiaMouseExited
+
+    private void btnMembresiaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMembresiaMousePressed
+        activarMem = true;
+    }//GEN-LAST:event_btnMembresiaMousePressed
+
+    private void btnMembresiaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMembresiaMouseReleased
+        if(activarMem){
+            btnAsociacion.setSelected(true);
         
-        JFileChooser fc = new JFileChooser();
-        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV Files","csv");
-        fc.setFileFilter(filter);
+            selected(btnMembresia);
+
+            mem = new MembresiaFrame(asociacion);
+            mem.setVisible(true);
+            mem.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_btnMembresiaMouseReleased
+
+    private void btnSociosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSociosMouseExited
+        activarSocio = false;
+    }//GEN-LAST:event_btnSociosMouseExited
+
+    private void btnSociosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSociosMousePressed
+        activarSocio = true;
+    }//GEN-LAST:event_btnSociosMousePressed
+
+    private void btnSociosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSociosMouseReleased
+        if(activarSocio){
+            CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
+            cardLayout.show(panelCenter, "cardSo");
+
+            no_selected(btnAsociacion);
+            no_selected(btnEventos);
+            no_selected(btnEntradas);
+            no_selected(btnEstadisticas);
+
+            invisible();        
+
+            panelSep3.setVisible(true);
+            btnCargarSocios.setVisible(true);
+
+            selected(btnSocios);
+
+            sp.actualizarTabla();
+        }
+    }//GEN-LAST:event_btnSociosMouseReleased
+
+    private void btnCargarSociosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarSociosMouseExited
+        activarCargarSocios = false;
+    }//GEN-LAST:event_btnCargarSociosMouseExited
+
+    private void btnCargarSociosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarSociosMousePressed
+        activarCargarSocios = true;
+    }//GEN-LAST:event_btnCargarSociosMousePressed
+
+    private void btnCargarSociosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarSociosMouseReleased
+        if(activarCargarSocios){
+            btnSocios.setSelected(true);
         
-        int seleccion = fc.showOpenDialog(this);
-        if(seleccion == JFileChooser.APPROVE_OPTION){
-            File file = fc.getSelectedFile();
-            leerCSV(file.getAbsolutePath());
-        }        
-    }//GEN-LAST:event_btnCargarSociosMouseClicked
+            selected(btnCargarSocios);
+
+            JFileChooser fc = new JFileChooser();
+            fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV Files","csv");
+            fc.setFileFilter(filter);
+
+            int seleccion = fc.showOpenDialog(this);
+            if(seleccion == JFileChooser.APPROVE_OPTION){
+                File file = fc.getSelectedFile();
+                leerCSV(file.getAbsolutePath());
+            }
+        }
+    }//GEN-LAST:event_btnCargarSociosMouseReleased
+
+    private void btnEventosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEventosMouseExited
+        activarEvento = false;
+    }//GEN-LAST:event_btnEventosMouseExited
+
+    private void btnEventosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEventosMousePressed
+        activarEvento = true;
+    }//GEN-LAST:event_btnEventosMousePressed
+
+    private void btnEventosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEventosMouseReleased
+        if(activarEvento){
+            CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
+            cardLayout.show(panelCenter, "cardEv");
+
+            no_selected(btnAsociacion);
+            no_selected(btnSocios);
+            no_selected(btnEntradas);
+            no_selected(btnEstadisticas);
+
+            invisible();
+            panelSep3.setVisible(false);
+            btnCargarSocios.setVisible(false);
+
+            selected(btnEventos);
+
+            evp.actualizarTabla();
+        }
+    }//GEN-LAST:event_btnEventosMouseReleased
+
+    private void btnEntradasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntradasMouseExited
+        activarEntrada = false;
+    }//GEN-LAST:event_btnEntradasMouseExited
+
+    private void btnEntradasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntradasMousePressed
+        activarEntrada = true;
+    }//GEN-LAST:event_btnEntradasMousePressed
+
+    private void btnEntradasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntradasMouseReleased
+        if(activarEntrada){
+            CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
+            cardLayout.show(panelCenter, "cardEn");
+
+            no_selected(btnAsociacion);
+            no_selected(btnSocios);
+            no_selected(btnEventos);
+            no_selected(btnEstadisticas);
+
+            invisible();
+            panelSep3.setVisible(false);
+            btnCargarSocios.setVisible(false);
+
+            selected(btnEntradas);
+        }
+    }//GEN-LAST:event_btnEntradasMouseReleased
+
+    private void btnEstadisticasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstadisticasMouseExited
+        activarEstadistica = false;
+    }//GEN-LAST:event_btnEstadisticasMouseExited
+
+    private void btnEstadisticasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstadisticasMousePressed
+        activarEstadistica = true;
+    }//GEN-LAST:event_btnEstadisticasMousePressed
+
+    private void btnEstadisticasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstadisticasMouseReleased
+        if(activarEstadistica){
+            CardLayout cardLayout = (CardLayout) panelCenter.getLayout();
+            cardLayout.show(panelCenter, "cardEs");
+
+            no_selected(btnAsociacion);
+            no_selected(btnSocios);
+            no_selected(btnEventos);
+            no_selected(btnEntradas);
+
+            invisible();
+            panelSep3.setVisible(false);
+            btnCargarSocios.setVisible(false);
+
+            selected(btnEstadisticas);
+        }
+    }//GEN-LAST:event_btnEstadisticasMouseReleased
+
+    private void btnCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseExited
+        activarCerrarSesion = false;
+    }//GEN-LAST:event_btnCerrarSesionMouseExited
+
+    private void btnCerrarSesionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMousePressed
+        activarCerrarSesion = true;
+    }//GEN-LAST:event_btnCerrarSesionMousePressed
+
+    private void btnCerrarSesionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseReleased
+        if(activarCerrarSesion){
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (null, "¿Quiere cerrar sesion?","Warning",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                Login login = new Login();
+                login.setVisible(true);
+                login.setLocationRelativeTo(null);
+                dispose();
+            }  
+        }
+    }//GEN-LAST:event_btnCerrarSesionMouseReleased
        
     private void no_selected(KButton btn){        
         btn.setSelected(false);
@@ -723,7 +882,6 @@ public class Menu extends javax.swing.JFrame {
     }
     
     private final Asociacion asociacion;
-    private final ControlAsociacion ca;
     
     private boolean maximized = false;
     private int xx;
@@ -740,6 +898,16 @@ public class Menu extends javax.swing.JFrame {
     
     private MembresiaFrame mem;
     private JuntaDirectiva jd;
+    
+    private boolean activarAsoc;
+    private boolean activarJDir;
+    private boolean activarMem;
+    private boolean activarSocio;
+    private boolean activarCargarSocios;
+    private boolean activarEvento;
+    private boolean activarEntrada;
+    private boolean activarEstadistica;
+    private boolean activarCerrarSesion;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnAsociacion;
@@ -752,6 +920,8 @@ public class Menu extends javax.swing.JFrame {
     private keeptoo.KButton btnMembresia;
     private keeptoo.KButton btnSocios;
     private javax.swing.JLabel close;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel maximize;

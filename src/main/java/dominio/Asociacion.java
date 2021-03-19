@@ -21,8 +21,9 @@ public class Asociacion {
         
     }
     
-    public Asociacion(String nombre, String tipo, Date fecha, int telefono,
+    public Asociacion(int id, String nombre, String tipo, Date fecha, int telefono,
             String email, String direccion, String cif, int nRegistro, String rutaLogo){        
+        this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
         this.fecha = fecha;
@@ -32,6 +33,11 @@ public class Asociacion {
         this.cif = cif;
         this.nRegistro = nRegistro;
         this.rutaLogo = rutaLogo;
+    }
+    
+    public Asociacion(int id, String nombre){        
+        this.id = id;
+        this.nombre = nombre;
     }
 
     public int getId() {

@@ -579,12 +579,15 @@ public class Login extends javax.swing.JFrame implements Colores {
     }//GEN-LAST:event_btnInicioSesionMouseExited
 
     private void btnInicioSesionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioSesionMouseReleased
+        ControlUsuarios cu = new ControlUsuarios();
+        ControlAsociacion ca = new ControlAsociacion();
+        Asociacion asoc;
         if(activar){
             if(btnInicioSesion.getText().equals("Iniciar Sesión")){
                 if(comprobarUsuario(tfUser.getText(), pfPass.getText())){
-                    ControlUsuarios cu = new ControlUsuarios();
                     Usuario usuario = cu.obtenerUsuario(tfUser.getText());
-                    Menu menu = new Menu(usuario.getIdAsociacion());
+                    asoc = ca.obtenerAsociacion(usuario.getIdAsociacion());
+                    Menu menu = new Menu(asoc);
                     menu.setVisible(true);
                     menu.setLocationRelativeTo(null);
                     menu.setExtendedState(NORMAL);
@@ -599,16 +602,13 @@ public class Login extends javax.swing.JFrame implements Colores {
                     lblWarningImg.setVisible(true);
                 }
             }else{
-                ControlUsuarios cu = new ControlUsuarios();
-                ControlAsociacion ca = new ControlAsociacion();
-
                 if(camposVacios() && comprobarCampos()){
                     if(ca.insertarAsociacion(tfNombreAsoc.getText())){
-                        Asociacion asoc = ca.obtenerAsociacionNombre(tfNombreAsoc.getText());
+                        asoc = ca.obtenerAsociacionNombre(tfNombreAsoc.getText());
                         crearCargos(asoc.getId());
                         Usuario user = new Usuario(tfUserReg.getText(), pfPassReg.getText(), asoc.getId());
                         if(cu.insertarUsuario(user)){
-                            Menu menu = new Menu(asoc.getId());
+                            Menu menu = new Menu(asoc);
                             menu.setVisible(true);
                             menu.setLocationRelativeTo(null);
                             menu.setExtendedState(NORMAL);
