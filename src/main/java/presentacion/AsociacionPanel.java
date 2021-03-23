@@ -137,6 +137,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         tfNombre.setDisabledTextColor(new java.awt.Color(80, 80, 80));
         tfNombre.setEnabled(false);
         tfNombre.setName("tfNombre"); // NOI18N
+        tfNombre.setOpaque(false);
         tfNombre.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -161,6 +162,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         tfTipo.setDisabledTextColor(new java.awt.Color(80, 80, 80));
         tfTipo.setEnabled(false);
         tfTipo.setName("tfTipo"); // NOI18N
+        tfTipo.setOpaque(false);
         tfTipo.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfTipo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -278,6 +280,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         tfCalle.setDisabledTextColor(new java.awt.Color(80, 80, 80));
         tfCalle.setEnabled(false);
         tfCalle.setName("tfCalle"); // NOI18N
+        tfCalle.setOpaque(false);
         tfCalle.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfCalle.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -307,6 +310,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         tfNumero.setDisabledTextColor(new java.awt.Color(80, 80, 80));
         tfNumero.setEnabled(false);
         tfNumero.setName("tfNumero"); // NOI18N
+        tfNumero.setOpaque(false);
         tfNumero.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfNumero.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -367,6 +371,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         tfCodPostal.setDisabledTextColor(new java.awt.Color(80, 80, 80));
         tfCodPostal.setEnabled(false);
         tfCodPostal.setName("tfCodPostal"); // NOI18N
+        tfCodPostal.setOpaque(false);
         tfCodPostal.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfCodPostal.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -392,6 +397,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         tfLocalidad.setEnabled(false);
         tfLocalidad.setName("tfLocalidad"); // NOI18N
         tfLocalidad.setNextFocusableComponent(cbProvincia);
+        tfLocalidad.setOpaque(false);
         tfLocalidad.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfLocalidad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -469,6 +475,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         tfNReg.setDisabledTextColor(new java.awt.Color(80, 80, 80));
         tfNReg.setEnabled(false);
         tfNReg.setName("tfNReg"); // NOI18N
+        tfNReg.setOpaque(false);
         tfNReg.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfNReg.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -518,11 +525,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
-        if(tfNombre.isEditable()){
-            tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-            jLabel1.setVisible(false);
-            nombreVal = true;
-        }
+        tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+        jLabel1.setVisible(false);
+        nombreVal = true;
     }//GEN-LAST:event_tfNombreFocusGained
 
     private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
@@ -549,11 +554,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }
     
     private void tfTlfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusGained
-        if(tfTlf.isEditable()){
-            tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-            jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
-            tlfVal = true;
-        }
+        tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+        jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        tlfVal = true;
     }//GEN-LAST:event_tfTlfFocusGained
 
     private void tfTlfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusLost
@@ -581,11 +584,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }
     
     private void tfCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCorreoFocusGained
-        if(tfCorreo.isEditable()){
-            tfCorreo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-            jLabel3.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
-            emailVal = true;
-        }
+        tfCorreo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+        jLabel3.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        emailVal = true;        
     }//GEN-LAST:event_tfCorreoFocusGained
 
     private void tfCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCorreoFocusLost
@@ -613,11 +614,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }
     
     private void tfCalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCalleFocusGained
-        if(tfCalle.isEditable()){
-            tfCalle.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));            
-            jLabel10.setVisible(false);
-            calleVal = true;
-        }
+        tfCalle.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));            
+        jLabel10.setVisible(false);
+        calleVal = true;        
     }//GEN-LAST:event_tfCalleFocusGained
 
     private void tfCalleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCalleFocusLost
@@ -625,8 +624,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }//GEN-LAST:event_tfCalleFocusLost
 
     private void tfLocalidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLocalidadFocusGained
-        if(tfLocalidad.isEditable())
-            tfLocalidad.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+        tfLocalidad.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
     }//GEN-LAST:event_tfLocalidadFocusGained
 
     private void tfLocalidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLocalidadFocusLost
@@ -634,11 +632,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }//GEN-LAST:event_tfLocalidadFocusLost
 
     private void tfCIFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCIFFocusGained
-        if(tfCIF.isEditable()){
-            tfCIF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-            jLabel7.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
-            cifVal = true;
-        }        
+        tfCIF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+        jLabel7.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        cifVal = true;                
     }//GEN-LAST:event_tfCIFFocusGained
 
     private void tfCIFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCIFFocusLost
@@ -666,11 +662,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }
     
     private void tfNRegFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNRegFocusGained
-        if(tfNReg.isEditable()){
-            tfNReg.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-            jLabel8.setVisible(false);
-            nRegVal = true;
-        }
+        tfNReg.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+        jLabel8.setVisible(false);
+        nRegVal = true;        
     }//GEN-LAST:event_tfNRegFocusGained
 
     private void tfNRegFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNRegFocusLost
@@ -698,8 +692,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }
     
     private void tfTipoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTipoFocusGained
-        if(tfTipo.isEditable())
-            tfTipo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+        tfTipo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
     }//GEN-LAST:event_tfTipoFocusGained
 
     private void tfTipoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTipoFocusLost
@@ -707,11 +700,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }//GEN-LAST:event_tfTipoFocusLost
 
     private void tfNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusGained
-        if(tfNumero.isEditable()){
-            tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));            
-            jLabel9.setVisible(false);
-            numVal = true;
-        }         
+        tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));            
+        jLabel9.setVisible(false);
+        numVal = true;         
     }//GEN-LAST:event_tfNumeroFocusGained
 
     private void tfNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusLost
@@ -725,11 +716,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }//GEN-LAST:event_tfNumeroFocusLost
 
     private void tfPisoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusGained
-        if(tfPiso.isEditable()){
-            tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-            jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
-            pisoVal = true;
-        }            
+        tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+        jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        pisoVal = true;         
     }//GEN-LAST:event_tfPisoFocusGained
 
     private void tfPisoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusLost
@@ -743,11 +732,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }//GEN-LAST:event_tfPisoFocusLost
 
     private void tfCodPostalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusGained
-        if(tfCodPostal.isEditable()){
-            tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-            codPosVal = true;
-            jLabel6.setVisible(false);
-        }
+        tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
+        codPosVal = true;
+        jLabel6.setVisible(false);
     }//GEN-LAST:event_tfCodPostalFocusGained
 
     private void tfCodPostalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusLost

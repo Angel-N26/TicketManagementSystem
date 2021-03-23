@@ -2,9 +2,11 @@ package presentacion;
 
 import com.toedter.calendar.JTextFieldDateEditor;
 import dominio.Asociacion;
+import dominio.Colores;
 import dominio.ControlMembresia;
 import dominio.ControlSocio;
 import dominio.Membresia;
+import dominio.RegularExpresions;
 import dominio.Socio;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -13,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -23,7 +26,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * @author angel
  **/
-public class EditSocioPanel extends javax.swing.JPanel {
+public class EditSocioPanel extends JPanel implements Colores, RegularExpresions{
 
     public EditSocioPanel(Asociacion asociacion) {
         this.asociacion = asociacion;
@@ -154,6 +157,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfNombre.setCaretColor(new java.awt.Color(204, 0, 204));
         tfNombre.setName("tfNombre"); // NOI18N
         tfNombre.setNextFocusableComponent(tfApellidos);
+        tfNombre.setOpaque(false);
         tfNombre.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -177,6 +181,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfApellidos.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfApellidos.setCaretColor(new java.awt.Color(204, 0, 204));
         tfApellidos.setName("tfApellidos"); // NOI18N
+        tfApellidos.setOpaque(false);
         tfApellidos.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfApellidos.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -222,7 +227,6 @@ public class EditSocioPanel extends javax.swing.JPanel {
         lblDNI.setName("lblDNI"); // NOI18N
         panelCenter.add(lblDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, -1, -1));
 
-        jLabel2.setVisible(false);
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png")); // NOI18N
         jLabel2.setToolTipText("ej: 66666666A");
@@ -234,6 +238,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfDNI.setCaretColor(new java.awt.Color(204, 0, 204));
         tfDNI.setName("tfDNI"); // NOI18N
         tfDNI.setNextFocusableComponent(tfTlf);
+        tfDNI.setOpaque(false);
         tfDNI.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfDNI.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -271,6 +276,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfTlf.setCaretColor(new java.awt.Color(204, 0, 204));
         tfTlf.setName("tfTlf"); // NOI18N
         tfTlf.setNextFocusableComponent(tfEmail);
+        tfTlf.setOpaque(false);
         tfTlf.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfTlf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -300,6 +306,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfEmail.setCaretColor(new java.awt.Color(204, 0, 204));
         tfEmail.setName("tfEmail"); // NOI18N
         tfEmail.setNextFocusableComponent(tfCalle);
+        tfEmail.setOpaque(false);
         tfEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfEmailFocusGained(evt);
@@ -328,6 +335,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfCalle.setCaretColor(new java.awt.Color(204, 0, 204));
         tfCalle.setName("tfCalle"); // NOI18N
         tfCalle.setNextFocusableComponent(tfNumero);
+        tfCalle.setOpaque(false);
         tfCalle.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfCalle.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -357,6 +365,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfNumero.setCaretColor(new java.awt.Color(204, 0, 204));
         tfNumero.setName("tfNumero"); // NOI18N
         tfNumero.setNextFocusableComponent(tfPiso);
+        tfNumero.setOpaque(false);
         tfNumero.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfNumero.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -385,6 +394,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfPiso.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfPiso.setCaretColor(new java.awt.Color(204, 0, 204));
         tfPiso.setName("tfPiso"); // NOI18N
+        tfPiso.setOpaque(false);
         tfPiso.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfPiso.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -414,6 +424,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfCodPostal.setCaretColor(new java.awt.Color(204, 0, 204));
         tfCodPostal.setName("tfCodPostal"); // NOI18N
         tfCodPostal.setNextFocusableComponent(tfLocalidad);
+        tfCodPostal.setOpaque(false);
         tfCodPostal.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfCodPostal.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -438,6 +449,7 @@ public class EditSocioPanel extends javax.swing.JPanel {
         tfLocalidad.setCaretColor(new java.awt.Color(204, 0, 204));
         tfLocalidad.setName("tfLocalidad"); // NOI18N
         tfLocalidad.setNextFocusableComponent(cbProvincia);
+        tfLocalidad.setOpaque(false);
         tfLocalidad.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfLocalidad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -631,10 +643,17 @@ public class EditSocioPanel extends javax.swing.JPanel {
 
     private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
         tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel1.setVisible(false);
+        nombreVal = true;
     }//GEN-LAST:event_tfNombreFocusGained
 
     private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
         tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        if(tfNombre.getText().replace(" ", "").equals("")){
+            tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel1.setVisible(true);
+            nombreVal = false;
+        }
     }//GEN-LAST:event_tfNombreFocusLost
 
     private void tfApellidosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfApellidosFocusGained
@@ -647,12 +666,34 @@ public class EditSocioPanel extends javax.swing.JPanel {
 
     private void tfEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusGained
         tfEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        emailVal = true;
     }//GEN-LAST:event_tfEmailFocusGained
 
     private void tfEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusLost
         tfEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = EMAIL.matcher(tfEmail.getText());
+        if(!matcher.matches() || !comprobarEmail(tfEmail.getText())){
+            tfEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            emailVal = false;
+        }
     }//GEN-LAST:event_tfEmailFocusLost
 
+    private boolean comprobarEmail(String email){
+        boolean comprobar = true;
+        ArrayList<Socio> socs = obtenerSocios();
+        
+        for(int i = 0 ; i < socs.size() ; i++){
+            if(!socio.getDni().equals(socs.get(i).getDni()))
+            if(socs.get(i).getEmail().equals(email)){
+                comprobar = false;
+            }
+        }
+        
+        return comprobar;
+    }
+    
     private void tfCalleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCalleFocusGained
         tfCalle.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
     }//GEN-LAST:event_tfCalleFocusGained
@@ -663,42 +704,110 @@ public class EditSocioPanel extends javax.swing.JPanel {
 
     private void tfDNIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDNIFocusGained
         tfDNI.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        dniVal = true;
     }//GEN-LAST:event_tfDNIFocusGained
 
     private void tfDNIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDNIFocusLost
         tfDNI.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = DNI.matcher(tfDNI.getText());
+        if(!matcher.matches() || !comprobarDni(tfDNI.getText())){
+            tfDNI.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            dniVal = false;
+        }
     }//GEN-LAST:event_tfDNIFocusLost
 
+    private boolean comprobarDni(String dni){
+        boolean comprobar = true;
+        ArrayList<Socio> socs = obtenerSocios();
+        
+        for(int i = 0 ; i < socs.size() ; i++){
+            if(!socio.getDni().equals(socs.get(i).getDni()))
+            if(socs.get(i).getDni().equals(dni)){
+                comprobar = false;
+            }
+        }
+        
+        return comprobar;
+    }
+    
     private void tfTlfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusGained
         tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel3.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        tlfVal = true;
     }//GEN-LAST:event_tfTlfFocusGained
 
     private void tfTlfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusLost
         tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = TLF.matcher(tfTlf.getText());
+        if(!matcher.matches() || !comprobarTlf(Integer.parseInt(tfTlf.getText()))){
+            tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel3.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            tlfVal = false;
+        }
     }//GEN-LAST:event_tfTlfFocusLost
 
+    private boolean comprobarTlf(int tlf){
+        boolean comprobar = true;
+        ArrayList<Socio> socs = obtenerSocios();
+        
+        for(int i = 0 ; i < socs.size() ; i++){
+            if(!socio.getDni().equals(socs.get(i).getDni()))
+            if(socs.get(i).getTelefono() == tlf){
+               comprobar = false; 
+            }
+        }
+        
+        return comprobar;
+    }
+    
     private void tfNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusGained
         tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel9.setVisible(false);
+        numVal = true;
     }//GEN-LAST:event_tfNumeroFocusGained
 
     private void tfNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusLost
         tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = NUMERO.matcher(tfNumero.getText());
+        if(!matcher.matches()){
+            tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel9.setVisible(true);
+            numVal = false;
+        }
     }//GEN-LAST:event_tfNumeroFocusLost
-
+       
     private void tfPisoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusGained
         tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel7.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        pisoVal = true;
     }//GEN-LAST:event_tfPisoFocusGained
 
     private void tfPisoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusLost
         tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = PISO.matcher(tfPiso.getText());
+        if(!matcher.matches()){
+            tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel7.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            pisoVal = false;
+        }
     }//GEN-LAST:event_tfPisoFocusLost
 
     private void tfCodPostalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusGained
         tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel7.setVisible(false);
+        ccppVal = true;
     }//GEN-LAST:event_tfCodPostalFocusGained
 
     private void tfCodPostalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusLost
         tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = CCPP.matcher(tfCodPostal.getText());
+        if(!matcher.matches()){
+            tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel7.setVisible(true);
+            ccppVal = false;
+        }
     }//GEN-LAST:event_tfCodPostalFocusLost
 
     private void tfLocalidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLocalidadFocusGained
@@ -754,9 +863,6 @@ public class EditSocioPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAnadirMousePressed
 
     private void btnAnadirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseReleased
-        
-        
-        
         if(activarAnadir){
             JTextFieldDateEditor dcEditor1 = ((JTextFieldDateEditor)dcFechaNacimiento.getDateEditor());    
             Date fechaNac = null;
@@ -766,24 +872,30 @@ public class EditSocioPanel extends javax.swing.JPanel {
             JTextFieldDateEditor dcEditor2 = ((JTextFieldDateEditor)dcFechaIngreso.getDateEditor());
             Date fechaIngreso = null;
             if(!dcEditor2.getText().equals(""))
-                fechaIngreso = Date.valueOf(dcEditor2.getText());
+                fechaIngreso = Date.valueOf(dcEditor2.getText());           
             
             int tlf = Integer.parseInt(tfTlf.getText());
             
-            Membresia m = (Membresia) cbMembresias.getSelectedItem();
-            Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
-                tfEmail.getText(), fechaNac, direccion(), tlf, fechaIngreso,
-                m.getId_membresia(), cbPagos.isSelected(), fotoSocio.getIcon().toString(), asociacion.getId());
+            
+            if(comprobarCampos()){
+            if(valido()){
+                
+                
+                Membresia m = (Membresia) cbMembresias.getSelectedItem();
+                Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
+                    tfEmail.getText(), fechaNac, direccion(), tlf, fechaIngreso,
+                    m.getId_membresia(), cbPagos.isSelected(), fotoSocio.getIcon().toString(), asociacion.getId());
 
-            if(btnAnadir.getText().equals("Modificar")){
-                if(cs.modificarSocio(s, socio.getDni())){
-                    dispose();
+                if(btnAnadir.getText().equals("Modificar")){
+                    if(cs.modificarSocio(s, socio.getDni())){
+                        dispose();
+                    }
+                }else if(btnAnadir.getText().equals("Añadir")){
+                    if(cs.insertarSocio(s)){
+                        dispose();
+                    }
                 }
-            }else if(btnAnadir.getText().equals("Añadir")){
-                if(cs.insertarSocio(s)){
-                    dispose();
-                }
-            }
+            }   }         
         }
     }//GEN-LAST:event_btnAnadirMouseReleased
 
@@ -900,6 +1012,39 @@ public class EditSocioPanel extends javax.swing.JPanel {
         }
     }        
     
+    private ArrayList<Socio> obtenerSocios(){
+        ControlSocio cso = new ControlSocio();
+        return cso.obtenerSocios(asociacion.getId());
+    }
+    
+    private boolean comprobarCampos(){
+        boolean comprobar = true;
+        
+        if(tfNombre.getText().replace(" ","").equals("")){
+            comprobar = false;
+            tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel1.setVisible(true);
+        }
+        
+        if(tfDNI.getText().replace(" ","").equals("")){
+            comprobar = false;
+            tfDNI.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+        }
+        
+        return comprobar;
+    }
+    
+    private boolean valido(){
+        boolean valido = false;
+        
+        if(nombreVal && emailVal && dniVal && tlfVal && numVal && ccppVal && pisoVal){
+            valido = true;
+        }
+        
+        return valido;
+    }
+    
     private boolean activarCancelar;
     private boolean activarEliminar;
     private boolean activarAnadir;
@@ -910,6 +1055,14 @@ public class EditSocioPanel extends javax.swing.JPanel {
     private Socio socio;
     
     private ArrayList<Membresia> mems;
+    
+    private boolean nombreVal = true;
+    private boolean emailVal = true;
+    private boolean dniVal = true;
+    private boolean tlfVal = true;
+    private boolean numVal = true;
+    private boolean ccppVal = true;
+    private boolean pisoVal = true;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnAnadir;
