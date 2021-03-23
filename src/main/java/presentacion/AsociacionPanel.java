@@ -10,6 +10,8 @@ import javax.swing.JFileChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 import dominio.RegularExpresions;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import javax.swing.ImageIcon;
@@ -79,8 +81,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         btnEditar = new keeptoo.KButton();
 
         panel.setBackground(new java.awt.Color(51, 51, 51));
+        panel.setMinimumSize(new java.awt.Dimension(800, 520));
         panel.setName("panel"); // NOI18N
-        panel.setPreferredSize(new java.awt.Dimension(800, 550));
+        panel.setPreferredSize(new java.awt.Dimension(800, 520));
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelLogo.setBackground(new java.awt.Color(51, 51, 51));
@@ -100,6 +103,10 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         });
         panelLogo.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
 
+        if(asociacion.getRutaLogo() == null || asociacion.getRutaLogo().equals("")){
+            asociacion.setRutaLogo("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\asociacion.png");
+            logo.setIcon(new ImageIcon(asociacion.getRutaLogo()));
+        }
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setName("logo"); // NOI18N
         panelLogo.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 184, 184));
@@ -219,14 +226,14 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
         lblCorreo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblCorreo.setForeground(new java.awt.Color(255, 255, 255));
-        lblCorreo.setText("Correo");
+        lblCorreo.setText("Email");
         lblCorreo.setName("lblCorreo"); // NOI18N
         panel.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 530, -1));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion-gray.png")); // NOI18N
         jLabel3.setToolTipText("ej: alguien@example.com/es");
-        panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 180, -1, -1));
+        panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, -1, -1));
 
         tfCorreo.setBackground(new java.awt.Color(51, 51, 51));
         tfCorreo.setForeground(new java.awt.Color(255, 255, 255));
@@ -506,7 +513,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -762,7 +769,21 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         int seleccion = fc.showOpenDialog(this);
         if(seleccion == JFileChooser.APPROVE_OPTION){
             File file = fc.getSelectedFile();
-            logo.setIcon(new ImageIcon(file.getAbsolutePath()));
+            try{
+                String extension = Files.probeContentType(file.toPath());
+                if(extension != null){
+                    logo.setIcon(new ImageIcon(file.getAbsolutePath()));
+                }else{
+                    logo.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\asociacion.png"));
+                    JOptionPane.showMessageDialog(this,
+                        "No se ha seleccionado una extensión de archivos válida. "
+                        + "Por lo que se asignará una imagen por defecto", "Error",
+                        JOptionPane.ERROR_MESSAGE);   
+                }              
+            }
+            catch (IOException ioException){
+                System.out.println("Error: " + ioException.getMessage());
+            }
         }
     }//GEN-LAST:event_editMouseClicked
 

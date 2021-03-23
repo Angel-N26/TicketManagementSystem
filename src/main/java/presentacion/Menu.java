@@ -2,7 +2,9 @@ package presentacion;
 
 import dominio.Asociacion;
 import dominio.ControlSocio;
+import dominio.ControlUsuarios;
 import dominio.Socio;
+import dominio.Usuario;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
@@ -13,6 +15,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -27,8 +31,10 @@ import org.apache.commons.csv.CSVRecord;
  **/
 public class Menu extends javax.swing.JFrame {
 
-    public Menu(Asociacion asociacion) {
+    public Menu(Asociacion asociacion, Usuario user) {
         this.asociacion = asociacion;
+        this.user = user;
+        
         ap = new AsociacionPanel(asociacion);
         sp = new SociosPanel(asociacion);
         evp = new EventosPanel(asociacion);
@@ -71,6 +77,7 @@ public class Menu extends javax.swing.JFrame {
         btnEstadisticas = new keeptoo.KButton();
         jPanel1 = new javax.swing.JPanel();
         btnCerrarSesion = new keeptoo.KButton();
+        jLabel1 = new javax.swing.JLabel();
         panelCenter = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -186,7 +193,8 @@ public class Menu extends javax.swing.JFrame {
         panelWest.setLayout(new javax.swing.BoxLayout(panelWest, javax.swing.BoxLayout.Y_AXIS));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setPreferredSize(new java.awt.Dimension(190, 460));
+        jPanel2.setMinimumSize(new java.awt.Dimension(190, 435));
+        jPanel2.setPreferredSize(new java.awt.Dimension(190, 435));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
 
         btnAsociacion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(204, 0, 204)));
@@ -468,7 +476,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setMaximumSize(new java.awt.Dimension(190, 50));
         jPanel1.setMinimumSize(new java.awt.Dimension(190, 50));
-        jPanel1.setPreferredSize(new java.awt.Dimension(190, 50));
+        jPanel1.setPreferredSize(new java.awt.Dimension(190, 75));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
 
         btnCerrarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
@@ -498,6 +506,15 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCerrarSesion);
+
+        if(user.getUltimaConexion() != null){
+            jLabel1.setText("Ultima conexión: " + user.getUltimaConexion());
+        }
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setMinimumSize(new java.awt.Dimension(190, 20));
+        jLabel1.setPreferredSize(new java.awt.Dimension(190, 20));
+        jLabel1.setRequestFocusEnabled(false);
+        jPanel1.add(jLabel1);
 
         panelWest.add(jPanel1);
 
@@ -827,6 +844,11 @@ public class Menu extends javax.swing.JFrame {
                 login.setVisible(true);
                 login.setLocationRelativeTo(null);
                 dispose();
+                
+                Date d = Date.valueOf(LocalDate.now());              
+                user.setUltimaConexion(d);
+                ControlUsuarios cu = new ControlUsuarios();
+                cu.modificarUsuario(user, user.getUsuario());
             }  
         }
     }//GEN-LAST:event_btnCerrarSesionMouseReleased
@@ -882,6 +904,7 @@ public class Menu extends javax.swing.JFrame {
     }
     
     private final Asociacion asociacion;
+    private Usuario user;
     
     private boolean maximized = false;
     private int xx;
@@ -920,6 +943,7 @@ public class Menu extends javax.swing.JFrame {
     private keeptoo.KButton btnMembresia;
     private keeptoo.KButton btnSocios;
     private javax.swing.JLabel close;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblTitulo;

@@ -7,6 +7,8 @@ import dominio.Evento;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.Date;
 import java.sql.Time;
 import javax.swing.BorderFactory;
@@ -49,21 +51,26 @@ public class EditEventoPanel extends javax.swing.JPanel {
         fotoEvento = new javax.swing.JLabel();
         lblDatos = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         lblTipo = new javax.swing.JLabel();
         tfTipo = new javax.swing.JTextField();
         lblCapacidad = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         tfCapacidad = new javax.swing.JTextField();
         lblEntradasVendidas = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         tfEntradasVendidas = new javax.swing.JTextField();
         lblDireccion = new javax.swing.JLabel();
         lblNombreRecinto = new javax.swing.JLabel();
         tfNombreRecinto = new javax.swing.JTextField();
         lblCalle = new javax.swing.JLabel();
         tfCalle = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         lblNumero = new javax.swing.JLabel();
         tfNumero = new javax.swing.JTextField();
         lblCodPostal = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         tfCodPostal = new javax.swing.JTextField();
         lblLocalidad = new javax.swing.JLabel();
         tfLocalidad = new javax.swing.JTextField();
@@ -80,13 +87,15 @@ public class EditEventoPanel extends javax.swing.JPanel {
         btnCancelar = new keeptoo.KButton();
         btnAnadir = new keeptoo.KButton();
 
+        panel.setMinimumSize(new java.awt.Dimension(800, 520));
         panel.setName("panel"); // NOI18N
-        panel.setPreferredSize(new java.awt.Dimension(770, 550));
+        panel.setPreferredSize(new java.awt.Dimension(800, 520));
         panel.setLayout(new java.awt.BorderLayout());
 
         panelCenter.setBackground(new java.awt.Color(51, 51, 51));
+        panelCenter.setMinimumSize(new java.awt.Dimension(800, 445));
         panelCenter.setName("panelCenter"); // NOI18N
-        panelCenter.setPreferredSize(new java.awt.Dimension(770, 475));
+        panelCenter.setPreferredSize(new java.awt.Dimension(800, 445));
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelImg.setBackground(new java.awt.Color(51, 51, 51));
@@ -121,6 +130,11 @@ public class EditEventoPanel extends javax.swing.JPanel {
         lblNombre.setText("Nombre");
         lblNombre.setName("lblNombre"); // NOI18N
         panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
+
+        jLabel1.setVisible(false);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        panelCenter.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, -1, -1));
 
         tfNombre.setBackground(new java.awt.Color(51, 51, 51));
         tfNombre.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,6 +180,11 @@ public class EditEventoPanel extends javax.swing.JPanel {
         lblCapacidad.setName("lblCapacidad"); // NOI18N
         panelCenter.add(lblCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
+        jLabel2.setVisible(false);
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        panelCenter.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
+
         tfCapacidad.setBackground(new java.awt.Color(51, 51, 51));
         tfCapacidad.setForeground(new java.awt.Color(255, 255, 255));
         tfCapacidad.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
@@ -180,13 +199,18 @@ public class EditEventoPanel extends javax.swing.JPanel {
                 tfCapacidadFocusLost(evt);
             }
         });
-        panelCenter.add(tfCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 125, 25));
+        panelCenter.add(tfCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 130, 25));
 
         lblEntradasVendidas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblEntradasVendidas.setForeground(new java.awt.Color(255, 255, 255));
         lblEntradasVendidas.setText("Entradas vendidas");
         lblEntradasVendidas.setName("lblEntradasVendidas"); // NOI18N
         panelCenter.add(lblEntradasVendidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 160, 110, -1));
+
+        jLabel3.setVisible(false);
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        panelCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, -1, -1));
 
         tfEntradasVendidas.setBackground(new java.awt.Color(51, 51, 51));
         tfEntradasVendidas.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,7 +238,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
         lblNombreRecinto.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreRecinto.setText("Nombre Recinto");
         lblNombreRecinto.setName("lblNombreRecinto"); // NOI18N
-        panelCenter.add(lblNombreRecinto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        panelCenter.add(lblNombreRecinto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         tfNombreRecinto.setBackground(new java.awt.Color(51, 51, 51));
         tfNombreRecinto.setForeground(new java.awt.Color(255, 255, 255));
@@ -230,13 +254,13 @@ public class EditEventoPanel extends javax.swing.JPanel {
                 tfNombreRecintoFocusLost(evt);
             }
         });
-        panelCenter.add(tfNombreRecinto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 260, 25));
+        panelCenter.add(tfNombreRecinto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 260, 25));
 
         lblCalle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblCalle.setForeground(new java.awt.Color(255, 255, 255));
         lblCalle.setText("Calle");
         lblCalle.setName("lblCalle"); // NOI18N
-        panelCenter.add(lblCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, -1, -1));
+        panelCenter.add(lblCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, -1));
 
         tfCalle.setBackground(new java.awt.Color(51, 51, 51));
         tfCalle.setForeground(new java.awt.Color(255, 255, 255));
@@ -252,13 +276,18 @@ public class EditEventoPanel extends javax.swing.JPanel {
                 tfCalleFocusLost(evt);
             }
         });
-        panelCenter.add(tfCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 270, 25));
+        panelCenter.add(tfCalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 270, 25));
+
+        jLabel4.setVisible(false);
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        panelCenter.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, -1, -1));
 
         lblNumero.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblNumero.setForeground(new java.awt.Color(255, 255, 255));
         lblNumero.setText("Numero");
         lblNumero.setName("lblNumero"); // NOI18N
-        panelCenter.add(lblNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, -1, -1));
+        panelCenter.add(lblNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, -1, -1));
 
         tfNumero.setBackground(new java.awt.Color(51, 51, 51));
         tfNumero.setForeground(new java.awt.Color(255, 255, 255));
@@ -274,13 +303,18 @@ public class EditEventoPanel extends javax.swing.JPanel {
                 tfNumeroFocusLost(evt);
             }
         });
-        panelCenter.add(tfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, 80, 25));
+        panelCenter.add(tfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 80, 25));
 
         lblCodPostal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblCodPostal.setForeground(new java.awt.Color(255, 255, 255));
         lblCodPostal.setText("Codigo Postal");
         lblCodPostal.setName("lblCodPostal"); // NOI18N
-        panelCenter.add(lblCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, -1, -1));
+        panelCenter.add(lblCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, -1, -1));
+
+        jLabel5.setVisible(false);
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        panelCenter.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 280, -1, -1));
 
         tfCodPostal.setBackground(new java.awt.Color(51, 51, 51));
         tfCodPostal.setForeground(new java.awt.Color(255, 255, 255));
@@ -296,13 +330,13 @@ public class EditEventoPanel extends javax.swing.JPanel {
                 tfCodPostalFocusLost(evt);
             }
         });
-        panelCenter.add(tfCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, 90, 25));
+        panelCenter.add(tfCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 90, 25));
 
         lblLocalidad.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblLocalidad.setForeground(new java.awt.Color(255, 255, 255));
         lblLocalidad.setText("Localidad");
         lblLocalidad.setName("lblLocalidad"); // NOI18N
-        panelCenter.add(lblLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+        panelCenter.add(lblLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         tfLocalidad.setBackground(new java.awt.Color(51, 51, 51));
         tfLocalidad.setForeground(new java.awt.Color(255, 255, 255));
@@ -318,23 +352,23 @@ public class EditEventoPanel extends javax.swing.JPanel {
                 tfLocalidadFocusLost(evt);
             }
         });
-        panelCenter.add(tfLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 260, 25));
+        panelCenter.add(tfLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 260, 25));
 
         lblProvincia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblProvincia.setForeground(new java.awt.Color(255, 255, 255));
         lblProvincia.setText("Provincia");
         lblProvincia.setName("lblProvincia"); // NOI18N
-        panelCenter.add(lblProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, -1, -1));
+        panelCenter.add(lblProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, -1, -1));
 
         cbProvincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Álava", "Albacete", "Alicante", "Almeria", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba", "La Coruña", "Cuenca", "Gerona", "Granada", "Guadalajara", "Guipúzcua", "Huelva", "Huesca", "Baleares", "Jaén", "León", "Lérida", "Lugo", "Madrid", "Málaga", "Murcia", "Navarra", "Orense", "Palencia", "Las Palmas", "Pontevedra", "La Rioja", "Salamanca", "Segovia", "Sevilla", "Soria", "Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza" }));
         cbProvincia.setName("cbProvincia"); // NOI18N
-        panelCenter.add(cbProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 270, 25));
+        panelCenter.add(cbProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 270, 25));
 
         lblFecha.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblFecha.setForeground(new java.awt.Color(255, 255, 255));
         lblFecha.setText("Fecha");
         lblFecha.setName("lblFecha"); // NOI18N
-        panelCenter.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
+        panelCenter.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
 
         JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFecha.getDateEditor());
         dateChooserEditor1.setBackground(new Color(51, 51, 51));
@@ -347,13 +381,13 @@ public class EditEventoPanel extends javax.swing.JPanel {
         dcFecha.getCalendarButton().setBackground(new Color(51,51,51));
         dcFecha.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dcFecha.setDateFormatString("yyyy-MM-dd");
-        panelCenter.add(dcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 180, 25));
+        panelCenter.add(dcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 180, 25));
 
         lblHora.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblHora.setForeground(new java.awt.Color(255, 255, 255));
         lblHora.setText("Hora");
         lblHora.setName("lblHora"); // NOI18N
-        panelCenter.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, -1, -1));
+        panelCenter.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
 
         tfHora.setBackground(new java.awt.Color(51, 51, 51));
         tfHora.setForeground(new java.awt.Color(255, 255, 255));
@@ -369,21 +403,21 @@ public class EditEventoPanel extends javax.swing.JPanel {
                 tfHoraFocusLost(evt);
             }
         });
-        panelCenter.add(tfHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 60, 25));
+        panelCenter.add(tfHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 60, 25));
 
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
 
         panelSouth.setBackground(new java.awt.Color(51, 51, 51));
-        panelSouth.setMinimumSize(new java.awt.Dimension(800, 75));
+        panelSouth.setMinimumSize(new java.awt.Dimension(800, 55));
         panelSouth.setName("panelSouth"); // NOI18N
-        panelSouth.setPreferredSize(new java.awt.Dimension(800, 75));
+        panelSouth.setPreferredSize(new java.awt.Dimension(800, 55));
         panelSouth.setLayout(new java.awt.GridLayout(1, 2));
 
         panelSouthLeft.setBackground(new java.awt.Color(51, 51, 51));
-        panelSouthLeft.setMinimumSize(new java.awt.Dimension(400, 75));
+        panelSouthLeft.setMinimumSize(new java.awt.Dimension(400, 55));
         panelSouthLeft.setName("panelSouthLeft"); // NOI18N
-        panelSouthLeft.setPreferredSize(new java.awt.Dimension(400, 75));
-        panelSouthLeft.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 20));
+        panelSouthLeft.setPreferredSize(new java.awt.Dimension(400, 55));
+        panelSouthLeft.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 10));
 
         btnEliminar.setBorder(null);
         btnEliminar.setText("Eliminar");
@@ -393,6 +427,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
         btnEliminar.setkHoverStartColor(new java.awt.Color(51, 0, 51));
         btnEliminar.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnEliminar.setkStartColor(new java.awt.Color(204, 0, 204));
+        btnEliminar.setMinimumSize(new java.awt.Dimension(180, 35));
         btnEliminar.setName("btnEliminar"); // NOI18N
         btnEliminar.setPreferredSize(new java.awt.Dimension(180, 35));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -411,10 +446,10 @@ public class EditEventoPanel extends javax.swing.JPanel {
         panelSouth.add(panelSouthLeft);
 
         panelSouthRigth.setBackground(new java.awt.Color(51, 51, 51));
-        panelSouthRigth.setMinimumSize(new java.awt.Dimension(400, 75));
+        panelSouthRigth.setMinimumSize(new java.awt.Dimension(400, 55));
         panelSouthRigth.setName("panelSouthRigth"); // NOI18N
-        panelSouthRigth.setPreferredSize(new java.awt.Dimension(400, 75));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 20);
+        panelSouthRigth.setPreferredSize(new java.awt.Dimension(400, 55));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 10);
         flowLayout1.setAlignOnBaseline(true);
         panelSouthRigth.setLayout(flowLayout1);
 
@@ -426,6 +461,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
         btnCancelar.setkHoverStartColor(new java.awt.Color(51, 0, 51));
         btnCancelar.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnCancelar.setkStartColor(new java.awt.Color(204, 0, 204));
+        btnCancelar.setMinimumSize(new java.awt.Dimension(180, 35));
         btnCancelar.setName("btnCancelar"); // NOI18N
         btnCancelar.setPreferredSize(new java.awt.Dimension(180, 35));
         btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -449,6 +485,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
         btnAnadir.setkHoverStartColor(new java.awt.Color(51, 0, 51));
         btnAnadir.setkPressedColor(new java.awt.Color(255, 153, 204));
         btnAnadir.setkStartColor(new java.awt.Color(204, 0, 204));
+        btnAnadir.setMinimumSize(new java.awt.Dimension(180, 35));
         btnAnadir.setName("btnAnadir"); // NOI18N
         btnAnadir.setPreferredSize(new java.awt.Dimension(180, 35));
         btnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -570,6 +607,26 @@ public class EditEventoPanel extends javax.swing.JPanel {
         if(seleccion == JFileChooser.APPROVE_OPTION){
             File file = fc.getSelectedFile();
             fotoEvento.setIcon(new ImageIcon(file.getAbsolutePath()));
+            try{
+                String extension = Files.probeContentType(file.toPath());
+                if(extension != null){
+                    fotoEvento.setIcon(new ImageIcon(file.getAbsolutePath()));
+                }else{
+                    if(fotoEvento.getIcon() == null){
+                        fotoEvento.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\evento.png"));
+                        JOptionPane.showMessageDialog(this, "No se ha seleccionado"
+                            + " una extensión de archivos válida. Por lo que se "
+                            + "asignará una imagen por defecto", "Error",
+                            JOptionPane.ERROR_MESSAGE); 
+                    }else{
+                        JOptionPane.showMessageDialog(this, "No se ha seleccionado"
+                            + " una extensión de archivos válida.", "Error",
+                            JOptionPane.ERROR_MESSAGE); 
+                    }
+                }              
+            }catch (IOException ioException){
+                System.out.println("Error: " + ioException.getMessage());
+            }
         }
     }//GEN-LAST:event_editMouseClicked
 
@@ -583,21 +640,27 @@ public class EditEventoPanel extends javax.swing.JPanel {
 
     private void btnAnadirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseReleased
         if(activarAnadir){
-            JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFecha.getDateEditor());        
-
+            JTextFieldDateEditor dcEditor1 = ((JTextFieldDateEditor)dcFecha.getDateEditor());        
+            Date fechaCreacion = null;
+            if(!dcEditor1.getText().equals("")){
+               fechaCreacion = Date.valueOf(dcEditor1.getText());
+            }
+            
+            int capacidad = Integer.parseInt(tfCapacidad.getText());
+            int entradasVendidas = Integer.parseInt(tfEntradasVendidas.getText());
             if(btnAnadir.getText().equals("Modificar")){
                 Evento evento = new Evento(eve.getId(), tfNombre.getText(), tfTipo.getText(),
-                    tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
-                    Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
-                    Integer.parseInt(tfEntradasVendidas.getText()), fotoEvento.getIcon().toString(), asociacion.getId());
+                    tfNombreRecinto.getText(), direccion(), fechaCreacion, 
+                    Time.valueOf(tfHora.getText()), capacidad, entradasVendidas,
+                    fotoEvento.getIcon().toString(), asociacion.getId());
                 if(ce.modificarEvento(evento)){
                     dispose();
                 }
             }else if(btnAnadir.getText().equals("Añadir")){
                 Evento evento = new Evento(tfNombre.getText(), tfTipo.getText(),
-                    tfNombreRecinto.getText(), direccion(), Date.valueOf(dateChooserEditor1.getText()), 
-                    Time.valueOf(tfHora.getText()), Integer.parseInt(tfCapacidad.getText()),
-                    Integer.parseInt(tfEntradasVendidas.getText()), /*jLabel1.getIcon().toString()*/null, asociacion.getId());
+                    tfNombreRecinto.getText(), direccion(), fechaCreacion, 
+                    Time.valueOf(tfHora.getText()), capacidad, entradasVendidas,
+                    jLabel1.getIcon().toString(), asociacion.getId());
                 if(ce.insertarEvento(evento)){
                     dispose();
                 }
@@ -697,6 +760,11 @@ public class EditEventoPanel extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser dcFecha;
     private javax.swing.JLabel edit;
     private javax.swing.JLabel fotoEvento;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblCalle;
     private javax.swing.JLabel lblCapacidad;
     private javax.swing.JLabel lblCodPostal;

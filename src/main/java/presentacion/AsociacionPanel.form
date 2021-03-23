@@ -21,7 +21,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panel" pref="520" max="32767" attributes="0"/>
+          <Component id="panel" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -31,9 +31,12 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 520]"/>
+        </Property>
         <Property name="name" type="java.lang.String" value="panel" noResource="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[800, 550]"/>
+          <Dimension value="[800, 520]"/>
         </Property>
       </Properties>
 
@@ -93,6 +96,9 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="name" type="java.lang.String" value="logo" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(asociacion.getRutaLogo() == null || asociacion.getRutaLogo().equals(&quot;&quot;)){&#xd;&#xa;    asociacion.setRutaLogo(&quot;C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\asociacion.png&quot;);&#xd;&#xa;    logo.setIcon(new ImageIcon(asociacion.getRutaLogo()));&#xd;&#xa;}"/>
+              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="3" y="3" width="184" height="184"/>
@@ -353,7 +359,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Correo"/>
+            <Property name="text" type="java.lang.String" value="Email"/>
             <Property name="name" type="java.lang.String" value="lblCorreo" noResource="true"/>
           </Properties>
           <Constraints>
@@ -372,7 +378,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="740" y="180" width="-1" height="-1"/>
+              <AbsoluteConstraints x="740" y="170" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

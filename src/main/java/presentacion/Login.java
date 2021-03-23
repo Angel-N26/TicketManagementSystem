@@ -262,6 +262,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         });
         panelIniciarSesion.add(pfPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 25));
 
+        cbRecordar.setVisible(false);
         cbRecordar.setBackground(new java.awt.Color(51, 51, 51));
         cbRecordar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         cbRecordar.setForeground(new java.awt.Color(255, 255, 255));
@@ -587,7 +588,7 @@ public class Login extends javax.swing.JFrame implements Colores {
                 if(comprobarUsuario(tfUser.getText(), pfPass.getText())){
                     Usuario usuario = cu.obtenerUsuario(tfUser.getText());
                     asoc = ca.obtenerAsociacion(usuario.getIdAsociacion());
-                    Menu menu = new Menu(asoc);
+                    Menu menu = new Menu(asoc, usuario);
                     menu.setVisible(true);
                     menu.setLocationRelativeTo(null);
                     menu.setExtendedState(NORMAL);
@@ -608,7 +609,7 @@ public class Login extends javax.swing.JFrame implements Colores {
                         crearCargos(asoc.getId());
                         Usuario user = new Usuario(tfUserReg.getText(), pfPassReg.getText(), asoc.getId());
                         if(cu.insertarUsuario(user)){
-                            Menu menu = new Menu(asoc);
+                            Menu menu = new Menu(asoc, user);
                             menu.setVisible(true);
                             menu.setLocationRelativeTo(null);
                             menu.setExtendedState(NORMAL);
