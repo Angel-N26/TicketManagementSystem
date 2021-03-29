@@ -5,7 +5,9 @@ import dominio.Cargo;
 import dominio.Colores;
 import dominio.ControlAsociacion;
 import dominio.ControlJuntaDirectiva;
+import dominio.ControlMembresia;
 import dominio.ControlUsuarios;
+import dominio.Membresia;
 import dominio.Usuario;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -582,6 +584,7 @@ public class Login extends javax.swing.JFrame implements Colores {
     private void btnInicioSesionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioSesionMouseReleased
         ControlUsuarios cu = new ControlUsuarios();
         ControlAsociacion ca = new ControlAsociacion();
+        ControlMembresia cm = new ControlMembresia();
         Asociacion asoc;
         if(activar){
             if(btnInicioSesion.getText().equals("Iniciar Sesión")){
@@ -607,6 +610,8 @@ public class Login extends javax.swing.JFrame implements Colores {
                     if(ca.insertarAsociacion(tfNombreAsoc.getText())){
                         asoc = ca.obtenerAsociacionNombre(tfNombreAsoc.getText());
                         crearCargos(asoc.getId());
+                        Membresia m = new Membresia("Ninguna", 0, asoc.getId());
+                        cm.insertarMembresia(m);
                         Usuario user = new Usuario(tfUserReg.getText(), pfPassReg.getText(), asoc.getId());
                         if(cu.insertarUsuario(user)){
                             Menu menu = new Menu(asoc, user);

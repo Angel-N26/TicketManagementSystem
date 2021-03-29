@@ -428,7 +428,14 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
 
     private ArrayList<Membresia> obtenerMembresias(){
         ControlMembresia cmem = new ControlMembresia();
-        return cmem.obtenerMembresias(asociacion.getId());
+        ArrayList<Membresia> mems = cmem.obtenerMembresias(asociacion.getId());
+        
+        for(int i = 0 ; i < mems.size() ; i++){
+            if(mems.get(i).getNombre().equals("Ninguna"))
+                mems.remove(i);
+        }
+        
+        return mems;
     }
 
     private void actualizarListaMembresias(){

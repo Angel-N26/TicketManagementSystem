@@ -685,7 +685,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         ArrayList<Socio> socs = obtenerSocios();
         
         for(int i = 0 ; i < socs.size() ; i++){
-            if(!socio.getDni().equals(socs.get(i).getDni()))
+            if(socio != null && !socio.getDni().equals(socs.get(i).getDni()))
             if(socs.get(i).getEmail().equals(email)){
                 comprobar = false;
             }
@@ -723,7 +723,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         ArrayList<Socio> socs = obtenerSocios();
         
         for(int i = 0 ; i < socs.size() ; i++){
-            if(!socio.getDni().equals(socs.get(i).getDni()))
+            if(socio != null && !socio.getDni().equals(socs.get(i).getDni()))
             if(socs.get(i).getDni().equals(dni)){
                 comprobar = false;
             }
@@ -753,7 +753,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         ArrayList<Socio> socs = obtenerSocios();
         
         for(int i = 0 ; i < socs.size() ; i++){
-            if(!socio.getDni().equals(socs.get(i).getDni()))
+            if(socio != null && !socio.getDni().equals(socs.get(i).getDni()))
             if(socs.get(i).getTelefono() == tlf){
                comprobar = false; 
             }
@@ -873,29 +873,40 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
             Date fechaIngreso = null;
             if(!dcEditor2.getText().equals(""))
                 fechaIngreso = Date.valueOf(dcEditor2.getText());           
-            
-            int tlf = Integer.parseInt(tfTlf.getText());
-            
-            
-            if(comprobarCampos()){
-            if(valido()){
+        
+            cbMembresias.setSelectedItem(ABORT);
+            if(cbMembresias.getSelectedItem() == null){
+                for(int i = 0 ; i < cbMembresias.getItemCount() ; i++){
+                    Membresia mem = cbMembresias.getItemAt(i);
+                        if(mem.getNombre().equals("Ninguna"))
+                            cbMembresias.setSelectedIndex(i);
+                }                
+            }
+            Membresia m = (Membresia) cbMembresias.getSelectedItem();
                 
-                
-                Membresia m = (Membresia) cbMembresias.getSelectedItem();
-                Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
-                    tfEmail.getText(), fechaNac, direccion(), tlf, fechaIngreso,
-                    m.getId_membresia(), cbPagos.isSelected(), fotoSocio.getIcon().toString(), asociacion.getId());
-
-                if(btnAnadir.getText().equals("Modificar")){
-                    if(cs.modificarSocio(s, socio.getDni())){
-                        dispose();
-                    }
-                }else if(btnAnadir.getText().equals("Añadir")){
-                    if(cs.insertarSocio(s)){
-                        dispose();
-                    }
+            if(fotoSocio.getIcon() == null){
+                fotoSocio.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\socio.png"));
+            }
+            
+            int tlf = 0;
+            if(!tfTlf.getText().replace(" ", "").equals("")){
+                tlf = Integer.parseInt(tfTlf.getText());
+            }
+            
+            Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
+                tfEmail.getText(), fechaNac, direccion(), tlf, fechaIngreso,
+                m.getId_membresia(), cbPagos.isSelected(), fotoSocio.getIcon().toString(), asociacion.getId());
+            
+            if(comprobarCampos() && valido())
+            if(btnAnadir.getText().equals("Modificar")){
+                if(cs.modificarSocio(s, socio.getDni())){
+                    dispose();
                 }
-            }   }         
+            }else if(btnAnadir.getText().equals("Añadir")){
+                if(cs.insertarSocio(s)){
+                    dispose();
+                }
+            }                                   
         }
     }//GEN-LAST:event_btnAnadirMouseReleased
 
@@ -950,7 +961,8 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         tfEmail.setText(socio.getEmail());
         dcFechaNacimiento.setDate(socio.getFechaNac());
         separarDireccion(socio.getDomicilio());
-        tfTlf.setText(socio.getTelefono()+"");
+        if(socio.getTelefono() != 0)
+            tfTlf.setText(socio.getTelefono()+"");
         tfDNI.setText(socio.getDni());
         dcFechaIngreso.setDate(socio.getFechaIngreso());
         seleccionarMembresia(socio.getIdMembresia());

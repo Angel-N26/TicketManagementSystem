@@ -2,8 +2,10 @@ package presentacion;
 
 import com.toedter.calendar.JTextFieldDateEditor;
 import dominio.Asociacion;
+import dominio.Colores;
 import dominio.ControlEvento;
 import dominio.Evento;
+import dominio.RegularExpresions;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.io.File;
@@ -11,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.regex.Matcher;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -21,7 +24,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * @author angel
  **/
-public class EditEventoPanel extends javax.swing.JPanel {
+public class EditEventoPanel extends javax.swing.JPanel implements Colores, RegularExpresions {
 
     public EditEventoPanel(Asociacion asociacion) {
         this.asociacion = asociacion;
@@ -127,7 +130,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombre.setText("Nombre");
+        lblNombre.setText("Nombre*");
         lblNombre.setName("lblNombre"); // NOI18N
         panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
 
@@ -519,6 +522,7 @@ public class EditEventoPanel extends javax.swing.JPanel {
 
     private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
         tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel1.setVisible(false);
     }//GEN-LAST:event_tfNombreFocusGained
 
     private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
@@ -551,18 +555,34 @@ public class EditEventoPanel extends javax.swing.JPanel {
 
     private void tfCapacidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCapacidadFocusGained
         tfCapacidad.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel2.setVisible(false);
+        capacidadVal = true;
     }//GEN-LAST:event_tfCapacidadFocusGained
 
     private void tfCapacidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCapacidadFocusLost
         tfCapacidad.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = NUMERO.matcher(tfCapacidad.getText());
+        if(!matcher.matches()){
+            tfCapacidad.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel2.setVisible(true);
+            capacidadVal = false;
+        }
     }//GEN-LAST:event_tfCapacidadFocusLost
 
     private void tfEntradasVendidasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEntradasVendidasFocusGained
         tfEntradasVendidas.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel3.setVisible(false);
+        entradasVendidasVal = true;
     }//GEN-LAST:event_tfEntradasVendidasFocusGained
 
     private void tfEntradasVendidasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEntradasVendidasFocusLost
         tfEntradasVendidas.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = NUMERO.matcher(tfEntradasVendidas.getText());
+        if(!matcher.matches()){
+            tfEntradasVendidas.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel3.setVisible(true);
+            entradasVendidasVal = false;
+        }
     }//GEN-LAST:event_tfEntradasVendidasFocusLost
 
     private void tfLocalidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLocalidadFocusGained
@@ -583,18 +603,34 @@ public class EditEventoPanel extends javax.swing.JPanel {
 
     private void tfNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusGained
         tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel4.setVisible(false);
+        numeroVal = true;
     }//GEN-LAST:event_tfNumeroFocusGained
 
     private void tfNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusLost
         tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = NUMERO.matcher(tfNumero.getText());
+        if(!matcher.matches()){
+            tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel4.setVisible(true); 
+            numeroVal = false;
+        }
     }//GEN-LAST:event_tfNumeroFocusLost
 
     private void tfCodPostalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusGained
         tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel5.setVisible(false);
+        ccppVal = true;
     }//GEN-LAST:event_tfCodPostalFocusGained
 
     private void tfCodPostalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusLost
         tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = CCPP.matcher(tfCodPostal.getText());
+        if(!matcher.matches()){
+            tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel5.setVisible(true);
+            ccppVal = false;
+        }
     }//GEN-LAST:event_tfCodPostalFocusLost
 
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
@@ -641,26 +677,42 @@ public class EditEventoPanel extends javax.swing.JPanel {
     private void btnAnadirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseReleased
         if(activarAnadir){
             JTextFieldDateEditor dcEditor1 = ((JTextFieldDateEditor)dcFecha.getDateEditor());        
-            Date fechaCreacion = null;
+            Date fechaEvento = null;
             if(!dcEditor1.getText().equals("")){
-               fechaCreacion = Date.valueOf(dcEditor1.getText());
+               fechaEvento = Date.valueOf(dcEditor1.getText());
             }
             
-            int capacidad = Integer.parseInt(tfCapacidad.getText());
-            int entradasVendidas = Integer.parseInt(tfEntradasVendidas.getText());
+            Time horaEvento = null;
+            if(!tfHora.getText().replace(" ", "").equals("")){
+                horaEvento = Time.valueOf(tfHora.getText());
+            }
+            
+            int capacidad = 0;
+            if(!tfCapacidad.getText().replace(" ", "").equals(""))
+                capacidad = Integer.parseInt(tfCapacidad.getText());
+            
+            int entradasVendidas = 0;
+            if(!tfEntradasVendidas.getText().replace(" ", "").equals(""))
+                entradasVendidas = Integer.parseInt(tfEntradasVendidas.getText());
+            
+            if(fotoEvento.getIcon() == null){
+                fotoEvento.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\evento.png"));
+            }
+            
+            if(comprobarCampos() && valido())
             if(btnAnadir.getText().equals("Modificar")){
                 Evento evento = new Evento(eve.getId(), tfNombre.getText(), tfTipo.getText(),
-                    tfNombreRecinto.getText(), direccion(), fechaCreacion, 
-                    Time.valueOf(tfHora.getText()), capacidad, entradasVendidas,
+                    tfNombreRecinto.getText(), direccion(), fechaEvento, 
+                    horaEvento, capacidad, entradasVendidas,
                     fotoEvento.getIcon().toString(), asociacion.getId());
                 if(ce.modificarEvento(evento)){
                     dispose();
                 }
             }else if(btnAnadir.getText().equals("Añadir")){
                 Evento evento = new Evento(tfNombre.getText(), tfTipo.getText(),
-                    tfNombreRecinto.getText(), direccion(), fechaCreacion, 
-                    Time.valueOf(tfHora.getText()), capacidad, entradasVendidas,
-                    jLabel1.getIcon().toString(), asociacion.getId());
+                    tfNombreRecinto.getText(), direccion(), fechaEvento, 
+                    horaEvento, capacidad, entradasVendidas,
+                    fotoEvento.getIcon().toString(), asociacion.getId());
                 if(ce.insertarEvento(evento)){
                     dispose();
                 }
@@ -719,7 +771,8 @@ public class EditEventoPanel extends javax.swing.JPanel {
         tfNombreRecinto.setText(eve.getSala());
         separarDireccion(eve.getDireccion());
         dcFecha.setDate(eve.getFecha());
-        tfHora.setText(eve.getHora()+"");
+        if(eve.getHora() != null)
+            tfHora.setText(eve.getHora()+"");
         tfCapacidad.setText(eve.getEntradas()+"");
         tfEntradasVendidas.setText(eve.getEntradasVendidas()+"");
         fotoEvento.setIcon(new ImageIcon(eve.getRutaImg()));
@@ -743,6 +796,28 @@ public class EditEventoPanel extends javax.swing.JPanel {
         cbProvincia.setSelectedItem(c[4].replaceFirst(" ", ""));                                   
     }    
     
+    private boolean comprobarCampos(){
+        boolean comprobar = true;
+        
+        if(tfNombre.getText().replace(" ", "").equals("")){
+            comprobar = false;
+            tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel1.setVisible(true);
+        }
+        
+        return comprobar;
+    }
+    
+    private boolean valido(){
+        boolean valido = false;
+        
+        if(capacidadVal && entradasVendidasVal && numeroVal && ccppVal){
+            valido = true;
+        }
+        
+        return valido;
+    }
+    
     private boolean activarCancelar;
     private boolean activarAnadir;
     private boolean activarEliminar;
@@ -751,6 +826,11 @@ public class EditEventoPanel extends javax.swing.JPanel {
     
     private final ControlEvento ce;
     private  Evento eve;
+    
+    private boolean capacidadVal = true;
+    private boolean entradasVendidasVal = true;
+    private boolean numeroVal = true;
+    private boolean ccppVal = true;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnAnadir;

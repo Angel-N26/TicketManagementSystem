@@ -1,7 +1,9 @@
 package presentacion;
 
 import dominio.Asociacion;
+import dominio.ControlMembresia;
 import dominio.ControlSocio;
+import dominio.Membresia;
 import dominio.Socio;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -42,7 +44,7 @@ public class SociosPanel extends javax.swing.JPanel {
         Object[][] datos = {};
         dtm = new DefaultTableModel(datos, titulos) {
             Class[] types = new Class [] {
-                String.class, String.class, String.class, Object.class, Integer.class, Boolean.class
+                String.class, String.class, String.class, Object.class, String.class, Boolean.class
             };
 
             boolean[] canEdit = new boolean [] {
@@ -374,10 +376,13 @@ public class SociosPanel extends javax.swing.JPanel {
     }
     
     private void addTabla(ArrayList<Socio> socios){
+        ControlMembresia cm = new ControlMembresia();
+        Membresia m;
         for(int i = 0 ; i < socios.size() ; i++){
+            m = cm.obtenerMembresia(socios.get(i).getIdMembresia(), asociacion.getId());
             Object[] newSocio = {socios.get(i).getDni(), socios.get(i).getNombre(),
                 socios.get(i).getApellidos(), socios.get(i).getFechaIngreso(),
-                socios.get(i).getIdMembresia(), socios.get(i).isPagado()};
+                m.getNombre(), socios.get(i).isPagado()};
             dtm.addRow(newSocio);
         }
     }

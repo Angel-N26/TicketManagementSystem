@@ -38,7 +38,7 @@ public class Socio {
         this.idAsoc = idAsoc;
         this.inactivo = false;
     }
-
+    
     public Socio() {
     }
 

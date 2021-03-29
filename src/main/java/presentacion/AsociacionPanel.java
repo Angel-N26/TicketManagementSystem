@@ -783,8 +783,15 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
             if(!dcEditor2.getText().equals(""))
                 fechaCreacion = Date.valueOf(dcEditor2.getText());
 
-            int tlf = Integer.parseInt(tfTlf.getText());
-            int nReg = Integer.parseInt(tfNReg.getText());
+            int tlf = 0, nReg = 0;
+            if(!tfTlf.getText().replace(" ", "").equals(""))
+                tlf = Integer.parseInt(tfTlf.getText());
+            if(!tfNReg.getText().replace(" ", "").equals(""))
+                nReg = Integer.parseInt(tfNReg.getText());
+            
+            if(logo.getIcon().toString() == null){
+                logo.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\asociacion.png"));
+            }
 
             if(btnEditar.getText().equals("Editar")){
                 editable(true, imageEnabled);
@@ -823,11 +830,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         lblNombreLogo.setText(asociacion.getNombre());
         tfTipo.setText(asociacion.getTipo());
         dcFechaCreacion.setDate(asociacion.getFecha());
-        tfTlf.setText(asociacion.getTelefono()+"");
+        if(asociacion.getTelefono() != 0)
+            tfTlf.setText(asociacion.getTelefono()+"");
         tfCorreo.setText(asociacion.getEmail());
         separarDireccion(asociacion.getDireccion());
         tfCIF.setText(asociacion.getCIF());
-        tfNReg.setText(asociacion.getnRegistro()+"");
+        if(asociacion.getnRegistro() != 0)
+            tfNReg.setText(asociacion.getnRegistro()+"");
         logo.setIcon(new ImageIcon(asociacion.getRutaLogo()));
     }
     
