@@ -10,6 +10,7 @@ import dominio.RegularExpresions;
 import dominio.Socio;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -885,7 +886,10 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
             Membresia m = (Membresia) cbMembresias.getSelectedItem();
                 
             if(fotoSocio.getIcon() == null){
-                fotoSocio.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\socio.png"));
+                ImageIcon img = new ImageIcon("socio.png");
+                fotoSocio.setIcon(img);
+                System.out.println(fotoSocio.getIcon().toString());
+                /*"C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\socio.png"*/
             }
             
             int tlf = 0;
@@ -967,6 +971,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         dcFechaIngreso.setDate(socio.getFechaIngreso());
         seleccionarMembresia(socio.getIdMembresia());
         cbPagos.setSelected(socio.isPagado());
+        System.out.println(socio.getRutaImg());
         fotoSocio.setIcon(new ImageIcon(socio.getRutaImg()));
         
         btnAnadir.setText("Modificar");
