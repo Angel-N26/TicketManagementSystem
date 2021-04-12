@@ -43,7 +43,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         sp = new SociosPanel(asociacion);
         evp = new EventosPanel(asociacion);
         enp = new EntradasPanel(asociacion);
-        ip = new EstadisticasPanel();
+        ip = new EstadisticasPanel(asociacion);
         editSP = new EditSocioPanel(asociacion);
         editEP = new EditEventoPanel(asociacion);
 
@@ -861,6 +861,8 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
             btnCargarSocios.setVisible(false);
 
             selected(btnEstadisticas);
+            
+            ip.rellenar();
         }
     }//GEN-LAST:event_btnEstadisticasMouseReleased
 

@@ -1,11 +1,25 @@
 package presentacion;
 
+import dominio.Asociacion;
+import dominio.ControlEntradas;
+import dominio.ControlEvento;
+import dominio.ControlSocio;
+import dominio.Entrada;
+import dominio.Evento;
+import dominio.Socio;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+
 /**
  * @author angel
  **/
 public class EstadisticasPanel extends javax.swing.JPanel {
 
-    public EstadisticasPanel() {
+    public EstadisticasPanel(Asociacion asociacion) {
+        this.asociacion = asociacion;
+        
         initComponents();
     }
 
@@ -15,7 +29,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         panelNorth = new javax.swing.JPanel();
         panelEast = new javax.swing.JPanel();
@@ -644,7 +657,186 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         panelCenter.add(jPanel12);
 
         add(panelCenter, java.awt.BorderLayout.CENTER);
+        rellenar();
     }// </editor-fold>//GEN-END:initComponents
+    
+    
+    private ArrayList<Socio> obtenerSocios(){
+        ControlSocio cs = new ControlSocio();
+        return cs.obtenerSocios(asociacion.getId());
+    }
+    
+    private ArrayList<Evento> obtenerEventos(){
+        ControlEvento ce = new ControlEvento();
+        return ce.obtenerEventos(asociacion.getId());
+    }
+    
+    private ArrayList<Entrada> obtenerEntradas(){
+        ControlEntradas ce = new ControlEntradas();
+        return ce.obtenerEntradas(asociacion.getId());
+    }
+    
+    public void rellenar(){
+        ArrayList<Socio> socios = obtenerSocios();
+        ArrayList<Evento> eventos = obtenerEventos();
+        ArrayList<Entrada> entradas = obtenerEntradas();
+        
+        jLabel11.setText("Socios totales: " + socios.size());
+        jLabel1.setText("Eventos totales: " + eventos.size());
+        jLabel3.setText("Entradas totales: " + entradas.size());
+        
+        Date fechaActual = Date.valueOf(LocalDate.now());
+        
+        socioMasMenosAntiguo(socios);
+        
+        eventoUltimo(eventos, fechaActual);
+        
+        eventoProximo(eventos, fechaActual);
+        
+        eventoMasMenosEntradas(eventos);
+        
+        eventoCapacidad(eventos);
+    }
+    
+    private void socioMasMenosAntiguo(ArrayList<Socio> socios){
+        Date masAntiguo = Date.valueOf("1900-01-01");
+        Date menosAntiguo = Date.valueOf("2999-12-31");
+        Socio socioMasAntiguo = null;
+        Socio socioMenosAntiguo = null;
+        
+        for(Socio s : socios){
+            if(s.getFechaIngreso() != null){
+                if(masAntiguo.before(s.getFechaIngreso())){
+                    socioMasAntiguo = s;
+                    masAntiguo = s.getFechaIngreso();
+                }
+                if(menosAntiguo.after(s.getFechaIngreso())){
+                    socioMenosAntiguo = s;
+                    menosAntiguo = s.getFechaIngreso();
+                }
+            }
+        }
+        
+        if(socioMasAntiguo != null){
+            jLabel6.setIcon(new ImageIcon(socioMasAntiguo.getRutaImg()));
+            jLabel29.setText(socioMasAntiguo.getNombre());
+            jLabel30.setText("Fecha: " + socioMasAntiguo.getFechaIngreso());
+        }else{
+            jLabel29.setText("No hay socios");
+            jLabel30.setText("");
+        }
+        
+        if(socioMenosAntiguo != null){
+            jLabel8.setIcon(new ImageIcon(socioMenosAntiguo.getRutaImg()));
+            jLabel23.setText(socioMenosAntiguo.getNombre());
+            jLabel24.setText("Fecha: " + socioMenosAntiguo.getFechaIngreso());
+        }else{
+            jLabel23.setText("No hay socios");
+            jLabel24.setText("");
+        }
+                
+    }
+    
+    private void eventoUltimo(ArrayList<Evento> eventos, Date fecha){
+        Date fechaUlt = Date.valueOf("1900-01-01");
+        Evento eUlt = null;
+        for(Evento e : eventos){
+            if(e.getFecha() != null)
+            if(fecha.after(e.getFecha())){
+               if(fechaUlt.before(e.getFecha())){
+                   eUlt = e;
+                   fechaUlt = e.getFecha();
+               }
+           } 
+        }
+        
+        if(eUlt != null){
+            jLabel10.setIcon(new ImageIcon(eUlt.getRutaImg()));
+            jLabel17.setText(eUlt.getNombre());
+            jLabel18.setText("Fecha: " + eUlt.getFecha());
+        }else{
+            jLabel17.setText("No hay eventos");
+            jLabel18.setText("");
+        }
+    }
+    
+    private void eventoProximo(ArrayList<Evento> eventos, Date fecha){
+        Date fechaProx = Date.valueOf("2999-12-31");
+        Evento eProx = null;
+        for(Evento e : eventos){
+            if(e.getFecha() != null)
+            if(fecha.before(e.getFecha())){
+                if(fechaProx.after(e.getFecha())){
+                    eProx = e;
+                    fechaProx = e.getFecha();
+                }
+            }
+        }
+        
+        if(eProx != null){
+            jLabel5.setIcon(new ImageIcon(eProx.getRutaImg()));
+            jLabel2.setText(eProx.getNombre());
+            jLabel12.setText("Fecha: " + eProx.getFecha());
+        }else{
+            jLabel2.setText("No hay eventos");
+            jLabel12.setText("");
+        }
+    }
+    
+    private void eventoMasMenosEntradas(ArrayList<Evento> eventos){
+        int entradasMax = -1, entradasMin = 9999;
+        Evento eMax = null;
+        Evento eMin = null;
+        for(Evento e : eventos){
+            if(e.getEntradasVendidas() > entradasMax){
+                eMax = e;
+                entradasMax = e.getEntradasVendidas();
+            }
+            if(e.getEntradasVendidas() < entradasMin){
+                eMin = e;
+                entradasMin = e.getEntradasVendidas();
+            }
+        }
+        if(eMax != null){
+            jLabel7.setIcon(new ImageIcon(eMax.getRutaImg()));
+            jLabel26.setText(eMax.getNombre());
+            jLabel27.setText("Entradas: " + eMax.getEntradasVendidas());
+        }else{
+            jLabel26.setText("No hay eventos");
+            jLabel27.setText("");
+        }
+        
+        if(eMin != null){
+            jLabel9.setIcon(new ImageIcon(eMin.getRutaImg()));
+            jLabel20.setText(eMin.getNombre());
+            jLabel21.setText("Entradas: " + eMin.getEntradasVendidas());
+        }else{
+            jLabel20.setText("No hay eventos");
+            jLabel21.setText("");
+        }
+    }
+    
+    private void eventoCapacidad(ArrayList<Evento> eventos){
+        int capacidadMax = 0;
+        Evento eMax = null;
+        for(Evento e : eventos){
+            if(e.getEntradas() > capacidadMax){
+                eMax = e;
+                capacidadMax = e.getEntradas();
+            }
+        }
+        
+        if(eMax != null){
+            jLabel31.setIcon(new ImageIcon(eMax.getRutaImg()));
+            jLabel14.setText(eMax.getNombre());
+            jLabel15.setText("Capacidad: " + eMax.getEntradasVendidas());
+        }else{
+            jLabel14.setText("No hay eventos");
+            jLabel15.setText("");
+        }
+    }
+    
+    private final Asociacion asociacion;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
