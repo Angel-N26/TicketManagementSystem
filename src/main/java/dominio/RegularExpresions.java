@@ -21,4 +21,6 @@ public interface RegularExpresions {
     Pattern DOUBLE = Pattern.compile("[0-9]+.[0-9]+");
     
     Pattern PISO = Pattern.compile("[0-9]+[A-Z]");
+    
+    Pattern DIRECCION = Pattern.compile("C/[a-zA-Z]*,[0-9]*,[0-9]{5},[[a-zA-Z]*],[[a-zA-Z]*]");
 }

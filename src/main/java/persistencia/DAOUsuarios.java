@@ -77,11 +77,12 @@ public class DAOUsuarios {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "update usuarios set ultimaConexion = ?"
+            String sql = "update usuarios set pass = ?, ultimaConexion = ?"
                     + "where user = ?";
             pst = con.prepareStatement(sql);            
-            pst.setDate(1, usuario.getUltimaConexion());            
-            pst.setString(2, user);            
+            pst.setString(1, usuario.getContrasena());
+            pst.setDate(2, usuario.getUltimaConexion());            
+            pst.setString(3, user);            
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());

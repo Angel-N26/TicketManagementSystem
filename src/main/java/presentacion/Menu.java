@@ -1,8 +1,11 @@
 package presentacion;
 
 import dominio.Asociacion;
+import dominio.ControlMembresia;
 import dominio.ControlSocio;
 import dominio.ControlUsuarios;
+import dominio.Membresia;
+import dominio.RegularExpresions;
 import dominio.Socio;
 import dominio.Usuario;
 import java.awt.CardLayout;
@@ -15,8 +18,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -29,7 +33,7 @@ import org.apache.commons.csv.CSVRecord;
 /**
  * @author angel
  **/
-public class Menu extends javax.swing.JFrame {
+public class Menu extends javax.swing.JFrame implements RegularExpresions {
 
     public Menu(Asociacion asociacion, Usuario user) {
         this.asociacion = asociacion;
@@ -76,6 +80,7 @@ public class Menu extends javax.swing.JFrame {
         btnEntradas = new keeptoo.KButton();
         btnEstadisticas = new keeptoo.KButton();
         jPanel1 = new javax.swing.JPanel();
+        btnCambiarPass = new keeptoo.KButton();
         btnCerrarSesion = new keeptoo.KButton();
         jLabel1 = new javax.swing.JLabel();
         panelCenter = new javax.swing.JPanel();
@@ -194,7 +199,7 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setMinimumSize(new java.awt.Dimension(190, 435));
-        jPanel2.setPreferredSize(new java.awt.Dimension(190, 435));
+        jPanel2.setPreferredSize(new java.awt.Dimension(190, 405));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
 
         btnAsociacion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(204, 0, 204)));
@@ -476,8 +481,35 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setMaximumSize(new java.awt.Dimension(190, 50));
         jPanel1.setMinimumSize(new java.awt.Dimension(190, 50));
-        jPanel1.setPreferredSize(new java.awt.Dimension(190, 75));
+        jPanel1.setPreferredSize(new java.awt.Dimension(190, 115));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
+
+        btnCambiarPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
+        btnCambiarPass.setText("Credenciales  ");
+        btnCambiarPass.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnCambiarPass.setkBackGroundColor(new java.awt.Color(51, 51, 51));
+        btnCambiarPass.setkBorderRadius(0);
+        btnCambiarPass.setkEndColor(new java.awt.Color(51, 51, 51));
+        btnCambiarPass.setkForeGround(new java.awt.Color(153, 153, 153));
+        btnCambiarPass.setkHoverEndColor(new java.awt.Color(31, 31, 31));
+        btnCambiarPass.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnCambiarPass.setkHoverStartColor(new java.awt.Color(31, 31, 31));
+        btnCambiarPass.setkPressedColor(new java.awt.Color(102, 0, 102));
+        btnCambiarPass.setkSelectedColor(new java.awt.Color(31, 31, 31));
+        btnCambiarPass.setkStartColor(new java.awt.Color(51, 51, 51));
+        btnCambiarPass.setPreferredSize(new java.awt.Dimension(190, 40));
+        btnCambiarPass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCambiarPassMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCambiarPassMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCambiarPassMouseReleased(evt);
+            }
+        });
+        jPanel1.add(btnCambiarPass);
 
         btnCerrarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
         btnCerrarSesion.setText("Cerrar Sesión");
@@ -609,12 +641,17 @@ public class Menu extends javax.swing.JFrame {
         no_selected(btnJuntaDirectiva);
         no_selected(btnMembresia);
         no_selected(btnCargarSocios);
+        no_selected(btnCambiarPass);
         
         if(mem != null){
             mem.dispose();
         }
         if(jd != null){
             jd.dispose();
+        }
+        
+        if(cp != null){
+            cp.dispose();
         }
     }//GEN-LAST:event_formWindowGainedFocus
 
@@ -852,6 +889,24 @@ public class Menu extends javax.swing.JFrame {
             }  
         }
     }//GEN-LAST:event_btnCerrarSesionMouseReleased
+
+    private void btnCambiarPassMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCambiarPassMouseExited
+        activarCambiarPass = false;
+    }//GEN-LAST:event_btnCambiarPassMouseExited
+
+    private void btnCambiarPassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCambiarPassMousePressed
+        activarCambiarPass = true;
+    }//GEN-LAST:event_btnCambiarPassMousePressed
+
+    private void btnCambiarPassMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCambiarPassMouseReleased
+        if(activarCambiarPass){
+            selected(btnCambiarPass);
+
+            cp = new CambiarPass(user);
+            cp.setVisible(true);
+            cp.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_btnCambiarPassMouseReleased
        
     private void no_selected(KButton btn){        
         btn.setSelected(false);
@@ -880,22 +935,49 @@ public class Menu extends javax.swing.JFrame {
             for (CSVRecord record : parser) {
                 if(!record.get(0).equals("DNI")){
                     String dni = record.get(0);
+                        Matcher matcherDNI = DNI.matcher(dni);
                     String nombre = record.get(1);
                     String apellidos = record.get(2);
                     String email = record.get(3);
-                    Date fechaNac = Date.valueOf(record.get(4));
+                        Matcher matcherEMAIL = EMAIL.matcher(email);
+                    Date fechaNac = null; 
+                        try{
+                            fechaNac = Date.valueOf(record.get(4));
+                        }catch(Exception e){   
+                        }
                     String direccion = record.get(5);
+                        Matcher matcherDIR = DIRECCION.matcher(direccion);
                     int tlf = Integer.parseInt(record.get(6));
-                    Date fechaIng = Date.valueOf(record.get(7));
-                    int idMem = Integer.parseInt(record.get(8));
-                    boolean pago = Boolean.parseBoolean(record.get(9));
+                        Matcher matcherTLF = TLF.matcher(tlf+"");
+                    Date fechaIng = null;
+                        try{
+                            fechaIng = Date.valueOf(record.get(4));
+                        }catch(Exception e){   
+                        }
 
-                    Socio s = new Socio(dni, nombre, apellidos, email, fechaNac,
-                            direccion, tlf, fechaIng, idMem, pago, null,
-                            asociacion.getId());
-                    if(cs.insertarSocio(s)){
-                        sp.actualizarTabla();
+                    if(!matcherEMAIL.matches())
+                        email = "";
+                    if(!matcherTLF.matches())
+                        tlf = 0;
+                    if(!matcherDIR.matches())
+                        direccion = "C/, , , , Álava";
+                    
+                    ControlMembresia cm = new ControlMembresia();
+                    ArrayList<Membresia> mems = cm.obtenerMembresias(asociacion.getId());
+                    int idMem = 0;
+                    for(Membresia m : mems){
+                        if(m.getNombre().equals("Ninguna"))
+                            idMem = m.getId_membresia();
                     }
+                    
+                    if(matcherDNI.matches() && !dni.equals("") && !nombre.equals("")){
+                        Socio s = new Socio(dni, nombre, apellidos, email, fechaNac,
+                            direccion, tlf, fechaIng, idMem, false, null, asociacion.getId()); 
+
+                        if(cs.insertarSocio(s)){
+                            sp.actualizarTabla();
+                        }
+                    }  
                 }
             }
         }catch(IOException e){
@@ -904,7 +986,7 @@ public class Menu extends javax.swing.JFrame {
     }
     
     private final Asociacion asociacion;
-    private Usuario user;
+    private final Usuario user;
     
     private boolean maximized = false;
     private int xx;
@@ -921,6 +1003,7 @@ public class Menu extends javax.swing.JFrame {
     
     private MembresiaFrame mem;
     private JuntaDirectiva jd;
+    private CambiarPass cp;
     
     private boolean activarAsoc;
     private boolean activarJDir;
@@ -931,9 +1014,11 @@ public class Menu extends javax.swing.JFrame {
     private boolean activarEntrada;
     private boolean activarEstadistica;
     private boolean activarCerrarSesion;
+    private boolean activarCambiarPass;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnAsociacion;
+    private keeptoo.KButton btnCambiarPass;
     private keeptoo.KButton btnCargarSocios;
     private keeptoo.KButton btnCerrarSesion;
     private keeptoo.KButton btnEntradas;
