@@ -3,6 +3,7 @@ package presentacion;
 import com.google.zxing.WriterException;
 import dominio.Asociacion;
 import dominio.ControlEntradas;
+import dominio.ControlEvento;
 import dominio.ControlSocio;
 import dominio.CrearQR;
 import dominio.Entrada;
@@ -14,9 +15,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -210,35 +218,56 @@ public class GenerarEntradas extends javax.swing.JFrame {
         if(activar){            
             ControlEntradas ce = new ControlEntradas();
             List<Socio> socioConEntrada = listSociosSin.getSelectedValuesList();
-            if(!listSociosSin.isSelectionEmpty()){        
-                int dialogResult = JOptionPane.showConfirmDialog (this,
-                    "Estas seguro que desea generar?", "Warning", JOptionPane.YES_NO_OPTION);
-                if(dialogResult == JOptionPane.YES_OPTION){
-                    for(int i = 0 ; i < socioConEntrada.size() ; i++){
-                        Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni(), asociacion.getId());
-                        ce.insertarEntrada(entrada);
-                        entrada = ce.obtenerEntrada(entrada.getIdEvento(), entrada.getIdSocio(), asociacion.getId());
-                        try{
-                            CrearQR qr = new CrearQR();
-                            BufferedImage imagen = qr.crearQR(entrada.getIdEvento()
-                                    +"-"+entrada.getIdSocio()+"-"+entrada.getNumEntrada(), 300, 300);
-                            File outputfile = new File("C:\\Users\\angel\\Desktop\\qr"+entrada.getNumEntrada()+".png");
-                            ImageIO.write(imagen, "png", outputfile);
-                            modeloListaSociosCon.add(modeloListaSociosCon.size(), socioConEntrada.get(i));
-                            modeloListaSociosSin.removeElement(socioConEntrada.get(i));
-                        }catch(WriterException e){
-                            System.out.println(e.getMessage());
-                        }catch (IOException ex) {
-                            Logger.getLogger(GenerarEntradas.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+            int entradasTotales = socioConEntrada.size() + evento.getEntradasVendidas();
+            if(!listSociosSin.isSelectionEmpty()){ 
+                if(entradasTotales <= evento.getEntradas()){
+                    int dialogResult = JOptionPane.showConfirmDialog (this,
+                        "Estas seguro que desea generar?", "Warning", JOptionPane.YES_NO_OPTION);
+                    if(dialogResult == JOptionPane.YES_OPTION){
 
+                        for(int i = 0 ; i < socioConEntrada.size() ; i++){
+                            Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni(), asociacion.getId());
+                            
+                            ControlSocio cs = new ControlSocio();
+                            Socio socio = cs.obtenerSocio(entrada.getIdSocio(), asociacion.getId());
+                            
+                            if(!socio.getEmail().equals("")){
+                                ce.insertarEntrada(entrada);
+                                entrada = ce.obtenerEntrada(entrada.getIdEvento(), entrada.getIdSocio(), asociacion.getId());
+                                try{
+                                    CrearQR qr = new CrearQR();
+                                    BufferedImage imagen = qr.crearQR(entrada.getIdEvento()
+                                            +"-"+entrada.getIdSocio()+"-"+entrada.getNumEntrada(), 300, 300);
+                                    File outputfile = new File("C:\\Users\\angel\\Desktop\\qr"+entrada.getNumEntrada()+".png");
+                                    ImageIO.write(imagen, "png", outputfile);
+                                    modeloListaSociosCon.add(modeloListaSociosCon.size(), socioConEntrada.get(i));
+                                    modeloListaSociosSin.removeElement(socioConEntrada.get(i));
+                                    evento.setEntradasVendidas(evento.getEntradasVendidas()+1);
+                                    mail(socio.getEmail());
+                                }catch(WriterException e){
+                                    System.out.println(e.getMessage());
+                                }catch (IOException ex) {
+                                    Logger.getLogger(GenerarEntradas.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }else{
+                                JOptionPane.showMessageDialog(this, "No se pudo generar la entrada. Ya que el socio " + 
+                                        socio.getNombre() + " no tiene correo.",
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+                            }           
+                        }
+                        ControlEvento cev = new ControlEvento();
+                        if(cev.modificarEvento(evento)){                       
+                        }
                     }
-                }                
+                }else{
+                    JOptionPane.showMessageDialog(this, "Capacidad del evento superada",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }else{
                 JOptionPane.showMessageDialog(this, "Selecciona por lo menos un socio que no tenga entrada.",
                     "Error", JOptionPane.ERROR_MESSAGE);
             }
-        }
+        }        
     }//GEN-LAST:event_btnGenerarEntradasMouseReleased
         
     
@@ -278,6 +307,46 @@ public class GenerarEntradas extends javax.swing.JFrame {
     
     public void setEntradas(ArrayList<Entrada> entradas){
         this.entradas = entradas;        
+    }
+    
+    private void enviarMail(String destinatario, String asunto, String cuerpo){
+        // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.        
+        String [] correoAsoc = asociacion.getEmail().split("@");
+        String remitente = correoAsoc[0];
+        
+        String clave = "mChoqso2";
+        
+        Properties props = System.getProperties();
+        props.put("mail.smtp.host", "smtp.gmail.com");  //Servidor SMTP de Google
+        props.put("mail.smtp.user", remitente);
+        props.put("mail.smtp.clave", clave);    //Clave de la cuenta
+        props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
+        props.put("mail.smtp.starttls.enable", "true"); //Conectar de manera segura al servidor SMTP
+        props.put("mail.smtp.port", "587"); //Puerto SMTP seguro de Google
+
+        Session session = Session.getDefaultInstance(props);
+        MimeMessage message = new MimeMessage(session);
+        
+        try {
+            message.setFrom(new InternetAddress(remitente));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
+            message.setSubject(asunto);
+            message.setText(cuerpo);
+            Transport transport = session.getTransport("smtp");
+            transport.connect("smtp.gmail.com", remitente, clave);
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+        }catch (MessagingException me) {
+            me.printStackTrace();   //Si se produce un error
+        }
+    }
+    
+    public void mail(String email) {
+        String destinatario = email;
+        String asunto = "Entrada para " + evento.getNombre();
+        String cuerpo = "Aqui tienes tu entrada para " + evento.getNombre() + " el dia " + evento.getFecha();
+
+        enviarMail(destinatario, asunto, cuerpo);
     }
     
     private boolean activar;

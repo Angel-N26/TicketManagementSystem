@@ -835,6 +835,8 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
             btnCargarSocios.setVisible(false);
 
             selected(btnEntradas);
+            
+            enp.rellenarComboBox();
         }
     }//GEN-LAST:event_btnEntradasMouseReleased
 

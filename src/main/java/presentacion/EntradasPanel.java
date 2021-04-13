@@ -172,20 +172,30 @@ public class EntradasPanel extends javax.swing.JPanel {
 
     private void btnGenerarEntradasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseReleased
         if(activar){
-            if(cbEvento.getSelectedItem() != null){
-                Evento evento = (Evento) cbEvento.getSelectedItem();
-                if(evento != null){                    
-                    if(!ge.isVisible()){
-                        ge.setEvento(evento);
-                        ge.setEntradas(sacarEntradas(evento.getId()));
-                        ge.rellenarListas();
+            if(!asociacion.getEmail().equals("")){
+                if(cbEvento.getSelectedItem() != null){                
+                    Evento evento = (Evento) cbEvento.getSelectedItem();                
+                    if(evento != null){
+                        if(evento.getEntradasVendidas() <= evento.getEntradas()){
+                            if(!ge.isVisible()){
+                                ge.setEvento(evento);
+                                ge.setEntradas(sacarEntradas(evento.getId()));
+                                ge.rellenarListas();
 
-                        ge.setVisible(true);
-                        ge.setLocationRelativeTo(null);                      
+                                ge.setVisible(true);
+                                ge.setLocationRelativeTo(null);                      
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(this, "Ya se han generado todas la entradas"
+                                    + "de este evento", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
                     }
+                }else{
+                    JOptionPane.showMessageDialog(this, "Selecciona un evento.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }else{
-                JOptionPane.showMessageDialog(this, "Selecciona un evento.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "La asociacion no tiene correo. "
+                        + "Añade uno.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnGenerarEntradasMouseReleased
@@ -218,9 +228,11 @@ public class EntradasPanel extends javax.swing.JPanel {
         
     }
     
-    private void rellenarComboBox(){
+    public void rellenarComboBox(){
         ControlEvento cev = new ControlEvento();
         ArrayList<Evento> evs = cev.obtenerEventos(asociacion.getId());
+        
+        cbEvento.removeAllItems();
         
         cbEvento.addItem(null);
         

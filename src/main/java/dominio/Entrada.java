@@ -53,6 +53,6 @@ public class Entrada {
     
     @Override
     public String toString(){
-        return this.idEvento + " - " + this.idSocio;
+        return this.numEntrada + " - " + this.idSocio;
     }
 }

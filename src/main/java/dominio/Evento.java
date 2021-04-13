@@ -22,7 +22,35 @@ public class Evento {
 
     public Evento(int id, String nombre, String tipo, String sala,
             String direccion, Date fecha, Time hora, int entradas,
-            int entradasVendidas, String rutaImg, int idAsoc){
+            String rutaImg, int idAsoc){
+        this.id = id;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.sala = sala;
+        this.direccion = direccion;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.entradas = entradas;
+        this.rutaImg = rutaImg;
+        this.idAsoc = idAsoc;
+    }
+    
+    public Evento(String nombre, String tipo, String sala, String direccion,
+            Date fecha, Time hora, int entradas, String rutaImg, int idAsoc){        
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.sala = sala;
+        this.direccion = direccion;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.entradas = entradas;
+        this.rutaImg = rutaImg;
+        this.idAsoc = idAsoc;
+    }
+    
+    public Evento(int id, String nombre, String tipo, String sala, String direccion,
+            Date fecha, Time hora, int entradas, int entradasVendidas,
+            String rutaImg, int idAsoc){        
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -36,21 +64,6 @@ public class Evento {
         this.idAsoc = idAsoc;
     }
     
-    public Evento(String nombre, String tipo, String sala, String direccion,
-            Date fecha, Time hora, int entradas, int entradasVendidas,
-            String rutaImg, int idAsoc){        
-        this.nombre = nombre;
-        this.tipo = tipo;
-        this.sala = sala;
-        this.direccion = direccion;
-        this.fecha = fecha;
-        this.hora = hora;
-        this.entradas = entradas;
-        this.entradasVendidas = entradasVendidas;
-        this.rutaImg = rutaImg;
-        this.idAsoc = idAsoc;
-    }
-
     public Evento() {
     }
 

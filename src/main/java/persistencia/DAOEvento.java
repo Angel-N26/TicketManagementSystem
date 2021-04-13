@@ -50,8 +50,7 @@ public class DAOEvento {
             while (rs.next()) {
                 evento = new Evento(rs.getInt(1), rs.getString(2), rs.getString(3),
                         rs.getString(4), rs.getString(5), rs.getDate(6),
-                        rs.getTime(7), rs.getInt(8), rs.getInt(9),
-                        rs.getString(10), rs.getInt(11));
+                        rs.getTime(7), rs.getInt(8), rs.getInt(9), rs.getString(10), rs.getInt(11));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());

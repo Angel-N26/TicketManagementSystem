@@ -62,8 +62,6 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
         jLabel2 = new javax.swing.JLabel();
         tfCapacidad = new javax.swing.JTextField();
         lblEntradasVendidas = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        tfEntradasVendidas = new javax.swing.JTextField();
         lblDireccion = new javax.swing.JLabel();
         lblNombreRecinto = new javax.swing.JLabel();
         tfNombreRecinto = new javax.swing.JTextField();
@@ -208,28 +206,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
         lblEntradasVendidas.setForeground(new java.awt.Color(255, 255, 255));
         lblEntradasVendidas.setText("Entradas vendidas");
         lblEntradasVendidas.setName("lblEntradasVendidas"); // NOI18N
-        panelCenter.add(lblEntradasVendidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 160, 110, -1));
-
-        jLabel3.setVisible(false);
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
-        panelCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, -1, -1));
-
-        tfEntradasVendidas.setBackground(new java.awt.Color(51, 51, 51));
-        tfEntradasVendidas.setForeground(new java.awt.Color(255, 255, 255));
-        tfEntradasVendidas.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        tfEntradasVendidas.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfEntradasVendidas.setName("tfEntradasVendidas"); // NOI18N
-        tfEntradasVendidas.setSelectionColor(new java.awt.Color(204, 0, 204));
-        tfEntradasVendidas.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfEntradasVendidasFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfEntradasVendidasFocusLost(evt);
-            }
-        });
-        panelCenter.add(tfEntradasVendidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 180, 125, 25));
+        panelCenter.add(lblEntradasVendidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 400, -1));
 
         lblDireccion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblDireccion.setForeground(new java.awt.Color(255, 255, 255));
@@ -569,22 +546,6 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
         }
     }//GEN-LAST:event_tfCapacidadFocusLost
 
-    private void tfEntradasVendidasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEntradasVendidasFocusGained
-        tfEntradasVendidas.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
-        jLabel3.setVisible(false);
-        entradasVendidasVal = true;
-    }//GEN-LAST:event_tfEntradasVendidasFocusGained
-
-    private void tfEntradasVendidasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEntradasVendidasFocusLost
-        tfEntradasVendidas.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
-        Matcher matcher = NUMERO.matcher(tfEntradasVendidas.getText());
-        if(!matcher.matches()){
-            tfEntradasVendidas.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            jLabel3.setVisible(true);
-            entradasVendidasVal = false;
-        }
-    }//GEN-LAST:event_tfEntradasVendidasFocusLost
-
     private void tfLocalidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLocalidadFocusGained
         tfLocalidad.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
     }//GEN-LAST:event_tfLocalidadFocusGained
@@ -691,9 +652,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
             if(!tfCapacidad.getText().replace(" ", "").equals(""))
                 capacidad = Integer.parseInt(tfCapacidad.getText());
             
-            int entradasVendidas = 0;
-            if(!tfEntradasVendidas.getText().replace(" ", "").equals(""))
-                entradasVendidas = Integer.parseInt(tfEntradasVendidas.getText());
+            
             
             if(fotoEvento.getIcon() == null){
                 fotoEvento.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\evento.png"));
@@ -703,16 +662,14 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
             if(btnAnadir.getText().equals("Modificar")){
                 Evento evento = new Evento(eve.getId(), tfNombre.getText(), tfTipo.getText(),
                     tfNombreRecinto.getText(), direccion(), fechaEvento, 
-                    horaEvento, capacidad, entradasVendidas,
-                    fotoEvento.getIcon().toString(), asociacion.getId());
+                    horaEvento, capacidad, fotoEvento.getIcon().toString(), asociacion.getId());
                 if(ce.modificarEvento(evento)){
                     dispose();
                 }
             }else if(btnAnadir.getText().equals("Añadir")){
                 Evento evento = new Evento(tfNombre.getText(), tfTipo.getText(),
                     tfNombreRecinto.getText(), direccion(), fechaEvento, 
-                    horaEvento, capacidad, entradasVendidas,
-                    fotoEvento.getIcon().toString(), asociacion.getId());
+                    horaEvento, capacidad, fotoEvento.getIcon().toString(), asociacion.getId());
                 if(ce.insertarEvento(evento)){
                     dispose();
                 }
@@ -774,7 +731,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
         if(eve.getHora() != null)
             tfHora.setText(eve.getHora()+"");
         tfCapacidad.setText(eve.getEntradas()+"");
-        tfEntradasVendidas.setText(eve.getEntradasVendidas()+"");
+        lblEntradasVendidas.setText("Entradas generadas: " + eve.getEntradasVendidas());
         fotoEvento.setIcon(new ImageIcon(eve.getRutaImg()));
                 
         btnAnadir.setText("Modificar");
@@ -842,7 +799,6 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
     private javax.swing.JLabel fotoEvento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblCalle;
@@ -868,7 +824,6 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
     private javax.swing.JTextField tfCalle;
     private javax.swing.JTextField tfCapacidad;
     private javax.swing.JTextField tfCodPostal;
-    private javax.swing.JTextField tfEntradasVendidas;
     private javax.swing.JTextField tfHora;
     private javax.swing.JTextField tfLocalidad;
     private javax.swing.JTextField tfNombre;
