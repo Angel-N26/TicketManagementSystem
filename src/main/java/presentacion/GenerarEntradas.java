@@ -2,6 +2,7 @@ package presentacion;
 
 import com.google.zxing.WriterException;
 import dominio.Asociacion;
+import dominio.Colores;
 import dominio.ControlEntradas;
 import dominio.ControlEvento;
 import dominio.ControlSocio;
@@ -18,20 +19,27 @@ import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.imageio.ImageIO;
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 /**
  * @author angel
  **/
-public class GenerarEntradas extends javax.swing.JFrame {
+public class GenerarEntradas extends javax.swing.JFrame implements Colores {
 
     public GenerarEntradas(Asociacion asociacion) {
         this.asociacion = asociacion;        
@@ -243,7 +251,7 @@ public class GenerarEntradas extends javax.swing.JFrame {
                                     modeloListaSociosCon.add(modeloListaSociosCon.size(), socioConEntrada.get(i));
                                     modeloListaSociosSin.removeElement(socioConEntrada.get(i));
                                     evento.setEntradasVendidas(evento.getEntradasVendidas()+1);
-                                    mail(socio.getEmail());
+                                    mail(socio.getEmail(), outputfile.getPath());
                                 }catch(WriterException e){
                                     System.out.println(e.getMessage());
                                 }catch (IOException ex) {
@@ -309,17 +317,21 @@ public class GenerarEntradas extends javax.swing.JFrame {
         this.entradas = entradas;        
     }
     
-    private void enviarMail(String destinatario, String asunto, String cuerpo){
+    private void enviarMail(String destinatario, String asunto, String cuerpo, String entrada){
         // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.        
         String [] correoAsoc = asociacion.getEmail().split("@");
         String remitente = correoAsoc[0];
         
-        String clave = "mChoqso2";
+        String clave = "";                                      
+        JPasswordField pwd = new JPasswordField();
+        int action = JOptionPane.showConfirmDialog(null, pwd,"Enter Password",JOptionPane.OK_CANCEL_OPTION);
+        if(action < 0);
+        else clave = pwd.getText();
         
         Properties props = System.getProperties();
         props.put("mail.smtp.host", "smtp.gmail.com");  //Servidor SMTP de Google
-        props.put("mail.smtp.user", remitente);
-        props.put("mail.smtp.clave", clave);    //Clave de la cuenta
+        props.put("mail.smtp.user", remitente);        
+        props.put("mail.smtp.clave", clave);    //Clave de la cuenta        
         props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
         props.put("mail.smtp.starttls.enable", "true"); //Conectar de manera segura al servidor SMTP
         props.put("mail.smtp.port", "587"); //Puerto SMTP seguro de Google
@@ -327,29 +339,43 @@ public class GenerarEntradas extends javax.swing.JFrame {
         Session session = Session.getDefaultInstance(props);
         MimeMessage message = new MimeMessage(session);
         
+        MimeMultipart cuerpoAdjunto = new MimeMultipart();
+        BodyPart texto = new MimeBodyPart();
+        BodyPart adjunto = new MimeBodyPart();
+        
         try {
+            texto.setText(cuerpo);
+            adjunto.setDataHandler(new DataHandler(new FileDataSource(entrada)));
+            adjunto.setFileName("entrada.png");
+            cuerpoAdjunto.addBodyPart(texto);
+            cuerpoAdjunto.addBodyPart(adjunto);
+            
             message.setFrom(new InternetAddress(remitente));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
             message.setSubject(asunto);
-            message.setText(cuerpo);
+            message.setContent(cuerpoAdjunto);
+            
             Transport transport = session.getTransport("smtp");
             transport.connect("smtp.gmail.com", remitente, clave);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
         }catch (MessagingException me) {
-            me.printStackTrace();   //Si se produce un error
+            JOptionPane.showMessageDialog(this, "La entrada se ha generado, pero no se ha podido enviar el correo.",
+                "Error", JOptionPane.ERROR_MESSAGE);
+            me.printStackTrace();
         }
     }
     
-    public void mail(String email) {
+    public void mail(String email, String entrada) {
         String destinatario = email;
         String asunto = "Entrada para " + evento.getNombre();
         String cuerpo = "Aqui tienes tu entrada para " + evento.getNombre() + " el dia " + evento.getFecha();
 
-        enviarMail(destinatario, asunto, cuerpo);
+        enviarMail(destinatario, asunto, cuerpo, entrada);
     }
     
     private boolean activar;
+    private boolean activarAceptar;
     
     private final Asociacion asociacion;
     
@@ -357,8 +383,8 @@ public class GenerarEntradas extends javax.swing.JFrame {
     private ArrayList<Entrada> entradas;
     
     private DefaultListModel modeloListaSociosSin;
-    private DefaultListModel modeloListaSociosCon;
-
+    private DefaultListModel modeloListaSociosCon;    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnGenerarEntradas;
     private javax.swing.JLabel close;
