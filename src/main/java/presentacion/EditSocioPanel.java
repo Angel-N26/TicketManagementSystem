@@ -230,7 +230,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png")); // NOI18N
-        jLabel2.setToolTipText("ej: 66666666A");
+        jLabel2.setToolTipText("ej: 12345678A");
         panelCenter.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, -1, -1));
 
         tfDNI.setBackground(new java.awt.Color(51, 51, 51));
@@ -267,7 +267,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png")); // NOI18N
-        jLabel3.setToolTipText("ej: 666666666");
+        jLabel3.setToolTipText("ej: 123456789");
         panelCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, -1));
 
         tfTlf.setBackground(new java.awt.Color(51, 51, 51));

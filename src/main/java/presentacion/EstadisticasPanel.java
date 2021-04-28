@@ -7,6 +7,7 @@ import dominio.ControlSocio;
 import dominio.Entrada;
 import dominio.Evento;
 import dominio.Socio;
+import java.awt.Image;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -561,9 +562,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel28.setMinimumSize(new java.awt.Dimension(60, 60));
         jPanel28.setName(""); // NOI18N
         jPanel28.setPreferredSize(new java.awt.Dimension(60, 60));
-        jPanel28.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
+        jPanel28.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         jLabel10.setToolTipText("");
+        jLabel10.setPreferredSize(new java.awt.Dimension(98, 57));
+        jLabel10.setRequestFocusEnabled(false);
         jPanel28.add(jLabel10);
 
         jPanel27.add(jPanel28);
@@ -657,7 +660,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         panelCenter.add(jPanel12);
 
         add(panelCenter, java.awt.BorderLayout.CENTER);
-        rellenar();
     }// </editor-fold>//GEN-END:initComponents
     
     
@@ -718,7 +720,9 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         }
         
         if(socioMasAntiguo != null){
-            jLabel6.setIcon(new ImageIcon(socioMasAntiguo.getRutaImg()));
+            ImageIcon newImage = new ImageIcon(socioMasAntiguo.getRutaImg());
+            newImage.getImage().getScaledInstance(jLabel6.getWidth(), jLabel6.getHeight(), Image.SCALE_DEFAULT);
+            jLabel6.setIcon(newImage);
             jLabel29.setText(socioMasAntiguo.getNombre());
             jLabel30.setText("Fecha: " + socioMasAntiguo.getFechaIngreso());
         }else{
@@ -751,7 +755,10 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         }
         
         if(eUlt != null){
-            jLabel10.setIcon(new ImageIcon(eUlt.getRutaImg()));
+            ImageIcon newImage = new ImageIcon(eUlt.getRutaImg());
+            System.out.println(jLabel10.getWidth());
+            newImage.getImage().getScaledInstance(jLabel10.getWidth(), jLabel10.getHeight(), Image.SCALE_SMOOTH);
+            jLabel10.setIcon(newImage);
             jLabel17.setText(eUlt.getNombre());
             jLabel18.setText("Fecha: " + eUlt.getFecha());
         }else{

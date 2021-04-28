@@ -79,9 +79,13 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         lblTitulo.setName("lblTitulo"); // NOI18N
         panelNorth.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\cerrar.png")); // NOI18N
+        close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
         close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        close.setMaximumSize(new java.awt.Dimension(16, 16));
+        close.setMinimumSize(new java.awt.Dimension(16, 16));
         close.setName("close"); // NOI18N
+        close.setPreferredSize(new java.awt.Dimension(16, 16));
         close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeMouseClicked(evt);

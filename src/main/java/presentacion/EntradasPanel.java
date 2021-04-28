@@ -172,7 +172,11 @@ public class EntradasPanel extends javax.swing.JPanel {
 
     private void btnGenerarEntradasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseReleased
         if(activar){
-            if(!asociacion.getEmail().equals("")){
+            String email = "";
+            if(asociacion.getEmail() != null)
+                email = asociacion.getEmail();
+                
+            if(!email.equals("")){
                 if(cbEvento.getSelectedItem() != null){                
                     Evento evento = (Evento) cbEvento.getSelectedItem();                
                     if(evento != null){

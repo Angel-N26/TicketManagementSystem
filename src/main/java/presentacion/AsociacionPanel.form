@@ -307,7 +307,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="2" name="C:\Users\angel\Downloads\recursos\informacion-gray.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="ej: 666666666"/>
+            <Property name="toolTipText" type="java.lang.String" value="ej: 123456789"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -908,7 +908,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="2" name="C:\Users\angel\Downloads\recursos\informacion-gray.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="ej: G66666666"/>
+            <Property name="toolTipText" type="java.lang.String" value="ej: G12345678"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

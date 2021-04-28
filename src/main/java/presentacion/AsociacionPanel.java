@@ -204,7 +204,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion-gray.png")); // NOI18N
-        jLabel2.setToolTipText("ej: 666666666");
+        jLabel2.setToolTipText("ej: 123456789");
         panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, -1, -1));
 
         tfTlf.setBackground(new java.awt.Color(51, 51, 51));
@@ -435,7 +435,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion-gray.png")); // NOI18N
-        jLabel7.setToolTipText("ej: G66666666");
+        jLabel7.setToolTipText("ej: G12345678");
         panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, -1, -1));
 
         tfCIF.setBackground(new java.awt.Color(51, 51, 51));
