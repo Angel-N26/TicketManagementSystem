@@ -15,8 +15,8 @@ public class DAOEvento {
     private final Connection con;
     private PreparedStatement pst;
 
-    public DAOEvento() {
-        con = Agente.getConexion();
+    public DAOEvento(Connection con) {
+        this.con = con;
     }
 
     public ArrayList<Evento> obtenerEventosDAO(int idAsoc){

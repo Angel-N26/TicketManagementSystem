@@ -11,12 +11,14 @@ import dominio.Membresia;
 import dominio.Usuario;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.sql.Connection;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.ColorUIResource;
+import persistencia.Agente;
 
 /**
  * @author angel
@@ -25,6 +27,12 @@ public class Login extends javax.swing.JFrame implements Colores {
 
     public Login() {
         initComponents();
+        conn = Agente.getConexion();
+        
+        ca = new ControlAsociacion(conn);
+        cu = new ControlUsuarios(conn);
+        cjd = new ControlJuntaDirectiva(conn);
+        cm = new ControlMembresia(conn);
     }
 
     /**
@@ -116,7 +124,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         panelNorth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\logo(2).png")); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo(2).png"))); // NOI18N
         logo.setName("logo"); // NOI18N
         panelNorth.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 20, 20));
 
@@ -132,7 +140,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         panelNorth.add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, -1));
 
         close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/close-button.png"))); // NOI18N
         close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         close.setMaximumSize(new java.awt.Dimension(16, 16));
         close.setMinimumSize(new java.awt.Dimension(16, 16));
@@ -189,7 +197,7 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         lblWarningImg.setForeground(new java.awt.Color(255, 255, 255));
         lblWarningImg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWarningImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\warning.png")); // NOI18N
+        lblWarningImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/warning.png"))); // NOI18N
         lblWarningImg.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         lblWarningImg.setName("lblWarningImg"); // NOI18N
         panelIniciarSesion.add(lblWarningImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 29, 40));
@@ -209,7 +217,7 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         errorImgUser.setForeground(new java.awt.Color(255, 255, 255));
         errorImgUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgUser.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        errorImgUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         errorImgUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgUser.setName("errorImgUser"); // NOI18N
         panelIniciarSesion.add(errorImgUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 20, 20));
@@ -243,7 +251,7 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         errorImgPass.setForeground(new java.awt.Color(255, 255, 255));
         errorImgPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        errorImgPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         errorImgPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgPass.setName("errorImgPass"); // NOI18N
         panelIniciarSesion.add(errorImgPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 20, 20));
@@ -275,7 +283,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         cbRecordar.setName("cbRecordar"); // NOI18N
         panelIniciarSesion.add(cbRecordar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, -1));
 
-        infor.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png")); // NOI18N
+        infor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informacion.png"))); // NOI18N
         infor.setName("infor"); // NOI18N
         panelIniciarSesion.add(infor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
@@ -323,7 +331,6 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         errorImgUserReg.setForeground(new java.awt.Color(255, 255, 255));
         errorImgUserReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgUserReg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
         errorImgUserReg.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgUserReg.setName("errorImgUser"); // NOI18N
         panelRegistrarse.add(errorImgUserReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 20, 20));
@@ -358,7 +365,6 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         errorImgPassReg.setForeground(new java.awt.Color(255, 255, 255));
         errorImgPassReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgPassReg.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
         errorImgPassReg.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgPassReg.setName("errorImgUser"); // NOI18N
         panelRegistrarse.add(errorImgPassReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 20, 20));
@@ -392,7 +398,6 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         errorImgRepPass.setForeground(new java.awt.Color(255, 255, 255));
         errorImgRepPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgRepPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
         errorImgRepPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgRepPass.setName("errorImgUser"); // NOI18N
         panelRegistrarse.add(errorImgRepPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 20, 20));
@@ -426,7 +431,6 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         errorImgNombreAsoc.setForeground(new java.awt.Color(255, 255, 255));
         errorImgNombreAsoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgNombreAsoc.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
         errorImgNombreAsoc.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgNombreAsoc.setName("errorImgUser"); // NOI18N
         panelRegistrarse.add(errorImgNombreAsoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 20, 20));
@@ -506,6 +510,7 @@ public class Login extends javax.swing.JFrame implements Colores {
     }//GEN-LAST:event_pfPassFocusLost
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
+        Agente.closeConexion(conn);
         System.exit(0);
     }//GEN-LAST:event_closeMouseClicked
 
@@ -585,16 +590,16 @@ public class Login extends javax.swing.JFrame implements Colores {
     }//GEN-LAST:event_btnInicioSesionMouseExited
 
     private void btnInicioSesionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioSesionMouseReleased
-        ControlUsuarios cu = new ControlUsuarios();
-        ControlAsociacion ca = new ControlAsociacion();
-        ControlMembresia cm = new ControlMembresia();
+        //ControlUsuarios cu = new ControlUsuarios();
+        //ControlAsociacion ca = new ControlAsociacion(conn);
+       // ControlMembresia cm = new ControlMembresia();
         Asociacion asoc;
         if(activar){
             if(btnInicioSesion.getText().equals("Iniciar Sesión")){
                 if(comprobarUsuario(tfUser.getText(), pfPass.getText())){
                     Usuario usuario = cu.obtenerUsuario(tfUser.getText());
                     asoc = ca.obtenerAsociacion(usuario.getIdAsociacion());
-                    Menu menu = new Menu(asoc, usuario);
+                    Menu menu = new Menu(asoc, usuario, conn);
                     menu.setVisible(true);
                     menu.setLocationRelativeTo(null);
                     menu.setExtendedState(NORMAL);
@@ -617,7 +622,7 @@ public class Login extends javax.swing.JFrame implements Colores {
                         cm.insertarMembresia(m);
                         Usuario user = new Usuario(tfUserReg.getText(), pfPassReg.getText(), asoc.getId());
                         if(cu.insertarUsuario(user)){
-                            Menu menu = new Menu(asoc, user);
+                            Menu menu = new Menu(asoc, user, conn);
                             menu.setVisible(true);
                             menu.setLocationRelativeTo(null);
                             menu.setExtendedState(NORMAL);
@@ -635,7 +640,7 @@ public class Login extends javax.swing.JFrame implements Colores {
 
     private boolean comprobarUsuario(String nombre, String pass){
         boolean existe = false;
-        ControlUsuarios cu = new ControlUsuarios();
+        //ControlUsuarios cu = new ControlUsuarios();
         ArrayList<Usuario> usuarios= cu.obtenerUsuarios();
         for(int i = 0 ; i < usuarios.size() ; i++){
             if(nombre.equals(usuarios.get(i).getUsuario()) && pass.equals(usuarios.get(i).getContrasena())){
@@ -657,7 +662,7 @@ public class Login extends javax.swing.JFrame implements Colores {
     }
     
     private void crearCargos(int idAsoc){
-        ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
+        //ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
         Cargo cargo;
         cargo = new Cargo("Presidente", null, idAsoc);
         cjd.insertarCargo(cargo);
@@ -705,8 +710,8 @@ public class Login extends javax.swing.JFrame implements Colores {
     
     private boolean comprobarCampos(){
         boolean registro = true;
-        ControlUsuarios cu = new ControlUsuarios();
-        ControlAsociacion ca = new ControlAsociacion();
+        //ControlUsuarios cu = new ControlUsuarios();
+        //ControlAsociacion ca = new ControlAsociacion(conn);
         ArrayList<Usuario> usuarios = cu.obtenerUsuarios();
         ArrayList<Asociacion> asociaciones = ca.obtenerAsociaciones();
         
@@ -783,7 +788,9 @@ public class Login extends javax.swing.JFrame implements Colores {
                     UIManager.put("ToolTip.foreground", new ColorUIResource(255,255,255));
                     UIManager.put("ToolTip.font", new java.awt.Font("Console", 1, 12));
                          
-                    
+                    UIManager.put("TextField.background", new ColorUIResource(51,51,51));
+                    UIManager.put("TextField.border", BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+                    UIManager.put("TextField.foreground", new ColorUIResource(255,255,255));
                     /*
                     UIManager.put("ComboBox.selectionBackground", new ColorUIResource(204,0,204));
                     UIManager.put("ComboBox.selectionForeground", new ColorUIResource(255,255,255));
@@ -797,10 +804,6 @@ public class Login extends javax.swing.JFrame implements Colores {
                     */
                     UIManager.put("TableHeader.background", new ColorUIResource(51,51,51));
                     UIManager.put("TableHeader.foreground", new ColorUIResource(255,255,255));
-                    //UIManager.put("TableHeader.cellBorder", BorderFactory.createLineBorder(new java.awt.Color(255, 0, 255)));
-                    
-                    //UIManager.put("Table.dropLineColor", new ColorUIResource(255,0,0));
-                    //UIManager.put("Table.dropLineShortColor", new ColorUIResource(0,255,0));
                     
                 }catch(ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e){
                     e.printStackTrace();
@@ -816,6 +819,13 @@ public class Login extends javax.swing.JFrame implements Colores {
     
     private int xx;
     private int xy;
+    
+    private final Connection conn;
+    
+    private final ControlAsociacion ca;
+    private final ControlUsuarios cu;
+    private final ControlJuntaDirectiva cjd;
+    private final ControlMembresia cm;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnInicioSesion;

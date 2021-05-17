@@ -1,5 +1,6 @@
 package dominio;
 
+import java.sql.Connection;
 import persistencia.DAOEvento;
 import java.util.ArrayList;
 
@@ -10,8 +11,8 @@ public class ControlEvento {
     
     private final DAOEvento daoEvento;
 
-    public ControlEvento() {
-        this.daoEvento = new DAOEvento();
+    public ControlEvento(Connection con) {
+        this.daoEvento = new DAOEvento(con);
     }
 
     public ArrayList<Evento> obtenerEventos(int idAsoc) {

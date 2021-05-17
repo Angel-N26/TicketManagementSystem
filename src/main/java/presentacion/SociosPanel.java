@@ -7,8 +7,10 @@ import dominio.Membresia;
 import dominio.Socio;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.sql.Connection;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -18,10 +20,14 @@ import javax.swing.table.DefaultTableModel;
  **/
 public class SociosPanel extends javax.swing.JPanel {
 
-    public SociosPanel(Asociacion asociacion) {
-        this.asociacion = asociacion;        
-        initComponents();
-        cs = new ControlSocio();
+    public SociosPanel(Asociacion asociacion, Connection con) {
+        this.asociacion = asociacion;    
+        this.con = con;
+        
+        this.cs = new ControlSocio(con);
+        this.cm = new ControlMembresia(con);
+        
+        initComponents(); 
     }
 
     /**
@@ -101,7 +107,7 @@ public class SociosPanel extends javax.swing.JPanel {
 
         buscar.setBackground(new java.awt.Color(31, 31, 31));
         buscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        buscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-gray.png")); // NOI18N
+        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search-gray.png"))); // NOI18N
         buscar.setToolTipText("Buscar");
         buscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(0, 0, 0)));
         buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -125,7 +131,7 @@ public class SociosPanel extends javax.swing.JPanel {
 
         clear.setVisible(false);
         clear.setForeground(new java.awt.Color(255, 255, 255));
-        clear.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\cancelar24.png")); // NOI18N
+        clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cancelar24.png"))); // NOI18N
         clear.setToolTipText("Limpiar");
         clear.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         clear.setName("clear"); // NOI18N
@@ -289,11 +295,11 @@ public class SociosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_buscarMouseClicked
 
     private void buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarMouseEntered
-        buscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-white.png"));
+        buscar.setIcon(new ImageIcon(getClass().getResource("/search-white.png")));
     }//GEN-LAST:event_buscarMouseEntered
 
     private void buscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarMouseExited
-        buscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-gray.png"));
+        buscar.setIcon(new ImageIcon(getClass().getResource("/search-gray.png")));
     }//GEN-LAST:event_buscarMouseExited
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
@@ -302,7 +308,7 @@ public class SociosPanel extends javax.swing.JPanel {
             Socio socio = cs.obtenerSocio((String)dtm.getValueAt(index, 0), asociacion.getId());
             
             JPanel card = (JPanel) this.getParent();
-            EditSocioPanel editSP = new EditSocioPanel(socio, asociacion);
+            EditSocioPanel editSP = new EditSocioPanel(socio, asociacion, con);
             editSP.rellenarCampos();
             card.add(editSP, "cardEditSP");
             CardLayout cardLayout = (CardLayout) card.getLayout();
@@ -321,7 +327,7 @@ public class SociosPanel extends javax.swing.JPanel {
     private void btnAnadirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseReleased
         if(activarAnadir){
             JPanel card = (JPanel) this.getParent();
-            EditSocioPanel editSP = new EditSocioPanel(asociacion);
+            EditSocioPanel editSP = new EditSocioPanel(asociacion, con);
             card.add(editSP, "cardEditSP");
             CardLayout cardLayout = (CardLayout) card.getLayout();
             cardLayout.show(card, "cardEditSP");
@@ -359,8 +365,8 @@ public class SociosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarMouseReleased
 
     private ArrayList<Socio> obtenerSocios(){
-        ControlSocio csoc = new ControlSocio();
-        return csoc.obtenerSocios(asociacion.getId());
+        //ControlSocio csoc = new ControlSocio(coon);
+        return cs.obtenerSocios(asociacion.getId());
     }
     
     public void actualizarTabla(){
@@ -376,7 +382,7 @@ public class SociosPanel extends javax.swing.JPanel {
     }
     
     private void addTabla(ArrayList<Socio> socios){
-        ControlMembresia cm = new ControlMembresia();
+        //ControlMembresia cm = new ControlMembresia();
         Membresia m;
         for(int i = 0 ; i < socios.size() ; i++){
             m = cm.obtenerMembresia(socios.get(i).getIdMembresia(), asociacion.getId());
@@ -387,13 +393,17 @@ public class SociosPanel extends javax.swing.JPanel {
         }
     }
     
+    private final Connection con;
+    
     private boolean activarEliminar;
     private boolean activarAnadir;
     
     private final Asociacion asociacion;
     
+    private final ControlSocio cs;
+    private final ControlMembresia cm;
+    
     private DefaultTableModel dtm;   
-    private final ControlSocio cs;        
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnAnadir;

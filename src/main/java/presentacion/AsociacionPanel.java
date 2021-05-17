@@ -12,6 +12,7 @@ import dominio.RegularExpresions;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import javax.swing.ImageIcon;
@@ -23,8 +24,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  **/
 public class AsociacionPanel extends javax.swing.JPanel implements Colores, RegularExpresions {
 
-    public AsociacionPanel(Asociacion asociacion) {
+    //private Connection con;
+    
+    public AsociacionPanel(Asociacion asociacion, EntradasPanel ep, Connection con) {
         this.asociacion = asociacion;
+        this.ep = ep;
+        
+        ca = new ControlAsociacion(con);
         
         initComponents();
     }
@@ -93,7 +99,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
         edit.setVisible(false);
         edit.setForeground(new java.awt.Color(255, 255, 255));
-        edit.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\editar.png")); // NOI18N
+        edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar.png"))); // NOI18N
         edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         edit.setName("edit"); // NOI18N
         edit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,10 +109,6 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         });
         panelLogo.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
 
-        if(asociacion.getRutaLogo() == null || asociacion.getRutaLogo().equals("")){
-            asociacion.setRutaLogo("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\asociacion.png");
-            logo.setIcon(new ImageIcon(asociacion.getRutaLogo()));
-        }
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setName("logo"); // NOI18N
         panelLogo.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 184, 184));
@@ -127,7 +129,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
         jLabel1.setVisible(false);
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, -1, -1));
 
         tfNombre.setBackground(new java.awt.Color(51, 51, 51));
@@ -203,7 +205,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         panel.add(lblTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 240, -1));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion-gray.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informacion-gray.png"))); // NOI18N
         jLabel2.setToolTipText("ej: 123456789");
         panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, -1, -1));
 
@@ -233,7 +235,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         panel.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 530, -1));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion-gray.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informacion-gray.png"))); // NOI18N
         jLabel3.setToolTipText("ej: alguien@example.com/es");
         panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, -1, -1));
 
@@ -270,7 +272,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
         jLabel10.setVisible(false);
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, -1, -1));
 
         tfCalle.setBackground(new java.awt.Color(51, 51, 51));
@@ -300,7 +302,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
         jLabel9.setVisible(false);
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, -1, -1));
 
         tfNumero.setBackground(new java.awt.Color(51, 51, 51));
@@ -329,7 +331,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         panel.add(lblPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 80, -1));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion-gray.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informacion-gray.png"))); // NOI18N
         jLabel4.setToolTipText("ej: 6E");
         panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, -1, -1));
 
@@ -360,7 +362,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
         jLabel6.setVisible(false);
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         jLabel6.setToolTipText("");
         panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 300, -1, -1));
 
@@ -434,7 +436,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         panel.add(lblCIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 70, -1));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion-gray.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informacion-gray.png"))); // NOI18N
         jLabel7.setToolTipText("ej: G12345678");
         panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, -1, -1));
 
@@ -465,7 +467,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
         jLabel8.setVisible(false);
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, -1, -1));
 
         tfNReg.setBackground(new java.awt.Color(51, 51, 51));
@@ -555,7 +557,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     
     private void tfTlfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusGained
         tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-        jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        jLabel2.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
         tlfVal = true;
     }//GEN-LAST:event_tfTlfFocusGained
 
@@ -564,7 +566,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         Matcher matcher = TLF.matcher(tfTlf.getText());
         if(!matcher.matches() || !comprobarTlf(Integer.parseInt(tfTlf.getText()))){
             tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            jLabel2.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             tlfVal = false;
         }
     }//GEN-LAST:event_tfTlfFocusLost
@@ -585,7 +587,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     
     private void tfCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCorreoFocusGained
         tfCorreo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-        jLabel3.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        jLabel3.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
         emailVal = true;        
     }//GEN-LAST:event_tfCorreoFocusGained
 
@@ -594,7 +596,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         Matcher matcher = EMAIL.matcher(tfCorreo.getText());
         if(!matcher.matches() || !comprobarEmail(tfCorreo.getText())){
             tfCorreo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            jLabel3.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            jLabel3.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             emailVal = false;
         }
     }//GEN-LAST:event_tfCorreoFocusLost
@@ -633,7 +635,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
     private void tfCIFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCIFFocusGained
         tfCIF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-        jLabel7.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        jLabel7.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
         cifVal = true;                
     }//GEN-LAST:event_tfCIFFocusGained
 
@@ -642,7 +644,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         Matcher matcher = CIF.matcher(tfCIF.getText());
         if(!matcher.matches() || !comprobarCIF(tfCIF.getText())){
             tfCIF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            jLabel7.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            jLabel7.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             cifVal = false;
         }
     }//GEN-LAST:event_tfCIFFocusLost
@@ -717,7 +719,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
     private void tfPisoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusGained
         tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, SELECTED));
-        jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        jLabel4.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
         pisoVal = true;         
     }//GEN-LAST:event_tfPisoFocusGained
 
@@ -726,7 +728,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         Matcher matcher = PISO.matcher(tfPiso.getText());
         if(!matcher.matches() && !tfPiso.getText().equals("")){
             tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            jLabel4.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             pisoVal = false;
         }
     }//GEN-LAST:event_tfPisoFocusLost
@@ -761,11 +763,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
                 if(extension != null){
                     logo.setIcon(new ImageIcon(file.getAbsolutePath()));
                 }else{
-                    logo.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\asociacion.png"));
                     JOptionPane.showMessageDialog(this,
-                        "No se ha seleccionado una extensión de archivos válida. "
-                        + "Por lo que se asignará una imagen por defecto", "Error",
-                        JOptionPane.ERROR_MESSAGE);   
+                        "No se ha seleccionado una extensión de archivos válida."
+                        , "Error", JOptionPane.ERROR_MESSAGE);   
                 }              
             }
             catch (IOException ioException){
@@ -775,8 +775,8 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }//GEN-LAST:event_editMouseClicked
 
     private void btnEditarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseReleased
-        String imageDisabled = "C:\\Users\\angel\\Downloads\\recursos\\informacion-gray.png";
-        String imageEnabled = "C:\\Users\\angel\\Downloads\\recursos\\informacion.png";
+        String imageDisabled = "/informacion-gray.png";
+        String imageEnabled = "/informacion.png";
         if(activar){
             JTextFieldDateEditor dcEditor2 = ((JTextFieldDateEditor)dcFechaCreacion.getDateEditor());               
             Date fechaCreacion = null;
@@ -789,24 +789,28 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
             if(!tfNReg.getText().replace(" ", "").equals(""))
                 nReg = Integer.parseInt(tfNReg.getText());
             
-            if(logo.getIcon().toString() == null){
-                logo.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\asociacion.png"));
+            String filePath = logo.getIcon().toString();
+            if(filePath.contains("file:/")){
+                filePath = "";
             }
+            
 
             if(btnEditar.getText().equals("Editar")){
                 editable(true, imageEnabled);
                 btnEditar.setText("Guardar");
             }else{
                 if(valido()){
-                    ControlAsociacion ca = new ControlAsociacion();
+                    //ControlAsociacion ca = new ControlAsociacion();
                     Asociacion asoc = new Asociacion(asociacion.getId(), tfNombre.getText(),tfTipo.getText(),
                         fechaCreacion, tlf, tfCorreo.getText(), direccion(),
-                        tfCIF.getText(), nReg, logo.getIcon().toString());
+                        tfCIF.getText(), nReg, filePath);
                     if(ca.modificarAsociacion(asoc, asociacion.getId())){
                         editable(false, imageDisabled);
                         btnEditar.setText("Editar");
                         lblNombreLogo.setText(tfNombre.getText());
                         asociacion = asoc;
+                        
+                        ep.setAsociacion(asociacion);
                     }else{
                         JOptionPane.showMessageDialog(this, 
                             "No se ha podido actualizar la asoicación", "Error",
@@ -837,7 +841,16 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         tfCIF.setText(asociacion.getCIF());
         if(asociacion.getnRegistro() != 0)
             tfNReg.setText(asociacion.getnRegistro()+"");
-        logo.setIcon(new ImageIcon(asociacion.getRutaLogo()));
+        if(!asociacion.getRutaLogo().equals("")){
+            try{
+                logo.setIcon(new ImageIcon(getClass().getResource(asociacion.getRutaLogo())));
+            }catch(Exception e){
+                logo.setIcon(new ImageIcon(asociacion.getRutaLogo()));
+            }
+            
+        }else{
+            logo.setIcon(new ImageIcon(getClass().getResource("/asociacion.png")));
+        }  
     }
     
     public void editable(boolean b, String image){
@@ -899,7 +912,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }
     
     private ArrayList<Asociacion> obtenerAsociaciones(){
-        ControlAsociacion ca = new ControlAsociacion();
+        //ControlAsociacion ca = new ControlAsociacion();
         return ca.obtenerAsociaciones();
     }       
     
@@ -928,7 +941,10 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         return valido;
     }
 
-    private Asociacion asociacion;   
+    private Asociacion asociacion;
+    private ControlAsociacion ca;
+    
+    private EntradasPanel ep;
     
     private boolean nombreVal = true;
     private boolean tlfVal = true;

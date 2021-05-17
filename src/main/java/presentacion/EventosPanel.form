@@ -87,7 +87,7 @@
                   <Color blue="1f" green="1f" red="1f" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\angel\Downloads\recursos\search-gray.png"/>
+                  <Image iconType="3" name="/search-gray.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Buscar"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -114,7 +114,7 @@
         <Component class="javax.swing.JLabel" name="clear">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\angel\Downloads\recursos\cancelar24.png"/>
+              <Image iconType="3" name="/cancelar24.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Limpiar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

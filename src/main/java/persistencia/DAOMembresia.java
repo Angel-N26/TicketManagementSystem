@@ -15,8 +15,8 @@ public class DAOMembresia {
     private final Connection con;
     private PreparedStatement pst;
 
-    public DAOMembresia() {
-        con = Agente.getConexion();
+    public DAOMembresia(Connection con) {
+        this.con = con;
     }
 
     public ArrayList<Membresia> obtenerMembresiasDAO(int idAsoc){

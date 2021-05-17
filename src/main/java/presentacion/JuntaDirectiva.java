@@ -5,6 +5,7 @@ import dominio.Cargo;
 import dominio.ControlJuntaDirectiva;
 import dominio.ControlSocio;
 import dominio.Socio;
+import java.sql.Connection;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -14,8 +15,11 @@ import javax.swing.JOptionPane;
  **/
 public class JuntaDirectiva extends javax.swing.JFrame {
 
-    public JuntaDirectiva(Asociacion asociacion) {
+    public JuntaDirectiva(Asociacion asociacion, Connection con) {
         this.asociacion = asociacion;
+        
+        this.cjd = new ControlJuntaDirectiva(con);
+        this.cs = new ControlSocio(con);
         
         initComponents();
     }
@@ -69,7 +73,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
         panelNorth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/close-button.png"))); // NOI18N
         close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         close.setMaximumSize(new java.awt.Dimension(16, 16));
         close.setMinimumSize(new java.awt.Dimension(16, 16));
@@ -80,7 +84,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
                 closeMouseClicked(evt);
             }
         });
-        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 2, -1, -1));
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 2, -1, -1));
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -272,7 +276,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     
     private boolean modificarCargo(String nombre, JComboBox cb){
         boolean modificado;
-        ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
+        //ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
         Cargo cargo;        
         if(cb.getSelectedItem() != null){
             Socio socio = (Socio) cb.getSelectedItem();
@@ -287,7 +291,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     
     //Selecciona el socio correspondiente en cada cargo
     private void seleccionarCargos(){        
-        ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
+        //ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
         ArrayList<Cargo> cargos = cjd.obtenerCargos(asociacion.getId());
         
         for(int i = 0 ; i < cargos.size() ; i++){
@@ -329,13 +333,13 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     
     //Obtiene un socio dado su dni
     private Socio obtenerSocio(String dni){
-        ControlSocio cs = new ControlSocio();
+        //ControlSocio cs = new ControlSocio();
         return cs.obtenerSocio(dni, asociacion.getId());
     }       
     
     //Rellena el combo box con los nombres de todos los socios
     private void rellenarComboBox(){
-        ControlSocio cs = new ControlSocio();
+        //ControlSocio cs = new ControlSocio();
         soc = cs.obtenerSocios(asociacion.getId());
         cbPresidente.addItem(null);
         cbVicepresidente.addItem(null);
@@ -356,6 +360,9 @@ public class JuntaDirectiva extends javax.swing.JFrame {
     private boolean activar;
     
     private final Asociacion asociacion;
+    
+    private final ControlJuntaDirectiva cjd;
+    private final ControlSocio cs;
     
     private ArrayList<Socio> soc;
     

@@ -6,6 +6,7 @@ import dominio.ControlEvento;
 import dominio.Entrada;
 import dominio.Evento;
 import java.awt.Color;
+import java.sql.Connection;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -15,9 +16,13 @@ import javax.swing.JOptionPane;
  **/
 public class EntradasPanel extends javax.swing.JPanel {
 
-    public EntradasPanel(Asociacion asociacion) {
+    public EntradasPanel(Asociacion asociacion, Connection con) {
         this.asociacion = asociacion;
-        this.ge = new GenerarEntradas(this.asociacion);
+        this.ge = new GenerarEntradas(this.asociacion, con);
+        
+        this.cev = new ControlEvento(con);
+        this.cen = new ControlEntradas(con);
+        
         initComponents();
     }
 
@@ -233,7 +238,7 @@ public class EntradasPanel extends javax.swing.JPanel {
     }
     
     public void rellenarComboBox(){
-        ControlEvento cev = new ControlEvento();
+        //ControlEvento cev = new ControlEvento();
         ArrayList<Evento> evs = cev.obtenerEventos(asociacion.getId());
         
         cbEvento.removeAllItems();
@@ -247,7 +252,7 @@ public class EntradasPanel extends javax.swing.JPanel {
     }
     
     private ArrayList<Entrada> sacarEntradas(int id_evento){
-        ControlEntradas cen = new ControlEntradas();
+        //ControlEntradas cen = new ControlEntradas();
         ArrayList<Entrada> entradas = cen.obtenerEntradasEvento(id_evento, asociacion.getId());
         
         return entradas;
@@ -255,11 +260,18 @@ public class EntradasPanel extends javax.swing.JPanel {
     
     private boolean activar;
     
-    private final Asociacion asociacion;
+    private Asociacion asociacion;
+    
+    private final ControlEvento cev;
+    private final ControlEntradas cen;
     
     private GenerarEntradas ge;
     
     private DefaultListModel modeloListaEntradas;
+    
+    public void setAsociacion(Asociacion asociacion){
+        this.asociacion = asociacion;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnGenerarEntradas;

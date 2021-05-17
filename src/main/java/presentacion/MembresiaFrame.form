@@ -109,7 +109,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\angel\Downloads\recursos\close-button.png"/>
+                  <Image iconType="3" name="/close-button.png"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
@@ -164,7 +164,7 @@
             <Component class="javax.swing.JLabel" name="clean">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\angel\Downloads\recursos\clean.png"/>
+                  <Image iconType="3" name="/clean.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Limpiar campos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -247,7 +247,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\angel\Downloads\recursos\error.png"/>
+                  <Image iconType="3" name="/error.png"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -317,7 +317,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\angel\Downloads\recursos\error.png"/>
+                  <Image iconType="3" name="/error.png"/>
                 </Property>
               </Properties>
               <AuxValues>

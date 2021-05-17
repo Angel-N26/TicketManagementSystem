@@ -15,8 +15,8 @@ public class DAOUsuarios {
     private final Connection con;
     private PreparedStatement pst;
     
-    public DAOUsuarios() {
-        con = Agente.getConexion();
+    public DAOUsuarios(Connection con) {
+        this.con = con;
     }
     
     public ArrayList<Usuario> obtenerUsuariosDAO(){

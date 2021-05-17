@@ -8,6 +8,7 @@ import dominio.Entrada;
 import dominio.Evento;
 import dominio.Socio;
 import java.awt.Image;
+import java.sql.Connection;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,10 +19,15 @@ import javax.swing.ImageIcon;
  **/
 public class EstadisticasPanel extends javax.swing.JPanel {
 
-    public EstadisticasPanel(Asociacion asociacion) {
+    public EstadisticasPanel(Asociacion asociacion, Connection con) {
         this.asociacion = asociacion;
         
         initComponents();
+        
+        this.cs = new ControlSocio(con);
+        this.cev = new ControlEvento(con);
+        this.cen = new ControlEntradas(con);
+                
     }
 
     /**
@@ -664,18 +670,18 @@ public class EstadisticasPanel extends javax.swing.JPanel {
     
     
     private ArrayList<Socio> obtenerSocios(){
-        ControlSocio cs = new ControlSocio();
+        //ControlSocio cs = new ControlSocio();
         return cs.obtenerSocios(asociacion.getId());
     }
     
     private ArrayList<Evento> obtenerEventos(){
-        ControlEvento ce = new ControlEvento();
-        return ce.obtenerEventos(asociacion.getId());
+        //ControlEvento ce = new ControlEvento();
+        return cev.obtenerEventos(asociacion.getId());
     }
     
     private ArrayList<Entrada> obtenerEntradas(){
-        ControlEntradas ce = new ControlEntradas();
-        return ce.obtenerEntradas(asociacion.getId());
+        //ControlEntradas ce = new ControlEntradas();
+        return cen.obtenerEntradas(asociacion.getId());
     }
     
     public void rellenar(){
@@ -720,9 +726,7 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         }
         
         if(socioMasAntiguo != null){
-            ImageIcon newImage = new ImageIcon(socioMasAntiguo.getRutaImg());
-            newImage.getImage().getScaledInstance(jLabel6.getWidth(), jLabel6.getHeight(), Image.SCALE_DEFAULT);
-            jLabel6.setIcon(newImage);
+            jLabel6.setIcon(new ImageIcon(socioMasAntiguo.getRutaImg()));
             jLabel29.setText(socioMasAntiguo.getNombre());
             jLabel30.setText("Fecha: " + socioMasAntiguo.getFechaIngreso());
         }else{
@@ -844,6 +848,10 @@ public class EstadisticasPanel extends javax.swing.JPanel {
     }
     
     private final Asociacion asociacion;
+    
+    private final ControlSocio cs;
+    private final ControlEvento cev;
+    private final ControlEntradas cen;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.sql.Connection;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,23 +30,29 @@ import keeptoo.KButton;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import persistencia.Agente;
 
 /**
  * @author angel
  **/
 public class Menu extends javax.swing.JFrame implements RegularExpresions {
 
-    public Menu(Asociacion asociacion, Usuario user) {
+    public Menu(Asociacion asociacion, Usuario user, Connection con) {
         this.asociacion = asociacion;
         this.user = user;
+        this.con = con;
         
-        ap = new AsociacionPanel(asociacion);
-        sp = new SociosPanel(asociacion);
-        evp = new EventosPanel(asociacion);
-        enp = new EntradasPanel(asociacion);
-        ip = new EstadisticasPanel(asociacion);
-        editSP = new EditSocioPanel(asociacion);
-        editEP = new EditEventoPanel(asociacion);
+        this.cu = new ControlUsuarios(con);
+        this.cs = new ControlSocio(con);
+        this.cm = new ControlMembresia(con);
+        
+        this.sp = new SociosPanel(asociacion, con);
+        this.evp = new EventosPanel(asociacion, con);
+        this.enp = new EntradasPanel(asociacion, con);
+        this.ip = new EstadisticasPanel(asociacion, con);
+        this.editSP = new EditSocioPanel(asociacion, con);
+        this.editEP = new EditEventoPanel(asociacion, con);
+        this.ap = new AsociacionPanel(asociacion,this.enp, con);
 
         initComponents();
     }
@@ -122,7 +129,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         panelNorthLeft.setPreferredSize(new java.awt.Dimension(499, 40));
         panelNorthLeft.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\logo(1).png")); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo(1).png"))); // NOI18N
         logo.setName("logo"); // NOI18N
         panelNorthLeft.add(logo);
 
@@ -140,7 +147,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         panelNorthRight.setPreferredSize(new java.awt.Dimension(499, 40));
         panelNorthRight.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 0, 0));
 
-        minimize.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\minimizar.png")); // NOI18N
+        minimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/minimizar.png"))); // NOI18N
         minimize.setName("minimize"); // NOI18N
         minimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -155,7 +162,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         });
         panelNorthRight.add(minimize);
 
-        maximize.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\maximize-window.png")); // NOI18N
+        maximize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maximize-window.png"))); // NOI18N
         maximize.setName("maximize"); // NOI18N
         maximize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -170,7 +177,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         });
         panelNorthRight.add(maximize);
 
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/close-button.png"))); // NOI18N
         close.setName("close"); // NOI18N
         close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -592,15 +599,16 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
     }//GEN-LAST:event_panelNorthMousePressed
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
+        Agente.closeConexion(con);
         System.exit(0);
     }//GEN-LAST:event_closeMouseClicked
 
     private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button-red.png"));
+        close.setIcon(new ImageIcon(getClass().getResource("/close-button-red.png")));
     }//GEN-LAST:event_closeMouseEntered
 
     private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png"));
+        close.setIcon(new ImageIcon(getClass().getResource("/close-button.png")));
     }//GEN-LAST:event_closeMouseExited
 
     private void maximizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseClicked
@@ -616,11 +624,11 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
     }//GEN-LAST:event_maximizeMouseClicked
 
     private void maximizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseEntered
-        maximize.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\maximize-window-purple.png"));
+        maximize.setIcon(new ImageIcon(getClass().getResource("/maximize-window-purple.png")));
     }//GEN-LAST:event_maximizeMouseEntered
 
     private void maximizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseExited
-        maximize.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\maximize-window.png"));
+        maximize.setIcon(new ImageIcon(getClass().getResource("/maximize-window.png")));
     }//GEN-LAST:event_maximizeMouseExited
 
     private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
@@ -628,11 +636,11 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
     }//GEN-LAST:event_minimizeMouseClicked
 
     private void minimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseEntered
-        minimize.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\minimizar-purple.png"));
+        minimize.setIcon(new ImageIcon(getClass().getResource("/minimizar-purple.png")));
     }//GEN-LAST:event_minimizeMouseEntered
 
     private void minimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseExited
-        minimize.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\minimizar.png"));
+        minimize.setIcon(new ImageIcon(getClass().getResource("/minimizar.png")));
     }//GEN-LAST:event_minimizeMouseExited
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -702,7 +710,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         
             selected(btnJuntaDirectiva);
 
-            jd = new JuntaDirectiva(asociacion);
+            jd = new JuntaDirectiva(asociacion, con);
             jd.setVisible(true);
             jd.setLocationRelativeTo(null);
         }
@@ -722,7 +730,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         
             selected(btnMembresia);
 
-            mem = new MembresiaFrame(asociacion);
+            mem = new MembresiaFrame(asociacion, con);
             mem.setVisible(true);
             mem.setLocationRelativeTo(null);
         }
@@ -888,7 +896,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
                 
                 Date d = Date.valueOf(LocalDate.now());              
                 user.setUltimaConexion(d);
-                ControlUsuarios cu = new ControlUsuarios();
+                //ControlUsuarios cu = new ControlUsuarios();
                 cu.modificarUsuario(user, user.getUsuario());
             }  
         }
@@ -906,7 +914,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         if(activarCambiarPass){
             selected(btnCambiarPass);
 
-            cp = new CambiarPass(user);
+            cp = new CambiarPass(user, con);
             cp.setVisible(true);
             cp.setLocationRelativeTo(null);
         }
@@ -932,7 +940,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
     }                  
     
     private void leerCSV(String path){
-        ControlSocio cs = new ControlSocio();
+        //ControlSocio cs = new ControlSocio();
         try{
             Reader in = new FileReader(path);
             CSVParser parser = new CSVParser(in, CSVFormat.EXCEL.withDelimiter(';'));
@@ -966,7 +974,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
                     if(!matcherDIR.matches())
                         direccion = "C/, , , , Álava";
                     
-                    ControlMembresia cm = new ControlMembresia();
+                    //ControlMembresia cm = new ControlMembresia();
                     ArrayList<Membresia> mems = cm.obtenerMembresias(asociacion.getId());
                     int idMem = 0;
                     for(Membresia m : mems){
@@ -989,8 +997,14 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         }               
     }
     
+    private final Connection con;
+    
     private final Asociacion asociacion;
     private final Usuario user;
+    
+    private final ControlUsuarios cu;
+    private final ControlSocio cs;
+    private final ControlMembresia cm;
     
     private boolean maximized = false;
     private int xx;
@@ -1001,10 +1015,8 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
     private final SociosPanel sp;
     private final EventosPanel evp;
     private final EntradasPanel enp;   
-    
     private final EditSocioPanel editSP;
     private final EditEventoPanel editEP;
-    
     private MembresiaFrame mem;
     private JuntaDirectiva jd;
     private CambiarPass cp;

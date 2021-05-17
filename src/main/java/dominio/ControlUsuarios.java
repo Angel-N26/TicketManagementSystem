@@ -1,5 +1,6 @@
 package dominio;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import persistencia.DAOUsuarios;
 
@@ -7,10 +8,11 @@ import persistencia.DAOUsuarios;
  * @author angel
  **/
 public class ControlUsuarios {
+    
     private final DAOUsuarios daoUsuarios;
 
-    public ControlUsuarios() {
-        this.daoUsuarios = new DAOUsuarios();
+    public ControlUsuarios(Connection con) {
+        this.daoUsuarios = new DAOUsuarios(con);
     }
     
     public ArrayList<Usuario> obtenerUsuarios(){

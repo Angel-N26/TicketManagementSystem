@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.regex.Matcher;
@@ -26,18 +27,24 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  **/
 public class EditEventoPanel extends javax.swing.JPanel implements Colores, RegularExpresions {
 
-    public EditEventoPanel(Asociacion asociacion) {
+    public EditEventoPanel(Asociacion asociacion, Connection con) {
         this.asociacion = asociacion;
         initComponents();
-        this.ce = new ControlEvento();
+        
+        this.con = con;
+        
+        this.ce = new ControlEvento(con);
         btnEliminar.setVisible(false);
     }
     
-    public EditEventoPanel(Evento e, Asociacion asociacion){
+    public EditEventoPanel(Evento e, Asociacion asociacion, Connection con){
         this.asociacion = asociacion;
         this.eve = e;
         initComponents();
-        this.ce = new ControlEvento();
+        
+        this.con = con;
+        
+        this.ce = new ControlEvento(con);
     }
 
     /**
@@ -104,7 +111,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
         panelImg.setName("panelImg"); // NOI18N
         panelImg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        edit.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\editar.png")); // NOI18N
+        edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar.png"))); // NOI18N
         edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         edit.setName("edit"); // NOI18N
         edit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -134,7 +141,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
 
         jLabel1.setVisible(false);
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panelCenter.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, -1, -1));
 
         tfNombre.setBackground(new java.awt.Color(51, 51, 51));
@@ -183,7 +190,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
 
         jLabel2.setVisible(false);
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panelCenter.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
 
         tfCapacidad.setBackground(new java.awt.Color(51, 51, 51));
@@ -260,7 +267,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
 
         jLabel4.setVisible(false);
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panelCenter.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, -1, -1));
 
         lblNumero.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -293,7 +300,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
 
         jLabel5.setVisible(false);
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panelCenter.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 280, -1, -1));
 
         tfCodPostal.setBackground(new java.awt.Color(51, 51, 51));
@@ -608,18 +615,10 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
                 String extension = Files.probeContentType(file.toPath());
                 if(extension != null){
                     fotoEvento.setIcon(new ImageIcon(file.getAbsolutePath()));
-                }else{
-                    if(fotoEvento.getIcon() == null){
-                        fotoEvento.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\evento.png"));
-                        JOptionPane.showMessageDialog(this, "No se ha seleccionado"
-                            + " una extensión de archivos válida. Por lo que se "
-                            + "asignará una imagen por defecto", "Error",
-                            JOptionPane.ERROR_MESSAGE); 
-                    }else{
-                        JOptionPane.showMessageDialog(this, "No se ha seleccionado"
-                            + " una extensión de archivos válida.", "Error",
-                            JOptionPane.ERROR_MESSAGE); 
-                    }
+                }else{                    
+                    JOptionPane.showMessageDialog(this, "No se ha seleccionado"
+                        + " una extensión de archivos válida.", "Error",
+                        JOptionPane.ERROR_MESSAGE);                     
                 }              
             }catch (IOException ioException){
                 System.out.println("Error: " + ioException.getMessage());
@@ -652,24 +651,24 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
             if(!tfCapacidad.getText().replace(" ", "").equals(""))
                 capacidad = Integer.parseInt(tfCapacidad.getText());
             
-            
-            
-            if(fotoEvento.getIcon() == null){
-                fotoEvento.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\evento.png"));
+            String filePath = fotoEvento.getIcon().toString();
+            if(filePath.contains("file:/")){
+                filePath = "";
             }
+            
             
             if(comprobarCampos() && valido())
             if(btnAnadir.getText().equals("Modificar")){
                 Evento evento = new Evento(eve.getId(), tfNombre.getText(), tfTipo.getText(),
                     tfNombreRecinto.getText(), direccion(), fechaEvento, 
-                    horaEvento, capacidad, fotoEvento.getIcon().toString(), asociacion.getId());
+                    horaEvento, capacidad, filePath, asociacion.getId());
                 if(ce.modificarEvento(evento)){
                     dispose();
                 }
             }else if(btnAnadir.getText().equals("Añadir")){
                 Evento evento = new Evento(tfNombre.getText(), tfTipo.getText(),
                     tfNombreRecinto.getText(), direccion(), fechaEvento, 
-                    horaEvento, capacidad, fotoEvento.getIcon().toString(), asociacion.getId());
+                    horaEvento, capacidad, filePath, asociacion.getId());
                 if(ce.insertarEvento(evento)){
                     dispose();
                 }
@@ -715,7 +714,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
         this.show(false);
         JPanel card = (JPanel) this.getParent();
         
-        EventosPanel ep = new EventosPanel(asociacion);
+        EventosPanel ep = new EventosPanel(asociacion, con);
         card.add(ep, "cardEP");
         
         CardLayout cardLayout = (CardLayout) card.getLayout();
@@ -732,7 +731,11 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
             tfHora.setText(eve.getHora()+"");
         tfCapacidad.setText(eve.getEntradas()+"");
         lblEntradasVendidas.setText("Entradas generadas: " + eve.getEntradasVendidas());
-        fotoEvento.setIcon(new ImageIcon(eve.getRutaImg()));
+        if(!eve.getRutaImg().equals("")){
+            fotoEvento.setIcon(new ImageIcon(eve.getRutaImg()));
+        }else{
+            fotoEvento.setIcon(new ImageIcon(getClass().getResource("/evento.png")));
+        }        
                 
         btnAnadir.setText("Modificar");
     }
@@ -774,6 +777,8 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
         
         return valido;
     }
+    
+    private final Connection con;
     
     private boolean activarCancelar;
     private boolean activarAnadir;

@@ -5,8 +5,10 @@ import dominio.ControlEvento;
 import dominio.Evento;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.sql.Connection;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -16,10 +18,14 @@ import javax.swing.table.DefaultTableModel;
  **/
 public class EventosPanel extends javax.swing.JPanel {
 
-    public EventosPanel(Asociacion asociacion) {
+    public EventosPanel(Asociacion asociacion, Connection con) {
         this.asociacion = asociacion;
+        
+        this.con = con;
+        
+        this.ce = new ControlEvento(con);
+        
         initComponents();
-        ce = new ControlEvento();
     }
 
     /**
@@ -93,7 +99,7 @@ public class EventosPanel extends javax.swing.JPanel {
         panelBuscar.add(tfBuscar);
 
         buscar.setBackground(new java.awt.Color(31, 31, 31));
-        buscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-gray.png")); // NOI18N
+        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search-gray.png"))); // NOI18N
         buscar.setToolTipText("Buscar");
         buscar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(0, 0, 0)));
         buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -115,7 +121,7 @@ public class EventosPanel extends javax.swing.JPanel {
         panelNorth.add(panelBuscar);
 
         clear.setVisible(false);
-        clear.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\cancelar24.png")); // NOI18N
+        clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cancelar24.png"))); // NOI18N
         clear.setToolTipText("Limpiar");
         clear.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         clear.setName("clear"); // NOI18N
@@ -236,7 +242,7 @@ public class EventosPanel extends javax.swing.JPanel {
     private void tfBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfBuscarFocusGained
         tfBuscar.setBorder(BorderFactory.createLineBorder(new Color(204, 0, 204)));
         if(tfBuscar.getText().equals("Buscar...")){
-            tfBuscar.setVisible(false);
+            tfBuscar.setText("");
             tfBuscar.setForeground(new Color(255,255,255));
         }
     }//GEN-LAST:event_tfBuscarFocusGained
@@ -273,11 +279,11 @@ public class EventosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_buscarMouseClicked
 
     private void buscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarMouseEntered
-        buscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-white.png"));
+        buscar.setIcon(new ImageIcon(getClass().getResource("/search-white.png")));
     }//GEN-LAST:event_buscarMouseEntered
 
     private void buscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarMouseExited
-        buscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\search-gray.png"));
+        buscar.setIcon(new ImageIcon(getClass().getResource("/search-gray.png")));
     }//GEN-LAST:event_buscarMouseExited
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
@@ -286,7 +292,7 @@ public class EventosPanel extends javax.swing.JPanel {
             Evento evento = ce.obtenerEvento((Integer)dtm.getValueAt(index, 0), asociacion.getId());
             
             JPanel card = (JPanel) this.getParent();
-            EditEventoPanel editEP = new EditEventoPanel(evento, asociacion);
+            EditEventoPanel editEP = new EditEventoPanel(evento, asociacion, con);
             editEP.rellenarCampos();
             card.add(editEP, "cardEditEP");
             CardLayout cardLayout = (CardLayout) card.getLayout();
@@ -333,7 +339,7 @@ public class EventosPanel extends javax.swing.JPanel {
     private void btnAnadirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMouseReleased
         if(activarAnadir){
             JPanel card = (JPanel) this.getParent();
-            EditEventoPanel editEP = new EditEventoPanel(asociacion);
+            EditEventoPanel editEP = new EditEventoPanel(asociacion, con);
             card.add(editEP, "cardEditEP");
             CardLayout cardLayout = (CardLayout) card.getLayout();
             cardLayout.show(card, "cardEditEP");
@@ -341,8 +347,8 @@ public class EventosPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAnadirMouseReleased
     
     public ArrayList<Evento> obtenerEventos(){
-        ControlEvento ceve = new ControlEvento();
-        return ceve.obtenerEventos(asociacion.getId());
+        //ControlEvento ceve = new ControlEvento();
+        return ce.obtenerEventos(asociacion.getId());
     }
     
     public void actualizarTabla(){
@@ -365,6 +371,8 @@ public class EventosPanel extends javax.swing.JPanel {
             dtm.addRow(newSocio);
         }
     }    
+    
+    private final Connection con;
     
     private boolean activarEliminar;
     private boolean activarAnadir;

@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -31,7 +32,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -41,9 +41,13 @@ import javax.swing.JPasswordField;
  **/
 public class GenerarEntradas extends javax.swing.JFrame implements Colores {
 
-    public GenerarEntradas(Asociacion asociacion) {
+    public GenerarEntradas(Asociacion asociacion, Connection con) {
         this.asociacion = asociacion;        
-        initComponents();     
+        initComponents();
+        
+        this.cs = new ControlSocio(con);
+        this.cev = new ControlEvento(con);
+        this.ce = new ControlEntradas(con);
     }
     
     /**
@@ -100,15 +104,17 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
         lblEvento.setName("lblEvento"); // NOI18N
         panelNorth.add(lblEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 17));
 
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\cerrar.png")); // NOI18N
+        close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/close-button.png"))); // NOI18N
         close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         close.setName("close"); // NOI18N
+        close.setPreferredSize(new java.awt.Dimension(16, 16));
         close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeMouseClicked(evt);
             }
         });
-        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 2, -1, -1));
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(481, 2, -1, -1));
 
         panel.add(panelNorth, java.awt.BorderLayout.NORTH);
 
@@ -224,7 +230,7 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
 
     private void btnGenerarEntradasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseReleased
         if(activar){            
-            ControlEntradas ce = new ControlEntradas();
+            //ControlEntradas ce = new ControlEntradas();
             List<Socio> socioConEntrada = listSociosSin.getSelectedValuesList();
             int entradasTotales = socioConEntrada.size() + evento.getEntradasVendidas();
             if(!listSociosSin.isSelectionEmpty()){ 
@@ -236,7 +242,7 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
                         for(int i = 0 ; i < socioConEntrada.size() ; i++){
                             Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni(), asociacion.getId());
                             
-                            ControlSocio cs = new ControlSocio();
+                            //ControlSocio cs = new ControlSocio();
                             Socio socio = cs.obtenerSocio(entrada.getIdSocio(), asociacion.getId());
                             
                             if(!socio.getEmail().equals("")){
@@ -263,7 +269,7 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
                                     "Error", JOptionPane.ERROR_MESSAGE);
                             }           
                         }
-                        ControlEvento cev = new ControlEvento();
+                        //ControlEvento cev = new ControlEvento();
                         if(cev.modificarEvento(evento)){                       
                         }
                     }
@@ -283,7 +289,7 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
         modeloListaSociosCon.removeAllElements();
         modeloListaSociosSin.removeAllElements();
         
-        ControlSocio cs = new ControlSocio();
+        //ControlSocio cs = new ControlSocio();
         ArrayList<Socio> socios = cs.obtenerSocios(asociacion.getId());
         
         ArrayList<Socio> sociosSin = new ArrayList();
@@ -378,6 +384,10 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
     private boolean activarAceptar;
     
     private final Asociacion asociacion;
+    
+    private final ControlSocio cs;
+    private final ControlEvento cev;
+    private final ControlEntradas ce;
     
     private Evento evento;
     private ArrayList<Entrada> entradas;

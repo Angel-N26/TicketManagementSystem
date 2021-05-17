@@ -11,12 +11,23 @@ import dominio.Socio;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.sql.Connection;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -29,19 +40,29 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  **/
 public class EditSocioPanel extends JPanel implements Colores, RegularExpresions{
 
-    public EditSocioPanel(Asociacion asociacion) {
+    public EditSocioPanel(Asociacion asociacion, Connection con) {
         this.asociacion = asociacion;
         
+        this.con = con;
+        
+        this.cs = new ControlSocio(con);
+        this.cm = new ControlMembresia(con);
+        
         initComponents();
-        this.cs = new ControlSocio();
+        
         btnEliminar.setVisible(false);
     }
 
-    public EditSocioPanel(Socio soc, Asociacion asociacion){
+    public EditSocioPanel(Socio soc, Asociacion asociacion, Connection con){
         this.asociacion = asociacion;
         this.socio = soc;
+        
+        this.con = con;
+        
+        this.cs = new ControlSocio(con);
+        this.cm = new ControlMembresia(con);
+        
         initComponents();
-        this.cs = new ControlSocio();      
     }
     
     /**
@@ -117,7 +138,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         panelImg.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         panelImg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        edit.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\editar.png")); // NOI18N
+        edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar.png"))); // NOI18N
         edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         edit.setName("edit"); // NOI18N
         edit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -149,7 +170,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
         jLabel1.setVisible(false);
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panelCenter.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
 
         tfNombre.setBackground(new java.awt.Color(51, 51, 51));
@@ -229,7 +250,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         panelCenter.add(lblDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, -1, -1));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informacion.png"))); // NOI18N
         jLabel2.setToolTipText("ej: 12345678A");
         panelCenter.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, -1, -1));
 
@@ -266,7 +287,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         panelCenter.add(lblTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informacion.png"))); // NOI18N
         jLabel3.setToolTipText("ej: 123456789");
         panelCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, -1));
 
@@ -297,7 +318,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         panelCenter.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informacion.png"))); // NOI18N
         jLabel4.setToolTipText("ej: alguien@example.com/es");
         panelCenter.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 260, -1, -1));
 
@@ -327,7 +348,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
         jLabel6.setVisible(false);
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panelCenter.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
 
         tfCalle.setBackground(new java.awt.Color(51, 51, 51));
@@ -357,7 +378,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
         jLabel9.setVisible(false);
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panelCenter.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
 
         tfNumero.setBackground(new java.awt.Color(51, 51, 51));
@@ -386,7 +407,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         panelCenter.add(lblPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, -1, -1));
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informacion.png"))); // NOI18N
         jLabel8.setToolTipText("ej: 6E");
         panelCenter.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, -1, -1));
 
@@ -416,7 +437,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
         jLabel7.setVisible(false);
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panelCenter.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, -1));
 
         tfCodPostal.setBackground(new java.awt.Color(51, 51, 51));
@@ -510,7 +531,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
         jLabel5.setVisible(false);
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panelCenter.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, -1, -1));
 
         rellenarMembresias();
@@ -667,7 +688,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
     private void tfEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusGained
         tfEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
-        jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        jLabel4.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
         emailVal = true;
     }//GEN-LAST:event_tfEmailFocusGained
 
@@ -676,7 +697,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         Matcher matcher = EMAIL.matcher(tfEmail.getText());
         if(!matcher.matches() || !comprobarEmail(tfEmail.getText())){
             tfEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            jLabel4.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            jLabel4.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             emailVal = false;
         }
     }//GEN-LAST:event_tfEmailFocusLost
@@ -705,7 +726,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
     private void tfDNIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDNIFocusGained
         tfDNI.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
-        jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        jLabel2.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
         dniVal = true;
     }//GEN-LAST:event_tfDNIFocusGained
 
@@ -714,7 +735,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         Matcher matcher = DNI.matcher(tfDNI.getText());
         if(!matcher.matches() || !comprobarDni(tfDNI.getText())){
             tfDNI.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            jLabel2.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             dniVal = false;
         }
     }//GEN-LAST:event_tfDNIFocusLost
@@ -735,7 +756,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     
     private void tfTlfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusGained
         tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
-        jLabel3.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        jLabel3.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
         tlfVal = true;
     }//GEN-LAST:event_tfTlfFocusGained
 
@@ -744,7 +765,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         Matcher matcher = TLF.matcher(tfTlf.getText());
         if(!matcher.matches() || !comprobarTlf(Integer.parseInt(tfTlf.getText()))){
             tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            jLabel3.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            jLabel3.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             tlfVal = false;
         }
     }//GEN-LAST:event_tfTlfFocusLost
@@ -781,7 +802,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
        
     private void tfPisoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusGained
         tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
-        jLabel7.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\informacion.png"));
+        jLabel7.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
         pisoVal = true;
     }//GEN-LAST:event_tfPisoFocusGained
 
@@ -790,7 +811,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         Matcher matcher = PISO.matcher(tfPiso.getText());
         if(!matcher.matches()){
             tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            jLabel7.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            jLabel7.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             pisoVal = false;
         }
     }//GEN-LAST:event_tfPisoFocusLost
@@ -837,17 +858,9 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
                 if(extension != null){
                     fotoSocio.setIcon(new ImageIcon(file.getAbsolutePath()));
                 }else{
-                    if(fotoSocio.getIcon() == null){
-                        fotoSocio.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\socio.png"));
-                        JOptionPane.showMessageDialog(this, "No se ha seleccionado"
-                            + " una extensión de archivos válida. Por lo que se "
-                            + "asignará una imagen por defecto", "Error",
-                            JOptionPane.ERROR_MESSAGE); 
-                    }else{
-                        JOptionPane.showMessageDialog(this, "No se ha seleccionado"
-                            + " una extensión de archivos válida.", "Error",
-                            JOptionPane.ERROR_MESSAGE); 
-                    }
+                    JOptionPane.showMessageDialog(this, "No se ha seleccionado"
+                        + " una extensión de archivos válida.", "Error",
+                        JOptionPane.ERROR_MESSAGE);                     
                 }              
             }catch (IOException ioException){
                 System.out.println("Error: " + ioException.getMessage());
@@ -883,23 +896,21 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
                             cbMembresias.setSelectedIndex(i);
                 }                
             }
-            Membresia m = (Membresia) cbMembresias.getSelectedItem();
-                
-            if(fotoSocio.getIcon() == null){
-                ImageIcon img = new ImageIcon("socio.png");
-                fotoSocio.setIcon(img);
-                System.out.println(fotoSocio.getIcon().toString());
-                /*"C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\socio.png"*/
-            }
+            Membresia m = (Membresia) cbMembresias.getSelectedItem();                            
             
-            int tlf = 0;
+            int tlf  = 0;
             if(!tfTlf.getText().replace(" ", "").equals("")){
                 tlf = Integer.parseInt(tfTlf.getText());
             }
             
+            String filePath = fotoSocio.getIcon().toString();
+            if(filePath.contains("file:/")){
+                filePath = "";
+            }
+            
             Socio s = new Socio(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(),
                 tfEmail.getText(), fechaNac, direccion(), tlf, fechaIngreso,
-                m.getId_membresia(), cbPagos.isSelected(), fotoSocio.getIcon().toString(), asociacion.getId());
+                m.getId_membresia(), cbPagos.isSelected(), filePath, asociacion.getId());
             
             if(comprobarCampos() && valido())
             if(btnAnadir.getText().equals("Modificar")){
@@ -952,7 +963,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         this.show(false);
         JPanel card = (JPanel) this.getParent();
         
-        SociosPanel sp = new SociosPanel(asociacion);
+        SociosPanel sp = new SociosPanel(asociacion, con);
         card.add(sp, "cardSP");
         
         CardLayout cardLayout = (CardLayout) card.getLayout();
@@ -971,16 +982,20 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         dcFechaIngreso.setDate(socio.getFechaIngreso());
         seleccionarMembresia(socio.getIdMembresia());
         cbPagos.setSelected(socio.isPagado());
-        System.out.println(socio.getRutaImg());
-        fotoSocio.setIcon(new ImageIcon(socio.getRutaImg()));
+        
+        if(!socio.getRutaImg().equals("")){
+            fotoSocio.setIcon(new ImageIcon(socio.getRutaImg()));
+        }else{
+            fotoSocio.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+        }
         
         btnAnadir.setText("Modificar");
     }
     
     //Rellena el combo box con los nombres de todas las membresias
     private void rellenarMembresias(){
-        ControlMembresia cmem = new ControlMembresia();
-        mems = cmem.obtenerMembresias(asociacion.getId());
+        //ControlMembresia cmem = new ControlMembresia();
+        mems = cm.obtenerMembresias(asociacion.getId());
         
         for(int i = 0 ; i < mems.size() ; i++){
             cbMembresias.addItem(mems.get(i));
@@ -1030,8 +1045,8 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     }        
     
     private ArrayList<Socio> obtenerSocios(){
-        ControlSocio cso = new ControlSocio();
-        return cso.obtenerSocios(asociacion.getId());
+        //ControlSocio cso = new ControlSocio();
+        return cs.obtenerSocios(asociacion.getId());
     }
     
     private boolean comprobarCampos(){
@@ -1046,7 +1061,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         if(tfDNI.getText().replace(" ","").equals("")){
             comprobar = false;
             tfDNI.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            jLabel2.setIcon(new ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png"));
+            jLabel2.setIcon(new ImageIcon(getClass().getResource("/error.png")));
         }
         
         return comprobar;
@@ -1062,6 +1077,8 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         return valido;
     }
     
+    private Connection con;
+    
     private boolean activarCancelar;
     private boolean activarEliminar;
     private boolean activarAnadir;
@@ -1069,6 +1086,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     private final Asociacion asociacion;
     
     private final ControlSocio cs;
+    private final ControlMembresia cm;
     private Socio socio;
     
     private ArrayList<Membresia> mems;

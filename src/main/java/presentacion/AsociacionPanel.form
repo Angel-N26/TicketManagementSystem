@@ -72,7 +72,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\angel\Downloads\recursos\editar.png"/>
+                  <Image iconType="3" name="/editar.png"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
@@ -96,9 +96,6 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="name" type="java.lang.String" value="logo" noResource="true"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(asociacion.getRutaLogo() == null || asociacion.getRutaLogo().equals(&quot;&quot;)){&#xd;&#xa;    asociacion.setRutaLogo(&quot;C:\\Users\\angel\\Downloads\\recursos\\Imagenes\\asociacion.png&quot;);&#xd;&#xa;    logo.setIcon(new ImageIcon(asociacion.getRutaLogo()));&#xd;&#xa;}"/>
-              </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="3" y="3" width="184" height="184"/>
@@ -145,7 +142,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\angel\Downloads\recursos\error.png"/>
+              <Image iconType="3" name="/error.png"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -305,7 +302,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\angel\Downloads\recursos\informacion-gray.png"/>
+              <Image iconType="3" name="/informacion-gray.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="ej: 123456789"/>
           </Properties>
@@ -374,7 +371,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\angel\Downloads\recursos\informacion-gray.png"/>
+              <Image iconType="3" name="/informacion-gray.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="ej: alguien@example.com/es"/>
           </Properties>
@@ -460,7 +457,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\angel\Downloads\recursos\error.png"/>
+              <Image iconType="3" name="/error.png"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -531,7 +528,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\angel\Downloads\recursos\error.png"/>
+              <Image iconType="3" name="/error.png"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -602,7 +599,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\angel\Downloads\recursos\informacion-gray.png"/>
+              <Image iconType="3" name="/informacion-gray.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="ej: 6E"/>
           </Properties>
@@ -671,7 +668,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\angel\Downloads\recursos\error.png"/>
+              <Image iconType="3" name="/error.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
@@ -906,7 +903,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\angel\Downloads\recursos\informacion-gray.png"/>
+              <Image iconType="3" name="/informacion-gray.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="ej: G12345678"/>
           </Properties>
@@ -975,7 +972,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\angel\Downloads\recursos\error.png"/>
+              <Image iconType="3" name="/error.png"/>
             </Property>
           </Properties>
           <AuxValues>

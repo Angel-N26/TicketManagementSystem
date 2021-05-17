@@ -15,8 +15,8 @@ public class DAOAsociacion {
     private final Connection con;
     private PreparedStatement pst;
 
-    public DAOAsociacion() {
-        con = Agente.getConexion();
+    public DAOAsociacion(Connection con) {
+        this.con = con;
     }
 
      public ArrayList<Asociacion> obtenerAsociacionesDAO(){
@@ -76,9 +76,10 @@ public class DAOAsociacion {
         boolean realizado;
         try {
             con.createStatement();
-            String sql = "insert into asociacion(nombre) values(?)";
+            String sql = "insert into asociacion(nombre, rutaLogo) values(?,?)";
             pst = con.prepareStatement(sql);
-            pst.setString(1, nombre);            
+            pst.setString(1, nombre); 
+            pst.setString(2, "/asociacion");
             pst.executeUpdate();
             realizado = true;
         } catch (SQLException e) {

@@ -1,5 +1,6 @@
 package dominio;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import persistencia.DAOJuntaDirectiva;
 
@@ -10,8 +11,8 @@ public class ControlJuntaDirectiva {
     
     private final DAOJuntaDirectiva daoJuntaDirectiva;
 
-    public ControlJuntaDirectiva(){
-        this.daoJuntaDirectiva = new DAOJuntaDirectiva();
+    public ControlJuntaDirectiva(Connection con){
+        this.daoJuntaDirectiva = new DAOJuntaDirectiva(con);
     }
 
     public ArrayList<Cargo> obtenerCargos(int idAsoc) {

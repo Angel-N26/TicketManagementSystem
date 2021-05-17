@@ -1,5 +1,6 @@
 package dominio;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import persistencia.DAOAsociacion;
 
@@ -10,8 +11,8 @@ public class ControlAsociacion {
     
     private final DAOAsociacion daoAsociacion;
 
-    public ControlAsociacion() {
-        this.daoAsociacion = new DAOAsociacion();
+    public ControlAsociacion(Connection con) {
+        this.daoAsociacion = new DAOAsociacion(con);
     }    
 
     public ArrayList<Asociacion> obtenerAsociaciones() {

@@ -1,5 +1,6 @@
 package dominio;
 
+import java.sql.Connection;
 import persistencia.DAOSocio;
 import java.util.ArrayList;
 
@@ -10,8 +11,8 @@ public class ControlSocio {
 
     private final DAOSocio daoSocio;
 
-    public ControlSocio() {
-        this.daoSocio = new DAOSocio();
+    public ControlSocio(Connection con) {
+        this.daoSocio = new DAOSocio(con);
     }
 
     public ArrayList<Socio> obtenerSocios(int idAsoc) {

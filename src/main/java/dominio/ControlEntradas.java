@@ -1,5 +1,6 @@
 package dominio;
 
+import java.sql.Connection;
 import persistencia.DAOEntradas;
 import java.util.ArrayList;
 
@@ -10,8 +11,8 @@ public class ControlEntradas {
 
     private final DAOEntradas daoEntradas;
 
-    public ControlEntradas() {
-        this.daoEntradas = new DAOEntradas();
+    public ControlEntradas(Connection con) {
+        this.daoEntradas = new DAOEntradas(con);
     }
 
     public ArrayList<Entrada> obtenerEntradas(int idAsoc) {

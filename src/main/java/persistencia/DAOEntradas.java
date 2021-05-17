@@ -15,8 +15,8 @@ public class DAOEntradas {
     private final Connection con;
     private PreparedStatement pst;
 
-    public DAOEntradas() {
-        con = Agente.getConexion();
+    public DAOEntradas(Connection con) {
+        this.con = con;
     }
 
     public ArrayList<Entrada> obtenerEntradasDAO(int idAsoc){

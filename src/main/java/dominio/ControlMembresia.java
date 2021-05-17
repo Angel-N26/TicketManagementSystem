@@ -1,5 +1,6 @@
 package dominio;
 
+import java.sql.Connection;
 import persistencia.DAOMembresia;
 import java.util.ArrayList;
 
@@ -10,8 +11,8 @@ public class ControlMembresia {
 
     private final DAOMembresia daoMembresia;
 
-    public ControlMembresia() {
-        this.daoMembresia = new DAOMembresia();
+    public ControlMembresia(Connection con) {
+        this.daoMembresia = new DAOMembresia(con);
     }
 
     public ArrayList<Membresia> obtenerMembresias(int idAsoc) {

@@ -98,7 +98,7 @@
                 <Component class="javax.swing.JLabel" name="logo">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\angel\Downloads\recursos\logo(1).png"/>
+                      <Image iconType="3" name="/logo(1).png"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="logo" noResource="true"/>
                   </Properties>
@@ -140,7 +140,7 @@
                 <Component class="javax.swing.JLabel" name="minimize">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\angel\Downloads\recursos\minimizar.png"/>
+                      <Image iconType="3" name="/minimizar.png"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="minimize" noResource="true"/>
                   </Properties>
@@ -153,7 +153,7 @@
                 <Component class="javax.swing.JLabel" name="maximize">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\angel\Downloads\recursos\maximize-window.png"/>
+                      <Image iconType="3" name="/maximize-window.png"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="maximize" noResource="true"/>
                   </Properties>
@@ -166,7 +166,7 @@
                 <Component class="javax.swing.JLabel" name="close">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\angel\Downloads\recursos\close-button.png"/>
+                      <Image iconType="3" name="/close-button.png"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="close" noResource="true"/>
                   </Properties>

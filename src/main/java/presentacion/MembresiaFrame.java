@@ -6,6 +6,7 @@ import dominio.ControlMembresia;
 import dominio.Membresia;
 import dominio.RegularExpresions;
 import java.awt.Color;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import javax.swing.BorderFactory;
@@ -17,12 +18,13 @@ import javax.swing.JOptionPane;
  **/
 public class MembresiaFrame extends javax.swing.JFrame implements Colores, RegularExpresions {
 
-    public MembresiaFrame(Asociacion asociacion) {
+    public MembresiaFrame(Asociacion asociacion, Connection con) {
         this.asociacion = asociacion;
         
-        initComponents();
-        cm = new ControlMembresia();
+        cm = new ControlMembresia(con);
         mem = null;
+        
+        initComponents();
         
         guardar = true;
     }
@@ -80,7 +82,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         panelNorth.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        close.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\close-button.png")); // NOI18N
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/close-button.png"))); // NOI18N
         close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         close.setMaximumSize(new java.awt.Dimension(16, 16));
         close.setMinimumSize(new java.awt.Dimension(16, 16));
@@ -101,7 +103,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         panelCenter.setPreferredSize(new java.awt.Dimension(400, 285));
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        clean.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\clean.png")); // NOI18N
+        clean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clean.png"))); // NOI18N
         clean.setToolTipText("Limpiar campos");
         clean.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         clean.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -139,7 +141,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
 
         errorImgNombre.setVisible(false);
         errorImgNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgNombre.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        errorImgNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panelCenter.add(errorImgNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 95, -1, -1));
 
         tfNombre.setBackground(new java.awt.Color(51, 51, 51));
@@ -168,7 +170,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
 
         errorImgPrecio.setVisible(false);
         errorImgPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        errorImgPrecio.setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\error.png")); // NOI18N
+        errorImgPrecio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         panelCenter.add(errorImgPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
 
         tfPrecio.setBackground(new java.awt.Color(51, 51, 51));
@@ -294,7 +296,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
     }//GEN-LAST:event_closeMouseClicked
 
     private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
-        tfNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
         errorImgNombre.setVisible(false);
     }//GEN-LAST:event_tfNombreFocusGained
 
@@ -431,8 +433,8 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
     }//GEN-LAST:event_btnAnadirMousePressed
 
     private ArrayList<Membresia> obtenerMembresias(){
-        ControlMembresia cmem = new ControlMembresia();
-        ArrayList<Membresia> mems = cmem.obtenerMembresias(asociacion.getId());
+        //ControlMembresia cmem = new ControlMembresia();
+        ArrayList<Membresia> mems = cm.obtenerMembresias(asociacion.getId());
         
         for(int i = 0 ; i < mems.size() ; i++){
             if(mems.get(i).getNombre().equals("Ninguna"))

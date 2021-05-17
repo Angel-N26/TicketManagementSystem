@@ -15,8 +15,8 @@ public class DAOSocio {
     private final Connection con;
     private PreparedStatement pst;
 
-    public DAOSocio() {
-        con = Agente.getConexion();
+    public DAOSocio(Connection con) {
+        this.con = con;
     }
 
     public ArrayList<Socio> obtenerSociosDAO(int idAsoc){

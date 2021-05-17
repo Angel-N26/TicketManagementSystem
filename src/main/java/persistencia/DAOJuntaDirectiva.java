@@ -15,8 +15,8 @@ public class DAOJuntaDirectiva {
     private final Connection con;
     private PreparedStatement pst;
 
-    public DAOJuntaDirectiva() {
-        con = Agente.getConexion();
+    public DAOJuntaDirectiva(Connection con) {
+        this.con = con;
     }
 
     public ArrayList<Cargo> obtenerCargosDAO(int idAsoc) {
