@@ -220,7 +220,7 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="listMembresiasMouseClicked"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="modeloLista = new DefaultListModel();&#xd;        listMembresias.setModel(modeloLista);&#xd;        modeloLista.addAll(0,obtenerMembresias());&#xd;        listMembresias.setSelectionForeground(new Color(255,255,255));&#xd;"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="modeloLista = new DefaultListModel();&#xd;        listMembresias.setModel(modeloLista);&#xd;        ArrayList&lt;Membresia&gt; mems = obtenerMembresias();&#xd;        for(int i = 0 ; i &lt; mems.size() ; i++){&#xd;            modeloLista.add(i, mems.get(i));&#xd;        }&#xd;        listMembresias.setSelectionForeground(new Color(255,255,255));&#xd;"/>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Membresia&gt;"/>
                   </AuxValues>
                 </Component>

@@ -232,7 +232,10 @@ public class EntradasPanel extends javax.swing.JPanel {
             ArrayList<Entrada> ent = sacarEntradas(evento.getId());
             lblNum.setText(ent.size()+"");
             modeloListaEntradas.removeAllElements();
-            modeloListaEntradas.addAll(0, ent);
+            for(int i = 0 ; i < ent.size() ; i++){
+                modeloListaEntradas.add(i, ent.get(i));
+            }
+            //modeloListaEntradas.add(WIDTH, ent); .addAll(ent);
         }
         
     }

@@ -26,13 +26,14 @@ import persistencia.Agente;
 public class Login extends javax.swing.JFrame implements Colores {
 
     public Login() {
-        initComponents();
         conn = Agente.getConexion();
         
         ca = new ControlAsociacion(conn);
         cu = new ControlUsuarios(conn);
         cjd = new ControlJuntaDirectiva(conn);
         cm = new ControlMembresia(conn);
+        
+        initComponents();   
     }
 
     /**

@@ -10,24 +10,13 @@ import dominio.RegularExpresions;
 import dominio.Socio;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -228,7 +217,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         dateChooserEditor1.setEditable(false);
         dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         dcFechaNacimiento.getCalendarButton().setSize(25, 25);
-        dcFechaNacimiento.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png"));
+        dcFechaNacimiento.getCalendarButton().setIcon(new javax.swing.ImageIcon(getClass().getResource("/calendario-white.png")));
         dcFechaNacimiento.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         dcFechaNacimiento.getCalendarButton().setBackground(new Color(51,51,51));
         dcFechaNacimiento.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -514,7 +503,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         dateChooserEditor2.setEditable(false);
         dateChooserEditor2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         dcFechaIngreso.getCalendarButton().setSize(25, 25);
-        dcFechaIngreso.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png"));
+        dcFechaIngreso.getCalendarButton().setIcon(new javax.swing.ImageIcon(getClass().getResource("/calendario-white.png")));
         dcFechaIngreso.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         dcFechaIngreso.getCalendarButton().setBackground(new Color(51,51,51));
         dcFechaIngreso.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -695,7 +684,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     private void tfEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusLost
         tfEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = EMAIL.matcher(tfEmail.getText());
-        if(!matcher.matches() || !comprobarEmail(tfEmail.getText())){
+        if((!matcher.matches() && !tfEmail.getText().equals("")) || !comprobarEmail(tfEmail.getText())){
             tfEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel4.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             emailVal = false;
@@ -763,7 +752,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     private void tfTlfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusLost
         tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = TLF.matcher(tfTlf.getText());
-        if(!matcher.matches() || !comprobarTlf(Integer.parseInt(tfTlf.getText()))){
+        if((!matcher.matches() && !tfTlf.getText().equals("")) || !comprobarTlf(Integer.parseInt(tfTlf.getText()))){
             tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel3.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             tlfVal = false;
@@ -793,7 +782,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     private void tfNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusLost
         tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = NUMERO.matcher(tfNumero.getText());
-        if(!matcher.matches()){
+        if(!matcher.matches() && !tfNumero.getText().equals("")){
             tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel9.setVisible(true);
             numVal = false;
@@ -802,16 +791,16 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
        
     private void tfPisoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusGained
         tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
-        jLabel7.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
+        jLabel8.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
         pisoVal = true;
     }//GEN-LAST:event_tfPisoFocusGained
 
     private void tfPisoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusLost
         tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = PISO.matcher(tfPiso.getText());
-        if(!matcher.matches()){
+        if(!matcher.matches() && !tfPiso.getText().equals("")){
             tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            jLabel7.setIcon(new ImageIcon(getClass().getResource("/error.png")));
+            jLabel8.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             pisoVal = false;
         }
     }//GEN-LAST:event_tfPisoFocusLost
@@ -825,7 +814,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     private void tfCodPostalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusLost
         tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = CCPP.matcher(tfCodPostal.getText());
-        if(!matcher.matches()){
+        if(!matcher.matches() && !tfCodPostal.getText().equals("")){
             tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel7.setVisible(true);
             ccppVal = false;
@@ -903,7 +892,13 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
                 tlf = Integer.parseInt(tfTlf.getText());
             }
             
-            String filePath = fotoSocio.getIcon().toString();
+            String filePath;
+            if(fotoSocio.getIcon() != null){
+                filePath = fotoSocio.getIcon().toString();
+            }else{
+                filePath = "";
+            }
+            
             if(filePath.contains("file:/")){
                 filePath = "";
             }

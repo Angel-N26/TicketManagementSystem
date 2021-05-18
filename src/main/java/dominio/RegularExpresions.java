@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
  * @author angel
  **/
 public interface RegularExpresions {
-    Pattern EMAIL = Pattern.compile("[a-zA-Z0-9]*@[a-z]*.(com|es)");
+    Pattern EMAIL = Pattern.compile("[a-zA-Z0-9._]*@[a-z]*.(com|es)");
     
     Pattern TLF = Pattern.compile("[0-9]{9}");
     
@@ -23,4 +23,6 @@ public interface RegularExpresions {
     Pattern PISO = Pattern.compile("[0-9]+[A-Z]");
     
     Pattern DIRECCION = Pattern.compile("C/[a-zA-Z]*,[0-9]*,[0-9]{5},[[a-zA-Z]*],[[a-zA-Z]*]");
+    
+    Pattern HORA = Pattern.compile("[0-9]{2}:[0-9]{2}:[0-9]{2}");
 }

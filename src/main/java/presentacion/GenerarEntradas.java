@@ -252,7 +252,7 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
                                     CrearQR qr = new CrearQR();
                                     BufferedImage imagen = qr.crearQR(entrada.getIdEvento()
                                             +"-"+entrada.getIdSocio()+"-"+entrada.getNumEntrada(), 300, 300);
-                                    File outputfile = new File("C:\\Users\\angel\\Desktop\\qr"+entrada.getNumEntrada()+".png");
+                                    File outputfile = new File("entradas/qr"+entrada.getNumEntrada()+".png");
                                     ImageIO.write(imagen, "png", outputfile);
                                     modeloListaSociosCon.add(modeloListaSociosCon.size(), socioConEntrada.get(i));
                                     modeloListaSociosSin.removeElement(socioConEntrada.get(i));
@@ -308,9 +308,16 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
                 sociosSin.add(soc);
             }
         }      
-                       
-        modeloListaSociosCon.addAll(0, sociosCon);
-        modeloListaSociosSin.addAll(0, sociosSin);
+        
+        
+        for(int i = 0 ; i < sociosCon.size() ; i++){
+          modeloListaSociosCon.add(i,sociosCon.get(i));  
+        }
+        for(int i = 0 ; i < sociosSin.size() ; i++){
+            modeloListaSociosSin.add(i,sociosSin.get(i));
+        }
+        //modeloListaSociosCon.addAll(0, sociosCon);
+        //modeloListaSociosSin.addAll(0, sociosSin);
     }     
     
     

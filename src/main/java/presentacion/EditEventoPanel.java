@@ -87,6 +87,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
         lblFecha = new javax.swing.JLabel();
         dcFecha = new com.toedter.calendar.JDateChooser();
         lblHora = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         tfHora = new javax.swing.JTextField();
         panelSouth = new javax.swing.JPanel();
         panelSouthLeft = new javax.swing.JPanel();
@@ -184,7 +185,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
 
         lblCapacidad.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblCapacidad.setForeground(new java.awt.Color(255, 255, 255));
-        lblCapacidad.setText("Capacidad");
+        lblCapacidad.setText("Capacidad*");
         lblCapacidad.setName("lblCapacidad"); // NOI18N
         panelCenter.add(lblCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
@@ -363,7 +364,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
         dateChooserEditor1.setEditable(false);
         dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         dcFecha.getCalendarButton().setSize(25, 25);
-        dcFecha.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png"));
+        dcFecha.getCalendarButton().setIcon(new javax.swing.ImageIcon(getClass().getResource("/calendario-white.png")));
         dcFecha.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         dcFecha.getCalendarButton().setBackground(new Color(51,51,51));
         dcFecha.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -376,11 +377,17 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
         lblHora.setName("lblHora"); // NOI18N
         panelCenter.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, -1, -1));
 
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informacion.png"))); // NOI18N
+        jLabel6.setToolTipText("20:00:00");
+        panelCenter.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
+
         tfHora.setBackground(new java.awt.Color(51, 51, 51));
         tfHora.setForeground(new java.awt.Color(255, 255, 255));
         tfHora.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfHora.setCaretColor(new java.awt.Color(204, 0, 204));
         tfHora.setName("tfHora"); // NOI18N
+        tfHora.setOpaque(false);
         tfHora.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfHora.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -390,7 +397,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
                 tfHoraFocusLost(evt);
             }
         });
-        panelCenter.add(tfHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 60, 25));
+        panelCenter.add(tfHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 80, 25));
 
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
 
@@ -531,10 +538,18 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
 
     private void tfHoraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfHoraFocusGained
         tfHora.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel6.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
+        horaVal = true;
     }//GEN-LAST:event_tfHoraFocusGained
 
     private void tfHoraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfHoraFocusLost
         tfHora.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = HORA.matcher(tfHora.getText());
+        if(!matcher.matches() && !tfHora.getText().equals("")){
+            tfHora.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel6.setIcon(new ImageIcon(getClass().getResource("/error.png")));
+            horaVal = false;
+        }
     }//GEN-LAST:event_tfHoraFocusLost
 
     private void tfCapacidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCapacidadFocusGained
@@ -546,7 +561,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
     private void tfCapacidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCapacidadFocusLost
         tfCapacidad.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = NUMERO.matcher(tfCapacidad.getText());
-        if(!matcher.matches()){
+        if(!matcher.matches() && !tfCapacidad.getText().equals("")){
             tfCapacidad.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel2.setVisible(true);
             capacidadVal = false;
@@ -578,7 +593,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
     private void tfNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusLost
         tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = NUMERO.matcher(tfNumero.getText());
-        if(!matcher.matches()){
+        if(!matcher.matches() && !tfNumero.getText().equals("")){
             tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel4.setVisible(true); 
             numeroVal = false;
@@ -594,7 +609,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
     private void tfCodPostalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusLost
         tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = CCPP.matcher(tfCodPostal.getText());
-        if(!matcher.matches()){
+        if(!matcher.matches() && !tfCodPostal.getText().equals("")){
             tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel5.setVisible(true);
             ccppVal = false;
@@ -651,7 +666,13 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
             if(!tfCapacidad.getText().replace(" ", "").equals(""))
                 capacidad = Integer.parseInt(tfCapacidad.getText());
             
-            String filePath = fotoEvento.getIcon().toString();
+            
+            String filePath;
+            if(fotoEvento.getIcon() != null){
+                filePath = fotoEvento.getIcon().toString();;
+            }else{
+                filePath = "";
+            }
             if(filePath.contains("file:/")){
                 filePath = "";
             }
@@ -763,6 +784,12 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
             comprobar = false;
             tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel1.setVisible(true);
+            
+        }
+        if(tfCapacidad.getText().replace(" ", "").equals("")){
+            comprobar = false;
+            tfCapacidad.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel2.setVisible(true);
         }
         
         return comprobar;
@@ -771,7 +798,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
     private boolean valido(){
         boolean valido = false;
         
-        if(capacidadVal && entradasVendidasVal && numeroVal && ccppVal){
+        if(capacidadVal && numeroVal && ccppVal && horaVal){
             valido = true;
         }
         
@@ -790,9 +817,10 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
     private  Evento eve;
     
     private boolean capacidadVal = true;
-    private boolean entradasVendidasVal = true;
+    
     private boolean numeroVal = true;
     private boolean ccppVal = true;
+    private boolean horaVal = true;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnAnadir;
@@ -806,6 +834,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lblCalle;
     private javax.swing.JLabel lblCapacidad;
     private javax.swing.JLabel lblCodPostal;

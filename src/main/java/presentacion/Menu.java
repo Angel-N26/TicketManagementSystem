@@ -52,7 +52,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         this.ip = new EstadisticasPanel(asociacion, con);
         this.editSP = new EditSocioPanel(asociacion, con);
         this.editEP = new EditEventoPanel(asociacion, con);
-        this.ap = new AsociacionPanel(asociacion,this.enp, con);
+        this.ap = new AsociacionPanel(asociacion,this.enp, con);        
 
         initComponents();
     }

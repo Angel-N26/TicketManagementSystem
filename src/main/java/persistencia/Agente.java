@@ -20,9 +20,7 @@ public class Agente {
         try {
             Class.forName(driver);
             con = DriverManager.getConnection(DB_URL, DB_username, DB_password);
-            
-            //Class.forName(driver);
-            //con = DriverManager.getConnection("jdbc:mysql://85.10.205.173:3306/"+database+"?user="+user+"&password="+pass+"&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+                        
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());
         }
@@ -32,7 +30,7 @@ public class Agente {
     /*public static Connection getConexion() {
         Connection con = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(driver);
             String user = "root";
             String pass = "1234";
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tms?user="+user+"&password="+pass+"&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");

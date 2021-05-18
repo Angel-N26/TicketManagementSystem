@@ -64,7 +64,9 @@ public class DAOAsociacion {
             pst.setString(1, nombre);
             rs = pst.executeQuery();
             while (rs.next()) {
-                asociacion = new Asociacion(rs.getInt(1), rs.getString(2));
+                asociacion = new Asociacion(rs.getInt(1), rs.getString(2), 
+                        rs.getString(3), rs.getDate(4), rs.getInt(5), rs.getString(6), 
+                        rs.getString(7), rs.getString(8),rs.getInt(9),rs.getString(10));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());

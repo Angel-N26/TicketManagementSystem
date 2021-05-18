@@ -118,7 +118,10 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
 
         modeloLista = new DefaultListModel();
         listMembresias.setModel(modeloLista);
-        modeloLista.addAll(0,obtenerMembresias());
+        ArrayList<Membresia> mems = obtenerMembresias();
+        for(int i = 0 ; i < mems.size() ; i++){
+            modeloLista.add(i, mems.get(i));
+        }
         listMembresias.setSelectionForeground(new Color(255,255,255));
         listMembresias.setBackground(new java.awt.Color(102, 102, 102));
         listMembresias.setForeground(new java.awt.Color(255, 255, 255));
@@ -433,7 +436,6 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
     }//GEN-LAST:event_btnAnadirMousePressed
 
     private ArrayList<Membresia> obtenerMembresias(){
-        //ControlMembresia cmem = new ControlMembresia();
         ArrayList<Membresia> mems = cm.obtenerMembresias(asociacion.getId());
         
         for(int i = 0 ; i < mems.size() ; i++){
@@ -446,7 +448,11 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
 
     private void actualizarListaMembresias(){
         modeloLista.removeAllElements();
-        modeloLista.addAll(0, obtenerMembresias());
+        ArrayList<Membresia> mems = obtenerMembresias();
+        for(int i = 0 ; i < mems.size() ; i++){
+            modeloLista.add(i, mems.get(i));
+        }
+        //modeloLista.addAll(0, obtenerMembresias());
     }   
 
     private boolean activarMod;
