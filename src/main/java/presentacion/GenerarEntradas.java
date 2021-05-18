@@ -252,7 +252,9 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
                                     CrearQR qr = new CrearQR();
                                     BufferedImage imagen = qr.crearQR(entrada.getIdEvento()
                                             +"-"+entrada.getIdSocio()+"-"+entrada.getNumEntrada(), 300, 300);
-                                    File outputfile = new File("entradas/qr"+entrada.getNumEntrada()+".png");
+                                    File carpeta = new File("/entradas");
+                                    carpeta.mkdir();
+                                    File outputfile = new File(carpeta.getAbsolutePath()+"/qr"+entrada.getNumEntrada()+".png");
                                     ImageIO.write(imagen, "png", outputfile);
                                     modeloListaSociosCon.add(modeloListaSociosCon.size(), socioConEntrada.get(i));
                                     modeloListaSociosSin.removeElement(socioConEntrada.get(i));
