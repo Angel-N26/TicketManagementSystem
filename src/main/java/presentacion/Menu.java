@@ -492,7 +492,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
 
         btnCambiarPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(153, 153, 153)));
-        btnCambiarPass.setText("Credenciales  ");
+        btnCambiarPass.setText(" Credenciales  ");
         btnCambiarPass.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnCambiarPass.setkBackGroundColor(new java.awt.Color(51, 51, 51));
         btnCambiarPass.setkBorderRadius(0);
@@ -844,7 +844,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
 
             selected(btnEntradas);
             
-            enp.rellenarComboBox();
+            enp.rellenarComboBox();           
         }
     }//GEN-LAST:event_btnEntradasMouseReleased
 
@@ -896,7 +896,6 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
                 
                 Date d = Date.valueOf(LocalDate.now());              
                 user.setUltimaConexion(d);
-                //ControlUsuarios cu = new ControlUsuarios();
                 cu.modificarUsuario(user, user.getUsuario());
             }  
         }
@@ -940,7 +939,6 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
     }                  
     
     private void leerCSV(String path){
-        //ControlSocio cs = new ControlSocio();
         try{
             Reader in = new FileReader(path);
             CSVParser parser = new CSVParser(in, CSVFormat.EXCEL.withDelimiter(';'));
@@ -974,7 +972,6 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
                     if(!matcherDIR.matches())
                         direccion = "C/, , , , Álava";
                     
-                    //ControlMembresia cm = new ControlMembresia();
                     ArrayList<Membresia> mems = cm.obtenerMembresias(asociacion.getId());
                     int idMem = 0;
                     for(Membresia m : mems){

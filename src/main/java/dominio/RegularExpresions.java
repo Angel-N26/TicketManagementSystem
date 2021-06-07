@@ -24,5 +24,5 @@ public interface RegularExpresions {
     
     Pattern DIRECCION = Pattern.compile("C/[a-zA-Z]*,[0-9]*,[0-9]{5},[[a-zA-Z]*],[[a-zA-Z]*]");
     
-    Pattern HORA = Pattern.compile("[0-9]{2}:[0-9]{2}:[0-9]{2}");
+    Pattern HORA = Pattern.compile("([0-1][0-9]|[2][0-4]):[0-5][0-9]:[0-5][0-9]");
 }

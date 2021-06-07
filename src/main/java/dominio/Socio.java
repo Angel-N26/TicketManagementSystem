@@ -19,8 +19,7 @@ public class Socio {
     private boolean pagado;
     private String rutaImg;
     private int idAsoc;
-    private boolean inactivo;
-    
+       
     public Socio(String dni, String nombre, String apellidos, String email,
             Date fechaNac, String domicilio, int telefono, Date fechaIngreso,
             int idMembresia, boolean pagado, String rutaImg, int idAsoc) {
@@ -36,7 +35,6 @@ public class Socio {
         this.pagado = pagado;
         this.rutaImg = rutaImg;
         this.idAsoc = idAsoc;
-        this.inactivo = false;
     }
     
     public Socio() {

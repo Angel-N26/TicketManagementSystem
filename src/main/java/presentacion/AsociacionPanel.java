@@ -184,11 +184,16 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
         JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFechaCreacion.getDateEditor());
         dateChooserEditor1.setBackground(new Color(51, 51, 51));
+        dateChooserEditor1.addPropertyChangeListener("foreground", event -> {
+            if (Color.BLACK.equals(event.getNewValue())) {
+                dateChooserEditor1.setForeground(Color.WHITE);
+            }
+        });
         dateChooserEditor1.setForeground(new Color(255, 255, 255));
         dateChooserEditor1.setEditable(false);
         dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         dcFechaCreacion.getCalendarButton().setSize(25, 25);
-        dcFechaCreacion.getCalendarButton().setIcon(new javax.swing.ImageIcon("C:\\Users\\angel\\Downloads\\recursos\\calendario-white.png"));
+        dcFechaCreacion.getCalendarButton().setIcon(new javax.swing.ImageIcon(getClass().getResource("/calendario-white.png")));
         dcFechaCreacion.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         dcFechaCreacion.getCalendarButton().setBackground(new Color(51,51,51));
         dcFechaCreacion.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -534,7 +539,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
     private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
         tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
-        if(tfNombre.getText().replace(" ","").equals("") || !comprobarNombre(tfNombre.getText())){
+        if(tfNombre.getText().isBlank() || !comprobarNombre(tfNombre.getText())){
             tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel1.setVisible(true);
             nombreVal = false;
@@ -543,7 +548,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
     private boolean comprobarNombre(String nombre){
         boolean comprobar = true;
-        ArrayList<Asociacion> asocs = obtenerAsociaciones();
+        ArrayList<Asociacion> asocs = ca.obtenerAsociaciones();
         
         for(int i = 0 ; i < asocs.size() ; i++){
             if(!asociacion.getNombre().equals(asocs.get(i).getNombre()))
@@ -564,7 +569,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     private void tfTlfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusLost
         tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
         Matcher matcher = TLF.matcher(tfTlf.getText());
-        if(!matcher.matches() || !comprobarTlf(Integer.parseInt(tfTlf.getText()))){
+        if(!matcher.matches() && !tfTlf.getText().isEmpty() || !comprobarTlf(Integer.parseInt(tfTlf.getText()))){
             tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel2.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             tlfVal = false;
@@ -573,7 +578,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
     private boolean comprobarTlf(int tlf){
         boolean comprobar = true;
-        ArrayList<Asociacion> asocs = obtenerAsociaciones();
+        ArrayList<Asociacion> asocs = ca.obtenerAsociaciones();
 
         for(int i = 0 ; i < asocs.size() ; i++){
             if(!asociacion.getNombre().equals(asocs.get(i).getNombre()))
@@ -603,7 +608,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
     private boolean comprobarEmail(String email){
         boolean comprobar = true;
-        ArrayList<Asociacion> asocs = obtenerAsociaciones();
+        ArrayList<Asociacion> asocs = ca.obtenerAsociaciones();
         
         for(int i = 0 ; i < asocs.size() ; i++){
             if(!asociacion.getNombre().equals(asocs.get(i).getNombre()))
@@ -642,7 +647,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     private void tfCIFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCIFFocusLost
         tfCIF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
         Matcher matcher = CIF.matcher(tfCIF.getText());
-        if(!matcher.matches() || !comprobarCIF(tfCIF.getText())){
+        if(!matcher.matches() && !tfCIF.getText().isEmpty() || !comprobarCIF(tfCIF.getText())){
             tfCIF.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel7.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             cifVal = false;
@@ -651,7 +656,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
     private boolean comprobarCIF(String cif){
         boolean comprobar = true;
-        ArrayList<Asociacion> asocs = obtenerAsociaciones();
+        ArrayList<Asociacion> asocs = ca.obtenerAsociaciones();
         
         for(int i = 0 ; i < asocs.size() ; i++){
             if(!asociacion.getNombre().equals(asocs.get(i).getNombre()))
@@ -672,7 +677,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     private void tfNRegFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNRegFocusLost
         tfNReg.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
         Matcher matcher = NUMERO.matcher(tfNReg.getText());
-        if(!matcher.matches() || !comprobarNReg(Integer.parseInt(tfNReg.getText()))){
+        if(!matcher.matches() && !tfNReg.getText().isBlank() || !comprobarNReg(Integer.parseInt(tfNReg.getText()))){
             tfNReg.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel8.setVisible(true);
             nRegVal = false;
@@ -681,7 +686,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
 
     private boolean comprobarNReg(int nReg){
         boolean comprobar = true;
-        ArrayList<Asociacion> asocs = obtenerAsociaciones();
+        ArrayList<Asociacion> asocs = ca.obtenerAsociaciones();
         
         for(int i = 0 ; i < asocs.size() ; i++){
             if(!asociacion.getNombre().equals(asocs.get(i).getNombre()))
@@ -710,7 +715,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     private void tfNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusLost
         tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
         Matcher matcher = NUMERO.matcher(tfNumero.getText());
-        if(!matcher.matches() && !tfNumero.getText().equals("")){
+        if(!matcher.matches() && !tfNumero.getText().isEmpty()){
             tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));            
             jLabel9.setVisible(true);
             numVal = false;
@@ -726,7 +731,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     private void tfPisoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusLost
         tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
         Matcher matcher = PISO.matcher(tfPiso.getText());
-        if(!matcher.matches() && !tfPiso.getText().equals("")){
+        if(!matcher.matches() && !tfPiso.getText().isEmpty()){
             tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel4.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             pisoVal = false;
@@ -742,7 +747,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     private void tfCodPostalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusLost
         tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, NOSELECTED));
         Matcher matcher = CCPP.matcher(tfCodPostal.getText());
-        if(!matcher.matches() && !tfCodPostal.getText().equals("")){
+        if(!matcher.matches() && !tfCodPostal.getText().isEmpty()){
             tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             codPosVal = false;
             jLabel6.setVisible(true);
@@ -780,13 +785,13 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         if(activar){
             JTextFieldDateEditor dcEditor2 = ((JTextFieldDateEditor)dcFechaCreacion.getDateEditor());               
             Date fechaCreacion = null;
-            if(!dcEditor2.getText().equals(""))
+            if(!dcEditor2.getText().isEmpty())
                 fechaCreacion = Date.valueOf(dcEditor2.getText());
 
             int tlf = 0, nReg = 0;
-            if(!tfTlf.getText().replace(" ", "").equals(""))
+            if(!tfTlf.getText().isBlank())
                 tlf = Integer.parseInt(tfTlf.getText());
-            if(!tfNReg.getText().replace(" ", "").equals(""))
+            if(!tfNReg.getText().isBlank())
                 nReg = Integer.parseInt(tfNReg.getText());
             
             String filePath = logo.getIcon().toString();
@@ -800,7 +805,6 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
                 btnEditar.setText("Guardar");
             }else{
                 if(valido()){
-                    //ControlAsociacion ca = new ControlAsociacion();
                     Asociacion asoc = new Asociacion(asociacion.getId(), tfNombre.getText(),tfTipo.getText(),
                         fechaCreacion, tlf, tfCorreo.getText(), direccion(),
                         tfCIF.getText(), nReg, filePath);
@@ -871,10 +875,10 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         
         edit.setVisible(b);
         
-        jLabel2.setIcon(new ImageIcon(image));
-        jLabel3.setIcon(new ImageIcon(image));
-        jLabel4.setIcon(new ImageIcon(image));
-        jLabel7.setIcon(new ImageIcon(image));
+        jLabel2.setIcon(new ImageIcon(getClass().getResource(image)));
+        jLabel3.setIcon(new ImageIcon(getClass().getResource(image)));
+        jLabel4.setIcon(new ImageIcon(getClass().getResource(image)));
+        jLabel7.setIcon(new ImageIcon(getClass().getResource(image)));
     }
     
     private String direccion(){
@@ -911,10 +915,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
         }
     }
     
-    private ArrayList<Asociacion> obtenerAsociaciones(){
-        //ControlAsociacion ca = new ControlAsociacion();
-        return ca.obtenerAsociaciones();
-    }       
+
     
     private boolean comprobarDireccion(){
         boolean comprobar = true;
@@ -942,9 +943,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
     }
 
     private Asociacion asociacion;
-    private ControlAsociacion ca;
+    private final ControlAsociacion ca;
     
-    private EntradasPanel ep;
+    private final EntradasPanel ep;
     
     private boolean nombreVal = true;
     private boolean tlfVal = true;

@@ -670,17 +670,14 @@ public class EstadisticasPanel extends javax.swing.JPanel {
     
     
     private ArrayList<Socio> obtenerSocios(){
-        //ControlSocio cs = new ControlSocio();
         return cs.obtenerSocios(asociacion.getId());
     }
     
     private ArrayList<Evento> obtenerEventos(){
-        //ControlEvento ce = new ControlEvento();
         return cev.obtenerEventos(asociacion.getId());
     }
     
     private ArrayList<Entrada> obtenerEntradas(){
-        //ControlEntradas ce = new ControlEntradas();
         return cen.obtenerEntradas(asociacion.getId());
     }
     
@@ -726,7 +723,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         }
         
         if(socioMasAntiguo != null){
-            jLabel6.setIcon(new ImageIcon(socioMasAntiguo.getRutaImg()));
+            if(!socioMasAntiguo.getRutaImg().equals("")){
+                jLabel6.setIcon(new ImageIcon(socioMasAntiguo.getRutaImg()));
+            }else{
+                jLabel6.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+            }
             jLabel29.setText(socioMasAntiguo.getNombre());
             jLabel30.setText("Fecha: " + socioMasAntiguo.getFechaIngreso());
         }else{
@@ -735,7 +736,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         }
         
         if(socioMenosAntiguo != null){
-            jLabel8.setIcon(new ImageIcon(socioMenosAntiguo.getRutaImg()));
+            if(!socioMenosAntiguo.getRutaImg().equals("")){
+                jLabel8.setIcon(new ImageIcon(socioMenosAntiguo.getRutaImg()));
+            }else{
+                jLabel8.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+            }
             jLabel23.setText(socioMenosAntiguo.getNombre());
             jLabel24.setText("Fecha: " + socioMenosAntiguo.getFechaIngreso());
         }else{
@@ -759,10 +764,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         }
         
         if(eUlt != null){
-            ImageIcon newImage = new ImageIcon(eUlt.getRutaImg());
-            System.out.println(jLabel10.getWidth());
-            newImage.getImage().getScaledInstance(jLabel10.getWidth(), jLabel10.getHeight(), Image.SCALE_SMOOTH);
-            jLabel10.setIcon(newImage);
+            if(!eUlt.getRutaImg().equals("")){
+                jLabel10.setIcon(new ImageIcon(eUlt.getRutaImg()));
+            }else{
+                jLabel10.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+            }
             jLabel17.setText(eUlt.getNombre());
             jLabel18.setText("Fecha: " + eUlt.getFecha());
         }else{
@@ -785,7 +791,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         }
         
         if(eProx != null){
-            jLabel5.setIcon(new ImageIcon(eProx.getRutaImg()));
+            if(!eProx.getRutaImg().equals("")){
+                jLabel5.setIcon(new ImageIcon(eProx.getRutaImg()));
+            }else{
+                jLabel5.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+            }
             jLabel2.setText(eProx.getNombre());
             jLabel12.setText("Fecha: " + eProx.getFecha());
         }else{
@@ -809,7 +819,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
             }
         }
         if(eMax != null){
-            jLabel7.setIcon(new ImageIcon(eMax.getRutaImg()));
+            if(!eMax.getRutaImg().equals("")){
+                jLabel7.setIcon(new ImageIcon(eMax.getRutaImg()));
+            }else{
+                jLabel7.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+            }
             jLabel26.setText(eMax.getNombre());
             jLabel27.setText("Entradas: " + eMax.getEntradasVendidas());
         }else{
@@ -818,7 +832,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         }
         
         if(eMin != null){
-            jLabel9.setIcon(new ImageIcon(eMin.getRutaImg()));
+            if(!eMin.getRutaImg().equals("")){
+                jLabel9.setIcon(new ImageIcon(eMin.getRutaImg()));
+            }else{
+                jLabel9.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+            }
             jLabel20.setText(eMin.getNombre());
             jLabel21.setText("Entradas: " + eMin.getEntradasVendidas());
         }else{
@@ -838,7 +856,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         }
         
         if(eMax != null){
-            jLabel31.setIcon(new ImageIcon(eMax.getRutaImg()));
+            if(!eMax.getRutaImg().equals("")){
+                jLabel31.setIcon(new ImageIcon(eMax.getRutaImg()));
+            }else{
+                jLabel31.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+            }
             jLabel14.setText(eMax.getNombre());
             jLabel15.setText("Capacidad: " + eMax.getEntradasVendidas());
         }else{

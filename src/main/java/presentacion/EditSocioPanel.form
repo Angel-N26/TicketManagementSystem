@@ -282,7 +282,7 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dcFechaNacimientoMouseClicked"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFechaNacimiento.getDateEditor());&#xd;&#xa;dateChooserEditor1.setBackground(new Color(51, 51, 51));&#xd;&#xa;dateChooserEditor1.setForeground(new Color(255, 255, 255));&#xd;&#xa;dateChooserEditor1.setEditable(false);&#xd;&#xa;dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;dcFechaNacimiento.getCalendarButton().setSize(25, 25);&#xd;&#xa;dcFechaNacimiento.getCalendarButton().setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/calendario-white.png&quot;)));&#xd;&#xa;dcFechaNacimiento.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;dcFechaNacimiento.getCalendarButton().setBackground(new Color(51,51,51));&#xd;&#xa;dcFechaNacimiento.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFechaNacimiento.getDateEditor());&#xd;&#xa;dateChooserEditor1.setBackground(new Color(51, 51, 51));&#xd;&#xa;dateChooserEditor1.addPropertyChangeListener(&quot;foreground&quot;, event -&gt; {&#xd;&#xa;                if (Color.BLACK.equals(event.getNewValue())) {&#xd;&#xa;                    dateChooserEditor1.setForeground(Color.WHITE);&#xd;&#xa;                }&#xd;&#xa;            });&#xd;&#xa;dateChooserEditor1.setForeground(new Color(255, 255, 255));&#xd;&#xa;dateChooserEditor1.setEditable(false);&#xd;&#xa;dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;dcFechaNacimiento.getCalendarButton().setSize(25, 25);&#xd;&#xa;dcFechaNacimiento.getCalendarButton().setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/calendario-white.png&quot;)));&#xd;&#xa;dcFechaNacimiento.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;dcFechaNacimiento.getCalendarButton().setBackground(new Color(51,51,51));&#xd;&#xa;dcFechaNacimiento.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -409,10 +409,13 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="tfTlf">
+            <Component class="javax.swing.JTextField" name="tfTlf">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
@@ -421,18 +424,8 @@
                     </MatteColorBorder>
                   </Border>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="#0" subtype="-1" type="0"/>
-                </Property>
                 <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="0" red="cc" type="rgb"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="tfTlf" noResource="true"/>
-                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="tfEmail"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
                 <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -457,7 +450,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Email"/>
+                <Property name="text" type="java.lang.String" value="Email*"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="lblEmail" noResource="true"/>
               </Properties>
@@ -976,7 +969,7 @@
                 <Property name="name" type="java.lang.String" value="dcFechaIngreso" noResource="true"/>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)dcFechaIngreso.getDateEditor());&#xd;&#xa;dateChooserEditor2.setBackground(new Color(51, 51, 51));&#xd;&#xa;dateChooserEditor2.setForeground(new Color(255, 255, 255));&#xd;&#xa;dateChooserEditor2.setEditable(false);&#xd;&#xa;dateChooserEditor2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;dcFechaIngreso.getCalendarButton().setSize(25, 25);&#xd;&#xa;dcFechaIngreso.getCalendarButton().setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/calendario-white.png&quot;)));&#xd;&#xa;dcFechaIngreso.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;dcFechaIngreso.getCalendarButton().setBackground(new Color(51,51,51));&#xd;&#xa;dcFechaIngreso.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));&#xd;&#xa;"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)dcFechaIngreso.getDateEditor());&#xd;&#xa;dateChooserEditor2.setBackground(new Color(51, 51, 51));&#xd;&#xa;dateChooserEditor2.addPropertyChangeListener(&quot;foreground&quot;, event -&gt; {&#xd;&#xa;                if (Color.BLACK.equals(event.getNewValue())) {&#xd;&#xa;                    dateChooserEditor2.setForeground(Color.WHITE);&#xd;&#xa;                }&#xd;&#xa;            });&#xd;&#xa;dateChooserEditor2.setForeground(new Color(255, 255, 255));&#xd;&#xa;dateChooserEditor2.setEditable(false);&#xd;&#xa;dateChooserEditor2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;dcFechaIngreso.getCalendarButton().setSize(25, 25);&#xd;&#xa;dcFechaIngreso.getCalendarButton().setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/calendario-white.png&quot;)));&#xd;&#xa;dcFechaIngreso.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));&#xd;&#xa;dcFechaIngreso.getCalendarButton().setBackground(new Color(51,51,51));&#xd;&#xa;dcFechaIngreso.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));&#xd;&#xa;"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

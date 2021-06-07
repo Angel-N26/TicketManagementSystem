@@ -63,7 +63,7 @@ public class DAOSocio {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into socios values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into socios values(?,?,?,?,?,?,?,?,?,?,?,?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, socio.getDni());
             pst.setString(2, socio.getNombre());
@@ -76,8 +76,7 @@ public class DAOSocio {
             pst.setInt(9, socio.getIdMembresia());
             pst.setBoolean(10, socio.isPagado());
             pst.setString(11, socio.getRutaImg());
-            pst.setBoolean(12, false);
-            pst.setInt(13, socio.getIdAsoc());
+            pst.setInt(12, socio.getIdAsoc());
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -116,21 +115,7 @@ public class DAOSocio {
         return realizado;
     }
 
-    public boolean eliminarSocioDAO(String dni, int idAsoc){
-        /*boolean realizado;
-        try {
-            realizado = true;
-            con.createStatement();
-            String sql = "update socios set inactivo = ? where dni = ?";
-            pst = con.prepareStatement(sql);
-            pst.setBoolean(1, true);
-            pst.setString(2, dni);
-            pst.executeUpdate();            
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-            realizado = false;
-        }
-        return realizado;*/
+    public boolean eliminarSocioDAO(String dni, int idAsoc){       
         boolean realizado;
         try{
             realizado = true;

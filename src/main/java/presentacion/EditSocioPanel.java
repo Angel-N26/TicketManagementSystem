@@ -80,7 +80,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         lblDatosContacto = new javax.swing.JLabel();
         lblTlf = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        tfTlf = new javax.swing.JFormattedTextField();
+        tfTlf = new javax.swing.JTextField();
         lblEmail = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         tfEmail = new javax.swing.JTextField();
@@ -213,6 +213,11 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
         JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFechaNacimiento.getDateEditor());
         dateChooserEditor1.setBackground(new Color(51, 51, 51));
+        dateChooserEditor1.addPropertyChangeListener("foreground", event -> {
+            if (Color.BLACK.equals(event.getNewValue())) {
+                dateChooserEditor1.setForeground(Color.WHITE);
+            }
+        });
         dateChooserEditor1.setForeground(new Color(255, 255, 255));
         dateChooserEditor1.setEditable(false);
         dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
@@ -281,12 +286,9 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         panelCenter.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, -1));
 
         tfTlf.setBackground(new java.awt.Color(51, 51, 51));
-        tfTlf.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfTlf.setForeground(new java.awt.Color(255, 255, 255));
-        tfTlf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        tfTlf.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         tfTlf.setCaretColor(new java.awt.Color(204, 0, 204));
-        tfTlf.setName("tfTlf"); // NOI18N
-        tfTlf.setNextFocusableComponent(tfEmail);
         tfTlf.setOpaque(false);
         tfTlf.setSelectionColor(new java.awt.Color(204, 0, 204));
         tfTlf.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -301,7 +303,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
-        lblEmail.setText("Email");
+        lblEmail.setText("Email*");
         lblEmail.setFocusable(false);
         lblEmail.setName("lblEmail"); // NOI18N
         panelCenter.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
@@ -499,6 +501,11 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
         JTextFieldDateEditor dateChooserEditor2 = ((JTextFieldDateEditor)dcFechaIngreso.getDateEditor());
         dateChooserEditor2.setBackground(new Color(51, 51, 51));
+        dateChooserEditor2.addPropertyChangeListener("foreground", event -> {
+            if (Color.BLACK.equals(event.getNewValue())) {
+                dateChooserEditor2.setForeground(Color.WHITE);
+            }
+        });
         dateChooserEditor2.setForeground(new Color(255, 255, 255));
         dateChooserEditor2.setEditable(false);
         dateChooserEditor2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
@@ -660,7 +667,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
     private void tfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusLost
         tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
-        if(tfNombre.getText().replace(" ", "").equals("")){
+        if(tfNombre.getText().isEmpty()){
             tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel1.setVisible(true);
             nombreVal = false;
@@ -684,7 +691,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     private void tfEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfEmailFocusLost
         tfEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = EMAIL.matcher(tfEmail.getText());
-        if((!matcher.matches() && !tfEmail.getText().equals("")) || !comprobarEmail(tfEmail.getText())){
+        if(!matcher.matches() || !comprobarEmail(tfEmail.getText())){
             tfEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel4.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             emailVal = false;
@@ -693,7 +700,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
     private boolean comprobarEmail(String email){
         boolean comprobar = true;
-        ArrayList<Socio> socs = obtenerSocios();
+        ArrayList<Socio> socs = cs.obtenerSocios(asociacion.getId());
         
         for(int i = 0 ; i < socs.size() ; i++){
             if(socio != null && !socio.getDni().equals(socs.get(i).getDni()))
@@ -731,7 +738,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
     private boolean comprobarDni(String dni){
         boolean comprobar = true;
-        ArrayList<Socio> socs = obtenerSocios();
+        ArrayList<Socio> socs = cs.obtenerSocios(asociacion.getId());
         
         for(int i = 0 ; i < socs.size() ; i++){
             if(socio != null && !socio.getDni().equals(socs.get(i).getDni()))
@@ -743,25 +750,9 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         return comprobar;
     }
     
-    private void tfTlfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusGained
-        tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
-        jLabel3.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
-        tlfVal = true;
-    }//GEN-LAST:event_tfTlfFocusGained
-
-    private void tfTlfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusLost
-        tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
-        Matcher matcher = TLF.matcher(tfTlf.getText());
-        if((!matcher.matches() && !tfTlf.getText().equals("")) || !comprobarTlf(Integer.parseInt(tfTlf.getText()))){
-            tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
-            jLabel3.setIcon(new ImageIcon(getClass().getResource("/error.png")));
-            tlfVal = false;
-        }
-    }//GEN-LAST:event_tfTlfFocusLost
-
     private boolean comprobarTlf(int tlf){
         boolean comprobar = true;
-        ArrayList<Socio> socs = obtenerSocios();
+        ArrayList<Socio> socs = cs.obtenerSocios(asociacion.getId());
         
         for(int i = 0 ; i < socs.size() ; i++){
             if(socio != null && !socio.getDni().equals(socs.get(i).getDni()))
@@ -782,7 +773,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     private void tfNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNumeroFocusLost
         tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = NUMERO.matcher(tfNumero.getText());
-        if(!matcher.matches() && !tfNumero.getText().equals("")){
+        if(!matcher.matches() && !tfNumero.getText().isEmpty()){
             tfNumero.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel9.setVisible(true);
             numVal = false;
@@ -798,7 +789,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     private void tfPisoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPisoFocusLost
         tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = PISO.matcher(tfPiso.getText());
-        if(!matcher.matches() && !tfPiso.getText().equals("")){
+        if(!matcher.matches() && !tfPiso.getText().isEmpty()){
             tfPiso.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel8.setIcon(new ImageIcon(getClass().getResource("/error.png")));
             pisoVal = false;
@@ -814,7 +805,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     private void tfCodPostalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCodPostalFocusLost
         tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
         Matcher matcher = CCPP.matcher(tfCodPostal.getText());
-        if(!matcher.matches() && !tfCodPostal.getText().equals("")){
+        if(!matcher.matches() && !tfCodPostal.getText().isEmpty()){
             tfCodPostal.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel7.setVisible(true);
             ccppVal = false;
@@ -953,6 +944,22 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
             }
         }
     }//GEN-LAST:event_btnEliminarMouseReleased
+
+    private void tfTlfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusGained
+        tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+        jLabel3.setIcon(new ImageIcon(getClass().getResource("/informacion.png")));
+        tlfVal = true;
+    }//GEN-LAST:event_tfTlfFocusGained
+
+    private void tfTlfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfTlfFocusLost
+        tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+        Matcher matcher = TLF.matcher(tfTlf.getText());
+        if((!matcher.matches() && !tfTlf.getText().isEmpty()) || !comprobarTlf(Integer.parseInt(tfTlf.getText()))){
+            tfTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel3.setIcon(new ImageIcon(getClass().getResource("/error.png")));
+            tlfVal = false;
+        }
+    }//GEN-LAST:event_tfTlfFocusLost
     
     public void dispose(){
         this.show(false);
@@ -989,7 +996,6 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     
     //Rellena el combo box con los nombres de todas las membresias
     private void rellenarMembresias(){
-        //ControlMembresia cmem = new ControlMembresia();
         mems = cm.obtenerMembresias(asociacion.getId());
         
         for(int i = 0 ; i < mems.size() ; i++){
@@ -1039,24 +1045,25 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         }
     }        
     
-    private ArrayList<Socio> obtenerSocios(){
-        //ControlSocio cso = new ControlSocio();
-        return cs.obtenerSocios(asociacion.getId());
-    }
-    
     private boolean comprobarCampos(){
         boolean comprobar = true;
         
-        if(tfNombre.getText().replace(" ","").equals("")){
+        if(tfNombre.getText().isEmpty()){
             comprobar = false;
             tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel1.setVisible(true);
         }
         
-        if(tfDNI.getText().replace(" ","").equals("")){
+        if(tfDNI.getText().isEmpty()){
             comprobar = false;
             tfDNI.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel2.setIcon(new ImageIcon(getClass().getResource("/error.png")));
+        }
+        
+        if(tfEmail.getText().isEmpty()){
+            comprobar = false;
+            tfEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
+            jLabel4.setIcon(new ImageIcon(getClass().getResource("/error.png")));
         }
         
         return comprobar;
@@ -1146,6 +1153,6 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfNumero;
     private javax.swing.JTextField tfPiso;
-    private javax.swing.JFormattedTextField tfTlf;
+    private javax.swing.JTextField tfTlf;
     // End of variables declaration//GEN-END:variables
 }

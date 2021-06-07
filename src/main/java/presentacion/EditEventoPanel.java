@@ -20,6 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -212,7 +213,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
 
         lblEntradasVendidas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblEntradasVendidas.setForeground(new java.awt.Color(255, 255, 255));
-        lblEntradasVendidas.setText("Entradas vendidas");
+        lblEntradasVendidas.setText("Entradas generadas");
         lblEntradasVendidas.setName("lblEntradasVendidas"); // NOI18N
         panelCenter.add(lblEntradasVendidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 400, -1));
 
@@ -360,14 +361,21 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
 
         JTextFieldDateEditor dateChooserEditor1 = ((JTextFieldDateEditor)dcFecha.getDateEditor());
         dateChooserEditor1.setBackground(new Color(51, 51, 51));
+        dateChooserEditor1.addPropertyChangeListener("foreground", event -> {
+            if (Color.BLACK.equals(event.getNewValue())) {
+                dateChooserEditor1.setForeground(Color.WHITE);
+            }
+        });
         dateChooserEditor1.setForeground(new Color(255, 255, 255));
         dateChooserEditor1.setEditable(false);
         dateChooserEditor1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        dcFecha.setForeground(new Color(255, 255, 255));
         dcFecha.getCalendarButton().setSize(25, 25);
         dcFecha.getCalendarButton().setIcon(new javax.swing.ImageIcon(getClass().getResource("/calendario-white.png")));
         dcFecha.getCalendarButton().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         dcFecha.getCalendarButton().setBackground(new Color(51,51,51));
         dcFecha.getCalendarButton().setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dcFecha.setBackground(new java.awt.Color(255, 255, 255));
         dcFecha.setDateFormatString("yyyy-MM-dd");
         panelCenter.add(dcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 180, 25));
 
@@ -379,7 +387,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informacion.png"))); // NOI18N
-        jLabel6.setToolTipText("20:00:00");
+        jLabel6.setToolTipText("ej: 20:30:00");
         panelCenter.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
 
         tfHora.setBackground(new java.awt.Color(51, 51, 51));

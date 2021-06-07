@@ -1,6 +1,5 @@
 package presentacion;
 
-import com.google.zxing.WriterException;
 import dominio.Asociacion;
 import dominio.Colores;
 import dominio.ControlEntradas;
@@ -13,13 +12,10 @@ import dominio.Socio;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.imageio.ImageIO;
@@ -230,7 +226,6 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
 
     private void btnGenerarEntradasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseReleased
         if(activar){            
-            //ControlEntradas ce = new ControlEntradas();
             List<Socio> socioConEntrada = listSociosSin.getSelectedValuesList();
             int entradasTotales = socioConEntrada.size() + evento.getEntradasVendidas();
             if(!listSociosSin.isSelectionEmpty()){ 
@@ -242,7 +237,6 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
                         for(int i = 0 ; i < socioConEntrada.size() ; i++){
                             Entrada entrada = new Entrada(evento.getId(), socioConEntrada.get(i).getDni(), asociacion.getId());
                             
-                            //ControlSocio cs = new ControlSocio();
                             Socio socio = cs.obtenerSocio(entrada.getIdSocio(), asociacion.getId());
                             
                             if(!socio.getEmail().equals("")){
@@ -260,18 +254,21 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
                                     modeloListaSociosSin.removeElement(socioConEntrada.get(i));
                                     evento.setEntradasVendidas(evento.getEntradasVendidas()+1);
                                     mail(socio.getEmail(), outputfile.getPath());
-                                }catch(WriterException e){
-                                    System.out.println(e.getMessage());
-                                }catch (IOException ex) {
-                                    Logger.getLogger(GenerarEntradas.class.getName()).log(Level.SEVERE, null, ex);
-                                }
+                                }catch(Exception e){
+                                    JOptionPane.showMessageDialog(this, "No se pudo generar la entrada.",
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+                                    ce.eliminarEntrada(entrada.getNumEntrada(), asociacion.getId());
+                                }/*catch (IOException ex) {
+                                    JOptionPane.showMessageDialog(this, "No se pudo generar la entrada.",
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+                                    ce.eliminarEntrada(entrada.getNumEntrada(), asociacion.getId());
+                                }*/
                             }else{
                                 JOptionPane.showMessageDialog(this, "No se pudo generar la entrada. Ya que el socio " + 
                                         socio.getNombre() + " no tiene correo.",
                                     "Error", JOptionPane.ERROR_MESSAGE);
                             }           
                         }
-                        //ControlEvento cev = new ControlEvento();
                         if(cev.modificarEvento(evento)){                       
                         }
                     }
@@ -291,7 +288,6 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
         modeloListaSociosCon.removeAllElements();
         modeloListaSociosSin.removeAllElements();
         
-        //ControlSocio cs = new ControlSocio();
         ArrayList<Socio> socios = cs.obtenerSocios(asociacion.getId());
         
         ArrayList<Socio> sociosSin = new ArrayList();
@@ -318,8 +314,6 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
         for(int i = 0 ; i < sociosSin.size() ; i++){
             modeloListaSociosSin.add(i,sociosSin.get(i));
         }
-        //modeloListaSociosCon.addAll(0, sociosCon);
-        //modeloListaSociosSin.addAll(0, sociosSin);
     }     
     
     
@@ -377,7 +371,6 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
         }catch (MessagingException me) {
             JOptionPane.showMessageDialog(this, "La entrada se ha generado, pero no se ha podido enviar el correo.",
                 "Error", JOptionPane.ERROR_MESSAGE);
-            me.printStackTrace();
         }
     }
     

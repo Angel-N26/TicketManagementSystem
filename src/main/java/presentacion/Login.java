@@ -591,13 +591,12 @@ public class Login extends javax.swing.JFrame implements Colores {
     }//GEN-LAST:event_btnInicioSesionMouseExited
 
     private void btnInicioSesionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioSesionMouseReleased
-        //ControlUsuarios cu = new ControlUsuarios();
-        //ControlAsociacion ca = new ControlAsociacion(conn);
-       // ControlMembresia cm = new ControlMembresia();
         Asociacion asoc;
         if(activar){
             if(btnInicioSesion.getText().equals("Iniciar Sesión")){
                 if(comprobarUsuario(tfUser.getText(), pfPass.getText())){
+                    
+                    
                     Usuario usuario = cu.obtenerUsuario(tfUser.getText());
                     asoc = ca.obtenerAsociacion(usuario.getIdAsociacion());
                     Menu menu = new Menu(asoc, usuario, conn);
@@ -641,8 +640,7 @@ public class Login extends javax.swing.JFrame implements Colores {
 
     private boolean comprobarUsuario(String nombre, String pass){
         boolean existe = false;
-        //ControlUsuarios cu = new ControlUsuarios();
-        ArrayList<Usuario> usuarios= cu.obtenerUsuarios();
+        ArrayList<Usuario> usuarios = cu.obtenerUsuarios();
         for(int i = 0 ; i < usuarios.size() ; i++){
             if(nombre.equals(usuarios.get(i).getUsuario()) && pass.equals(usuarios.get(i).getContrasena())){
                 existe = true;
@@ -663,7 +661,6 @@ public class Login extends javax.swing.JFrame implements Colores {
     }
     
     private void crearCargos(int idAsoc){
-        //ControlJuntaDirectiva cjd = new ControlJuntaDirectiva();
         Cargo cargo;
         cargo = new Cargo("Presidente", null, idAsoc);
         cjd.insertarCargo(cargo);
@@ -711,8 +708,7 @@ public class Login extends javax.swing.JFrame implements Colores {
     
     private boolean comprobarCampos(){
         boolean registro = true;
-        //ControlUsuarios cu = new ControlUsuarios();
-        //ControlAsociacion ca = new ControlAsociacion(conn);
+        
         ArrayList<Usuario> usuarios = cu.obtenerUsuarios();
         ArrayList<Asociacion> asociaciones = ca.obtenerAsociaciones();
         
@@ -781,36 +777,32 @@ public class Login extends javax.swing.JFrame implements Colores {
                     /*Option Pane*/
                     UIManager.put("OptionPane.background", new ColorUIResource(51,51,51));
                     UIManager.put("Panel.background", new ColorUIResource(51,51,51));
-                    UIManager.put("OptionPane.messageForeground", new ColorUIResource(255,255,255));                    
+                    UIManager.put("OptionPane.messageForeground", new ColorUIResource(255,255,255));                                         
                     
                     /*ToolTip*/
                     UIManager.put("ToolTip.background", new ColorUIResource(31,31,31));
                     UIManager.put("ToolTip.border", BorderFactory.createLineBorder(new java.awt.Color(204,0,204)));
                     UIManager.put("ToolTip.foreground", new ColorUIResource(255,255,255));
                     UIManager.put("ToolTip.font", new java.awt.Font("Console", 1, 12));
-                         
+                    
+                    /*Password Field*/
+                    UIManager.put("PasswordField.background", new ColorUIResource(51,51,51));
+                    UIManager.put("PasswordField.border", BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
+                    UIManager.put("PasswordField.foreground", new ColorUIResource(255,255,255));                                       
+                    
+                    /*Text Fied*/
                     UIManager.put("TextField.background", new ColorUIResource(51,51,51));
                     UIManager.put("TextField.border", BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
-                    UIManager.put("TextField.foreground", new ColorUIResource(255,255,255));
-                    /*
-                    UIManager.put("ComboBox.selectionBackground", new ColorUIResource(204,0,204));
-                    UIManager.put("ComboBox.selectionForeground", new ColorUIResource(255,255,255));
-                    UIManager.put("ComboBox.disabledBackground", new ColorUIResource(51,51,51));
-                    UIManager.put("ComboBox.disabledForeground", new ColorUIResource(153,153,153));
-                    UIManager.put("ComboBox.buttonBackground", new ColorUIResource(102,102,102));
-                    UIManager.put("ComboBox.buttonDarkShadow", new ColorUIResource(255,255,255));
-                    UIManager.put("ComboBox.buttonHighlight", new ColorUIResource(153,0,0));
-                    UIManager.put("ComboBox.buttonShadow", new ColorUIResource(153,0,0));
-                    UIManager.put("ComboBox.border", BorderFactory.createLineBorder(new java.awt.Color(255, 0, 255)));
-                    */
+                    UIManager.put("TextField.foreground", new ColorUIResource(255,255,255));  
+                    
+                    /*Table Header*/
                     UIManager.put("TableHeader.background", new ColorUIResource(51,51,51));
                     UIManager.put("TableHeader.foreground", new ColorUIResource(255,255,255));
+                    UIManager.put("Viewport.background", new ColorUIResource(31,31,31));
                     
                 }catch(ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e){
                     e.printStackTrace();
-                }
-                       
-                    
+                }                    
                 new Login().setVisible(true);
             }
         });

@@ -178,6 +178,7 @@ public class EntradasPanel extends javax.swing.JPanel {
     private void btnGenerarEntradasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarEntradasMouseReleased
         if(activar){
             String email = "";
+            System.out.println(asociacion.getEmail());
             if(asociacion.getEmail() != null)
                 email = asociacion.getEmail();
                 
@@ -235,13 +236,11 @@ public class EntradasPanel extends javax.swing.JPanel {
             for(int i = 0 ; i < ent.size() ; i++){
                 modeloListaEntradas.add(i, ent.get(i));
             }
-            //modeloListaEntradas.add(WIDTH, ent); .addAll(ent);
         }
         
     }
     
     public void rellenarComboBox(){
-        //ControlEvento cev = new ControlEvento();
         ArrayList<Evento> evs = cev.obtenerEventos(asociacion.getId());
         
         cbEvento.removeAllItems();
@@ -255,7 +254,6 @@ public class EntradasPanel extends javax.swing.JPanel {
     }
     
     private ArrayList<Entrada> sacarEntradas(int id_evento){
-        //ControlEntradas cen = new ControlEntradas();
         ArrayList<Entrada> entradas = cen.obtenerEntradasEvento(id_evento, asociacion.getId());
         
         return entradas;

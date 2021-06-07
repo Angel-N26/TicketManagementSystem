@@ -35,7 +35,7 @@ public class DAOEntradas {
             System.err.println(e.getMessage());
 	}
         return listaEntradas;
-    }        
+    }      
     
     public ArrayList<Entrada> obtenerEntradasEventoDAO(int idevento, int idAsoc){
         ArrayList<Entrada> listaEntradas = new ArrayList();
@@ -81,12 +81,13 @@ public class DAOEntradas {
         try {
             realizado = true;
             con.createStatement();
-            String sql = "insert into entradas(idevento, idsocio, idAsoc)"
-                    + "values(?,?,?)";
+            String sql = "insert into entradas(idevento, idsocio, idAsoc, leida)"
+                    + "values(?,?,?,?)";
             pst = con.prepareStatement(sql);           
             pst.setInt(1, entrada.getIdEvento());
             pst.setString(2, entrada.getIdSocio());
             pst.setInt(3, entrada.getIdAsoc());
+            pst.setBoolean(4, false);
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -100,7 +101,7 @@ public class DAOEntradas {
         try{
             realizado = true;
             con.createStatement();
-            String sql = "delete from entradas where identradas = ? AND idAsoc = ?";
+            String sql = "delete from entradas where numEntrada = ? AND idAsoc = ?";
             pst = con.prepareStatement(sql);
             pst.setInt(1, id);
             pst.setInt(2, idAsoc);

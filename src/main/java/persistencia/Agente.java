@@ -11,9 +11,9 @@ import java.util.logging.Logger;
  **/
 public class Agente {
     static String driver = "com.mysql.cj.jdbc.Driver";
-    static String DB_username = "angeluser"; 
-    static String DB_password = "K#H56jzd2SgaAyJ";
-    static String DB_URL = "jdbc:mysql://85.10.205.173/ticketms_db";     
+    static String DB_username = "a75429_tmsdb"; //a75429_tmsdb
+    static String DB_password = "m6mJYqylcd"; //
+    static String DB_URL = "jdbc:mysql://mysql5046.site4now.net/db_a75429_tmsdb"; // mysql5046.site4now.net/db_a75429_tmsdb
 
     public static Connection getConexion() {
         Connection con = null;
