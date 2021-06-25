@@ -814,7 +814,7 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
                         lblNombreLogo.setText(tfNombre.getText());
                         asociacion = asoc;
                         
-                        ep.setAsociacion(asociacion);
+                        //ep.setAsociacion(asociacion);
                     }else{
                         JOptionPane.showMessageDialog(this, 
                             "No se ha podido actualizar la asoicación", "Error",

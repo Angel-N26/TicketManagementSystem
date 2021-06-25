@@ -253,11 +253,12 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
                                     modeloListaSociosCon.add(modeloListaSociosCon.size(), socioConEntrada.get(i));
                                     modeloListaSociosSin.removeElement(socioConEntrada.get(i));
                                     evento.setEntradasVendidas(evento.getEntradasVendidas()+1);
+                                    
                                     mail(socio.getEmail(), outputfile.getPath());
                                 }catch(Exception e){
                                     JOptionPane.showMessageDialog(this, "No se pudo generar la entrada.",
                                     "Error", JOptionPane.ERROR_MESSAGE);
-                                    ce.eliminarEntrada(entrada.getNumEntrada(), asociacion.getId());
+                                    ce.eliminarEntrada(entrada.getNumEntrada(), asociacion.getId());                                    
                                 }/*catch (IOException ex) {
                                     JOptionPane.showMessageDialog(this, "No se pudo generar la entrada.",
                                     "Error", JOptionPane.ERROR_MESSAGE);
@@ -327,7 +328,7 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
     }
     
     private void enviarMail(String destinatario, String asunto, String cuerpo, String entrada){
-        // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.        
+        // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también. 
         String [] correoAsoc = asociacion.getEmail().split("@");
         String remitente = correoAsoc[0];
         
@@ -382,10 +383,14 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
         enviarMail(destinatario, asunto, cuerpo, entrada);
     }
     
+    public void setAsociacion(Asociacion asociacion){
+        this.asociacion = asociacion;
+    }
+    
     private boolean activar;
     private boolean activarAceptar;
     
-    private final Asociacion asociacion;
+    private Asociacion asociacion;
     
     private final ControlSocio cs;
     private final ControlEvento cev;

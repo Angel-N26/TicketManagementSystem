@@ -8,6 +8,7 @@ import dominio.ControlJuntaDirectiva;
 import dominio.ControlMembresia;
 import dominio.ControlUsuarios;
 import dominio.Membresia;
+import dominio.PasswordAuthentication;
 import dominio.Usuario;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -620,7 +621,11 @@ public class Login extends javax.swing.JFrame implements Colores {
                         crearCargos(asoc.getId());
                         Membresia m = new Membresia("Ninguna", 0, asoc.getId());
                         cm.insertarMembresia(m);
-                        Usuario user = new Usuario(tfUserReg.getText(), pfPassReg.getText(), asoc.getId());
+                        
+                        PasswordAuthentication pa = new PasswordAuthentication();
+                        String pass = pa.hash(pfPassReg.getText());                                
+                                
+                        Usuario user = new Usuario(tfUserReg.getText(), pass, asoc.getId());
                         if(cu.insertarUsuario(user)){
                             Menu menu = new Menu(asoc, user, conn);
                             menu.setVisible(true);
@@ -640,9 +645,10 @@ public class Login extends javax.swing.JFrame implements Colores {
 
     private boolean comprobarUsuario(String nombre, String pass){
         boolean existe = false;
-        ArrayList<Usuario> usuarios = cu.obtenerUsuarios();
+        PasswordAuthentication pa = new PasswordAuthentication();
+        ArrayList<Usuario> usuarios = cu.obtenerUsuarios();                       
         for(int i = 0 ; i < usuarios.size() ; i++){
-            if(nombre.equals(usuarios.get(i).getUsuario()) && pass.equals(usuarios.get(i).getContrasena())){
+            if(nombre.equals(usuarios.get(i).getUsuario()) && pa.authenticate(pass, usuarios.get(i).getContrasena())){
                 existe = true;
             }
         }

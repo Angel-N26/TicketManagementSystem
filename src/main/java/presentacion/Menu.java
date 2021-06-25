@@ -1,6 +1,7 @@
 package presentacion;
 
 import dominio.Asociacion;
+import dominio.ControlAsociacion;
 import dominio.ControlMembresia;
 import dominio.ControlSocio;
 import dominio.ControlUsuarios;
@@ -45,6 +46,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         this.cu = new ControlUsuarios(con);
         this.cs = new ControlSocio(con);
         this.cm = new ControlMembresia(con);
+        this.ca = new ControlAsociacion(con);
         
         this.sp = new SociosPanel(asociacion, con);
         this.evp = new EventosPanel(asociacion, con);
@@ -844,7 +846,8 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
 
             selected(btnEntradas);
             
-            enp.rellenarComboBox();           
+            enp.rellenarComboBox();
+            enp.setAsociacion(ca.obtenerAsociacion(asociacion.getId()));
         }
     }//GEN-LAST:event_btnEntradasMouseReleased
 
@@ -981,7 +984,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
                     
                     if(matcherDNI.matches() && !dni.equals("") && !nombre.equals("")){
                         Socio s = new Socio(dni, nombre, apellidos, email, fechaNac,
-                            direccion, tlf, fechaIng, idMem, false, null, asociacion.getId()); 
+                            direccion, tlf, fechaIng, idMem, false, "", asociacion.getId()); 
 
                         if(cs.insertarSocio(s)){
                             sp.actualizarTabla();
@@ -1002,6 +1005,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
     private final ControlUsuarios cu;
     private final ControlSocio cs;
     private final ControlMembresia cm;
+    ControlAsociacion ca;
     
     private boolean maximized = false;
     private int xx;
