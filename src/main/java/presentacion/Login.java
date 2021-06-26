@@ -126,7 +126,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         panelNorth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo(2).png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo16.PNG"))); // NOI18N
         logo.setName("logo"); // NOI18N
         panelNorth.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 20, 20));
 

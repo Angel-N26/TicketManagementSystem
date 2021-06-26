@@ -131,7 +131,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         panelNorthLeft.setPreferredSize(new java.awt.Dimension(499, 40));
         panelNorthLeft.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo(1).png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo32.PNG"))); // NOI18N
         logo.setName("logo"); // NOI18N
         panelNorthLeft.add(logo);
 
