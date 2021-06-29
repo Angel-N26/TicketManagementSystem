@@ -73,7 +73,6 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         lblTitulo = new javax.swing.JLabel();
         panelNorthRight = new javax.swing.JPanel();
         minimize = new javax.swing.JLabel();
-        maximize = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         panelWest = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -163,21 +162,6 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
             }
         });
         panelNorthRight.add(minimize);
-
-        maximize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maximize-window.png"))); // NOI18N
-        maximize.setName("maximize"); // NOI18N
-        maximize.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                maximizeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                maximizeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                maximizeMouseExited(evt);
-            }
-        });
-        panelNorthRight.add(maximize);
 
         close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/close-button.png"))); // NOI18N
         close.setName("close"); // NOI18N
@@ -613,26 +597,6 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         close.setIcon(new ImageIcon(getClass().getResource("/close-button.png")));
     }//GEN-LAST:event_closeMouseExited
 
-    private void maximizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseClicked
-        if(!maximized){
-            setExtendedState(MAXIMIZED_BOTH);
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            setMaximizedBounds(env.getMaximumWindowBounds());
-            maximized = true;            
-        }else{
-            setExtendedState(NORMAL);
-            maximized = false;            
-        }
-    }//GEN-LAST:event_maximizeMouseClicked
-
-    private void maximizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseEntered
-        maximize.setIcon(new ImageIcon(getClass().getResource("/maximize-window-purple.png")));
-    }//GEN-LAST:event_maximizeMouseEntered
-
-    private void maximizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseExited
-        maximize.setIcon(new ImageIcon(getClass().getResource("/maximize-window.png")));
-    }//GEN-LAST:event_maximizeMouseExited
-
     private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
         setExtendedState(ICONIFIED);
     }//GEN-LAST:event_minimizeMouseClicked
@@ -899,7 +863,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
                 
                 Date d = Date.valueOf(LocalDate.now());              
                 user.setUltimaConexion(d);
-                cu.modificarUsuario(user, user.getUsuario());
+                cu.modificarUsuario(user);
             }  
         }
     }//GEN-LAST:event_btnCerrarSesionMouseReleased
@@ -1050,7 +1014,6 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel logo;
-    private javax.swing.JLabel maximize;
     private javax.swing.JLabel minimize;
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelCenter;

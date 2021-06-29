@@ -72,18 +72,18 @@ public class DAOUsuarios {
         return realizado;
     }
     
-    public boolean modificarUsuarioDAO(Usuario usuario, String user){
+    public boolean modificarUsuarioDAO(Usuario usuario){
         boolean realizado;
         try {
-            realizado = true;
+           
             con.createStatement();
-            String sql = "update usuarios set pass = ?, ultimaConexion = ?"
-                    + "where user = ?";
+            String sql = "update usuarios set pass = ?, ultimaConexion = ? where user = ?";
             pst = con.prepareStatement(sql);            
             pst.setString(1, usuario.getContrasena());
             pst.setDate(2, usuario.getUltimaConexion());            
-            pst.setString(3, user);            
+            pst.setString(3, usuario.getUsuario());
             pst.executeUpdate();
+            realizado = true;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
             realizado = false;

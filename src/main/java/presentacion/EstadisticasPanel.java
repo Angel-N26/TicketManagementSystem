@@ -211,10 +211,12 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel13.setBackground(new java.awt.Color(102, 102, 102));
         jPanel13.setMinimumSize(new java.awt.Dimension(370, 32));
         jPanel13.setPreferredSize(new java.awt.Dimension(370, 32));
+        jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Próximo evento");
+        jLabel4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 0, 204)));
         jPanel13.add(jLabel4);
 
         jPanel3.add(jPanel13, java.awt.BorderLayout.PAGE_START);
@@ -233,7 +235,7 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel15.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel15.setLayout(new javax.swing.BoxLayout(jPanel15, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel14.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel14.setBackground(new java.awt.Color(51, 51, 51));
         jPanel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel14.setMinimumSize(new java.awt.Dimension(60, 60));
         jPanel14.setName(""); // NOI18N
@@ -277,10 +279,12 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel51.setBackground(new java.awt.Color(102, 102, 102));
         jPanel51.setMinimumSize(new java.awt.Dimension(370, 32));
         jPanel51.setPreferredSize(new java.awt.Dimension(370, 32));
+        jPanel51.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Socio más antiguo");
+        jLabel28.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 0, 204)));
         jPanel51.add(jLabel28);
 
         jPanel50.add(jPanel51, java.awt.BorderLayout.PAGE_START);
@@ -299,7 +303,7 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel55.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel55.setLayout(new javax.swing.BoxLayout(jPanel55, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel56.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel56.setBackground(new java.awt.Color(51, 51, 51));
         jPanel56.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel56.setMinimumSize(new java.awt.Dimension(60, 60));
         jPanel56.setName(""); // NOI18N
@@ -343,10 +347,12 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel44.setBackground(new java.awt.Color(102, 102, 102));
         jPanel44.setMinimumSize(new java.awt.Dimension(370, 32));
         jPanel44.setPreferredSize(new java.awt.Dimension(370, 32));
+        jPanel44.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Evento más entradas");
+        jLabel25.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 0, 204)));
         jPanel44.add(jLabel25);
 
         jPanel43.add(jPanel44, java.awt.BorderLayout.PAGE_START);
@@ -365,7 +371,7 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel48.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel48.setLayout(new javax.swing.BoxLayout(jPanel48, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel49.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel49.setBackground(new java.awt.Color(51, 51, 51));
         jPanel49.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel49.setMinimumSize(new java.awt.Dimension(60, 60));
         jPanel49.setName(""); // NOI18N
@@ -409,10 +415,12 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel37.setBackground(new java.awt.Color(102, 102, 102));
         jPanel37.setMinimumSize(new java.awt.Dimension(370, 32));
         jPanel37.setPreferredSize(new java.awt.Dimension(370, 32));
+        jPanel37.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Socio más nuevo");
+        jLabel22.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 0, 204)));
         jPanel37.add(jLabel22);
 
         jPanel36.add(jPanel37, java.awt.BorderLayout.PAGE_START);
@@ -431,7 +439,7 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel41.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel41.setLayout(new javax.swing.BoxLayout(jPanel41, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel42.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel42.setBackground(new java.awt.Color(51, 51, 51));
         jPanel42.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel42.setMinimumSize(new java.awt.Dimension(60, 60));
         jPanel42.setName(""); // NOI18N
@@ -475,10 +483,12 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel30.setBackground(new java.awt.Color(102, 102, 102));
         jPanel30.setMinimumSize(new java.awt.Dimension(370, 32));
         jPanel30.setPreferredSize(new java.awt.Dimension(370, 32));
+        jPanel30.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Evento menos entradas");
+        jLabel19.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 0, 204)));
         jPanel30.add(jLabel19);
 
         jPanel29.add(jPanel30, java.awt.BorderLayout.PAGE_START);
@@ -497,7 +507,7 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel34.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel34.setLayout(new javax.swing.BoxLayout(jPanel34, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel35.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel35.setBackground(new java.awt.Color(51, 51, 51));
         jPanel35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel35.setMinimumSize(new java.awt.Dimension(60, 60));
         jPanel35.setName(""); // NOI18N
@@ -541,10 +551,12 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel23.setBackground(new java.awt.Color(102, 102, 102));
         jPanel23.setMinimumSize(new java.awt.Dimension(370, 32));
         jPanel23.setPreferredSize(new java.awt.Dimension(370, 32));
+        jPanel23.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Último Evento");
+        jLabel16.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 0, 204)));
         jPanel23.add(jLabel16);
 
         jPanel22.add(jPanel23, java.awt.BorderLayout.PAGE_START);
@@ -563,15 +575,15 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel27.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel27.setLayout(new javax.swing.BoxLayout(jPanel27, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel28.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel28.setBackground(new java.awt.Color(51, 51, 51));
         jPanel28.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel28.setMinimumSize(new java.awt.Dimension(60, 60));
         jPanel28.setName(""); // NOI18N
         jPanel28.setPreferredSize(new java.awt.Dimension(60, 60));
-        jPanel28.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
+        jPanel28.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
+        jLabel10.setBackground(new java.awt.Color(51, 51, 51));
         jLabel10.setToolTipText("");
-        jLabel10.setPreferredSize(new java.awt.Dimension(98, 57));
         jLabel10.setRequestFocusEnabled(false);
         jPanel28.add(jLabel10);
 
@@ -609,10 +621,12 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel16.setBackground(new java.awt.Color(102, 102, 102));
         jPanel16.setMinimumSize(new java.awt.Dimension(370, 32));
         jPanel16.setPreferredSize(new java.awt.Dimension(370, 32));
+        jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Evento más capacidad");
+        jLabel13.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 0, 204)));
         jPanel16.add(jLabel13);
 
         jPanel12.add(jPanel16, java.awt.BorderLayout.PAGE_START);
@@ -631,7 +645,7 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel20.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel20.setLayout(new javax.swing.BoxLayout(jPanel20, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel21.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel21.setBackground(new java.awt.Color(51, 51, 51));
         jPanel21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel21.setMinimumSize(new java.awt.Dimension(60, 60));
         jPanel21.setName(""); // NOI18N
@@ -730,9 +744,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
             }
             jLabel29.setText(socioMasAntiguo.getNombre());
             jLabel30.setText("Fecha: " + socioMasAntiguo.getFechaIngreso());
+            jLabel30.setIcon(null);
         }else{
             jLabel29.setText("No hay socios");
             jLabel30.setText("");
+            jLabel30.setIcon(new ImageIcon(getClass().getResource("/error.png")));
         }
         
         if(socioMenosAntiguo != null){
@@ -743,9 +759,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
             }
             jLabel23.setText(socioMenosAntiguo.getNombre());
             jLabel24.setText("Fecha: " + socioMenosAntiguo.getFechaIngreso());
+            jLabel24.setIcon(null);
         }else{
             jLabel23.setText("No hay socios");
             jLabel24.setText("");
+            jLabel24.setIcon(new ImageIcon(getClass().getResource("/error.png")));
         }
                 
     }
@@ -771,9 +789,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
             }
             jLabel17.setText(eUlt.getNombre());
             jLabel18.setText("Fecha: " + eUlt.getFecha());
+            jLabel18.setIcon(null);
         }else{
             jLabel17.setText("No hay eventos");
             jLabel18.setText("");
+            jLabel18.setIcon(new ImageIcon(getClass().getResource("/error.png")));
         }
     }
     
@@ -798,9 +818,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
             }
             jLabel2.setText(eProx.getNombre());
             jLabel12.setText("Fecha: " + eProx.getFecha());
+            jLabel12.setIcon(null);
         }else{
             jLabel2.setText("No hay eventos");
             jLabel12.setText("");
+            jLabel12.setIcon(new ImageIcon(getClass().getResource("/error.png")));
         }
     }
     
@@ -826,9 +848,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
             }
             jLabel26.setText(eMax.getNombre());
             jLabel27.setText("Entradas: " + eMax.getEntradasVendidas());
+            jLabel27.setIcon(null);
         }else{
             jLabel26.setText("No hay eventos");
             jLabel27.setText("");
+            jLabel27.setIcon(new ImageIcon(getClass().getResource("/error.png")));
         }
         
         if(eMin != null){
@@ -839,9 +863,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
             }
             jLabel20.setText(eMin.getNombre());
             jLabel21.setText("Entradas: " + eMin.getEntradasVendidas());
+            jLabel21.setIcon(null);
         }else{
             jLabel20.setText("No hay eventos");
             jLabel21.setText("");
+            jLabel21.setIcon(new ImageIcon(getClass().getResource("/error.png")));
         }
     }
     
@@ -863,9 +889,11 @@ public class EstadisticasPanel extends javax.swing.JPanel {
             }
             jLabel14.setText(eMax.getNombre());
             jLabel15.setText("Capacidad: " + eMax.getEntradasVendidas());
+            jLabel15.setIcon(null);
         }else{
             jLabel14.setText("No hay eventos");
             jLabel15.setText("");
+            jLabel15.setIcon(new ImageIcon(getClass().getResource("/error.png")));
         }
     }
     

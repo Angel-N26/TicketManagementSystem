@@ -27,7 +27,7 @@ public class ControlUsuarios {
         return daoUsuarios.insertarUsuarioDAO(usuario);
     }
 
-    public boolean modificarUsuario(Usuario usuario, String user){
-        return daoUsuarios.modificarUsuarioDAO(usuario, user);
+    public boolean modificarUsuario(Usuario usuario){
+        return daoUsuarios.modificarUsuarioDAO(usuario);
     }
 }

@@ -2,6 +2,7 @@ package presentacion;
 
 import dominio.Colores;
 import dominio.ControlUsuarios;
+import dominio.PasswordAuthentication;
 import dominio.Usuario;
 import java.awt.Color;
 import java.sql.Connection;
@@ -51,7 +52,6 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         setMaximumSize(new java.awt.Dimension(450, 300));
         setMinimumSize(new java.awt.Dimension(450, 300));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(450, 300));
 
         jPanel1.setMinimumSize(new java.awt.Dimension(450, 250));
         jPanel1.setPreferredSize(new java.awt.Dimension(450, 250));
@@ -245,7 +245,7 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -279,9 +279,10 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
 
     private void kButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton2MouseReleased
         if(activarAceptar){
+            PasswordAuthentication pa = new PasswordAuthentication();
             if(camposVacios() && comprobarCampos()){
-                user.setContrasena(jPasswordField2.getText());
-                if(cu.modificarUsuario(user, user.getUsuario())){
+                user.setContrasena(pa.hash(jPasswordField2.getText()));
+                if(cu.modificarUsuario(user)){
                     JOptionPane.showMessageDialog(this, "Contraseña actualizada",
                         "Valido", JOptionPane.PLAIN_MESSAGE);
                     dispose();
@@ -353,8 +354,8 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
     
     private boolean comprobarCampos(){
         boolean comprobar = true;
-        
-        if(!jPasswordField1.getText().equals(user.getContrasena())){
+        PasswordAuthentication pa = new PasswordAuthentication();
+        if(!pa.authenticate(jPasswordField1.getText(), user.getContrasena())){
             jPasswordField1.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel8.setVisible(true);
             jLabel9.setText("Contraseña actual erronea");

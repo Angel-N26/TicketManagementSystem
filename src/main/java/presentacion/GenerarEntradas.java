@@ -250,11 +250,12 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
                                     carpeta.mkdir();
                                     File outputfile = new File(carpeta.getAbsolutePath()+"/qr"+entrada.getNumEntrada()+".png");
                                     ImageIO.write(imagen, "png", outputfile);
-                                    modeloListaSociosCon.add(modeloListaSociosCon.size(), socioConEntrada.get(i));
-                                    modeloListaSociosSin.removeElement(socioConEntrada.get(i));
+                                    
                                     evento.setEntradasVendidas(evento.getEntradasVendidas()+1);
                                     
                                     mail(socio.getEmail(), outputfile.getPath());
+                                    modeloListaSociosCon.add(modeloListaSociosCon.size(), socioConEntrada.get(i));
+                                    modeloListaSociosSin.removeElement(socioConEntrada.get(i));
                                 }catch(Exception e){
                                     JOptionPane.showMessageDialog(this, "No se pudo generar la entrada.",
                                     "Error", JOptionPane.ERROR_MESSAGE);
