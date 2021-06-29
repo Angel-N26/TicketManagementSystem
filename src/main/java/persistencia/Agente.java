@@ -15,7 +15,7 @@ public class Agente {
     static String DB_password = "m6mJYqylcd"; //
     static String DB_URL = "jdbc:mysql://mysql5046.site4now.net/db_a75429_tmsdb"; // mysql5046.site4now.net/db_a75429_tmsdb
 
-    /*public static Connection getConexion() {
+    public static Connection getConexion() {
         Connection con = null;
         try {
             Class.forName(driver);
@@ -25,9 +25,9 @@ public class Agente {
             System.err.println(e.getMessage());
         }
         return con;
-    }*/
+    }
     
-    public static Connection getConexion() {
+    /*public static Connection getConexion() {
         Connection con = null;
         try {
             Class.forName(driver);
@@ -38,7 +38,7 @@ public class Agente {
             System.err.println(e.getMessage());
         }
         return con;
-    }
+    }*/
     
     public static void closeConexion(Connection con){
         try {
