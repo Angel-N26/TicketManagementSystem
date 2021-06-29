@@ -29,6 +29,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
@@ -84,7 +85,7 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
         panel.setLayout(new java.awt.BorderLayout());
 
         panelNorth.setBackground(new java.awt.Color(51, 51, 51));
-        panelNorth.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        panelNorth.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 0, 2, new java.awt.Color(255, 255, 255)));
         panelNorth.setName("panelNorth"); // NOI18N
         panelNorth.setPreferredSize(new java.awt.Dimension(511, 40));
         panelNorth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -109,13 +110,19 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                closeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                closeMouseExited(evt);
+            }
         });
-        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(481, 2, -1, -1));
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 6, 24, 24));
 
         panel.add(panelNorth, java.awt.BorderLayout.NORTH);
 
         panelCenter.setBackground(new java.awt.Color(51, 51, 51));
-        panelCenter.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        panelCenter.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 0, 2, new java.awt.Color(255, 255, 255)));
         panelCenter.setName("panelCenter"); // NOI18N
         panelCenter.setPreferredSize(new java.awt.Dimension(490, 300));
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -168,7 +175,7 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
         panel.add(panelCenter, java.awt.BorderLayout.CENTER);
 
         panelSouth.setBackground(new java.awt.Color(51, 51, 51));
-        panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
+        panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         panelSouth.setName("panelSouth"); // NOI18N
         panelSouth.setPreferredSize(new java.awt.Dimension(192, 75));
         panelSouth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
@@ -284,6 +291,14 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
             }
         }        
     }//GEN-LAST:event_btnGenerarEntradasMouseReleased
+
+    private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
+        close.setIcon(new ImageIcon(getClass().getResource("/close-button-red.png")));
+    }//GEN-LAST:event_closeMouseEntered
+
+    private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
+        close.setIcon(new ImageIcon(getClass().getResource("/close-button.png")));
+    }//GEN-LAST:event_closeMouseExited
         
     
     public void rellenarListas(){

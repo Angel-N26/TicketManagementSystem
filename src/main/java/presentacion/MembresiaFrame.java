@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -71,7 +72,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         panelBorder.setLayout(new java.awt.BorderLayout());
 
         panelNorth.setBackground(new java.awt.Color(51, 51, 51));
-        panelNorth.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        panelNorth.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 0, 2, new java.awt.Color(255, 255, 255)));
         panelNorth.setPreferredSize(new java.awt.Dimension(400, 40));
         panelNorth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -92,26 +93,34 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                closeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                closeMouseExited(evt);
+            }
         });
-        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 2, -1, -1));
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 6, 24, 24));
 
         panelBorder.add(panelNorth, java.awt.BorderLayout.NORTH);
 
         panelCenter.setBackground(new java.awt.Color(51, 51, 51));
-        panelCenter.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        panelCenter.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 0, 2, new java.awt.Color(255, 255, 255)));
         panelCenter.setName("panelCenter"); // NOI18N
         panelCenter.setPreferredSize(new java.awt.Dimension(400, 285));
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        clean.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         clean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clean.png"))); // NOI18N
         clean.setToolTipText("Limpiar campos");
         clean.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        clean.setPreferredSize(new java.awt.Dimension(20, 20));
         clean.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 cleanMousePressed(evt);
             }
         });
-        panelCenter.add(clean, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
+        panelCenter.add(clean, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 210, -1, -1));
 
         scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane.setName("scrollPane"); // NOI18N
@@ -214,12 +223,12 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
                 btnModificarMouseReleased(evt);
             }
         });
-        panelCenter.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 90, 20));
+        panelCenter.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 210, 90, 20));
 
         panelBorder.add(panelCenter, java.awt.BorderLayout.CENTER);
 
         panelSouth.setBackground(new java.awt.Color(51, 51, 51));
-        panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
+        panelSouth.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         panelSouth.setName("panelSouth"); // NOI18N
         panelSouth.setPreferredSize(new java.awt.Dimension(387, 75));
         panelSouth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 20));
@@ -434,6 +443,14 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
     private void btnAnadirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnadirMousePressed
         activarAnadir = true;
     }//GEN-LAST:event_btnAnadirMousePressed
+
+    private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
+        close.setIcon(new ImageIcon(getClass().getResource("/close-button-red.png")));
+    }//GEN-LAST:event_closeMouseEntered
+
+    private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
+        close.setIcon(new ImageIcon(getClass().getResource("/close-button.png")));
+    }//GEN-LAST:event_closeMouseExited
 
     private ArrayList<Membresia> obtenerMembresias(){
         ArrayList<Membresia> mems = cm.obtenerMembresias(asociacion.getId());

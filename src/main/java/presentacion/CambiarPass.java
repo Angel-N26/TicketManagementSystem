@@ -7,6 +7,7 @@ import dominio.Usuario;
 import java.awt.Color;
 import java.sql.Connection;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -58,7 +59,7 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 0, 2, new java.awt.Color(255, 255, 255)));
         jPanel2.setMaximumSize(new java.awt.Dimension(450, 40));
         jPanel2.setMinimumSize(new java.awt.Dimension(450, 40));
         jPanel2.setPreferredSize(new java.awt.Dimension(450, 40));
@@ -72,8 +73,14 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
         });
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 2, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 6, 24, 24));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -83,7 +90,7 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         jPanel1.add(jPanel2, java.awt.BorderLayout.NORTH);
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 1, 1, new java.awt.Color(0, 0, 0)));
+        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         jPanel3.setMaximumSize(new java.awt.Dimension(450, 75));
         jPanel3.setMinimumSize(new java.awt.Dimension(450, 75));
         jPanel3.setPreferredSize(new java.awt.Dimension(450, 75));
@@ -140,7 +147,7 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         jPanel1.add(jPanel3, java.awt.BorderLayout.SOUTH);
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 1, new java.awt.Color(0, 0, 0)));
+        jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 2, 0, 2, new java.awt.Color(255, 255, 255)));
         jPanel4.setMaximumSize(new java.awt.Dimension(450, 135));
         jPanel4.setMinimumSize(new java.awt.Dimension(450, 185));
         jPanel4.setPreferredSize(new java.awt.Dimension(450, 185));
@@ -324,6 +331,14 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
     private void jPasswordField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField3FocusLost
         jPasswordField3.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
     }//GEN-LAST:event_jPasswordField3FocusLost
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        jLabel1.setIcon(new ImageIcon(getClass().getResource("/close-button-red.png")));
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        jLabel1.setIcon(new ImageIcon(getClass().getResource("/close-button.png")));
+    }//GEN-LAST:event_jLabel1MouseExited
 
     private boolean camposVacios(){
         boolean noVacio = true;

@@ -11,9 +11,6 @@ import dominio.Socio;
 import dominio.Usuario;
 import java.awt.CardLayout;
 import java.awt.Color;
-import static java.awt.Frame.MAXIMIZED_BOTH;
-import static java.awt.Frame.NORMAL;
-import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -151,14 +148,17 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         minimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/minimizar.png"))); // NOI18N
         minimize.setName("minimize"); // NOI18N
         minimize.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                minimizeMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 minimizeMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 minimizeMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                minimizeMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                minimizeMouseReleased(evt);
             }
         });
         panelNorthRight.add(minimize);
@@ -166,14 +166,17 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/close-button.png"))); // NOI18N
         close.setName("close"); // NOI18N
         close.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                closeMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 closeMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 closeMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                closeMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                closeMouseReleased(evt);
             }
         });
         panelNorthRight.add(close);
@@ -584,28 +587,13 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
         xy = evt.getY();
     }//GEN-LAST:event_panelNorthMousePressed
 
-    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        Agente.closeConexion(con);
-        System.exit(0);
-    }//GEN-LAST:event_closeMouseClicked
-
-    private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
-        close.setIcon(new ImageIcon(getClass().getResource("/close-button-red.png")));
-    }//GEN-LAST:event_closeMouseEntered
-
     private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
+        activarCerrar = false;
         close.setIcon(new ImageIcon(getClass().getResource("/close-button.png")));
     }//GEN-LAST:event_closeMouseExited
 
-    private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
-        setExtendedState(ICONIFIED);
-    }//GEN-LAST:event_minimizeMouseClicked
-
-    private void minimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseEntered
-        minimize.setIcon(new ImageIcon(getClass().getResource("/minimizar-purple.png")));
-    }//GEN-LAST:event_minimizeMouseEntered
-
     private void minimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseExited
+        activarMinimizar = false;
         minimize.setIcon(new ImageIcon(getClass().getResource("/minimizar.png")));
     }//GEN-LAST:event_minimizeMouseExited
 
@@ -885,6 +873,35 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
             cp.setLocationRelativeTo(null);
         }
     }//GEN-LAST:event_btnCambiarPassMouseReleased
+
+    private void minimizeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMousePressed
+        activarMinimizar = true;
+    }//GEN-LAST:event_minimizeMousePressed
+
+    private void minimizeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseReleased
+        if(activarMinimizar){
+            setExtendedState(ICONIFIED);
+        }
+    }//GEN-LAST:event_minimizeMouseReleased
+
+    private void closeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMousePressed
+        activarCerrar = true;
+    }//GEN-LAST:event_closeMousePressed
+
+    private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
+        if(activarCerrar){
+            Agente.closeConexion(con);
+            System.exit(0);
+        }
+    }//GEN-LAST:event_closeMouseReleased
+
+    private void minimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseEntered
+        minimize.setIcon(new ImageIcon(getClass().getResource("/minimizar-purple.png")));
+    }//GEN-LAST:event_minimizeMouseEntered
+
+    private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
+        close.setIcon(new ImageIcon(getClass().getResource("/close-button-red.png")));
+    }//GEN-LAST:event_closeMouseEntered
        
     private void no_selected(KButton btn){        
         btn.setSelected(false);
@@ -996,6 +1013,8 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
     private boolean activarEstadistica;
     private boolean activarCerrarSesion;
     private boolean activarCambiarPass;
+    private boolean activarMinimizar;
+    private boolean activarCerrar;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnAsociacion;
