@@ -74,31 +74,5 @@ public class Email {
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
         
-    }
-    
-    public void enviarPass()throws MessagingException{
-        String remitente = "angelsanchez2697";
-        String clave = "";
-        
-        Properties props = System.getProperties();
-        props.put("mail.smtp.host", "smtp.gmail.com");  //Servidor SMTP de Google
-        props.put("mail.smtp.user", remitente);        
-        props.put("mail.smtp.clave", clave);    //Clave de la cuenta        
-        props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
-        props.put("mail.smtp.starttls.enable", "true"); //Conectar de manera segura al servidor SMTP
-        props.put("mail.smtp.port", "587"); //Puerto SMTP seguro de Google
-
-        Session session = Session.getDefaultInstance(props);
-        MimeMessage message = new MimeMessage(session);
-                           
-        message.setFrom(new InternetAddress(remitente));
-        message.addRecipient(Message.RecipientType.TO, new InternetAddress(this.destinatario));
-        message.setSubject(this.asunto);
-        message.setText(this.cuerpo);
-
-        Transport transport = session.getTransport("smtp");
-        transport.connect("smtp.gmail.com", remitente, clave);
-        transport.sendMessage(message, message.getAllRecipients());
-        transport.close();
-    }
+    }    
 }
