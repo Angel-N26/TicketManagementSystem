@@ -78,7 +78,7 @@ public class Email {
     
     public void enviarPass()throws MessagingException{
         String remitente = "angelsanchez2697";
-        String clave = "mChoqso2";
+        String clave = "";
         
         Properties props = System.getProperties();
         props.put("mail.smtp.host", "smtp.gmail.com");  //Servidor SMTP de Google
