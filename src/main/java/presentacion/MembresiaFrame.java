@@ -42,7 +42,6 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         lblTitulo = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         panelCenter = new javax.swing.JPanel();
-        clean = new javax.swing.JLabel();
         scrollPane = new javax.swing.JScrollPane();
         listMembresias = new javax.swing.JList<>();
         lblNombre = new javax.swing.JLabel();
@@ -52,6 +51,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         errorImgPrecio = new javax.swing.JLabel();
         tfPrecio = new javax.swing.JTextField();
         btnModificar = new keeptoo.KButton();
+        kButton1 = new keeptoo.KButton();
         panelSouth = new javax.swing.JPanel();
         btnEliminar = new keeptoo.KButton();
         btnAnadir = new keeptoo.KButton();
@@ -90,14 +90,17 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         close.setName("close"); // NOI18N
         close.setPreferredSize(new java.awt.Dimension(16, 16));
         close.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                closeMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 closeMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 closeMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                closeMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                closeMouseReleased(evt);
             }
         });
         panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 6, 24, 24));
@@ -109,18 +112,6 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         panelCenter.setName("panelCenter"); // NOI18N
         panelCenter.setPreferredSize(new java.awt.Dimension(400, 285));
         panelCenter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        clean.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        clean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/clean.png"))); // NOI18N
-        clean.setToolTipText("Limpiar campos");
-        clean.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        clean.setPreferredSize(new java.awt.Dimension(20, 20));
-        clean.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cleanMousePressed(evt);
-            }
-        });
-        panelCenter.add(clean, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 210, -1, -1));
 
         scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane.setName("scrollPane"); // NOI18N
@@ -143,13 +134,13 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         });
         scrollPane.setViewportView(listMembresias);
 
-        panelCenter.add(scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 230, 265));
+        panelCenter.add(scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 180, 265));
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblNombre.setText("Nombre*");
         lblNombre.setName("lblNombre"); // NOI18N
-        panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 75, -1, -1));
+        panelCenter.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 75, -1, -1));
 
         errorImgNombre.setVisible(false);
         errorImgNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -172,13 +163,13 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
                 tfNombreFocusLost(evt);
             }
         });
-        panelCenter.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 95, 130, -1));
+        panelCenter.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 95, 180, -1));
 
         lblPrecio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPrecio.setForeground(new java.awt.Color(255, 255, 255));
         lblPrecio.setText("Precio*");
         lblPrecio.setName("lblPrecio"); // NOI18N
-        panelCenter.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
+        panelCenter.add(lblPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
 
         errorImgPrecio.setVisible(false);
         errorImgPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -201,7 +192,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
                 tfPrecioFocusLost(evt);
             }
         });
-        panelCenter.add(tfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 130, -1));
+        panelCenter.add(tfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 180, -1));
 
         btnModificar.setBorder(null);
         btnModificar.setText("Modificar");
@@ -223,7 +214,28 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
                 btnModificarMouseReleased(evt);
             }
         });
-        panelCenter.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 210, 90, 20));
+        panelCenter.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 80, 20));
+
+        kButton1.setBorder(null);
+        kButton1.setText("Limpiar campos");
+        kButton1.setkEndColor(new java.awt.Color(51, 0, 51));
+        kButton1.setkHoverEndColor(new java.awt.Color(0, 0, 0));
+        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton1.setkHoverStartColor(new java.awt.Color(51, 0, 51));
+        kButton1.setkPressedColor(new java.awt.Color(255, 153, 204));
+        kButton1.setkStartColor(new java.awt.Color(204, 0, 204));
+        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                kButton1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                kButton1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                kButton1MouseReleased(evt);
+            }
+        });
+        panelCenter.add(kButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 90, 20));
 
         panelBorder.add(panelCenter, java.awt.BorderLayout.CENTER);
 
@@ -302,10 +314,6 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         tfPrecio.setText(mem.getPrecio()+""); 
         btnModificar.setEnabled(true);
     }//GEN-LAST:event_listMembresiasMouseClicked
-
-    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        dispose();
-    }//GEN-LAST:event_closeMouseClicked
 
     private void tfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNombreFocusGained
         tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
@@ -420,18 +428,6 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
         }
     }//GEN-LAST:event_btnAnadirMouseReleased
 
-    private void cleanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cleanMousePressed
-        listMembresias.setSelectedValue(null, false);        
-        tfNombre.setText("");
-        tfPrecio.setText("");
-        
-        tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
-        errorImgNombre.setVisible(false);
-        
-        tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
-        errorImgPrecio.setVisible(false);
-    }//GEN-LAST:event_cleanMousePressed
-
     private void btnModificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMousePressed
         activarMod = true;
     }//GEN-LAST:event_btnModificarMousePressed
@@ -449,8 +445,41 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
     }//GEN-LAST:event_closeMouseEntered
 
     private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
+        activarCerrar = false;
         close.setIcon(new ImageIcon(getClass().getResource("/close-button.png")));
     }//GEN-LAST:event_closeMouseExited
+
+    private void kButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseExited
+        activarLimpiar = false;
+    }//GEN-LAST:event_kButton1MouseExited
+
+    private void kButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MousePressed
+        activarLimpiar = true;
+    }//GEN-LAST:event_kButton1MousePressed
+
+    private void kButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseReleased
+        if(activarLimpiar){
+            listMembresias.setSelectedValue(null, false);        
+            tfNombre.setText("");
+            tfPrecio.setText("");
+
+            tfNombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+            errorImgNombre.setVisible(false);
+
+            tfPrecio.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(102, 102, 102)));
+            errorImgPrecio.setVisible(false);
+        }
+    }//GEN-LAST:event_kButton1MouseReleased
+
+    private void closeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMousePressed
+        activarCerrar = true;
+    }//GEN-LAST:event_closeMousePressed
+
+    private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
+        if(activarCerrar){
+            dispose();
+        }
+    }//GEN-LAST:event_closeMouseReleased
 
     private ArrayList<Membresia> obtenerMembresias(){
         ArrayList<Membresia> mems = cm.obtenerMembresias(asociacion.getId());
@@ -475,6 +504,8 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
     private boolean activarMod;
     private boolean activarEliminar;
     private boolean activarAnadir;
+    private boolean activarLimpiar;
+    private boolean activarCerrar;
     
     private final Asociacion asociacion;
     
@@ -489,10 +520,10 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
     private keeptoo.KButton btnAnadir;
     private keeptoo.KButton btnEliminar;
     private keeptoo.KButton btnModificar;
-    private javax.swing.JLabel clean;
     private javax.swing.JLabel close;
     private javax.swing.JLabel errorImgNombre;
     private javax.swing.JLabel errorImgPrecio;
+    private keeptoo.KButton kButton1;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblTitulo;

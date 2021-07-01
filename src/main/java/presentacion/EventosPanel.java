@@ -3,6 +3,7 @@ package presentacion;
 import dominio.Asociacion;
 import dominio.ControlEvento;
 import dominio.Evento;
+import dominio.OrdenarEventos;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.sql.Connection;
@@ -11,6 +12,8 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -37,11 +40,16 @@ public class EventosPanel extends javax.swing.JPanel {
         java.awt.GridBagConstraints gridBagConstraints;
 
         panelNorth = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         panelBuscar = new javax.swing.JPanel();
         tfBuscar = new javax.swing.JTextField();
         buscar = new javax.swing.JLabel();
         clear = new javax.swing.JLabel();
         lblNoResultados = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+
         panelCenter = new javax.swing.JPanel();
         scrollPane = new javax.swing.JScrollPane();
         String[] titulos = {"ID", "Evento", "Tipo", "Sala", "Fecha","Entradas"};
@@ -74,6 +82,10 @@ public class EventosPanel extends javax.swing.JPanel {
         panelNorth.setBackground(new java.awt.Color(51, 51, 51));
         panelNorth.setName("panelNorth"); // NOI18N
         panelNorth.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 5));
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setPreferredSize(new java.awt.Dimension(450, 45));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
         panelBuscar.setBackground(new java.awt.Color(31, 31, 31));
         panelBuscar.setName("panelBuscar"); // NOI18N
@@ -118,7 +130,7 @@ public class EventosPanel extends javax.swing.JPanel {
         });
         panelBuscar.add(buscar);
 
-        panelNorth.add(panelBuscar);
+        jPanel1.add(panelBuscar);
 
         clear.setVisible(false);
         clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cancelar24.png"))); // NOI18N
@@ -130,13 +142,33 @@ public class EventosPanel extends javax.swing.JPanel {
                 clearMouseClicked(evt);
             }
         });
-        panelNorth.add(clear);
+        jPanel1.add(clear);
 
         lblNoResultados.setVisible(false);
         lblNoResultados.setForeground(new java.awt.Color(255, 255, 255));
         lblNoResultados.setText("No se ha encontrado ninguna coincidencia");
         lblNoResultados.setName("lblNoResultados"); // NOI18N
-        panelNorth.add(lblNoResultados);
+        jPanel1.add(lblNoResultados);
+
+        panelNorth.add(jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Ordenar tabla por:");
+        jPanel2.add(jLabel1);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID ascendente", "ID descendente", "Nombre ascendente", "Nombre descendente", " " }));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(160, 35));
+        jComboBox1.setSelectedItem(null);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBox1);
+
+        panelNorth.add(jPanel2);
 
         add(panelNorth, java.awt.BorderLayout.NORTH);
 
@@ -160,6 +192,14 @@ public class EventosPanel extends javax.swing.JPanel {
         table.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         table.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         table.setShowVerticalLines(false);
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(SwingConstants.CENTER);
+        table.getColumnModel().getColumn(0).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(1).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(2).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(3).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(4).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(5).setCellRenderer(tcr);
         table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableMouseClicked(evt);
@@ -345,6 +385,39 @@ public class EventosPanel extends javax.swing.JPanel {
             cardLayout.show(card, "cardEditEP");
         }
     }//GEN-LAST:event_btnAnadirMouseReleased
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        if(jComboBox1.getSelectedItem() != null){
+            ArrayList a = ce.obtenerEventos(asociacion.getId());            
+            OrdenarEventos d = new OrdenarEventos(a);
+            
+            if(jComboBox1.getSelectedItem().equals("ID ascendente")){
+                a = d.sort("ID", "Ascendente");
+                removeTabla();
+                addTabla(a);
+            }else if(jComboBox1.getSelectedItem().equals("ID descendente")){
+                a = d.sort("ID", "Descendente");
+                removeTabla();
+                addTabla(a);
+            }else if(jComboBox1.getSelectedItem().equals("Nombre ascendente")){
+                a = d.sort("Nombre", "Ascendente");
+                removeTabla();
+                addTabla(a);
+            }else if(jComboBox1.getSelectedItem().equals("Nombre descendente")){
+                a = d.sort("Nombre", "Descendente");
+                removeTabla();
+                addTabla(a);
+            }/*else if(jComboBox1.getSelectedItem().equals("Apellidos ascendente")){
+                a = d.sort("Apellidos", "Ascendente");
+                removeTabla();
+                addTabla(a);
+            }else if(jComboBox1.getSelectedItem().equals("Apellidos descendente")){
+                a = d.sort("Apellidos", "Descendente");
+                removeTabla();
+                addTabla(a);
+            }*/
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
     
     public ArrayList<Evento> obtenerEventos(){
         //ControlEvento ceve = new ControlEvento();
@@ -387,6 +460,10 @@ public class EventosPanel extends javax.swing.JPanel {
     private keeptoo.KButton btnEliminar;
     private javax.swing.JLabel buscar;
     private javax.swing.JLabel clear;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblNoResultados;
     private javax.swing.JPanel panelBuscar;
     private javax.swing.JPanel panelCenter;

@@ -59,8 +59,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel9 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
-        jPanel14 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel50 = new javax.swing.JPanel();
@@ -70,8 +68,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel53 = new javax.swing.JPanel();
         jPanel54 = new javax.swing.JPanel();
         jPanel55 = new javax.swing.JPanel();
-        jPanel56 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jPanel43 = new javax.swing.JPanel();
@@ -81,8 +77,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel46 = new javax.swing.JPanel();
         jPanel47 = new javax.swing.JPanel();
         jPanel48 = new javax.swing.JPanel();
-        jPanel49 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jPanel36 = new javax.swing.JPanel();
@@ -92,8 +86,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel39 = new javax.swing.JPanel();
         jPanel40 = new javax.swing.JPanel();
         jPanel41 = new javax.swing.JPanel();
-        jPanel42 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jPanel29 = new javax.swing.JPanel();
@@ -103,8 +95,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel32 = new javax.swing.JPanel();
         jPanel33 = new javax.swing.JPanel();
         jPanel34 = new javax.swing.JPanel();
-        jPanel35 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
@@ -114,8 +104,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel25 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
-        jPanel28 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
@@ -125,8 +113,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel18 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         jPanel20 = new javax.swing.JPanel();
-        jPanel21 = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
@@ -235,18 +221,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel15.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel15.setLayout(new javax.swing.BoxLayout(jPanel15, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel14.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel14.setMinimumSize(new java.awt.Dimension(60, 60));
-        jPanel14.setName(""); // NOI18N
-        jPanel14.setPreferredSize(new java.awt.Dimension(60, 60));
-        jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
-
-        jLabel5.setToolTipText("");
-        jPanel14.add(jLabel5);
-
-        jPanel15.add(jPanel14);
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -302,18 +276,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel55.setMinimumSize(new java.awt.Dimension(370, 80));
         jPanel55.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel55.setLayout(new javax.swing.BoxLayout(jPanel55, javax.swing.BoxLayout.X_AXIS));
-
-        jPanel56.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel56.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel56.setMinimumSize(new java.awt.Dimension(60, 60));
-        jPanel56.setName(""); // NOI18N
-        jPanel56.setPreferredSize(new java.awt.Dimension(60, 60));
-        jPanel56.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
-
-        jLabel6.setToolTipText("");
-        jPanel56.add(jLabel6);
-
-        jPanel55.add(jPanel56);
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
@@ -371,18 +333,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel48.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel48.setLayout(new javax.swing.BoxLayout(jPanel48, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel49.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel49.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel49.setMinimumSize(new java.awt.Dimension(60, 60));
-        jPanel49.setName(""); // NOI18N
-        jPanel49.setPreferredSize(new java.awt.Dimension(60, 60));
-        jPanel49.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
-
-        jLabel7.setToolTipText("");
-        jPanel49.add(jLabel7);
-
-        jPanel48.add(jPanel49);
-
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -438,18 +388,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel41.setMinimumSize(new java.awt.Dimension(370, 80));
         jPanel41.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel41.setLayout(new javax.swing.BoxLayout(jPanel41, javax.swing.BoxLayout.X_AXIS));
-
-        jPanel42.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel42.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel42.setMinimumSize(new java.awt.Dimension(60, 60));
-        jPanel42.setName(""); // NOI18N
-        jPanel42.setPreferredSize(new java.awt.Dimension(60, 60));
-        jPanel42.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
-
-        jLabel8.setToolTipText("");
-        jPanel42.add(jLabel8);
-
-        jPanel41.add(jPanel42);
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
@@ -507,18 +445,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel34.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel34.setLayout(new javax.swing.BoxLayout(jPanel34, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel35.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel35.setMinimumSize(new java.awt.Dimension(60, 60));
-        jPanel35.setName(""); // NOI18N
-        jPanel35.setPreferredSize(new java.awt.Dimension(60, 60));
-        jPanel35.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
-
-        jLabel9.setToolTipText("");
-        jPanel35.add(jLabel9);
-
-        jPanel34.add(jPanel35);
-
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -575,20 +501,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel27.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel27.setLayout(new javax.swing.BoxLayout(jPanel27, javax.swing.BoxLayout.X_AXIS));
 
-        jPanel28.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel28.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel28.setMinimumSize(new java.awt.Dimension(60, 60));
-        jPanel28.setName(""); // NOI18N
-        jPanel28.setPreferredSize(new java.awt.Dimension(60, 60));
-        jPanel28.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
-
-        jLabel10.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel10.setToolTipText("");
-        jLabel10.setRequestFocusEnabled(false);
-        jPanel28.add(jLabel10);
-
-        jPanel27.add(jPanel28);
-
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -644,18 +556,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         jPanel20.setMinimumSize(new java.awt.Dimension(370, 80));
         jPanel20.setPreferredSize(new java.awt.Dimension(370, 80));
         jPanel20.setLayout(new javax.swing.BoxLayout(jPanel20, javax.swing.BoxLayout.X_AXIS));
-
-        jPanel21.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel21.setMinimumSize(new java.awt.Dimension(60, 60));
-        jPanel21.setName(""); // NOI18N
-        jPanel21.setPreferredSize(new java.awt.Dimension(60, 60));
-        jPanel21.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
-
-        jLabel31.setToolTipText("");
-        jPanel21.add(jLabel31);
-
-        jPanel20.add(jPanel21);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -738,9 +638,9 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         
         if(socioMasAntiguo != null){
             if(!socioMasAntiguo.getRutaImg().equals("")){
-                jLabel6.setIcon(new ImageIcon(socioMasAntiguo.getRutaImg()));
+                //jLabel6.setIcon(new ImageIcon(socioMasAntiguo.getRutaImg()));
             }else{
-                jLabel6.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+                //jLabel6.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
             }
             jLabel29.setText(socioMasAntiguo.getNombre());
             jLabel30.setText("Fecha: " + socioMasAntiguo.getFechaIngreso());
@@ -753,9 +653,9 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         
         if(socioMenosAntiguo != null){
             if(!socioMenosAntiguo.getRutaImg().equals("")){
-                jLabel8.setIcon(new ImageIcon(socioMenosAntiguo.getRutaImg()));
+                //jLabel8.setIcon(new ImageIcon(socioMenosAntiguo.getRutaImg()));
             }else{
-                jLabel8.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+                //jLabel8.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
             }
             jLabel23.setText(socioMenosAntiguo.getNombre());
             jLabel24.setText("Fecha: " + socioMenosAntiguo.getFechaIngreso());
@@ -783,9 +683,9 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         
         if(eUlt != null){
             if(!eUlt.getRutaImg().equals("")){
-                jLabel10.setIcon(new ImageIcon(eUlt.getRutaImg()));
+                //jLabel10.setIcon(new ImageIcon(eUlt.getRutaImg()));
             }else{
-                jLabel10.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+                //jLabel10.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
             }
             jLabel17.setText(eUlt.getNombre());
             jLabel18.setText("Fecha: " + eUlt.getFecha());
@@ -812,9 +712,9 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         
         if(eProx != null){
             if(!eProx.getRutaImg().equals("")){
-                jLabel5.setIcon(new ImageIcon(eProx.getRutaImg()));
+                //jLabel5.setIcon(new ImageIcon(eProx.getRutaImg()));
             }else{
-                jLabel5.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+                //jLabel5.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
             }
             jLabel2.setText(eProx.getNombre());
             jLabel12.setText("Fecha: " + eProx.getFecha());
@@ -842,9 +742,9 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         }
         if(eMax != null){
             if(!eMax.getRutaImg().equals("")){
-                jLabel7.setIcon(new ImageIcon(eMax.getRutaImg()));
+                //jLabel7.setIcon(new ImageIcon(eMax.getRutaImg()));
             }else{
-                jLabel7.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+                //jLabel7.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
             }
             jLabel26.setText(eMax.getNombre());
             jLabel27.setText("Entradas: " + eMax.getEntradasVendidas());
@@ -857,9 +757,9 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         
         if(eMin != null){
             if(!eMin.getRutaImg().equals("")){
-                jLabel9.setIcon(new ImageIcon(eMin.getRutaImg()));
+                //jLabel9.setIcon(new ImageIcon(eMin.getRutaImg()));
             }else{
-                jLabel9.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+                //jLabel9.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
             }
             jLabel20.setText(eMin.getNombre());
             jLabel21.setText("Entradas: " + eMin.getEntradasVendidas());
@@ -883,9 +783,9 @@ public class EstadisticasPanel extends javax.swing.JPanel {
         
         if(eMax != null){
             if(!eMax.getRutaImg().equals("")){
-                jLabel31.setIcon(new ImageIcon(eMax.getRutaImg()));
+                //jLabel31.setIcon(new ImageIcon(eMax.getRutaImg()));
             }else{
-                jLabel31.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
+                //jLabel31.setIcon(new ImageIcon(getClass().getResource("/socio.png")));
             }
             jLabel14.setText(eMax.getNombre());
             jLabel15.setText("Capacidad: " + eMax.getEntradasVendidas());
@@ -905,7 +805,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -928,19 +827,12 @@ public class EstadisticasPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
@@ -948,14 +840,12 @@ public class EstadisticasPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
-    private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
@@ -963,7 +853,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
-    private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
@@ -971,14 +860,12 @@ public class EstadisticasPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel41;
-    private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel43;
     private javax.swing.JPanel jPanel44;
     private javax.swing.JPanel jPanel45;
     private javax.swing.JPanel jPanel46;
     private javax.swing.JPanel jPanel47;
     private javax.swing.JPanel jPanel48;
-    private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel50;
     private javax.swing.JPanel jPanel51;
@@ -986,7 +873,6 @@ public class EstadisticasPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel53;
     private javax.swing.JPanel jPanel54;
     private javax.swing.JPanel jPanel55;
-    private javax.swing.JPanel jPanel56;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;

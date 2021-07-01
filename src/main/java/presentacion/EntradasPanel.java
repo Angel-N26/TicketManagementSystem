@@ -3,6 +3,7 @@ package presentacion;
 import dominio.Asociacion;
 import dominio.ControlEntradas;
 import dominio.ControlEvento;
+import dominio.ControlSocio;
 import dominio.Entrada;
 import dominio.Evento;
 import java.awt.Color;
@@ -22,6 +23,7 @@ public class EntradasPanel extends javax.swing.JPanel {
         
         this.cev = new ControlEvento(con);
         this.cen = new ControlEntradas(con);
+        this.cs = new ControlSocio(con);
         
         initComponents();
     }
@@ -183,29 +185,35 @@ public class EntradasPanel extends javax.swing.JPanel {
                 email = asociacion.getEmail();
                 
             if(!email.equals("")){
-                if(cbEvento.getSelectedItem() != null){                
-                    Evento evento = (Evento) cbEvento.getSelectedItem();                
-                    if(evento != null){
-                        if(evento.getEntradasVendidas() <= evento.getEntradas()){
-                            if(!ge.isVisible()){
-                                ge.setEvento(evento);
-                                ge.setEntradas(sacarEntradas(evento.getId()));
-                                ge.rellenarListas();
+                if(!cs.obtenerSocios(asociacion.getId()).isEmpty()){
+                    if(cbEvento.getSelectedItem() != null){                
+                        Evento evento = (Evento) cbEvento.getSelectedItem();                
+                        if(evento != null){
+                            if(evento.getEntradasVendidas() <= evento.getEntradas()){
+                                if(!ge.isVisible()){
+                                    ge.setEvento(evento);
+                                    ge.setEntradas(sacarEntradas(evento.getId()));
+                                    ge.rellenarListas();
 
-                                ge.setVisible(true);
-                                ge.setLocationRelativeTo(null);                      
+                                    ge.setVisible(true);
+                                    ge.setLocationRelativeTo(null);                      
+                                }
+                            }else{
+                                JOptionPane.showMessageDialog(this, "Ya se han generado todas la entradas"
+                                        + "de este evento", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                             }
-                        }else{
-                            JOptionPane.showMessageDialog(this, "Ya se han generado todas la entradas"
-                                    + "de este evento", "Error", JOptionPane.ERROR_MESSAGE);
                         }
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Selecciona un evento.", 
+                                "Aviso", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }else{
-                    JOptionPane.showMessageDialog(this, "Selecciona un evento.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Aun no has añadido ningún socio",
+                            "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "La asociacion no tiene correo. "
-                        + "Añade uno.", "Error", JOptionPane.ERROR_MESSAGE);
+                        + "Añade uno.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnGenerarEntradasMouseReleased
@@ -265,6 +273,7 @@ public class EntradasPanel extends javax.swing.JPanel {
     
     private final ControlEvento cev;
     private final ControlEntradas cen;
+    private final ControlSocio cs;
     
     private GenerarEntradas ge;
     

@@ -7,14 +7,27 @@ import dominio.ControlAsociacion;
 import dominio.ControlJuntaDirectiva;
 import dominio.ControlMembresia;
 import dominio.ControlUsuarios;
+import dominio.Email;
 import dominio.Membresia;
 import dominio.PasswordAuthentication;
+import static dominio.RegularExpresions.EMAIL;
 import dominio.Usuario;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.font.TextAttribute;
+import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.regex.Matcher;
+import javax.mail.MessagingException;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -64,12 +77,13 @@ public class Login extends javax.swing.JFrame implements Colores {
         lblPass = new javax.swing.JLabel();
         errorImgPass = new javax.swing.JLabel();
         errorImgPass.setVisible(false);
+        jLabel1 = new javax.swing.JLabel();
         pfPass = new javax.swing.JPasswordField();
-        cbRecordar = new javax.swing.JCheckBox();
         infor = new javax.swing.JLabel();
         lblInfor1 = new javax.swing.JLabel();
         lblInfor2 = new javax.swing.JLabel();
         lblInfor3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         panelRegistrarse = new javax.swing.JPanel();
         lblUserReg = new javax.swing.JLabel();
         lblUserRegError = new javax.swing.JLabel();
@@ -80,11 +94,13 @@ public class Login extends javax.swing.JFrame implements Colores {
         lblPassRegError = new javax.swing.JLabel();
         errorImgPassReg = new javax.swing.JLabel();
         errorImgPassReg.setVisible(false);
+        jLabel3 = new javax.swing.JLabel();
         pfPassReg = new javax.swing.JPasswordField();
         lblRepPass = new javax.swing.JLabel();
         lblRepPassError = new javax.swing.JLabel();
         errorImgRepPass = new javax.swing.JLabel();
         errorImgRepPass.setVisible(false);
+        jLabel2 = new javax.swing.JLabel();
         pfRepPass = new javax.swing.JPasswordField();
         lblNombreAsoc = new javax.swing.JLabel();
         lblNombreAsocError = new javax.swing.JLabel();
@@ -147,13 +163,21 @@ public class Login extends javax.swing.JFrame implements Colores {
         close.setMaximumSize(new java.awt.Dimension(16, 16));
         close.setMinimumSize(new java.awt.Dimension(16, 16));
         close.setName("close"); // NOI18N
-        close.setPreferredSize(new java.awt.Dimension(16, 16));
         close.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                closeMouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                closeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                closeMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                closeMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                closeMouseReleased(evt);
             }
         });
-        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(282, 2, -1, -1));
+        panelNorth.add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 6, -1, -1));
 
         lblInicioSesion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblInicioSesion.setForeground(new java.awt.Color(204, 0, 204));
@@ -222,7 +246,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         errorImgUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         errorImgUser.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgUser.setName("errorImgUser"); // NOI18N
-        panelIniciarSesion.add(errorImgUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 20, 20));
+        panelIniciarSesion.add(errorImgUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 55, 20, 20));
 
         tfUser.setBackground(new java.awt.Color(51, 51, 51));
         tfUser.setForeground(new java.awt.Color(255, 255, 255));
@@ -256,7 +280,22 @@ public class Login extends javax.swing.JFrame implements Colores {
         errorImgPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         errorImgPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgPass.setName("errorImgPass"); // NOI18N
-        panelIniciarSesion.add(errorImgPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 20, 20));
+        panelIniciarSesion.add(errorImgPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 115, 20, 20));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visible-eye.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel1MouseReleased(evt);
+            }
+        });
+        panelIniciarSesion.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 145, -1, -1));
 
         pfPass.setBackground(new java.awt.Color(51, 51, 51));
         pfPass.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,6 +304,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         pfPass.setCaretColor(new java.awt.Color(204, 0, 204));
         pfPass.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         pfPass.setName("pfPass"); // NOI18N
+        pfPass.setOpaque(false);
         pfPass.setPreferredSize(new java.awt.Dimension(280, 18));
         pfPass.setSelectionColor(new java.awt.Color(204, 0, 204));
         pfPass.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -276,14 +316,6 @@ public class Login extends javax.swing.JFrame implements Colores {
             }
         });
         panelIniciarSesion.add(pfPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 25));
-
-        cbRecordar.setVisible(false);
-        cbRecordar.setBackground(new java.awt.Color(51, 51, 51));
-        cbRecordar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        cbRecordar.setForeground(new java.awt.Color(255, 255, 255));
-        cbRecordar.setText("Recuerdame");
-        cbRecordar.setName("cbRecordar"); // NOI18N
-        panelIniciarSesion.add(cbRecordar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, -1, -1));
 
         infor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informacion.png"))); // NOI18N
         infor.setName("infor"); // NOI18N
@@ -310,6 +342,26 @@ public class Login extends javax.swing.JFrame implements Colores {
         lblInfor3.setPreferredSize(new java.awt.Dimension(212, 16));
         panelIniciarSesion.add(lblInfor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 280, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 0, 204));
+        jLabel4.setText("¿Has olvidado tu contraseña?");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel4MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel4MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel4MouseReleased(evt);
+            }
+        });
+        panelIniciarSesion.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 200, -1));
+
         panelCenter.add(panelIniciarSesion, "iniciarsesion");
 
         panelRegistrarse.setBackground(new java.awt.Color(51, 51, 51));
@@ -333,9 +385,10 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         errorImgUserReg.setForeground(new java.awt.Color(255, 255, 255));
         errorImgUserReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorImgUserReg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         errorImgUserReg.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgUserReg.setName("errorImgUser"); // NOI18N
-        panelRegistrarse.add(errorImgUserReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 20, 20));
+        panelRegistrarse.add(errorImgUserReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 15, 20, 20));
 
         tfUserReg.setBackground(new java.awt.Color(51, 51, 51));
         tfUserReg.setForeground(new java.awt.Color(255, 255, 255));
@@ -367,15 +420,31 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         errorImgPassReg.setForeground(new java.awt.Color(255, 255, 255));
         errorImgPassReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorImgPassReg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         errorImgPassReg.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgPassReg.setName("errorImgUser"); // NOI18N
-        panelRegistrarse.add(errorImgPassReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 20, 20));
+        panelRegistrarse.add(errorImgPassReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 75, 20, 20));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visible-eye.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel3MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel3MouseReleased(evt);
+            }
+        });
+        panelRegistrarse.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 105, -1, -1));
 
         pfPassReg.setBackground(new java.awt.Color(51, 51, 51));
         pfPassReg.setForeground(new java.awt.Color(255, 255, 255));
         pfPassReg.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         pfPassReg.setCaretColor(new java.awt.Color(204, 0, 204));
         pfPassReg.setName("pfPassReg"); // NOI18N
+        pfPassReg.setOpaque(false);
         pfPassReg.setSelectionColor(new java.awt.Color(204, 0, 204));
         pfPassReg.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -400,15 +469,31 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         errorImgRepPass.setForeground(new java.awt.Color(255, 255, 255));
         errorImgRepPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorImgRepPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         errorImgRepPass.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgRepPass.setName("errorImgUser"); // NOI18N
-        panelRegistrarse.add(errorImgRepPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 20, 20));
+        panelRegistrarse.add(errorImgRepPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 135, 20, 20));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visible-eye.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel2MouseReleased(evt);
+            }
+        });
+        panelRegistrarse.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 165, -1, -1));
 
         pfRepPass.setBackground(new java.awt.Color(51, 51, 51));
         pfRepPass.setForeground(new java.awt.Color(255, 255, 255));
         pfRepPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         pfRepPass.setCaretColor(new java.awt.Color(204, 0, 204));
         pfRepPass.setName("pfRepPass"); // NOI18N
+        pfRepPass.setOpaque(false);
         pfRepPass.setSelectionColor(new java.awt.Color(204, 0, 204));
         pfRepPass.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -433,9 +518,10 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         errorImgNombreAsoc.setForeground(new java.awt.Color(255, 255, 255));
         errorImgNombreAsoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorImgNombreAsoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
         errorImgNombreAsoc.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         errorImgNombreAsoc.setName("errorImgUser"); // NOI18N
-        panelRegistrarse.add(errorImgNombreAsoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 20, 20));
+        panelRegistrarse.add(errorImgNombreAsoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 195, 20, 20));
 
         tfNombreAsoc.setBackground(new java.awt.Color(51, 51, 51));
         tfNombreAsoc.setForeground(new java.awt.Color(255, 255, 255));
@@ -510,11 +596,6 @@ public class Login extends javax.swing.JFrame implements Colores {
     private void pfPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusLost
         pfPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
     }//GEN-LAST:event_pfPassFocusLost
-
-    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        Agente.closeConexion(conn);
-        System.exit(0);
-    }//GEN-LAST:event_closeMouseClicked
 
     private void panelNorthMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelNorthMousePressed
         xx = evt.getX();
@@ -642,6 +723,169 @@ public class Login extends javax.swing.JFrame implements Colores {
     private void btnInicioSesionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioSesionMousePressed
         activar = true;
     }//GEN-LAST:event_btnInicioSesionMousePressed
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        activarPassLogIn = false;
+    }//GEN-LAST:event_jLabel1MouseExited
+
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+        activarPassLogIn = true;
+    }//GEN-LAST:event_jLabel1MousePressed
+
+    private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
+        if(activarPassLogIn){
+            if(visiblePass){
+                pfPass.setEchoChar('•');
+                jLabel1.setIcon(new ImageIcon(getClass().getResource("/visible-eye.png")));
+                visiblePass = false;
+            }else{
+                pfPass.setEchoChar((char)0);
+                jLabel1.setIcon(new ImageIcon(getClass().getResource("/blind.png")));
+                visiblePass = true;
+            }
+        }
+    }//GEN-LAST:event_jLabel1MouseReleased
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        activarPassReg = false;
+    }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+        activarPassReg = true;
+    }//GEN-LAST:event_jLabel3MousePressed
+
+    private void jLabel3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseReleased
+        if(activarPassReg){
+            if(visiblePassReg){
+                pfPassReg.setEchoChar('•');
+                jLabel3.setIcon(new ImageIcon(getClass().getResource("/visible-eye.png")));
+                visiblePassReg = false;
+            }else{
+                pfPassReg.setEchoChar((char)0);
+                jLabel3.setIcon(new ImageIcon(getClass().getResource("/blind.png")));
+                visiblePassReg = true;
+            }
+        }
+    }//GEN-LAST:event_jLabel3MouseReleased
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        activarRepPass = false;
+    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        activarRepPass = true;
+    }//GEN-LAST:event_jLabel2MousePressed
+
+    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+        if(activarRepPass){
+            if(visibleRepPass){
+                pfRepPass.setEchoChar('•');
+                jLabel2.setIcon(new ImageIcon(getClass().getResource("/visible-eye.png")));
+                visibleRepPass = false;
+            }else{
+                pfRepPass.setEchoChar((char)0);
+                jLabel2.setIcon(new ImageIcon(getClass().getResource("/blind.png")));
+                visibleRepPass = true;
+            }
+        }
+    }//GEN-LAST:event_jLabel2MouseReleased
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        Font font = jLabel4.getFont();
+        Map<TextAttribute, Object> attributes = new HashMap<>(font.getAttributes());
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        jLabel4.setFont(font.deriveFont(attributes));
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
+        Font font = jLabel4.getFont();
+        Map<TextAttribute, Object> attributes = new HashMap<>(font.getAttributes());
+        attributes.put(TextAttribute.UNDERLINE, -1);
+        jLabel4.setFont(font.deriveFont(attributes));
+        activarOlvidarPass = false;
+    }//GEN-LAST:event_jLabel4MouseExited
+
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+        activarOlvidarPass = true;
+    }//GEN-LAST:event_jLabel4MousePressed
+
+    private void jLabel4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseReleased
+        if(activarOlvidarPass){
+            PasswordAuthentication pa = new PasswordAuthentication();
+                        
+            String user;
+            boolean existe = false;
+            ArrayList<Usuario> usuarios = cu.obtenerUsuarios();
+            JTextField tf = new JTextField();
+            int action = JOptionPane.showConfirmDialog(null, tf,"Introduzaca su nombre de usuario",JOptionPane.OK_CANCEL_OPTION);
+            if(action < 0);
+            else{
+                user = tf.getText();                                     
+                for(int i = 0 ; i < usuarios.size() ; i++){
+                    if(user.equals(usuarios.get(i).getUsuario()))
+                        existe = true;            
+                }
+                if(existe){//USER
+                    JTextField tf2 = new JTextField();
+                    int action2 = JOptionPane.showConfirmDialog(null, tf2,
+                            "Introduzaca el correo al que quiere que le llegue la contraseña",JOptionPane.OK_CANCEL_OPTION);
+                    if(action2 < 0);
+                    else {
+                        String email = tf2.getText();
+                        Matcher matcher = EMAIL.matcher(email);
+                        if(matcher.matches()){
+                            String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                + "0123456789" + "abcdefghijklmnopqrstuvxyz";
+
+                            StringBuilder sb = new StringBuilder(8);  
+                            for (int i = 0; i < 8; i++) {
+                                int index= (int)(AlphaNumericString.length()* Math.random());
+                                sb.append(AlphaNumericString.charAt(index));
+                            }
+                            String asunto = "Nueva contraseña TMS" ;
+                            String cuerpo = "Su nueva contraseña es: " + sb.toString();
+                            
+                            Email e = new Email(email, asunto, cuerpo);
+                            try{
+                               e.enviarPass();
+                               Usuario u = cu.obtenerUsuario(user);
+                               u.setContrasena(pa.hash(sb.toString()));
+                               cu.modificarUsuario(u);
+                            }catch(MessagingException ex){
+                               System.out.println();
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(this, "El correo electronico no es válido.", 
+                                "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this, "El usuario no existe.", 
+                                "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_jLabel4MouseReleased
+
+    private void closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseEntered
+        close.setIcon(new ImageIcon(getClass().getResource("/close-button-red.png")));
+    }//GEN-LAST:event_closeMouseEntered
+
+    private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
+        activarCerrar = false;
+        close.setIcon(new ImageIcon(getClass().getResource("/close-button.png")));
+    }//GEN-LAST:event_closeMouseExited
+
+    private void closeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMousePressed
+        activarCerrar = true;
+    }//GEN-LAST:event_closeMousePressed
+
+    private void closeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseReleased
+        if(activarCerrar){
+            Agente.closeConexion(conn);
+            System.exit(0);
+        }
+    }//GEN-LAST:event_closeMouseReleased
 
     private boolean comprobarUsuario(String nombre, String pass){
         boolean existe = false;
@@ -800,6 +1044,7 @@ public class Login extends javax.swing.JFrame implements Colores {
                     UIManager.put("TextField.background", new ColorUIResource(51,51,51));
                     UIManager.put("TextField.border", BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(204, 0, 204)));
                     UIManager.put("TextField.foreground", new ColorUIResource(255,255,255));  
+                    UIManager.put("TextField.caretForeground", new ColorUIResource(204,0,204));  
                     
                     /*Table Header*/
                     UIManager.put("TableHeader.background", new ColorUIResource(51,51,51));
@@ -826,9 +1071,19 @@ public class Login extends javax.swing.JFrame implements Colores {
     private final ControlJuntaDirectiva cjd;
     private final ControlMembresia cm;
     
+    private boolean visiblePass = false;
+    private boolean visiblePassReg = false;
+    private boolean visibleRepPass = false;
+    
+    private boolean activarPassLogIn;
+    private boolean activarPassReg;
+    private boolean activarRepPass;
+    private boolean activarOlvidarPass;
+    private boolean activarCerrar;
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private keeptoo.KButton btnInicioSesion;
-    private javax.swing.JCheckBox cbRecordar;
     private javax.swing.JLabel close;
     private javax.swing.JLabel errorImgNombreAsoc;
     private javax.swing.JLabel errorImgPass;
@@ -837,6 +1092,10 @@ public class Login extends javax.swing.JFrame implements Colores {
     private javax.swing.JLabel errorImgUser;
     private javax.swing.JLabel errorImgUserReg;
     private javax.swing.JLabel infor;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblInfor1;
     private javax.swing.JLabel lblInfor2;

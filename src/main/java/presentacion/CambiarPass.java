@@ -38,12 +38,15 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jPasswordField3 = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -160,7 +163,22 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         jLabel8.setVisible(false);
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visible-eye.png"))); // NOI18N
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel12MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel12MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel12MouseReleased(evt);
+            }
+        });
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 35, -1, -1));
 
         jPasswordField1.setBackground(new java.awt.Color(51, 51, 51));
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
@@ -168,6 +186,7 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         jPasswordField1.setCaretColor(new java.awt.Color(204, 0, 204));
         jPasswordField1.setMaximumSize(new java.awt.Dimension(280, 25));
         jPasswordField1.setMinimumSize(new java.awt.Dimension(280, 25));
+        jPasswordField1.setOpaque(false);
         jPasswordField1.setPreferredSize(new java.awt.Dimension(280, 25));
         jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -186,7 +205,22 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         jLabel7.setVisible(false);
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visible-eye.png"))); // NOI18N
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel13MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel13MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel13MouseReleased(evt);
+            }
+        });
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 105, -1, -1));
 
         jPasswordField2.setBackground(new java.awt.Color(51, 51, 51));
         jPasswordField2.setForeground(new java.awt.Color(255, 255, 255));
@@ -194,6 +228,7 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         jPasswordField2.setCaretColor(new java.awt.Color(204, 0, 204));
         jPasswordField2.setMaximumSize(new java.awt.Dimension(280, 25));
         jPasswordField2.setMinimumSize(new java.awt.Dimension(280, 25));
+        jPasswordField2.setOpaque(false);
         jPasswordField2.setPreferredSize(new java.awt.Dimension(280, 25));
         jPasswordField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -211,7 +246,23 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
 
         jLabel6.setVisible(false);
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, -1, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/error.png"))); // NOI18N
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visible-eye.png"))); // NOI18N
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel14MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel14MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel14MouseReleased(evt);
+            }
+        });
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 165, -1, -1));
 
         jPasswordField3.setBackground(new java.awt.Color(51, 51, 51));
         jPasswordField3.setForeground(new java.awt.Color(255, 255, 255));
@@ -219,6 +270,7 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         jPasswordField3.setCaretColor(new java.awt.Color(204, 0, 204));
         jPasswordField3.setMaximumSize(new java.awt.Dimension(280, 25));
         jPasswordField3.setMinimumSize(new java.awt.Dimension(280, 25));
+        jPasswordField3.setOpaque(false);
         jPasswordField3.setPreferredSize(new java.awt.Dimension(280, 25));
         jPasswordField3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -340,6 +392,72 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         jLabel1.setIcon(new ImageIcon(getClass().getResource("/close-button.png")));
     }//GEN-LAST:event_jLabel1MouseExited
 
+    private void jLabel12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseExited
+        activarPass = false;
+    }//GEN-LAST:event_jLabel12MouseExited
+
+    private void jLabel12MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MousePressed
+        activarPass = true;
+    }//GEN-LAST:event_jLabel12MousePressed
+
+    private void jLabel12MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseReleased
+        if(activarPass){
+           if(visiblePass){
+                jPasswordField1.setEchoChar('•');
+                jLabel12.setIcon(new ImageIcon(getClass().getResource("/visible-eye.png")));
+                visiblePass = false;
+            }else{
+                jPasswordField1.setEchoChar((char)0);
+                jLabel12.setIcon(new ImageIcon(getClass().getResource("/blind.png")));
+                visiblePass = true;
+            } 
+        }
+    }//GEN-LAST:event_jLabel12MouseReleased
+
+    private void jLabel13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseExited
+        activarNewPass = false;
+    }//GEN-LAST:event_jLabel13MouseExited
+
+    private void jLabel13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MousePressed
+        activarNewPass = true;
+    }//GEN-LAST:event_jLabel13MousePressed
+
+    private void jLabel13MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseReleased
+        if(activarNewPass){
+            if(visibleNewPass){
+                jPasswordField2.setEchoChar('•');
+                jLabel13.setIcon(new ImageIcon(getClass().getResource("/visible-eye.png")));
+                visibleNewPass = false;
+            }else{
+                jPasswordField2.setEchoChar((char)0);
+                jLabel13.setIcon(new ImageIcon(getClass().getResource("/blind.png")));
+                visibleNewPass = true;
+            }
+        }
+    }//GEN-LAST:event_jLabel13MouseReleased
+
+    private void jLabel14MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseExited
+        activarRepPass = false;
+    }//GEN-LAST:event_jLabel14MouseExited
+
+    private void jLabel14MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MousePressed
+        activarRepPass = true;
+    }//GEN-LAST:event_jLabel14MousePressed
+
+    private void jLabel14MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseReleased
+        if(activarRepPass){
+           if(visibleRepPass){
+                jPasswordField3.setEchoChar('•');
+                jLabel14.setIcon(new ImageIcon(getClass().getResource("/visible-eye.png")));
+                visibleRepPass = false;
+            }else{
+                jPasswordField3.setEchoChar((char)0);
+                jLabel14.setIcon(new ImageIcon(getClass().getResource("/blind.png")));
+                visibleRepPass = true;
+            } 
+        }
+    }//GEN-LAST:event_jLabel14MouseReleased
+
     private boolean camposVacios(){
         boolean noVacio = true;
         
@@ -392,11 +510,22 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
     
     private boolean activarCancelar;
     private boolean activarAceptar;
+    
+    private boolean activarPass;
+    private boolean activarNewPass;
+    private boolean activarRepPass;
+    
+    private boolean visiblePass = false;
+    private boolean visibleNewPass = false;
+    private boolean visibleRepPass = false;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

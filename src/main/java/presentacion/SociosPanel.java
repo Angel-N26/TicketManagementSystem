@@ -4,7 +4,9 @@ import dominio.Asociacion;
 import dominio.ControlMembresia;
 import dominio.ControlSocio;
 import dominio.Membresia;
+import dominio.OrdenarSocios;
 import dominio.Socio;
+import dominio.Usuario;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.sql.Connection;
@@ -13,6 +15,8 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -39,11 +43,16 @@ public class SociosPanel extends javax.swing.JPanel {
         java.awt.GridBagConstraints gridBagConstraints;
 
         panelNorth = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         panelBuscar = new javax.swing.JPanel();
         tfBuscar = new javax.swing.JTextField();
         buscar = new javax.swing.JLabel();
         clear = new javax.swing.JLabel();
         lblNoResultados = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         panelCenter = new javax.swing.JPanel();
         scrollPane = new javax.swing.JScrollPane();
         String[] titulos = {"DNI", "Nombre", "Apellidos", "Fecha", "Membresia","Pagado"};
@@ -80,6 +89,10 @@ public class SociosPanel extends javax.swing.JPanel {
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 5);
         flowLayout1.setAlignOnBaseline(true);
         panelNorth.setLayout(flowLayout1);
+
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel3.setPreferredSize(new java.awt.Dimension(450, 45));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
         panelBuscar.setBackground(new java.awt.Color(31, 31, 31));
         panelBuscar.setFocusable(false);
@@ -127,7 +140,7 @@ public class SociosPanel extends javax.swing.JPanel {
         });
         panelBuscar.add(buscar);
 
-        panelNorth.add(panelBuscar);
+        jPanel3.add(panelBuscar);
 
         clear.setVisible(false);
         clear.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,12 +153,37 @@ public class SociosPanel extends javax.swing.JPanel {
                 clearMouseClicked(evt);
             }
         });
-        panelNorth.add(clear);
+        jPanel3.add(clear);
 
         lblNoResultados.setVisible(false);
         lblNoResultados.setForeground(new java.awt.Color(255, 255, 255));
         lblNoResultados.setText("No se ha encontrado ninguna coincidencia");
-        panelNorth.add(lblNoResultados);
+        jPanel3.add(lblNoResultados);
+
+        panelNorth.add(jPanel3);
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Ordenar tabla por:");
+        jPanel2.add(jLabel1);
+
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI ascendente", "DNI descendente", "Nombre ascendente", "Nombre descendente", "Apellidos ascendente", "Apellidos descendente", " " }));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(160, 35));
+        jComboBox1.setSelectedItem(null);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox1);
+
+        jPanel2.add(jPanel1);
+
+        panelNorth.add(jPanel2);
 
         add(panelNorth, java.awt.BorderLayout.NORTH);
 
@@ -173,6 +211,13 @@ public class SociosPanel extends javax.swing.JPanel {
         table.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         table.setShowGrid(true);
         table.setShowVerticalLines(false);
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(SwingConstants.CENTER);
+        table.getColumnModel().getColumn(0).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(1).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(2).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(3).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(4).setCellRenderer(tcr);
         table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableMouseClicked(evt);
@@ -275,7 +320,7 @@ public class SociosPanel extends javax.swing.JPanel {
     private void buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarMouseClicked
         tfBuscar.nextFocus();
         String nombre = tfBuscar.getText();
-        ArrayList<Socio> soc = obtenerSocios();
+        ArrayList<Socio> soc = cs.obtenerSocios(asociacion.getId());
         ArrayList<Socio> socBusca = new ArrayList();      
         for(int i = 0 ; i < soc.size() ; i++){
             if(nombre.equals(soc.get(i).getNombre())){
@@ -359,19 +404,47 @@ public class SociosPanel extends javax.swing.JPanel {
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "Selecciona un socio.",
-                    "Error", JOptionPane.ERROR_MESSAGE);
+                    "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnEliminarMouseReleased
 
-    private ArrayList<Socio> obtenerSocios(){
-        //ControlSocio csoc = new ControlSocio(coon);
-        return cs.obtenerSocios(asociacion.getId());
-    }
-    
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        if(jComboBox1.getSelectedItem() != null){
+            ArrayList a = cs.obtenerSocios(asociacion.getId());            
+            OrdenarSocios d = new OrdenarSocios(a);
+            
+            if(jComboBox1.getSelectedItem().equals("DNI ascendente")){
+                a = d.sort("DNI", "Ascendente");
+                removeTabla();
+                addTabla(a);
+            }else if(jComboBox1.getSelectedItem().equals("DNI descendente")){
+                a = d.sort("DNI", "Descendente");
+                removeTabla();
+                addTabla(a);
+            }else if(jComboBox1.getSelectedItem().equals("Nombre ascendente")){
+                a = d.sort("Nombre", "Ascendente");
+                removeTabla();
+                addTabla(a);
+            }else if(jComboBox1.getSelectedItem().equals("Nombre descendente")){
+                a = d.sort("Nombre", "Descendente");
+                removeTabla();
+                addTabla(a);
+            }else if(jComboBox1.getSelectedItem().equals("Apellidos ascendente")){
+                a = d.sort("Apellidos", "Ascendente");
+                removeTabla();
+                addTabla(a);
+            }else if(jComboBox1.getSelectedItem().equals("Apellidos descendente")){
+                a = d.sort("Apellidos", "Descendente");
+                removeTabla();
+                addTabla(a);
+            }            
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     public void actualizarTabla(){
         removeTabla();
-        ArrayList<Socio> socios = obtenerSocios();
+        ArrayList<Socio> socios = cs.obtenerSocios(asociacion.getId());
         addTabla(socios);
     }
     
@@ -410,6 +483,11 @@ public class SociosPanel extends javax.swing.JPanel {
     private keeptoo.KButton btnEliminar;
     private javax.swing.JLabel buscar;
     private javax.swing.JLabel clear;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblNoResultados;
     private javax.swing.JPanel panelBuscar;
     private javax.swing.JPanel panelCenter;

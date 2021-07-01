@@ -1,5 +1,6 @@
 package presentacion;
 
+import com.google.zxing.WriterException;
 import dominio.Asociacion;
 import dominio.Colores;
 import dominio.ControlEntradas;
@@ -9,9 +10,11 @@ import dominio.CrearQR;
 import dominio.Entrada;
 import dominio.Evento;
 import dominio.Socio;
+import dominio.Email;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -260,18 +263,14 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
                                     
                                     evento.setEntradasVendidas(evento.getEntradasVendidas()+1);
                                     
-                                    mail(socio.getEmail(), outputfile.getPath());
+                                    mails(socio.getEmail(), outputfile.getPath());
                                     modeloListaSociosCon.add(modeloListaSociosCon.size(), socioConEntrada.get(i));
                                     modeloListaSociosSin.removeElement(socioConEntrada.get(i));
-                                }catch(Exception e){
+                                }catch(WriterException | IOException e){
                                     JOptionPane.showMessageDialog(this, "No se pudo generar la entrada.",
                                     "Error", JOptionPane.ERROR_MESSAGE);
                                     ce.eliminarEntrada(entrada.getNumEntrada(), asociacion.getId());                                    
-                                }/*catch (IOException ex) {
-                                    JOptionPane.showMessageDialog(this, "No se pudo generar la entrada.",
-                                    "Error", JOptionPane.ERROR_MESSAGE);
-                                    ce.eliminarEntrada(entrada.getNumEntrada(), asociacion.getId());
-                                }*/
+                                }
                             }else{
                                 JOptionPane.showMessageDialog(this, "No se pudo generar la entrada. Ya que el socio " + 
                                         socio.getNombre() + " no tiene correo.",
@@ -343,61 +342,19 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
         this.entradas = entradas;        
     }
     
-    private void enviarMail(String destinatario, String asunto, String cuerpo, String entrada){
-        // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también. 
-        String [] correoAsoc = asociacion.getEmail().split("@");
-        String remitente = correoAsoc[0];
-        
-        String clave = "";                                      
-        JPasswordField pwd = new JPasswordField();
-        int action = JOptionPane.showConfirmDialog(null, pwd,"Enter Password",JOptionPane.OK_CANCEL_OPTION);
-        if(action < 0);
-        else clave = pwd.getText();
-        
-        Properties props = System.getProperties();
-        props.put("mail.smtp.host", "smtp.gmail.com");  //Servidor SMTP de Google
-        props.put("mail.smtp.user", remitente);        
-        props.put("mail.smtp.clave", clave);    //Clave de la cuenta        
-        props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
-        props.put("mail.smtp.starttls.enable", "true"); //Conectar de manera segura al servidor SMTP
-        props.put("mail.smtp.port", "587"); //Puerto SMTP seguro de Google
-
-        Session session = Session.getDefaultInstance(props);
-        MimeMessage message = new MimeMessage(session);
-        
-        MimeMultipart cuerpoAdjunto = new MimeMultipart();
-        BodyPart texto = new MimeBodyPart();
-        BodyPart adjunto = new MimeBodyPart();
-        
-        try {
-            texto.setText(cuerpo);
-            adjunto.setDataHandler(new DataHandler(new FileDataSource(entrada)));
-            adjunto.setFileName("entrada.png");
-            cuerpoAdjunto.addBodyPart(texto);
-            cuerpoAdjunto.addBodyPart(adjunto);
-            
-            message.setFrom(new InternetAddress(remitente));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
-            message.setSubject(asunto);
-            message.setContent(cuerpoAdjunto);
-            
-            Transport transport = session.getTransport("smtp");
-            transport.connect("smtp.gmail.com", remitente, clave);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-        }catch (MessagingException me) {
-            JOptionPane.showMessageDialog(this, "La entrada se ha generado, pero no se ha podido enviar el correo.",
-                "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    public void mail(String email, String entrada) {
+    public void mails(String email, String entrada) {
         String destinatario = email;
         String asunto = "Entrada para " + evento.getNombre();
         String cuerpo = "Aqui tienes tu entrada para " + evento.getNombre() + " el dia " + evento.getFecha();
-
-        enviarMail(destinatario, asunto, cuerpo, entrada);
+        Email e = new Email(destinatario,asunto,cuerpo);
+        try{
+            e.enviarMail(asociacion, entrada);
+        }catch(MessagingException ex){
+            JOptionPane.showMessageDialog(this, "La entrada se ha generado, pero no se ha podido enviar el correo.",
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }        
     }
+    
     
     public void setAsociacion(Asociacion asociacion){
         this.asociacion = asociacion;

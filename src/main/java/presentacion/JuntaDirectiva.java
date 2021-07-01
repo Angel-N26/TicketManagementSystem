@@ -269,7 +269,7 @@ public class JuntaDirectiva extends javax.swing.JFrame {
                 }else{
                     JOptionPane.showMessageDialog(this,  
                         "No se ha podido actualizar los miembros de la JuntaDirectiva",
-                        "Error", JOptionPane.ERROR_MESSAGE);
+                        "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 }
 
                 btnEditar.setText("Editar");
