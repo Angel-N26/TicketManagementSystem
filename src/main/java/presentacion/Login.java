@@ -825,27 +825,21 @@ public class Login extends javax.swing.JFrame implements Colores {
                     if(user.equals(usuarios.get(i).getUsuario()))
                         existe = true;            
                 }
-                if(existe){
-                    JTextField tf2 = new JTextField();
-                    int action2 = JOptionPane.showConfirmDialog(null, tf2,
-                            "Introduzaca el correo al que quiere que le llegue la contraseña",JOptionPane.OK_CANCEL_OPTION);
-                    if(action2 < 0);
-                    else {                        
-                        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                            + "0123456789" + "abcdefghijklmnopqrstuvxyz";
+                if(existe){               
+                    String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        + "0123456789" + "abcdefghijklmnopqrstuvxyz";
 
-                        StringBuilder sb = new StringBuilder(8);  
-                        for (int i = 0; i < 8; i++) {
-                            int index= (int)(AlphaNumericString.length()* Math.random());
-                            sb.append(AlphaNumericString.charAt(index));
-                        }
-
-                        JOptionPane.showMessageDialog(this, "Su nueva contraseña es: " + sb.toString(),
-                             "Valido", JOptionPane.PLAIN_MESSAGE);
-                        Usuario u = cu.obtenerUsuario(user);
-                        u.setContrasena(pa.hash(sb.toString()));
-                        cu.modificarUsuario(u);                                                  
+                    StringBuilder sb = new StringBuilder(8);  
+                    for (int i = 0; i < 8; i++) {
+                        int index= (int)(AlphaNumericString.length()* Math.random());
+                        sb.append(AlphaNumericString.charAt(index));
                     }
+
+                    JOptionPane.showMessageDialog(this, "Su nueva contraseña es: " + sb.toString(),
+                         "Valido", JOptionPane.PLAIN_MESSAGE);
+                    Usuario u = cu.obtenerUsuario(user);
+                    u.setContrasena(pa.hash(sb.toString()));
+                    cu.modificarUsuario(u);                                                  
                 }else{
                     JOptionPane.showMessageDialog(this, "El usuario no existe.", 
                                 "Error", JOptionPane.ERROR_MESSAGE);
