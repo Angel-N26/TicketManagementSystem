@@ -78,7 +78,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitulo.setText("Membresias");
+        lblTitulo.setText("Membresías");
         lblTitulo.setName("lblTitulo"); // NOI18N
         panelNorth.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
@@ -350,7 +350,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
     private void btnModificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseReleased
         if(activarMod){
             if(listMembresias.isSelectionEmpty()){
-                JOptionPane.showMessageDialog(this, "Selecciona una membresia", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Selecciona una membresía.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }else{    
                 Membresia m = listMembresias.getSelectedValue();
                 if(guardar)
@@ -362,7 +362,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
                             actualizarListaMembresias();                   
                         }else{
                             JOptionPane.showMessageDialog(this,
-                                "No se ha podido actualizar la membresia", "Error",
+                                "No se ha podido actualizar la membresía.", "Error",
                                 JOptionPane.ERROR_MESSAGE);
                         }
                     }else{
@@ -384,10 +384,10 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
     private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
         if(activarEliminar){
             if(listMembresias.isSelectionEmpty()){
-                JOptionPane.showMessageDialog(this, "Selecciona una membresia", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Selecciona una membresía", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }else{
-                int dialogResult = JOptionPane.showConfirmDialog (this, "Estas seguro que desea elimnar?",
-                    "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                int dialogResult = JOptionPane.showConfirmDialog (this, "¿Estas seguro que desea elimnar?",
+                    "Aviso", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                 if(dialogResult == JOptionPane.YES_OPTION){
                     if(cm.eliminarMembresia(listMembresias.getSelectedValue().getId_membresia(), asociacion.getId())){            
                         modeloLista.remove(listMembresias.getSelectedIndex());
@@ -414,7 +414,7 @@ public class MembresiaFrame extends javax.swing.JFrame implements Colores, Regul
                         actualizarListaMembresias();                   
                     }else{
                         JOptionPane.showMessageDialog(this, 
-                            "No se ha podido añadir la membresia", "Error",
+                            "No se ha podido añadir la membresía.", "Error",
                             JOptionPane.ERROR_MESSAGE);
                     }
                 }else{

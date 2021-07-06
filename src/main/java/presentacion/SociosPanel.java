@@ -396,7 +396,7 @@ public class SociosPanel extends javax.swing.JPanel {
 
                 int dialogButton = JOptionPane.YES_NO_OPTION;
                 int dialogResult = JOptionPane.showConfirmDialog (null, 
-                    "Estas seguro que desea elimnar?","Warning",dialogButton);
+                    "¿Estas seguro que desea eliminar?","Aviso",dialogButton);
                 if(dialogResult == JOptionPane.YES_OPTION){
                     if(cs.eliminarSocio(socio.getDni(), asociacion.getId())){
                         dtm.removeRow(index);
@@ -455,7 +455,6 @@ public class SociosPanel extends javax.swing.JPanel {
     }
     
     private void addTabla(ArrayList<Socio> socios){
-        //ControlMembresia cm = new ControlMembresia();
         Membresia m;
         for(int i = 0 ; i < socios.size() ; i++){
             m = cm.obtenerMembresia(socios.get(i).getIdMembresia(), asociacion.getId());

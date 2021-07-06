@@ -355,7 +355,7 @@ public class EventosPanel extends javax.swing.JPanel {
                 int index = table.getSelectedRow();
 
                 int dialogButton = JOptionPane.YES_NO_OPTION;
-                int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+                int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Aviso",dialogButton);
                 if(dialogResult == JOptionPane.YES_OPTION){
                     if(ce.eliminarEvento((Integer)dtm.getValueAt(index, 0), asociacion.getId())){
                         dtm.removeRow(index);
@@ -363,7 +363,7 @@ public class EventosPanel extends javax.swing.JPanel {
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "Selecciona un evento.",
-                    "Error", JOptionPane.ERROR_MESSAGE);
+                    "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnEliminarMouseReleased
@@ -407,20 +407,11 @@ public class EventosPanel extends javax.swing.JPanel {
                 a = d.sort("Nombre", "Descendente");
                 removeTabla();
                 addTabla(a);
-            }/*else if(jComboBox1.getSelectedItem().equals("Apellidos ascendente")){
-                a = d.sort("Apellidos", "Ascendente");
-                removeTabla();
-                addTabla(a);
-            }else if(jComboBox1.getSelectedItem().equals("Apellidos descendente")){
-                a = d.sort("Apellidos", "Descendente");
-                removeTabla();
-                addTabla(a);
-            }*/
+            }
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
     
     public ArrayList<Evento> obtenerEventos(){
-        //ControlEvento ceve = new ControlEvento();
         return ce.obtenerEventos(asociacion.getId());
     }
     

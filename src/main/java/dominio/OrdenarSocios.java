@@ -25,12 +25,9 @@ public class OrdenarSocios {
             return a;
         }else{
             m = a.size()/2;
-            for(int i = 0 ; i < m ; i++){
-                izq.add(a.get(i));
-            }
-            for(int i = m ; i < a.size() ; i++){
-                dch.add(a.get(i));
-            }
+            
+            izq = new ArrayList<Socio> (a.subList(0, m));
+            dch = new ArrayList<Socio> (a.subList(m, a.size()));
             
             izq = mergeSort(izq,tipo,forma);
             dch = mergeSort(dch,tipo,forma);

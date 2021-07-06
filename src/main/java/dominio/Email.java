@@ -38,7 +38,7 @@ public class Email {
         
         String clave = "";                                      
         JPasswordField pwd = new JPasswordField();
-        int action = JOptionPane.showConfirmDialog(null, pwd,"Introduzaca la contraseña del correo de la asociacion",JOptionPane.OK_CANCEL_OPTION);
+        int action = JOptionPane.showConfirmDialog(null, pwd,"Contraseña del correo de la asociacion",JOptionPane.OK_CANCEL_OPTION);
         if(action < 0);
         else clave = pwd.getText();
         

@@ -219,7 +219,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
 
         lblDireccion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblDireccion.setForeground(new java.awt.Color(255, 255, 255));
-        lblDireccion.setText("Direccion & Fecha");
+        lblDireccion.setText("Dirección & Fecha");
         lblDireccion.setName("lblDireccion"); // NOI18N
         panelCenter.add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
@@ -274,7 +274,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
 
         lblNumero.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblNumero.setForeground(new java.awt.Color(255, 255, 255));
-        lblNumero.setText("Numero");
+        lblNumero.setText("Nímero");
         lblNumero.setName("lblNumero"); // NOI18N
         panelCenter.add(lblNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, -1, -1));
 
@@ -296,7 +296,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
 
         lblCodPostal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblCodPostal.setForeground(new java.awt.Color(255, 255, 255));
-        lblCodPostal.setText("Codigo Postal");
+        lblCodPostal.setText("Código Postal");
         lblCodPostal.setName("lblCodPostal"); // NOI18N
         panelCenter.add(lblCodPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, -1, -1));
 
@@ -644,7 +644,9 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
                         JOptionPane.ERROR_MESSAGE);                     
                 }              
             }catch (IOException ioException){
-                System.out.println("Error: " + ioException.getMessage());
+                JOptionPane.showMessageDialog(this, "No se ha seleccionado"
+                        + " una extensión de archivos válida.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_editMouseClicked
@@ -677,7 +679,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
             
             String filePath;
             if(fotoEvento.getIcon() != null){
-                filePath = fotoEvento.getIcon().toString();;
+                filePath = fotoEvento.getIcon().toString();
             }else{
                 filePath = "";
             }
@@ -730,7 +732,7 @@ public class EditEventoPanel extends javax.swing.JPanel implements Colores, Regu
     private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
         if(activarEliminar){
             int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+            int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Aviso",dialogButton);
             if(dialogResult == JOptionPane.YES_OPTION){
                 if(ce.eliminarEvento(eve.getId(), asociacion.getId())){
                     dispose();

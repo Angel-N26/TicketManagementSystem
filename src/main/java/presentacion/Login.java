@@ -337,7 +337,7 @@ public class Login extends javax.swing.JFrame implements Colores {
 
         lblInfor3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblInfor3.setForeground(new java.awt.Color(255, 255, 255));
-        lblInfor3.setText("Angel Sánchez González");
+        lblInfor3.setText("Ángel Sánchez González");
         lblInfor3.setName("lblInfor3"); // NOI18N
         lblInfor3.setPreferredSize(new java.awt.Dimension(212, 16));
         panelIniciarSesion.add(lblInfor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 280, -1));
@@ -704,8 +704,9 @@ public class Login extends javax.swing.JFrame implements Colores {
                         cm.insertarMembresia(m);
                         
                         PasswordAuthentication pa = new PasswordAuthentication();
-                        String pass = pa.hash(pfPassReg.getText());                                
-                                
+                        //String pass = pa.hash(pfPassReg.getText());                                
+                        String pass = pfPassReg.getText();        
+                        
                         Usuario user = new Usuario(tfUserReg.getText(), pass, asoc.getId());
                         if(cu.insertarUsuario(user)){
                             Menu menu = new Menu(asoc, user, conn);
@@ -820,7 +821,7 @@ public class Login extends javax.swing.JFrame implements Colores {
             int action = JOptionPane.showConfirmDialog(null, tf,"Introduzaca su nombre de usuario",JOptionPane.OK_CANCEL_OPTION);
             if(action < 0);
             else{
-                user = tf.getText();                                     
+                user = tf.getText(); 
                 for(int i = 0 ; i < usuarios.size() ; i++){
                     if(user.equals(usuarios.get(i).getUsuario()))
                         existe = true;            
@@ -838,7 +839,7 @@ public class Login extends javax.swing.JFrame implements Colores {
                     JOptionPane.showMessageDialog(this, "Su nueva contraseña es: " + sb.toString(),
                          "Valido", JOptionPane.PLAIN_MESSAGE);
                     Usuario u = cu.obtenerUsuario(user);
-                    u.setContrasena(pa.hash(sb.toString()));
+                    u.setContrasena(sb.toString()/*pa.hash(sb.toString())*/);
                     cu.modificarUsuario(u);                                                  
                 }else{
                     JOptionPane.showMessageDialog(this, "El usuario no existe.", 
@@ -873,7 +874,7 @@ public class Login extends javax.swing.JFrame implements Colores {
         PasswordAuthentication pa = new PasswordAuthentication();
         ArrayList<Usuario> usuarios = cu.obtenerUsuarios();                       
         for(int i = 0 ; i < usuarios.size() ; i++){
-            if(nombre.equals(usuarios.get(i).getUsuario()) && pa.authenticate(pass, usuarios.get(i).getContrasena())){
+            if(nombre.equals(usuarios.get(i).getUsuario()) && pass.equals(usuarios.get(i).getContrasena()) /*pa.authenticate(pass, usuarios.get(i).getContrasena())*/){
                 existe = true;
             }
         }

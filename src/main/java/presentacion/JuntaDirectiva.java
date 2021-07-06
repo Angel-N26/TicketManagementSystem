@@ -264,18 +264,18 @@ public class JuntaDirectiva extends javax.swing.JFrame {
                     cbVocal1.setEnabled(false);
                     cbVocal2.setEnabled(false);
 
-                    JOptionPane.showMessageDialog(this, "Junta Directiva actualizada",
-                        "Valido", JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Junta Directiva actualizada.",
+                        "Válido", JOptionPane.PLAIN_MESSAGE);
                 }else{
                     JOptionPane.showMessageDialog(this,  
-                        "No se ha podido actualizar los miembros de la JuntaDirectiva",
+                        "No se ha podido actualizar los miembros de la JuntaDirectiva.",
                         "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 }
 
                 btnEditar.setText("Editar");
             }else{
                 JOptionPane.showMessageDialog(this,  
-                        "Primero debes añadir socios",
+                        "Primero debes añadir socios.",
                         "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
         }        

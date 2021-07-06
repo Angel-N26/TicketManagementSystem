@@ -842,7 +842,7 @@ public class Menu extends javax.swing.JFrame implements RegularExpresions {
     private void btnCerrarSesionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseReleased
         if(activarCerrarSesion){
             int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog (null, "¿Quiere cerrar sesion?","Warning",dialogButton);
+            int dialogResult = JOptionPane.showConfirmDialog (null, "¿Quiere cerrar sesion?","Aviso",dialogButton);
             if(dialogResult == JOptionPane.YES_OPTION){
                 Login login = new Login();
                 login.setVisible(true);

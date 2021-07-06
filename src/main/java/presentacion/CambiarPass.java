@@ -340,14 +340,14 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         if(activarAceptar){
             PasswordAuthentication pa = new PasswordAuthentication();
             if(camposVacios() && comprobarCampos()){
-                user.setContrasena(pa.hash(jPasswordField2.getText()));
+                user.setContrasena(jPasswordField2.getText()/*pa.hash(jPasswordField2.getText())*/);
                 if(cu.modificarUsuario(user)){
-                    JOptionPane.showMessageDialog(this, "Contraseña actualizada",
+                    JOptionPane.showMessageDialog(this, "Contraseña actualizada.",
                         "Valido", JOptionPane.PLAIN_MESSAGE);
                     dispose();
                 }else{
                     JOptionPane.showMessageDialog(this,  
-                        "No se ha podido actualizar la contraseña",
+                        "No se ha podido actualizar la contraseña.",
                         "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }      
@@ -464,21 +464,21 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
         if(jPasswordField1.getText().equals("")){
             jPasswordField1.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel8.setVisible(true);
-            jLabel9.setText("Campo vacio");
+            jLabel9.setText("Campo vacío");
             noVacio = false;
         }
         
         if(jPasswordField2.getText().equals("")){
             jPasswordField2.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel7.setVisible(true);
-            jLabel10.setText("Campo vacio");
+            jLabel10.setText("Campo vacío");
             noVacio = false;
         }
         
         if(jPasswordField3.getText().equals("")){
             jPasswordField3.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel6.setVisible(true);
-            jLabel11.setText("Campo vacio");
+            jLabel11.setText("Campo vacío");
             noVacio = false;
         }
         
@@ -488,10 +488,10 @@ public class CambiarPass extends javax.swing.JFrame implements Colores {
     private boolean comprobarCampos(){
         boolean comprobar = true;
         PasswordAuthentication pa = new PasswordAuthentication();
-        if(!pa.authenticate(jPasswordField1.getText(), user.getContrasena())){
+        if(!jPasswordField1.getText().equals(user.getContrasena()) /*!pa.authenticate(jPasswordField1.getText(), user.getContrasena())*/){
             jPasswordField1.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, WRONG));
             jLabel8.setVisible(true);
-            jLabel9.setText("Contraseña actual erronea");
+            jLabel9.setText("Contraseña actual errónea");
             comprobar = false;
         }
         

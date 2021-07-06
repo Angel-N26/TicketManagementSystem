@@ -13,7 +13,7 @@ public class Agente {
     static String driver = "com.mysql.cj.jdbc.Driver";
     static String DB_username = "a75429_tmsdb"; //a75429_tmsdb
     static String DB_password = "m6mJYqylcd"; //
-    static String DB_URL = "jdbc:mysql://mysql5046.site4now.net/db_a75429_tmsdb"; // mysql5046.site4now.net/db_a75429_tmsdb
+    static String DB_URL = "jdbc:mysql://mysql5046.site4now.net/db_a75429_tmsdb?&serverTimezone=Europe/Madrid"; // mysql5046.site4now.net/db_a75429_tmsdb
 
     public static Connection getConexion() {
         Connection con = null;
@@ -33,7 +33,7 @@ public class Agente {
             Class.forName(driver);
             String user = "root";
             String pass = "1234";
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tms?user="+user+"&password="+pass+"&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tms?user="+user+"&password="+pass+"&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Madrid");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());
         }

@@ -282,11 +282,11 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
                     }
                 }else{
                     JOptionPane.showMessageDialog(this, "Capacidad del evento superada",
-                    "Error", JOptionPane.ERROR_MESSAGE);
+                    "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 }
             }else{
                 JOptionPane.showMessageDialog(this, "Selecciona por lo menos un socio que no tenga entrada.",
-                    "Error", JOptionPane.ERROR_MESSAGE);
+                    "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
         }        
     }//GEN-LAST:event_btnGenerarEntradasMouseReleased
@@ -345,7 +345,7 @@ public class GenerarEntradas extends javax.swing.JFrame implements Colores {
     public void mails(String email, String entrada) {
         String destinatario = email;
         String asunto = "Entrada para " + evento.getNombre();
-        String cuerpo = "Aqui tienes tu entrada para " + evento.getNombre() + " el dia " + evento.getFecha();
+        String cuerpo = "Aqui tienes tu entrada para " + evento.getNombre() + " el día " + evento.getFecha();
         Email e = new Email(destinatario,asunto,cuerpo);
         try{
             e.enviarMail(asociacion, entrada);

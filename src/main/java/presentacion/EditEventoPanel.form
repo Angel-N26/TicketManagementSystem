@@ -340,7 +340,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Direccion &amp; Fecha"/>
+                <Property name="text" type="java.lang.String" value="Direcci&#xf3;n &amp; Fecha"/>
                 <Property name="name" type="java.lang.String" value="lblDireccion" noResource="true"/>
               </Properties>
               <Constraints>
@@ -473,7 +473,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Numero"/>
+                <Property name="text" type="java.lang.String" value="N&#xed;mero"/>
                 <Property name="name" type="java.lang.String" value="lblNumero" noResource="true"/>
               </Properties>
               <Constraints>
@@ -523,7 +523,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Codigo Postal"/>
+                <Property name="text" type="java.lang.String" value="C&#xf3;digo Postal"/>
                 <Property name="name" type="java.lang.String" value="lblCodPostal" noResource="true"/>
               </Properties>
               <Constraints>

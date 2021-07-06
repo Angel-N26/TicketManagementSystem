@@ -23,8 +23,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author angel
  **/
 public class AsociacionPanel extends javax.swing.JPanel implements Colores, RegularExpresions {
-
-    //private Connection con;
     
     public AsociacionPanel(Asociacion asociacion, EntradasPanel ep, Connection con) {
         this.asociacion = asociacion;
@@ -774,7 +772,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
                 }              
             }
             catch (IOException ioException){
-                System.out.println("Error: " + ioException.getMessage());
+                JOptionPane.showMessageDialog(this,
+                    "No se ha seleccionado una extensión de archivos válida."
+                    , "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_editMouseClicked
@@ -789,9 +789,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
                 fechaCreacion = Date.valueOf(dcEditor2.getText());
 
             int tlf = 0, nReg = 0;
-            if(!tfTlf.getText().isBlank())
+            if(!tfTlf.getText().isEmpty())
                 tlf = Integer.parseInt(tfTlf.getText());
-            if(!tfNReg.getText().isBlank())
+            if(!tfNReg.getText().isEmpty())
                 nReg = Integer.parseInt(tfNReg.getText());
             
             String filePath = logo.getIcon().toString();
@@ -813,11 +813,9 @@ public class AsociacionPanel extends javax.swing.JPanel implements Colores, Regu
                         btnEditar.setText("Editar");
                         lblNombreLogo.setText(tfNombre.getText());
                         asociacion = asoc;
-                        
-                        //ep.setAsociacion(asociacion);
                     }else{
                         JOptionPane.showMessageDialog(this, 
-                            "No se ha podido actualizar la asoicación", "Error",
+                            "No se ha podido actualizar la asociación", "Error",
                             JOptionPane.ERROR_MESSAGE);
                     }
                 }

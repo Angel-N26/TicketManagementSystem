@@ -520,7 +520,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
 
         lblMembresia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblMembresia.setForeground(new java.awt.Color(255, 255, 255));
-        lblMembresia.setText("Membresia");
+        lblMembresia.setText("Membresía");
         lblMembresia.setFocusable(false);
         lblMembresia.setName("lblMembresia"); // NOI18N
         panelCenter.add(lblMembresia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, -1, -1));
@@ -538,7 +538,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
         cbPagos.setBackground(new java.awt.Color(51, 51, 51));
         cbPagos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         cbPagos.setForeground(new java.awt.Color(255, 255, 255));
-        cbPagos.setText("Al dia de pagos");
+        cbPagos.setText("Al día de pagos");
         cbPagos.setName("cbPagos"); // NOI18N
         cbPagos.setNextFocusableComponent(btnEliminar);
         panelCenter.add(cbPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, -1, 25));
@@ -843,7 +843,9 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
                         JOptionPane.ERROR_MESSAGE);                     
                 }              
             }catch (IOException ioException){
-                System.out.println("Error: " + ioException.getMessage());
+                JOptionPane.showMessageDialog(this, "No se ha seleccionado"
+                        + " una extensión de archivos válida.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_editMouseClicked
@@ -936,7 +938,7 @@ public class EditSocioPanel extends JPanel implements Colores, RegularExpresions
     private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
         if(activarEliminar){
             int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Warning",dialogButton);
+            int dialogResult = JOptionPane.showConfirmDialog (null, "Estas seguro que desea elimnar?","Aviso",dialogButton);
             if(dialogResult == JOptionPane.YES_OPTION){
                 if(cs.eliminarSocio(tfDNI.getText(), asociacion.getId())){
                     dispose();
